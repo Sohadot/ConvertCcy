@@ -148,7 +148,12 @@
   <section>
     <div class="sec-title">About MYR / EUR</div>
     <div class="sec-h2">Malaysian Ringgit to Euro Exchange Rate</div>
-    <p style="font-size:.9rem;color:var(--muted);line-height:1.8" id="pair-desc">The Malaysian Ringgit is the currency of Malaysia, a diverse upper-middle-income economy known for electronics exports, palm oil, and petroleum products. The Euro is the official currency of 20 European Union member states, managed by the European Central Bank. It is the second most traded currency globally. The MYR/EUR exchange rate reflects the relative economic strength between the two currencies and is influenced by trade flows, interest rate differentials, and global market conditions.</p>
+    <p style="font-size:.9rem;color:var(--muted);line-height:1.8">
+      The <strong>Malaysian Ringgit (MYR)</strong> and <strong>Euro (EUR)</strong> are two major global currencies.
+      The MYR/EUR exchange rate reflects the relative value between the two currencies and is influenced by
+      central bank policies, economic indicators, trade balances, inflation, and global market sentiment.
+      ConvertCCY provides the mid-market rate — the fairest benchmark for currency conversion.
+    </p>
   </section>
 
   <section>
@@ -176,7 +181,6 @@
 
 <footer>
   <p>© 2025 <a href="/">convertccy.com</a> — Live mid-market rates. For informational use only.</p>
-  <p style="margin-top:.5rem"><a href="/about.html">About</a> &nbsp;·&nbsp; <a href="/contact.html">Contact</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy Policy</a></p>
 </footer>
 
 <script>
@@ -234,7 +238,7 @@ function buildTable() {
 function buildRelated() {
   const grid = document.getElementById('related-grid');
   grid.innerHTML = RELATED.map(p =>
-    `<a class="related-card" href="/${p[0].toLowerCase()}-to-${p[1].toLowerCase()}.html">
+    `<a class="related-card" href="/pages/${p[0].toLowerCase()}-to-${p[1].toLowerCase()}.html">
       <span>${p[0]} → ${p[1]}</span><small>→</small>
     </a>`
   ).join('');

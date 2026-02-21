@@ -148,7 +148,12 @@
   <section>
     <div class="sec-title">About MNT / KES</div>
     <div class="sec-h2">Mongolian Tugrik to Kenyan Shilling Exchange Rate</div>
-    <p style="font-size:.9rem;color:var(--muted);line-height:1.8" id="pair-desc">The Mongolian Tugrik (MNT) is an official currency actively traded on global foreign exchange markets. Exchange rates fluctuate based on economic indicators, central bank policy, and market sentiment. The Kenyan Shilling is the currency of Kenya, East Africa's largest economy. Kenya's growing tech sector and tourism industry support the Shilling. The MNT/KES exchange rate reflects the relative economic strength between the two currencies and is influenced by trade flows, interest rate differentials, and global market conditions.</p>
+    <p style="font-size:.9rem;color:var(--muted);line-height:1.8">
+      The <strong>Mongolian Tugrik (MNT)</strong> and <strong>Kenyan Shilling (KES)</strong> are two major global currencies.
+      The MNT/KES exchange rate reflects the relative value between the two currencies and is influenced by
+      central bank policies, economic indicators, trade balances, inflation, and global market sentiment.
+      ConvertCCY provides the mid-market rate — the fairest benchmark for currency conversion.
+    </p>
   </section>
 
   <section>
@@ -176,7 +181,6 @@
 
 <footer>
   <p>© 2025 <a href="/">convertccy.com</a> — Live mid-market rates. For informational use only.</p>
-  <p style="margin-top:.5rem"><a href="/about.html">About</a> &nbsp;·&nbsp; <a href="/contact.html">Contact</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy Policy</a></p>
 </footer>
 
 <script>
@@ -234,7 +238,7 @@ function buildTable() {
 function buildRelated() {
   const grid = document.getElementById('related-grid');
   grid.innerHTML = RELATED.map(p =>
-    `<a class="related-card" href="/${p[0].toLowerCase()}-to-${p[1].toLowerCase()}.html">
+    `<a class="related-card" href="/pages/${p[0].toLowerCase()}-to-${p[1].toLowerCase()}.html">
       <span>${p[0]} → ${p[1]}</span><small>→</small>
     </a>`
   ).join('');
