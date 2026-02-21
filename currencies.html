@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Currencies | ConvertCCY</title>
+<meta name="description" content="Browse all 120+ supported currencies on ConvertCCY. Find live exchange rates for any currency pair instantly.">
+<link rel="canonical" href="https://convertccy.com/currencies.html">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#f7f7f5;--surface:#fff;--border:#e8e8e4;--text:#111110;--muted:#888884;--accent:#1a6b3c;--accent-light:#e8f5ee;--mono:'DM Mono',monospace;--sans:'Sora',sans-serif}
+  body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh}
+  nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+  .logo{font-family:var(--mono);font-size:1.1rem;font-weight:500;color:var(--text);text-decoration:none}
+  .logo span{color:var(--accent)}
+  .nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;margin-left:1.5rem;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .page-wrap{max-width:900px;margin:0 auto;padding:3rem 2rem}
+  .tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.75rem;padding:4px 12px;border-radius:100px;margin-bottom:1.5rem;border:1px solid #c4dfd0}
+  h1{font-size:2rem;font-weight:700;letter-spacing:-1px;margin-bottom:.5rem}
+  h1 em{font-style:normal;color:var(--accent)}
+  .subtitle{color:var(--muted);font-size:.9rem;margin-bottom:2rem}
+  .search-box{width:100%;padding:.9rem 1.2rem;border:1.5px solid var(--border);border-radius:12px;font-family:var(--sans);font-size:.95rem;background:var(--surface);color:var(--text);outline:none;margin-bottom:2rem;transition:border-color .2s}
+  .search-box:focus{border-color:var(--accent)}
+  .currencies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem}
+  .currency-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.75rem}
+  .currency-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+  .currency-flag{font-size:1.5rem;flex-shrink:0}
+  .currency-code{font-family:var(--mono);font-size:.9rem;font-weight:500}
+  .currency-name{font-size:.75rem;color:var(--muted);margin-top:2px}
+  .currency-arrow{margin-left:auto;color:var(--muted);font-size:.9rem}
+  .count{font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-bottom:1rem}
+  footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:4rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--text)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  .currency-card{animation:fadeUp .4s ease both}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/">convert<span>ccy</span>.com</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">All Currencies</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="tag">All Currencies</div>
+  <h1>Browse <em>120+</em> Currencies</h1>
+  <p class="subtitle">Click any currency to see live exchange rates and convert instantly.</p>
+
+  <input class="search-box" type="text" id="search" placeholder="🔍  Search currency (e.g. Dollar, EUR, Morocco...)" oninput="filterCurrencies()">
+
+  <div class="count" id="count">78 currencies available</div>
+
+  <div class="currencies-grid" id="grid">
+    
+    <div class="currency-card" onclick="window.location='/pages/usd-to-usd.html'">
+      <div class="currency-flag">🇺🇸</div>
+      <div class="currency-info">
+        <div class="currency-code">USD</div>
+        <div class="currency-name">US Dollar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/eur-to-usd.html'">
+      <div class="currency-flag">🇪🇺</div>
+      <div class="currency-info">
+        <div class="currency-code">EUR</div>
+        <div class="currency-name">Euro</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/gbp-to-usd.html'">
+      <div class="currency-flag">🇬🇧</div>
+      <div class="currency-info">
+        <div class="currency-code">GBP</div>
+        <div class="currency-name">British Pound</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/jpy-to-usd.html'">
+      <div class="currency-flag">🇯🇵</div>
+      <div class="currency-info">
+        <div class="currency-code">JPY</div>
+        <div class="currency-name">Japanese Yen</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/cad-to-usd.html'">
+      <div class="currency-flag">🇨🇦</div>
+      <div class="currency-info">
+        <div class="currency-code">CAD</div>
+        <div class="currency-name">Canadian Dollar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/aud-to-usd.html'">
+      <div class="currency-flag">🇦🇺</div>
+      <div class="currency-info">
+        <div class="currency-code">AUD</div>
+        <div class="currency-name">Australian Dollar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/chf-to-usd.html'">
+      <div class="currency-flag">🇨🇭</div>
+      <div class="currency-info">
+        <div class="currency-code">CHF</div>
+        <div class="currency-name">Swiss Franc</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/cny-to-usd.html'">
+      <div class="currency-flag">🇨🇳</div>
+      <div class="currency-info">
+        <div class="currency-code">CNY</div>
+        <div class="currency-name">Chinese Yuan</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/hkd-to-usd.html'">
+      <div class="currency-flag">🇭🇰</div>
+      <div class="currency-info">
+        <div class="currency-code">HKD</div>
+        <div class="currency-name">Hong Kong Dollar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/sgd-to-usd.html'">
+      <div class="currency-flag">🇸🇬</div>
+      <div class="currency-info">
+        <div class="currency-code">SGD</div>
+        <div class="currency-name">Singapore Dollar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/nzd-to-usd.html'">
+      <div class="currency-flag">🇳🇿</div>
+      <div class="currency-info">
+        <div class="currency-code">NZD</div>
+        <div class="currency-name">New Zealand Dollar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/dkk-to-usd.html'">
+      <div class="currency-flag">🇩🇰</div>
+      <div class="currency-info">
+        <div class="currency-code">DKK</div>
+        <div class="currency-name">Danish Krone</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/sek-to-usd.html'">
+      <div class="currency-flag">🇸🇪</div>
+      <div class="currency-info">
+        <div class="currency-code">SEK</div>
+        <div class="currency-name">Swedish Krona</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/nok-to-usd.html'">
+      <div class="currency-flag">🇳🇴</div>
+      <div class="currency-info">
+        <div class="currency-code">NOK</div>
+        <div class="currency-name">Norwegian Krone</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/isk-to-usd.html'">
+      <div class="currency-flag">🇮🇸</div>
+      <div class="currency-info">
+        <div class="currency-code">ISK</div>
+        <div class="currency-name">Icelandic Krona</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/sar-to-usd.html'">
+      <div class="currency-flag">🇸🇦</div>
+      <div class="currency-info">
+        <div class="currency-code">SAR</div>
+        <div class="currency-name">Saudi Riyal</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/aed-to-usd.html'">
+      <div class="currency-flag">🇦🇪</div>
+      <div class="currency-info">
+        <div class="currency-code">AED</div>
+        <div class="currency-name">UAE Dirham</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/kwd-to-usd.html'">
+      <div class="currency-flag">🇰🇼</div>
+      <div class="currency-info">
+        <div class="currency-code">KWD</div>
+        <div class="currency-name">Kuwaiti Dinar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/qar-to-usd.html'">
+      <div class="currency-flag">🇶🇦</div>
+      <div class="currency-info">
+        <div class="currency-code">QAR</div>
+        <div class="currency-name">Qatari Riyal</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/bhd-to-usd.html'">
+      <div class="currency-flag">🇧🇭</div>
+      <div class="currency-info">
+        <div class="currency-code">BHD</div>
+        <div class="currency-name">Bahraini Dinar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/omr-to-usd.html'">
+      <div class="currency-flag">🇴🇲</div>
+      <div class="currency-info">
+        <div class="currency-code">OMR</div>
+        <div class="currency-name">Omani Rial</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/jod-to-usd.html'">
+      <div class="currency-flag">🇯🇴</div>
+      <div class="currency-info">
+        <div class="currency-code">JOD</div>
+        <div class="currency-name">Jordanian Dinar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/iqd-to-usd.html'">
+      <div class="currency-flag">🇮🇶</div>
+      <div class="currency-info">
+        <div class="currency-code">IQD</div>
+        <div class="currency-name">Iraqi Dinar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/lbp-to-usd.html'">
+      <div class="currency-flag">🇱🇧</div>
+      <div class="currency-info">
+        <div class="currency-code">LBP</div>
+        <div class="currency-name">Lebanese Pound</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/yer-to-usd.html'">
+      <div class="currency-flag">🇾🇪</div>
+      <div class="currency-info">
+        <div class="currency-code">YER</div>
+        <div class="currency-name">Yemeni Rial</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/ils-to-usd.html'">
+      <div class="currency-flag">🇮🇱</div>
+      <div class="currency-info">
+        <div class="currency-code">ILS</div>
+        <div class="currency-name">Israeli Shekel</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/irr-to-usd.html'">
+      <div class="currency-flag">🇮🇷</div>
+      <div class="currency-info">
+        <div class="currency-code">IRR</div>
+        <div class="currency-name">Iranian Rial</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/egp-to-usd.html'">
+      <div class="currency-flag">🇪🇬</div>
+      <div class="currency-info">
+        <div class="currency-code">EGP</div>
+        <div class="currency-name">Egyptian Pound</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/mad-to-usd.html'">
+      <div class="currency-flag">🇲🇦</div>
+      <div class="currency-info">
+        <div class="currency-code">MAD</div>
+        <div class="currency-name">Moroccan Dirham</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/tnd-to-usd.html'">
+      <div class="currency-flag">🇹🇳</div>
+      <div class="currency-info">
+        <div class="currency-code">TND</div>
+        <div class="currency-name">Tunisian Dinar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/dzd-to-usd.html'">
+      <div class="currency-flag">🇩🇿</div>
+      <div class="currency-info">
+        <div class="currency-code">DZD</div>
+        <div class="currency-name">Algerian Dinar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/lyd-to-usd.html'">
+      <div class="currency-flag">🇱🇾</div>
+      <div class="currency-info">
+        <div class="currency-code">LYD</div>
+        <div class="currency-name">Libyan Dinar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/ngn-to-usd.html'">
+      <div class="currency-flag">🇳🇬</div>
+      <div class="currency-info">
+        <div class="currency-code">NGN</div>
+        <div class="currency-name">Nigerian Naira</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/ghs-to-usd.html'">
+      <div class="currency-flag">🇬🇭</div>
+      <div class="currency-info">
+        <div class="currency-code">GHS</div>
+        <div class="currency-name">Ghanaian Cedi</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/kes-to-usd.html'">
+      <div class="currency-flag">🇰🇪</div>
+      <div class="currency-info">
+        <div class="currency-code">KES</div>
+        <div class="currency-name">Kenyan Shilling</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/zar-to-usd.html'">
+      <div class="currency-flag">🇿🇦</div>
+      <div class="currency-info">
+        <div class="currency-code">ZAR</div>
+        <div class="currency-name">South African Rand</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/etb-to-usd.html'">
+      <div class="currency-flag">🇪🇹</div>
+      <div class="currency-info">
+        <div class="currency-code">ETB</div>
+        <div class="currency-name">Ethiopian Birr</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/tzs-to-usd.html'">
+      <div class="currency-flag">🇹🇿</div>
+      <div class="currency-info">
+        <div class="currency-code">TZS</div>
+        <div class="currency-name">Tanzanian Shilling</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/xof-to-usd.html'">
+      <div class="currency-flag">🇸🇳</div>
+      <div class="currency-info">
+        <div class="currency-code">XOF</div>
+        <div class="currency-name">West African CFA</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/xaf-to-usd.html'">
+      <div class="currency-flag">🇨🇲</div>
+      <div class="currency-info">
+        <div class="currency-code">XAF</div>
+        <div class="currency-name">Central African CFA</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/mur-to-usd.html'">
+      <div class="currency-flag">🇲🇺</div>
+      <div class="currency-info">
+        <div class="currency-code">MUR</div>
+        <div class="currency-name">Mauritian Rupee</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/bwp-to-usd.html'">
+      <div class="currency-flag">🇧🇼</div>
+      <div class="currency-info">
+        <div class="currency-code">BWP</div>
+        <div class="currency-name">Botswana Pula</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/inr-to-usd.html'">
+      <div class="currency-flag">🇮🇳</div>
+      <div class="currency-info">
+        <div class="currency-code">INR</div>
+        <div class="currency-name">Indian Rupee</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/pkr-to-usd.html'">
+      <div class="currency-flag">🇵🇰</div>
+      <div class="currency-info">
+        <div class="currency-code">PKR</div>
+        <div class="currency-name">Pakistani Rupee</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/bdt-to-usd.html'">
+      <div class="currency-flag">🇧🇩</div>
+      <div class="currency-info">
+        <div class="currency-code">BDT</div>
+        <div class="currency-name">Bangladeshi Taka</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/lkr-to-usd.html'">
+      <div class="currency-flag">🇱🇰</div>
+      <div class="currency-info">
+        <div class="currency-code">LKR</div>
+        <div class="currency-name">Sri Lankan Rupee</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/npr-to-usd.html'">
+      <div class="currency-flag">🇳🇵</div>
+      <div class="currency-info">
+        <div class="currency-code">NPR</div>
+        <div class="currency-name">Nepalese Rupee</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/krw-to-usd.html'">
+      <div class="currency-flag">🇰🇷</div>
+      <div class="currency-info">
+        <div class="currency-code">KRW</div>
+        <div class="currency-name">South Korean Won</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/twd-to-usd.html'">
+      <div class="currency-flag">🇹🇼</div>
+      <div class="currency-info">
+        <div class="currency-code">TWD</div>
+        <div class="currency-name">Taiwan Dollar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/thb-to-usd.html'">
+      <div class="currency-flag">🇹🇭</div>
+      <div class="currency-info">
+        <div class="currency-code">THB</div>
+        <div class="currency-name">Thai Baht</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/php-to-usd.html'">
+      <div class="currency-flag">🇵🇭</div>
+      <div class="currency-info">
+        <div class="currency-code">PHP</div>
+        <div class="currency-name">Philippine Peso</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/idr-to-usd.html'">
+      <div class="currency-flag">🇮🇩</div>
+      <div class="currency-info">
+        <div class="currency-code">IDR</div>
+        <div class="currency-name">Indonesian Rupiah</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/myr-to-usd.html'">
+      <div class="currency-flag">🇲🇾</div>
+      <div class="currency-info">
+        <div class="currency-code">MYR</div>
+        <div class="currency-name">Malaysian Ringgit</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/vnd-to-usd.html'">
+      <div class="currency-flag">🇻🇳</div>
+      <div class="currency-info">
+        <div class="currency-code">VND</div>
+        <div class="currency-name">Vietnamese Dong</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/try-to-usd.html'">
+      <div class="currency-flag">🇹🇷</div>
+      <div class="currency-info">
+        <div class="currency-code">TRY</div>
+        <div class="currency-name">Turkish Lira</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/pln-to-usd.html'">
+      <div class="currency-flag">🇵🇱</div>
+      <div class="currency-info">
+        <div class="currency-code">PLN</div>
+        <div class="currency-name">Polish Zloty</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/czk-to-usd.html'">
+      <div class="currency-flag">🇨🇿</div>
+      <div class="currency-info">
+        <div class="currency-code">CZK</div>
+        <div class="currency-name">Czech Koruna</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/huf-to-usd.html'">
+      <div class="currency-flag">🇭🇺</div>
+      <div class="currency-info">
+        <div class="currency-code">HUF</div>
+        <div class="currency-name">Hungarian Forint</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/ron-to-usd.html'">
+      <div class="currency-flag">🇷🇴</div>
+      <div class="currency-info">
+        <div class="currency-code">RON</div>
+        <div class="currency-name">Romanian Leu</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/bgn-to-usd.html'">
+      <div class="currency-flag">🇧🇬</div>
+      <div class="currency-info">
+        <div class="currency-code">BGN</div>
+        <div class="currency-name">Bulgarian Lev</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/rsd-to-usd.html'">
+      <div class="currency-flag">🇷🇸</div>
+      <div class="currency-info">
+        <div class="currency-code">RSD</div>
+        <div class="currency-name">Serbian Dinar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/uah-to-usd.html'">
+      <div class="currency-flag">🇺🇦</div>
+      <div class="currency-info">
+        <div class="currency-code">UAH</div>
+        <div class="currency-name">Ukrainian Hryvnia</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/rub-to-usd.html'">
+      <div class="currency-flag">🇷🇺</div>
+      <div class="currency-info">
+        <div class="currency-code">RUB</div>
+        <div class="currency-name">Russian Ruble</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/gel-to-usd.html'">
+      <div class="currency-flag">🇬🇪</div>
+      <div class="currency-info">
+        <div class="currency-code">GEL</div>
+        <div class="currency-name">Georgian Lari</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/kzt-to-usd.html'">
+      <div class="currency-flag">🇰🇿</div>
+      <div class="currency-info">
+        <div class="currency-code">KZT</div>
+        <div class="currency-name">Kazakhstani Tenge</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/mxn-to-usd.html'">
+      <div class="currency-flag">🇲🇽</div>
+      <div class="currency-info">
+        <div class="currency-code">MXN</div>
+        <div class="currency-name">Mexican Peso</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/brl-to-usd.html'">
+      <div class="currency-flag">🇧🇷</div>
+      <div class="currency-info">
+        <div class="currency-code">BRL</div>
+        <div class="currency-name">Brazilian Real</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/ars-to-usd.html'">
+      <div class="currency-flag">🇦🇷</div>
+      <div class="currency-info">
+        <div class="currency-code">ARS</div>
+        <div class="currency-name">Argentine Peso</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/clp-to-usd.html'">
+      <div class="currency-flag">🇨🇱</div>
+      <div class="currency-info">
+        <div class="currency-code">CLP</div>
+        <div class="currency-name">Chilean Peso</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/cop-to-usd.html'">
+      <div class="currency-flag">🇨🇴</div>
+      <div class="currency-info">
+        <div class="currency-code">COP</div>
+        <div class="currency-name">Colombian Peso</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/pen-to-usd.html'">
+      <div class="currency-flag">🇵🇪</div>
+      <div class="currency-info">
+        <div class="currency-code">PEN</div>
+        <div class="currency-name">Peruvian Sol</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/uyu-to-usd.html'">
+      <div class="currency-flag">🇺🇾</div>
+      <div class="currency-info">
+        <div class="currency-code">UYU</div>
+        <div class="currency-name">Uruguayan Peso</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/gtq-to-usd.html'">
+      <div class="currency-flag">🇬🇹</div>
+      <div class="currency-info">
+        <div class="currency-code">GTQ</div>
+        <div class="currency-name">Guatemalan Quetzal</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/dop-to-usd.html'">
+      <div class="currency-flag">🇩🇴</div>
+      <div class="currency-info">
+        <div class="currency-code">DOP</div>
+        <div class="currency-name">Dominican Peso</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/jmd-to-usd.html'">
+      <div class="currency-flag">🇯🇲</div>
+      <div class="currency-info">
+        <div class="currency-code">JMD</div>
+        <div class="currency-name">Jamaican Dollar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/fjd-to-usd.html'">
+      <div class="currency-flag">🇫🇯</div>
+      <div class="currency-info">
+        <div class="currency-code">FJD</div>
+        <div class="currency-name">Fijian Dollar</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/mmk-to-usd.html'">
+      <div class="currency-flag">🇲🇲</div>
+      <div class="currency-info">
+        <div class="currency-code">MMK</div>
+        <div class="currency-name">Myanmar Kyat</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+    <div class="currency-card" onclick="window.location='/pages/afn-to-usd.html'">
+      <div class="currency-flag">🇦🇫</div>
+      <div class="currency-info">
+        <div class="currency-code">AFN</div>
+        <div class="currency-name">Afghan Afghani</div>
+      </div>
+      <div class="currency-arrow">→</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 <a href="/">convertccy.com</a> &nbsp;·&nbsp; <a href="/about.html">About</a> &nbsp;·&nbsp; <a href="/contact.html">Contact</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+function filterCurrencies() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const cards = document.querySelectorAll('.currency-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if (text.includes(q)) {
+      card.style.display = '';
+      visible++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  document.getElementById('count').textContent = visible + ' currencies found';
+}
+</script>
+</body>
+</html>
