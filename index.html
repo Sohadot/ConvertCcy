@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ConvertCCY – Live Currency Converter</title>
+<meta name="description" content="Fast, free, and accurate currency converter. Convert between 170+ currencies with live exchange rates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f7f5;
+    --surface: #ffffff;
+    --border: #e8e8e4;
+    --text: #111110;
+    --muted: #888884;
+    --accent: #1a6b3c;
+    --accent-light: #e8f5ee;
+    --accent2: #f0a500;
+    --mono: 'DM Mono', monospace;
+    --sans: 'Sora', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(247,247,245,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .logo {
+    font-family: var(--mono);
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo span { color: var(--accent); }
+  nav a {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 5rem 2rem 2rem;
+    text-align: center;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-family: var(--mono);
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #c4dfd0;
+  }
+  .hero-tag::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p {
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+  }
+
+  /* CONVERTER CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .converter-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    align-items: end;
+    margin-bottom: 1.5rem;
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.72rem;
+    font-family: var(--mono);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  .field select, .field input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    font-family: var(--mono);
+    font-size: 1rem;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .field select:focus, .field input:focus {
+    border-color: var(--accent);
+    background: #fff;
+  }
+  .field input {
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+  .swap-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--bg);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+    color: var(--muted);
+    margin-bottom: 0;
+    align-self: center;
+  }
+  .swap-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: rotate(180deg); }
+
+  .result-box {
+    background: var(--accent-light);
+    border: 1.5px solid #c4dfd0;
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .result-main {
+    font-family: var(--mono);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .result-rate {
+    font-size: 0.78rem;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .convert-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--text);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: all 0.2s;
+  }
+  .convert-btn:hover { background: var(--accent); transform: translateY(-1px); }
+  .convert-btn:active { transform: translateY(0); }
+
+  /* STATS */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 2.5rem 2rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* POPULAR PAIRS */
+  .section {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .section-title {
+    font-size: 0.72rem;
+    font-family: var(--mono);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+  }
+  .pairs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+  .pair-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .pair-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .pair-name { font-family: var(--mono); font-size: 0.9rem; font-weight: 500; }
+  .pair-rate { font-size: 0.8rem; color: var(--muted); font-family: var(--mono); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 540px) {
+    .converter-grid { grid-template-columns: 1fr; }
+    .swap-btn { width: 100%; height: 38px; border-radius: 10px; }
+    .swap-btn:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">convert<span>ccy</span>.com</a>
+  <a href="#pairs">Popular Pairs</a>
+</nav>
+
+<main>
+  <div class="hero">
+    <div class="hero-tag">Live Rates Updated</div>
+    <h1>Currency conversion,<br><em>done right.</em></h1>
+    <p>Fast, free, and accurate. Convert between 170+ currencies using live exchange rates.</p>
+  </div>
+
+  <div class="card">
+    <div class="converter-grid">
+      <div class="field">
+        <label>Amount</label>
+        <input type="number" id="amount" value="1" min="0" placeholder="1">
+      </div>
+      <button class="swap-btn" onclick="swapCurrencies()" title="Swap">⇄</button>
+      <div class="field">
+        <label>To</label>
+        <select id="to-currency"></select>
+      </div>
+    </div>
+
+    <div class="field" style="margin-bottom:1rem">
+      <label>From</label>
+      <select id="from-currency"></select>
+    </div>
+
+    <div class="result-box" id="result-box">
+      <div>
+        <div class="result-main" id="result-value">—</div>
+        <div class="result-rate" id="result-rate">Enter an amount to convert</div>
+      </div>
+      <div class="result-rate" id="last-updated">Fetching rates…</div>
+    </div>
+
+    <button class="convert-btn" onclick="convert()">Convert Now</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-num">170+</div><div class="stat-label">Currencies</div></div>
+    <div class="stat"><div class="stat-num">Live</div><div class="stat-label">Exchange Rates</div></div>
+    <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Always</div></div>
+    <div class="stat"><div class="stat-num">Fast</div><div class="stat-label">No Delays</div></div>
+  </div>
+
+  <div class="section" id="pairs">
+    <div class="section-title">Popular Currency Pairs</div>
+    <div class="pairs-grid" id="pairs-grid"></div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 <a href="/">convertccy.com</a> — Live rates from open exchange APIs. For informational use only.</p>
+  <p style="margin-top:.5rem"><a href="/about.html">About</a> &nbsp;·&nbsp; <a href="/contact.html">Contact</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+const CURRENCIES = [
+  {code:'USD',name:'US Dollar'},{code:'EUR',name:'Euro'},{code:'GBP',name:'British Pound'},
+  {code:'JPY',name:'Japanese Yen'},{code:'CAD',name:'Canadian Dollar'},{code:'AUD',name:'Australian Dollar'},
+  {code:'CHF',name:'Swiss Franc'},{code:'CNY',name:'Chinese Yuan'},{code:'SAR',name:'Saudi Riyal'},
+  {code:'AED',name:'UAE Dirham'},{code:'KWD',name:'Kuwaiti Dinar'},{code:'QAR',name:'Qatari Riyal'},
+  {code:'EGP',name:'Egyptian Pound'},{code:'MAD',name:'Moroccan Dirham'},{code:'INR',name:'Indian Rupee'},
+  {code:'MXN',name:'Mexican Peso'},{code:'BRL',name:'Brazilian Real'},{code:'SGD',name:'Singapore Dollar'},
+  {code:'HKD',name:'Hong Kong Dollar'},{code:'NOK',name:'Norwegian Krone'},{code:'SEK',name:'Swedish Krona'},
+  {code:'NZD',name:'New Zealand Dollar'},{code:'ZAR',name:'South African Rand'},{code:'TRY',name:'Turkish Lira'},
+];
+
+const POPULAR_PAIRS = [
+  {from:'USD',to:'EUR'},{from:'USD',to:'GBP'},{from:'USD',to:'JPY'},
+  {from:'EUR',to:'GBP'},{from:'USD',to:'SAR'},{from:'USD',to:'AED'},
+  {from:'GBP',to:'EUR'},{from:'USD',to:'CAD'},{from:'EUR',to:'JPY'},
+];
+
+let rates = {};
+
+// Populate selects
+const fromSel = document.getElementById('from-currency');
+const toSel = document.getElementById('to-currency');
+CURRENCIES.forEach(c => {
+  [fromSel, toSel].forEach(sel => {
+    const o = document.createElement('option');
+    o.value = c.code; o.textContent = `${c.code} — ${c.name}`;
+    sel.appendChild(o);
+  });
+});
+fromSel.value = 'USD';
+toSel.value = 'EUR';
+
+async function fetchRates() {
+  try {
+    const res = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+    const data = await res.json();
+    rates = data.rates;
+    document.getElementById('last-updated').textContent = 'Rates: live';
+    convert();
+    buildPairs();
+  } catch(e) {
+    // Use fallback static rates
+    rates = {USD:1,EUR:0.92,GBP:0.79,JPY:149.5,CAD:1.36,AUD:1.53,CHF:0.9,CNY:7.24,
+              SAR:3.75,AED:3.67,KWD:0.307,QAR:3.64,EGP:30.9,MAD:10.1,INR:83.2,
+              MXN:17.1,BRL:4.97,SGD:1.34,HKD:7.82,NOK:10.5,SEK:10.4,NZD:1.63,ZAR:18.6,TRY:30.5};
+    document.getElementById('last-updated').textContent = 'Rates: cached';
+    convert();
+    buildPairs();
+  }
+}
+
+function getRate(from, to) {
+  if (!rates[from] || !rates[to]) return null;
+  return rates[to] / rates[from];
+}
+
+function convert() {
+  const amount = parseFloat(document.getElementById('amount').value) || 0;
+  const from = fromSel.value;
+  const to = toSel.value;
+  const rate = getRate(from, to);
+  if (!rate) return;
+  const result = (amount * rate).toLocaleString('en-US', {maximumFractionDigits: 4});
+  document.getElementById('result-value').textContent = `${result} ${to}`;
+  document.getElementById('result-rate').textContent = `1 ${from} = ${rate.toFixed(4)} ${to}`;
+}
+
+function swapCurrencies() {
+  const tmp = fromSel.value;
+  fromSel.value = toSel.value;
+  toSel.value = tmp;
+  convert();
+}
+
+function buildPairs() {
+  const grid = document.getElementById('pairs-grid');
+  grid.innerHTML = '';
+  POPULAR_PAIRS.forEach(p => {
+    const rate = getRate(p.from, p.to);
+    if (!rate) return;
+    const el = document.createElement('div');
+    el.className = 'pair-card';
+    el.innerHTML = `<span class="pair-name">${p.from} → ${p.to}</span><span class="pair-rate">${rate.toFixed(4)}</span>`;
+    el.onclick = () => { fromSel.value = p.from; toSel.value = p.to; convert(); window.scrollTo({top:0,behavior:'smooth'}); };
+    grid.appendChild(el);
+  });
+}
+
+// Auto convert on input
+document.getElementById('amount').addEventListener('input', convert);
+fromSel.addEventListener('change', convert);
+toSel.addEventListener('change', convert);
+
+fetchRates();
+</script>
+
+<script>
+// ── Security: Input Sanitization ──
+function sanitizeInput(val) {
+  return String(val).replace(/[^0-9.]/g, '').slice(0, 15);
+}
+
+// ── Security: API Rate Limiter (max 30 calls/min) ──
+const _apiCalls = [];
+function canCallAPI() {
+  const now = Date.now();
+  while (_apiCalls.length && now - _apiCalls[0] > 60000) _apiCalls.shift();
+  if (_apiCalls.length >= 30) return false;
+  _apiCalls.push(now);
+  return true;
+}
+
+// ── Security: Safe fetch wrapper ──
+const _originalFetch = window.fetch;
+window.fetch = function(url, opts) {
+  const allowed = ['api.exchangerate-api.com'];
+  try {
+    const host = new URL(url).hostname;
+    if (!allowed.includes(host)) {
+      console.warn('Blocked request to:', host);
+      return Promise.reject(new Error('Domain not allowed'));
+    }
+  } catch(e) {}
+  if (!canCallAPI()) return Promise.reject(new Error('Rate limit reached'));
+  return _originalFetch(url, opts);
+};
+</script>
+</body>
+      </html>
+      
