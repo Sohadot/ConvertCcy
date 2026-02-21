@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | ConvertCCY</title>
+<meta name="description" content="Get in touch with the ConvertCCY team. We welcome feedback, bug reports, and partnership inquiries.">
+<link rel="canonical" href="https://convertccy.com/contact.html">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#f7f7f5;--surface:#fff;--border:#e8e8e4;--text:#111110;--muted:#888884;--accent:#1a6b3c;--accent-light:#e8f5ee;--mono:'DM Mono',monospace;--sans:'Sora',sans-serif}
+  body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8}
+  nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+  .logo{font-family:var(--mono);font-size:1.1rem;font-weight:500;color:var(--text);text-decoration:none}
+  .logo span{color:var(--accent)}
+  .nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;margin-left:1.5rem}
+  .nav-links a:hover{color:var(--text)}
+  .page-wrap{max-width:680px;margin:0 auto;padding:4rem 2rem}
+  .tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.75rem;padding:4px 12px;border-radius:100px;margin-bottom:1.5rem;border:1px solid #c4dfd0}
+  h1{font-size:2.5rem;font-weight:700;letter-spacing:-1.5px;margin-bottom:1rem;line-height:1.1}
+  h1 em{font-style:normal;color:var(--accent)}
+  p{color:var(--muted);margin-bottom:1.5rem;font-size:.95rem}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2rem 0}
+  .field{margin-bottom:1.2rem}
+  .field label{display:block;font-size:.72rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
+  .field input,.field textarea,.field select{width:100%;padding:.9rem 1rem;border:1.5px solid var(--border);border-radius:12px;font-family:var(--sans);font-size:.9rem;background:var(--bg);color:var(--text);outline:none;transition:border-color .2s;resize:vertical}
+  .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent);background:#fff}
+  .field textarea{min-height:140px}
+  .submit-btn{width:100%;padding:1rem;background:var(--text);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s}
+  .submit-btn:hover{background:var(--accent)}
+  .contact-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
+  .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center}
+  .contact-icon{font-size:1.8rem;margin-bottom:.5rem}
+  .contact-title{font-weight:700;font-size:.9rem;margin-bottom:.3rem}
+  .contact-text{font-size:.8rem;color:var(--muted)}
+  .success-msg{display:none;background:var(--accent-light);border:1px solid #c4dfd0;border-radius:12px;padding:1rem 1.2rem;color:var(--accent);font-family:var(--mono);font-size:.85rem;margin-top:1rem;text-align:center}
+  footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:4rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/">convert<span>ccy</span>.com</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">Currencies</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="tag">Contact Us</div>
+  <h1>We'd love to <em>hear</em> from you.</h1>
+  <p>Have a question, found a bug, or want to suggest a feature? Send us a message and we'll get back to you as soon as possible.</p>
+
+  <div class="contact-options">
+    <div class="contact-card">
+      <div class="contact-icon">🐛</div>
+      <div class="contact-title">Bug Report</div>
+      <div class="contact-text">Found something broken? Let us know.</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">💡</div>
+      <div class="contact-title">Feature Request</div>
+      <div class="contact-text">Have an idea to improve ConvertCCY?</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">🤝</div>
+      <div class="contact-title">Partnership</div>
+      <div class="contact-text">Interested in working together?</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="field">
+      <label>Your Name</label>
+      <input type="text" id="name" placeholder="John Smith">
+    </div>
+    <div class="field">
+      <label>Email Address</label>
+      <input type="email" id="email" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label>Subject</label>
+      <select id="subject">
+        <option>Bug Report</option>
+        <option>Feature Request</option>
+        <option>Partnership Inquiry</option>
+        <option>General Question</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Message</label>
+      <textarea id="message" placeholder="Tell us what's on your mind..."></textarea>
+    </div>
+    <button class="submit-btn" id="submit-btn" onclick="submitForm()">Send Message</button>
+    <div class="success-msg" id="success-msg">✅ Message sent! We'll get back to you within 48 hours.</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 <a href="/">convertccy.com</a> &nbsp;·&nbsp; <a href="/about.html">About</a> &nbsp;·&nbsp; <a href="/contact.html">Contact</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+async function submitForm() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value.trim();
+
+  if (!name || !email || !message) {
+    alert('Please fill in all fields.');
+    return;
+  }
+
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/xeelrqzy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, subject, message })
+    });
+
+    if (res.ok) {
+      document.getElementById('success-msg').style.display = 'block';
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('message').value = '';
+      btn.textContent = 'Sent ✅';
+    } else {
+      alert('Something went wrong. Please try again.');
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    alert('Network error. Please check your connection.');
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
