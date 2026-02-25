@@ -1,0 +1,416 @@
+#!/usr/bin/env python3
+"""
+ConvertCCY - Auto SEO Page Generator
+Generates HTML pages for all currency pairs automatically.
+Run: python3 generate.py
+"""
+
+import os
+import json
+
+CURRENCIES = [
+    # Major Global
+    ("USD","US Dollar","🇺🇸"),("EUR","Euro","🇪🇺"),("GBP","British Pound","🇬🇧"),
+    ("JPY","Japanese Yen","🇯🇵"),("CAD","Canadian Dollar","🇨🇦"),("AUD","Australian Dollar","🇦🇺"),
+    ("CHF","Swiss Franc","🇨🇭"),("CNY","Chinese Yuan","🇨🇳"),("HKD","Hong Kong Dollar","🇭🇰"),
+    ("SGD","Singapore Dollar","🇸🇬"),("NZD","New Zealand Dollar","🇳🇿"),("DKK","Danish Krone","🇩🇰"),
+    ("SEK","Swedish Krona","🇸🇪"),("NOK","Norwegian Krone","🇳🇴"),("ISK","Icelandic Krona","🇮🇸"),
+    # Middle East & Arab
+    ("SAR","Saudi Riyal","🇸🇦"),("AED","UAE Dirham","🇦🇪"),("KWD","Kuwaiti Dinar","🇰🇼"),
+    ("QAR","Qatari Riyal","🇶🇦"),("BHD","Bahraini Dinar","🇧🇭"),("OMR","Omani Rial","🇴🇲"),
+    ("JOD","Jordanian Dinar","🇯🇴"),("IQD","Iraqi Dinar","🇮🇶"),("LBP","Lebanese Pound","🇱🇧"),
+    ("YER","Yemeni Rial","🇾🇪"),("ILS","Israeli Shekel","🇮🇱"),("IRR","Iranian Rial","🇮🇷"),
+    ("SYP","Syrian Pound","🇸🇾"),
+    # Africa
+    ("EGP","Egyptian Pound","🇪🇬"),("MAD","Moroccan Dirham","🇲🇦"),("TND","Tunisian Dinar","🇹🇳"),
+    ("DZD","Algerian Dinar","🇩🇿"),("LYD","Libyan Dinar","🇱🇾"),("NGN","Nigerian Naira","🇳🇬"),
+    ("GHS","Ghanaian Cedi","🇬🇭"),("KES","Kenyan Shilling","🇰🇪"),("ZAR","South African Rand","🇿🇦"),
+    ("ETB","Ethiopian Birr","🇪🇹"),("TZS","Tanzanian Shilling","🇹🇿"),("UGX","Ugandan Shilling","🇺🇬"),
+    ("RWF","Rwandan Franc","🇷🇼"),("XOF","West African CFA","🇸🇳"),("XAF","Central African CFA","🇨🇲"),
+    ("ZMW","Zambian Kwacha","🇿🇲"),("AOA","Angolan Kwanza","🇦🇴"),("MZN","Mozambican Metical","🇲🇿"),
+    ("BWP","Botswana Pula","🇧🇼"),("NAD","Namibian Dollar","🇳🇦"),("MUR","Mauritian Rupee","🇲🇺"),
+    ("SCR","Seychellois Rupee","🇸🇨"),("MWK","Malawian Kwacha","🇲🇼"),("SDG","Sudanese Pound","🇸🇩"),
+    ("SZL","Swazi Lilangeni","🇸🇿"),("GMD","Gambian Dalasi","🇬🇲"),("CVE","Cape Verdean Escudo","🇨🇻"),
+    # Asia
+    ("INR","Indian Rupee","🇮🇳"),("PKR","Pakistani Rupee","🇵🇰"),("BDT","Bangladeshi Taka","🇧🇩"),
+    ("LKR","Sri Lankan Rupee","🇱🇰"),("NPR","Nepalese Rupee","🇳🇵"),("KRW","South Korean Won","🇰🇷"),
+    ("TWD","Taiwan Dollar","🇹🇼"),("THB","Thai Baht","🇹🇭"),("PHP","Philippine Peso","🇵🇭"),
+    ("IDR","Indonesian Rupiah","🇮🇩"),("MYR","Malaysian Ringgit","🇲🇾"),("VND","Vietnamese Dong","🇻🇳"),
+    ("KHR","Cambodian Riel","🇰🇭"),("MMK","Myanmar Kyat","🇲🇲"),("LAK","Laotian Kip","🇱🇦"),
+    ("BND","Brunei Dollar","🇧🇳"),("MOP","Macanese Pataca","🇲🇴"),("MVR","Maldivian Rufiyaa","🇲🇻"),
+    ("BTN","Bhutanese Ngultrum","🇧🇹"),("AFN","Afghan Afghani","🇦🇫"),("MNT","Mongolian Tugrik","🇲🇳"),
+    # Europe
+    ("TRY","Turkish Lira","🇹🇷"),("PLN","Polish Zloty","🇵🇱"),("CZK","Czech Koruna","🇨🇿"),
+    ("HUF","Hungarian Forint","🇭🇺"),("RON","Romanian Leu","🇷🇴"),("BGN","Bulgarian Lev","🇧🇬"),
+    ("RSD","Serbian Dinar","🇷🇸"),("HRK","Croatian Kuna","🇭🇷"),("ALL","Albanian Lek","🇦🇱"),
+    ("BAM","Bosnia Mark","🇧🇦"),("MKD","Macedonian Denar","🇲🇰"),("UAH","Ukrainian Hryvnia","🇺🇦"),
+    ("RUB","Russian Ruble","🇷🇺"),("BYN","Belarusian Ruble","🇧🇾"),("MDL","Moldovan Leu","🇲🇩"),
+    ("GEL","Georgian Lari","🇬🇪"),("AMD","Armenian Dram","🇦🇲"),("AZN","Azerbaijani Manat","🇦🇿"),
+    # Central Asia
+    ("KZT","Kazakhstani Tenge","🇰🇿"),("UZS","Uzbekistani Som","🇺🇿"),("KGS","Kyrgyzstani Som","🇰🇬"),
+    ("TJS","Tajikistani Somoni","🇹🇯"),("TMT","Turkmenistani Manat","🇹🇲"),
+    # Americas
+    ("MXN","Mexican Peso","🇲🇽"),("BRL","Brazilian Real","🇧🇷"),("ARS","Argentine Peso","🇦🇷"),
+    ("CLP","Chilean Peso","🇨🇱"),("COP","Colombian Peso","🇨🇴"),("PEN","Peruvian Sol","🇵🇪"),
+    ("UYU","Uruguayan Peso","🇺🇾"),("PYG","Paraguayan Guaraní","🇵🇾"),("BOB","Bolivian Boliviano","🇧🇴"),
+    ("GTQ","Guatemalan Quetzal","🇬🇹"),("DOP","Dominican Peso","🇩🇴"),("CRC","Costa Rican Colón","🇨🇷"),
+    ("JMD","Jamaican Dollar","🇯🇲"),("TTD","Trinidad Dollar","🇹🇹"),("PAB","Panamanian Balboa","🇵🇦"),
+    ("GYD","Guyanese Dollar","🇬🇾"),("BZD","Belize Dollar","🇧🇿"),("XCD","East Caribbean Dollar","🇦🇬"),
+    # Pacific
+    ("FJD","Fijian Dollar","🇫🇯"),("PGK","Papua New Guinean Kina","🇵🇬"),
+    ("WST","Samoan Tālā","🇼🇸"),("TOP","Tongan Paʻanga","🇹🇴"),
+]
+
+TEMPLATE = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2HS37BH07J');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{FROM_CODE} to {TO_CODE} – {FROM_NAME} to {TO_NAME} Converter | ConvertCCY</title>
+<meta name="description" content="Convert {FROM_NAME} to {TO_NAME} instantly. Get live {FROM_CODE}/{TO_CODE} exchange rates and accurate currency conversion. Free and updated in real-time.">
+<meta name="keywords" content="{FROM_CODE} to {TO_CODE}, {from_lower} to {to_lower}, {from_lower} {to_lower} converter, {from_lower} {to_lower} exchange rate">
+<link rel="canonical" href="https://convertccy.com/{from_lower}-to-{to_lower}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
+  :root{{--bg:#f7f7f5;--surface:#fff;--border:#e8e8e4;--text:#111110;--muted:#888884;--accent:#1a6b3c;--accent-light:#e8f5ee;--mono:'DM Mono',monospace;--sans:'Sora',sans-serif}}
+  body{{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh}}
+  nav{{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}}
+  .logo{{font-family:var(--mono);font-size:1.1rem;font-weight:500;color:var(--text);text-decoration:none}}
+  .logo span{{color:var(--accent)}}
+  .nav-links a{{font-size:.82rem;color:var(--muted);text-decoration:none;margin-left:1.5rem;transition:color .2s}}
+  .nav-links a:hover{{color:var(--text)}}
+  .page-wrap{{max-width:820px;margin:0 auto;padding:3rem 2rem}}
+  .breadcrumb{{font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-bottom:1.5rem}}
+  .breadcrumb a{{color:var(--muted);text-decoration:none}}
+  .breadcrumb a:hover{{color:var(--accent)}}
+  .pair-hero{{margin-bottom:2rem;animation:fadeUp .5s ease both}}
+  .pair-flags{{font-size:2.5rem;margin-bottom:.75rem}}
+  .pair-hero h1{{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-1.5px;line-height:1.1}}
+  .pair-hero h1 em{{font-style:normal;color:var(--accent)}}
+  .pair-subtitle{{font-size:.9rem;color:var(--muted);margin-top:.5rem;font-weight:300}}
+  .rate-banner{{background:var(--text);color:#fff;border-radius:16px;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;animation:fadeUp .5s .1s ease both}}
+  .rate-main{{font-family:var(--mono);font-size:2rem;font-weight:500}}
+  .rate-sub{{font-size:.78rem;opacity:.6;font-family:var(--mono);margin-top:4px}}
+  .rate-badge{{background:var(--accent);color:#fff;font-family:var(--mono);font-size:.72rem;padding:4px 12px;border-radius:100px}}
+  .card{{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2rem;margin-bottom:1.5rem;box-shadow:0 2px 20px rgba(0,0,0,.05);animation:fadeUp .5s .15s ease both}}
+  .card-title{{font-size:.72rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.2rem}}
+  .conv-row{{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end}}
+  .field label{{display:block;font-size:.72rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}}
+  .field input{{width:100%;padding:.9rem 1rem;border:1.5px solid var(--border);border-radius:12px;font-family:var(--mono);font-size:1.2rem;font-weight:500;background:var(--bg);color:var(--text);outline:none;transition:border-color .2s}}
+  .field input:focus{{border-color:var(--accent);background:#fff}}
+  .swap-btn{{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s;color:var(--muted);align-self:center}}
+  .swap-btn:hover{{background:var(--accent);color:#fff;border-color:var(--accent);transform:rotate(180deg)}}
+  .result-row{{margin-top:1.2rem;background:var(--accent-light);border:1.5px solid #c4dfd0;border-radius:12px;padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}}
+  .result-val{{font-family:var(--mono);font-size:1.5rem;font-weight:500;color:var(--accent)}}
+  .result-info{{font-size:.78rem;color:var(--muted);font-family:var(--mono)}}
+  .quick-grid{{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}}
+  .quick-btn{{padding:6px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-family:var(--mono);font-size:.8rem;cursor:pointer;color:var(--muted);transition:all .2s}}
+  .quick-btn:hover{{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}}
+  .table-wrap{{overflow-x:auto}}
+  table{{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.88rem}}
+  thead th{{text-align:left;padding:.6rem 1rem;font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}}
+  tbody tr{{border-bottom:1px solid var(--border);transition:background .15s}}
+  tbody tr:hover{{background:var(--accent-light)}}
+  tbody td{{padding:.8rem 1rem}}
+  tbody td:last-child{{color:var(--accent);font-weight:500}}
+  .faq-item{{border-bottom:1px solid var(--border);padding:1.2rem 0}}
+  .faq-q{{font-weight:600;font-size:.95rem;margin-bottom:.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}}
+  .faq-q::after{{content:'+';font-family:var(--mono);color:var(--muted);font-size:1.2rem;transition:transform .2s}}
+  .faq-item.open .faq-q::after{{transform:rotate(45deg)}}
+  .faq-a{{font-size:.88rem;color:var(--muted);line-height:1.7;display:none}}
+  .faq-item.open .faq-a{{display:block}}
+  .related-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.75rem}}
+  .related-card{{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text);display:flex;justify-content:space-between;align-items:center;transition:all .2s}}
+  .related-card:hover{{border-color:var(--accent);transform:translateY(-2px)}}
+  .related-card span{{font-family:var(--mono);font-size:.85rem;font-weight:500}}
+  .related-card small{{font-family:var(--mono);font-size:.75rem;color:var(--muted)}}
+  .sec-title{{font-size:.72rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem}}
+  .sec-h2{{font-size:1.2rem;font-weight:700;letter-spacing:-.5px;margin-bottom:.5rem}}
+  section{{margin-bottom:2.5rem;animation:fadeUp .5s .2s ease both}}
+  footer{{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}}
+  footer a{{color:var(--muted);text-decoration:none}}
+  footer a:hover{{color:var(--text)}}
+  @keyframes fadeUp{{from{{opacity:0;transform:translateY(16px)}}to{{opacity:1;transform:translateY(0)}}}}
+  @media(max-width:540px){{.conv-row{{grid-template-columns:1fr}}.swap-btn{{width:100%;height:36px;border-radius:10px}}}}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWVB524B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav>
+  <a class="logo" href="/">convert<span>ccy</span>.com</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">All Currencies</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="breadcrumb">
+    <a href="/">Home</a> › <a href="/currencies.html">Currencies</a> › {FROM_CODE} to {TO_CODE}
+  </div>
+
+  <div class="pair-hero">
+    <div class="pair-flags">{FROM_FLAG} → {TO_FLAG}</div>
+    <h1>{FROM_NAME} to <em>{TO_NAME}</em></h1>
+    <p class="pair-subtitle">Live {FROM_CODE}/{TO_CODE} exchange rate — updated every minute</p>
+  </div>
+
+  <div class="rate-banner">
+    <div>
+      <div class="rate-main" id="live-rate">Loading…</div>
+      <div class="rate-sub">1 {FROM_CODE} = <span id="live-rate-num">—</span> {TO_CODE}</div>
+    </div>
+    <div class="rate-badge">● LIVE</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Currency Converter</div>
+    <div class="conv-row">
+      <div class="field">
+        <label>{FROM_CODE} Amount</label>
+        <input type="number" id="from-input" value="1" min="0">
+      </div>
+      <button class="swap-btn" onclick="swapDir()" title="Swap">⇄</button>
+      <div class="field">
+        <label>{TO_CODE} Result</label>
+        <input type="number" id="to-input" placeholder="0.00">
+      </div>
+    </div>
+    <div class="result-row">
+      <span class="result-val" id="main-result">—</span>
+      <span class="result-info" id="rate-info">Fetching rate…</span>
+    </div>
+    <div class="quick-grid">
+      <div class="sec-title" style="width:100%;margin-bottom:0">Quick amounts:</div>
+      <button class="quick-btn" onclick="setAmt(1)">1</button>
+      <button class="quick-btn" onclick="setAmt(5)">5</button>
+      <button class="quick-btn" onclick="setAmt(10)">10</button>
+      <button class="quick-btn" onclick="setAmt(50)">50</button>
+      <button class="quick-btn" onclick="setAmt(100)">100</button>
+      <button class="quick-btn" onclick="setAmt(500)">500</button>
+      <button class="quick-btn" onclick="setAmt(1000)">1,000</button>
+      <button class="quick-btn" onclick="setAmt(10000)">10,000</button>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-title">Conversion Table</div>
+    <div class="card" style="padding:0;overflow:hidden">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>{FROM_CODE}</th><th>{TO_CODE}</th></tr></thead>
+          <tbody id="conv-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">About {FROM_CODE} / {TO_CODE}</div>
+    <div class="sec-h2">{FROM_NAME} to {TO_NAME} Exchange Rate</div>
+    <p style="font-size:.9rem;color:var(--muted);line-height:1.8">
+      The <strong>{FROM_NAME} ({FROM_CODE})</strong> and <strong>{TO_NAME} ({TO_CODE})</strong> are two major global currencies.
+      The {FROM_CODE}/{TO_CODE} exchange rate reflects the relative value between the two currencies and is influenced by
+      central bank policies, economic indicators, trade balances, inflation, and global market sentiment.
+      ConvertCCY provides the mid-market rate — the fairest benchmark for currency conversion.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-title">FAQ</div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much is 1 {FROM_CODE} in {TO_CODE} today?</div>
+      <div class="faq-a">Based on the live rate, 1 {FROM_NAME} equals approximately <span id="faq-rate">—</span> {TO_NAME}. This rate is updated every minute.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How often is the {FROM_CODE}/{TO_CODE} rate updated?</div>
+      <div class="faq-a">Our exchange rates are refreshed every minute using live market data, so you always get the most accurate rate available.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this the same rate as my bank?</div>
+      <div class="faq-a">ConvertCCY shows the mid-market rate. Banks and currency exchange services typically add a margin of 1–5% on top. Use our rate as a reference when comparing.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title">Related Pairs</div>
+    <div class="related-grid" id="related-grid"></div>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2025 <a href="/">convertccy.com</a> — Live mid-market rates. For informational use only.</p>
+</footer>
+
+<script>
+const FROM = '{FROM_CODE}';
+const TO = '{TO_CODE}';
+let rate = null;
+let dir = 'from';
+const AMOUNTS = [1,5,10,20,50,100,200,500,1000,5000,10000];
+const RELATED = {RELATED_JSON};
+
+async function init() {{
+  try {{
+    const r = await fetch('https://api.exchangerate-api.com/v4/latest/' + FROM);
+    const d = await r.json();
+    rate = d.rates[TO];
+  }} catch {{
+    rate = 1;
+  }}
+  document.getElementById('live-rate').textContent = `1 ${{FROM}} = ${{rate.toFixed(4)}} ${{TO}}`;
+  document.getElementById('live-rate-num').textContent = rate.toFixed(4);
+  document.getElementById('faq-rate').textContent = rate.toFixed(4);
+  convert();
+  buildTable();
+  buildRelated();
+}}
+
+function convert() {{
+  if (!rate) return;
+  if (dir === 'from') {{
+    const a = parseFloat(document.getElementById('from-input').value) || 0;
+    const b = a * rate;
+    document.getElementById('to-input').value = b.toFixed(4);
+    document.getElementById('main-result').textContent = `${{a.toLocaleString()}} ${{FROM}} = ${{b.toLocaleString('en-US',{{maximumFractionDigits:4}})}} ${{TO}}`;
+    document.getElementById('rate-info').textContent = `Rate: 1 ${{FROM}} = ${{rate.toFixed(4)}} ${{TO}}`;
+  }} else {{
+    const b = parseFloat(document.getElementById('to-input').value) || 0;
+    const a = b / rate;
+    document.getElementById('from-input').value = a.toFixed(4);
+    document.getElementById('main-result').textContent = `${{b.toLocaleString()}} ${{TO}} = ${{a.toLocaleString('en-US',{{maximumFractionDigits:4}})}} ${{FROM}}`;
+    document.getElementById('rate-info').textContent = `Rate: 1 ${{TO}} = ${{(1/rate).toFixed(4)}} ${{FROM}}`;
+  }}
+}}
+
+function swapDir() {{ dir = dir==='from'?'to':'from'; convert(); }}
+function setAmt(n) {{ document.getElementById('from-input').value=n; dir='from'; convert(); }}
+
+function buildTable() {{
+  const tbody = document.getElementById('conv-table');
+  tbody.innerHTML = AMOUNTS.map(a => {{
+    const b = (a*rate).toLocaleString('en-US',{{minimumFractionDigits:2,maximumFractionDigits:2}});
+    return `<tr><td>${{a.toLocaleString()}} ${{FROM}}</td><td>${{b}} ${{TO}}</td></tr>`;
+  }}).join('');
+}}
+
+function buildRelated() {{
+  const grid = document.getElementById('related-grid');
+  grid.innerHTML = RELATED.map(p =>
+    `<a class="related-card" href="/pages/${{p[0].toLowerCase()}}-to-${{p[1].toLowerCase()}}.html">
+      <span>${{p[0]}} → ${{p[1]}}</span><small>→</small>
+    </a>`
+  ).join('');
+}}
+
+document.getElementById('from-input').addEventListener('input', () => {{ dir='from'; convert(); }});
+document.getElementById('to-input').addEventListener('input', () => {{ dir='to'; convert(); }});
+
+init();
+setInterval(init, 60000);
+</script>
+</body>
+</html>'''
+
+def get_related(from_code, to_code, all_currencies, limit=8):
+    """Get related currency pairs"""
+    related = []
+    # Reverse pair
+    related.append((to_code, from_code))
+    # Other pairs with FROM
+    for c, _, _ in all_currencies:
+        if c != from_code and c != to_code:
+            related.append((from_code, c))
+        if len(related) >= limit:
+            break
+    return related[:limit]
+
+def generate_pages():
+    output_dir = "pages"
+    os.makedirs(output_dir, exist_ok=True)
+
+    total = 0
+    pairs = []
+
+    for i, (from_code, from_name, from_flag) in enumerate(CURRENCIES):
+        for j, (to_code, to_name, to_flag) in enumerate(CURRENCIES):
+            if from_code == to_code:
+                continue
+
+            related = get_related(from_code, to_code, CURRENCIES)
+            related_json = json.dumps(related)
+
+            html = TEMPLATE.format(
+                FROM_CODE=from_code, FROM_NAME=from_name, FROM_FLAG=from_flag,
+                TO_CODE=to_code, TO_NAME=to_name, TO_FLAG=to_flag,
+                from_lower=from_code.lower(), to_lower=to_code.lower(),
+                RELATED_JSON=related_json
+            )
+
+            filename = f"{from_code.lower()}-to-{to_code.lower()}.html"
+            filepath = os.path.join(output_dir, filename)
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write(html)
+
+            pairs.append((from_code, to_code, filename))
+            total += 1
+
+    print(f"✅ Generated {total} SEO pages in /{output_dir}/")
+
+    # Generate sitemap
+    sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+                     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+                     '  <url><loc>https://convertccy.com/</loc><priority>1.0</priority></url>']
+    for from_code, to_code, _ in pairs:
+        sitemap_lines.append(f'  <url><loc>https://convertccy.com/{from_code.lower()}-to-{to_code.lower()}</loc><priority>0.8</priority></url>')
+    sitemap_lines.append('</urlset>')
+
+    with open('sitemap.xml', 'w') as f:
+        f.write('\n'.join(sitemap_lines))
+    print(f"✅ Generated sitemap.xml with {total+1} URLs")
+
+    # Generate currencies index
+    currency_links = '\n'.join([
+        f'<a class="related-card" href="/pages/{from_code.lower()}-to-{to_code.lower()}.html"><span>{from_code} → {to_code}</span><small>→</small></a>'
+        for from_code, to_code, _ in pairs[:100]
+    ])
+
+    print(f"\n📁 File structure:")
+    print(f"   index.html          ← Main converter")
+    print(f"   sitemap.xml         ← For Google indexing")
+    print(f"   pages/              ← {total} SEO pages")
+    print(f"      usd-to-eur.html")
+    print(f"      usd-to-gbp.html")
+    print(f"      ... and {total-2} more")
+    # Generate CNAME file for GitHub Pages custom domain
+    with open('CNAME', 'w', encoding='utf-8') as f:
+        f.write('convertccy.com')
+    print(f"✅ Created CNAME file → convertccy.com")
+
+    print(f"\n🚀 Upload all to GitHub Pages and submit sitemap to Google Search Console!")
+
+if __name__ == '__main__':
+    generate_pages()
