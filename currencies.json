@@ -1,0 +1,3037 @@
+{
+  "meta": {
+    "dataset_name": "ConvertCCY currencies reference",
+    "version": "2026-03-12",
+    "total_entries": 170,
+    "public_fiat_and_regional_count": 154,
+    "extended_legacy_count": 5,
+    "special_reference_count": 11,
+    "selection_method": "Curated 170-entry ISO-4217-style reference set: excludes 11 specialist complementary/funds codes (BOV, CHE, CHW, COU, MXV, USN, UYI, XBA, XBB, XBC, XBD) while keeping market-relevant special reference units separately classified.",
+    "notes": [
+      "Use visibility_tier='public' for standard public converter dropdowns.",
+      "Use visibility_tier='special' only when your data provider explicitly supports market units such as XAU, XAG, XDR, or CLF.",
+      "Use visibility_tier='extended' for legacy or transition-period compatibility only."
+    ]
+  },
+  "currencies": {
+    "AED": {
+      "code": "AED",
+      "iso_name": "UAE Dirham",
+      "display_name": "United Arab Emirates Dirham",
+      "slug": "united-arab-emirates-dirham",
+      "numeric_code": "784",
+      "symbol": "AED",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "united arab emirates dirham",
+        "uae dirham",
+        "aed"
+      ],
+      "short_description": "Reference entry for the United Arab Emirates Dirham (AED), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "AFN": {
+      "code": "AFN",
+      "iso_name": "Afghani",
+      "display_name": "Afghan Afghani",
+      "slug": "afghan-afghani",
+      "numeric_code": "971",
+      "symbol": "AFN",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "afghan afghani",
+        "afghani",
+        "afn"
+      ],
+      "short_description": "Reference entry for the Afghan Afghani (AFN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "ALL": {
+      "code": "ALL",
+      "iso_name": "Lek",
+      "display_name": "Albanian Lek",
+      "slug": "albanian-lek",
+      "numeric_code": "008",
+      "symbol": "ALL",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "albanian lek",
+        "lek",
+        "all"
+      ],
+      "short_description": "Reference entry for the Albanian Lek (ALL), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "AMD": {
+      "code": "AMD",
+      "iso_name": "Armenian Dram",
+      "display_name": "Armenian Dram",
+      "slug": "armenian-dram",
+      "numeric_code": "051",
+      "symbol": "AMD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "armenian dram",
+        "amd"
+      ],
+      "short_description": "Reference entry for the Armenian Dram (AMD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "ANG": {
+      "code": "ANG",
+      "iso_name": "Netherlands Antillean Guilder",
+      "display_name": "Netherlands Antillean Guilder",
+      "slug": "netherlands-antillean-guilder",
+      "numeric_code": "532",
+      "symbol": "ANG",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "netherlands antillean guilder",
+        "ang"
+      ],
+      "short_description": "Reference entry for the Netherlands Antillean Guilder (ANG), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "AOA": {
+      "code": "AOA",
+      "iso_name": "Kwanza",
+      "display_name": "Angolan Kwanza",
+      "slug": "angolan-kwanza",
+      "numeric_code": "973",
+      "symbol": "AOA",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "angolan kwanza",
+        "kwanza",
+        "aoa"
+      ],
+      "short_description": "Reference entry for the Angolan Kwanza (AOA), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "ARS": {
+      "code": "ARS",
+      "iso_name": "Argentine Peso",
+      "display_name": "Argentine Peso",
+      "slug": "argentine-peso",
+      "numeric_code": "032",
+      "symbol": "ARS",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "argentine peso",
+        "ars"
+      ],
+      "short_description": "Reference entry for the Argentine Peso (ARS), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "AUD": {
+      "code": "AUD",
+      "iso_name": "Australian Dollar",
+      "display_name": "Australian Dollar",
+      "slug": "australian-dollar",
+      "numeric_code": "036",
+      "symbol": "A$",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "australian dollar",
+        "aud"
+      ],
+      "short_description": "Reference entry for the Australian Dollar (AUD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "AWG": {
+      "code": "AWG",
+      "iso_name": "Aruban Florin",
+      "display_name": "Aruban Florin",
+      "slug": "aruban-florin",
+      "numeric_code": "533",
+      "symbol": "AWG",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "aruban florin",
+        "awg"
+      ],
+      "short_description": "Reference entry for the Aruban Florin (AWG), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "AZN": {
+      "code": "AZN",
+      "iso_name": "Azerbaijan Manat",
+      "display_name": "Azerbaijani Manat",
+      "slug": "azerbaijani-manat",
+      "numeric_code": "944",
+      "symbol": "AZN",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "azerbaijani manat",
+        "azerbaijan manat",
+        "azn"
+      ],
+      "short_description": "Reference entry for the Azerbaijani Manat (AZN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BAM": {
+      "code": "BAM",
+      "iso_name": "Convertible Mark",
+      "display_name": "Bosnia and Herzegovina Convertible Mark",
+      "slug": "bosnia-and-herzegovina-convertible-mark",
+      "numeric_code": "977",
+      "symbol": "BAM",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "bosnia and herzegovina convertible mark",
+        "convertible mark",
+        "bam"
+      ],
+      "short_description": "Reference entry for the Bosnia and Herzegovina Convertible Mark (BAM), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BBD": {
+      "code": "BBD",
+      "iso_name": "Barbados Dollar",
+      "display_name": "Barbadian Dollar",
+      "slug": "barbadian-dollar",
+      "numeric_code": "052",
+      "symbol": "BBD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "barbadian dollar",
+        "barbados dollar",
+        "bbd"
+      ],
+      "short_description": "Reference entry for the Barbadian Dollar (BBD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BDT": {
+      "code": "BDT",
+      "iso_name": "Taka",
+      "display_name": "Bangladeshi Taka",
+      "slug": "bangladeshi-taka",
+      "numeric_code": "050",
+      "symbol": "BDT",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "bangladeshi taka",
+        "taka",
+        "bdt"
+      ],
+      "short_description": "Reference entry for the Bangladeshi Taka (BDT), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BGN": {
+      "code": "BGN",
+      "iso_name": "Bulgarian Lev",
+      "display_name": "Bulgarian Lev",
+      "slug": "bulgarian-lev",
+      "numeric_code": "975",
+      "symbol": "BGN",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "bulgarian lev",
+        "bgn"
+      ],
+      "short_description": "Reference entry for the Bulgarian Lev (BGN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BHD": {
+      "code": "BHD",
+      "iso_name": "Bahraini Dinar",
+      "display_name": "Bahraini Dinar",
+      "slug": "bahraini-dinar",
+      "numeric_code": "048",
+      "symbol": "BHD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "bahraini dinar",
+        "bhd"
+      ],
+      "short_description": "Reference entry for the Bahraini Dinar (BHD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BIF": {
+      "code": "BIF",
+      "iso_name": "Burundi Franc",
+      "display_name": "Burundian Franc",
+      "slug": "burundian-franc",
+      "numeric_code": "108",
+      "symbol": "BIF",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "burundian franc",
+        "burundi franc",
+        "bif"
+      ],
+      "short_description": "Reference entry for the Burundian Franc (BIF), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BMD": {
+      "code": "BMD",
+      "iso_name": "Bermudian Dollar",
+      "display_name": "Bermudian Dollar",
+      "slug": "bermudian-dollar",
+      "numeric_code": "060",
+      "symbol": "BMD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "bermudian dollar",
+        "bmd"
+      ],
+      "short_description": "Reference entry for the Bermudian Dollar (BMD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BND": {
+      "code": "BND",
+      "iso_name": "Brunei Dollar",
+      "display_name": "Brunei Dollar",
+      "slug": "brunei-dollar",
+      "numeric_code": "096",
+      "symbol": "BND",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "brunei dollar",
+        "bnd"
+      ],
+      "short_description": "Reference entry for the Brunei Dollar (BND), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BOB": {
+      "code": "BOB",
+      "iso_name": "Boliviano",
+      "display_name": "Bolivian Boliviano",
+      "slug": "bolivian-boliviano",
+      "numeric_code": "068",
+      "symbol": "BOB",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "bolivian boliviano",
+        "boliviano",
+        "bob"
+      ],
+      "short_description": "Reference entry for the Bolivian Boliviano (BOB), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BRL": {
+      "code": "BRL",
+      "iso_name": "Brazilian Real",
+      "display_name": "Brazilian Real",
+      "slug": "brazilian-real",
+      "numeric_code": "986",
+      "symbol": "R$",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "brazilian real",
+        "brl"
+      ],
+      "short_description": "Reference entry for the Brazilian Real (BRL), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BSD": {
+      "code": "BSD",
+      "iso_name": "Bahamian Dollar",
+      "display_name": "Bahamian Dollar",
+      "slug": "bahamian-dollar",
+      "numeric_code": "044",
+      "symbol": "BSD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "bahamian dollar",
+        "bsd"
+      ],
+      "short_description": "Reference entry for the Bahamian Dollar (BSD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BTN": {
+      "code": "BTN",
+      "iso_name": "Ngultrum",
+      "display_name": "Bhutanese Ngultrum",
+      "slug": "bhutanese-ngultrum",
+      "numeric_code": "064",
+      "symbol": "BTN",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "bhutanese ngultrum",
+        "ngultrum",
+        "btn"
+      ],
+      "short_description": "Reference entry for the Bhutanese Ngultrum (BTN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BWP": {
+      "code": "BWP",
+      "iso_name": "Pula",
+      "display_name": "Botswana Pula",
+      "slug": "botswana-pula",
+      "numeric_code": "072",
+      "symbol": "BWP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "botswana pula",
+        "pula",
+        "bwp"
+      ],
+      "short_description": "Reference entry for the Botswana Pula (BWP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BYN": {
+      "code": "BYN",
+      "iso_name": "Belarusian Ruble",
+      "display_name": "Belarusian Ruble",
+      "slug": "belarusian-ruble",
+      "numeric_code": "933",
+      "symbol": "BYN",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "belarusian ruble",
+        "byn"
+      ],
+      "short_description": "Reference entry for the Belarusian Ruble (BYN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "BZD": {
+      "code": "BZD",
+      "iso_name": "Belize Dollar",
+      "display_name": "Belize Dollar",
+      "slug": "belize-dollar",
+      "numeric_code": "084",
+      "symbol": "BZD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "belize dollar",
+        "bzd"
+      ],
+      "short_description": "Reference entry for the Belize Dollar (BZD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "CAD": {
+      "code": "CAD",
+      "iso_name": "Canadian Dollar",
+      "display_name": "Canadian Dollar",
+      "slug": "canadian-dollar",
+      "numeric_code": "124",
+      "symbol": "CA$",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "canadian dollar",
+        "cad"
+      ],
+      "short_description": "Reference entry for the Canadian Dollar (CAD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "CDF": {
+      "code": "CDF",
+      "iso_name": "Congolese Franc",
+      "display_name": "Congolese Franc",
+      "slug": "congolese-franc",
+      "numeric_code": "976",
+      "symbol": "CDF",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "congolese franc",
+        "cdf"
+      ],
+      "short_description": "Reference entry for the Congolese Franc (CDF), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "CHF": {
+      "code": "CHF",
+      "iso_name": "Swiss Franc",
+      "display_name": "Swiss Franc",
+      "slug": "swiss-franc",
+      "numeric_code": "756",
+      "symbol": "CHF",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "swiss franc",
+        "chf"
+      ],
+      "short_description": "Reference entry for the Swiss Franc (CHF), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "CLF": {
+      "code": "CLF",
+      "iso_name": "Unidad de Fomento",
+      "display_name": "Chilean Unidad de Fomento",
+      "slug": "chilean-unidad-de-fomento",
+      "numeric_code": "990",
+      "symbol": "CLF",
+      "instrument_type": "unit_of_account",
+      "visibility_tier": "special",
+      "is_regional": false,
+      "is_special_unit": true,
+      "aliases": [
+        "chilean unidad de fomento",
+        "unidad de fomento",
+        "clf"
+      ],
+      "short_description": "Reference entry for the Chilean Unidad de Fomento (CLF), a market or accounting reference unit that may appear in professional exchange-rate datasets."
+    },
+    "CLP": {
+      "code": "CLP",
+      "iso_name": "Chilean Peso",
+      "display_name": "Chilean Peso",
+      "slug": "chilean-peso",
+      "numeric_code": "152",
+      "symbol": "CLP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "chilean peso",
+        "clp"
+      ],
+      "short_description": "Reference entry for the Chilean Peso (CLP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "CNY": {
+      "code": "CNY",
+      "iso_name": "Yuan Renminbi",
+      "display_name": "Chinese Yuan Renminbi",
+      "slug": "chinese-yuan-renminbi",
+      "numeric_code": "156",
+      "symbol": "CN¥",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "chinese yuan renminbi",
+        "yuan renminbi",
+        "cny",
+        "renminbi",
+        "yuan",
+        "chinese yuan"
+      ],
+      "short_description": "Reference entry for the Chinese Yuan Renminbi (CNY), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "COP": {
+      "code": "COP",
+      "iso_name": "Colombian Peso",
+      "display_name": "Colombian Peso",
+      "slug": "colombian-peso",
+      "numeric_code": "170",
+      "symbol": "COP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "colombian peso",
+        "cop"
+      ],
+      "short_description": "Reference entry for the Colombian Peso (COP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "CRC": {
+      "code": "CRC",
+      "iso_name": "Costa Rican Colon",
+      "display_name": "Costa Rican Colón",
+      "slug": "costa-rican-col-n",
+      "numeric_code": "188",
+      "symbol": "CRC",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "costa rican colón",
+        "costa rican colon",
+        "crc",
+        "costa rican col n"
+      ],
+      "short_description": "Reference entry for the Costa Rican Colón (CRC), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "CUC": {
+      "code": "CUC",
+      "iso_name": "Peso Convertible",
+      "display_name": "Cuban Convertible Peso",
+      "slug": "cuban-convertible-peso",
+      "numeric_code": "931",
+      "symbol": "CUC",
+      "instrument_type": "legacy_or_transition",
+      "visibility_tier": "extended",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "cuban convertible peso",
+        "peso convertible",
+        "cuc"
+      ],
+      "short_description": "Reference entry for the Cuban Convertible Peso (CUC), retained for compatibility with historical, transition-period, or extended market datasets."
+    },
+    "CUP": {
+      "code": "CUP",
+      "iso_name": "Cuban Peso",
+      "display_name": "Cuban Peso",
+      "slug": "cuban-peso",
+      "numeric_code": "192",
+      "symbol": "CUP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "cuban peso",
+        "cup"
+      ],
+      "short_description": "Reference entry for the Cuban Peso (CUP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "CVE": {
+      "code": "CVE",
+      "iso_name": "Cabo Verde Escudo",
+      "display_name": "Cape Verdean Escudo",
+      "slug": "cape-verdean-escudo",
+      "numeric_code": "132",
+      "symbol": "CVE",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "cape verdean escudo",
+        "cabo verde escudo",
+        "cve"
+      ],
+      "short_description": "Reference entry for the Cape Verdean Escudo (CVE), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "CZK": {
+      "code": "CZK",
+      "iso_name": "Czech Koruna",
+      "display_name": "Czech Koruna",
+      "slug": "czech-koruna",
+      "numeric_code": "203",
+      "symbol": "CZK",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "czech koruna",
+        "czk"
+      ],
+      "short_description": "Reference entry for the Czech Koruna (CZK), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "DJF": {
+      "code": "DJF",
+      "iso_name": "Djibouti Franc",
+      "display_name": "Djiboutian Franc",
+      "slug": "djiboutian-franc",
+      "numeric_code": "262",
+      "symbol": "DJF",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "djiboutian franc",
+        "djibouti franc",
+        "djf"
+      ],
+      "short_description": "Reference entry for the Djiboutian Franc (DJF), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "DKK": {
+      "code": "DKK",
+      "iso_name": "Danish Krone",
+      "display_name": "Danish Krone",
+      "slug": "danish-krone",
+      "numeric_code": "208",
+      "symbol": "DKK",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "danish krone",
+        "dkk"
+      ],
+      "short_description": "Reference entry for the Danish Krone (DKK), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "DOP": {
+      "code": "DOP",
+      "iso_name": "Dominican Peso",
+      "display_name": "Dominican Peso",
+      "slug": "dominican-peso",
+      "numeric_code": "214",
+      "symbol": "DOP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "dominican peso",
+        "dop"
+      ],
+      "short_description": "Reference entry for the Dominican Peso (DOP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "DZD": {
+      "code": "DZD",
+      "iso_name": "Algerian Dinar",
+      "display_name": "Algerian Dinar",
+      "slug": "algerian-dinar",
+      "numeric_code": "012",
+      "symbol": "DZD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "algerian dinar",
+        "dzd"
+      ],
+      "short_description": "Reference entry for the Algerian Dinar (DZD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "EGP": {
+      "code": "EGP",
+      "iso_name": "Egyptian Pound",
+      "display_name": "Egyptian Pound",
+      "slug": "egyptian-pound",
+      "numeric_code": "818",
+      "symbol": "EGP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "egyptian pound",
+        "egp"
+      ],
+      "short_description": "Reference entry for the Egyptian Pound (EGP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "ERN": {
+      "code": "ERN",
+      "iso_name": "Nakfa",
+      "display_name": "Eritrean Nakfa",
+      "slug": "eritrean-nakfa",
+      "numeric_code": "232",
+      "symbol": "ERN",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "eritrean nakfa",
+        "nakfa",
+        "ern"
+      ],
+      "short_description": "Reference entry for the Eritrean Nakfa (ERN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "ETB": {
+      "code": "ETB",
+      "iso_name": "Ethiopian Birr",
+      "display_name": "Ethiopian Birr",
+      "slug": "ethiopian-birr",
+      "numeric_code": "230",
+      "symbol": "ETB",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "ethiopian birr",
+        "etb"
+      ],
+      "short_description": "Reference entry for the Ethiopian Birr (ETB), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "EUR": {
+      "code": "EUR",
+      "iso_name": "Euro",
+      "display_name": "Euro",
+      "slug": "euro",
+      "numeric_code": "978",
+      "symbol": "€",
+      "instrument_type": "regional_currency",
+      "visibility_tier": "public",
+      "is_regional": true,
+      "is_special_unit": false,
+      "aliases": [
+        "euro",
+        "eur"
+      ],
+      "short_description": "Reference entry for the Euro (EUR), a regional monetary unit used across multiple countries or monetary areas in exchange-rate datasets."
+    },
+    "FJD": {
+      "code": "FJD",
+      "iso_name": "Fiji Dollar",
+      "display_name": "Fijian Dollar",
+      "slug": "fijian-dollar",
+      "numeric_code": "242",
+      "symbol": "FJD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "fijian dollar",
+        "fiji dollar",
+        "fjd"
+      ],
+      "short_description": "Reference entry for the Fijian Dollar (FJD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "FKP": {
+      "code": "FKP",
+      "iso_name": "Falkland Islands Pound",
+      "display_name": "Falkland Islands Pound",
+      "slug": "falkland-islands-pound",
+      "numeric_code": "238",
+      "symbol": "FKP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "falkland islands pound",
+        "fkp"
+      ],
+      "short_description": "Reference entry for the Falkland Islands Pound (FKP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "GBP": {
+      "code": "GBP",
+      "iso_name": "Pound Sterling",
+      "display_name": "British Pound Sterling",
+      "slug": "british-pound-sterling",
+      "numeric_code": "826",
+      "symbol": "£",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "british pound sterling",
+        "pound sterling",
+        "gbp",
+        "british pound"
+      ],
+      "short_description": "Reference entry for the British Pound Sterling (GBP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "GEL": {
+      "code": "GEL",
+      "iso_name": "Lari",
+      "display_name": "Georgian Lari",
+      "slug": "georgian-lari",
+      "numeric_code": "981",
+      "symbol": "GEL",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "georgian lari",
+        "lari",
+        "gel"
+      ],
+      "short_description": "Reference entry for the Georgian Lari (GEL), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "GHS": {
+      "code": "GHS",
+      "iso_name": "Ghana Cedi",
+      "display_name": "Ghanaian Cedi",
+      "slug": "ghanaian-cedi",
+      "numeric_code": "936",
+      "symbol": "GHS",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "ghanaian cedi",
+        "ghana cedi",
+        "ghs"
+      ],
+      "short_description": "Reference entry for the Ghanaian Cedi (GHS), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "GIP": {
+      "code": "GIP",
+      "iso_name": "Gibraltar Pound",
+      "display_name": "Gibraltar Pound",
+      "slug": "gibraltar-pound",
+      "numeric_code": "292",
+      "symbol": "GIP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "gibraltar pound",
+        "gip"
+      ],
+      "short_description": "Reference entry for the Gibraltar Pound (GIP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "GMD": {
+      "code": "GMD",
+      "iso_name": "Dalasi",
+      "display_name": "Gambian Dalasi",
+      "slug": "gambian-dalasi",
+      "numeric_code": "270",
+      "symbol": "GMD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "gambian dalasi",
+        "dalasi",
+        "gmd"
+      ],
+      "short_description": "Reference entry for the Gambian Dalasi (GMD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "GNF": {
+      "code": "GNF",
+      "iso_name": "Guinean Franc",
+      "display_name": "Guinean Franc",
+      "slug": "guinean-franc",
+      "numeric_code": "324",
+      "symbol": "GNF",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "guinean franc",
+        "gnf"
+      ],
+      "short_description": "Reference entry for the Guinean Franc (GNF), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "GTQ": {
+      "code": "GTQ",
+      "iso_name": "Quetzal",
+      "display_name": "Guatemalan Quetzal",
+      "slug": "guatemalan-quetzal",
+      "numeric_code": "320",
+      "symbol": "GTQ",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "guatemalan quetzal",
+        "quetzal",
+        "gtq"
+      ],
+      "short_description": "Reference entry for the Guatemalan Quetzal (GTQ), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "GYD": {
+      "code": "GYD",
+      "iso_name": "Guyana Dollar",
+      "display_name": "Guyanese Dollar",
+      "slug": "guyanese-dollar",
+      "numeric_code": "328",
+      "symbol": "GYD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "guyanese dollar",
+        "guyana dollar",
+        "gyd"
+      ],
+      "short_description": "Reference entry for the Guyanese Dollar (GYD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "HKD": {
+      "code": "HKD",
+      "iso_name": "Hong Kong Dollar",
+      "display_name": "Hong Kong Dollar",
+      "slug": "hong-kong-dollar",
+      "numeric_code": "344",
+      "symbol": "HK$",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "hong kong dollar",
+        "hkd"
+      ],
+      "short_description": "Reference entry for the Hong Kong Dollar (HKD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "HNL": {
+      "code": "HNL",
+      "iso_name": "Lempira",
+      "display_name": "Honduran Lempira",
+      "slug": "honduran-lempira",
+      "numeric_code": "340",
+      "symbol": "HNL",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "honduran lempira",
+        "lempira",
+        "hnl"
+      ],
+      "short_description": "Reference entry for the Honduran Lempira (HNL), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "HRK": {
+      "code": "HRK",
+      "iso_name": "Kuna",
+      "display_name": "Croatian Kuna",
+      "slug": "croatian-kuna",
+      "numeric_code": "191",
+      "symbol": "HRK",
+      "instrument_type": "legacy_or_transition",
+      "visibility_tier": "extended",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "croatian kuna",
+        "kuna",
+        "hrk"
+      ],
+      "short_description": "Reference entry for the Croatian Kuna (HRK), retained for compatibility with historical, transition-period, or extended market datasets."
+    },
+    "HTG": {
+      "code": "HTG",
+      "iso_name": "Gourde",
+      "display_name": "Haitian Gourde",
+      "slug": "haitian-gourde",
+      "numeric_code": "332",
+      "symbol": "HTG",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "haitian gourde",
+        "gourde",
+        "htg"
+      ],
+      "short_description": "Reference entry for the Haitian Gourde (HTG), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "HUF": {
+      "code": "HUF",
+      "iso_name": "Forint",
+      "display_name": "Hungarian Forint",
+      "slug": "hungarian-forint",
+      "numeric_code": "348",
+      "symbol": "HUF",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "hungarian forint",
+        "forint",
+        "huf"
+      ],
+      "short_description": "Reference entry for the Hungarian Forint (HUF), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "IDR": {
+      "code": "IDR",
+      "iso_name": "Rupiah",
+      "display_name": "Indonesian Rupiah",
+      "slug": "indonesian-rupiah",
+      "numeric_code": "360",
+      "symbol": "IDR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "indonesian rupiah",
+        "rupiah",
+        "idr"
+      ],
+      "short_description": "Reference entry for the Indonesian Rupiah (IDR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "ILS": {
+      "code": "ILS",
+      "iso_name": "New Israeli Sheqel",
+      "display_name": "Israeli New Shekel",
+      "slug": "israeli-new-shekel",
+      "numeric_code": "376",
+      "symbol": "₪",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "israeli new shekel",
+        "new israeli sheqel",
+        "ils",
+        "new shekel",
+        "israeli shekel"
+      ],
+      "short_description": "Reference entry for the Israeli New Shekel (ILS), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "INR": {
+      "code": "INR",
+      "iso_name": "Indian Rupee",
+      "display_name": "Indian Rupee",
+      "slug": "indian-rupee",
+      "numeric_code": "356",
+      "symbol": "₹",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "indian rupee",
+        "inr"
+      ],
+      "short_description": "Reference entry for the Indian Rupee (INR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "IQD": {
+      "code": "IQD",
+      "iso_name": "Iraqi Dinar",
+      "display_name": "Iraqi Dinar",
+      "slug": "iraqi-dinar",
+      "numeric_code": "368",
+      "symbol": "IQD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "iraqi dinar",
+        "iqd"
+      ],
+      "short_description": "Reference entry for the Iraqi Dinar (IQD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "IRR": {
+      "code": "IRR",
+      "iso_name": "Iranian Rial",
+      "display_name": "Iranian Rial",
+      "slug": "iranian-rial",
+      "numeric_code": "364",
+      "symbol": "IRR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "iranian rial",
+        "irr"
+      ],
+      "short_description": "Reference entry for the Iranian Rial (IRR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "ISK": {
+      "code": "ISK",
+      "iso_name": "Iceland Krona",
+      "display_name": "Icelandic Króna",
+      "slug": "icelandic-kr-na",
+      "numeric_code": "352",
+      "symbol": "ISK",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "icelandic króna",
+        "iceland krona",
+        "isk",
+        "icelandic kr na"
+      ],
+      "short_description": "Reference entry for the Icelandic Króna (ISK), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "JMD": {
+      "code": "JMD",
+      "iso_name": "Jamaican Dollar",
+      "display_name": "Jamaican Dollar",
+      "slug": "jamaican-dollar",
+      "numeric_code": "388",
+      "symbol": "JMD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "jamaican dollar",
+        "jmd"
+      ],
+      "short_description": "Reference entry for the Jamaican Dollar (JMD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "JOD": {
+      "code": "JOD",
+      "iso_name": "Jordanian Dinar",
+      "display_name": "Jordanian Dinar",
+      "slug": "jordanian-dinar",
+      "numeric_code": "400",
+      "symbol": "JOD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "jordanian dinar",
+        "jod"
+      ],
+      "short_description": "Reference entry for the Jordanian Dinar (JOD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "JPY": {
+      "code": "JPY",
+      "iso_name": "Yen",
+      "display_name": "Japanese Yen",
+      "slug": "japanese-yen",
+      "numeric_code": "392",
+      "symbol": "¥",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "japanese yen",
+        "yen",
+        "jpy"
+      ],
+      "short_description": "Reference entry for the Japanese Yen (JPY), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "KES": {
+      "code": "KES",
+      "iso_name": "Kenyan Shilling",
+      "display_name": "Kenyan Shilling",
+      "slug": "kenyan-shilling",
+      "numeric_code": "404",
+      "symbol": "KES",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "kenyan shilling",
+        "kes"
+      ],
+      "short_description": "Reference entry for the Kenyan Shilling (KES), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "KGS": {
+      "code": "KGS",
+      "iso_name": "Som",
+      "display_name": "Kyrgyzstani Som",
+      "slug": "kyrgyzstani-som",
+      "numeric_code": "417",
+      "symbol": "KGS",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "kyrgyzstani som",
+        "som",
+        "kgs"
+      ],
+      "short_description": "Reference entry for the Kyrgyzstani Som (KGS), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "KHR": {
+      "code": "KHR",
+      "iso_name": "Riel",
+      "display_name": "Cambodian Riel",
+      "slug": "cambodian-riel",
+      "numeric_code": "116",
+      "symbol": "KHR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "cambodian riel",
+        "riel",
+        "khr"
+      ],
+      "short_description": "Reference entry for the Cambodian Riel (KHR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "KMF": {
+      "code": "KMF",
+      "iso_name": "Comorian Franc",
+      "display_name": "Comorian Franc",
+      "slug": "comorian-franc",
+      "numeric_code": "174",
+      "symbol": "KMF",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "comorian franc",
+        "kmf"
+      ],
+      "short_description": "Reference entry for the Comorian Franc (KMF), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "KPW": {
+      "code": "KPW",
+      "iso_name": "North Korean Won",
+      "display_name": "North Korean Won",
+      "slug": "north-korean-won",
+      "numeric_code": "408",
+      "symbol": "KPW",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "north korean won",
+        "kpw"
+      ],
+      "short_description": "Reference entry for the North Korean Won (KPW), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "KRW": {
+      "code": "KRW",
+      "iso_name": "Won",
+      "display_name": "South Korean Won",
+      "slug": "south-korean-won",
+      "numeric_code": "410",
+      "symbol": "₩",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "south korean won",
+        "won",
+        "krw",
+        "korean won"
+      ],
+      "short_description": "Reference entry for the South Korean Won (KRW), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "KWD": {
+      "code": "KWD",
+      "iso_name": "Kuwaiti Dinar",
+      "display_name": "Kuwaiti Dinar",
+      "slug": "kuwaiti-dinar",
+      "numeric_code": "414",
+      "symbol": "KWD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "kuwaiti dinar",
+        "kwd"
+      ],
+      "short_description": "Reference entry for the Kuwaiti Dinar (KWD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "KYD": {
+      "code": "KYD",
+      "iso_name": "Cayman Islands Dollar",
+      "display_name": "Cayman Islands Dollar",
+      "slug": "cayman-islands-dollar",
+      "numeric_code": "136",
+      "symbol": "KYD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "cayman islands dollar",
+        "kyd"
+      ],
+      "short_description": "Reference entry for the Cayman Islands Dollar (KYD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "KZT": {
+      "code": "KZT",
+      "iso_name": "Tenge",
+      "display_name": "Kazakhstani Tenge",
+      "slug": "kazakhstani-tenge",
+      "numeric_code": "398",
+      "symbol": "KZT",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "kazakhstani tenge",
+        "tenge",
+        "kzt"
+      ],
+      "short_description": "Reference entry for the Kazakhstani Tenge (KZT), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "LAK": {
+      "code": "LAK",
+      "iso_name": "Lao Kip",
+      "display_name": "Lao Kip",
+      "slug": "lao-kip",
+      "numeric_code": "418",
+      "symbol": "LAK",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "lao kip",
+        "lak"
+      ],
+      "short_description": "Reference entry for the Lao Kip (LAK), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "LBP": {
+      "code": "LBP",
+      "iso_name": "Lebanese Pound",
+      "display_name": "Lebanese Pound",
+      "slug": "lebanese-pound",
+      "numeric_code": "422",
+      "symbol": "LBP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "lebanese pound",
+        "lbp"
+      ],
+      "short_description": "Reference entry for the Lebanese Pound (LBP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "LKR": {
+      "code": "LKR",
+      "iso_name": "Sri Lanka Rupee",
+      "display_name": "Sri Lankan Rupee",
+      "slug": "sri-lankan-rupee",
+      "numeric_code": "144",
+      "symbol": "LKR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "sri lankan rupee",
+        "sri lanka rupee",
+        "lkr"
+      ],
+      "short_description": "Reference entry for the Sri Lankan Rupee (LKR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "LRD": {
+      "code": "LRD",
+      "iso_name": "Liberian Dollar",
+      "display_name": "Liberian Dollar",
+      "slug": "liberian-dollar",
+      "numeric_code": "430",
+      "symbol": "LRD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "liberian dollar",
+        "lrd"
+      ],
+      "short_description": "Reference entry for the Liberian Dollar (LRD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "LSL": {
+      "code": "LSL",
+      "iso_name": "Loti",
+      "display_name": "Lesotho Loti",
+      "slug": "lesotho-loti",
+      "numeric_code": "426",
+      "symbol": "LSL",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "lesotho loti",
+        "loti",
+        "lsl"
+      ],
+      "short_description": "Reference entry for the Lesotho Loti (LSL), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "LYD": {
+      "code": "LYD",
+      "iso_name": "Libyan Dinar",
+      "display_name": "Libyan Dinar",
+      "slug": "libyan-dinar",
+      "numeric_code": "434",
+      "symbol": "LYD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "libyan dinar",
+        "lyd"
+      ],
+      "short_description": "Reference entry for the Libyan Dinar (LYD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MAD": {
+      "code": "MAD",
+      "iso_name": "Moroccan Dirham",
+      "display_name": "Moroccan Dirham",
+      "slug": "moroccan-dirham",
+      "numeric_code": "504",
+      "symbol": "MAD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "moroccan dirham",
+        "mad"
+      ],
+      "short_description": "Reference entry for the Moroccan Dirham (MAD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MDL": {
+      "code": "MDL",
+      "iso_name": "Moldovan Leu",
+      "display_name": "Moldovan Leu",
+      "slug": "moldovan-leu",
+      "numeric_code": "498",
+      "symbol": "MDL",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "moldovan leu",
+        "mdl"
+      ],
+      "short_description": "Reference entry for the Moldovan Leu (MDL), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MGA": {
+      "code": "MGA",
+      "iso_name": "Malagasy Ariary",
+      "display_name": "Malagasy Ariary",
+      "slug": "malagasy-ariary",
+      "numeric_code": "969",
+      "symbol": "MGA",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "malagasy ariary",
+        "mga"
+      ],
+      "short_description": "Reference entry for the Malagasy Ariary (MGA), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MKD": {
+      "code": "MKD",
+      "iso_name": "Denar",
+      "display_name": "Macedonian Denar",
+      "slug": "macedonian-denar",
+      "numeric_code": "807",
+      "symbol": "MKD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "macedonian denar",
+        "denar",
+        "mkd"
+      ],
+      "short_description": "Reference entry for the Macedonian Denar (MKD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MMK": {
+      "code": "MMK",
+      "iso_name": "Kyat",
+      "display_name": "Myanmar Kyat",
+      "slug": "myanmar-kyat",
+      "numeric_code": "104",
+      "symbol": "MMK",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "myanmar kyat",
+        "kyat",
+        "mmk"
+      ],
+      "short_description": "Reference entry for the Myanmar Kyat (MMK), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MNT": {
+      "code": "MNT",
+      "iso_name": "Tugrik",
+      "display_name": "Mongolian Tögrög",
+      "slug": "mongolian-t-gr-g",
+      "numeric_code": "496",
+      "symbol": "MNT",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "mongolian tögrög",
+        "tugrik",
+        "mnt",
+        "mongolian t gr g"
+      ],
+      "short_description": "Reference entry for the Mongolian Tögrög (MNT), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MOP": {
+      "code": "MOP",
+      "iso_name": "Pataca",
+      "display_name": "Macanese Pataca",
+      "slug": "macanese-pataca",
+      "numeric_code": "446",
+      "symbol": "MOP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "macanese pataca",
+        "pataca",
+        "mop"
+      ],
+      "short_description": "Reference entry for the Macanese Pataca (MOP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MRU": {
+      "code": "MRU",
+      "iso_name": "Ouguiya",
+      "display_name": "Mauritanian Ouguiya",
+      "slug": "mauritanian-ouguiya",
+      "numeric_code": "929",
+      "symbol": "MRU",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "mauritanian ouguiya",
+        "ouguiya",
+        "mru"
+      ],
+      "short_description": "Reference entry for the Mauritanian Ouguiya (MRU), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MUR": {
+      "code": "MUR",
+      "iso_name": "Mauritius Rupee",
+      "display_name": "Mauritian Rupee",
+      "slug": "mauritian-rupee",
+      "numeric_code": "480",
+      "symbol": "MUR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "mauritian rupee",
+        "mauritius rupee",
+        "mur"
+      ],
+      "short_description": "Reference entry for the Mauritian Rupee (MUR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MVR": {
+      "code": "MVR",
+      "iso_name": "Rufiyaa",
+      "display_name": "Maldivian Rufiyaa",
+      "slug": "maldivian-rufiyaa",
+      "numeric_code": "462",
+      "symbol": "MVR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "maldivian rufiyaa",
+        "rufiyaa",
+        "mvr"
+      ],
+      "short_description": "Reference entry for the Maldivian Rufiyaa (MVR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MWK": {
+      "code": "MWK",
+      "iso_name": "Malawi Kwacha",
+      "display_name": "Malawian Kwacha",
+      "slug": "malawian-kwacha",
+      "numeric_code": "454",
+      "symbol": "MWK",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "malawian kwacha",
+        "malawi kwacha",
+        "mwk"
+      ],
+      "short_description": "Reference entry for the Malawian Kwacha (MWK), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MXN": {
+      "code": "MXN",
+      "iso_name": "Mexican Peso",
+      "display_name": "Mexican Peso",
+      "slug": "mexican-peso",
+      "numeric_code": "484",
+      "symbol": "MX$",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "mexican peso",
+        "mxn"
+      ],
+      "short_description": "Reference entry for the Mexican Peso (MXN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MYR": {
+      "code": "MYR",
+      "iso_name": "Malaysian Ringgit",
+      "display_name": "Malaysian Ringgit",
+      "slug": "malaysian-ringgit",
+      "numeric_code": "458",
+      "symbol": "MYR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "malaysian ringgit",
+        "myr"
+      ],
+      "short_description": "Reference entry for the Malaysian Ringgit (MYR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "MZN": {
+      "code": "MZN",
+      "iso_name": "Mozambique Metical",
+      "display_name": "Mozambican Metical",
+      "slug": "mozambican-metical",
+      "numeric_code": "943",
+      "symbol": "MZN",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "mozambican metical",
+        "mozambique metical",
+        "mzn"
+      ],
+      "short_description": "Reference entry for the Mozambican Metical (MZN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "NAD": {
+      "code": "NAD",
+      "iso_name": "Namibia Dollar",
+      "display_name": "Namibian Dollar",
+      "slug": "namibian-dollar",
+      "numeric_code": "516",
+      "symbol": "NAD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "namibian dollar",
+        "namibia dollar",
+        "nad"
+      ],
+      "short_description": "Reference entry for the Namibian Dollar (NAD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "NGN": {
+      "code": "NGN",
+      "iso_name": "Naira",
+      "display_name": "Nigerian Naira",
+      "slug": "nigerian-naira",
+      "numeric_code": "566",
+      "symbol": "NGN",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "nigerian naira",
+        "naira",
+        "ngn"
+      ],
+      "short_description": "Reference entry for the Nigerian Naira (NGN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "NIO": {
+      "code": "NIO",
+      "iso_name": "Cordoba Oro",
+      "display_name": "Nicaraguan Córdoba",
+      "slug": "nicaraguan-c-rdoba",
+      "numeric_code": "558",
+      "symbol": "NIO",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "nicaraguan córdoba",
+        "cordoba oro",
+        "nio",
+        "nicaraguan c rdoba"
+      ],
+      "short_description": "Reference entry for the Nicaraguan Córdoba (NIO), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "NOK": {
+      "code": "NOK",
+      "iso_name": "Norwegian Krone",
+      "display_name": "Norwegian Krone",
+      "slug": "norwegian-krone",
+      "numeric_code": "578",
+      "symbol": "NOK",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "norwegian krone",
+        "nok"
+      ],
+      "short_description": "Reference entry for the Norwegian Krone (NOK), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "NPR": {
+      "code": "NPR",
+      "iso_name": "Nepalese Rupee",
+      "display_name": "Nepalese Rupee",
+      "slug": "nepalese-rupee",
+      "numeric_code": "524",
+      "symbol": "NPR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "nepalese rupee",
+        "npr"
+      ],
+      "short_description": "Reference entry for the Nepalese Rupee (NPR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "NZD": {
+      "code": "NZD",
+      "iso_name": "New Zealand Dollar",
+      "display_name": "New Zealand Dollar",
+      "slug": "new-zealand-dollar",
+      "numeric_code": "554",
+      "symbol": "NZ$",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "new zealand dollar",
+        "nzd"
+      ],
+      "short_description": "Reference entry for the New Zealand Dollar (NZD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "OMR": {
+      "code": "OMR",
+      "iso_name": "Rial Omani",
+      "display_name": "Omani Rial",
+      "slug": "omani-rial",
+      "numeric_code": "512",
+      "symbol": "OMR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "omani rial",
+        "rial omani",
+        "omr"
+      ],
+      "short_description": "Reference entry for the Omani Rial (OMR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "PAB": {
+      "code": "PAB",
+      "iso_name": "Balboa",
+      "display_name": "Panamanian Balboa",
+      "slug": "panamanian-balboa",
+      "numeric_code": "590",
+      "symbol": "PAB",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "panamanian balboa",
+        "balboa",
+        "pab"
+      ],
+      "short_description": "Reference entry for the Panamanian Balboa (PAB), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "PEN": {
+      "code": "PEN",
+      "iso_name": "Sol",
+      "display_name": "Peruvian Sol",
+      "slug": "peruvian-sol",
+      "numeric_code": "604",
+      "symbol": "PEN",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "peruvian sol",
+        "sol",
+        "pen"
+      ],
+      "short_description": "Reference entry for the Peruvian Sol (PEN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "PGK": {
+      "code": "PGK",
+      "iso_name": "Kina",
+      "display_name": "Papua New Guinean Kina",
+      "slug": "papua-new-guinean-kina",
+      "numeric_code": "598",
+      "symbol": "PGK",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "papua new guinean kina",
+        "kina",
+        "pgk"
+      ],
+      "short_description": "Reference entry for the Papua New Guinean Kina (PGK), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "PHP": {
+      "code": "PHP",
+      "iso_name": "Philippine Peso",
+      "display_name": "Philippine Peso",
+      "slug": "philippine-peso",
+      "numeric_code": "608",
+      "symbol": "₱",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "philippine peso",
+        "php"
+      ],
+      "short_description": "Reference entry for the Philippine Peso (PHP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "PKR": {
+      "code": "PKR",
+      "iso_name": "Pakistan Rupee",
+      "display_name": "Pakistani Rupee",
+      "slug": "pakistani-rupee",
+      "numeric_code": "586",
+      "symbol": "PKR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "pakistani rupee",
+        "pakistan rupee",
+        "pkr"
+      ],
+      "short_description": "Reference entry for the Pakistani Rupee (PKR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "PLN": {
+      "code": "PLN",
+      "iso_name": "Zloty",
+      "display_name": "Polish Złoty",
+      "slug": "polish-z-oty",
+      "numeric_code": "985",
+      "symbol": "PLN",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "polish złoty",
+        "zloty",
+        "pln",
+        "polish z oty"
+      ],
+      "short_description": "Reference entry for the Polish Złoty (PLN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "PYG": {
+      "code": "PYG",
+      "iso_name": "Guarani",
+      "display_name": "Paraguayan Guaraní",
+      "slug": "paraguayan-guaran",
+      "numeric_code": "600",
+      "symbol": "PYG",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "paraguayan guaraní",
+        "guarani",
+        "pyg",
+        "paraguayan guaran"
+      ],
+      "short_description": "Reference entry for the Paraguayan Guaraní (PYG), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "QAR": {
+      "code": "QAR",
+      "iso_name": "Qatari Rial",
+      "display_name": "Qatari Riyal",
+      "slug": "qatari-riyal",
+      "numeric_code": "634",
+      "symbol": "QAR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "qatari riyal",
+        "qatari rial",
+        "qar"
+      ],
+      "short_description": "Reference entry for the Qatari Riyal (QAR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "RON": {
+      "code": "RON",
+      "iso_name": "Romanian Leu",
+      "display_name": "Romanian Leu",
+      "slug": "romanian-leu",
+      "numeric_code": "946",
+      "symbol": "RON",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "romanian leu",
+        "ron"
+      ],
+      "short_description": "Reference entry for the Romanian Leu (RON), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "RSD": {
+      "code": "RSD",
+      "iso_name": "Serbian Dinar",
+      "display_name": "Serbian Dinar",
+      "slug": "serbian-dinar",
+      "numeric_code": "941",
+      "symbol": "RSD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "serbian dinar",
+        "rsd"
+      ],
+      "short_description": "Reference entry for the Serbian Dinar (RSD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "RUB": {
+      "code": "RUB",
+      "iso_name": "Russian Ruble",
+      "display_name": "Russian Ruble",
+      "slug": "russian-ruble",
+      "numeric_code": "643",
+      "symbol": "RUB",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "russian ruble",
+        "rub"
+      ],
+      "short_description": "Reference entry for the Russian Ruble (RUB), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "RWF": {
+      "code": "RWF",
+      "iso_name": "Rwanda Franc",
+      "display_name": "Rwandan Franc",
+      "slug": "rwandan-franc",
+      "numeric_code": "646",
+      "symbol": "RWF",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "rwandan franc",
+        "rwanda franc",
+        "rwf"
+      ],
+      "short_description": "Reference entry for the Rwandan Franc (RWF), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SAR": {
+      "code": "SAR",
+      "iso_name": "Saudi Riyal",
+      "display_name": "Saudi Riyal",
+      "slug": "saudi-riyal",
+      "numeric_code": "682",
+      "symbol": "SAR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "saudi riyal",
+        "sar"
+      ],
+      "short_description": "Reference entry for the Saudi Riyal (SAR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SBD": {
+      "code": "SBD",
+      "iso_name": "Solomon Islands Dollar",
+      "display_name": "Solomon Islands Dollar",
+      "slug": "solomon-islands-dollar",
+      "numeric_code": "090",
+      "symbol": "SBD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "solomon islands dollar",
+        "sbd"
+      ],
+      "short_description": "Reference entry for the Solomon Islands Dollar (SBD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SCR": {
+      "code": "SCR",
+      "iso_name": "Seychelles Rupee",
+      "display_name": "Seychellois Rupee",
+      "slug": "seychellois-rupee",
+      "numeric_code": "690",
+      "symbol": "SCR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "seychellois rupee",
+        "seychelles rupee",
+        "scr"
+      ],
+      "short_description": "Reference entry for the Seychellois Rupee (SCR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SDG": {
+      "code": "SDG",
+      "iso_name": "Sudanese Pound",
+      "display_name": "Sudanese Pound",
+      "slug": "sudanese-pound",
+      "numeric_code": "938",
+      "symbol": "SDG",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "sudanese pound",
+        "sdg"
+      ],
+      "short_description": "Reference entry for the Sudanese Pound (SDG), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SEK": {
+      "code": "SEK",
+      "iso_name": "Swedish Krona",
+      "display_name": "Swedish Krona",
+      "slug": "swedish-krona",
+      "numeric_code": "752",
+      "symbol": "SEK",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "swedish krona",
+        "sek"
+      ],
+      "short_description": "Reference entry for the Swedish Krona (SEK), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SGD": {
+      "code": "SGD",
+      "iso_name": "Singapore Dollar",
+      "display_name": "Singapore Dollar",
+      "slug": "singapore-dollar",
+      "numeric_code": "702",
+      "symbol": "SGD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "singapore dollar",
+        "sgd"
+      ],
+      "short_description": "Reference entry for the Singapore Dollar (SGD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SHP": {
+      "code": "SHP",
+      "iso_name": "Saint Helena Pound",
+      "display_name": "Saint Helena Pound",
+      "slug": "saint-helena-pound",
+      "numeric_code": "654",
+      "symbol": "SHP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "saint helena pound",
+        "shp"
+      ],
+      "short_description": "Reference entry for the Saint Helena Pound (SHP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SLE": {
+      "code": "SLE",
+      "iso_name": "Leone",
+      "display_name": "Sierra Leonean Leone",
+      "slug": "sierra-leonean-leone",
+      "numeric_code": "925",
+      "symbol": "SLE",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "sierra leonean leone",
+        "leone",
+        "sle"
+      ],
+      "short_description": "Reference entry for the Sierra Leonean Leone (SLE), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SLL": {
+      "code": "SLL",
+      "iso_name": "Leone",
+      "display_name": "Sierra Leonean Leone (old)",
+      "slug": "sierra-leonean-leone-old",
+      "numeric_code": "694",
+      "symbol": "SLL",
+      "instrument_type": "legacy_or_transition",
+      "visibility_tier": "extended",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "sierra leonean leone (old)",
+        "leone",
+        "sll",
+        "sierra leonean leone old"
+      ],
+      "short_description": "Reference entry for the Sierra Leonean Leone (old) (SLL), retained for compatibility with historical, transition-period, or extended market datasets."
+    },
+    "SOS": {
+      "code": "SOS",
+      "iso_name": "Somali Shilling",
+      "display_name": "Somali Shilling",
+      "slug": "somali-shilling",
+      "numeric_code": "706",
+      "symbol": "SOS",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "somali shilling",
+        "sos"
+      ],
+      "short_description": "Reference entry for the Somali Shilling (SOS), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SRD": {
+      "code": "SRD",
+      "iso_name": "Surinam Dollar",
+      "display_name": "Surinamese Dollar",
+      "slug": "surinamese-dollar",
+      "numeric_code": "968",
+      "symbol": "SRD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "surinamese dollar",
+        "surinam dollar",
+        "srd"
+      ],
+      "short_description": "Reference entry for the Surinamese Dollar (SRD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SSP": {
+      "code": "SSP",
+      "iso_name": "South Sudanese Pound",
+      "display_name": "South Sudanese Pound",
+      "slug": "south-sudanese-pound",
+      "numeric_code": "728",
+      "symbol": "SSP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "south sudanese pound",
+        "ssp"
+      ],
+      "short_description": "Reference entry for the South Sudanese Pound (SSP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "STN": {
+      "code": "STN",
+      "iso_name": "Dobra",
+      "display_name": "São Tomé and Príncipe Dobra",
+      "slug": "s-o-tom-and-pr-ncipe-dobra",
+      "numeric_code": "930",
+      "symbol": "STN",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "são tomé and príncipe dobra",
+        "dobra",
+        "stn",
+        "s o tom and pr ncipe dobra"
+      ],
+      "short_description": "Reference entry for the São Tomé and Príncipe Dobra (STN), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SVC": {
+      "code": "SVC",
+      "iso_name": "El Salvador Colon",
+      "display_name": "Salvadoran Colón",
+      "slug": "salvadoran-col-n",
+      "numeric_code": "222",
+      "symbol": "SVC",
+      "instrument_type": "legacy_or_transition",
+      "visibility_tier": "extended",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "salvadoran colón",
+        "el salvador colon",
+        "svc",
+        "salvadoran col n"
+      ],
+      "short_description": "Reference entry for the Salvadoran Colón (SVC), retained for compatibility with historical, transition-period, or extended market datasets."
+    },
+    "SYP": {
+      "code": "SYP",
+      "iso_name": "Syrian Pound",
+      "display_name": "Syrian Pound",
+      "slug": "syrian-pound",
+      "numeric_code": "760",
+      "symbol": "SYP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "syrian pound",
+        "syp"
+      ],
+      "short_description": "Reference entry for the Syrian Pound (SYP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "SZL": {
+      "code": "SZL",
+      "iso_name": "Lilangeni",
+      "display_name": "Eswatini Lilangeni",
+      "slug": "eswatini-lilangeni",
+      "numeric_code": "748",
+      "symbol": "SZL",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "eswatini lilangeni",
+        "lilangeni",
+        "szl"
+      ],
+      "short_description": "Reference entry for the Eswatini Lilangeni (SZL), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "THB": {
+      "code": "THB",
+      "iso_name": "Baht",
+      "display_name": "Thai Baht",
+      "slug": "thai-baht",
+      "numeric_code": "764",
+      "symbol": "THB",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "thai baht",
+        "baht",
+        "thb"
+      ],
+      "short_description": "Reference entry for the Thai Baht (THB), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "TJS": {
+      "code": "TJS",
+      "iso_name": "Somoni",
+      "display_name": "Tajikistani Somoni",
+      "slug": "tajikistani-somoni",
+      "numeric_code": "972",
+      "symbol": "TJS",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "tajikistani somoni",
+        "somoni",
+        "tjs"
+      ],
+      "short_description": "Reference entry for the Tajikistani Somoni (TJS), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "TMT": {
+      "code": "TMT",
+      "iso_name": "Turkmenistan New Manat",
+      "display_name": "Turkmenistani Manat",
+      "slug": "turkmenistani-manat",
+      "numeric_code": "934",
+      "symbol": "TMT",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "turkmenistani manat",
+        "turkmenistan new manat",
+        "tmt"
+      ],
+      "short_description": "Reference entry for the Turkmenistani Manat (TMT), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "TND": {
+      "code": "TND",
+      "iso_name": "Tunisian Dinar",
+      "display_name": "Tunisian Dinar",
+      "slug": "tunisian-dinar",
+      "numeric_code": "788",
+      "symbol": "TND",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "tunisian dinar",
+        "tnd"
+      ],
+      "short_description": "Reference entry for the Tunisian Dinar (TND), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "TOP": {
+      "code": "TOP",
+      "iso_name": "Pa’anga",
+      "display_name": "Tongan Paʻanga",
+      "slug": "tongan-pa-anga",
+      "numeric_code": "776",
+      "symbol": "TOP",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "tongan paʻanga",
+        "pa’anga",
+        "top",
+        "tongan pa anga"
+      ],
+      "short_description": "Reference entry for the Tongan Paʻanga (TOP), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "TRY": {
+      "code": "TRY",
+      "iso_name": "Turkish Lira",
+      "display_name": "Turkish Lira",
+      "slug": "turkish-lira",
+      "numeric_code": "949",
+      "symbol": "TRY",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "turkish lira",
+        "try",
+        "turkiye lira"
+      ],
+      "short_description": "Reference entry for the Turkish Lira (TRY), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "TTD": {
+      "code": "TTD",
+      "iso_name": "Trinidad and Tobago Dollar",
+      "display_name": "Trinidad and Tobago Dollar",
+      "slug": "trinidad-and-tobago-dollar",
+      "numeric_code": "780",
+      "symbol": "TTD",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "trinidad and tobago dollar",
+        "ttd"
+      ],
+      "short_description": "Reference entry for the Trinidad and Tobago Dollar (TTD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "TWD": {
+      "code": "TWD",
+      "iso_name": "New Taiwan Dollar",
+      "display_name": "New Taiwan Dollar",
+      "slug": "new-taiwan-dollar",
+      "numeric_code": "901",
+      "symbol": "NT$",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "new taiwan dollar",
+        "twd",
+        "taiwan dollar"
+      ],
+      "short_description": "Reference entry for the New Taiwan Dollar (TWD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "TZS": {
+      "code": "TZS",
+      "iso_name": "Tanzanian Shilling",
+      "display_name": "Tanzanian Shilling",
+      "slug": "tanzanian-shilling",
+      "numeric_code": "834",
+      "symbol": "TZS",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "tanzanian shilling",
+        "tzs"
+      ],
+      "short_description": "Reference entry for the Tanzanian Shilling (TZS), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "UAH": {
+      "code": "UAH",
+      "iso_name": "Hryvnia",
+      "display_name": "Ukrainian Hryvnia",
+      "slug": "ukrainian-hryvnia",
+      "numeric_code": "980",
+      "symbol": "UAH",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "ukrainian hryvnia",
+        "hryvnia",
+        "uah"
+      ],
+      "short_description": "Reference entry for the Ukrainian Hryvnia (UAH), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "UGX": {
+      "code": "UGX",
+      "iso_name": "Uganda Shilling",
+      "display_name": "Ugandan Shilling",
+      "slug": "ugandan-shilling",
+      "numeric_code": "800",
+      "symbol": "UGX",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "ugandan shilling",
+        "uganda shilling",
+        "ugx"
+      ],
+      "short_description": "Reference entry for the Ugandan Shilling (UGX), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "USD": {
+      "code": "USD",
+      "iso_name": "US Dollar",
+      "display_name": "US Dollar",
+      "slug": "us-dollar",
+      "numeric_code": "840",
+      "symbol": "$",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "us dollar",
+        "usd",
+        "american dollar",
+        "dollar"
+      ],
+      "short_description": "Reference entry for the US Dollar (USD), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "UYU": {
+      "code": "UYU",
+      "iso_name": "Peso Uruguayo",
+      "display_name": "Uruguayan Peso",
+      "slug": "uruguayan-peso",
+      "numeric_code": "858",
+      "symbol": "UYU",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "uruguayan peso",
+        "peso uruguayo",
+        "uyu"
+      ],
+      "short_description": "Reference entry for the Uruguayan Peso (UYU), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "UYW": {
+      "code": "UYW",
+      "iso_name": "Unidad Previsional",
+      "display_name": "Uruguayan Nominal Wage Index Unit",
+      "slug": "uruguayan-nominal-wage-index-unit",
+      "numeric_code": "927",
+      "symbol": "UYW",
+      "instrument_type": "unit_of_account",
+      "visibility_tier": "special",
+      "is_regional": false,
+      "is_special_unit": true,
+      "aliases": [
+        "uruguayan nominal wage index unit",
+        "unidad previsional",
+        "uyw"
+      ],
+      "short_description": "Reference entry for the Uruguayan Nominal Wage Index Unit (UYW), a market or accounting reference unit that may appear in professional exchange-rate datasets."
+    },
+    "UZS": {
+      "code": "UZS",
+      "iso_name": "Uzbekistan Sum",
+      "display_name": "Uzbekistani Som",
+      "slug": "uzbekistani-som",
+      "numeric_code": "860",
+      "symbol": "UZS",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "uzbekistani som",
+        "uzbekistan sum",
+        "uzs"
+      ],
+      "short_description": "Reference entry for the Uzbekistani Som (UZS), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "VED": {
+      "code": "VED",
+      "iso_name": "Bolívar Soberano",
+      "display_name": "Venezuelan Digital Bolívar",
+      "slug": "venezuelan-digital-bol-var",
+      "numeric_code": "926",
+      "symbol": "VED",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "venezuelan digital bolívar",
+        "bolívar soberano",
+        "ved",
+        "venezuelan digital bol var"
+      ],
+      "short_description": "Reference entry for the Venezuelan Digital Bolívar (VED), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "VES": {
+      "code": "VES",
+      "iso_name": "Bolívar Soberano",
+      "display_name": "Venezuelan Bolívar",
+      "slug": "venezuelan-bol-var",
+      "numeric_code": "928",
+      "symbol": "VES",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "venezuelan bolívar",
+        "bolívar soberano",
+        "ves",
+        "venezuelan bol var"
+      ],
+      "short_description": "Reference entry for the Venezuelan Bolívar (VES), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "VND": {
+      "code": "VND",
+      "iso_name": "Dong",
+      "display_name": "Vietnamese Đồng",
+      "slug": "vietnamese-ng",
+      "numeric_code": "704",
+      "symbol": "₫",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "vietnamese đồng",
+        "dong",
+        "vnd",
+        "vietnamese ng"
+      ],
+      "short_description": "Reference entry for the Vietnamese Đồng (VND), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "VUV": {
+      "code": "VUV",
+      "iso_name": "Vatu",
+      "display_name": "Vanuatu Vatu",
+      "slug": "vanuatu-vatu",
+      "numeric_code": "548",
+      "symbol": "VUV",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "vanuatu vatu",
+        "vatu",
+        "vuv"
+      ],
+      "short_description": "Reference entry for the Vanuatu Vatu (VUV), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "WST": {
+      "code": "WST",
+      "iso_name": "Tala",
+      "display_name": "Samoan Tala",
+      "slug": "samoan-tala",
+      "numeric_code": "882",
+      "symbol": "WST",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "samoan tala",
+        "tala",
+        "wst"
+      ],
+      "short_description": "Reference entry for the Samoan Tala (WST), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "XAF": {
+      "code": "XAF",
+      "iso_name": "CFA Franc BEAC",
+      "display_name": "Central African CFA Franc",
+      "slug": "central-african-cfa-franc",
+      "numeric_code": "950",
+      "symbol": "FCFA",
+      "instrument_type": "regional_currency",
+      "visibility_tier": "public",
+      "is_regional": true,
+      "is_special_unit": false,
+      "aliases": [
+        "central african cfa franc",
+        "cfa franc beac",
+        "xaf"
+      ],
+      "short_description": "Reference entry for the Central African CFA Franc (XAF), a regional monetary unit used across multiple countries or monetary areas in exchange-rate datasets."
+    },
+    "XAG": {
+      "code": "XAG",
+      "iso_name": "Silver",
+      "display_name": "Silver (troy ounce)",
+      "slug": "silver-troy-ounce",
+      "numeric_code": "961",
+      "symbol": "XAG",
+      "instrument_type": "precious_metal",
+      "visibility_tier": "special",
+      "is_regional": false,
+      "is_special_unit": true,
+      "aliases": [
+        "silver (troy ounce)",
+        "silver",
+        "xag",
+        "silver troy ounce",
+        "silver ounce"
+      ],
+      "short_description": "Reference entry for Silver (troy ounce) (XAG), an ISO-linked precious-metal quotation unit sometimes exposed by multi-asset rate feeds."
+    },
+    "XAU": {
+      "code": "XAU",
+      "iso_name": "Gold",
+      "display_name": "Gold (troy ounce)",
+      "slug": "gold-troy-ounce",
+      "numeric_code": "959",
+      "symbol": "XAU",
+      "instrument_type": "precious_metal",
+      "visibility_tier": "special",
+      "is_regional": false,
+      "is_special_unit": true,
+      "aliases": [
+        "gold (troy ounce)",
+        "gold",
+        "xau",
+        "gold troy ounce",
+        "gold ounce"
+      ],
+      "short_description": "Reference entry for Gold (troy ounce) (XAU), an ISO-linked precious-metal quotation unit sometimes exposed by multi-asset rate feeds."
+    },
+    "XCD": {
+      "code": "XCD",
+      "iso_name": "East Caribbean Dollar",
+      "display_name": "East Caribbean Dollar",
+      "slug": "east-caribbean-dollar",
+      "numeric_code": "951",
+      "symbol": "EC$",
+      "instrument_type": "regional_currency",
+      "visibility_tier": "public",
+      "is_regional": true,
+      "is_special_unit": false,
+      "aliases": [
+        "east caribbean dollar",
+        "xcd"
+      ],
+      "short_description": "Reference entry for the East Caribbean Dollar (XCD), a regional monetary unit used across multiple countries or monetary areas in exchange-rate datasets."
+    },
+    "XDR": {
+      "code": "XDR",
+      "iso_name": "SDR (Special Drawing Right)",
+      "display_name": "Special Drawing Right",
+      "slug": "special-drawing-right",
+      "numeric_code": "960",
+      "symbol": "XDR",
+      "instrument_type": "unit_of_account",
+      "visibility_tier": "special",
+      "is_regional": false,
+      "is_special_unit": true,
+      "aliases": [
+        "special drawing right",
+        "sdr (special drawing right)",
+        "xdr",
+        "sdr"
+      ],
+      "short_description": "Reference entry for the Special Drawing Right (XDR), a market or accounting reference unit that may appear in professional exchange-rate datasets."
+    },
+    "XOF": {
+      "code": "XOF",
+      "iso_name": "CFA Franc BCEAO",
+      "display_name": "West African CFA Franc",
+      "slug": "west-african-cfa-franc",
+      "numeric_code": "952",
+      "symbol": "F CFA",
+      "instrument_type": "regional_currency",
+      "visibility_tier": "public",
+      "is_regional": true,
+      "is_special_unit": false,
+      "aliases": [
+        "west african cfa franc",
+        "cfa franc bceao",
+        "xof"
+      ],
+      "short_description": "Reference entry for the West African CFA Franc (XOF), a regional monetary unit used across multiple countries or monetary areas in exchange-rate datasets."
+    },
+    "XPD": {
+      "code": "XPD",
+      "iso_name": "Palladium",
+      "display_name": "Palladium (troy ounce)",
+      "slug": "palladium-troy-ounce",
+      "numeric_code": "964",
+      "symbol": "XPD",
+      "instrument_type": "precious_metal",
+      "visibility_tier": "special",
+      "is_regional": false,
+      "is_special_unit": true,
+      "aliases": [
+        "palladium (troy ounce)",
+        "palladium",
+        "xpd",
+        "palladium troy ounce",
+        "palladium ounce"
+      ],
+      "short_description": "Reference entry for Palladium (troy ounce) (XPD), an ISO-linked precious-metal quotation unit sometimes exposed by multi-asset rate feeds."
+    },
+    "XPF": {
+      "code": "XPF",
+      "iso_name": "CFP Franc",
+      "display_name": "CFP Franc",
+      "slug": "cfp-franc",
+      "numeric_code": "953",
+      "symbol": "CFPF",
+      "instrument_type": "regional_currency",
+      "visibility_tier": "public",
+      "is_regional": true,
+      "is_special_unit": false,
+      "aliases": [
+        "cfp franc",
+        "xpf",
+        "pacific franc"
+      ],
+      "short_description": "Reference entry for the CFP Franc (XPF), a regional monetary unit used across multiple countries or monetary areas in exchange-rate datasets."
+    },
+    "XPT": {
+      "code": "XPT",
+      "iso_name": "Platinum",
+      "display_name": "Platinum (troy ounce)",
+      "slug": "platinum-troy-ounce",
+      "numeric_code": "962",
+      "symbol": "XPT",
+      "instrument_type": "precious_metal",
+      "visibility_tier": "special",
+      "is_regional": false,
+      "is_special_unit": true,
+      "aliases": [
+        "platinum (troy ounce)",
+        "platinum",
+        "xpt",
+        "platinum troy ounce",
+        "platinum ounce"
+      ],
+      "short_description": "Reference entry for Platinum (troy ounce) (XPT), an ISO-linked precious-metal quotation unit sometimes exposed by multi-asset rate feeds."
+    },
+    "XSU": {
+      "code": "XSU",
+      "iso_name": "Sucre",
+      "display_name": "SUCRE (regional unit of account)",
+      "slug": "sucre-regional-unit-of-account",
+      "numeric_code": "994",
+      "symbol": "XSU",
+      "instrument_type": "unit_of_account",
+      "visibility_tier": "special",
+      "is_regional": false,
+      "is_special_unit": true,
+      "aliases": [
+        "sucre (regional unit of account)",
+        "sucre",
+        "xsu",
+        "sucre regional unit of account"
+      ],
+      "short_description": "Reference entry for the SUCRE (regional unit of account) (XSU), a market or accounting reference unit that may appear in professional exchange-rate datasets."
+    },
+    "XTS": {
+      "code": "XTS",
+      "iso_name": "Codes specifically reserved for testing purposes",
+      "display_name": "Testing Currency Code",
+      "slug": "testing-currency-code",
+      "numeric_code": "963",
+      "symbol": "XTS",
+      "instrument_type": "test_code",
+      "visibility_tier": "special",
+      "is_regional": false,
+      "is_special_unit": true,
+      "aliases": [
+        "testing currency code",
+        "codes specifically reserved for testing purposes",
+        "xts"
+      ],
+      "short_description": "Reference entry for Testing Currency Code (XTS), an ISO testing code that is not intended for normal public currency transactions."
+    },
+    "XUA": {
+      "code": "XUA",
+      "iso_name": "ADB Unit of Account",
+      "display_name": "ADB Unit of Account",
+      "slug": "adb-unit-of-account",
+      "numeric_code": "965",
+      "symbol": "XUA",
+      "instrument_type": "unit_of_account",
+      "visibility_tier": "special",
+      "is_regional": false,
+      "is_special_unit": true,
+      "aliases": [
+        "adb unit of account",
+        "xua"
+      ],
+      "short_description": "Reference entry for the ADB Unit of Account (XUA), a market or accounting reference unit that may appear in professional exchange-rate datasets."
+    },
+    "XXX": {
+      "code": "XXX",
+      "iso_name": "The codes assigned for transactions where no currency is involved",
+      "display_name": "No Currency",
+      "slug": "no-currency",
+      "numeric_code": "999",
+      "symbol": "¤",
+      "instrument_type": "no_currency",
+      "visibility_tier": "special",
+      "is_regional": false,
+      "is_special_unit": true,
+      "aliases": [
+        "no currency",
+        "the codes assigned for transactions where no currency is involved",
+        "xxx"
+      ],
+      "short_description": "Reference entry for No Currency (XXX)."
+    },
+    "YER": {
+      "code": "YER",
+      "iso_name": "Yemeni Rial",
+      "display_name": "Yemeni Rial",
+      "slug": "yemeni-rial",
+      "numeric_code": "886",
+      "symbol": "YER",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "yemeni rial",
+        "yer"
+      ],
+      "short_description": "Reference entry for the Yemeni Rial (YER), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "ZAR": {
+      "code": "ZAR",
+      "iso_name": "Rand",
+      "display_name": "South African Rand",
+      "slug": "south-african-rand",
+      "numeric_code": "710",
+      "symbol": "ZAR",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "south african rand",
+        "rand",
+        "zar"
+      ],
+      "short_description": "Reference entry for the South African Rand (ZAR), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "ZMW": {
+      "code": "ZMW",
+      "iso_name": "Zambian Kwacha",
+      "display_name": "Zambian Kwacha",
+      "slug": "zambian-kwacha",
+      "numeric_code": "967",
+      "symbol": "ZMW",
+      "instrument_type": "fiat_currency",
+      "visibility_tier": "public",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "zambian kwacha",
+        "zmw"
+      ],
+      "short_description": "Reference entry for the Zambian Kwacha (ZMW), an ISO 4217 currency used in exchange-rate datasets, pricing comparisons, and cross-border value references."
+    },
+    "ZWL": {
+      "code": "ZWL",
+      "iso_name": "Zimbabwe Dollar",
+      "display_name": "Zimbabwean Dollar",
+      "slug": "zimbabwean-dollar",
+      "numeric_code": "932",
+      "symbol": "ZWL",
+      "instrument_type": "legacy_or_transition",
+      "visibility_tier": "extended",
+      "is_regional": false,
+      "is_special_unit": false,
+      "aliases": [
+        "zimbabwean dollar",
+        "zimbabwe dollar",
+        "zwl"
+      ],
+      "short_description": "Reference entry for the Zimbabwean Dollar (ZWL), retained for compatibility with historical, transition-period, or extended market datasets."
+    }
+  }
+}
