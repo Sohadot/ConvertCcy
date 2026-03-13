@@ -1,206 +1,625 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
-<!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-2HS37BH07J');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us | ConvertCCY</title>
-<meta name="description" content="Get in touch with the ConvertCCY team. We welcome feedback, bug reports, and partnership inquiries.">
-<link rel="canonical" href="https://convertccy.com/contact.html">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{--bg:#f7f7f5;--surface:#fff;--border:#e8e8e4;--text:#111110;--muted:#888884;--accent:#1a6b3c;--accent-light:#e8f5ee;--mono:'DM Mono',monospace;--sans:'Sora',sans-serif}
-  body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8}
-  nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
-  .logo{font-family:var(--mono);font-size:1.1rem;font-weight:500;color:var(--text);text-decoration:none}
-  .logo span{color:var(--accent)}
-  .nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;margin-left:1.5rem}
-  .nav-links a:hover{color:var(--text)}
-  .page-wrap{max-width:680px;margin:0 auto;padding:4rem 2rem}
-  .tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.75rem;padding:4px 12px;border-radius:100px;margin-bottom:1.5rem;border:1px solid #c4dfd0}
-  h1{font-size:2.5rem;font-weight:700;letter-spacing:-1.5px;margin-bottom:1rem;line-height:1.1}
-  h1 em{font-style:normal;color:var(--accent)}
-  p{color:var(--muted);margin-bottom:1.5rem;font-size:.95rem}
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2rem 0}
-  .field{margin-bottom:1.2rem}
-  .field label{display:block;font-size:.72rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
-  .field input,.field textarea,.field select{width:100%;padding:.9rem 1rem;border:1.5px solid var(--border);border-radius:12px;font-family:var(--sans);font-size:.9rem;background:var(--bg);color:var(--text);outline:none;transition:border-color .2s;resize:vertical}
-  .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent);background:#fff}
-  .field textarea{min-height:140px}
-  .submit-btn{width:100%;padding:1rem;background:var(--text);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s}
-  .submit-btn:hover{background:var(--accent)}
-  .contact-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
-  .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center}
-  .contact-icon{font-size:1.8rem;margin-bottom:.5rem}
-  .contact-title{font-weight:700;font-size:.9rem;margin-bottom:.3rem}
-  .contact-text{font-size:.8rem;color:var(--muted)}
-  .success-msg{display:none;background:var(--accent-light);border:1px solid #c4dfd0;border-radius:12px;padding:1rem 1.2rem;color:var(--accent);font-family:var(--mono);font-size:.85rem;margin-top:1rem;text-align:center}
-  .social-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:2rem}
-  .social-card{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.4rem;border-radius:14px;text-decoration:none;transition:all .2s;border:1.5px solid transparent}
-  .social-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.1)}
-  .telegram{background:#e8f4fd;border-color:#b3d9f5;color:#0088cc}
-  .telegram:hover{background:#0088cc;color:#fff;border-color:#0088cc}
-  .linkedin{background:#e8f0fb;border-color:#b3c8f0;color:#0077b5}
-  .linkedin:hover{background:#0077b5;color:#fff;border-color:#0077b5}
-  .social-icon{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .social-name{font-weight:700;font-size:.9rem}
-  .social-handle{font-size:.78rem;opacity:.7;font-family:var(--mono)}
-  .social-arrow{margin-left:auto;font-size:1.1rem;opacity:.5}
-  footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:4rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
-  footer a{color:var(--muted);text-decoration:none}
-  footer a:hover{color:var(--text)}
-</style>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2HS37BH07J');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact ConvertCCY – Support, Feedback & Inquiries</title>
+  <meta name="description" content="Contact ConvertCCY for questions, feedback, data issues, partnerships, or general inquiries related to currency conversion and exchange-rate reference content.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://convertccy.com/contact.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ConvertCCY">
+  <meta property="og:title" content="Contact ConvertCCY">
+  <meta property="og:description" content="Get in touch with ConvertCCY for support, feedback, data questions, and partnership inquiries.">
+  <meta property="og:url" content="https://convertccy.com/contact.html">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Contact ConvertCCY">
+  <meta name="twitter:description" content="Support, feedback, data questions, and partnership inquiries for ConvertCCY.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root{
+      --bg:#f7f7f5;
+      --surface:#fff;
+      --border:#e8e8e4;
+      --text:#111110;
+      --muted:#888884;
+      --accent:#1a6b3c;
+      --accent-light:#e8f5ee;
+      --mono:'DM Mono',monospace;
+      --sans:'Sora',sans-serif
+    }
+
+    body{
+      font-family:var(--sans);
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.8
+    }
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(247,247,245,.9);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      padding:0 2rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:58px;
+      gap:1rem;
+      flex-wrap:wrap
+    }
+
+    .logo{
+      font-family:var(--mono);
+      font-size:1.1rem;
+      font-weight:500;
+      color:var(--text);
+      text-decoration:none
+    }
+
+    .logo span{color:var(--accent)}
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:1.2rem;
+      flex-wrap:wrap
+    }
+
+    .nav-links a{
+      font-size:.82rem;
+      color:var(--muted);
+      text-decoration:none
+    }
+
+    .nav-links a:hover{color:var(--text)}
+
+    .page-wrap{
+      max-width:900px;
+      margin:0 auto;
+      padding:4rem 2rem
+    }
+
+    .tag{
+      display:inline-block;
+      background:var(--accent-light);
+      color:var(--accent);
+      font-family:var(--mono);
+      font-size:.75rem;
+      padding:4px 12px;
+      border-radius:100px;
+      margin-bottom:1.2rem;
+      border:1px solid #c4dfd0
+    }
+
+    h1{
+      font-size:clamp(2rem,4vw,2.8rem);
+      font-weight:700;
+      letter-spacing:-1.5px;
+      margin-bottom:1rem;
+      line-height:1.1
+    }
+
+    h1 em{
+      font-style:normal;
+      color:var(--accent)
+    }
+
+    .lead{
+      color:var(--muted);
+      margin-bottom:2rem;
+      font-size:.96rem;
+      max-width:760px
+    }
+
+    .section-title{
+      font-size:.72rem;
+      font-family:var(--mono);
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      margin-bottom:1rem
+    }
+
+    .contact-options{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+      gap:1rem;
+      margin-bottom:2rem
+    }
+
+    .contact-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:1.2rem
+    }
+
+    .contact-icon{
+      font-size:1.7rem;
+      margin-bottom:.55rem
+    }
+
+    .contact-title{
+      font-weight:700;
+      font-size:.92rem;
+      margin-bottom:.3rem
+    }
+
+    .contact-text{
+      font-size:.82rem;
+      color:var(--muted)
+    }
+
+    .contact-layout{
+      display:grid;
+      grid-template-columns:1.3fr .9fr;
+      gap:1.2rem;
+      align-items:start
+    }
+
+    .card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:2rem
+    }
+
+    .field{
+      margin-bottom:1.2rem
+    }
+
+    .field label{
+      display:block;
+      font-size:.72rem;
+      font-family:var(--mono);
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:.5rem
+    }
+
+    .field input,
+    .field textarea,
+    .field select{
+      width:100%;
+      padding:.9rem 1rem;
+      border:1.5px solid var(--border);
+      border-radius:12px;
+      font-family:var(--sans);
+      font-size:.92rem;
+      background:var(--bg);
+      color:var(--text);
+      outline:none;
+      transition:border-color .2s;
+      resize:vertical
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus{
+      border-color:var(--accent);
+      background:#fff
+    }
+
+    .field textarea{min-height:150px}
+
+    .submit-btn{
+      width:100%;
+      padding:1rem;
+      background:var(--text);
+      color:#fff;
+      border:none;
+      border-radius:12px;
+      font-family:var(--sans);
+      font-size:.95rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:all .2s
+    }
+
+    .submit-btn:hover{background:var(--accent)}
+
+    .success-msg{
+      display:none;
+      background:var(--accent-light);
+      border:1px solid #c4dfd0;
+      border-radius:12px;
+      padding:1rem 1.2rem;
+      color:var(--accent);
+      font-family:var(--mono);
+      font-size:.85rem;
+      margin-top:1rem;
+      text-align:center
+    }
+
+    .contact-side h2{
+      font-size:1.05rem;
+      margin-bottom:.7rem;
+      letter-spacing:-.4px
+    }
+
+    .contact-side p{
+      color:var(--muted);
+      font-size:.88rem;
+      margin-bottom:1rem
+    }
+
+    .mini-list{
+      display:grid;
+      gap:.8rem;
+      margin-top:1rem
+    }
+
+    .mini-item{
+      background:var(--bg);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:.95rem 1rem
+    }
+
+    .mini-item strong{
+      display:block;
+      font-size:.85rem;
+      margin-bottom:.2rem
+    }
+
+    .mini-item span{
+      color:var(--muted);
+      font-size:.8rem
+    }
+
+    .community-grid{
+      display:grid;
+      gap:1rem;
+      margin-top:1rem
+    }
+
+    .community-card{
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      padding:1.1rem 1.2rem;
+      border-radius:14px;
+      text-decoration:none;
+      transition:all .2s;
+      border:1.5px solid transparent
+    }
+
+    .community-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 4px 16px rgba(0,0,0,.08)
+    }
+
+    .telegram{
+      background:#e8f4fd;
+      border-color:#b3d9f5;
+      color:#0088cc
+    }
+
+    .telegram:hover{
+      background:#0088cc;
+      color:#fff;
+      border-color:#0088cc
+    }
+
+    .linkedin{
+      background:#e8f0fb;
+      border-color:#b3c8f0;
+      color:#0077b5
+    }
+
+    .linkedin:hover{
+      background:#0077b5;
+      color:#fff;
+      border-color:#0077b5
+    }
+
+    .community-icon{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:rgba(255,255,255,.65);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0
+    }
+
+    .community-name{
+      font-weight:700;
+      font-size:.9rem
+    }
+
+    .community-handle{
+      font-size:.78rem;
+      opacity:.75;
+      font-family:var(--mono)
+    }
+
+    .community-arrow{
+      margin-left:auto;
+      font-size:1rem;
+      opacity:.55
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      text-align:center;
+      padding:2rem;
+      margin-top:4rem;
+      font-size:.78rem;
+      color:var(--muted);
+      font-family:var(--mono)
+    }
+
+    footer a{
+      color:var(--muted);
+      text-decoration:none
+    }
+
+    footer a:hover{color:var(--text)}
+
+    @media (max-width: 820px){
+      .contact-layout{
+        grid-template-columns:1fr
+      }
+    }
+
+    @media (max-width: 680px){
+      nav{
+        padding:1rem
+      }
+
+      .page-wrap{
+        padding:3rem 1rem
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"ContactPage",
+        "name":"Contact ConvertCCY",
+        "url":"https://convertccy.com/contact.html",
+        "description":"Support, feedback, data issues, and partnership inquiries for ConvertCCY."
+      },
+      {
+        "@type":"Organization",
+        "name":"ConvertCCY",
+        "url":"https://convertccy.com/"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWVB524B"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWVB524B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-<nav>
-  <a class="logo" href="/">convert<span>ccy</span>.com</a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/currencies.html">Currencies</a>
-  </div>
-</nav>
-
-<div class="page-wrap">
-
-  <div class="tag">Contact Us</div>
-  <h1>We'd love to <em>hear</em> from you.</h1>
-  <p>Have a question, found a bug, or want to suggest a feature? Send us a message and we'll get back to you as soon as possible.</p>
-
-  <div class="contact-options">
-    <div class="contact-card">
-      <div class="contact-icon">🐛</div>
-      <div class="contact-title">Bug Report</div>
-      <div class="contact-text">Found something broken? Let us know.</div>
+  <nav>
+    <a class="logo" href="/">convert<span>ccy</span>.com</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/currencies.html">Currencies</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
     </div>
-    <div class="contact-card">
-      <div class="contact-icon">💡</div>
-      <div class="contact-title">Feature Request</div>
-      <div class="contact-text">Have an idea to improve ConvertCCY?</div>
-    </div>
-    <div class="contact-card">
-      <div class="contact-icon">🤝</div>
-      <div class="contact-title">Partnership</div>
-      <div class="contact-text">Interested in working together?</div>
-    </div>
-  </div>
+  </nav>
 
-  <div class="sec-title" style="font-size:.72rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem">Or reach us directly</div>
-  <div class="social-grid">
-    <a class="social-card telegram" href="https://t.me/ConvertCcy" target="_blank" rel="noopener">
-      <div class="social-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+  <div class="page-wrap">
+    <div class="tag">Contact</div>
+    <h1>Get in <em>touch</em> with ConvertCCY.</h1>
+    <p class="lead">
+      Use this page for feedback, corrections, data questions, partnership inquiries, or general support related to ConvertCCY’s currency conversion and reference content.
+    </p>
+
+    <div class="contact-options">
+      <div class="contact-card">
+        <div class="contact-icon">📊</div>
+        <div class="contact-title">Data issue</div>
+        <div class="contact-text">Report suspected inaccuracies, stale values, or pair-page issues.</div>
       </div>
-      <div class="social-info">
-        <div class="social-name">Telegram</div>
-        <div class="social-handle">@ConvertCcy</div>
+      <div class="contact-card">
+        <div class="contact-icon">💡</div>
+        <div class="contact-title">Feedback</div>
+        <div class="contact-text">Suggest improvements to the platform, design, or educational content.</div>
       </div>
-      <div class="social-arrow">→</div>
-    </a>
-    <a class="social-card linkedin" href="https://www.linkedin.com/groups/17510021" target="_blank" rel="noopener">
-      <div class="social-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <div class="contact-card">
+        <div class="contact-icon">🤝</div>
+        <div class="contact-title">Partnership inquiry</div>
+        <div class="contact-text">Reach out for collaboration, publishing, or product-related proposals.</div>
       </div>
-      <div class="social-info">
-        <div class="social-name">LinkedIn Group</div>
-        <div class="social-handle">ConvertCCY Community</div>
+    </div>
+
+    <div class="contact-layout">
+      <div class="card">
+        <div class="section-title">Send a message</div>
+
+        <div class="field">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="John Smith">
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com">
+        </div>
+
+        <div class="field">
+          <label for="subject">Subject</label>
+          <select id="subject">
+            <option>General Inquiry</option>
+            <option>Data Issue</option>
+            <option>Feedback</option>
+            <option>Partnership Inquiry</option>
+            <option>Bug Report</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us how we can help."></textarea>
+        </div>
+
+        <button class="submit-btn" id="submit-btn" type="button" onclick="submitForm()">Send Message</button>
+        <div class="success-msg" id="success-msg">Message sent successfully.</div>
       </div>
-      <div class="social-arrow">→</div>
-    </a>
+
+      <div class="contact-side">
+        <div class="card" style="margin-bottom:1rem">
+          <div class="section-title">Contact Scope</div>
+          <h2>What this page is for</h2>
+          <p>
+            ConvertCCY is a reference-first platform. This contact page is intended for platform-related communication including data feedback, content suggestions, support questions, and professional inquiries.
+          </p>
+
+          <div class="mini-list">
+            <div class="mini-item">
+              <strong>Data & page feedback</strong>
+              <span>Use the form if you notice content, structure, or exchange-rate reference issues.</span>
+            </div>
+            <div class="mini-item">
+              <strong>General support</strong>
+              <span>Questions about the platform, page logic, or reference-rate interpretation are welcome.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Partnerships</strong>
+              <span>Use the form for collaboration and business-related contact.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">Community Channels</div>
+          <h2>Follow community updates</h2>
+          <p>
+            These channels are useful for updates and broader conversation around the project, but the contact form remains the main route for direct inquiries.
+          </p>
+
+          <div class="community-grid">
+            <a class="community-card telegram" href="https://t.me/ConvertCcy" target="_blank" rel="noopener noreferrer">
+              <div class="community-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+              </div>
+              <div>
+                <div class="community-name">Telegram</div>
+                <div class="community-handle">@ConvertCcy</div>
+              </div>
+              <div class="community-arrow">→</div>
+            </a>
+
+            <a class="community-card linkedin" href="https://www.linkedin.com/groups/17510021" target="_blank" rel="noopener noreferrer">
+              <div class="community-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </div>
+              <div>
+                <div class="community-name">LinkedIn Group</div>
+                <div class="community-handle">ConvertCCY Community</div>
+              </div>
+              <div class="community-arrow">→</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <div class="field">
-      <label>Your Name</label>
-      <input type="text" id="name" placeholder="John Smith">
-    </div>
-    <div class="field">
-      <label>Email Address</label>
-      <input type="email" id="email" placeholder="you@example.com">
-    </div>
-    <div class="field">
-      <label>Subject</label>
-      <select id="subject">
-        <option>Bug Report</option>
-        <option>Feature Request</option>
-        <option>Partnership Inquiry</option>
-        <option>General Question</option>
-        <option>Other</option>
-      </select>
-    </div>
-    <div class="field">
-      <label>Message</label>
-      <textarea id="message" placeholder="Tell us what's on your mind..."></textarea>
-    </div>
-    <button class="submit-btn" id="submit-btn" onclick="submitForm()">Send Message</button>
-    <div class="success-msg" id="success-msg">✅ Message sent! We'll get back to you within 48 hours.</div>
-  </div>
+  <footer>
+    <p>© 2025 <a href="/">convertccy.com</a> — Currency conversion and exchange-rate reference for informational comparison.</p>
+    <p style="margin-top:.55rem">
+      <a href="/about.html">About</a> &nbsp;·&nbsp;
+      <a href="/currencies.html">Currencies</a> &nbsp;·&nbsp;
+      <a href="/contact.html">Contact</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a>
+    </p>
+  </footer>
 
-</div>
-
-<footer>
-  <p>© 2025 <a href="/">convertccy.com</a> &nbsp;·&nbsp; <a href="/about.html">About</a> &nbsp;·&nbsp; <a href="/contact.html">Contact</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy Policy</a></p>
-</footer>
-
-<script>
-async function submitForm() {
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const subject = document.getElementById('subject').value;
-  const message = document.getElementById('message').value.trim();
-
-  if (!name || !email || !message) {
-    alert('Please fill in all fields.');
-    return;
-  }
-
-  const btn = document.getElementById('submit-btn');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch('https://formspree.io/f/xeelrqzy', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, email, subject, message })
-    });
-
-    if (res.ok) {
-      document.getElementById('success-msg').style.display = 'block';
-      document.getElementById('name').value = '';
-      document.getElementById('email').value = '';
-      document.getElementById('message').value = '';
-      btn.textContent = 'Sent ✅';
-    } else {
-      alert('Something went wrong. Please try again.');
-      btn.textContent = 'Send Message';
-      btn.disabled = false;
+  <script>
+    function safeTrim(id) {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : '';
     }
-  } catch(e) {
-    alert('Network error. Please check your connection.');
-    btn.textContent = 'Send Message';
-    btn.disabled = false;
-  }
-}
-</script>
+
+    async function submitForm() {
+      const name = safeTrim('name');
+      const email = safeTrim('email');
+      const subject = document.getElementById('subject').value;
+      const message = safeTrim('message');
+
+      if (!name || !email || !message) {
+        alert('Please complete all required fields.');
+        return;
+      }
+
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('https://formspree.io/f/xeelrqzy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ name, email, subject, message })
+        });
+
+        if (res.ok) {
+          document.getElementById('success-msg').style.display = 'block';
+          document.getElementById('name').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('message').value = '';
+          btn.textContent = 'Sent';
+        } else {
+          alert('Something went wrong. Please try again.');
+          btn.textContent = 'Send Message';
+          btn.disabled = false;
+        }
+      } catch (e) {
+        alert('Network error. Please check your connection and try again.');
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+      }
+    }
+  </script>
 </body>
 </html>

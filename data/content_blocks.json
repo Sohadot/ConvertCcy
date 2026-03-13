@@ -1,0 +1,222 @@
+{
+  "meta": {
+    "title": "ConvertCCY Content Blocks",
+    "version": "1.0.0",
+    "description": "Reusable editorial and SEO content blocks for ConvertCCY. Designed for direct use in the page generator across homepage, currency pages, and pair pages.",
+    "site_positioning": "Transparent currency conversion and exchange-rate reference with educational context."
+  },
+  "site_copy": {
+    "brand_name": "ConvertCCY",
+    "tagline": "Currency conversion, done right.",
+    "short_mission": "ConvertCCY exists to make currency value easier to understand across borders, markets, and everyday decisions.",
+    "long_mission": "ConvertCCY is built as a reference-first platform for currency conversion and exchange-rate understanding. It combines practical conversion tools with clear explanatory content so users can compare value across currencies with more confidence and less ambiguity.",
+    "trust_statement": "ConvertCCY focuses on reference exchange rates for informational comparison. Banks, cards, and transfer services may offer different customer rates after spreads or service charges.",
+    "editorial_tone": [
+      "clear",
+      "calm",
+      "precise",
+      "reference-first",
+      "non-sensational"
+    ]
+  },
+  "homepage_blocks": {
+    "why_convertccy": {
+      "heading": "Why ConvertCCY",
+      "items": [
+        {
+          "title": "Reference-first clarity",
+          "text": "ConvertCCY is designed to help users understand relative currency value with clear reference-rate comparisons."
+        },
+        {
+          "title": "Fast global lookup",
+          "text": "Check widely used and long-tail currency pairs quickly without unnecessary clutter."
+        },
+        {
+          "title": "Built for understanding",
+          "text": "The site combines conversion tools with practical explanations about exchange rates, bank spreads, and market drivers."
+        },
+        {
+          "title": "Structured for trust",
+          "text": "Methodology, educational content, and consistent page architecture make the platform easier to interpret and cite."
+        }
+      ]
+    },
+    "how_exchange_rates_work": {
+      "heading": "How exchange rates work",
+      "paragraphs": [
+        "An exchange rate shows how much one currency is worth in terms of another. These values change as markets respond to inflation, interest rates, trade flows, growth expectations, and geopolitical developments.",
+        "The rate shown on ConvertCCY is intended as a reference point for comparison. It can help users estimate relative currency value before dealing with bank, card, or transfer-provider pricing."
+      ]
+    },
+    "trust_block": {
+      "heading": "Reference, not markup",
+      "text": "ConvertCCY is built to highlight the market relationship between currencies as clearly as possible. Customer-facing exchange rates can differ because financial institutions often apply spread, margin, or service fees."
+    }
+  },
+  "pair_page_templates": {
+    "intro_templates": [
+      "The {FROM_NAME} ({FROM_CODE}) to {TO_NAME} ({TO_CODE}) exchange rate helps show how one currency is valued against another in real-world financial terms.",
+      "Tracking the {FROM_CODE}/{TO_CODE} exchange rate can help users compare relative currency value across markets, borders, and payment scenarios.",
+      "The {FROM_CODE} to {TO_CODE} conversion rate reflects changing market expectations around inflation, monetary policy, trade conditions, and investor sentiment.",
+      "The {FROM_CODE}/{TO_CODE} pair is useful for understanding how {FROM_NAME} compares with {TO_NAME} as market conditions evolve."
+    ],
+    "from_currency_templates": [
+      "{FROM_NAME} is used as a monetary reference in its own economic context and can be shaped by domestic policy, inflation, growth expectations, and capital flows.",
+      "{FROM_NAME} plays a distinct role in pricing, savings, trade, or domestic transactions depending on the market where it is primarily used.",
+      "The value of {FROM_NAME} can move over time as investors and institutions respond to interest rates, inflation data, and broader macroeconomic developments."
+    ],
+    "to_currency_templates": [
+      "{TO_NAME} reflects its own monetary environment and may respond differently to central-bank decisions, trade conditions, and regional market pressures.",
+      "The relative value of {TO_NAME} can change as markets digest policy direction, growth conditions, and external demand.",
+      "{TO_NAME} is part of a broader pricing and economic system that shapes how it compares with other currencies over time."
+    ],
+    "relationship_templates": [
+      "Together, {FROM_CODE} and {TO_CODE} provide a useful reference for pricing, travel, transfers, cross-border comparisons, and broader market interpretation.",
+      "As a currency pair, {FROM_CODE}/{TO_CODE} helps illustrate how two different monetary systems are priced against each other in changing market conditions.",
+      "This pair can be useful both for practical conversion needs and for understanding the broader relationship between two currencies."
+    ],
+    "driver_intro_templates": [
+      "Several factors can influence this exchange rate over time.",
+      "The value of this pair may shift as markets react to multiple economic and financial signals.",
+      "Like other currency pairs, this rate does not move randomly; it tends to respond to identifiable macro and market forces."
+    ],
+    "mid_market_section": {
+      "heading": "Reference rate vs bank rate",
+      "paragraphs": [
+        "The reference exchange rate is useful because it shows the market relationship between two currencies without adding a customer-specific fee structure.",
+        "Banks, cards, travel desks, and money-transfer providers often apply a spread or markup on top of the market relationship, so the final customer rate can be less favorable."
+      ]
+    },
+    "table_intro_templates": [
+      "The table below gives quick reference conversions based on the latest available rate shown on this page.",
+      "These sample amounts can help users compare value more quickly without entering each amount manually.",
+      "Reference conversion examples are useful for quick budgeting, pricing checks, and general comparison."
+    ]
+  },
+  "currency_page_templates": {
+    "intro_templates": [
+      "{CURRENCY_NAME} ({CURRENCY_CODE}) is part of the global currency system and can be compared with other currencies through reference exchange rates and market pricing.",
+      "{CURRENCY_NAME} is used in monetary and pricing contexts that reflect its own economic environment, policy framework, and market role.",
+      "Understanding {CURRENCY_NAME} can help users interpret exchange rates, regional pricing, and cross-border comparisons more clearly."
+    ],
+    "central_bank_templates": [
+      "{CURRENCY_NAME} is associated with monetary policy decisions and institutional signals that can affect its relative value over time.",
+      "Changes in policy direction, inflation expectations, and market confidence can all influence the path of {CURRENCY_NAME}.",
+      "A currency does not move in isolation; expectations around policy and economic performance help shape how {CURRENCY_NAME} is priced."
+    ]
+  },
+  "educational_blocks": {
+    "exchange_rate_explained": {
+      "heading": "What an exchange rate means",
+      "paragraphs": [
+        "An exchange rate is the price of one currency expressed in another currency. In simple terms, it shows how much of one unit is needed to buy a unit of another.",
+        "Exchange rates can move because financial markets constantly reassess value using information such as inflation, economic growth, trade conditions, interest-rate policy, and risk sentiment."
+      ]
+    },
+    "mid_market_explained": {
+      "heading": "What the mid-market or reference rate means",
+      "paragraphs": [
+        "A reference exchange rate is used as a neutral comparison point between two currencies. It helps users evaluate relative value without immediately folding in card fees, transfer margins, or travel desk spreads.",
+        "This makes a reference rate especially useful for planning, research, budgeting, and checking whether a quoted customer rate appears competitive."
+      ]
+    },
+    "bank_rate_explained": {
+      "heading": "Why bank and provider rates can differ",
+      "paragraphs": [
+        "Retail exchange pricing often includes a margin above the market relationship between two currencies. That difference can appear as a spread, conversion fee, or less favorable quoted rate.",
+        "This is why the rate displayed by a bank, money-transfer service, or travel exchange counter may differ from a neutral reference rate."
+      ]
+    },
+    "market_drivers_explained": {
+      "heading": "What moves currencies",
+      "paragraphs": [
+        "Currencies are influenced by interest rates, inflation, central-bank policy, trade balances, capital flows, and broader investor sentiment.",
+        "Some currencies are also sensitive to commodities, geopolitical events, or safe-haven demand during periods of global uncertainty."
+      ]
+    }
+  },
+  "faq_defaults": [
+    {
+      "q": "How much is 1 {FROM_CODE} in {TO_CODE}?",
+      "a": "This page shows the latest available reference exchange rate for converting {FROM_NAME} to {TO_NAME}."
+    },
+    {
+      "q": "Why does the {FROM_CODE}/{TO_CODE} rate change?",
+      "a": "Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment."
+    },
+    {
+      "q": "Is this the same as a bank rate?",
+      "a": "Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate."
+    },
+    {
+      "q": "What affects the value of {FROM_CODE} against {TO_CODE}?",
+      "a": "This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets."
+    }
+  ],
+  "faq_extras": {
+    "remittance": [
+      {
+        "q": "Why is this pair useful for transfers and remittances?",
+        "a": "Some currency pairs are searched frequently because they are widely used for household transfers, travel, work-related payments, and cross-border support."
+      }
+    ],
+    "major_major": [
+      {
+        "q": "Why is this considered an important currency pair?",
+        "a": "Pairs made up of widely traded currencies often become benchmark references in market commentary, pricing, hedging, and international comparisons."
+      }
+    ],
+    "commodity_sensitive": [
+      {
+        "q": "Can commodity prices affect this pair?",
+        "a": "Yes. Some currencies can be influenced by commodity-linked export revenue, trade conditions, and changes in global demand."
+      }
+    ],
+    "safe_haven_linked": [
+      {
+        "q": "Can market stress affect this pair more sharply?",
+        "a": "Yes. When either side of the pair has safe-haven characteristics, changes in global risk sentiment can play a larger role in price movement."
+      }
+    ]
+  },
+  "trust_pages": {
+    "about": {
+      "title": "About ConvertCCY",
+      "intro": "ConvertCCY is an independent digital platform designed to make currency value easier to understand across borders, markets, and everyday financial decisions.",
+      "paragraphs": [
+        "Currency conversion is often presented only as a number, but the meaning behind that number matters. ConvertCCY is built to provide both a practical reference tool and a growing layer of explanation around exchange rates, relative value, and the forces that shape currency pricing.",
+        "The platform focuses on reference-first comparison. It is intended to help users understand how currencies relate to one another, while also recognizing that banks and payment providers may quote different customer rates.",
+        "Over time, ConvertCCY is intended to grow into a broader reference resource for currency knowledge, market context, and practical exchange-rate understanding."
+      ]
+    },
+    "methodology": {
+      "title": "Methodology",
+      "paragraphs": [
+        "ConvertCCY uses reference-rate logic to present the relative market value between currency pairs for informational comparison.",
+        "Exchange-rate displays on the platform should be treated as reference indicators rather than a guarantee of retail execution pricing.",
+        "Rates shown by banks, card issuers, travel desks, or transfer services can differ due to spread, markup, timing, or service fees."
+      ]
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "paragraphs": [
+        "ConvertCCY provides informational reference content only and does not provide financial, investment, tax, legal, or transfer advice.",
+        "Users should verify actual pricing directly with financial institutions or service providers before making a transaction or relying on a quoted customer rate."
+      ]
+    }
+  },
+  "nav_labels": {
+    "home": "Home",
+    "pairs": "Popular Pairs",
+    "currencies": "Currencies",
+    "guides": "Guides",
+    "about": "About",
+    "methodology": "Methodology",
+    "contact": "Contact",
+    "disclaimer": "Disclaimer"
+  },
+  "footer_copy": {
+    "line_1": "ConvertCCY provides reference exchange-rate content for informational comparison.",
+    "line_2": "Customer pricing from banks, cards, and transfer providers may differ."
+  }
+}
