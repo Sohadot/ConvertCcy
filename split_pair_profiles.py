@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
 
-SOURCE_FILE = Path("data/pair_profiles.json")
-OUTPUT_DIR = Path("data/pair_profiles_parts")
+SOURCE_FILE = Path("pair_profiles.json")
+OUTPUT_DIR = Path("pair_profiles.json")
 TARGET_PARTS = 30
 
 def main():
