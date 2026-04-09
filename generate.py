@@ -27,6 +27,8 @@ from typing import Dict, List, Any, Tuple
 
 BASE_URL = "https://convertccy.com"
 SITE_NAME = "ConvertCCY"
+GTM_ID = "GTM-TWVB524B"
+OG_IMAGE = f"{BASE_URL}/assets/images/og-default.png"
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
@@ -309,6 +311,10 @@ def make_pair_tokens(profile: Dict[str, Any], currencies: Dict[str, Dict[str, An
         "TO_NAME": to_cur.get("name", to_code),
         "FROM_FLAG": from_cur.get("flag", ""),
         "TO_FLAG": to_cur.get("flag", ""),
+        "FROM_DESC": from_cur.get("short_description", ""),
+        "TO_DESC": to_cur.get("short_description", ""),
+        "FROM_COUNTRY": from_cur.get("country", ""),
+        "TO_COUNTRY": to_cur.get("country", ""),
         "PAIR_SLUG": profile["pair_slug"],
     }
 
@@ -479,6 +485,10 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}})(window,document,'script','dataLayer','{GTM_ID}');</script>
+<!-- End Google Tag Manager -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -486,16 +496,19 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
 <meta name="description" content="{esc(description)}">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="{esc(canonical)}">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{esc(brand)}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{esc(canonical)}">
+<meta property="og:image" content="{OG_IMAGE}">
 
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(description)}">
+<meta name="twitter:image" content="{OG_IMAGE}">
 
 <script type="application/ld+json">
 {pair_webpage_jsonld(tokens, faq_items)}
@@ -511,77 +524,17 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-*,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-:root{{--bg:#f7f7f5;--surface:#fff;--border:#e8e8e4;--text:#111110;--muted:#888884;--accent:#1a6b3c;--accent-light:#e8f5ee;--mono:'DM Mono',monospace;--sans:'Sora',sans-serif}}
-body{{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.7}}
-nav{{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}}
-.logo{{font-family:var(--mono);font-size:1.1rem;font-weight:500;color:var(--text);text-decoration:none}}
-.logo span{{color:var(--accent)}}
-.nav-links{{display:flex;gap:1.2rem;flex-wrap:wrap}}
-.nav-links a{{font-size:.82rem;color:var(--muted);text-decoration:none}}
-.nav-links a:hover{{color:var(--text)}}
-.page-wrap{{max-width:860px;margin:0 auto;padding:3rem 2rem}}
-.breadcrumb{{font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-bottom:1.4rem}}
-.breadcrumb a{{color:var(--muted);text-decoration:none}}
-.breadcrumb a:hover{{color:var(--accent)}}
-.pair-hero{{margin-bottom:2rem}}
-.pair-flags{{font-size:2.2rem;margin-bottom:.75rem}}
-.pair-hero h1{{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;letter-spacing:-1.5px;line-height:1.1}}
-.pair-hero h1 em{{font-style:normal;color:var(--accent)}}
-.pair-subtitle{{font-size:.92rem;color:var(--muted);margin-top:.6rem}}
-.rate-banner{{background:var(--text);color:#fff;border-radius:16px;padding:1.4rem 1.7rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}}
-.rate-main{{font-family:var(--mono);font-size:1.9rem;font-weight:500}}
-.rate-sub{{font-size:.78rem;opacity:.7;font-family:var(--mono);margin-top:4px}}
-.rate-badge{{background:var(--accent);color:#fff;font-family:var(--mono);font-size:.72rem;padding:4px 12px;border-radius:100px}}
-.card{{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:1.7rem;margin-bottom:1.5rem;box-shadow:0 2px 20px rgba(0,0,0,.04)}}
-.card-title{{font-size:.72rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem}}
-.conv-row{{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end}}
-.field label{{display:block;font-size:.72rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}}
-.field input{{width:100%;padding:.9rem 1rem;border:1.5px solid var(--border);border-radius:12px;font-family:var(--mono);font-size:1.15rem;font-weight:500;background:var(--bg);color:var(--text);outline:none;transition:border-color .2s}}
-.field input:focus{{border-color:var(--accent);background:#fff}}
-.swap-btn{{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s;color:var(--muted);align-self:center}}
-.swap-btn:hover{{background:var(--accent);color:#fff;border-color:var(--accent);transform:rotate(180deg)}}
-.result-row{{margin-top:1.2rem;background:var(--accent-light);border:1.5px solid #c4dfd0;border-radius:12px;padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}}
-.result-val{{font-family:var(--mono);font-size:1.35rem;font-weight:500;color:var(--accent)}}
-.result-info{{font-size:.78rem;color:var(--muted);font-family:var(--mono)}}
-.quick-grid{{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}}
-.quick-btn{{padding:6px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-family:var(--mono);font-size:.8rem;cursor:pointer;color:var(--muted);transition:all .2s}}
-.quick-btn:hover{{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}}
-.section{{margin-bottom:2rem}}
-.sec-title{{font-size:.72rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1.4px;margin-bottom:.9rem}}
-.sec-h2{{font-size:1.15rem;font-weight:700;letter-spacing:-.4px;margin-bottom:.6rem}}
-.section p{{font-size:.92rem;color:var(--muted);margin-bottom:.95rem}}
-.table-wrap{{overflow-x:auto}}
-table{{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.88rem}}
-thead th{{text-align:left;padding:.6rem 1rem;font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}}
-tbody tr{{border-bottom:1px solid var(--border)}}
-tbody tr:hover{{background:var(--accent-light)}}
-tbody td{{padding:.8rem 1rem}}
-tbody td:last-child{{color:var(--accent);font-weight:500}}
-.faq-item{{border-bottom:1px solid var(--border);padding:1.1rem 0}}
-.faq-q{{font-weight:600;font-size:.94rem;margin-bottom:.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}}
-.faq-q::after{{content:'+';font-family:var(--mono);color:var(--muted);font-size:1.2rem;transition:transform .2s}}
-.faq-item.open .faq-q::after{{transform:rotate(45deg)}}
-.faq-a{{font-size:.88rem;color:var(--muted);display:none}}
-.faq-item.open .faq-a{{display:block}}
-.related-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.75rem}}
-.related-card{{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text);display:flex;justify-content:space-between;align-items:center;transition:all .2s}}
-.related-card:hover{{border-color:var(--accent);transform:translateY(-2px)}}
-.related-card span{{font-family:var(--mono);font-size:.85rem;font-weight:500}}
-.related-card small{{font-family:var(--mono);font-size:.75rem;color:var(--muted)}}
-footer{{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}}
-footer a{{color:var(--muted);text-decoration:none}}
-footer a:hover{{color:var(--text)}}
-@media(max-width:640px){{.conv-row{{grid-template-columns:1fr}}.swap-btn{{width:100%;height:36px;border-radius:10px}}nav{{padding:1rem}}.page-wrap{{padding:2rem 1rem}}}}
-</style>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="/assets/pair.css">
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <nav>
-  <a class="logo" href="/">{esc(brand.lower())}<span>ccy</span>.com</a>
+  <a class="logo" href="/">convert<span>ccy</span>.com</a>
   <div class="nav-links">
     <a href="/">Home</a>
     <a href="/currencies.html">Currencies</a>
@@ -716,10 +669,15 @@ const AMOUNTS = [1,5,10,20,50,100,200,500,1000,5000];
 async function init() {{
   try {{
     const res = await fetch('https://api.exchangerate-api.com/v4/latest/' + FROM);
+    if (!res.ok) throw new Error('API error');
     const data = await res.json();
     rate = data.rates[TO];
+    if (!rate || isNaN(rate)) throw new Error('Rate not found');
   }} catch (e) {{
-    rate = 1;
+    document.getElementById('live-rate').textContent = 'Rate unavailable';
+    document.getElementById('live-rate-num').textContent = '—';
+    document.getElementById('rate-info').textContent = 'Live rate could not be loaded. Please try refreshing.';
+    return;
   }}
 
   document.getElementById('live-rate').textContent = `1 ${{FROM}} = ${{rate.toFixed(4)}} ${{TO}}`;
@@ -934,24 +892,33 @@ def build_framework_page(content: Dict[str, Any]) -> str:
 
 def build_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> str:
     lastmod = iso_today()
-    urls = [
-        f"{BASE_URL}/",
+
+    # (url, priority, changefreq)
+    entries: List[Tuple[str, str, str]] = [
+        (f"{BASE_URL}/", "1.0", "daily"),
     ]
 
     for page in STATIC_CORE_PAGES:
         if file_exists(page) and page != "index.html":
-            urls.append(f"{BASE_URL}/{page}")
+            entries.append((f"{BASE_URL}/{page}", "0.8", "monthly"))
 
     for profile in sorted(pair_profiles.values(), key=lambda p: p["pair_slug"]):
-        urls.append(f'{BASE_URL}/pages/{profile["pair_slug"]}.html')
+        slug = profile["pair_slug"]
+        from_code = profile.get("from_code", "")
+        # higher priority for popular pairs
+        is_popular = from_code in DEFAULT_POPULAR_CODES
+        priority = "0.7" if is_popular else "0.4"
+        entries.append((f"{BASE_URL}/pages/{slug}.html", priority, "daily"))
 
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 
-    for url in urls:
+    for url, priority, changefreq in entries:
         lines.append("  <url>")
         lines.append(f"    <loc>{url}</loc>")
         lines.append(f"    <lastmod>{lastmod}</lastmod>")
+        lines.append(f"    <changefreq>{changefreq}</changefreq>")
+        lines.append(f"    <priority>{priority}</priority>")
         lines.append("  </url>")
 
     lines.append("</urlset>")
