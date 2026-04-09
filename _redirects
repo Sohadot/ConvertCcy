@@ -1,0 +1,4 @@
+# Redirect old-style pair URLs (no /pages/ prefix, no .html extension)
+# e.g. /usd-to-eur  →  /pages/usd-to-eur.html
+# Netlify serves existing static files first, so /about.html etc. are unaffected.
+/:pair  /pages/:pair.html  301
