@@ -965,11 +965,13 @@ def build_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> str:
             entries.append((f"{BASE_URL}/{page}", "0.8", "monthly"))
 
     for profile in sorted(pair_profiles.values(), key=lambda p: p["pair_slug"]):
+        # Exclude noindex (Tier 3) pages from sitemap — they should not be submitted to Google
+        if profile.get("content_tier", "tier_3") == "tier_3":
+            continue
         slug = profile["pair_slug"]
         from_code = profile.get("from_code", "")
-        # higher priority for popular pairs
-        is_popular = from_code in DEFAULT_POPULAR_CODES
-        priority = "0.7" if is_popular else "0.4"
+        tier = profile.get("content_tier", "tier_2")
+        priority = "0.8" if tier == "tier_1" else "0.6"
         entries.append((f"{BASE_URL}/pages/{slug}.html", priority, "daily"))
 
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
