@@ -346,7 +346,7 @@ def build_table_intro(profile: Dict[str, Any], content: Dict[str, Any]) -> str:
     templates = content.get("pair_page_templates", {}).get("table_intro_templates", [])
     return choose_by_hash(templates, profile["pair_key"] + "_tbl", fallback="The table below provides quick sample conversions.")
 
-def build_faq_items(profile: Dict[str, Any], content: Dict[str, Any], tokens: Dict[str, str]) -> List[Dict[str, str]]:
+def build_faq_items(profile: Dict[str, Any], content: Dict[str, Any], tokens: Dict[str, str], max_items: int = 7) -> List[Dict[str, str]]:
     faq_items = []
 
     defaults = content.get("faq_defaults", [])
@@ -365,8 +365,7 @@ def build_faq_items(profile: Dict[str, Any], content: Dict[str, Any], tokens: Di
             if q and a:
                 faq_items.append({"q": q, "a": a})
 
-    # limit to keep pages clean
-    return faq_items[:6]
+    return faq_items[:max_items]
 
 def faq_jsonld(faq_items: List[Dict[str, str]]) -> str:
     entities = []
@@ -442,27 +441,52 @@ def related_pairs_html(from_code: str, to_code: str, all_codes: List[str], limit
 def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], all_codes: List[str]) -> str:
     tokens = make_pair_tokens(profile, currencies)
 
-    brand = content.get("site_copy", {}).get("brand_name", SITE_NAME)
+    brand   = content.get("site_copy", {}).get("brand_name", SITE_NAME)
     tagline = content.get("site_copy", {}).get("tagline", "Currency conversion, done right.")
     trust_statement = content.get("site_copy", {}).get(
         "trust_statement",
         "Reference exchange-rate content for informational comparison."
     )
 
-    intro = build_pair_intro(profile, content, tokens)
-    from_para = build_from_currency_para(profile, content, tokens)
-    to_para = build_to_currency_para(profile, content, tokens)
-    rel_para = build_relationship_para(profile, content, tokens)
+    # ── Tier strategy ──────────────────────────────────────────────────────────
+    content_tier  = profile.get("content_tier", "tier_3")
+    is_tier1      = content_tier == "tier_1"          # 182 major pairs
+    is_tier2      = content_tier == "tier_2"          # 3,552 important pairs
+    is_indexed    = is_tier1 or is_tier2              # Tier 3 → noindex
+    robots_content = "index,follow,max-image-preview:large" if is_indexed else "noindex,follow"
+
+    # FAQ count by tier
+    faq_max = 8 if is_tier1 else (7 if is_tier2 else 5)
+
+    # ── Profile-specific unique content ────────────────────────────────────────
+    pair_summary   = profile.get("summary", "")
+    macro_context  = profile.get("macro_context", "")
+    key_drivers    = profile.get("key_drivers", [])
+    typical_uses   = profile.get("typical_use_cases", [])
+    static_amounts = profile.get("static_amounts", [1, 5, 10, 20, 50, 100, 500, 1000, 5000])
+
+    # ── Fallback template content ───────────────────────────────────────────────
+    intro        = pair_summary if pair_summary else build_pair_intro(profile, content, tokens)
+    from_para    = build_from_currency_para(profile, content, tokens)
+    to_para      = build_to_currency_para(profile, content, tokens)
+    rel_para     = build_relationship_para(profile, content, tokens)
     driver_intro = build_driver_intro(profile, content)
-    table_intro = build_table_intro(profile, content)
+    table_intro  = build_table_intro(profile, content)
 
     educational = content.get("educational_blocks", {})
-    mid_market = content.get("pair_page_templates", {}).get("mid_market_section", {})
-    faq_items = build_faq_items(profile, content, tokens)
+    mid_market  = content.get("pair_page_templates", {}).get("mid_market_section", {})
+    faq_items   = build_faq_items(profile, content, tokens, max_items=faq_max)
 
-    canonical = f'{BASE_URL}/pages/{tokens["PAIR_SLUG"]}.html'
-    title = f'{tokens["FROM_CODE"]} to {tokens["TO_CODE"]} Converter | {brand}'
-    description = f'Convert {tokens["FROM_NAME"]} to {tokens["TO_NAME"]} with a clear reference exchange-rate page, conversion table, FAQ, and currency context.'
+    canonical   = f'{BASE_URL}/pages/{tokens["PAIR_SLUG"]}.html'
+    title       = f'{tokens["FROM_CODE"]} to {tokens["TO_CODE"]} Converter | {brand}'
+
+    # Richer meta description for tier_1/2 using unique summary text
+    if pair_summary and is_indexed:
+        raw_desc = pair_summary[:140] + f" Reference rate, converter, and FAQ."
+    else:
+        raw_desc = f'Convert {tokens["FROM_NAME"]} to {tokens["TO_NAME"]} with a clear reference exchange-rate page, conversion table, FAQ, and currency context.'
+    description = raw_desc
+
     related_html = related_pairs_html(profile["from_code"], profile["to_code"], all_codes)
 
     faq_block_html = ""
@@ -475,12 +499,51 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
         """
 
     exchange_heading = educational.get("exchange_rate_explained", {}).get("heading", "What an exchange rate means")
-    exchange_paras = educational.get("exchange_rate_explained", {}).get("paragraphs", [])
-    market_heading = educational.get("market_drivers_explained", {}).get("heading", "What moves currencies")
-    market_paras = educational.get("market_drivers_explained", {}).get("paragraphs", [])
+    exchange_paras   = educational.get("exchange_rate_explained", {}).get("paragraphs", [])
+    market_heading   = educational.get("market_drivers_explained", {}).get("heading", "What moves currencies")
+    market_paras     = educational.get("market_drivers_explained", {}).get("paragraphs", [])
+    mid_heading      = mid_market.get("heading", "Reference rate vs bank rate")
+    mid_paras        = mid_market.get("paragraphs", [])
 
-    mid_heading = mid_market.get("heading", "Reference rate vs bank rate")
-    mid_paras = mid_market.get("paragraphs", [])
+    # ── Build unique sections for tier_1 / tier_2 ─────────────────────────────
+
+    # Key drivers list (Tier 1 & 2 — includes actual central bank names from data)
+    key_drivers_section = ""
+    if key_drivers and is_indexed:
+        items_html = "".join(f"<li>{esc(d)}</li>" for d in key_drivers)
+        key_drivers_section = f"""
+  <section class="section">
+    <div class="sec-title">Key market drivers</div>
+    <div class="card">
+      <p>{esc(driver_intro)}</p>
+      <ul class="driver-list">{items_html}</ul>
+      {"".join(f"<p>{esc(p)}</p>" for p in market_paras)}
+    </div>
+  </section>"""
+
+    # Macro context paragraph (Tier 1 & 2 — unique per pair region)
+    macro_section = ""
+    if macro_context and is_indexed:
+        macro_section = f'<p class="macro-note">{esc(macro_context)}</p>'
+
+    # Use cases (Tier 1 only — specific list per pair)
+    use_cases_section = ""
+    if typical_uses and is_tier1:
+        items_html = "".join(f"<li>{esc(u)}</li>" for u in typical_uses)
+        use_cases_section = f"""
+  <section class="section">
+    <div class="sec-title">Common use cases</div>
+    <div class="card">
+      <ul class="use-list">{items_html}</ul>
+    </div>
+  </section>"""
+
+    # Quick-amount buttons from profile data
+    quick_buttons_html = "".join(
+        f'<button class="quick-btn" onclick="setAmt({a})">{a:,}</button>'
+        for a in static_amounts[:8]
+    )
+    js_amounts = json.dumps(static_amounts)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -494,7 +557,7 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
 
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="{robots_content}">
 <link rel="canonical" href="{esc(canonical)}">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -581,12 +644,7 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
     </div>
     <div class="quick-grid">
       <button class="quick-btn" onclick="setAmt(1)">1</button>
-      <button class="quick-btn" onclick="setAmt(5)">5</button>
-      <button class="quick-btn" onclick="setAmt(10)">10</button>
-      <button class="quick-btn" onclick="setAmt(50)">50</button>
-      <button class="quick-btn" onclick="setAmt(100)">100</button>
-      <button class="quick-btn" onclick="setAmt(500)">500</button>
-      <button class="quick-btn" onclick="setAmt(1000)">1,000</button>
+      {quick_buttons_html}
     </div>
   </div>
 
@@ -594,10 +652,22 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
     <div class="sec-title">Pair Overview</div>
     <div class="sec-h2">{esc(tokens["FROM_CODE"])} / {esc(tokens["TO_CODE"])} Exchange Rate</div>
     <p>{esc(intro)}</p>
+    {macro_section}
     <p>{esc(from_para)}</p>
     <p>{esc(to_para)}</p>
     <p>{esc(rel_para)}</p>
   </section>
+
+  {use_cases_section}
+
+  {key_drivers_section if key_drivers_section else f'''
+  <section class="section">
+    <div class="sec-title">{esc(market_heading)}</div>
+    <div class="card">
+      <p>{esc(driver_intro)}</p>
+      {"".join(f"<p>{esc(p)}</p>" for p in market_paras)}
+    </div>
+  </section>'''}
 
   <section class="section">
     <div class="sec-title">{esc(exchange_heading)}</div>
@@ -611,14 +681,6 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
     <div class="card">
       {"".join(f"<p>{esc(p)}</p>" for p in mid_paras)}
       <p>{esc(trust_statement)}</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="sec-title">{esc(market_heading)}</div>
-    <div class="card">
-      <p>{esc(driver_intro)}</p>
-      {"".join(f"<p>{esc(p)}</p>" for p in market_paras)}
     </div>
   </section>
 
@@ -664,7 +726,7 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
 const FROM = '{tokens["FROM_CODE"]}';
 const TO = '{tokens["TO_CODE"]}';
 let rate = null;
-const AMOUNTS = [1,5,10,20,50,100,200,500,1000,5000];
+const AMOUNTS = {js_amounts};
 
 async function init() {{
   try {{

@@ -10,7 +10,7 @@
 
 <title>MAD to SEK Converter | ConvertCCY</title>
 <meta name="description" content="Convert Moroccan Dirham to Swedish Krona with a clear reference exchange-rate page, conversion table, FAQ, and currency context.">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="noindex,follow">
 <link rel="canonical" href="https://convertccy.com/pages/mad-to-sek.html">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -118,14 +118,6 @@
         "@type": "Answer",
         "text": "Enter any amount in the Moroccan Dirham field above and the equivalent Swedish Krona value will update automatically based on the current reference rate. You can also use the quick-select buttons for common amounts."
       }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the best time to exchange MAD to SEK?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "There is no universally optimal time, as exchange rates fluctuate based on market conditions. However, rates tend to be most active during overlapping trading hours between major financial centres. Monitoring the reference rate over time can help you identify favorable windows."
-      }
     }
   ]
 }
@@ -190,22 +182,29 @@
     </div>
     <div class="quick-grid">
       <button class="quick-btn" onclick="setAmt(1)">1</button>
-      <button class="quick-btn" onclick="setAmt(5)">5</button>
-      <button class="quick-btn" onclick="setAmt(10)">10</button>
-      <button class="quick-btn" onclick="setAmt(50)">50</button>
-      <button class="quick-btn" onclick="setAmt(100)">100</button>
-      <button class="quick-btn" onclick="setAmt(500)">500</button>
-      <button class="quick-btn" onclick="setAmt(1000)">1,000</button>
+      <button class="quick-btn" onclick="setAmt(1)">1</button><button class="quick-btn" onclick="setAmt(5)">5</button><button class="quick-btn" onclick="setAmt(10)">10</button><button class="quick-btn" onclick="setAmt(20)">20</button><button class="quick-btn" onclick="setAmt(50)">50</button><button class="quick-btn" onclick="setAmt(100)">100</button><button class="quick-btn" onclick="setAmt(500)">500</button><button class="quick-btn" onclick="setAmt(1000)">1,000</button>
     </div>
   </div>
 
   <section class="section">
     <div class="sec-title">Pair Overview</div>
     <div class="sec-h2">MAD / SEK Exchange Rate</div>
-    <p>The Moroccan Dirham (MAD) to Swedish Krona (SEK) exchange rate is one of the most practical references for understanding how these two currencies compare in global financial markets.</p>
+    <p>The MAD/SEK exchange rate provides a cross-border reference for comparing Moroccan Dirham and Swedish Krona in global financial and pricing contexts.</p>
+    
     <p>Moroccan Dirham is the official currency of its issuing authority and plays a central role in domestic trade, savings, and pricing within its economic zone.</p>
     <p>Swedish Krona operates within its own monetary framework and responds to the policy decisions of its central bank, as well as broader regional and global economic signals.</p>
     <p>Together, MAD and SEK form a useful reference for cross-border pricing, remittances, travel budgeting, and broader currency market interpretation.</p>
+  </section>
+
+  
+
+  
+  <section class="section">
+    <div class="sec-title">What moves currencies</div>
+    <div class="card">
+      <p>Several macroeconomic and market factors can influence how this pair moves over time.</p>
+      <p>Currency values are influenced by interest rate differentials between central banks, inflation data, trade balances, capital flows, and the relative strength of each economy&#x27;s growth outlook.</p><p>Some currencies are also affected by commodity prices, geopolitical risk, or safe-haven demand. During periods of global uncertainty, investors often shift capital into currencies perceived as more stable — which can move exchange rates significantly.</p>
+    </div>
   </section>
 
   <section class="section">
@@ -220,14 +219,6 @@
     <div class="card">
       <p>The reference exchange rate is useful because it shows the underlying market relationship between two currencies without adding a customer-specific fee structure.</p><p>Banks, cards, travel desks, and money-transfer providers often apply a spread or markup on top of the market relationship, so the final customer rate can be less favorable than what you see here.</p>
       <p>ConvertCCY focuses on reference exchange rates for informational comparison. Banks, cards, and transfer services may offer different customer rates after spreads or service charges.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="sec-title">What moves currencies</div>
-    <div class="card">
-      <p>Several macroeconomic and market factors can influence how this pair moves over time.</p>
-      <p>Currency values are influenced by interest rate differentials between central banks, inflation data, trade balances, capital flows, and the relative strength of each economy&#x27;s growth outlook.</p><p>Some currencies are also affected by commodity prices, geopolitical risk, or safe-haven demand. During periods of global uncertainty, investors often shift capital into currencies perceived as more stable — which can move exchange rates significantly.</p>
     </div>
   </section>
 
@@ -278,11 +269,6 @@
           <div class="faq-a">Enter any amount in the Moroccan Dirham field above and the equivalent Swedish Krona value will update automatically based on the current reference rate. You can also use the quick-select buttons for common amounts.</div>
         </div>
         
-        <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the best time to exchange MAD to SEK?</div>
-          <div class="faq-a">There is no universally optimal time, as exchange rates fluctuate based on market conditions. However, rates tend to be most active during overlapping trading hours between major financial centres. Monitoring the reference rate over time can help you identify favorable windows.</div>
-        </div>
-        
     </div>
   </section>
 
@@ -310,7 +296,7 @@
 const FROM = 'MAD';
 const TO = 'SEK';
 let rate = null;
-const AMOUNTS = [1,5,10,20,50,100,200,500,1000,5000];
+const AMOUNTS = [1, 5, 10, 20, 50, 100, 500, 1000, 10000];
 
 async function init() {
   try {

@@ -10,7 +10,7 @@
 
 <title>MVR to PKR Converter | ConvertCCY</title>
 <meta name="description" content="Convert Maldivian Rufiyaa to Pakistani Rupee with a clear reference exchange-rate page, conversion table, FAQ, and currency context.">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="noindex,follow">
 <link rel="canonical" href="https://convertccy.com/pages/mvr-to-pkr.html">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -118,14 +118,6 @@
         "@type": "Answer",
         "text": "Enter any amount in the Maldivian Rufiyaa field above and the equivalent Pakistani Rupee value will update automatically based on the current reference rate. You can also use the quick-select buttons for common amounts."
       }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the best time to exchange MVR to PKR?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "There is no universally optimal time, as exchange rates fluctuate based on market conditions. However, rates tend to be most active during overlapping trading hours between major financial centres. Monitoring the reference rate over time can help you identify favorable windows."
-      }
     }
   ]
 }
@@ -190,22 +182,29 @@
     </div>
     <div class="quick-grid">
       <button class="quick-btn" onclick="setAmt(1)">1</button>
-      <button class="quick-btn" onclick="setAmt(5)">5</button>
-      <button class="quick-btn" onclick="setAmt(10)">10</button>
-      <button class="quick-btn" onclick="setAmt(50)">50</button>
-      <button class="quick-btn" onclick="setAmt(100)">100</button>
-      <button class="quick-btn" onclick="setAmt(500)">500</button>
-      <button class="quick-btn" onclick="setAmt(1000)">1,000</button>
+      <button class="quick-btn" onclick="setAmt(1)">1</button><button class="quick-btn" onclick="setAmt(5)">5</button><button class="quick-btn" onclick="setAmt(10)">10</button><button class="quick-btn" onclick="setAmt(20)">20</button><button class="quick-btn" onclick="setAmt(50)">50</button><button class="quick-btn" onclick="setAmt(100)">100</button><button class="quick-btn" onclick="setAmt(500)">500</button><button class="quick-btn" onclick="setAmt(1000)">1,000</button>
     </div>
   </div>
 
   <section class="section">
     <div class="sec-title">Pair Overview</div>
     <div class="sec-h2">MVR / PKR Exchange Rate</div>
-    <p>Tracking the MVR/PKR exchange rate gives users a clear picture of relative currency value — whether for travel planning, cross-border transfers, or market research.</p>
+    <p>The MVR/PKR exchange rate provides a useful regional comparison between Maldivian Rufiyaa and Pakistani Rupee, especially for pricing, travel, and local market reference.</p>
+    
     <p>Maldivian Rufiyaa can be sensitive to changes in inflation expectations, capital flows, and investor confidence — all of which influence how it is priced against other currencies.</p>
     <p>The relative value of Pakistani Rupee can shift as markets reassess growth prospects, inflation data, and interest rate expectations in its home economy.</p>
     <p>This pair can be valuable for anyone navigating payments, trade, or investment across the two economies that MVR and PKR represent.</p>
+  </section>
+
+  
+
+  
+  <section class="section">
+    <div class="sec-title">What moves currencies</div>
+    <div class="card">
+      <p>The {FROM_CODE}/{TO_CODE} exchange rate does not move in isolation — it tends to reflect underlying shifts in inflation, monetary policy, and trade conditions.</p>
+      <p>Currency values are influenced by interest rate differentials between central banks, inflation data, trade balances, capital flows, and the relative strength of each economy&#x27;s growth outlook.</p><p>Some currencies are also affected by commodity prices, geopolitical risk, or safe-haven demand. During periods of global uncertainty, investors often shift capital into currencies perceived as more stable — which can move exchange rates significantly.</p>
+    </div>
   </section>
 
   <section class="section">
@@ -220,14 +219,6 @@
     <div class="card">
       <p>The reference exchange rate is useful because it shows the underlying market relationship between two currencies without adding a customer-specific fee structure.</p><p>Banks, cards, travel desks, and money-transfer providers often apply a spread or markup on top of the market relationship, so the final customer rate can be less favorable than what you see here.</p>
       <p>ConvertCCY focuses on reference exchange rates for informational comparison. Banks, cards, and transfer services may offer different customer rates after spreads or service charges.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="sec-title">What moves currencies</div>
-    <div class="card">
-      <p>The {FROM_CODE}/{TO_CODE} exchange rate does not move in isolation — it tends to reflect underlying shifts in inflation, monetary policy, and trade conditions.</p>
-      <p>Currency values are influenced by interest rate differentials between central banks, inflation data, trade balances, capital flows, and the relative strength of each economy&#x27;s growth outlook.</p><p>Some currencies are also affected by commodity prices, geopolitical risk, or safe-haven demand. During periods of global uncertainty, investors often shift capital into currencies perceived as more stable — which can move exchange rates significantly.</p>
     </div>
   </section>
 
@@ -278,11 +269,6 @@
           <div class="faq-a">Enter any amount in the Maldivian Rufiyaa field above and the equivalent Pakistani Rupee value will update automatically based on the current reference rate. You can also use the quick-select buttons for common amounts.</div>
         </div>
         
-        <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the best time to exchange MVR to PKR?</div>
-          <div class="faq-a">There is no universally optimal time, as exchange rates fluctuate based on market conditions. However, rates tend to be most active during overlapping trading hours between major financial centres. Monitoring the reference rate over time can help you identify favorable windows.</div>
-        </div>
-        
     </div>
   </section>
 
@@ -310,7 +296,7 @@
 const FROM = 'MVR';
 const TO = 'PKR';
 let rate = null;
-const AMOUNTS = [1,5,10,20,50,100,200,500,1000,5000];
+const AMOUNTS = [1, 5, 10, 20, 50, 100, 500, 1000, 10000];
 
 async function init() {
   try {
