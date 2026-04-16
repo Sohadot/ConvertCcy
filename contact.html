@@ -41,6 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -53,6 +54,9 @@
       --muted:#888884;
       --accent:#1a6b3c;
       --accent-light:#e8f5ee;
+      --danger:#a33a3a;
+      --danger-bg:#fff1f1;
+      --danger-border:#f1c4c4;
       --mono:'DM Mono',monospace;
       --sans:'Sora',sans-serif
     }
@@ -222,7 +226,7 @@
       background:var(--bg);
       color:var(--text);
       outline:none;
-      transition:border-color .2s;
+      transition:border-color .2s, background .2s;
       resize:vertical
     }
 
@@ -234,6 +238,10 @@
     }
 
     .field textarea{min-height:150px}
+
+    .turnstile-wrap{
+      margin:1rem 0 1.2rem
+    }
 
     .submit-btn{
       width:100%;
@@ -251,17 +259,34 @@
 
     .submit-btn:hover{background:var(--accent)}
 
-    .success-msg{
+    .submit-btn:disabled{
+      opacity:.78;
+      cursor:not-allowed;
+      background:#2b2b29
+    }
+
+    .form-msg{
       display:none;
-      background:var(--accent-light);
-      border:1px solid #c4dfd0;
       border-radius:12px;
       padding:1rem 1.2rem;
-      color:var(--accent);
       font-family:var(--mono);
       font-size:.85rem;
       margin-top:1rem;
       text-align:center
+    }
+
+    .form-msg.success{
+      display:block;
+      background:var(--accent-light);
+      border:1px solid #c4dfd0;
+      color:var(--accent)
+    }
+
+    .form-msg.error{
+      display:block;
+      background:var(--danger-bg);
+      border:1px solid var(--danger-border);
+      color:var(--danger)
     }
 
     .contact-side h2{
@@ -298,6 +323,17 @@
     .mini-item span{
       color:var(--muted);
       font-size:.8rem
+    }
+
+    .contact-email-link{
+      color:var(--accent);
+      text-decoration:none;
+      font-family:var(--mono);
+      word-break:break-word
+    }
+
+    .contact-email-link:hover{
+      text-decoration:underline
     }
 
     .community-grid{
@@ -374,6 +410,16 @@
       opacity:.55
     }
 
+    .hp-field{
+      position:absolute !important;
+      left:-9999px !important;
+      width:1px !important;
+      height:1px !important;
+      overflow:hidden !important;
+      opacity:0 !important;
+      pointer-events:none !important
+    }
+
     footer{
       border-top:1px solid var(--border);
       text-align:center;
@@ -421,7 +467,8 @@
       {
         "@type":"Organization",
         "name":"ConvertCCY",
-        "url":"https://convertccy.com/"
+        "url":"https://convertccy.com/",
+        "email":"contact@convertccy.com"
       }
     ]
   }
@@ -466,41 +513,59 @@
         <div class="contact-title">Partnership inquiry</div>
         <div class="contact-text">Reach out for collaboration, publishing, or product-related proposals.</div>
       </div>
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-title">Direct email</div>
+        <div class="contact-text">
+          <a href="mailto:contact@convertccy.com" class="contact-email-link">contact@convertccy.com</a>
+        </div>
+      </div>
     </div>
 
     <div class="contact-layout">
       <div class="card">
         <div class="section-title">Send a message</div>
 
-        <div class="field">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" placeholder="John Smith">
-        </div>
+        <form id="contact-form" novalidate>
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
 
-        <div class="field">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="you@example.com">
-        </div>
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Smith" autocomplete="name" maxlength="120" required>
+          </div>
 
-        <div class="field">
-          <label for="subject">Subject</label>
-          <select id="subject">
-            <option>General Inquiry</option>
-            <option>Data Issue</option>
-            <option>Feedback</option>
-            <option>Partnership Inquiry</option>
-            <option>Bug Report</option>
-            <option>Other</option>
-          </select>
-        </div>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" maxlength="160" required>
+          </div>
 
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" placeholder="Tell us how we can help."></textarea>
-        </div>
+          <div class="field">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Data Issue">Data Issue</option>
+              <option value="Feedback">Feedback</option>
+              <option value="Partnership Inquiry">Partnership Inquiry</option>
+              <option value="Bug Report">Bug Report</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-        <button class="submit-btn" id="submit-btn" type="button" onclick="submitForm()">Send Message</button>
-        <div class="success-msg" id="success-msg">Message sent successfully.</div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us how we can help." maxlength="5000" required></textarea>
+          </div>
+
+          <div class="turnstile-wrap">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAC-o0I-uDJpkTQxh" data-theme="light"></div>
+          </div>
+
+          <button class="submit-btn" id="submit-btn" type="submit">Send Message</button>
+          <div class="form-msg" id="form-msg" aria-live="polite"></div>
+        </form>
       </div>
 
       <div class="contact-side">
@@ -523,6 +588,10 @@
             <div class="mini-item">
               <strong>Partnerships</strong>
               <span>Use the form for collaboration and business-related contact.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Direct email</strong>
+              <span><a href="mailto:contact@convertccy.com" class="contact-email-link">contact@convertccy.com</a></span>
             </div>
           </div>
         </div>
@@ -578,20 +647,65 @@
       return el ? el.value.trim() : '';
     }
 
-    async function submitForm() {
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function showFormMessage(message, type) {
+      const box = document.getElementById('form-msg');
+      box.textContent = message;
+      box.className = 'form-msg ' + type;
+    }
+
+    function resetFormMessage() {
+      const box = document.getElementById('form-msg');
+      box.textContent = '';
+      box.className = 'form-msg';
+    }
+
+    async function submitForm(event) {
+      event.preventDefault();
+
       const name = safeTrim('name');
       const email = safeTrim('email');
       const subject = document.getElementById('subject').value;
       const message = safeTrim('message');
+      const website = safeTrim('website');
+      const btn = document.getElementById('submit-btn');
+      const turnstileResponse = document.querySelector('[name="cf-turnstile-response"]')?.value || '';
 
-      if (!name || !email || !message) {
-        alert('Please complete all required fields.');
+      resetFormMessage();
+
+      if (website) {
+        showFormMessage('Message sent successfully.', 'success');
         return;
       }
 
-      const btn = document.getElementById('submit-btn');
+      if (!name || !email || !message) {
+        showFormMessage('Please complete all required fields.', 'error');
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        showFormMessage('Please enter a valid email address.', 'error');
+        return;
+      }
+
+      if (message.length < 10) {
+        showFormMessage('Please provide a more complete message before submitting.', 'error');
+        return;
+      }
+
+      if (!turnstileResponse) {
+        showFormMessage('Please complete the security check before submitting.', 'error');
+        return;
+      }
+
+      if (btn.disabled) return;
+
       btn.textContent = 'Sending...';
       btn.disabled = true;
+      btn.setAttribute('aria-busy', 'true');
 
       try {
         const res = await fetch('https://formspree.io/f/xeelrqzy', {
@@ -600,26 +714,56 @@
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
-          body: JSON.stringify({ name, email, subject, message })
+          body: JSON.stringify({
+            name,
+            email,
+            subject,
+            message,
+            'cf-turnstile-response': turnstileResponse
+          })
         });
 
         if (res.ok) {
-          document.getElementById('success-msg').style.display = 'block';
-          document.getElementById('name').value = '';
-          document.getElementById('email').value = '';
-          document.getElementById('message').value = '';
+          document.getElementById('contact-form').reset();
+          showFormMessage('Message sent successfully.', 'success');
+
+          if (window.turnstile) {
+            turnstile.reset();
+          }
+
           btn.textContent = 'Sent';
+          btn.removeAttribute('aria-busy');
         } else {
-          alert('Something went wrong. Please try again.');
+          let errorMessage = 'Something went wrong. Please try again.';
+          try {
+            const data = await res.json();
+            if (data && data.errors && data.errors.length) {
+              errorMessage = data.errors.map(e => e.message).join(' ');
+            }
+          } catch (_) {}
+
+          showFormMessage(errorMessage, 'error');
           btn.textContent = 'Send Message';
           btn.disabled = false;
+          btn.removeAttribute('aria-busy');
+
+          if (window.turnstile) {
+            turnstile.reset();
+          }
         }
       } catch (e) {
-        alert('Network error. Please check your connection and try again.');
+        showFormMessage('Network error. Please check your connection and try again.', 'error');
         btn.textContent = 'Send Message';
         btn.disabled = false;
+        btn.removeAttribute('aria-busy');
+
+        if (window.turnstile) {
+          turnstile.reset();
+        }
       }
     }
+
+    document.getElementById('contact-form').addEventListener('submit', submitForm);
   </script>
 </body>
 </html>
