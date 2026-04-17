@@ -990,13 +990,24 @@ def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str
         print(f"Skipped {skipped} invalid or incomplete profiles")
     return count
 
+MANUALLY_MANAGED_BUILDERS = [
+    ("methodology.html", build_methodology_page),
+    ("manifesto.html", build_manifesto_page),
+    ("framework.html", build_framework_page),
+]
+
 def generate_support_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any]) -> None:
     write_text(BASE_DIR / "currencies.html", build_currencies_page(currencies, content))
-    write_text(BASE_DIR / "methodology.html", build_methodology_page(content))
     write_text(BASE_DIR / "disclaimer.html", build_disclaimer_page(content))
-    write_text(BASE_DIR / "manifesto.html", build_manifesto_page(content))
-    write_text(BASE_DIR / "framework.html", build_framework_page(content))
-    print("Generated currencies.html, methodology.html, disclaimer.html, manifesto.html, framework.html")
+
+    for name, builder in MANUALLY_MANAGED_BUILDERS:
+        path = BASE_DIR / name
+        if path.exists():
+            print(f"Skipped {name} — manually managed, file exists")
+            continue
+
+        write_text(path, builder(content))
+        print(f"Generated {name} (first time only — now manually managed)")
 
 def generate_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> None:
     write_text(BASE_DIR / "sitemap.xml", build_sitemap(pair_profiles))
