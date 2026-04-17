@@ -1,37 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The ConvertCCY Manifesto | ConvertCCY</title>
-<meta name="description" content="The philosophy behind ConvertCCY’s reference-first approach.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://convertccy.com/manifesto.html">
-<style>
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f7f7f5;color:#111;line-height:1.7;margin:0}
-.container{max-width:900px;margin:auto;padding:70px 20px}
-nav{border-bottom:1px solid #e8e8e4;padding:18px 20px;background:#fff}
-h1{font-size:40px;margin-bottom:18px}
-h2{margin-top:40px;font-size:24px}
-p{margin:16px 0;color:#444}
-footer{border-top:1px solid #e8e8e4;padding:30px;text-align:center;margin-top:60px;color:#777;font-size:14px}
-a{color:#1a6b3c;text-decoration:none}
-</style>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2HS37BH07J');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Manifesto – Why ConvertCCY Exists</title>
+  <meta name="description" content="Read the founding manifesto of ConvertCCY: why the platform exists, what reference-first means, and how it approaches currency conversion as a clarity-first public utility rather than a retail sales interface.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://convertccy.com/manifesto.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ConvertCCY">
+  <meta property="og:title" content="ConvertCCY Manifesto">
+  <meta property="og:description" content="Why ConvertCCY exists and what a reference-first currency platform is meant to do.">
+  <meta property="og:url" content="https://convertccy.com/manifesto.html">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ConvertCCY Manifesto">
+  <meta name="twitter:description" content="The founding logic and reference-first position behind ConvertCCY.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root{
+      --bg:#f7f7f5;
+      --surface:#fff;
+      --border:#e8e8e4;
+      --text:#111110;
+      --muted:#888884;
+      --accent:#1a6b3c;
+      --accent-light:#e8f5ee;
+      --mono:'DM Mono',monospace;
+      --sans:'Sora',sans-serif
+    }
+
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:var(--sans);
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.75
+    }
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(247,247,245,.9);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      padding:0 2rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:58px;
+      gap:1rem;
+      flex-wrap:wrap
+    }
+
+    .logo{
+      font-family:var(--mono);
+      font-size:1.1rem;
+      font-weight:500;
+      color:var(--text);
+      text-decoration:none
+    }
+
+    .logo span{color:var(--accent)}
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:1.2rem;
+      flex-wrap:wrap
+    }
+
+    .nav-links a{
+      font-size:.82rem;
+      color:var(--muted);
+      text-decoration:none
+    }
+
+    .nav-links a:hover{color:var(--text)}
+
+    .page-wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:4rem 2rem
+    }
+
+    .hero{
+      margin-bottom:2.4rem
+    }
+
+    .tag{
+      display:inline-block;
+      background:var(--accent-light);
+      color:var(--accent);
+      font-family:var(--mono);
+      font-size:.75rem;
+      padding:4px 12px;
+      border-radius:100px;
+      margin-bottom:1.2rem;
+      border:1px solid #c4dfd0
+    }
+
+    h1{
+      font-size:clamp(2rem,4vw,3rem);
+      font-weight:700;
+      letter-spacing:-1.6px;
+      margin-bottom:1rem;
+      line-height:1.08
+    }
+
+    h1 em{
+      font-style:normal;
+      color:var(--accent)
+    }
+
+    .lead{
+      color:var(--muted);
+      font-size:1rem;
+      max-width:820px
+    }
+
+    .section{
+      margin-top:2.2rem
+    }
+
+    .section-title{
+      font-size:.72rem;
+      font-family:var(--mono);
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      margin-bottom:.9rem
+    }
+
+    .section h2{
+      font-size:1.4rem;
+      line-height:1.2;
+      letter-spacing:-.5px;
+      margin-bottom:.8rem
+    }
+
+    .section p{
+      color:#2a2a28;
+      font-size:.95rem;
+      margin-bottom:1rem
+    }
+
+    .card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:1.4rem 1.5rem
+    }
+
+    .note{
+      background:var(--accent-light);
+      border:1px solid #c4dfd0;
+      border-radius:14px;
+      padding:1rem 1.15rem;
+      color:var(--accent);
+      font-size:.88rem
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1rem;
+      margin-top:1rem
+    }
+
+    .info-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:1.15rem 1.2rem
+    }
+
+    .info-card h3{
+      font-size:.95rem;
+      margin-bottom:.45rem
+    }
+
+    .info-card p{
+      color:var(--muted);
+      font-size:.84rem;
+      margin:0
+    }
+
+    .list{
+      display:grid;
+      gap:.85rem;
+      margin-top:1rem
+    }
+
+    .list-item{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:1rem 1.1rem
+    }
+
+    .list-item strong{
+      display:block;
+      font-size:.9rem;
+      margin-bottom:.25rem
+    }
+
+    .list-item span{
+      color:var(--muted);
+      font-size:.84rem
+    }
+
+    .quote{
+      font-size:1.08rem;
+      line-height:1.7;
+      color:#1d1d1b
+    }
+
+    .quote em{
+      color:var(--accent);
+      font-style:normal
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      text-align:center;
+      padding:2rem;
+      margin-top:4rem;
+      font-size:.78rem;
+      color:var(--muted);
+      font-family:var(--mono)
+    }
+
+    footer a{
+      color:var(--muted);
+      text-decoration:none
+    }
+
+    footer a:hover{color:var(--text)}
+
+    @media (max-width: 820px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 680px){
+      nav{padding:1rem}
+      .page-wrap{padding:3rem 1rem}
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"WebPage",
+        "name":"ConvertCCY Manifesto",
+        "url":"https://convertccy.com/manifesto.html",
+        "description":"The founding logic and reference-first position behind ConvertCCY."
+      },
+      {
+        "@type":"Organization",
+        "name":"ConvertCCY",
+        "url":"https://convertccy.com/"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-<nav><a href="/">ConvertCCY</a></nav>
-<div class="container">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWVB524B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-    <h1>The ConvertCCY Manifesto</h1>
-    <p>ConvertCCY is built as a reference-first platform for currency conversion and exchange-rate understanding. It combines practical conversion tools with clear explanatory content so users can compare value across currencies with more confidence and less ambiguity.</p>
-    <h2>Clarity First</h2>
-    <p>Currency conversion should not be hidden behind clutter, ambiguity, or avoidable friction.</p>
-    <h2>Reference Over Noise</h2>
-    <p>ConvertCCY focuses on reference exchange rates for informational comparison. Banks, cards, and transfer services may offer different customer rates after spreads or service charges.</p>
-    <h2>A Map of the Monetary World</h2>
-    <p>ConvertCCY is structured to become a reference graph of global currency relationships through thousands of connected pair pages.</p>
-    
-</div>
-<footer>© 2026 ConvertCCY</footer>
+  <nav>
+    <a class="logo" href="/">convert<span>ccy</span>.com</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/currencies.html">Currencies</a>
+      <a href="/manifesto.html">Manifesto</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="page-wrap">
+    <section class="hero">
+      <div class="tag">Manifesto</div>
+      <h1>Why ConvertCCY exists, and what it is <em>meant to protect</em>.</h1>
+      <p class="lead">
+        ConvertCCY exists because exchange-rate information is often presented in ways that are either too thin to be trusted or too commercial to be neutral. Between marketing-heavy converter interfaces, provider-specific pricing, and fragmented explanations, users are often shown numbers without being given a clear framework for understanding what those numbers actually mean. ConvertCCY exists to correct that.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Founding Premise</div>
+      <h2>Currency information should be understandable before it is persuasive.</h2>
+      <div class="card">
+        <p>
+          The modern user encounters exchange rates in many places, but not always under conditions of clarity. Travel platforms frame rates through convenience. Banks frame them through retail pricing. Remittance services frame them through competitive comparison. Trading interfaces frame them through speculation. In each case, the number may be useful, but the context is often incomplete.
+        </p>
+        <p>
+          ConvertCCY was founded on a different principle: before a rate can be sold, traded, promoted, or optimized, it should first be made intelligible. Users should be able to understand the underlying relationship between two currencies without being forced immediately into a transaction, a funnel, or a provider-specific narrative.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">The Problem</div>
+      <h2>The exchange-rate layer is often presented without interpretive discipline.</h2>
+      <div class="grid">
+        <div class="card">
+          <p>
+            Many converter tools reduce the subject to a number and a button. They show a result, but not a meaningful framework. Users see a rate, but they do not always know whether they are looking at a market reference, a customer quote, a delayed feed, or a number already shaped by fees, spreads, or platform incentives.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            That confusion matters. Currency information affects travel planning, cross-border spending, remittance expectations, pricing comparison, budgeting, and international decision-making. A platform that presents rates without interpretive structure leaves the user with a number but not with understanding.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">The Position</div>
+      <h2>ConvertCCY is reference-first.</h2>
+      <div class="note">
+        Reference-first means that the platform prioritizes understanding the relationship between currencies before any provider-specific retail layer enters the picture.
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Not a bank quote</h3>
+          <p>The platform does not pretend to be a bank, card issuer, broker, wallet, or remittance desk.</p>
+        </div>
+        <div class="info-card">
+          <h3>Not a retail funnel</h3>
+          <p>The primary purpose is not to push users immediately toward a transaction or affiliate outcome.</p>
+        </div>
+        <div class="info-card">
+          <h3>Not a speculative shell</h3>
+          <p>The site is not built around market theatre, prediction language, or performative urgency.</p>
+        </div>
+        <div class="info-card">
+          <h3>A public reference layer</h3>
+          <p>The platform aims to function as a stable interpretive layer between raw currency data and practical human use.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">What reference-first means in practice</div>
+      <h2>The number is only useful when its status is clear.</h2>
+      <div class="card">
+        <p>
+          ConvertCCY treats an exchange rate as a reference relationship first. That means the platform is built to help the user answer foundational questions: What is the relative value of one unit of currency in another? How should that value be interpreted? Is the number live or fallback? Is it reference-oriented or retail-facing? What kinds of downstream costs may still sit between the user and a real transaction?
+        </p>
+        <p>
+          This is a practical doctrine, not a branding gesture. It affects page structure, page wording, methodological transparency, and the decision not to present platform outputs as though they were fully executable financial commitments. ConvertCCY would rather be explicit about its limits than gain false authority through ambiguity.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">The commitment</div>
+      <h2>Clarity before conversion theater.</h2>
+      <div class="card">
+        <p class="quote">
+          ConvertCCY exists to make exchange-rate relationships <em>legible</em>. It exists so that users can compare before they commit, understand before they execute, and interpret before they trust.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">What the platform will do</div>
+      <h2>Its job is narrower, and therefore more credible.</h2>
+      <div class="list">
+        <div class="list-item">
+          <strong>Provide structured currency comparison</strong>
+          <span>Users should be able to navigate pair relationships through an interpretable architecture rather than through isolated converter outputs.</span>
+        </div>
+        <div class="list-item">
+          <strong>Explain the meaning of displayed values</strong>
+          <span>The platform should say clearly when a number is a reference value, when fallback logic may apply, and when institution-specific pricing may differ.</span>
+        </div>
+        <div class="list-item">
+          <strong>Build educational context around pairs and currencies</strong>
+          <span>Pages should not exist merely as thin SEO surfaces. They should function as reusable reference nodes inside a larger knowledge structure.</span>
+        </div>
+        <div class="list-item">
+          <strong>Remain intelligible to normal users</strong>
+          <span>Clarity is not only a methodological principle. It is also a design standard. The site should remain readable, not merely “feature-rich.”</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">What the platform will not do</div>
+      <h2>There are lines ConvertCCY should not cross.</h2>
+      <div class="list">
+        <div class="list-item">
+          <strong>It will not fake execution authority</strong>
+          <span>Displayed values are not a promise of settlement, transfer, or bank execution.</span>
+        </div>
+        <div class="list-item">
+          <strong>It will not confuse neutrality with emptiness</strong>
+          <span>Being reference-first does not mean being vague. The platform should remain explicit and accountable in how it describes its own limits.</span>
+        </div>
+        <div class="list-item">
+          <strong>It will not become a shell for thin pages</strong>
+          <span>If a page exists, it should contribute to understanding, not merely occupy URL space.</span>
+        </div>
+        <div class="list-item">
+          <strong>It will not use confidence as camouflage</strong>
+          <span>Trust should come from methodological discipline, not from decorative language or simulated institutional tone.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">The architecture behind the idea</div>
+      <h2>ConvertCCY is not just a converter. It is a structured reference system.</h2>
+      <div class="card">
+        <p>
+          The long-term value of ConvertCCY does not come only from a calculator on the homepage. It comes from a layered architecture: homepage orientation, currency hubs, pair pages, methodological pages, explanatory support pages, and a growing body of reference logic that helps users move from a single query toward a broader understanding of how currencies relate.
+        </p>
+        <p>
+          In that sense, the platform is designed to grow in two dimensions at once. It can grow horizontally by covering more currency relationships, and it can grow vertically by deepening the interpretive quality of the pages that already exist. Both dimensions matter. Coverage without structure creates noise. Structure without coverage creates fragility. The platform aims to build both.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Why restraint matters</div>
+      <h2>A trustworthy financial reference layer should resist pretending to be more than it is.</h2>
+      <div class="grid">
+        <div class="card">
+          <p>
+            Many digital products lose trust not because they lack data, but because they overstate what their data entitles them to claim. A rate feed does not automatically justify a trading narrative. A converter UI does not automatically justify institutional authority. ConvertCCY is strongest when it remains honest about what it is actually built to do.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            That restraint is not weakness. It is a form of strength. A platform that knows its role can become more dependable than one that tries to perform every role at once. ConvertCCY is built to become a reliable interpretive layer, not an inflated imitation of a bank, exchange desk, or financial terminal.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">The long horizon</div>
+      <h2>This is intended to become more valuable over time, not merely more visible.</h2>
+      <div class="card">
+        <p>
+          ConvertCCY is not meant to remain a thin tool. Its direction is toward greater methodological clarity, stronger pair-page usefulness, better currency-specific context, more explicit trust signals, and a cleaner distinction between reference logic and transactional claims. In practical terms, that means more useful support pages, stronger architecture, clearer policies, and better continuity when external data sources fail.
+        </p>
+        <p>
+          The aim is not noise, growth theatre, or ornamental complexity. The aim is durable utility. A currency platform becomes valuable when users can return to it not only to get a number, but to understand why the number matters and how much trust to place in it.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Public commitment</div>
+      <h2>The standard ConvertCCY should be held to.</h2>
+      <div class="card">
+        <p>
+          ConvertCCY should be judged by whether it makes exchange-rate information clearer, more disciplined, more interpretable, and more trustworthy than the thin alternatives around it. That is the standard. Not whether it appears louder, more crowded, or more theatrical, but whether it improves the user’s understanding without pretending to settle what only a real executing institution can settle.
+        </p>
+        <p>
+          If the platform drifts away from that standard, it weakens itself. If it deepens that standard, it becomes more than a utility page. It becomes a public reference asset.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 <a href="/">convertccy.com</a> — Currency conversion and exchange-rate reference for informational comparison.</p>
+    <p style="margin-top:.55rem">
+      <a href="/about.html">About</a> &nbsp;·&nbsp;
+      <a href="/currencies.html">Currencies</a> &nbsp;·&nbsp;
+      <a href="/manifesto.html">Manifesto</a> &nbsp;·&nbsp;
+      <a href="/contact.html">Contact</a>
+    </p>
+  </footer>
 </body>
 </html>
