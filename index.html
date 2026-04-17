@@ -795,12 +795,26 @@
     fromSel.value = 'USD';
     toSel.value = 'EUR';
 
+    function debounce(fn, ms) {
+      let t;
+      return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+    }
+
     async function fetchRates() {
+      const el = document.getElementById('last-updated');
       try {
         const res = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
         const data = await res.json();
         rates = data.rates || {};
-        document.getElementById('last-updated').textContent = 'Reference rate loaded';
+        if (data.time_last_update_utc) {
+          const d = new Date(data.time_last_update_utc);
+          const fmt = d.toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) +
+                      ', ' + d.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'}) + ' UTC';
+          el.textContent = 'Rate data: ' + fmt;
+        } else {
+          el.textContent = 'Reference rate loaded';
+        }
+        el.style.color = '';
         convert();
         buildPairs();
       } catch (e) {
@@ -810,7 +824,8 @@
           MXN:17.1, BRL:4.97, SGD:1.34, HKD:7.82, NOK:10.5, SEK:10.4, NZD:1.63,
           ZAR:18.6, TRY:30.5
         };
-        document.getElementById('last-updated').textContent = 'Reference rate cached';
+        el.textContent = '⚠ Using fallback rates — live data unavailable';
+        el.style.color = '#b45309';
         convert();
         buildPairs();
       }
@@ -822,11 +837,18 @@
     }
 
     function convert() {
-      const amount = parseFloat(document.getElementById('amount').value) || 0;
+      const raw = document.getElementById('amount').value;
+      const amount = parseFloat(raw);
       const from = fromSel.value;
       const to = toSel.value;
       const rate = getRate(from, to);
       if (!rate) return;
+
+      if (!raw || isNaN(amount) || amount <= 0) {
+        document.getElementById('result-value').textContent = '—';
+        document.getElementById('result-rate').textContent = `1 ${from} = ${rate.toFixed(4)} ${to}`;
+        return;
+      }
 
       const result = (amount * rate).toLocaleString('en-US', {maximumFractionDigits: 4});
       document.getElementById('result-value').textContent = `${result} ${to}`;
@@ -859,7 +881,7 @@
       });
     }
 
-    document.getElementById('amount').addEventListener('input', convert);
+    document.getElementById('amount').addEventListener('input', debounce(convert, 250));
     fromSel.addEventListener('change', convert);
     toSel.addEventListener('change', convert);
 
