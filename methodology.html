@@ -1,28 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Methodology | ConvertCCY</title>
-<meta name="description" content="Methodology behind ConvertCCY reference-rate content.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://convertccy.com/methodology.html">
-<style>
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f7f7f5;color:#111;line-height:1.7;margin:0}
-.container{max-width:900px;margin:auto;padding:70px 20px}
-nav{border-bottom:1px solid #e8e8e4;padding:18px 20px;background:#fff}
-h1{font-size:40px;margin-bottom:18px}
-h2{margin-top:40px;font-size:24px}
-p{margin:16px 0;color:#444}
-footer{border-top:1px solid #e8e8e4;padding:30px;text-align:center;margin-top:60px;color:#777;font-size:14px}
-a{color:#1a6b3c;text-decoration:none}
-</style>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2HS37BH07J');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Methodology – How ConvertCCY Handles Exchange-Rate Reference Data</title>
+  <meta name="description" content="Learn how ConvertCCY sources, structures, and presents exchange-rate reference data, including update logic, coverage, fallback behavior, and the difference between reference rates and retail pricing.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://convertccy.com/methodology.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ConvertCCY">
+  <meta property="og:title" content="ConvertCCY Methodology">
+  <meta property="og:description" content="A reference-first explanation of how ConvertCCY handles rates, coverage, update logic, and fallback behavior.">
+  <meta property="og:url" content="https://convertccy.com/methodology.html">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ConvertCCY Methodology">
+  <meta name="twitter:description" content="How ConvertCCY sources, structures, and presents exchange-rate reference content.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root{
+      --bg:#f7f7f5;
+      --surface:#fff;
+      --border:#e8e8e4;
+      --text:#111110;
+      --muted:#888884;
+      --accent:#1a6b3c;
+      --accent-light:#e8f5ee;
+      --mono:'DM Mono',monospace;
+      --sans:'Sora',sans-serif
+    }
+
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:var(--sans);
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.75
+    }
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(247,247,245,.9);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      padding:0 2rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:58px;
+      gap:1rem;
+      flex-wrap:wrap
+    }
+
+    .logo{
+      font-family:var(--mono);
+      font-size:1.1rem;
+      font-weight:500;
+      color:var(--text);
+      text-decoration:none
+    }
+
+    .logo span{color:var(--accent)}
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:1.2rem;
+      flex-wrap:wrap
+    }
+
+    .nav-links a{
+      font-size:.82rem;
+      color:var(--muted);
+      text-decoration:none
+    }
+
+    .nav-links a:hover{color:var(--text)}
+
+    .page-wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:4rem 2rem
+    }
+
+    .hero{
+      margin-bottom:2.4rem
+    }
+
+    .tag{
+      display:inline-block;
+      background:var(--accent-light);
+      color:var(--accent);
+      font-family:var(--mono);
+      font-size:.75rem;
+      padding:4px 12px;
+      border-radius:100px;
+      margin-bottom:1.2rem;
+      border:1px solid #c4dfd0
+    }
+
+    h1{
+      font-size:clamp(2rem,4vw,3rem);
+      font-weight:700;
+      letter-spacing:-1.6px;
+      margin-bottom:1rem;
+      line-height:1.08
+    }
+
+    h1 em{
+      font-style:normal;
+      color:var(--accent)
+    }
+
+    .lead{
+      color:var(--muted);
+      font-size:1rem;
+      max-width:820px
+    }
+
+    .section{
+      margin-top:2.2rem
+    }
+
+    .section-title{
+      font-size:.72rem;
+      font-family:var(--mono);
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      margin-bottom:.9rem
+    }
+
+    .section h2{
+      font-size:1.4rem;
+      line-height:1.2;
+      letter-spacing:-.5px;
+      margin-bottom:.8rem
+    }
+
+    .section p{
+      color:#2a2a28;
+      font-size:.94rem;
+      margin-bottom:1rem
+    }
+
+    .card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:1.4rem 1.5rem
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1rem;
+      margin-top:1rem
+    }
+
+    .info-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:1.15rem 1.2rem
+    }
+
+    .info-card h3{
+      font-size:.95rem;
+      margin-bottom:.45rem
+    }
+
+    .info-card p{
+      color:var(--muted);
+      font-size:.84rem;
+      margin:0
+    }
+
+    .list{
+      display:grid;
+      gap:.85rem;
+      margin-top:1rem
+    }
+
+    .list-item{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:1rem 1.1rem
+    }
+
+    .list-item strong{
+      display:block;
+      font-size:.9rem;
+      margin-bottom:.25rem
+    }
+
+    .list-item span{
+      color:var(--muted);
+      font-size:.84rem
+    }
+
+    .note{
+      background:var(--accent-light);
+      border:1px solid #c4dfd0;
+      border-radius:14px;
+      padding:1rem 1.15rem;
+      color:var(--accent);
+      font-size:.88rem
+    }
+
+    .table-wrap{
+      overflow:auto;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:var(--surface)
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:640px
+    }
+
+    th,td{
+      text-align:left;
+      padding:1rem 1rem;
+      border-bottom:1px solid var(--border);
+      vertical-align:top
+    }
+
+    th{
+      font-family:var(--mono);
+      font-size:.76rem;
+      letter-spacing:.8px;
+      text-transform:uppercase;
+      color:var(--muted);
+      background:#fbfbfa
+    }
+
+    td{
+      font-size:.9rem;
+      color:#2a2a28
+    }
+
+    tr:last-child td{border-bottom:none}
+
+    footer{
+      border-top:1px solid var(--border);
+      text-align:center;
+      padding:2rem;
+      margin-top:4rem;
+      font-size:.78rem;
+      color:var(--muted);
+      font-family:var(--mono)
+    }
+
+    footer a{
+      color:var(--muted);
+      text-decoration:none
+    }
+
+    footer a:hover{color:var(--text)}
+
+    @media (max-width: 820px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 680px){
+      nav{padding:1rem}
+      .page-wrap{padding:3rem 1rem}
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"WebPage",
+        "name":"ConvertCCY Methodology",
+        "url":"https://convertccy.com/methodology.html",
+        "description":"How ConvertCCY sources, structures, and presents exchange-rate reference data."
+      },
+      {
+        "@type":"Organization",
+        "name":"ConvertCCY",
+        "url":"https://convertccy.com/"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-<nav><a href="/">ConvertCCY</a></nav>
-<div class="container">
-<h1>Methodology</h1><p>ConvertCCY uses reference-rate logic to present the relative market value between currency pairs for informational comparison.</p><p>Exchange-rate displays on the platform should be treated as reference indicators rather than a guarantee of retail execution pricing.</p><p>Rates shown by banks, card issuers, travel desks, or transfer services can differ due to spread, markup, timing, or service fees.</p>
-</div>
-<footer>© 2026 ConvertCCY</footer>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWVB524B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <nav>
+    <a class="logo" href="/">convert<span>ccy</span>.com</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/currencies.html">Currencies</a>
+      <a href="/methodology.html">Methodology</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="page-wrap">
+    <section class="hero">
+      <div class="tag">Methodology</div>
+      <h1>How ConvertCCY handles <em>exchange-rate reference data</em>.</h1>
+      <p class="lead">
+        ConvertCCY is built as a reference-first currency platform. This page explains how exchange-rate data is sourced, how rates are presented, what the numbers on the site mean, what they do not mean, how fallback behavior works, and how users should interpret the platform’s outputs in practical terms.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Methodological Position</div>
+      <h2>Reference-first, not transaction-first.</h2>
+      <div class="card">
+        <p>
+          ConvertCCY is not designed to function as a retail execution platform. It does not quote bank-specific, card-specific, or transfer-provider-specific customer pricing. Its role is to provide a structured reference view of exchange-rate relationships so users can understand relative currency value more clearly across pairs, markets, and monetary systems.
+        </p>
+        <p>
+          The central methodological principle is simple: a reference rate is useful because it clarifies the market relationship between two currencies before institution-specific spreads, margins, and fees are applied. That makes it useful for comparison, research, orientation, education, and initial decision support, even though it should not be mistaken for a guaranteed execution price.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Core Principles</div>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Clarity over noise</h3>
+          <p>Rates are presented to help users understand currency relationships, not to overwhelm them with platform complexity or marketing language.</p>
+        </div>
+        <div class="info-card">
+          <h3>Reference before retail</h3>
+          <p>Displayed values are reference-oriented and should be interpreted as comparative indicators, not as final customer quotes.</p>
+        </div>
+        <div class="info-card">
+          <h3>Structured interpretation</h3>
+          <p>Pair pages, currency pages, and support pages work together as a knowledge structure rather than as isolated converter outputs.</p>
+        </div>
+        <div class="info-card">
+          <h3>Transparent limits</h3>
+          <p>Methodological limits, fallback logic, and the distinction between live reference data and retail pricing are explicitly stated.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Data Source</div>
+      <h2>Primary reference-rate source.</h2>
+      <div class="card">
+        <p>
+          ConvertCCY currently uses <strong>api.exchangerate-api.com</strong> as its operational reference-rate source for live currency conversion logic. This source is used to retrieve exchange-rate data that powers converter behavior and pair-page calculations across the platform.
+        </p>
+        <p>
+          The site does not claim that the provider’s output is identical to the customer-facing rates of banks, wallets, cards, remittance services, travel desks, or brokerages. The purpose of the data source is to support a neutral reference layer for comparison and interpretation.
+        </p>
+        <div class="note">
+          ConvertCCY presents rates as informational reference values. They are not financial advice, not trading signals, and not a promise of executable retail pricing.
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">What the displayed rate means</div>
+      <h2>Reference rate vs retail rate.</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>What it means</th>
+              <th>How users should interpret it</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Reference Rate</strong></td>
+              <td>The displayed market-oriented relationship between one currency and another.</td>
+              <td>Use it to understand comparative value, estimate relative pricing, and orient decisions before institution-specific costs appear.</td>
+            </tr>
+            <tr>
+              <td><strong>Retail / Provider Rate</strong></td>
+              <td>The price a bank, exchange desk, wallet, card issuer, or transfer provider may actually give a customer.</td>
+              <td>Expect it to differ from the reference rate because of spread, margin, timing, fees, or internal pricing policy.</td>
+            </tr>
+            <tr>
+              <td><strong>Execution Price</strong></td>
+              <td>The final practical rate at which a user actually converts, spends, receives, or settles funds.</td>
+              <td>Verify it directly with the institution executing the transaction before relying on it.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Update Logic</div>
+      <h2>How rate freshness should be understood.</h2>
+      <div class="card">
+        <p>
+          Exchange rates are time-sensitive values. ConvertCCY treats freshness as a practical operational property rather than an abstract technical feature. The platform aims to reflect current reference values through its live rate source whenever that source is available and responsive.
+        </p>
+        <p>
+          Users should understand two important limits. First, reference-rate systems do not remove the effects of timing; a quoted value still represents a moment, not a permanent truth. Second, when live retrieval is interrupted or unavailable, the platform may temporarily rely on fallback logic so that pages remain functional and interpretable rather than collapsing entirely.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Fallback Policy</div>
+      <h2>What happens if the live rate source is unavailable.</h2>
+      <div class="grid">
+        <div class="card">
+          <p>
+            If the primary live source cannot be reached, ConvertCCY may use predefined fallback rate values in order to preserve functional continuity across the converter and certain pair-page experiences. This fallback behavior exists to prevent total failure of the interface when the external source is temporarily unavailable.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Fallback values should be treated more cautiously than live values. Their purpose is continuity, not precision leadership. For that reason, fallback logic should be interpreted as a resilience mechanism, not as a substitute for institution-confirmed pricing when money is actually moving.
+          </p>
+        </div>
+      </div>
+      <div class="list">
+        <div class="list-item">
+          <strong>Live source available</strong>
+          <span>Use the displayed rate as the platform’s current reference view of the pair.</span>
+        </div>
+        <div class="list-item">
+          <strong>Live source unavailable</strong>
+          <span>Fallback logic may preserve page functionality, but the user should interpret the value as less current and more provisional.</span>
+        </div>
+        <div class="list-item">
+          <strong>Practical implication</strong>
+          <span>For planning and comparison, fallback may still be useful. For executed transactions, provider confirmation remains necessary.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Coverage</div>
+      <h2>Currency universe and page structure.</h2>
+      <div class="card">
+        <p>
+          ConvertCCY currently operates with a broad currency reference set covering more than 170 currency entries, including major global currencies, regional units, select legacy or transition-period entries, and certain special reference units where relevant to the broader exchange-rate knowledge graph.
+        </p>
+        <p>
+          Coverage should be interpreted in two layers. The first is operational coverage: whether a currency or pair can be rendered and compared on the platform. The second is editorial coverage: whether the surrounding explanatory content, pair context, and educational framing are sufficiently developed to make the page strong as a reference asset. These two layers are related, but not identical.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">What ConvertCCY is not</div>
+      <h2>Important methodological limits.</h2>
+      <div class="list">
+        <div class="list-item">
+          <strong>Not a bank quote</strong>
+          <span>Displayed values are not your card issuer’s promise, your bank’s spread, or your remittance provider’s retail execution rate.</span>
+        </div>
+        <div class="list-item">
+          <strong>Not investment advice</strong>
+          <span>Currency relationships shown on the site should not be interpreted as portfolio advice, trading instruction, or a directional market call.</span>
+        </div>
+        <div class="list-item">
+          <strong>Not a settlement platform</strong>
+          <span>ConvertCCY does not execute transactions, custody funds, or settle transfers between counterparties.</span>
+        </div>
+        <div class="list-item">
+          <strong>Not an excuse to skip verification</strong>
+          <span>Users should still verify executable pricing with the institution that will actually process the conversion or payment.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Interpretation Standard</div>
+      <h2>How users should use the platform responsibly.</h2>
+      <div class="card">
+        <p>
+          The most responsible way to use ConvertCCY is as a first-reference system. Use it to compare currency relationships, to understand direction and relative scale, to prepare for travel or transfers, to estimate value across borders, and to orient research before consulting the final executing institution.
+        </p>
+        <p>
+          In that role, the platform is intentionally transparent: it tries to be useful without pretending to be omniscient, and it tries to be practical without collapsing into retail-price imitation. Methodologically, that distinction matters. It is the difference between a reference asset and a transactional interface.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Corrections and feedback</div>
+      <h2>Methodology remains accountable.</h2>
+      <div class="card">
+        <p>
+          If users identify suspected data inconsistencies, stale page states, broken pair paths, misleading interpretations, or editorial weaknesses in how a currency relationship is explained, they are encouraged to report them through the contact page or directly via <a href="mailto:contact@convertccy.com" style="color:var(--accent);text-decoration:none;font-family:var(--mono)">contact@convertccy.com</a>.
+        </p>
+        <p>
+          ConvertCCY’s methodology is designed to be stable, but not rigid. Stable means transparent principles and consistent interpretation. Not rigid means that infrastructure, page architecture, and explanatory depth can improve over time without abandoning the platform’s reference-first core.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 <a href="/">convertccy.com</a> — Currency conversion and exchange-rate reference for informational comparison.</p>
+    <p style="margin-top:.55rem">
+      <a href="/about.html">About</a> &nbsp;·&nbsp;
+      <a href="/currencies.html">Currencies</a> &nbsp;·&nbsp;
+      <a href="/methodology.html">Methodology</a> &nbsp;·&nbsp;
+      <a href="/contact.html">Contact</a>
+    </p>
+  </footer>
 </body>
 </html>
