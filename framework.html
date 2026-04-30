@@ -1,634 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TWVB524B');</script>
-  <!-- End Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2HS37BH07J');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Framework — How ConvertCCY Interprets Currency Relationships | ConvertCCY</title>
+<meta name="description" content="The structural framework behind ConvertCCY: how a reference-first currency platform is built, layered, and governed to serve as a sovereign-grade digital asset.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://convertccy.com/framework.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ConvertCCY">
+<meta property="og:title" content="Framework — How ConvertCCY Interprets Currency Relationships">
+<meta property="og:description" content="The structural map of how ConvertCCY interprets currency relationships, monetary systems, and exchange-rate logic.">
+<meta property="og:url" content="https://convertccy.com/framework.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Framework | ConvertCCY">
+<meta name="twitter:description" content="The structural framework behind a reference-first currency infrastructure asset.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f7f5;
+  --surface:#ffffff;
+  --surface-2:#fcfcfa;
+  --border:#e8e8e4;
+  --text:#111110;
+  --muted:#888884;
+  --accent:#1a6b3c;
+  --accent-light:#e8f5ee;
+  --accent-border:#c4dfd0;
+  --accent2:#f0a500;
+  --accent2-light:#fef8e7;
+  --shadow:0 8px 24px rgba(17,17,16,.05);
+  --mono:'DM Mono',monospace;
+  --sans:'Sora',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2HS37BH07J');
-  </script>
+/* ── Nav ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .18s}
+.nav-links a:hover{color:var(--text)}
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* ── Layout ── */
+.page-wrap{max-width:1060px;margin:0 auto;padding:4rem 2rem 6rem}
 
-  <title>Framework – The Structural Logic of ConvertCCY</title>
-  <meta name="description" content="Understand the structural framework behind ConvertCCY: homepage logic, currency hubs, pair pages, reference architecture, and the knowledge structure that turns the platform into a durable currency reference asset.">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://convertccy.com/framework.html">
+/* ── Breadcrumb ── */
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-bottom:2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{opacity:.45}
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ConvertCCY">
-  <meta property="og:title" content="ConvertCCY Framework">
-  <meta property="og:description" content="The structural logic behind ConvertCCY’s homepage, currency hubs, pair pages, and reference architecture.">
-  <meta property="og:url" content="https://convertccy.com/framework.html">
+/* ── Hero ── */
+.hero{margin-bottom:3.5rem}
+.hero-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.74rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-2px;line-height:1.04;margin-bottom:1.1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:1.05rem;color:#2e2e2b;max-width:760px;line-height:1.75;margin-bottom:.8rem}
+.hero-sub{font-size:.95rem;color:var(--muted);max-width:680px;line-height:1.7}
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="ConvertCCY Framework">
-  <meta name="twitter:description" content="How ConvertCCY is structured as a reference-first currency platform.">
+/* ── Divider ── */
+.section-divider{border:none;border-top:1px solid var(--border);margin:3rem 0}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+/* ── Section headers ── */
+.section-kicker{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:.5rem}
+h2{font-size:1.55rem;font-weight:800;letter-spacing:-.04em;margin-bottom:.9rem;line-height:1.15}
+h3{font-size:1.05rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.55rem}
+p{color:#2a2a28;line-height:1.8;margin-bottom:1.1rem}
+p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:600}
 
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* ── Principle sentence ── */
+.principle-sentence{font-size:1.08rem;font-weight:600;color:var(--text);border-right:3px solid var(--accent);padding-right:1.2rem;margin:1.8rem 0;line-height:1.5}
 
-    :root{
-      --bg:#f7f7f5;
-      --surface:#fff;
-      --border:#e8e8e4;
-      --text:#111110;
-      --muted:#888884;
-      --accent:#1a6b3c;
-      --accent-light:#e8f5ee;
-      --mono:'DM Mono',monospace;
-      --sans:'Sora',sans-serif
+/* ── Three-column grid ── */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.5rem 0}
+
+/* ── Cards ── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:1.4rem 1.3rem;box-shadow:var(--shadow)}
+.card-kicker{font-family:var(--mono);font-size:.67rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:.55rem}
+.card p{font-size:.92rem;color:#2f2f2c;line-height:1.72}
+
+/* ── Layer stack ── */
+.layer-stack{display:grid;gap:.75rem;margin:1.5rem 0}
+.layer{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem;display:grid;grid-template-columns:48px 1fr;gap:1rem;align-items:start;box-shadow:var(--shadow);transition:border-color .18s}
+.layer:hover{border-color:var(--accent-border)}
+.layer-num{font-family:var(--mono);font-size:1.1rem;font-weight:500;color:var(--accent);padding-top:.1rem}
+.layer-title{font-size:.98rem;font-weight:700;margin-bottom:.3rem;letter-spacing:-.02em}
+.layer-desc{font-size:.88rem;color:#2f2f2c;line-height:1.68}
+.layer-tag{display:inline-block;font-family:var(--mono);font-size:.65rem;background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-border);border-radius:6px;padding:2px 8px;margin-top:.5rem}
+
+/* ── Doctrine table ── */
+.doctrine-grid{display:grid;gap:.6rem;margin:1.5rem 0}
+.doctrine-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.9rem 1.1rem;box-shadow:var(--shadow)}
+.doctrine-col-label{font-family:var(--mono);font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:.3rem}
+.doctrine-col-no{font-size:.88rem;color:#c0392b}
+.doctrine-col-yes{font-size:.88rem;color:var(--accent);font-weight:500}
+
+/* ── Insight box ── */
+.box-accent{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
+.box-accent .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-accent p{color:#1e4f2f;margin:0;font-size:.93rem;line-height:1.72}
+
+/* ── Warning box ── */
+.box-amber{background:var(--accent2-light);border:1px solid #f5d97a;border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
+.box-amber .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:#a07000;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-amber p{color:#5a4000;margin:0;font-size:.93rem;line-height:1.72}
+
+/* ── Closing nav ── */
+.closing-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+.closing-link{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.2rem;text-decoration:none;color:var(--text);transition:border-color .18s,transform .18s;box-shadow:var(--shadow)}
+.closing-link:hover{border-color:var(--accent-border);transform:translateY(-1px)}
+.cl-label{font-family:var(--mono);font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:.35rem}
+.cl-title{font-size:.95rem;font-weight:700;margin-bottom:.3rem;letter-spacing:-.02em}
+.cl-desc{font-size:.83rem;color:var(--muted);line-height:1.55}
+
+/* ── Footer ── */
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+
+@media(max-width:900px){
+  .grid-3,.closing-nav{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  nav{padding:.8rem 1rem}
+  .page-wrap{padding:2.5rem 1rem 4rem}
+  h1{font-size:2rem}
+  .grid-3,.grid-2,.closing-nav{grid-template-columns:1fr}
+  .doctrine-row{grid-template-columns:1fr}
+  .layer{grid-template-columns:36px 1fr}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebPage",
+      "name":"Framework — How ConvertCCY Interprets Currency Relationships",
+      "url":"https://convertccy.com/framework.html",
+      "description":"The structural map of how ConvertCCY interprets currency relationships, monetary systems, and exchange-rate logic as a reference-first digital asset.",
+      "isPartOf":{"@type":"WebSite","name":"ConvertCCY","url":"https://convertccy.com/"},
+      "publisher":{"@type":"Organization","name":"ConvertCCY","url":"https://convertccy.com/"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://convertccy.com/"},
+        {"@type":"ListItem","position":2,"name":"Framework"}
+      ]
     }
-
-    html{scroll-behavior:smooth}
-
-    body{
-      font-family:var(--sans);
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.75
-    }
-
-    nav{
-      position:sticky;
-      top:0;
-      z-index:100;
-      background:rgba(247,247,245,.9);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid var(--border);
-      padding:0 2rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      min-height:58px;
-      gap:1rem;
-      flex-wrap:wrap
-    }
-
-    .logo{
-      font-family:var(--mono);
-      font-size:1.1rem;
-      font-weight:500;
-      color:var(--text);
-      text-decoration:none
-    }
-
-    .logo span{color:var(--accent)}
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:1.2rem;
-      flex-wrap:wrap
-    }
-
-    .nav-links a{
-      font-size:.82rem;
-      color:var(--muted);
-      text-decoration:none
-    }
-
-    .nav-links a:hover{color:var(--text)}
-
-    .page-wrap{
-      max-width:980px;
-      margin:0 auto;
-      padding:4rem 2rem
-    }
-
-    .hero{
-      margin-bottom:2.4rem
-    }
-
-    .tag{
-      display:inline-block;
-      background:var(--accent-light);
-      color:var(--accent);
-      font-family:var(--mono);
-      font-size:.75rem;
-      padding:4px 12px;
-      border-radius:100px;
-      margin-bottom:1.2rem;
-      border:1px solid #c4dfd0
-    }
-
-    h1{
-      font-size:clamp(2rem,4vw,3rem);
-      font-weight:700;
-      letter-spacing:-1.6px;
-      margin-bottom:1rem;
-      line-height:1.08
-    }
-
-    h1 em{
-      font-style:normal;
-      color:var(--accent)
-    }
-
-    .lead{
-      color:var(--muted);
-      font-size:1rem;
-      max-width:820px
-    }
-
-    .section{
-      margin-top:2.2rem
-    }
-
-    .section-title{
-      font-size:.72rem;
-      font-family:var(--mono);
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:1.5px;
-      margin-bottom:.9rem
-    }
-
-    .section h2{
-      font-size:1.4rem;
-      line-height:1.2;
-      letter-spacing:-.5px;
-      margin-bottom:.8rem
-    }
-
-    .section p{
-      color:#2a2a28;
-      font-size:.95rem;
-      margin-bottom:1rem
-    }
-
-    .card{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:1.4rem 1.5rem
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:1rem
-    }
-
-    .info-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:1rem;
-      margin-top:1rem
-    }
-
-    .info-card{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:1.15rem 1.2rem
-    }
-
-    .info-card h3{
-      font-size:.95rem;
-      margin-bottom:.45rem
-    }
-
-    .info-card p{
-      color:var(--muted);
-      font-size:.84rem;
-      margin:0
-    }
-
-    .list{
-      display:grid;
-      gap:.85rem;
-      margin-top:1rem
-    }
-
-    .list-item{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:1rem 1.1rem
-    }
-
-    .list-item strong{
-      display:block;
-      font-size:.9rem;
-      margin-bottom:.25rem
-    }
-
-    .list-item span{
-      color:var(--muted);
-      font-size:.84rem
-    }
-
-    .note{
-      background:var(--accent-light);
-      border:1px solid #c4dfd0;
-      border-radius:14px;
-      padding:1rem 1.15rem;
-      color:var(--accent);
-      font-size:.88rem
-    }
-
-    .table-wrap{
-      overflow:auto;
-      border:1px solid var(--border);
-      border-radius:14px;
-      background:var(--surface)
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      min-width:680px
-    }
-
-    th,td{
-      text-align:left;
-      padding:1rem;
-      border-bottom:1px solid var(--border);
-      vertical-align:top
-    }
-
-    th{
-      font-family:var(--mono);
-      font-size:.76rem;
-      letter-spacing:.8px;
-      text-transform:uppercase;
-      color:var(--muted);
-      background:#fbfbfa
-    }
-
-    td{
-      font-size:.9rem;
-      color:#2a2a28
-    }
-
-    tr:last-child td{border-bottom:none}
-
-    .quote{
-      font-size:1.06rem;
-      line-height:1.7;
-      color:#1d1d1b
-    }
-
-    .quote em{
-      color:var(--accent);
-      font-style:normal
-    }
-
-    footer{
-      border-top:1px solid var(--border);
-      text-align:center;
-      padding:2rem;
-      margin-top:4rem;
-      font-size:.78rem;
-      color:var(--muted);
-      font-family:var(--mono)
-    }
-
-    footer a{
-      color:var(--muted);
-      text-decoration:none
-    }
-
-    footer a:hover{color:var(--text)}
-
-    @media (max-width: 820px){
-      .grid{grid-template-columns:1fr}
-    }
-
-    @media (max-width: 680px){
-      nav{padding:1rem}
-      .page-wrap{padding:3rem 1rem}
-    }
-  </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"WebPage",
-        "name":"ConvertCCY Framework",
-        "url":"https://convertccy.com/framework.html",
-        "description":"The structural logic behind ConvertCCY’s homepage, currency hubs, pair pages, and reference architecture."
-      },
-      {
-        "@type":"Organization",
-        "name":"ConvertCCY",
-        "url":"https://convertccy.com/"
-      }
-    ]
-  }
-  </script>
+  ]
+}
+</script>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWVB524B"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWVB524B" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <nav>
-    <a class="logo" href="/">convert<span>ccy</span>.com</a>
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/currencies.html">Currencies</a>
-      <a href="/framework.html">Framework</a>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-    </div>
+<nav>
+  <a class="logo" href="/">convert<span>ccy</span>.com</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">Currencies</a>
+    <a href="/articles/">Articles</a>
+    <a href="/framework.html">Framework</a>
+    <a href="/manifesto.html">Manifesto</a>
+    <a href="/about.html">About</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span>/</span>
+    <span>Framework</span>
   </nav>
 
-  <div class="page-wrap">
-    <section class="hero">
-      <div class="tag">Framework</div>
-      <h1>The structural logic behind <em>ConvertCCY</em>.</h1>
-      <p class="lead">
-        ConvertCCY is not meant to be understood as a single converter page. It is structured as a reference-first currency system made up of a homepage, a currency index, pair pages, and support pages that together form a coherent interpretive architecture. This page explains that architecture and the reasoning behind it.
-      </p>
-    </section>
-
-    <section class="section">
-      <div class="section-title">Structural Thesis</div>
-      <h2>ConvertCCY is designed as a knowledge structure, not just as a calculator.</h2>
-      <div class="card">
-        <p>
-          A simple calculator can return a numerical result, but a reference asset must do more than that. It must help the user move from a query to an understanding. For that reason, ConvertCCY is built as a layered structure in which each page type has a specific role inside a broader system rather than existing as an isolated destination.
-        </p>
-        <p>
-          The platform’s architecture combines operational utility with interpretive depth. Utility means that users can perform straightforward conversions quickly. Interpretive depth means that users can also understand the relationship between currencies, navigate related pages, and place a specific conversion result inside a wider informational context.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">Core Navigation Spine</div>
-      <h2>The platform moves from orientation to specificity.</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Layer</th>
-              <th>Primary role</th>
-              <th>User outcome</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Home</strong></td>
-              <td>Initial orientation, converter access, and platform positioning.</td>
-              <td>The user understands what the platform is and begins from a stable reference point.</td>
-            </tr>
-            <tr>
-              <td><strong>Currencies</strong></td>
-              <td>Hub layer for discoverability across the currency universe.</td>
-              <td>The user can navigate beyond a single pair and understand the broader coverage of the site.</td>
-            </tr>
-            <tr>
-              <td><strong>Pair Pages</strong></td>
-              <td>Specific currency relationships presented as dedicated reference pages.</td>
-              <td>The user receives both a practical conversion view and a reusable URL-level reference node.</td>
-            </tr>
-            <tr>
-              <td><strong>Support Pages</strong></td>
-              <td>Methodological, conceptual, and architectural explanation.</td>
-              <td>The platform gains interpretive credibility instead of remaining a thin tool.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">The Main Route</div>
-      <h2>Home → Currency Hubs → Pair Pages.</h2>
-      <div class="note">
-        The structural path of ConvertCCY is intentionally simple: users begin with broad orientation, move into coverage, and then arrive at specific currency relationships.
-      </div>
-      <div class="list">
-        <div class="list-item">
-          <strong>Home</strong>
-          <span>Functions as the public entry point. It introduces the platform, exposes the converter, and defines the reference-first tone.</span>
-        </div>
-        <div class="list-item">
-          <strong>Currencies</strong>
-          <span>Functions as the navigation hub across the covered currency set, preventing the platform from collapsing into a homepage-only experience.</span>
-        </div>
-        <div class="list-item">
-          <strong>Pair Pages</strong>
-          <span>Function as durable, pair-specific assets that transform conversions into structured pages rather than transient interface states.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">Pair Page Logic</div>
-      <h2>Each pair page is both a utility surface and a reference node.</h2>
-      <div class="grid">
-        <div class="card">
-          <p>
-            A pair page such as one currency against another is not merely a convenience page for a single calculation. It exists as a permanent reference address that can be revisited, indexed, linked, and interpreted independently. This matters because stable URLs create durable informational assets, whereas temporary converter outputs do not.
-          </p>
-        </div>
-        <div class="card">
-          <p>
-            The pair-page model allows ConvertCCY to scale horizontally across many currency relationships while still preserving a recognizable structure. Each page inherits the same architectural logic, but each also serves a distinct relationship. This creates both consistency and granularity.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">Why pair pages matter</div>
-      <h2>The architecture turns individual conversions into a navigable graph.</h2>
-      <div class="info-grid">
-        <div class="info-card">
-          <h3>Discoverability</h3>
-          <p>A dedicated page can be revisited, linked, indexed, and referenced more easily than a calculator state on the homepage.</p>
-        </div>
-        <div class="info-card">
-          <h3>Scalability</h3>
-          <p>The platform can expand across many pair relationships without losing structural coherence.</p>
-        </div>
-        <div class="info-card">
-          <h3>Consistency</h3>
-          <p>Every pair page inherits a common pattern, which stabilizes the user experience and the editorial frame.</p>
-        </div>
-        <div class="info-card">
-          <h3>Reference value</h3>
-          <p>Each page becomes a reusable information node inside a broader currency knowledge system.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">Classification Layer</div>
-      <h2>Coverage is broad, but not structureless.</h2>
-      <div class="card">
-        <p>
-          ConvertCCY’s currency universe includes major currencies, widely used regional units, and a broader long-tail set that supports a wide range of pair relationships. But structural quality does not come from coverage alone. It comes from how coverage is organized.
-        </p>
-        <p>
-          In practical terms, currencies on the platform can be understood in overlapping categories: globally dominant units, regionally significant currencies, trade-relevant currencies, and long-tail or less frequently referenced currencies. These categories are not merely descriptive. They help guide how users interpret relative prominence, search relevance, and navigational priority across the site.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">Educational Layer</div>
-      <h2>The platform should explain, not only display.</h2>
-      <div class="card">
-        <p>
-          A strong framework does not stop at rendering rates. It also provides explanatory pages that clarify what the platform is, how it works, what the data means, and where the limits lie. That is why ConvertCCY includes support pages such as methodology, manifesto, and framework. These pages are not decorative. They are structural.
-        </p>
-        <p>
-          Their role is to prevent the platform from becoming a thin collection of mechanically generated URLs. They establish interpretive discipline, clarify the logic of the platform, and increase the trustworthiness of the broader site by explaining its inner model openly.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">Support Page Roles</div>
-      <h2>Each support page has a distinct institutional function.</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Page</th>
-              <th>Function</th>
-              <th>Why it matters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Methodology</strong></td>
-              <td>Explains sourcing, reference rates, fallback logic, and limits.</td>
-              <td>Provides transparency about how displayed values should be interpreted.</td>
-            </tr>
-            <tr>
-              <td><strong>Manifesto</strong></td>
-              <td>Explains why the platform exists and the principle of reference-first clarity.</td>
-              <td>Gives conceptual coherence and distinguishes the site from thin retail-like tools.</td>
-            </tr>
-            <tr>
-              <td><strong>Framework</strong></td>
-              <td>Explains the structural model linking homepage, hubs, pair pages, and reference logic.</td>
-              <td>Turns the site into an intelligible system rather than a loose collection of pages.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">Reference Architecture</div>
-      <h2>The site is built around permanence, not just session behavior.</h2>
-      <div class="card">
-        <p>
-          Temporary interface states disappear. Stable reference pages persist. This is one of the defining principles behind ConvertCCY’s structure. Instead of forcing everything through a single transient form interaction, the site produces persistent destinations that can be revisited, audited, and interpreted later.
-        </p>
-        <p>
-          That permanence matters both for users and for the long-term integrity of the platform. For users, it makes navigation more predictable. For the platform itself, it creates a more durable reference graph, in which valuable information does not vanish when the session ends.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">Operational Discipline</div>
-      <h2>Automation supports the structure, but should not weaken it.</h2>
-      <div class="grid">
-        <div class="card">
-          <p>
-            ConvertCCY uses generation logic for scalable page production where that makes structural sense, especially across repeatable page types such as pair pages and certain support surfaces. That automation is useful because it enables consistent scaling without rewriting the same mechanical structure by hand.
-          </p>
-        </div>
-        <div class="card">
-          <p>
-            But automation has a limit. Pages that define the site’s methodology, conceptual posture, or architectural explanation should not remain thin or generic just because they originated in generation logic. When a page becomes strategically important, it should be allowed to evolve into a manually shaped editorial asset.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">Why this matters strategically</div>
-      <h2>Structure is what turns a utility site into a durable asset.</h2>
-      <div class="card">
-        <p class="quote">
-          Coverage gives a platform breadth. <em>Framework gives it memory, direction, and authority.</em>
-        </p>
-      </div>
-      <div class="card" style="margin-top:1rem">
-        <p>
-          Without framework, a large set of pages can still feel thin. With framework, the same set of pages begins to operate as an integrated reference system. That distinction matters for users, for search visibility, for editorial trust, and for the long-term value of the platform as a digital asset.
-        </p>
-        <p>
-          ConvertCCY’s framework is therefore not an afterthought. It is the logic that makes the rest of the site interpretable. It explains why the homepage exists as an entry point, why the currency hub exists as a navigation layer, why pair pages exist as permanent assets, and why support pages exist as the site’s explanatory backbone.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">The standard</div>
-      <h2>The framework should keep the platform legible as it grows.</h2>
-      <div class="list">
-        <div class="list-item">
-          <strong>New pages should strengthen the structure</strong>
-          <span>Growth should add coherence, not fragmentation.</span>
-        </div>
-        <div class="list-item">
-          <strong>Navigation should remain intelligible</strong>
-          <span>Users should always be able to understand where they are in the system and why the page exists.</span>
-        </div>
-        <div class="list-item">
-          <strong>Reference logic should remain visible</strong>
-          <span>The platform should continue to distinguish clearly between reference value, provider pricing, and executed outcomes.</span>
-        </div>
-        <div class="list-item">
-          <strong>Support pages should remain authoritative</strong>
-          <span>Methodology, manifesto, and framework should function as the explanatory spine of the site, not as filler.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">Closing Position</div>
-      <h2>ConvertCCY is strongest when its structure is explicit.</h2>
-      <div class="card">
-        <p>
-          A currency platform becomes more trustworthy when users can understand not only its outputs, but also its internal logic. This framework exists to make that logic explicit. ConvertCCY is structured to move from broad orientation to specific currency relationships while preserving an intelligible reference model at every layer.
-        </p>
-        <p>
-          That is the framework: a homepage for entry, a hub for coverage, pair pages for durable specificity, and support pages for interpretive authority. Together, these layers make the platform more than a converter. They make it a structured public reference asset.
-        </p>
-      </div>
-    </section>
-  </div>
-
-  <footer>
-    <p>© 2025 <a href="/">convertccy.com</a> — Currency conversion and exchange-rate reference for informational comparison.</p>
-    <p style="margin-top:.55rem">
-      <a href="/about.html">About</a> &nbsp;·&nbsp;
-      <a href="/currencies.html">Currencies</a> &nbsp;·&nbsp;
-      <a href="/framework.html">Framework</a> &nbsp;·&nbsp;
-      <a href="/contact.html">Contact</a>
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-tag">Structural Reference Document</div>
+    <h1>The ConvertCCY<br><em>Framework</em></h1>
+    <p class="hero-lead">
+      ConvertCCY is not built as a currency converter with articles attached. It is built as a reference-first monetary infrastructure asset — a layered system that moves from raw conversion logic through editorial authority and toward regulatory usefulness.
     </p>
-  </footer>
+    <p class="hero-sub">
+      This document defines the structural architecture of that system: what each layer is, what it does, how the layers relate, and what operating principles govern the whole.
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ── SECTION 1: POSITION ── -->
+  <section>
+    <div class="section-kicker">Section 01</div>
+    <h2>What ConvertCCY Is — and What It Is Not</h2>
+    <p>
+      The distinction matters because it governs every decision about what to build, what to publish, and what to refuse. ConvertCCY occupies a specific and defensible position in the financial information stack — one that is stronger precisely because of what it declines to be.
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-kicker">ConvertCCY is not</div>
+        <p>A bank. A broker. A transfer provider. An investment publisher. A trading signal service. A news aggregator. A thin affiliate calculator. A keyword farm dressed as a financial tool.</p>
+      </div>
+      <div class="card">
+        <div class="card-kicker">ConvertCCY is</div>
+        <p>The independent reference layer that helps users understand currency value, exchange relationships, pricing gaps, cross-border monetary constraints, and the structural logic of global payments.</p>
+      </div>
+    </div>
+
+    <p class="principle-sentence">
+      ConvertCCY's strength comes not from competing with transactional financial services, but from occupying the interpretive space they cannot credibly fill.
+    </p>
+
+    <p>
+      This position is structurally durable. Banks must sell. Brokers must execute. Transfer providers must price for margin. ConvertCCY has none of these conflicts. It can be honest about what rates are, where they come from, and why the number a user sees is rarely the number they receive. That honesty is the asset.
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ── SECTION 2: LAYERS ── -->
+  <section>
+    <div class="section-kicker">Section 02</div>
+    <h2>The Five Asset Layers</h2>
+    <p>
+      ConvertCCY is organized as a five-layer stack. Each layer has a distinct function. Each depends on those below it. No layer substitutes for another. Together, they form a system with compounding authority and deepening usefulness.
+    </p>
+
+    <div class="layer-stack">
+
+      <div class="layer">
+        <div class="layer-num">01</div>
+        <div>
+          <div class="layer-title">Pair Infrastructure</div>
+          <p class="layer-desc">The quantitative base. Pair pages, conversion tables, FAQ logic, internal linking, and conversion-intent coverage across 170+ currencies and 28,000+ pairs. This layer is built and maintained by the generation system. It is the operational foundation of the asset.</p>
+          <span class="layer-tag">generator-driven</span>
+        </div>
+      </div>
+
+      <div class="layer">
+        <div class="layer-num">02</div>
+        <div>
+          <div class="layer-title">Authority Pages</div>
+          <p class="layer-desc">The identity and doctrine layer. Manifesto, methodology, framework, disclaimer, and about. These pages define what ConvertCCY means, why it exists, and how it approaches its function. They are editorially protected and never treated as disposable machine output.</p>
+          <span class="layer-tag">manually governed</span>
+        </div>
+      </div>
+
+      <div class="layer">
+        <div class="layer-num">03</div>
+        <div>
+          <div class="layer-title">Editorial Authority</div>
+          <p class="layer-desc">The interpretive and trust-expanding layer. Publication-grade analytical articles on exchange-rate mechanics, monetary infrastructure, payment systems, reserve dynamics, and currency power. This layer transforms ConvertCCY from a conversion tool into a reference platform.</p>
+          <span class="layer-tag">publication-grade</span>
+        </div>
+      </div>
+
+      <div class="layer">
+        <div class="layer-num">04</div>
+        <div>
+          <div class="layer-title">Regulatory Reference</div>
+          <p class="layer-desc">The practical sovereignty layer. Foreign currency rules by country, declaration thresholds, resident and non-resident handling, exchange restrictions, and domestic usage constraints. Structured, disclaimer-backed, and reviewed for accuracy. This layer gives ConvertCCY real-world utility beyond rates.</p>
+          <span class="layer-tag">reference-grade · in development</span>
+        </div>
+      </div>
+
+      <div class="layer">
+        <div class="layer-num">05</div>
+        <div>
+          <div class="layer-title">Insight Layer</div>
+          <p class="layer-desc">The later-stage analytical expansion. Country-level currency insights, corridor analysis, pair relevance ranking, structural monetary changes, and institutional trend summaries. This layer activates only after layers three and four are stable and defensible.</p>
+          <span class="layer-tag">future stage</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="box-accent">
+      <span class="box-label">Architecture Principle</span>
+      <p>Each layer must be complete before the next becomes a priority. Depth within a layer always outweighs breadth across layers. A strong Layer 3 is more valuable than a thin Layer 4 launched too early.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ── SECTION 3: NARRATIVE HIERARCHY ── -->
+  <section>
+    <div class="section-kicker">Section 03</div>
+    <h2>The Narrative Hierarchy</h2>
+    <p>
+      ConvertCCY is governed by a three-layer narrative stack. These narratives are not marketing language. They are the conceptual architecture that gives the asset coherence across all its layers, pages, and decisions.
+    </p>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-kicker">Structural Narrative</div>
+        <h3>ConvertCCY is a reference system for understanding exchange-rate relationships.</h3>
+        <p>This narrative governs pair pages, conversion logic, and operational design. It answers: what does this platform do?</p>
+      </div>
+      <div class="card">
+        <div class="card-kicker">Philosophical Narrative</div>
+        <h3>Clarity comes before persuasion in financial information.</h3>
+        <p>This narrative governs the manifesto, methodology, and editorial standard. It answers: why does this platform exist the way it does?</p>
+      </div>
+      <div class="card">
+        <div class="card-kicker">Symbolic Narrative</div>
+        <h3>ConvertCCY is an interpretive layer inside the monetary web, not a utility sitting on top of it.</h3>
+        <p>This narrative governs long-term positioning and acquisition logic. It answers: what does this platform mean inside the wider information landscape?</p>
+      </div>
+    </div>
+
+    <p>
+      These three narratives must remain distinct. Confusion between them produces incoherent decisions — publishing shallow pages that serve none of the three, or building features that contradict the philosophical layer. The framework exists in part to prevent that confusion.
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ── SECTION 4: DOCTRINE ── -->
+  <section>
+    <div class="section-kicker">Section 04</div>
+    <h2>Development Doctrine</h2>
+    <p>
+      Every addition to ConvertCCY must pass a single governing test before it is built:
+    </p>
+
+    <p class="principle-sentence">
+      Does this multiply strategic value, strengthen reference authority, improve trust, deepen the asset moat, or raise future acquisition logic?
+    </p>
+
+    <p>If the answer is no — or if it is merely "this increases page count" — the addition is not a priority. The following doctrine table makes this concrete.
+    </p>
+
+    <div class="doctrine-grid">
+      <div class="doctrine-row">
+        <div>
+          <div class="doctrine-col-label">Refused</div>
+          <div class="doctrine-col-no">Random content expansion without reference value</div>
+        </div>
+        <div>
+          <div class="doctrine-col-label">Accepted</div>
+          <div class="doctrine-col-yes">Publication-grade articles that deepen interpretive authority</div>
+        </div>
+      </div>
+      <div class="doctrine-row">
+        <div>
+          <div class="doctrine-col-label">Refused</div>
+          <div class="doctrine-col-no">Shallow multilingual rollout before English layer is complete</div>
+        </div>
+        <div>
+          <div class="doctrine-col-label">Accepted</div>
+          <div class="doctrine-col-yes">Language expansion only after authority and rules layers are stable</div>
+        </div>
+      </div>
+      <div class="doctrine-row">
+        <div>
+          <div class="doctrine-col-label">Refused</div>
+          <div class="doctrine-col-no">Thin FX-rule pages without structure, disclaimer, or review date</div>
+        </div>
+        <div>
+          <div class="doctrine-col-label">Accepted</div>
+          <div class="doctrine-col-yes">Regulatory reference pages built to reference-grade standard</div>
+        </div>
+      </div>
+      <div class="doctrine-row">
+        <div>
+          <div class="doctrine-col-label">Refused</div>
+          <div class="doctrine-col-no">Architecture changes that weaken canonical clarity or governance</div>
+        </div>
+        <div>
+          <div class="doctrine-col-label">Accepted</div>
+          <div class="doctrine-col-yes">Modular build architecture that separates concerns without breaking production</div>
+        </div>
+      </div>
+      <div class="doctrine-row">
+        <div>
+          <div class="doctrine-col-label">Refused</div>
+          <div class="doctrine-col-no">Automation that overwrites identity-bearing, manually governed pages</div>
+        </div>
+        <div>
+          <div class="doctrine-col-label">Accepted</div>
+          <div class="doctrine-col-yes">Generator scoped strictly to pair infrastructure; authority pages editorially protected</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-amber">
+      <span class="box-label">Non-Negotiable Rule</span>
+      <p>ConvertCCY must not grow like a website. It must consolidate like an asset. The difference is visible in every decision: an asset compounds defensible value with each addition. A website accumulates pages without compounding authority.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ── SECTION 5: GENERATOR POLICY ── -->
+  <section>
+    <div class="section-kicker">Section 05</div>
+    <h2>Generator Policy and Protected Pages</h2>
+    <p>
+      The pair generator is an infrastructure tool. Its function is to build and maintain the quantitative base of Layer 1. It is not the editorial governor of the whole site and should not be treated as one.
+    </p>
+
+    <p>
+      The following pages are protected from generator overwrite under all circumstances. They are not commodity output. They carry the meaning and identity of the asset.
+    </p>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-kicker">Protected</div>
+        <h3>manifesto.html</h3>
+        <p>The philosophical and symbolic layer. Defines why ConvertCCY exists and what it refuses to become.</p>
+      </div>
+      <div class="card">
+        <div class="card-kicker">Protected</div>
+        <h3>methodology.html</h3>
+        <p>The methodological and trust layer. Defines how rates are treated, how reference logic works, and how the platform earns informational credibility.</p>
+      </div>
+      <div class="card">
+        <div class="card-kicker">Protected</div>
+        <h3>framework.html</h3>
+        <p>This document. The structural architecture of the asset. Governs layering, doctrine, narrative hierarchy, and generator policy.</p>
+      </div>
+    </div>
+
+    <p>
+      The generator's long-term scope should narrow progressively: currencies loading, pair profiles loading, pair page generation, and pair-related sitemap generation. All other responsibilities should migrate to modular, separately governed scripts.
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ── SECTION 6: LANGUAGE POLICY ── -->
+  <section>
+    <div class="section-kicker">Section 06</div>
+    <h2>Language Policy</h2>
+    <p>
+      ConvertCCY's current publishing language is English. This is a strategic decision, not a technical one.
+    </p>
+    <p>
+      The English authority layer must be fully established before any second language is introduced. This means the editorial layer (Layer 3) must be populated, the regulatory reference layer (Layer 4) must be operational, and the build architecture must be mature enough to support localization without structural disorder.
+    </p>
+
+    <div class="box-accent">
+      <span class="box-label">Language Expansion Rule</span>
+      <p>A second language becomes a priority only when: the English reference base is complete, the rules layer is stable, article architecture is modular, and hreflang and localization can be introduced without weakening canonical structure or indexing stability. Until then, English remains the sole public publishing language.</p>
+    </div>
+
+    <p>
+      When language expansion begins, it will follow a directory-based structure with separate sitemaps, hreflang annotations, and generator support — not hand-edited multilingual HTML. The first expansion language will be determined by traffic data and geographic demand at the time of launch.
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ── SECTION 7: ACQUISITION LOGIC ── -->
+  <section>
+    <div class="section-kicker">Section 07</div>
+    <h2>Acquisition Logic</h2>
+    <p>
+      ConvertCCY is being built not for immediate outreach, but for future inevitability. The strategic posture is silent compounding: building visible authority, structural differentiation, and reference credibility before entering any acquisition conversation.
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-kicker">Potential acquirer profiles</div>
+        <p>Fintech platforms seeking authority domains. Financial data providers seeking a consumer-facing reference layer. Cross-border payment companies seeking content and SEO moat. Educational finance platforms seeking a ready-made reference property. Regional financial brands seeking a neutral, scalable currency authority system.</p>
+      </div>
+      <div class="card">
+        <div class="card-kicker">What makes the asset acquirable</div>
+        <p>Search visibility at scale. Reference credibility that earns citation. Structural differentiation from commodity converters. Operational polish at every layer. Narrative coherence across manifesto, methodology, framework, and editorial output. A moat that compounds with each addition.</p>
+      </div>
+    </div>
+
+    <p class="principle-sentence">
+      The asset should be developed to make its acquisition logic increasingly obvious over time — not announced, but evident.
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ── SECTION 8: SUCCESS SIGNALS ── -->
+  <section>
+    <div class="section-kicker">Section 08</div>
+    <h2>Success Signals</h2>
+    <p>The framework is working when the following signals are visible at each stage.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-kicker">Near-term</div>
+        <p>Articles layer populated. CIPS/SWIFT and reference-rate articles live. First 10 rules pages exist. Generator refactor underway. The site reads as a reference system, not a utility shell.</p>
+      </div>
+      <div class="card">
+        <div class="card-kicker">Mid-term</div>
+        <p>Authority pages clearly differentiated. Organic discovery expanding beyond conversion intent. Rule pages and articles earning impressions. Internal linking meaningfully layered. Editorial and operational layers reinforce each other.</p>
+      </div>
+      <div class="card">
+        <div class="card-kicker">Long-term</div>
+        <p>ConvertCCY becomes citeable. The asset earns branded trust. Moat characteristics are visible to any informed observer. The acquisition logic becomes self-evident without requiring explanation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CLOSING NAV ── -->
+  <nav class="closing-nav" aria-label="Related pages">
+    <a class="closing-link" href="/manifesto.html">
+      <div class="cl-label">Related</div>
+      <div class="cl-title">Manifesto</div>
+      <div class="cl-desc">The philosophical and symbolic position behind ConvertCCY's reference-first approach.</div>
+    </a>
+    <a class="closing-link" href="/methodology.html">
+      <div class="cl-label">Related</div>
+      <div class="cl-title">Methodology</div>
+      <div class="cl-desc">How the platform treats rates, reference logic, and interpretive transparency.</div>
+    </a>
+    <a class="closing-link" href="/articles/">
+      <div class="cl-label">Related</div>
+      <div class="cl-title">Articles</div>
+      <div class="cl-desc">The editorial authority layer — reference-grade analysis of monetary systems and exchange-rate logic.</div>
+    </a>
+  </nav>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 <a href="/">convertccy.com</a> — Currency conversion and exchange-rate reference for informational comparison.</p>
+  <p style="margin-top:.55rem">
+    <a href="/about.html">About</a> &nbsp;&middot;&nbsp;
+    <a href="/currencies.html">Currencies</a> &nbsp;&middot;&nbsp;
+    <a href="/articles/">Articles</a> &nbsp;&middot;&nbsp;
+    <a href="/framework.html">Framework</a> &nbsp;&middot;&nbsp;
+    <a href="/manifesto.html">Manifesto</a> &nbsp;&middot;&nbsp;
+    <a href="/contact.html">Contact</a> &nbsp;&middot;&nbsp;
+    <a href="/privacy.html">Privacy Policy</a>
+  </p>
+</footer>
 </body>
 </html>
