@@ -20,5 +20,38 @@
     "read_time": "12 min read",
     "url": "/articles/reference-rate-vs-bank-rate.html",
     "status": "published"
+  },
+  {
+    "slug": "dollar-power-gold-trust-inflation-new-monetary-order",
+    "title": "Dollar Power, Gold Trust, and the Inflation Fracture: Is the World Moving Toward a New Monetary Order?",
+    "description": "A reference-grade analysis of dollar power, gold as a sovereign trust asset, global inflation transmission, and whether the world is moving toward a new monetary order.",
+    "category": "Monetary Order",
+    "date": "2026-04-30",
+    "date_display": "April 30, 2026",
+    "read_time": "16 min read",
+    "url": "/articles/dollar-power-gold-trust-inflation-new-monetary-order.html",
+    "status": "published"
+  },
+  {
+    "slug": "what-actually-moves-exchange-rates",
+    "title": "What Actually Moves Exchange Rates? Interest Rates, Inflation, Trade, and Trust",
+    "description": "A reference-grade explanation of what actually moves exchange rates: monetary policy, inflation, trade structure, capital flows, and the hierarchy of trust that shapes currency value.",
+    "category": "Exchange Rate Fundamentals",
+    "date": "2026-04-30",
+    "date_display": "April 30, 2026",
+    "read_time": "14 min read",
+    "url": "/articles/what-actually-moves-exchange-rates.html",
+    "status": "published"
+  },
+  {
+    "slug": "why-some-currency-pairs-matter-more-than-others",
+    "title": "Why Some Currency Pairs Matter More Than Others",
+    "description": "A reference-grade analysis of why some currency pairs matter more than others — from liquidity and reserve status to trade flows, commodities, policy divergence, and global financial relevance.",
+    "category": "Currency Pair Structure",
+    "date": "2026-04-30",
+    "date_display": "April 30, 2026",
+    "read_time": "13 min read",
+    "url": "/articles/why-some-currency-pairs-matter-more-than-others.html",
+    "status": "published"
   }
 ]
