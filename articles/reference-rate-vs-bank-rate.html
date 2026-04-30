@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2HS37BH07J');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reference Rate vs Bank Rate: Why the Number You See Is Not the Rate You Get | ConvertCCY</title>
+<meta name="description" content="The exchange rate on any screen is rarely what you actually receive. A reference-grade explanation of the gap between interbank rates, reference rates, and customer pricing.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://convertccy.com/articles/reference-rate-vs-bank-rate.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ConvertCCY">
+<meta property="og:title" content="Reference Rate vs Bank Rate: Why the Number You See Is Not the Rate You Get">
+<meta property="og:description" content="The exchange rate on any screen is rarely what you actually receive. A reference-grade explanation of the gap between interbank rates, reference rates, and customer pricing.">
+<meta property="og:url" content="https://convertccy.com/articles/reference-rate-vs-bank-rate.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reference Rate vs Bank Rate | ConvertCCY">
+<meta name="twitter:description" content="Why the exchange rate you see is not the rate you get — and how to read the gap.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f7f5;--surface:#fff;--border:#e8e8e4;
+  --text:#111110;--muted:#888884;
+  --accent:#1a6b3c;--accent-light:#e8f5ee;--accent-border:#c4dfd0;
+  --accent2:#f0a500;--accent2-light:#fef8e7;
+  --mono:'DM Mono',monospace;--sans:'Sora',sans-serif
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.75;font-size:17px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+/* Article layout */
+.article-wrap{max-width:760px;margin:0 auto;padding:3.5rem 2rem 5rem}
+
+/* Breadcrumb */
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-bottom:2rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{opacity:.4}
+
+/* Hero */
+.article-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.72rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-1.2px;line-height:1.12;margin-bottom:1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.article-meta{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:flex;gap:1.5rem;flex-wrap:wrap;padding:1rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:1.5rem 0 2.5rem}
+
+/* Body */
+h2{font-size:1.2rem;font-weight:700;color:var(--text);margin:2.8rem 0 .8rem;letter-spacing:-.02em}
+p{margin-bottom:1.2rem;color:#2a2a28;line-height:1.8}
+strong{color:var(--text);font-weight:600}
+em{font-style:italic}
+
+/* Callout boxes */
+.box-insight{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:14px;padding:1.1rem 1.3rem;margin:2rem 0}
+.box-insight .box-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.4rem;display:block}
+.box-insight p{color:#1f4d2d;margin:0;font-size:.93rem}
+
+.box-warning{background:var(--accent2-light);border:1px solid #f5d97a;border-radius:14px;padding:1.1rem 1.3rem;margin:2rem 0}
+.box-warning .box-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;color:#a07000;text-transform:uppercase;margin-bottom:.4rem;display:block}
+.box-warning p{color:#5a4000;margin:0;font-size:.93rem}
+
+/* Pull quote */
+.pull-quote{border-left:3px solid var(--accent);padding:.4rem 0 .4rem 1.3rem;margin:2.5rem 0}
+.pull-quote p{font-size:1.08rem;font-weight:600;color:var(--text);margin:0;line-height:1.5;letter-spacing:-.01em}
+
+/* Table */
+.table-wrap{overflow-x:auto;margin:2rem 0}
+table{width:100%;border-collapse:collapse;font-size:.87rem;background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+thead tr{background:var(--bg)}
+th{font-family:var(--mono);font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--border);font-weight:500}
+td{padding:.75rem 1rem;border-bottom:1px solid var(--border);color:#2a2a28;vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--bg)}
+td:first-child{font-weight:500;color:var(--text)}
+
+/* Example block */
+.example-block{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.5rem;margin:2rem 0}
+.example-block .ex-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:.8rem;display:block}
+.example-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.example-row:last-child{border-bottom:none;font-weight:600}
+.example-row span:first-child{color:var(--muted);font-family:var(--mono);font-size:.82rem}
+.example-row span:last-child{color:var(--text);font-family:var(--mono)}
+.example-row.total span:last-child{color:var(--accent);font-size:1rem}
+
+/* Related pairs */
+.related-pairs{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.related-label{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.9rem}
+.pairs-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.pair-chip{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.4rem .85rem;font-family:var(--mono);font-size:.8rem;color:var(--text);text-decoration:none;transition:border-color .15s}
+.pair-chip:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Reference note */
+.reference-note{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.3rem;color:var(--muted);font-size:.84rem;margin-top:3rem;line-height:1.6}
+.reference-note a{color:var(--accent);text-decoration:none}
+
+/* Related articles */
+.related-articles{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.related-articles .related-label{margin-bottom:1rem}
+.rel-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;text-decoration:none;color:var(--text);display:block;transition:border-color .15s;margin-bottom:.7rem}
+.rel-card:hover{border-color:var(--accent-border)}
+.rel-card-cat{font-family:var(--mono);font-size:.67rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.rel-card-title{font-size:.92rem;font-weight:600;line-height:1.3}
+
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+
+@media(max-width:640px){
+  .article-wrap{padding:2.5rem 1rem 4rem}
+  h1{font-size:1.7rem}
+  .article-meta{gap:1rem}
+  nav{padding:.8rem 1rem}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Article",
+      "headline":"Reference Rate vs Bank Rate: Why the Number You See Is Not the Rate You Get",
+      "description":"The exchange rate on any screen is rarely what you actually receive. A reference-grade explanation of the gap between interbank rates, reference rates, and customer pricing.",
+      "url":"https://convertccy.com/articles/reference-rate-vs-bank-rate.html",
+      "datePublished":"2026-04-30",
+      "dateModified":"2026-04-30",
+      "author":{"@type":"Organization","name":"ConvertCCY","url":"https://convertccy.com"},
+      "publisher":{"@type":"Organization","name":"ConvertCCY","url":"https://convertccy.com"},
+      "mainEntityOfPage":"https://convertccy.com/articles/reference-rate-vs-bank-rate.html",
+      "articleSection":"Exchange Rate Mechanics",
+      "keywords":["reference rate","bank rate","exchange rate spread","FX markup","interbank rate","currency conversion"]
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://convertccy.com/"},
+        {"@type":"ListItem","position":2,"name":"Articles","item":"https://convertccy.com/articles/"},
+        {"@type":"ListItem","position":3,"name":"Reference Rate vs Bank Rate"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWVB524B" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav>
+  <a class="logo" href="/">convert<span>ccy</span>.com</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">Currencies</a>
+    <a href="/articles/">Articles</a>
+    <a href="/manifesto.html">Manifesto</a>
+    <a href="/about.html">About</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span>/</span>
+    <a href="/articles/">Articles</a><span>/</span>
+    <span>Reference Rate vs Bank Rate</span>
+  </nav>
+
+  <div class="article-tag">Exchange Rate Mechanics</div>
+
+  <h1>Reference Rate vs Bank Rate:<br><em>Why the Number You See Is Not the Rate You Get</em></h1>
+
+  <div class="article-meta">
+    <span>ConvertCCY.com</span>
+    <span>April 30, 2026</span>
+    <span>12 min read</span>
+  </div>
+
+  <p>Every day, millions of people check an exchange rate before sending money abroad, converting cash at an airport, or making a cross-border payment. They see a number. They assume that is the rate they will receive. They are almost always wrong.</p>
+
+  <p>The gap between the rate you see and the rate you get is not a technical glitch. It is not a mistake. It is a deliberate, structural feature of how foreign exchange markets and financial services actually work. Understanding it is one of the most practically useful things anyone involved in cross-border money can know.</p>
+
+  <h2>What Is a Reference Rate?</h2>
+
+  <p>A reference rate — sometimes called the mid-market rate or interbank rate — is the midpoint between the buy price and the sell price of a currency pair at any given moment. It is the rate at which large financial institutions trade currencies with each other on the interbank market.</p>
+
+  <p>When you look up <strong>USD/EUR</strong> on a financial data provider, a central bank publication, or a reference platform like ConvertCCY, you are seeing a version of this reference rate. It is the most accurate single-number representation of the current value relationship between two currencies.</p>
+
+  <p>It is also, in most practical circumstances, <strong>a rate you cannot directly access</strong>.</p>
+
+  <div class="box-insight">
+    <span class="box-label">Key Distinction</span>
+    <p>The reference rate is a benchmark — the theoretical fair value of a currency pair at a moment in time. It is not a product being offered to you. It is the standard against which all other rates should be measured.</p>
+  </div>
+
+  <h2>What Is a Bank Rate or Customer Rate?</h2>
+
+  <p>When a bank, money transfer provider, currency exchange desk, or payment platform offers you an exchange rate, they are quoting a <strong>customer rate</strong>. This rate is derived from the reference rate, but it is not the reference rate.</p>
+
+  <p>The difference is the <strong>spread</strong> — the margin the service provider builds into the rate itself. On top of the spread, many providers also add explicit fees, commissions, or service charges. Together, these form the total cost of the currency conversion you are actually paying.</p>
+
+  <p>The spread is invisible in the sense that it is embedded in the rate, not listed separately. You see one number. Inside that number is the reference rate, plus the provider's margin, presented as if they were the same thing.</p>
+
+  <h2>How the Gap Is Built</h2>
+
+  <p>Consider a simplified example. The reference rate for USD/EUR at a given moment is 1.0850. That means one US dollar buys 1.0850 euros at the interbank level.</p>
+
+  <div class="example-block">
+    <span class="ex-label">Illustrative example — USD to EUR, $1,000</span>
+    <div class="example-row">
+      <span>Reference rate (mid-market)</span>
+      <span>1.0850</span>
+    </div>
+    <div class="example-row">
+      <span>Bank customer rate (1.5% spread)</span>
+      <span>1.0687</span>
+    </div>
+    <div class="example-row">
+      <span>Airport kiosk rate (4% spread)</span>
+      <span>1.0416</span>
+    </div>
+    <div class="example-row">
+      <span>You send $1,000 at reference rate</span>
+      <span>€1,085.00</span>
+    </div>
+    <div class="example-row">
+      <span>You send $1,000 at bank rate</span>
+      <span>€1,068.70</span>
+    </div>
+    <div class="example-row total">
+      <span>Gap at bank rate</span>
+      <span>€16.30 lost to spread</span>
+    </div>
+  </div>
+
+  <p>This is before any explicit transfer fee. The spread alone costs real money — and most people never see it itemized.</p>
+
+  <h2>Why the Gap Exists</h2>
+
+  <p>The spread is not arbitrary. It exists for structural reasons that are worth understanding clearly.</p>
+
+  <p><strong>Liquidity management.</strong> Banks and financial institutions hold currency inventory. Managing that inventory across dozens of currency pairs, across time zones, with fluctuating demand, carries real operational cost. The spread is partly a charge for providing immediate access to a currency you need.</p>
+
+  <p><strong>Risk pricing.</strong> Between the moment a rate is quoted to you and the moment the transaction settles, the market can move. The provider is absorbing that risk. The spread compensates for the possibility that the rate moves against them before settlement completes.</p>
+
+  <p><strong>Profit margin.</strong> Foreign exchange is a significant revenue line for banks and financial service providers. The spread is a core part of how that revenue is generated — particularly because it is not always visible to the customer as a fee.</p>
+
+  <p><strong>Regulatory and compliance cost.</strong> Cross-border transactions carry AML, KYC, and compliance overhead. Some portion of the spread funds these operational requirements.</p>
+
+  <div class="box-warning">
+    <span class="box-label">Important</span>
+    <p>None of these reasons make the spread wrong or predatory in itself. But they do make it important to understand — because providers vary significantly in how much they charge, and the difference is often obscured behind a single quoted rate.</p>
+  </div>
+
+  <h2>The Spectrum of Spreads</h2>
+
+  <p>Not all currency conversions are priced the same way. The spread varies enormously depending on the provider, the currency pair, and the channel used.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Channel</th>
+        <th>Typical Spread Range</th>
+        <th>Transparency</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Interbank market</td>
+        <td>0.01% – 0.05%</td>
+        <td>Full — institutional access only</td>
+      </tr>
+      <tr>
+        <td>Specialist FX providers</td>
+        <td>0.1% – 0.5%</td>
+        <td>Moderate — often disclosed</td>
+      </tr>
+      <tr>
+        <td>Online transfer platforms</td>
+        <td>0.3% – 1.5%</td>
+        <td>Variable — some show the fee explicitly</td>
+      </tr>
+      <tr>
+        <td>Retail banks</td>
+        <td>1% – 3%</td>
+        <td>Low — often embedded in rate</td>
+      </tr>
+      <tr>
+        <td>Credit cards (foreign)</td>
+        <td>1.5% – 3.5%</td>
+        <td>Low — often post-transaction</td>
+      </tr>
+      <tr>
+        <td>Airport and hotel desks</td>
+        <td>3% – 8%</td>
+        <td>Very low — rate is the only number shown</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>The spread also varies by currency pair. Major pairs like EUR/USD or GBP/USD are highly liquid and trade with very tight spreads. Exotic or less-traded pairs — such as USD/MYR, EUR/MAD, or GBP/NGN — carry wider spreads because liquidity is thinner and risk exposure is higher for the provider.</p>
+
+  <h2>The Role of Reference Rates in Practice</h2>
+
+  <p>Reference rates serve a specific and important function: they give you a benchmark to measure any quoted rate against.</p>
+
+  <p>If the reference rate for EUR/USD is 1.0850 and your bank is quoting you 1.0600, you can immediately calculate that you are paying approximately 2.3% in spread. That number lets you compare providers, decide whether the convenience is worth the cost, and understand what you are actually paying.</p>
+
+  <div class="pull-quote">
+    <p>A reference rate is not a promise. It is a ruler. Its value is in giving you the means to measure everything else.</p>
+  </div>
+
+  <p>This is precisely the function ConvertCCY is designed to serve. The rates displayed here are reference-grade benchmarks — the mid-market rate as a clear, unmarketed number. Not a product. Not a quote with embedded margin. A number you can use to understand relative currency value and evaluate any actual offer against a neutral standard.</p>
+
+  <h2>Central Banks and Official Rates</h2>
+
+  <p>Some central banks publish their own official exchange rates — used for customs valuations, tax calculations, import duties, and accounting purposes. These are distinct from both the interbank reference rate and the customer rate.</p>
+
+  <p>For example, the Central Bank of Morocco publishes official MAD rates used for trade and fiscal calculations. The Reserve Bank of India publishes reference rates for INR. These official rates may differ from the live interbank rate, sometimes significantly, and using them requires understanding their specific purpose and application.</p>
+
+  <p>For everyday cross-border transactions, the interbank mid-market rate remains the most useful independent benchmark.</p>
+
+  <h2>Practical Implications</h2>
+
+  <p>Understanding the reference rate vs customer rate distinction has direct practical value for anyone moving money across borders.</p>
+
+  <p><strong>Always start with the reference rate.</strong> Before agreeing to any conversion, check the current mid-market rate for your pair. This is your baseline. Any customer rate will be less favorable — the question is by how much.</p>
+
+  <p><strong>Compare the full cost, not just the fee.</strong> Many providers advertise low or zero transfer fees but embed their margin in the rate. A provider charging a €5 fee with a 0.3% spread may cost less than a provider charging no fee but applying a 2% spread on a €1,000 transfer.</p>
+
+  <p><strong>The channel matters as much as the provider.</strong> The same bank may quote a different rate depending on whether you convert online, in-branch, at an ATM, or via a card transaction. Online channels typically offer tighter spreads than physical channels.</p>
+
+  <p><strong>Currency pair liquidity affects your rate.</strong> Converting between two major currencies — EUR/USD, GBP/EUR, USD/JPY — is typically cheaper than converting between a major and a minor or exotic currency. If your corridor involves a less-traded pair, expect a wider spread.</p>
+
+  <h2>What This Means for ConvertCCY</h2>
+
+  <p>ConvertCCY's reference-first design is a direct response to this structural reality. Most currency tools show you one number without explaining what it is, who it is for, and why the rate you actually receive will be different.</p>
+
+  <p>The purpose of a reference-first platform is not to pretend the spread does not exist. It is to give you the benchmark clearly, honestly, and without embedded margin — so that you can use it as a measuring tool rather than a transactional quote.</p>
+
+  <p>Every pair page on ConvertCCY is built around this principle: <strong>the rate shown is the rate as a reference, not as a product.</strong> What you do with that reference — how you compare providers, how you time a conversion, how you evaluate a bank's offer — is where the real value lies.</p>
+
+  <div class="pull-quote">
+    <p>The most useful thing a currency reference platform can do is make the invisible visible. The spread is always there. The question is whether you can see it.</p>
+  </div>
+
+  <h2>Conclusion</h2>
+
+  <p>The gap between reference rates and bank rates is not a flaw in the system. It is the system — a structural feature of how foreign exchange is priced and distributed across different channels and counterparties.</p>
+
+  <p>Understanding this gap does not eliminate it. But it transforms it from an invisible cost into a known, measurable variable. And measured variables can be compared, negotiated, and minimized.</p>
+
+  <p>The reference rate is your baseline. Every quoted rate is a deviation from that baseline. The size of the deviation is the real price of your conversion — and it is almost always larger than it looks.</p>
+
+  <div class="related-pairs">
+    <div class="related-label">Explore Reference Rates for Major Pairs</div>
+    <div class="pairs-row">
+      <a class="pair-chip" href="/pages/usd-to-eur.html">USD → EUR</a>
+      <a class="pair-chip" href="/pages/eur-to-usd.html">EUR → USD</a>
+      <a class="pair-chip" href="/pages/gbp-to-usd.html">GBP → USD</a>
+      <a class="pair-chip" href="/pages/usd-to-gbp.html">USD → GBP</a>
+      <a class="pair-chip" href="/pages/usd-to-jpy.html">USD → JPY</a>
+      <a class="pair-chip" href="/pages/eur-to-gbp.html">EUR → GBP</a>
+    </div>
+  </div>
+
+  <div class="related-articles">
+    <div class="related-label">Related Analysis</div>
+    <a class="rel-card" href="/articles/cips-vs-swift-global-payments-power.html">
+      <div class="rel-card-cat">Monetary Infrastructure</div>
+      <div class="rel-card-title">CIPS vs SWIFT: The Shadow War Over Global Payments</div>
+    </a>
+  </div>
+
+  <div class="reference-note">
+    Rates displayed on <a href="/">ConvertCCY.com</a> are reference-grade mid-market benchmarks for informational comparison. They are not transactional quotes. Banks, transfer services, and currency desks apply their own spreads and fees. Always compare the full cost of any conversion against the current reference rate before transacting.
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 <a href="/">convertccy.com</a> — Currency conversion and exchange-rate reference for informational comparison.</p>
+  <p style="margin-top:.55rem">
+    <a href="/about.html">About</a> &nbsp;&middot;&nbsp;
+    <a href="/currencies.html">Currencies</a> &nbsp;&middot;&nbsp;
+    <a href="/articles/">Articles</a> &nbsp;&middot;&nbsp;
+    <a href="/manifesto.html">Manifesto</a> &nbsp;&middot;&nbsp;
+    <a href="/contact.html">Contact</a> &nbsp;&middot;&nbsp;
+    <a href="/privacy.html">Privacy Policy</a>
+  </p>
+</footer>
+</body>
+</html>
