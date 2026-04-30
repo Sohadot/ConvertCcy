@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "cips-vs-swift-global-payments-power",
+    "title": "CIPS vs SWIFT: The Shadow War Over Global Payments",
+    "description": "How China's CIPS payment system is challenging SWIFT's global dominance — and what this hidden power struggle means for currency relationships and the future of international finance.",
+    "category": "Monetary Infrastructure",
+    "date": "2026-04-30",
+    "date_display": "April 30, 2026",
+    "read_time": "15 min read",
+    "url": "/articles/cips-vs-swift-global-payments-power.html",
+    "status": "published"
+  },
+  {
+    "slug": "reference-rate-vs-bank-rate",
+    "title": "Reference Rate vs Bank Rate: Why the Number You See Is Not the Rate You Get",
+    "description": "The exchange rate displayed on any screen is rarely the rate you actually receive. Understanding the gap between reference rates and customer rates is essential to navigating cross-border money.",
+    "category": "Exchange Rate Mechanics",
+    "date": "2026-04-30",
+    "date_display": "April 30, 2026",
+    "read_time": "12 min read",
+    "url": "/articles/reference-rate-vs-bank-rate.html",
+    "status": "published"
+  }
+]
