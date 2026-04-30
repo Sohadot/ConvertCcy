@@ -1,0 +1,12 @@
+{
+  "articles": [
+    {
+      "slug": "cips-vs-swift-global-payments-power",
+      "title": "CIPS vs SWIFT: The Shadow War Over Global Payments",
+      "category": "Monetary Infrastructure",
+      "published": "2026-04-30",
+      "description": "How China's CIPS payment system is challenging SWIFT's global dominance — and what this hidden power struggle means for currency relationships and the future of international finance.",
+      "related_pairs": ["CNY/USD", "CNY/EUR", "CNY/RUB", "CNY/BRL"]
+    }
+  ]
+}
