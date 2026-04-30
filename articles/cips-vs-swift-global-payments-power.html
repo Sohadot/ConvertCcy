@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-2HS37BH07J');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>CIPS vs SWIFT: Currency Power, Settlement Architecture, and the Future of Cross-Border Money | ConvertCCY</title>
+<meta name="description" content="A reference-grade analysis of CIPS vs SWIFT through the lens of currencies: messaging, settlement, RMB internationalisation, dollar dominance, and the monetary architecture behind cross-border payments.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://convertccy.com/articles/cips-vs-swift-global-payments-power.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ConvertCCY">
+<meta property="og:title" content="CIPS vs SWIFT: Currency Power, Settlement Architecture, and the Future of Cross-Border Money">
+<meta property="og:description" content="A reference-grade analysis of how CIPS and SWIFT relate to currencies, settlement power, and the future structure of cross-border money.">
+<meta property="og:url" content="https://convertccy.com/articles/cips-vs-swift-global-payments-power.html">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CIPS vs SWIFT: Currency Power and Cross-Border Money | ConvertCCY">
+<meta name="twitter:description" content="How payment architecture shapes currency use, RMB settlement, and the strategic structure of cross-border finance.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f7f5;--surface:#fff;--border:#e8e8e4;
+  --text:#111110;--muted:#888884;
+  --accent:#1a6b3c;--accent-light:#e8f5ee;--accent-border:#c4dfd0;
+  --accent2:#f0a500;--accent2-light:#fef8e7;
+  --mono:'DM Mono',monospace;--sans:'Sora',sans-serif
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+.article-wrap{max-width:780px;margin:0 auto;padding:3.5rem 2rem 5rem}
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-bottom:2rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{opacity:.4}
+.article-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.72rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(1.9rem,4vw,2.95rem);font-weight:700;letter-spacing:-1.2px;line-height:1.08;margin-bottom:1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.article-meta{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:flex;gap:1.5rem;flex-wrap:wrap;padding:1rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:1.5rem 0 2.5rem}
+h2{font-size:1.2rem;font-weight:700;color:var(--text);margin:2.8rem 0 .8rem;letter-spacing:-.02em}
+p{margin-bottom:1.2rem;color:#2a2a28;line-height:1.82}
+strong{color:var(--text);font-weight:600}
+
+.box-insight{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:14px;padding:1.1rem 1.3rem;margin:2rem 0}
+.box-insight .box-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.4rem;display:block}
+.box-insight p{color:#1f4d2d;margin:0;font-size:.93rem}
+
+.box-warning{background:var(--accent2-light);border:1px solid #f5d97a;border-radius:14px;padding:1.1rem 1.3rem;margin:2rem 0}
+.box-warning .box-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;color:#a07000;text-transform:uppercase;margin-bottom:.4rem;display:block}
+.box-warning p{color:#5a4000;margin:0;font-size:.93rem}
+
+.pull-quote{border-left:3px solid var(--accent);padding:.4rem 0 .4rem 1.3rem;margin:2.5rem 0}
+.pull-quote p{font-size:1.08rem;font-weight:600;color:var(--text);margin:0;line-height:1.5;letter-spacing:-.01em}
+
+.table-wrap{overflow-x:auto;margin:2rem 0}
+table{width:100%;border-collapse:collapse;font-size:.87rem;background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+thead tr{background:var(--bg)}
+th{font-family:var(--mono);font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--border);font-weight:500}
+td{padding:.75rem 1rem;border-bottom:1px solid var(--border);color:#2a2a28;vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--bg)}
+td:first-child{font-weight:500;color:var(--text)}
+
+.related-pairs,.related-articles{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.related-label{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.9rem}
+.pairs-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.pair-chip{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.4rem .85rem;font-family:var(--mono);font-size:.8rem;color:var(--text);text-decoration:none;transition:border-color .15s}
+.pair-chip:hover{border-color:var(--accent);color:var(--accent)}
+.rel-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;text-decoration:none;color:var(--text);display:block;transition:border-color .15s;margin-bottom:.7rem}
+.rel-card:hover{border-color:var(--accent-border)}
+.rel-card-cat{font-family:var(--mono);font-size:.67rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.rel-card-title{font-size:.92rem;font-weight:600;line-height:1.3}
+
+.reference-note{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.3rem;color:var(--muted);font-size:.84rem;margin-top:3rem;line-height:1.6}
+.reference-note a{color:var(--accent);text-decoration:none}
+
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+
+@media(max-width:640px){
+  .article-wrap{padding:2.5rem 1rem 4rem}
+  h1{font-size:1.75rem}
+  .article-meta{gap:1rem}
+  nav{padding:.8rem 1rem}
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Article",
+      "headline":"CIPS vs SWIFT: Currency Power, Settlement Architecture, and the Future of Cross-Border Money",
+      "description":"A reference-grade analysis of CIPS vs SWIFT through the lens of currencies: messaging, settlement, RMB internationalisation, dollar dominance, and the monetary architecture behind cross-border payments.",
+      "url":"https://convertccy.com/articles/cips-vs-swift-global-payments-power.html",
+      "datePublished":"2026-04-30",
+      "dateModified":"2026-04-30",
+      "author":{"@type":"Organization","name":"ConvertCCY","url":"https://convertccy.com"},
+      "publisher":{"@type":"Organization","name":"ConvertCCY","url":"https://convertccy.com"},
+      "mainEntityOfPage":"https://convertccy.com/articles/cips-vs-swift-global-payments-power.html",
+      "articleSection":"Monetary Infrastructure",
+      "keywords":["CIPS","SWIFT","RMB settlement","cross-border payments","currency power","dollar dominance","renminbi internationalisation"]
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://convertccy.com/"},
+        {"@type":"ListItem","position":2,"name":"Articles","item":"https://convertccy.com/articles/"},
+        {"@type":"ListItem","position":3,"name":"CIPS vs SWIFT: Currency Power, Settlement Architecture, and the Future of Cross-Border Money"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWVB524B" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav>
+  <a class="logo" href="/">convert<span>ccy</span>.com</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">Currencies</a>
+    <a href="/articles/">Articles</a>
+    <a href="/framework.html">Framework</a>
+    <a href="/manifesto.html">Manifesto</a>
+    <a href="/about.html">About</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span>/</span>
+    <a href="/articles/">Articles</a><span>/</span>
+    <span>CIPS vs SWIFT</span>
+  </nav>
+
+  <div class="article-tag">Monetary Infrastructure</div>
+
+  <h1>CIPS vs SWIFT:<br><em>Currency Power, Settlement Architecture, and the Future of Cross-Border Money</em></h1>
+
+  <div class="article-meta">
+    <span>ConvertCCY.com</span>
+    <span>April 30, 2026</span>
+    <span>15 min read</span>
+  </div>
+
+  <p>Cross-border money does not move through neutral pipes. It moves through infrastructure designed, governed, and trusted in very specific ways. That infrastructure matters for currencies because a currency’s international life does not depend only on macroeconomic size. It also depends on whether businesses, banks, and states can invoice in it, message in it, clear it, settle it, hedge it, and hold it with confidence.</p>
+
+  <p>This is why the comparison between CIPS and SWIFT matters. It is not merely a technical comparison between two financial systems. It is a structural comparison between two different layers of cross-border monetary organization — and between two different futures for how currencies may travel across the world.</p>
+
+  <div class="box-insight">
+    <span class="box-label">Core Distinction</span>
+    <p>SWIFT is best understood as a global messaging and standards layer. CIPS is best understood as a renminbi-centered clearing and settlement layer. They intersect, compete, cooperate, and overlap — but they do not occupy exactly the same place in the architecture.</p>
+  </div>
+
+  <h2>SWIFT’s Power Comes From Standardised Global Communication</h2>
+
+  <p>SWIFT matters because international finance depends on trusted, standardised communication. A payment can only move cleanly if institutions understand one another’s instructions, identifiers, message formats, and operational logic. In that sense, SWIFT’s power is infrastructural long before it is political. It reduces ambiguity across borders and makes global payment communication legible at scale.</p>
+
+  <p>Its importance is often misunderstood. SWIFT is not itself the owner of the money moving through the system. It does not function as a giant balance sheet standing between every sender and receiver. Its central role lies in secure messaging, standards, interoperability, and the ability to connect an enormous number of institutions across jurisdictions through a shared financial language.</p>
+
+  <p>That alone creates deep structural influence. When a network becomes the default language of cross-border finance, it shapes who is easy to connect, which corridors feel efficient, and how institutions design their own operations around global flow.</p>
+
+  <h2>CIPS Matters Because It Ties Messaging More Directly to RMB Use</h2>
+
+  <p>CIPS enters the picture from a different direction. Its significance is not that it has simply “copied SWIFT,” but that it is a system built around a different monetary objective: making cross-border renminbi clearing and settlement more direct, more scalable, and less dependent on a foreign-centered infrastructure stack.</p>
+
+  <p>That changes the meaning of the system. CIPS is not just a software alternative. It is a currency strategy expressed through payment architecture. Its existence says that if a currency wants a larger international role, it cannot rely indefinitely on other people’s pipes for every important stage of its cross-border life.</p>
+
+  <p>In other words, CIPS is about more than efficiency. It is about monetary positioning.</p>
+
+  <div class="box-warning">
+    <span class="box-label">Important Clarification</span>
+    <p>CIPS does not automatically make the renminbi a peer reserve currency to the dollar. Infrastructure can reduce friction and improve strategic autonomy, but global reserve status still depends on much deeper questions of convertibility, liquidity, institutional trust, and willingness to hold the currency at scale.</p>
+  </div>
+
+  <h2>The Real Competition Is Not Binary</h2>
+
+  <p>The framing of “CIPS versus SWIFT” often becomes too theatrical. The more serious reality is more layered. These systems do not exist in a simple winner-takes-all contest. One is deeply embedded in global financial messaging and standards. The other is designed to support and expand the cross-border life of a specific currency, the renminbi, through its own clearing and settlement structure.</p>
+
+  <p>That means the strategic question is not whether one instantly replaces the other. The question is whether the global system remains singular in its infrastructural center — or becomes more plural in the way currencies are moved, settled, and trusted.</p>
+
+  <h2>Why This Is a Currency Story, Not Just a Payments Story</h2>
+
+  <p>A currency does not become international merely because people speak about it. It becomes international when firms are willing to price in it, banks are willing to process it, markets are willing to hedge it, and states are willing to store value in it. Payment architecture influences all of these decisions by changing the friction around use.</p>
+
+  <p>If it becomes easier to clear and settle in renminbi, then the practical cost of using renminbi in trade can fall. If the operational chain becomes more direct, then the willingness to hold working balances in that currency can improve. If settlement becomes more institutionally normal, then the currency’s role in invoicing and trade corridors can deepen even before it reaches reserve-currency parity.</p>
+
+  <p>That is why CIPS matters even if it does not overthrow the dollar order. A currency can expand its working role long before it dominates global reserves.</p>
+
+  <div class="pull-quote">
+    <p>Payment infrastructure does not by itself create currency supremacy. But without payment infrastructure, currency internationalisation remains permanently constrained.</p>
+  </div>
+
+  <h2>The Dollar Advantage Is Still Much Larger Than the RMB Advantage</h2>
+
+  <p>The current international monetary order still reflects a major asymmetry. The dollar remains deeply entrenched in reserves, financing, trade, and global financial confidence. That matters because infrastructure alone cannot erase incumbency. A currency with broader reserve demand, deeper capital markets, and stronger global habit enjoys advantages that extend far beyond the payment layer.</p>
+
+  <p>By contrast, the renminbi’s international role has grown, but it still operates from a smaller base in global reserve composition and global trust hierarchy. This does not make CIPS irrelevant. It means the system should be understood as part of a longer strategic build-out rather than as evidence of immediate systemic replacement.</p>
+
+  <h2>What Changes When a Currency Gets Its Own Stronger Rails</h2>
+
+  <p>When a currency develops more capable and more credible cross-border rails, several things can begin to change. Trade partners may become more willing to invoice in that currency. Banks may build more internal capacity around it. Settlement may become less dependent on translation through another dominant currency. Regional use may deepen first, then broader use may follow.</p>
+
+  <p>Most importantly, the currency becomes less hypothetical as an alternative. It begins to exist not only as a policy aspiration, but as an operational option.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>SWIFT-Centered Strength</th>
+          <th>CIPS-Centered Strategic Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Core function</td>
+          <td>Standardised global financial messaging and connectivity</td>
+          <td>RMB-focused cross-border clearing and settlement capability</td>
+        </tr>
+        <tr>
+          <td>Currency relationship</td>
+          <td>Supports many currencies across global institutions</td>
+          <td>Directly tied to the practical expansion of RMB use</td>
+        </tr>
+        <tr>
+          <td>Strategic role</td>
+          <td>Maintains global legibility and interoperability</td>
+          <td>Reduces dependence on an external infrastructural center for RMB flows</td>
+        </tr>
+        <tr>
+          <td>Monetary implication</td>
+          <td>Reinforces the current international operating language</td>
+          <td>Strengthens the operational base for a more plural currency order</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Why Countries Care About More Than Speed and Cost</h2>
+
+  <p>Cross-border payment systems are often discussed in terms of cost, speed, and efficiency. Those matter. But states and monetary authorities care about something deeper: strategic dependency. If a country’s trade, financing, and settlement channels depend overwhelmingly on infrastructure designed elsewhere and governed elsewhere, then that dependency becomes a structural vulnerability.</p>
+
+  <p>This is one reason the conversation around payment systems cannot be separated from sovereignty. The question is not only: “What is the fastest way to move money?” The question is also: “Through whose architecture does our currency travel, under whose standards, and with what degree of strategic autonomy?”</p>
+
+  <h2>From Messaging Power to Monetary Power</h2>
+
+  <p>There is a tendency to treat messaging and money as separate worlds. In practice, they are linked. A system that defines messaging standards, identifiers, workflows, and connection norms influences how easily a currency can move through institutional space. It shapes the daily habit of finance. Habit, at sufficient scale, becomes structural power.</p>
+
+  <p>This is why the CIPS/SWIFT comparison should be read as a monetary question. It is about how infrastructure can reinforce or soften a currency hierarchy. It is about how the technical layer can support the political economy of money.</p>
+
+  <div class="pull-quote">
+    <p>The future of currencies is not decided by payment architecture alone — but currencies without architecture remain weaker than currencies whose infrastructure has already become normal, trusted, and global.</p>
+  </div>
+
+  <h2>Does CIPS Mean a New Currency Order Is Imminent?</h2>
+
+  <p>No serious analysis should claim that one system by itself rewrites the monetary order. The international role of a currency depends on convertibility, asset depth, legal trust, reserve behavior, invoicing patterns, capital-market openness, and geopolitical confidence. Payment rails are essential, but they are only one part of the wider equation.</p>
+
+  <p>The more plausible reading is this: systems like CIPS contribute to a world in which monetary centrality becomes less singular over time. Not necessarily overturned. Not necessarily equalised. But less singular. That is a different claim, and a better one.</p>
+
+  <p>It suggests a future where the dollar remains dominant while the operational space for other currencies expands in specific corridors, sectors, and regional spheres. That future is not post-dollar. It is more accurately described as <strong>less completely dollar-exclusive</strong>.</p>
+
+  <h2>What This Means for Exchange Rates</h2>
+
+  <p>Exchange rates do not move only because of inflation and interest rates. They also reflect the deeper architecture through which currencies live internationally. If one currency becomes easier to invoice, settle, and hold, its practical relevance can increase. If another remains the undisputed reserve anchor, its pricing power remains stronger. The relationship between these two realities is exactly the kind of tension that eventually appears in foreign-exchange behavior.</p>
+
+  <p>For ConvertCCY, this matters because currency pairs are not just ratios. They are visible summaries of deeper monetary systems. A pair such as USD/CNY is not only a pricing relationship between two units. It is also a living comparison between two different monetary architectures, two different trust systems, and two different visions of how cross-border money should move.</p>
+
+  <h2>Why This Matters for ConvertCCY</h2>
+
+  <p>A reference-first currency platform should explain more than conversion outputs. It should explain the structures that make certain currencies easier to use globally than others. The comparison between CIPS and SWIFT belongs inside that reference layer because it clarifies how payment infrastructure can strengthen or constrain the cross-border life of a currency.</p>
+
+  <p>That makes this article directly relevant to the meaning of exchange rates. It helps explain why some currencies occupy deeper international roles, why others are building supporting architecture, and why monetary power cannot be reduced to interest rates alone.</p>
+
+  <h2>Conclusion</h2>
+
+  <p>CIPS and SWIFT should not be read as a simple duel between an old system and a new one. They represent different layers of international monetary organization. One remains central to global financial messaging and standardisation. The other is part of the long strategic work of giving the renminbi stronger cross-border operational life.</p>
+
+  <p>The deeper issue is currency power. A currency that wants international relevance must do more than exist. It must travel through institutions, standards, settlement, trust, and habit. That is why payment architecture matters so much. It does not by itself crown the next dominant currency. But it determines whether a currency can remain structurally dependent on someone else’s system — or begin building a wider life of its own.</p>
+
+  <div class="related-pairs">
+    <div class="related-label">Explore Related Currency References</div>
+    <div class="pairs-row">
+      <a class="pair-chip" href="/pages/usd-to-cny.html">USD → CNY</a>
+      <a class="pair-chip" href="/pages/cny-to-usd.html">CNY → USD</a>
+      <a class="pair-chip" href="/pages/usd-to-eur.html">USD → EUR</a>
+      <a class="pair-chip" href="/pages/usd-to-jpy.html">USD → JPY</a>
+      <a class="pair-chip" href="/pages/eur-to-usd.html">EUR → USD</a>
+      <a class="pair-chip" href="/pages/cny-to-jpy.html">CNY → JPY</a>
+    </div>
+  </div>
+
+  <div class="related-articles">
+    <div class="related-label">Related Analysis</div>
+    <a class="rel-card" href="/articles/dollar-power-gold-trust-inflation-new-monetary-order.html">
+      <div class="rel-card-cat">Monetary Order</div>
+      <div class="rel-card-title">Dollar Power, Gold Trust, and the Inflation Fracture: Is the World Moving Toward a New Monetary Order?</div>
+    </a>
+    <a class="rel-card" href="/articles/what-actually-moves-exchange-rates.html">
+      <div class="rel-card-cat">Exchange Rate Fundamentals</div>
+      <div class="rel-card-title">What Actually Moves Exchange Rates? Interest Rates, Inflation, Trade, and Trust</div>
+    </a>
+    <a class="rel-card" href="/articles/why-some-currency-pairs-matter-more-than-others.html">
+      <div class="rel-card-cat">Currency Pair Structure</div>
+      <div class="rel-card-title">Why Some Currency Pairs Matter More Than Others</div>
+    </a>
+  </div>
+
+  <div class="reference-note">
+    ConvertCCY publishes reference-grade analysis to help users interpret exchange-rate systems, monetary infrastructure, and the structural forces behind cross-border money. This article is analytical and informational in nature and should not be read as investment advice, trading guidance, or a prediction of imminent currency replacement.
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 <a href="/">convertccy.com</a> — Currency conversion and exchange-rate reference for informational comparison.</p>
+  <p style="margin-top:.55rem">
+    <a href="/about.html">About</a> &nbsp;&middot;&nbsp;
+    <a href="/currencies.html">Currencies</a> &nbsp;&middot;&nbsp;
+    <a href="/articles/">Articles</a> &nbsp;&middot;&nbsp;
+    <a href="/framework.html">Framework</a> &nbsp;&middot;&nbsp;
+    <a href="/manifesto.html">Manifesto</a> &nbsp;&middot;&nbsp;
+    <a href="/contact.html">Contact</a> &nbsp;&middot;&nbsp;
+    <a href="/privacy.html">Privacy Policy</a>
+  </p>
+</footer>
+</body>
+</html>
