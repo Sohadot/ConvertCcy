@@ -1,0 +1,55 @@
+{
+  "country_name": "Japan",
+  "country_slug": "japan",
+  "iso2": "JP",
+  "iso3": "JPN",
+  "region": "East Asia",
+  "currency_code": "JPY",
+  "currency_name": "Japanese Yen",
+  "schema_version": "1.2",
+  "page_status": "verified",
+  "last_reviewed": "2026-05-01",
+  "evidence_tier": "official_primary",
+  "official_source_available": true,
+  "publication_class": "primary_reference",
+  "indexing_allowed": true,
+  "source_notice": "This entry is based on primary official Japanese sources, principally Japan Customs and the Ministry of Finance.",
+  "country_overview": "Japan operates an open, advanced financial system, but it still imposes formal declaration and reporting obligations under customs law and the Foreign Exchange and Foreign Trade Act (FEFTA). For practical users, the key distinction is between ordinary use of money and transactions that trigger declaration, reporting, or permission requirements. The public official materials reviewed for this entry focus especially on (i) customs declarations for physical means of payment crossing the border and (ii) FEFTA-based reporting for specified capital or cross-border transactions. This means Japan should not be described as a country with blanket retail foreign-currency prohibitions, but neither should it be described as regulation-free: reporting and declaration matter.",
+  "summary": {
+    "traveler": "When entering or leaving Japan, travelers must declare cash and other means of payment exceeding ¥1,000,000 or its equivalent to Customs. Japan Customs also states that all entrants must submit the customs declaration for accompanied and unaccompanied articles, and that separate declaration rules apply to gold bullion of high purity above the stated threshold. For most travelers, the operational rule is simple: if your physical cash or similar payment instruments cross the ¥1,000,000-equivalent threshold, declare them before entry or departure.",
+    "business": "For business users, the official public sources reviewed here point less to ordinary day-to-day invoicing rules and more to transaction-specific FEFTA reporting. Japan Customs requires declaration of cross-border physical means of payment above the threshold, while Ministry of Finance materials show that FEFTA can require post-transaction reporting for certain cross-border capital transactions, such as non-resident acquisition of real property in Japan. Businesses should therefore treat Japan as a jurisdiction where ordinary banking activity is generally available, but specific cross-border transactions may trigger reporting or permission obligations depending on their nature."
+  },
+  "rules": {
+    "bring_foreign_currency_in": "Japan Customs states that when entering Japan with means of payment exceeding ¥1,000,000 or its equivalent, you must submit a declaration to Customs before entry. The declaration requirement applies not only to cash in Japanese yen or foreign currency, but also to checks, travelers’ checks, promissory notes, and securities. If the amount is below the threshold, the specific 'means of payment' declaration discussed in the cited Customs pages is not triggered, although ordinary passenger customs declarations still apply on arrival.",
+    "take_foreign_currency_out": "Japan Customs applies the same basic threshold on departure: when leaving Japan with cash or other means of payment exceeding ¥1,000,000 or its equivalent, a declaration must be filed with Customs. The official departure guidance specifically lists carrying out an amount equivalent to ¥1,000,000 in cash, etc. as requiring the declaration form. If a transaction is separately subject to FEFTA restrictions, Japan Customs notes that any additional permission requirements under FEFTA remain relevant alongside the customs declaration.",
+    "cash_declaration_threshold": "The official threshold publicly stated by Japan Customs is ¥1,000,000 or its equivalent for means of payment crossing the border, with a lower North Korea-related threshold in the specific case stated by Customs. The threshold applies to the total amount of cash and other listed means of payment. Japan Customs also separately states that gold of at least 90 percent purity exceeding 1 kilogram must be declared.",
+    "resident_holding_rules": "The primary official public pages reviewed for this entry focus on border declarations and FEFTA reporting, rather than announcing a broad public prohibition on residents holding foreign currency. On that basis, this entry does not state a general retail ban on resident possession of foreign currency. However, residents should assess whether a particular transaction, remittance, investment, or reporting event falls within FEFTA reporting or permission requirements, especially for larger or capital-account-type transactions.",
+    "non_resident_rules": "Non-residents entering or departing Japan are subject to the same Customs declaration rule for means of payment exceeding ¥1,000,000 or its equivalent. In addition, the Ministry of Finance states that under FEFTA, a non-resident acquiring real property located in Japan or rights on it is generally subject to post-transaction reporting via the Bank of Japan within 20 days after acquisition, subject to the official scope and exceptions. This demonstrates that non-residents should not rely only on border rules; certain investment-type activities can create additional reporting duties.",
+    "business_invoicing_settlement": "The official sources reviewed for this entry do not present a broad public rule prohibiting ordinary business settlement or invoicing in foreign currency across the economy. Instead, they show a framework in which declaration and FEFTA-based reporting become important when transactions cross certain legal categories or thresholds. Businesses should therefore distinguish between normal banking and settlement practice on one hand, and transactions that may require FEFTA reporting or permissions on the other, and should confirm transaction-specific requirements with their bank and, where relevant, the Ministry of Finance or Bank of Japan.",
+    "exchange_controls": "Japan’s exchange-control posture is best understood through FEFTA rather than through a blanket retail cash-control model. Japan Customs states that physical means of payment above the threshold must be declared at the border, and it expressly notes that where import or export of means of payment is subject to FEFTA restrictions, separate permission may also be required. Accordingly, the control framework is targeted: ordinary activity is not described in the reviewed public sources as generally prohibited, but certain categories are clearly reportable or permission-based.",
+    "banking_conversion_practicality": "For practical users, the key official step when crossing the border with significant cash is the Customs declaration process. For banking-side foreign exchange transactions, users should rely on regulated financial institutions and confirm whether any transaction-specific FEFTA reporting or permission requirement applies. Where a transaction is sensitive, high-value, or unusual, businesses and travelers should avoid assuming that a customs declaration alone resolves the full compliance position."
+  },
+  "source_authorities": [
+    {
+      "label": "Japan Customs — Export/Import of Means of Payment, etc. (FAQ)",
+      "url": "https://www.customs.go.jp/english/c-answer_e/keitaibetsuso/7305_e.htm",
+      "type": "customs"
+    },
+    {
+      "label": "Japan Customs — Procedures of Passenger Clearance",
+      "url": "https://www.customs.go.jp/english/summary/passenger.htm",
+      "type": "customs"
+    },
+    {
+      "label": "Japan Customs — Customs Procedures at Departure (FAQ)",
+      "url": "https://www.customs.go.jp/english/c-answer_e/keitaibetsuso/7201_e.htm",
+      "type": "customs"
+    },
+    {
+      "label": "Ministry of Finance Japan — Reporting Requirement Under the FEFTA For a Non-Resident Acquiring Real Property Located in Japan",
+      "url": "https://www.mof.go.jp/english/policy/international_policy/real_property/index.html",
+      "type": "ministry"
+    }
+  ],
+  "disclaimer": "This page provides general informational reference only, based on primary official Japanese sources reviewed on the date shown. Foreign currency, customs, and FEFTA obligations can vary by transaction type, residency status, destination, and legal classification. This is not legal, regulatory, tax, immigration, financial, or compliance advice. Always verify current requirements directly with Japan Customs, the Ministry of Finance, the Bank of Japan, and your financial institution before making travel, cash-carrying, investment, or settlement decisions."
+}

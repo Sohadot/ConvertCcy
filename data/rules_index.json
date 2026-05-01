@@ -1,0 +1,32 @@
+[
+  {
+    "country_name": "India",
+    "country_slug": "india",
+    "iso2": "IN",
+    "currency_code": "INR",
+    "region": "South Asia",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-01",
+    "url": "/rules/india-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Japan",
+    "country_slug": "japan",
+    "iso2": "JP",
+    "currency_code": "JPY",
+    "region": "East Asia",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-01",
+    "url": "/rules/japan-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Morocco",
+    "country_slug": "morocco",
+    "iso2": "MA",
+    "currency_code": "MAD",
+    "region": "North Africa",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-01",
+    "url": "/rules/morocco-foreign-currency-rules.html"
+  }
+]

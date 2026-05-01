@@ -1,0 +1,70 @@
+{
+  "country_name": "India",
+  "country_slug": "india",
+  "iso2": "IN",
+  "iso3": "IND",
+  "region": "South Asia",
+  "currency_code": "INR",
+  "currency_name": "Indian Rupee",
+  "schema_version": "1.2",
+  "page_status": "verified",
+  "last_reviewed": "2026-05-01",
+  "evidence_tier": "official_primary",
+  "official_source_available": true,
+  "publication_class": "primary_reference",
+  "indexing_allowed": true,
+  "source_notice": "This entry is based on primary official Indian sources, principally the Reserve Bank of India and the Central Board of Indirect Taxes and Customs.",
+  "country_overview": "India maintains a formal foreign-exchange framework under the Foreign Exchange Management Act (FEMA), administered principally by the Reserve Bank of India through regulations and master directions, with border declaration practice handled by Customs. For practical users, the framework combines (i) customs declarations for inbound foreign exchange above specified thresholds, (ii) RBI rules on possession, retention, and export/import of currency, and (iii) banking-channel control through authorised dealers for many current-account and trade transactions. India is therefore not a free-form cash jurisdiction; the official system expects threshold-based declaration and regulated banking channels.",
+  "summary": {
+    "traveler": "India’s Customs and FEMA materials make the traveler rules highly operational. A Currency Declaration Form is not required if aggregate foreign exchange brought in does not exceed USD 10,000 and foreign currency notes do not exceed USD 5,000; above those limits, declaration becomes important. The official customs declaration form also directs passengers to the Red Channel if foreign currency notes exceed USD 5,000 or aggregate foreign exchange exceeds USD 10,000, and visitors are told to retain the declaration for reconversion or departure use.",
+    "business": "For businesses, RBI’s framework makes clear that import of goods and services is allowed under FEMA through the authorised dealer banking structure, while export contracts may be denominated in Indian rupees or a freely convertible currency subject to the official framework for realization of export proceeds. This means that practical business settlement is not a matter of informal cash handling, but of regulated banking channels and FEMA-based rules. Businesses should therefore approach India as a controlled but operationally structured foreign-exchange jurisdiction."
+  },
+  "rules": {
+    "bring_foreign_currency_in": "The official Currency Declaration Form states that it need not be completed if aggregate foreign exchange brought in by a passenger in the form of currency notes, bank notes, or travellers’ cheques does not exceed USD 10,000 or its equivalent and the value of foreign currency notes does not exceed USD 5,000 or its equivalent. Where those thresholds are exceeded, declaration becomes necessary and passengers should retain the endorsed declaration. The current Indian Customs declaration form also specifically asks whether foreign currency notes exceed USD 5,000 or whether aggregate foreign exchange exceeds USD 10,000 and directs the passenger to the Red Channel where the answer is yes.",
+    "take_foreign_currency_out": "The official Customs declaration materials for visitors state that if a visitor does not encash all foreign exchange declared on arrival, the passenger should retain the declaration form for production to Customs at departure so the unutilized balance may be taken out. Accordingly, for non-resident visitor use, the declaration record is operationally important on exit as well as entry. Residents and other categories should also check the RBI’s FEMA export/import of currency framework for any additional rules applicable to Indian currency and transaction-specific outbound movements.",
+    "cash_declaration_threshold": "The current operational declaration thresholds visible in the official customs materials are USD 5,000 for foreign currency notes and USD 10,000 for aggregate foreign exchange including notes and travellers’ cheques, or their equivalents. Below those levels, the Currency Declaration Form is stated as not required on the cited official form. Above those levels, declaration should be made and the documentation retained.",
+    "resident_holding_rules": "The RBI states that under section 6(4) of FEMA, a person resident in India may hold, own, transfer, or invest in foreign currency, foreign security, or immovable property situated outside India if it was acquired, held, or owned when that person was resident outside India or inherited from a person resident outside India. In addition, the RBI’s 2015 regulations on possession and retention of foreign currency provide the broader regulatory framework for how foreign currency may be possessed or retained in India. Residents should therefore not assume unrestricted cash freedom; the RBI framework remains the controlling reference.",
+    "non_resident_rules": "For visitors and other non-resident travelers, the practical official rule is the declaration threshold: if foreign currency notes exceed USD 5,000 or aggregate foreign exchange exceeds USD 10,000, declaration should be made to Customs. The official declaration form also explains that it should be shown to an authorised dealer or money changer when converting currency and retained by visitors who may depart with an unutilized balance. This makes declaration continuity important for non-resident practical use.",
+    "business_invoicing_settlement": "The RBI’s Master Direction on import of goods and services states that import of goods and services into India is allowed under Section 5 of FEMA read with the current-account framework, and it is administered through authorised dealer category-I banks. On the export side, the RBI’s export direction states that there is no restriction on invoicing export contracts in Indian rupees and notes that export contracts and invoices may be denominated either in freely convertible currency or Indian rupees within the relevant framework. Businesses should therefore treat invoicing and settlement as regulated through FEMA and the banking system, not as an unstructured foreign-currency field.",
+    "exchange_controls": "India maintains a formal exchange-control regime under FEMA rather than a purely liberal cash model. The RBI issues regulations and master directions on export and import of currency, possession and retention of foreign currency, foreign currency accounts, and import/export settlement, while Customs enforces declaration practice at the border. In practical terms, this means users should expect both threshold-based declarations and banking-channel discipline.",
+    "banking_conversion_practicality": "The official declaration form explicitly advises passengers to produce the endorsed form to a bank authorised to deal in foreign exchange or to a money changer when converting foreign exchange into Indian rupees or reconverting rupees into foreign exchange. That makes authorised dealers and licensed conversion channels central to practical compliance. Users should retain customs documentation and avoid relying on undocumented cash conversion where an official record may later be needed."
+  },
+  "source_authorities": [
+    {
+      "label": "CBIC — Currency Declaration Form (CDF)",
+      "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+      "type": "customs"
+    },
+    {
+      "label": "CBIC — Indian Customs Declaration Form",
+      "url": "https://www.cbic.gov.in/resources/htdocs-cbec/cbic_customs_baggage_declaration_form_updated_1.pdf",
+      "type": "customs"
+    },
+    {
+      "label": "RBI — Foreign Exchange Management (Export and Import of Currency) Regulations, 2015 / notification synopsis",
+      "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=10268",
+      "type": "central_bank"
+    },
+    {
+      "label": "RBI — Foreign Exchange Management (Possession and Retention of Foreign Currency) Regulations, 2015",
+      "url": "https://www.rbi.org.in/scripts/BS_FemaNotifications.aspx?Id=10262",
+      "type": "central_bank"
+    },
+    {
+      "label": "RBI — Foreign currency accounts by a person resident in India Regulations, 2015",
+      "url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=10261",
+      "type": "central_bank"
+    },
+    {
+      "label": "RBI — Master Direction: Import of Goods and Services (updated June 13, 2025)",
+      "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx/NotificationUser.aspx?Id=10201",
+      "type": "central_bank"
+    },
+    {
+      "label": "RBI — Master Direction: Export of Goods and Services",
+      "url": "https://www.rbi.org.in/scripts/BS_ViewMasDirections.aspx?id=10200",
+      "type": "central_bank"
+    }
+  ],
+  "disclaimer": "This page provides general informational reference only, based on primary official Indian sources reviewed on the date shown. Foreign-exchange requirements in India can vary by residency status, traveler category, transaction type, destination, and the applicable FEMA rule, regulation, or authorised dealer process. This is not legal, regulatory, tax, immigration, financial, or compliance advice. Always verify current requirements directly with the Reserve Bank of India, Indian Customs/CBIC, and your authorised dealer or bank before making travel, settlement, declaration, or remittance decisions."
+}
