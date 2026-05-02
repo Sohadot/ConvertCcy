@@ -6,47 +6,90 @@
   "region": "Western Europe",
   "currency_code": "EUR",
   "currency_name": "Euro",
-  "schema_version": "1.1",
+
+  "schema_version": "1.2",
   "page_status": "verified",
-  "last_reviewed": "2026-04-30",
+  "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
+
+  "country_overview": "France operates within the fully liberalised Eurozone foreign-exchange regime. There are no general exchange controls. The framework is governed by the European Central Bank (ECB), Banque de France, and French Customs (Douane).",
+
   "summary": {
-    "traveler": "Travellers entering or leaving France from/to a non-EU country carrying EUR 10,000 or more in cash or equivalent monetary instruments must declare this to French Customs (Douane). No declaration is required for travel between EU member states. France operates within the EU's single market for capital movements, and there are no restrictions on the amount that may be moved within the EU. The EUR 10,000 threshold is set by EU Regulation 2018/1672.",
-    "business": "France operates within the EU's fully liberalised capital account framework. No exchange controls apply within the EU. For transfers to non-EU countries above EUR 50,000, reporting obligations may apply under French anti-money laundering legislation. The Banque de France and the European Central Bank (ECB) govern monetary policy. All financial institutions are regulated by the Autorité de Contrôle Prudentiel et de Résolution (ACPR) and the Autorité des Marchés Financiers (AMF)."
+    "traveler": "Travelers may bring in or take out unlimited amounts of euros and foreign currency. Cash movements of €10,000 or more (or equivalent) must be declared to French Customs.",
+    "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
   },
+
   "rules": {
-    "bring_foreign_currency_in": "There are no restrictions on the amount of cash that may be brought into France from another EU member state. Travellers arriving from outside the EU carrying EUR 10,000 or more in cash — including banknotes, coins, travellers' cheques, money orders, and bearer securities — must declare this to French Customs (Direction Générale des Douanes et Droits Indirects). The declaration is made on Form Cerfa 13426. Failure to declare or making a false declaration is subject to confiscation and administrative fines under French customs law implementing EU Regulation 2018/1672.",
-    "take_foreign_currency_out": "There are no restrictions on the amount of cash that may be taken out of France to another EU member state. For travel to non-EU countries, amounts of EUR 10,000 or more must be declared to French Customs before departure. The declaration can be submitted online via the Telda customs system or in person at the port of departure. The same EUR 10,000 threshold applies in both directions for non-EU travel.",
-    "cash_declaration_threshold": "The cash declaration threshold in France is EUR 10,000 for travel from/to non-EU countries. Declarable items include: banknotes and coins, bearer negotiable instruments (cheques, travellers cheques, money orders, promissory notes), gold (coins of at least 90% gold, or non-monetary metal at least 99.5% gold such as ingots and nuggets), and prepaid cards. For intra-EU travel, the same EUR 10,000 threshold applies but with a separate national legal basis (Article L.152-1 Code Monetaire et Financier). For amounts above EUR 50,000, a document proving the source of funds is additionally required under Article L152-1-2. Declaration can be made: electronically via the DALIA online service up to 30 days before travel (at least before border crossing), or in person at customs using Form Cerfa 13426. Penalty for non-declaration: fine up to 50% of the undeclared amount and confiscation. Foreign currencies are converted using the ECB rate. Source: douane.gouv.fr; EU Regulation 2018/1672; Code Monetaire et Financier Art. L.152-1.",
-    "resident_holding_rules": "French residents may freely hold foreign currency accounts in France and abroad. EU citizens and residents have full freedom of capital movement within the EU under the Treaty on the Functioning of the European Union (TFEU Article 63). Residents must declare foreign bank accounts on their annual tax return (Form 3916) to the Direction Générale des Finances Publiques. French residents with foreign accounts are also subject to automatic information exchange under CRS (Common Reporting Standard) and FATCA for US persons.",
-    "non_resident_rules": "Non-residents may freely hold bank accounts in France and conduct financial transactions without restriction, subject to AML and identity verification requirements. EU freedom of capital movement applies to most non-EU non-residents as well, under bilateral investment treaties and general OECD norms. Non-residents may freely repatriate funds from France without restriction.",
-    "business_invoicing_settlement": "French businesses may freely invoice, settle, and hold balances in foreign currencies. No mandatory conversion requirements exist. Within the EU, transfers are governed by the Single Euro Payments Area (SEPA) framework. For non-EU transfers, standard SWIFT banking applies. All financial service providers are regulated by the ACPR (Autorité de Contrôle Prudentiel et de Résolution) under the Banque de France, and by the AMF for investment services. AML and CFT obligations are extensive under French law transposing EU Anti-Money Laundering Directives.",
-    "exchange_controls": "France operates within the EU's fully liberalised capital account. No exchange controls apply. The euro is the official currency, issued by the European Central Bank (ECB) and managed within the Eurosystem. France participates in the European Monetary Union. Capital movements within the EU are fully free under TFEU Article 63. For non-EU transfers, monitoring and reporting obligations apply above certain thresholds under French AML law. EU-wide sanctions (administered by the European Commission) restrict transactions with designated parties.",
-    "banking_conversion_practicality": "Currency exchange is widely available in France through commercial banks, licensed exchange offices (bureaux de change), and online platforms. ATMs accepting international cards (Visa, Mastercard, Amex) are ubiquitous. France participates in SEPA for fast, low-cost euro transfers across 36 European countries. International transfers to non-SEPA countries are processed via SWIFT. The Banque de France supervises payment system stability. Competitive exchange rates are available through online specialist providers regulated by the ACPR."
+    "bring_foreign_currency_in": "Unlimited amounts of euros and foreign currency may be brought into France. Cash movements of €10,000 or more (or equivalent) must be declared to French Customs.",
+    "take_foreign_currency_out": "Unlimited amounts of euros and foreign currency may be taken out of France. Cash movements of €10,000 or more (or equivalent) must be declared to French Customs.",
+    "cash_declaration_threshold": "€10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Declaration must be made to French Customs.",
+    "resident_holding_rules": "French residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+    "business_invoicing_settlement": "Business transactions may be invoiced and settled in euros or foreign currency. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
+    "exchange_controls": "France maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions within the Eurozone framework.",
+    "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout France."
   },
+
   "source_authorities": [
     {
-      "label": "Direction Générale des Douanes et Droits Indirects (French Customs) — Cash Reporting",
-      "url": "https://www.douane.gouv.fr/en/fiche/cash-reporting-obligation",
+      "label": "Banque de France — Foreign Exchange & Euro Regime",
+      "url": "https://www.banque-france.fr/en/monetary-policy-and-financial-stability/foreign-exchange",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "French Customs (Douane) — Cash Declaration Rules",
+      "url": "https://www.douane.gouv.fr/fiche/declaration-des-sommes-en-especes",
       "type": "customs",
       "tier": "primary"
     },
     {
-      "label": "Banque de France",
-      "url": "https://www.banque-france.fr/en",
-      "type": "central_bank",
-      "tier": "primary"
-    },
-    {
-      "label": "European Central Bank (ECB)",
-      "url": "https://www.ecb.europa.eu",
-      "type": "central_bank",
+      "label": "Direction Générale des Douanes et Droits Indirects — Travel & Currency",
+      "url": "https://www.douane.gouv.fr/fiche/voyageurs-et-marchandises",
+      "type": "customs",
       "tier": "primary"
     }
   ],
-  "disclaimer": "This page provides general informational reference only. France applies EU-wide regulations on cash declarations and capital movements. Rules differ significantly between intra-EU and non-EU travel. Tax reporting obligations for foreign accounts apply separately. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with French Customs (Douane), the Banque de France, or a qualified legal professional before making any financial or travel decisions."
+
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.banque-france.fr/en/monetary-policy-and-financial-stability/foreign-exchange", "pages": [], "section": "Eurozone FX Regime Overview" }
+    ],
+    "summary.traveler": [
+      { "url": "https://www.douane.gouv.fr/fiche/declaration-des-sommes-en-especes", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.banque-france.fr/en/monetary-policy-and-financial-stability/foreign-exchange", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://www.douane.gouv.fr/fiche/declaration-des-sommes-en-especes", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://www.douane.gouv.fr/fiche/declaration-des-sommes-en-especes", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://www.douane.gouv.fr/fiche/declaration-des-sommes-en-especes", "pages": [], "section": "Cash Declaration Rules (€10,000 / equivalent)" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.banque-france.fr/en/monetary-policy-and-financial-stability/foreign-exchange", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.banque-france.fr/en/monetary-policy-and-financial-stability/foreign-exchange", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.banque-france.fr/en/monetary-policy-and-financial-stability/foreign-exchange", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.banque-france.fr/en/monetary-policy-and-financial-stability/foreign-exchange", "pages": [], "section": "Absence of Exchange Controls" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.banque-france.fr/en/monetary-policy-and-financial-stability/foreign-exchange", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in France are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Banque de France / French Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with French Customs (Douane), Banque de France, or a qualified professional before making any financial or travel decisions."
 }
