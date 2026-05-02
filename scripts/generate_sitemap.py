@@ -21,7 +21,9 @@ import xml.etree.ElementTree as ET
 
 SKIP_DIRS = {
     '.git', '.github', '__pycache__', 'node_modules', 'venv', '.venv',
-    'scripts', 'data', 'assets', 'static', 'dist', 'build'
+    'scripts', 'data', 'assets', 'static', 'dist', 'build',
+    # Never expose preview surfaces via sitemap.xml (staging / QA only)
+    'preview',
 }
 SKIP_FILES = {
     'index-articles-section.html',
@@ -68,7 +70,7 @@ def is_public_html(site_root: Path, path: Path) -> bool:
         return parts[0] in PUBLISHABLE_ROOT_FILES
 
     # publishable section pages
-    if parts[0] in {'articles', 'rules', 'pages'}:
+    if parts[0] in {'articles', 'rules', 'pages', 'public'}:
         return True
 
     return False
@@ -93,6 +95,11 @@ def classify_url(path: Path) -> tuple[str, str]:
     if path.parts and path.parts[0] == 'articles':
         return 'monthly', '0.75'
     if path.parts and path.parts[0] == 'rules':
+        return 'monthly', '0.72'
+    if path.parts and path.parts[0] == 'public':
+        # mirror rules importance for published sovereign layer outputs
+        if len(path.parts) >= 3 and path.parts[1] == 'rules':
+            return 'monthly', '0.72'
         return 'monthly', '0.72'
     if path.parts and path.parts[0] == 'pages':
         return 'weekly', '0.65'

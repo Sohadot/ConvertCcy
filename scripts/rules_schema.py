@@ -546,7 +546,6 @@ needs_hardening → verified transition
 # I14: every source_map URL must match a canonicalized source_authorities URL
 #
 # I15: no raw string entries are allowed inside source_map lists
-"""
 
 
 # ─────────────────────────────────────────────────────────────────────────────

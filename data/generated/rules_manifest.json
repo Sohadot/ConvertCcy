@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-05-02T16:35:44+00:00",
+  "base_url": "https://convertccy.com/",
+  "schema_version_target": "1.2.1",
+  "counts": {
+    "published": 0,
+    "verified": 1,
+    "needs_hardening": 1,
+    "secondary_review": 0,
+    "skipped": 0
+  },
+  "published_entries": [],
+  "verified_entries": [
+    {
+      "status": "verified",
+      "country_slug": "india",
+      "country_name": "India",
+      "output_html": "preview/rules/verified/india-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    }
+  ],
+  "needs_hardening_entries": [
+    {
+      "status": "needs_hardening",
+      "country_slug": "morocco",
+      "country_name": "Morocco",
+      "output_html": "preview/rules/needs_hardening/morocco-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    }
+  ],
+  "secondary_review_entries": [],
+  "skipped_entries": []
+}

@@ -98,6 +98,24 @@ def normalize_path_str(path_str: str) -> str:
     return path_str.replace("\\", "/")
 
 
+RULES_HTML_SUFFIX = "-foreign-currency-rules"
+
+
+def slug_from_rules_html_filename(name: str) -> str:
+    stem = Path(name).stem
+    if stem.endswith(RULES_HTML_SUFFIX):
+        return stem[: -len(RULES_HTML_SUFFIX)]
+    return stem
+
+
+def expected_preview_country_html(status: str, slug: str) -> str:
+    return f"preview/rules/{status}/{slug}-foreign-currency-rules.html"
+
+
+def expected_public_country_html(slug: str) -> str:
+    return f"public/rules/{slug}-foreign-currency-rules.html"
+
+
 def expected_preview_statuses() -> Set[str]:
     return {
         rs.PageStatus.VERIFIED.value,
@@ -186,6 +204,9 @@ def validate_manifest_entries(site_root: Path, manifest: Dict[str, Any], result:
 
             if not isinstance(slug, str) or not slug.strip():
                 result.error(f"{prefix} country_slug must be a non-empty string")
+                continue
+
+            slug = slug.strip()
 
             if not isinstance(output_html, str) or not output_html.strip():
                 result.error(f"{prefix} output_html must be a non-empty string")
@@ -194,15 +215,21 @@ def validate_manifest_entries(site_root: Path, manifest: Dict[str, Any], result:
             normalized_output = normalize_path_str(output_html)
 
             if expected_status == rs.PageStatus.PUBLISHED.value:
-                if "/public/rules/" not in normalized_output:
-                    result.error(f"{prefix} published entry must render under public/rules/: {output_html}")
+                expected_rel = expected_public_country_html(slug)
+                if expected_rel not in normalized_output:
+                    result.error(
+                        f"{prefix} published output_html must include '{expected_rel}': {output_html}"
+                    )
                 if sitemap_eligible is not True:
                     result.error(f"{prefix} published entry must have sitemap_eligible=True")
                 if not public_url:
                     result.error(f"{prefix} published entry must have public_url")
             else:
-                if "/preview/rules/" not in normalized_output:
-                    result.error(f"{prefix} preview entry must render under preview/rules/: {output_html}")
+                expected_rel = expected_preview_country_html(expected_status, slug)
+                if expected_rel not in normalized_output:
+                    result.error(
+                        f"{prefix} preview output_html must include '{expected_rel}': {output_html}"
+                    )
                 if sitemap_eligible is not False:
                     result.error(f"{prefix} preview entry must have sitemap_eligible=False")
                 if public_url not in (None, ""):
@@ -244,7 +271,7 @@ def scan_public_layer(site_root: Path, manifest: Dict[str, Any], result: GateRes
     public_rules_dir.mkdir(parents=True, exist_ok=True)
 
     actual_public_pages = {
-        p.stem
+        slug_from_rules_html_filename(p.name)
         for p in public_rules_dir.glob("*.html")
         if p.is_file() and p.name != "index.html"
     }
@@ -294,7 +321,7 @@ def scan_preview_layer(site_root: Path, manifest: Dict[str, Any], result: GateRe
         dir_path = preview_rules_dir / status
         dir_path.mkdir(parents=True, exist_ok=True)
         actual_slugs = {
-            p.stem
+            slug_from_rules_html_filename(p.name)
             for p in dir_path.glob("*.html")
             if p.is_file() and p.name != "index.html"
         }
@@ -331,13 +358,13 @@ def prevent_cross_layer_contamination(site_root: Path, manifest: Dict[str, Any],
 
     public_rules_dir = site_root / "public" / "rules"
     for slug in preview_slugs:
-        if (public_rules_dir / f"{slug}.html").exists():
+        if slug and (public_rules_dir / f"{slug}-foreign-currency-rules.html").exists():
             result.error(f"Preview slug leaked into public layer: {slug}")
 
     preview_rules_dir = site_root / "preview" / "rules"
     for slug in published_slugs:
         for status in expected_preview_statuses():
-            if (preview_rules_dir / status / f"{slug}.html").exists():
+            if (preview_rules_dir / status / f"{slug}-foreign-currency-rules.html").exists():
                 result.warn(f"Published slug also exists in preview/{status}: {slug}")
 
 

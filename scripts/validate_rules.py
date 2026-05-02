@@ -8,10 +8,21 @@ Purpose
 -------
 Strict validator for country rule JSON files under the sovereign reference standard.
 
-Implements:
-- Gate 8: lifecycle consistency
-- Gate 9: source_map integrity
-- Gate 10: country_overview quality signals
+Implements **10 validation gates**:
+- Gate 1: top-level structural keys + schema_version + enums (region / slug / objects)
+- Gate 2: text quality (minimum lengths, forbidden placeholders, intra-rule similarity)
+- Gate 3: country_overview qualitative signals (authority / regime / convertibility posture)
+- Gate 4: source_authorities shape, HTTPS, tier/type consistency, primary coverage
+- Gate 5: source_map presence, per-field lists, entry shape, HTTPS, URL↔authority matching
+- Gate 6: PDF page pinning rules for verified/published statuses
+- Gate 7: lifecycle consistency (`page_status` ↔ `evidence_tier` ↔ `publication_class` ↔ indexing)
+- Gate 8: evidence ↔ `official_source_available` consistency (+ source_notice norms)
+- Gate 9: disclaimer safety (minimum length + banned “legal certainty” phrases)
+- Gate 10: date integrity for `last_reviewed` where applicable via schema checks
+
+Invariant families (documented in `rules_schema.py`):
+- **I1–I8**: lifecycle + evidence + sourcing posture invariants (Gate 7/8)
+- **I9–I15**: source_map structural + PDF hardening + URL canon invariants (Gate 5/6)
 
 Usage
 -----

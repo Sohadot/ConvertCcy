@@ -7,14 +7,14 @@
   "currency_code": "MAD",
   "currency_name": "Moroccan Dirham",
 
-  "schema_version": "1.2",
+  "schema_version": "1.2.1",
   "page_status": "needs_hardening",
   "last_reviewed": "2026-05-02",
-  "evidence_tier": "official_verified",
+  "evidence_tier": "official_verified_partial",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": true,
-  "source_notice": "All citations aligned with IGOC 2026 PDF + primary Office des Changes publications. Source map fully structured and field-level.",
+  "indexing_allowed": false,
+  "source_notice": "This entry maps each content field to primary Office des Changes publications (including IGOC 2026) but PDF page pinning is incomplete for several web FAQs and composite PDF sections.",
 
   "country_overview": "Morocco remains under a regulated foreign-exchange framework administered by the Office des Changes. The Office des Changes announced that IGOC 2026 enters into force on 1 January 2026 and described it as a clearer framework that continues a gradual and well-controlled liberalization while preserving the Kingdom's external balances.",
 
@@ -72,12 +72,12 @@
       {
         "url": "https://www.oc.gov.ma/en/actualites/publication-de-l-instruction-generale-des-operations-de-change-2026",
         "pages": [],
-        "section": "Announcement"
+        "section": "Announcement — IGOC 2026 enters into force 1 January 2026"
       },
       {
         "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
         "pages": [1, 2],
-        "section": "Introduction and general framework"
+        "section": "Front matter — gradual liberalisation under supervisory control"
       }
     ],
     "summary.traveler": [
@@ -96,12 +96,7 @@
       {
         "url": "https://www.oc.gov.ma/en/actualites/publication-de-l-instruction-generale-des-operations-de-change-2026",
         "pages": [],
-        "section": "Announcement"
-      },
-      {
-        "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
-        "pages": [],
-        "section": "Targeted measures sections"
+        "section": "Announcement — IGOC modernization themes referenced (investment/exports/services/e-commerce/hedging)"
       }
     ],
     "rules.bring_foreign_currency_in": [
@@ -148,7 +143,7 @@
       {
         "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
         "pages": [],
-        "section": "Targeted measures on exports, investment, service imports, e-commerce (various chapters)"
+        "section": "IGOC 2026 — export / investment / service-import clauses (needs exact PDF page pinning during verification)"
       }
     ],
     "rules.exchange_controls": [
