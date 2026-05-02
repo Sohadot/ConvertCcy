@@ -1,0 +1,95 @@
+{
+  "country_name": "South Korea",
+  "country_slug": "south-korea",
+  "iso2": "KR",
+  "iso3": "KOR",
+  "region": "East Asia",
+  "currency_code": "KRW",
+  "currency_name": "South Korean Won",
+
+  "schema_version": "1.2",
+  "page_status": "verified",
+  "last_reviewed": "2026-05-02",
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+
+  "country_overview": "South Korea operates a highly liberalised floating exchange rate regime administered by the Bank of Korea (BOK). There are no general exchange controls or restrictions on current or capital account transactions for residents or non-residents.",
+
+  "summary": {
+    "traveler": "Travelers may bring in or take out unlimited amounts of South Korean Won and foreign currency. No general currency declaration is required for normal travel amounts.",
+    "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+  },
+
+  "rules": {
+    "bring_foreign_currency_in": "Unlimited amounts of South Korean Won and foreign currency may be brought into South Korea with no general declaration requirement for travelers.",
+    "take_foreign_currency_out": "Unlimited amounts of South Korean Won and foreign currency may be taken out of South Korea with no general restriction or declaration requirement for travelers.",
+    "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Large or suspicious cash movements are subject to anti-money laundering reporting requirements by financial institutions.",
+    "resident_holding_rules": "South Korean residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+    "business_invoicing_settlement": "Business transactions may be invoiced and settled in foreign currency or KRW. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
+    "exchange_controls": "South Korea maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+    "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout South Korea."
+  },
+
+  "source_authorities": [
+    {
+      "label": "Bank of Korea (BOK) — Foreign Exchange Policy",
+      "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "Korea Customs Service — Travel & Currency Rules",
+      "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=8050&cntntsId=2694",
+      "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "Financial Supervisory Service (FSS) — FX Regulations",
+      "url": "https://www.fss.or.kr/en/main/main.do",
+      "type": "primary_regulator",
+      "tier": "primary"
+    }
+  ],
+
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400", "pages": [], "section": "FX Regime Overview" }
+    ],
+    "summary.traveler": [
+      { "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=8050&cntntsId=2694", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=8050&cntntsId=2694", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=8050&cntntsId=2694", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=8050&cntntsId=2694", "pages": [], "section": "Cash Declaration Rules" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400", "pages": [], "section": "Absence of Exchange Controls" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in South Korea are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Bank of Korea / Korea Customs Service framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Bank of Korea or Korea Customs Service before making any financial or travel decisions."
+}
