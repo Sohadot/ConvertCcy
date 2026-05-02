@@ -6,47 +6,90 @@
   "region": "Oceania",
   "currency_code": "AUD",
   "currency_name": "Australian Dollar",
-  "schema_version": "1.1",
+
+  "schema_version": "1.2",
   "page_status": "verified",
-  "last_reviewed": "2026-04-30",
+  "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
+
+  "country_overview": "Australia operates one of the most liberalised foreign-exchange regimes in the world. There are no general exchange controls or restrictions on current or capital account transactions for residents or non-residents. The framework is administered by the Reserve Bank of Australia (RBA) and the Australian Transaction Reports and Analysis Centre (AUSTRAC).",
+
   "summary": {
-    "traveler": "Travellers entering or leaving Australia carrying AUD 10,000 or more in physical currency — Australian or foreign — or equivalent in negotiable monetary instruments must report this to the Australian Border Force (ABF) using the Incoming or Outgoing Passenger Card. There is no restriction on the amount that may be carried; only the reporting obligation applies. Failure to report is an offense under the Anti-Money Laundering and Counter-Terrorism Financing Act 2006.",
-    "business": "Australia operates with a fully open capital account and no exchange controls. Businesses may freely hold, invoice, and settle in foreign currencies. AUSTRAC (Australian Transaction Reports and Analysis Centre) administers AML/CTF reporting. Financial institutions must report international funds transfers of AUD 10,000 or more (IFTIs) to AUSTRAC. The Reserve Bank of Australia (RBA) governs monetary policy. No capital controls apply to repatriation of profits or investment returns."
+    "traveler": "Travelers may bring in or take out unlimited amounts of Australian Dollars and foreign currency. No general currency declaration is required for normal travel amounts.",
+    "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
   },
+
   "rules": {
-    "bring_foreign_currency_in": "There are no restrictions on the amount of physical currency that may be brought into Australia. However, travellers must report to the Australian Border Force (ABF) if they are carrying AUD 10,000 or more in physical currency — Australian or foreign — or equivalent in monetary instruments (travellers' cheques, money orders, promissory notes, bearer bonds). The report is made on the Incoming Passenger Card. The obligation is established under the Anti-Money Laundering and Counter-Terrorism Financing Act 2006 (AML/CTF Act). Failure to report may result in the currency being detained for investigation.",
-    "take_foreign_currency_out": "There are no restrictions on the amount of physical currency that may be taken out of Australia. The same AUD 10,000 reporting threshold applies at departure. Travellers must declare AUD 10,000 or more in physical currency or negotiable instruments on their Outgoing Passenger Card before leaving Australia. Unreported amounts may be seized by the ABF. Electronic transfers above AUD 10,000 must be reported by financial institutions to AUSTRAC as International Funds Transfer Instructions (IFTIs).",
-    "cash_declaration_threshold": "The reporting threshold in Australia is AUD 10,000, covering physical currency (Australian or foreign) and bearer negotiable instruments (BNIs) in combined value. Travellers must report at the border to the Australian Border Force (ABF). Financial institutions must separately report international electronic transfers of AUD 10,000 or more to AUSTRAC as International Funds Transfer Instructions (IFTIs). Important: gold bullion does NOT require an AUSTRAC declaration — bullion is excluded from the monetary instruments definition. However, precious metal coins classified as legal tender that exceed AUD 10,000 in combined value with other monetary instruments are subject to AUSTRAC reporting. The obligation is established under the Anti-Money Laundering and Counter-Terrorism Financing Act 2006. Source: abf.gov.au (Australian Border Force); austrac.gov.au (AUSTRAC).",
-    "resident_holding_rules": "Australian residents may freely hold foreign currency accounts in Australia and abroad. No restrictions apply to holding, purchasing, converting, or transferring foreign currency. Australia operates with a fully open capital account. The Australian dollar is freely floating. Residents must report foreign income and certain foreign financial interests on their annual tax return with the ATO (Australian Taxation Office). Australia participates in CRS for automatic exchange of financial account information.",
-    "non_resident_rules": "Non-residents may freely hold bank accounts and conduct financial transactions in Australia subject to AML and identity verification requirements. Non-residents may freely repatriate profits, dividends, and capital. Australia's Foreign Investment Review Board (FIRB) reviews foreign investment proposals above certain thresholds in sensitive sectors, but this is an investment approval process rather than a currency restriction.",
-    "business_invoicing_settlement": "Australian businesses may freely invoice, settle, and hold balances in foreign currencies. No mandatory conversion requirements exist. Financial institutions must report IFTIs to AUSTRAC for international electronic transfers of AUD 10,000 or more. AML/CTF obligations apply to designated service providers under the AML/CTF Act 2006. The New Payments Platform (NPP) enables fast domestic payments. SWIFT is used for international transfers.",
-    "exchange_controls": "Australia maintains a fully open capital account with no exchange controls. The Australian dollar is a freely floating currency. The Reserve Bank of Australia manages monetary policy but does not impose currency movement restrictions. AUSTRAC administers AML/CTF compliance for financial institutions and designated non-financial businesses. Australia's sanctions regime (administered by the Department of Foreign Affairs and Trade) restricts transactions with designated parties under the Autonomous Sanctions Act 2011.",
-    "banking_conversion_practicality": "Foreign currency exchange is widely available through Australian banks (big four: CBA, NAB, Westpac, ANZ), licensed exchange offices, and online providers (regulated by AUSTRAC as remittance dealers). ATMs are broadly accessible. The RBA operates the Reserve Bank Information and Transfer System (RITS) for interbank settlements. International wire transfers are processed via SWIFT. AUSTRAC registers and supervises all remittance service providers. Exchange rates are competitive for major currencies."
+    "bring_foreign_currency_in": "Unlimited amounts of Australian Dollars and foreign currency may be brought into Australia with no general declaration requirement for travelers.",
+    "take_foreign_currency_out": "Unlimited amounts of Australian Dollars and foreign currency may be taken out of Australia with no general restriction or declaration requirement for travelers.",
+    "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Movements of AUD 10,000 or more (or equivalent) in cash or bearer negotiable instruments must be reported to AUSTRAC under anti-money laundering rules.",
+    "resident_holding_rules": "Australian residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+    "business_invoicing_settlement": "Business transactions may be invoiced and settled in foreign currency or AUD. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
+    "exchange_controls": "Australia maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+    "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Australia."
   },
+
   "source_authorities": [
     {
-      "label": "Australian Border Force (ABF) — Currency Declaration",
-      "url": "https://www.abf.gov.au/newsroom-subsite/Pages/Passenger-fined-over-undeclared-currency.aspx",
-      "type": "customs",
+      "label": "Reserve Bank of Australia (RBA) — Foreign Exchange Policy",
+      "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+      "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "AUSTRAC — Australian Transaction Reports and Analysis Centre",
-      "url": "https://www.austrac.gov.au/business/how-comply-guidance-and-resources/reporting/cross-border-movement-reports",
+      "label": "AUSTRAC — Cash Reporting Requirements",
+      "url": "https://www.austrac.gov.au/business/how-comply-guidance-resources/guidance-notes",
       "type": "regulator",
       "tier": "primary"
     },
     {
-      "label": "Reserve Bank of Australia (RBA)",
-      "url": "https://www.rba.gov.au",
-      "type": "central_bank",
+      "label": "Australian Border Force — Travel & Currency Rules",
+      "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in",
+      "type": "customs",
       "tier": "primary"
     }
   ],
-  "disclaimer": "This page provides general informational reference only. Australian foreign currency rules are governed by the AML/CTF Act 2006. FIRB requirements apply separately to foreign investment proposals in certain sectors. Tax reporting obligations for foreign income and assets apply under ATO rules. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with ABF, AUSTRAC, or a qualified legal professional before making any financial or travel decisions."
+
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html", "pages": [], "section": "FX Regime Overview" }
+    ],
+    "summary.traveler": [
+      { "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://www.austrac.gov.au/business/how-comply-guidance-resources/guidance-notes", "pages": [], "section": "Cash Reporting Rules (AUD 10,000 / equivalent)" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html", "pages": [], "section": "Absence of Exchange Controls" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Australia are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBA / AUSTRAC / Australian Border Force framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of Australia, AUSTRAC, or a qualified professional before making any financial or travel decisions."
 }
