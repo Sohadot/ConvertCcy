@@ -1,0 +1,52 @@
+{
+  "country_name": "United States",
+  "country_slug": "united-states",
+  "iso2": "US",
+  "iso3": "USA",
+  "region": "North America",
+  "currency_code": "USD",
+  "currency_name": "US Dollar",
+  "schema_version": "1.1",
+  "page_status": "verified",
+  "last_reviewed": "2026-04-30",
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+  "summary": {
+    "traveler": "Travellers entering or departing the United States with more than $10,000 in currency or monetary instruments must file FinCEN Form 105 (Report of International Transportation of Currency or Monetary Instruments) with US Customs and Border Protection (CBP). There is no restriction on the amount that may be brought in or taken out — only the declaration obligation applies above $10,000. Failure to declare may result in seizure and criminal penalties under 31 USC 5316.",
+    "business": "The United States operates with a fully open capital account and no general exchange controls. Businesses may freely hold, invoice, and settle in foreign currencies. International transfers are subject to OFAC sanctions compliance, AML/CFT requirements under the Bank Secrecy Act, and reporting obligations for transfers above regulatory thresholds. The Federal Reserve and FinCEN regulate financial institutions. No capital controls apply to the repatriation of profits or investment returns."
+  },
+  "rules": {
+    "bring_foreign_currency_in": "There is no limit on the amount of currency or monetary instruments that may be brought into the United States. Federal law (31 USC 5316) requires anyone transporting more than USD 10,000 — including foreign currency equivalents — to file FinCEN Form 105 with CBP at the time of entry. The obligation applies to individuals and to groups traveling together whose combined total exceeds USD 10,000. Reportable instruments include: US and foreign currency, travellers cheques, money orders, bearer bonds, endorsed checks, and securities in bearer form. Gold coins and bullion are not monetary instruments under this definition but must be declared as merchandise if acquired abroad. Electronic filing: fincen105.cbp.dhs.gov. Recipients of currency mailed or shipped from abroad exceeding USD 10,000 must also file within 15 days of receipt. Source: cbp.gov.",
+    "take_foreign_currency_out": "There is no restriction on the amount of currency that may be taken out of the United States. The same $10,000 declaration requirement applies at departure: any person transporting more than $10,000 in currency or monetary instruments out of the US must file FinCEN Form 105 with CBP before departure. Structuring transactions to avoid the $10,000 threshold — such as making multiple trips with amounts just below $10,000 — is itself a federal crime (structuring) under 31 USC 5324.",
+    "cash_declaration_threshold": "The reporting threshold is USD 10,000, applying to: US or foreign currency, travellers cheques, money orders, bearer negotiable instruments (bearer bonds, endorsed checks), and securities in bearer form. The threshold applies to the total aggregate amount carried by an individual OR by groups traveling together (families included) — if the combined group total exceeds USD 10,000, each person must report. Important distinction: gold coins and gold bullion are NOT classified as monetary instruments under 19 CFR 1010.100(m) — they must be declared as merchandise if acquired abroad, but are not subject to FinCEN Form 105 reporting. Electronic filing is available at fincen105.cbp.dhs.gov up to 72 hours before travel. Legal basis: 31 USC 5316; Currency and Foreign Transaction Reporting Act (Bank Secrecy Act). Source: cbp.gov/travel/international-visitors/money-monetary-instruments.",
+    "resident_holding_rules": "US residents may freely hold foreign currency accounts domestically and abroad. There are no restrictions on the amount of foreign currency that residents may hold or convert. However, US persons (citizens and residents) must report foreign bank accounts with balances exceeding $10,000 at any time during the year on FinCEN Form 114 (FBAR), filed annually with the Financial Crimes Enforcement Network. Foreign financial assets above certain thresholds must also be reported on IRS Form 8938 (FATCA reporting). These are reporting obligations, not holding restrictions.",
+    "non_resident_rules": "Non-residents may freely bring in and take out currency subject to the $10,000 declaration threshold. Non-residents may hold bank accounts in the US and conduct international transfers without restriction beyond AML compliance. Non-resident investors may freely repatriate profits, dividends, and capital. Transactions involving OFAC-sanctioned countries, entities, or individuals are prohibited regardless of residency.",
+    "business_invoicing_settlement": "US businesses may freely invoice, settle, and hold balances in foreign currencies. No mandatory conversion requirements exist. Businesses must comply with the Bank Secrecy Act, including filing Currency Transaction Reports (CTRs) for cash transactions above $10,000 and Suspicious Activity Reports (SARs) as required. Transactions involving OFAC-sanctioned parties are prohibited. International wire transfers above $3,000 are subject to recordkeeping requirements under the Travel Rule.",
+    "exchange_controls": "The United States maintains a fully open capital account with no exchange controls. The US dollar is freely floating and the world's primary reserve currency. The Federal Reserve manages monetary policy but does not impose currency movement restrictions. OFAC administers economic and trade sanctions that prohibit transactions with designated countries, entities, and individuals — these represent targeted prohibitions rather than general exchange controls. AML and CFT compliance is administered by FinCEN under the Bank Secrecy Act.",
+    "banking_conversion_practicality": "Foreign currency exchange is widely available through US commercial banks, licensed money service businesses, and online platforms. ATMs are broadly accessible. The Federal Reserve operates the Fedwire Funds Service for large-value interbank transfers. International wire transfers are processed via SWIFT. FinCEN registers and regulates money service businesses, including currency exchangers and money transmitters. Exchange rate competitiveness varies by provider; banks typically offer less favorable rates than specialist exchange services."
+  },
+  "source_authorities": [
+    {
+      "label": "US Customs and Border Protection (CBP) — Currency Reporting",
+      "url": "https://www.cbp.gov/travel/international-visitors/money-monetary-instruments",
+      "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "Financial Crimes Enforcement Network (FinCEN)",
+      "url": "https://www.fincen.gov/resources/statutes-and-regulations/cmir",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "Federal Reserve",
+      "url": "https://www.federalreserve.gov",
+      "type": "central_bank",
+      "tier": "primary"
+    }
+  ],
+  "disclaimer": "This page provides general informational reference only. US foreign currency and cash reporting requirements are subject to change under federal law. OFAC sanctions designations change frequently. FBAR and FATCA reporting obligations for US persons with foreign financial accounts are separate legal requirements. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with CBP, FinCEN, OFAC, IRS, or a qualified legal professional before making any financial or travel decisions."
+}

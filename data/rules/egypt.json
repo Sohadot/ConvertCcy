@@ -1,0 +1,46 @@
+{
+  "country_name": "Egypt",
+  "country_slug": "egypt",
+  "iso2": "EG",
+  "iso3": "EGY",
+  "region": "North Africa",
+  "currency_code": "EGP",
+  "currency_name": "Egyptian Pound",
+  "schema_version": "1.1",
+  "page_status": "verified",
+  "last_reviewed": "2026-04-30",
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+  "summary": {
+    "traveler": "Visitors may bring any amount of foreign currency into Egypt but must declare amounts exceeding USD 10,000 at customs. Egyptian pounds are restricted: a maximum of EGP 5,000 may be imported or exported. Unconverted foreign currency may generally be taken out up to the declared amount. Exchange must be conducted through CBE-licensed banks or authorised foreign exchange bureaus. Retain exchange receipts as they may be required for reconversion.",
+    "business": "Foreign exchange transactions in Egypt are governed by Law No. 88 of 2003. Individuals and businesses may hold foreign currency accounts and transfer funds abroad through CBE-licensed banks. All foreign currency transactions must be conducted through authorised channels. Commercial import payments require specific documentation. The CBE actively manages foreign exchange availability and may direct banks to prioritise essential goods. AML and CFT obligations apply to all financial institutions."
+  },
+  "rules": {
+    "bring_foreign_currency_in": "Travellers may bring any amount of foreign currency into Egypt. Amounts of foreign currency, securities, or negotiable bearer instruments exceeding USD 10,000 (or its equivalent in any foreign currency) must be declared to Egyptian Customs authorities upon arrival. The declaration must be made in person at the customs declaration desk at the port of entry. Egyptian pounds (EGP) may only be imported up to EGP 5,000 per traveller — this is a hard limit, not merely a declaration threshold. Failure to declare foreign currency above USD 10,000 may result in confiscation and penalties. Currency obtained through postal/giro cheques may be used to pay hotel bills and air tickets. Legal basis: CBE Law No. 88 of 2003, Article 116; AML Law Executive Regulations Article 14. Source: CBE Law No. 88/2003 and Egyptian Customs Authority.",
+    "take_foreign_currency_out": "Travellers may take any amount of foreign currency out of Egypt, but must declare amounts exceeding USD 5,000 to Egyptian Customs upon departure. Note: the exit threshold (USD 5,000) is lower than the entry threshold (USD 10,000). Travellers who entered with a declared amount above USD 10,000 should retain their entry declaration form and may be asked to account for the difference between the amount declared on entry and the amount being taken out on departure. Egyptian pounds (EGP) may only be exported up to EGP 5,000 per traveller. Larger outbound transfers of foreign currency for commercial or investment purposes must be conducted through CBE-licensed banks. Legal basis: CBE Law No. 88/2003, AML Executive Regulations Article 14.",
+    "cash_declaration_threshold": "Egypt applies TWO different thresholds depending on direction of travel. ENTRY: Travellers must declare foreign currency, securities, and negotiable bearer instruments exceeding USD 10,000 (or equivalent in any foreign currency) upon arrival. EXIT: Travellers must declare foreign currency exceeding USD 5,000 upon departure. Egyptian pounds: a strict limit of EGP 5,000 applies at both entry and departure — this is a hard cap, not merely a declaration threshold. EGP above this amount may not be imported or exported. These rules are established under Article 14 of the Executive Regulations of the Anti-Money Laundering Law and Article 116 of CBE Law No. 88 of 2003. Foreign currency exchange must be conducted through CBE-licensed banks or authorised exchange offices. Source: CBE Law No. 88/2003 and its Executive Regulations; Egyptian Customs Authority.",
+    "resident_holding_rules": "Egyptian residents may hold foreign currency accounts at CBE-licensed banks under Law No. 88 of 2003. Residents may deposit, withdraw, and transfer foreign currency through authorised banking channels. However, foreign exchange availability can be subject to CBE management and bank-level restrictions, particularly for large transactions. The Egyptian pound has operated under a managed float since March 2024 under an IMF programme, following a period of significant currency depreciation. Residents should expect that large foreign currency transactions may require documentation of purpose.",
+    "non_resident_rules": "Non-residents may open bank accounts and hold foreign currency in Egypt through CBE-licensed banks. Foreign investors are generally permitted to repatriate dividends, profits, and capital through official banking channels, subject to documentation and compliance with CBE regulations. Non-residents must conduct all foreign currency transactions through authorised banks or licensed foreign exchange bureaus. Practical access to foreign currency for repatriation has at times been affected by CBE foreign exchange management measures.",
+    "business_invoicing_settlement": "Businesses in Egypt may hold foreign currency accounts and conduct international transactions through CBE-licensed banks. Foreign currency transactions must be processed through authorised banks or licensed foreign exchange bureaus, all of which submit transaction reports to the CBE. Commercial transactions supporting imports must be accompanied by specific documentation. The CBE has directed banks to prioritise foreign currency for imports of essential goods including food and medical items. All foreign exchange bureaus and banks operate under CBE supervision and AML obligations.",
+    "exchange_controls": "Egypt maintains foreign exchange controls administered by the Central Bank of Egypt (CBE) under Law No. 88 of 2003. The CBE controls all foreign exchange transactions through its oversight of banks and licensed foreign exchange bureaus. The Egyptian pound operates under a managed float following the March 2024 unification of the official and parallel exchange rates under IMF programme conditions. Card-based foreign currency purchases have been subject to bank-level restrictions in recent years. The CBE actively manages foreign exchange allocation, particularly for commercial transactions.",
+    "banking_conversion_practicality": "Foreign currency exchange is available at CBE-licensed commercial banks and authorised foreign exchange bureaus. ATMs are widely available in urban areas and accept international cards. Exchange receipts from authorised sources should be retained for reconversion. The CBE publishes daily official exchange rates. Since the March 2024 exchange rate unification, the official market has been more accessible, though individual banks may maintain their own operational limits on card-based foreign currency purchases. Currency exchange in rural areas may be limited to larger towns."
+  },
+  "source_authorities": [
+    {
+      "label": "Central Bank of Egypt (CBE)",
+      "url": "https://www.cbe.org.eg/en/laws-regulations/regulations",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "Egyptian Customs Authority",
+      "url": "https://customs.gov.eg",
+      "type": "customs",
+      "tier": "primary"
+    }
+  ],
+  "disclaimer": "This page provides general informational reference only. Foreign currency rules in Egypt are subject to change and have evolved significantly in recent years, including following the March 2024 exchange rate unification. Rules vary by residency status, transaction type, and amount. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with the Central Bank of Egypt, Egyptian Customs Authority, or a qualified legal professional before making any financial or travel decisions."
+}

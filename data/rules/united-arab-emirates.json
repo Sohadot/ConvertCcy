@@ -1,0 +1,65 @@
+{
+  "country_name": "United Arab Emirates",
+  "country_slug": "united-arab-emirates",
+  "iso2": "AE",
+  "iso3": "ARE",
+  "region": "Middle East",
+  "currency_code": "AED",
+  "currency_name": "UAE Dirham",
+
+  "schema_version": "1.1",
+  "page_status": "verified",
+  "last_reviewed": "2026-04-30",
+
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+
+  "summary": {
+    "traveler": "The UAE operates with no exchange controls and the dirham is freely convertible. Visitors and residents may bring in and take out any amount of foreign currency, but amounts exceeding AED 60,000 in total value (cash, cheques, jewellery, and precious stones combined) must be declared to customs using the designated form or the Afseh digital platform. Foreign currency accounts may be held freely by both residents and non-residents. Currency exchange is widely available across banks, licensed exchange houses, and ATMs.",
+    "business": "The UAE imposes no capital controls and no restrictions on currency conversion or repatriation of profits, salaries, or investment returns. Businesses may freely hold foreign currency accounts and conduct transactions in foreign currencies. Exchange business activity requires licensing from the Central Bank under the Exchange Business Regulation C 7/2025. AML and CFT compliance obligations apply to all financial transactions above regulatory thresholds."
+  },
+
+  "rules": {
+    "bring_foreign_currency_in": "There are no restrictions on the amount of foreign currency that may be brought into the UAE. However, travellers carrying cash, cheques, jewellery, or precious stones with a combined value exceeding AED 60,000 must declare these items to customs authorities. The declaration must be made using the designated declaration form or through the Afseh online platform operated by the Federal Authority for Identity, Citizenship, Customs and Ports Security (ICP). The Afseh platform currently covers Abu Dhabi, Sharjah, and Ras Al Khaimah international airports. Travellers under 18 are exempt from filing their own declaration; their items may be included under a parent or guardian's declaration. Failure to declare amounts above the threshold is treated as smuggling under UAE customs law.",
+
+    "take_foreign_currency_out": "There are no restrictions on taking foreign currency out of the UAE. Amounts exceeding AED 60,000 in total value (cash, cheques, jewellery, and precious stones combined) must be declared upon departure. The UAE does not impose limits on capital outflows or restrict the transfer of profits, salaries, investment returns, or savings abroad. Remittances may be executed freely through licensed banks or exchange houses in compliance with AML requirements.",
+
+    "cash_declaration_threshold": "The declaration threshold in the UAE is AED 60,000, applicable to the combined value of cash, bearer negotiable instruments, jewellery, and precious stones carried by any traveller aged 18 or older. This threshold applies at both entry and departure. The requirement is established under the Regulation on the Declaration of Currencies, Bearer Negotiable Instruments, and Precious Metals and Stones in Possession of Travelers (Official Gazette No. 703, dated 31 May 2021). There are no fees for submitting a declaration. The rule is framed as a transparency and anti-money laundering measure, not a restriction on carrying funds.",
+
+    "resident_holding_rules": "UAE residents are permitted without restriction to hold accounts in UAE dirhams and in foreign currencies, both domestically and in overseas banks. Domestic currency accounts are fully convertible into foreign currency. There are no limits on the amount of foreign currency that residents may hold, transfer, or convert. The UAE imposes no capital controls on residents, and the dirham has been pegged to the US dollar at a fixed rate of AED 3.6725 per USD since 1997, providing exchange rate stability.",
+
+    "non_resident_rules": "Non-residents are permitted to hold domestic currency (AED) accounts and foreign currency accounts in UAE banks. Non-resident accounts in domestic currency are convertible into foreign currency without restriction. Non-resident companies, banks, and financial institutions may open and maintain foreign currency accounts in the UAE. There are no restrictions on the repatriation of funds by non-residents. Foreign investors may repatriate profits, liquidation proceeds, and salaries freely under UAE law.",
+
+    "business_invoicing_settlement": "UAE businesses may invoice, settle, and hold balances in foreign currencies without restriction. There are no mandatory conversion requirements. Exchange business — meaning the commercial sale and purchase of foreign currencies, remittance operations, and related services — requires a licence from the Central Bank under the Exchange Business Regulation C 7/2025. Businesses engaged in international trade may freely conduct transactions in USD, EUR, GBP, and other currencies. AML and CFT obligations apply to all financial institutions and businesses conducting financial transactions.",
+
+    "exchange_controls": "The UAE does not apply exchange controls. The dirham is freely convertible, and there are no restrictions on capital inflows, capital outflows, current account transactions, or profit and dividend repatriation. The Central Bank of the UAE (CBUAE), operating under Federal Decree-Law No. 6 of 2025, supervises financial institutions and licensed exchange businesses but does not impose currency conversion restrictions. The UAE's regulatory framework focuses on AML and CFT compliance rather than currency movement controls. The AED has been pegged to the USD at AED 3.6725 since 1997.",
+
+    "banking_conversion_practicality": "Currency exchange services are widely available across the UAE through licensed commercial banks, exchange houses regulated by the CBUAE under the Exchange Business Regulation C 7/2025, and ATMs accepting international cards. The UAE has a large network of exchange houses offering competitive rates. Major international banks including Citibank operate onshore. Digital payment infrastructure is advanced, with the UAE Funds Transfer System (UAEFTS) providing real-time gross settlement. International card withdrawals and transfers are broadly supported. No significant practical barriers exist for currency conversion or international transfers."
+  },
+
+  "source_authorities": [
+    {
+      "label": "Central Bank of the UAE (CBUAE) — Rulebook",
+      "url": "https://rulebook.centralbank.ae",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "Dubai Customs — Declaring Money Procedure",
+      "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
+      "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "UAE Government — Banking and Financial Services",
+      "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+      "type": "ministry",
+      "tier": "primary"
+    }
+  ],
+
+  "disclaimer": "This page provides general informational reference only. Foreign currency rules in the UAE are subject to change. While the UAE does not impose exchange controls, AML and customs declaration obligations apply. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with the Central Bank of the UAE (CBUAE), UAE Customs authorities, or a qualified legal professional before making any financial or travel decisions."
+}

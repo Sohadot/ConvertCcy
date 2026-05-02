@@ -1,0 +1,52 @@
+{
+  "country_name": "China",
+  "country_slug": "china",
+  "iso2": "CN",
+  "iso3": "CHN",
+  "region": "East Asia",
+  "currency_code": "CNY",
+  "currency_name": "Chinese Yuan (Renminbi)",
+  "schema_version": "1.1",
+  "page_status": "verified",
+  "last_reviewed": "2026-04-30",
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+  "summary": {
+    "traveler": "Travellers entering or leaving China carrying foreign currency equivalent to USD 5,000 or more must declare this to Customs. The limit for carrying foreign currency out without declaration is below USD 5,000. Chinese yuan (CNY) import/export is limited to CNY 20,000 per person. China maintains significant capital controls administered by the State Administration of Foreign Exchange (SAFE). The renminbi is not freely convertible outside China's managed float regime.",
+    "business": "China maintains comprehensive capital controls administered by SAFE. Current account transactions — trade payments, services, dividends — are largely liberalised. Capital account transactions — FDI, portfolio investment, external borrowing — require approval or registration with SAFE. Businesses may hold foreign currency accounts under SAFE-approved conditions. Export proceeds must generally be repatriated within a set timeframe. The renminbi operates under a managed float against a basket of currencies administered by the People's Bank of China (PBOC)."
+  },
+  "rules": {
+    "bring_foreign_currency_in": "There is no upper limit on the amount of foreign currency cash that travellers may bring into China. However, amounts equivalent to USD 5,000 or more must be declared in writing to Chinese Customs upon arrival. This declaration is important as it establishes the traveller's inbound record, which determines what they are permitted to take out without a bank permit. Amounts below USD 5,000 do not require any declaration. Chinese yuan (CNY) may be imported up to CNY 20,000 per person. These rules are established under the Interim Measures for Administration of Carrying Foreign Currency Cash into and out of China (SAFE Huifa No. 21 [2004]). Source: State Administration of Foreign Exchange (SAFE); General Administration of Customs of China.",
+    "take_foreign_currency_out": "China's rules for taking foreign currency OUT apply a three-tier system based on the outbound amount. If the outbound amount does not exceed the traveller's most recent inbound declaration record: no permit required. If there is no inbound record or the outbound amount exceeds the last declared inbound amount: (1) Below USD 5,000 equivalent: no permit required, Customs grants clearance directly. (2) USD 5,000 to USD 10,000 equivalent: a bank-issued Permit for Carrying Foreign Currency must be obtained before departure and presented to Customs. (3) Above USD 10,000 equivalent: a SAFE branch warrant (Permit for Carrying Foreign Exchanges) is required. CNY 20,000 maximum may be exported. Same-day or short-term frequent travellers face additional restrictions. Source: SAFE Huifa No. 21 [2004]; General Administration of Customs.",
+    "cash_declaration_threshold": "ENTRY: Written customs declaration is required for foreign currency amounts of USD 5,000 or more. Below USD 5,000 no declaration is needed. CNY import limit: CNY 20,000. EXIT: A three-tier system applies based on outbound amount versus inbound declaration: (1) Under USD 5,000: no permit needed; (2) USD 5,000-10,000: bank-issued Permit for Carrying Foreign Currency required; (3) Over USD 10,000: SAFE branch warrant required. CNY export limit: CNY 20,000. Travellers who declared on entry may export up to their declared inbound amount without a permit. These rules are governed by the Interim Measures for Administration of Carrying Foreign Currency Cash into and out of China (SAFE Huifa No. 21 [2004]) and Customs Announcement No. 52 [2013].",
+    "resident_holding_rules": "Chinese residents face significant restrictions on holding and using foreign currency under SAFE regulations. Individuals have an annual foreign exchange purchase quota of USD 50,000 per person per year for current account purposes. Purchases above this quota or for capital account purposes require SAFE approval. Residents may hold foreign currency accounts at authorised banks, but balances are subject to monitoring and conversion obligations may apply to foreign currency earned through domestic activities.",
+    "non_resident_rules": "Non-residents (foreign individuals and foreign-invested enterprises) may hold foreign currency accounts in China. Non-residents may bring in unlimited foreign currency (declaring above USD 5,000) and take out amounts they brought in and declared. Repatriation of dividends and profits by foreign-invested enterprises is permitted through authorised banks after tax compliance. Capital repatriation from sales of equity or assets may require SAFE approval depending on the transaction type.",
+    "business_invoicing_settlement": "Chinese businesses must generally settle trade payments through authorised banks with supporting documentation. Export proceeds must be repatriated to China within a specified period (generally within 90 days for goods exports, with extensions possible). Foreign-invested enterprises may retain a portion of foreign exchange earnings in foreign currency accounts. Capital account transactions — including equity investment, external borrowing, and outbound investment — require SAFE registration or approval. The Cross-Border Interbank Payment System (CIPS) facilitates CNY settlement for international transactions.",
+    "exchange_controls": "China maintains comprehensive exchange controls administered by the State Administration of Foreign Exchange (SAFE) under the People's Bank of China (PBOC). Current account transactions are largely liberalised. Capital account transactions require SAFE approval or registration. The renminbi (CNY) operates under a managed float against a basket of currencies within a daily trading band set by the PBOC. The offshore CNY (CNH) trades separately in Hong Kong and other centres. Individual annual FX purchase quotas of USD 50,000 apply to residents. Cross-border capital flows by institutions are regulated through quotas (QDII, QFII, QFLP programmes).",
+    "banking_conversion_practicality": "Foreign currency exchange is available at PBOC-authorised banks and licensed exchange offices in China. ATMs accepting foreign cards (Visa, Mastercard) have faced restrictions in some periods; UnionPay is the primary domestic network. Airport exchange counters are available. Exchange receipts from authorised sources are required to reconvert CNY to foreign currency. Digital payment platforms (Alipay, WeChat Pay) now accept foreign cards for tourist use in major cities. Large cash conversions require identity documentation and are subject to AML monitoring."
+  },
+  "source_authorities": [
+    {
+      "label": "State Administration of Foreign Exchange (SAFE) — Rules and Regulations",
+      "url": "https://www.safe.gov.cn/en/RulesandRegulations/index_3.html",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "People's Bank of China (PBOC)",
+      "url": "https://www.pbc.gov.cn/en/3688110/index.html",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "General Administration of Customs of China",
+      "url": "https://english.customs.gov.cn",
+      "type": "customs",
+      "tier": "primary"
+    }
+  ],
+  "disclaimer": "This page provides general informational reference only. China's foreign exchange rules are complex, frequently updated by SAFE and the PBOC, and vary significantly by residency status, transaction type, and sector. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with SAFE, the PBOC, or a qualified legal or compliance professional before making any financial, investment, or travel decisions involving China."
+}

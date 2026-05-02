@@ -1,0 +1,46 @@
+{
+  "country_name": "South Africa",
+  "country_slug": "south-africa",
+  "iso2": "ZA",
+  "iso3": "ZAF",
+  "region": "Sub-Saharan Africa",
+  "currency_code": "ZAR",
+  "currency_name": "South African Rand",
+  "schema_version": "1.1",
+  "page_status": "verified",
+  "last_reviewed": "2026-04-30",
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+  "summary": {
+    "traveler": "Travellers entering or leaving South Africa carrying ZAR 25,000 or more in cash, or foreign currency equivalent to ZAR 25,000 or more, must declare this to the South African Revenue Service (SARS) Customs. South African residents may travel with up to ZAR 25,000 in rand notes without declaration. For foreign currency, travellers may carry the equivalent of ZAR 25,000 without declaration. The South African Reserve Bank (SARB) administers exchange control regulations.",
+    "business": "South Africa maintains exchange controls administered by the South African Reserve Bank (SARB) Financial Surveillance Department. Residents face restrictions on holding assets abroad beyond their individual foreign investment allowance of ZAR 10 million per year (with SARS tax clearance). Businesses have corporate allowances for foreign investment. Foreign currency inflows from exports must generally be repatriated. The rand operates under a managed float. AML obligations apply under the Financial Intelligence Centre Act (FICA)."
+  },
+  "rules": {
+    "bring_foreign_currency_in": "Travellers may bring foreign currency into South Africa up to the equivalent of ZAR 25,000 without prior authorisation. Amounts above ZAR 25,000 equivalent require written prior authorisation from the South African Reserve Bank (SARB) before entry. Currency must be declared through the SATMS online system, SATMS Mobi App, or Traveller Card (TC-01). Declarable items include foreign currency, South African rand, securities, and gold. SARS Customs Officers may question travellers and seize undeclared or excess currency. This is a genuine exchange control limit — not simply a reporting threshold. Source: sars.gov.za/customs-and-excise/travellers; SARB Exchange Control Regulations.",
+    "take_foreign_currency_out": "Travellers may take foreign currency out of South Africa up to the equivalent of ZAR 25,000 without prior authorisation. Amounts above ZAR 25,000 require written prior authorisation from the South African Reserve Bank (SARB) before departure. South African rand may be taken out up to ZAR 25,000. Non-residents may take out foreign currency they declared and documented on arrival. Residents accessing their individual foreign investment allowance (ZAR 10 million per year with SARS tax clearance) or discretionary allowance (ZAR 1 million) must process larger transfers through SARB-authorised dealers. Customs Officers at departure have authority to search and seize currency under Exchange Control Regulations. Source: sars.gov.za/customs-and-excise/travellers/departure-from-sa.",
+    "cash_declaration_threshold": "The threshold in South Africa is ZAR 25,000 (or its foreign currency equivalent). This is not merely a declaration threshold — it is a HARD LIMIT. Travellers wishing to carry more than ZAR 25,000 (or foreign currency equivalent) into or out of South Africa must obtain WRITTEN PRIOR AUTHORISATION from the South African Reserve Bank (SARB) before travel. Customs Officers at ports of entry and exit may search and seize currency under Exchange Control Regulations 3(3) and 3(6). Declarable items include South African bank notes, foreign currency, securities, and gold. Declaration is made via the South African Traveller Management System (SATMS) online, the SATMS Mobi Application, or the manual Traveller Card (TC-01). Source: SARS Excess Currency Policy SC-PA-01-06; Exchange Control Regulations under the Currency and Exchanges Act.",
+    "resident_holding_rules": "South African residents face significant exchange control restrictions on holding and investing assets abroad. Individuals have a foreign investment allowance of ZAR 10 million per year (requiring a SARS tax clearance certificate). An additional single discretionary allowance of ZAR 1 million per calendar year is available without prior SARB approval for current account purposes including travel, gifts, and maintenance payments. Residents may hold foreign currency accounts at authorised dealers (South African banks) for specific purposes. All foreign currency transactions by residents must be processed through SARB-authorised dealers.",
+    "non_resident_rules": "Non-residents may freely bring in and take out foreign currency subject to the ZAR 25,000 declaration threshold. Non-residents may hold non-resident accounts (blocked rand accounts and foreign currency accounts) at South African authorised dealers. Dividends, profits, and capital from registered foreign direct investments may be repatriated freely. Non-resident portfolio investment proceeds may be repatriated subject to authorised dealer verification.",
+    "business_invoicing_settlement": "South African businesses must conduct all foreign exchange transactions through SARB-authorised dealers (commercial banks). Export proceeds must be repatriated to South Africa within 30 days for listed companies and within specified periods for other exporters. Import payments must be processed through authorised dealers with supporting trade documentation. Companies wishing to invest abroad beyond their domestic allowances require SARB approval. All FX transactions are reported to SARB through the Financial Surveillance system.",
+    "exchange_controls": "South Africa maintains exchange controls administered by the South African Reserve Bank (SARB) under the Currency and Exchanges Act. The rand operates under a managed float. Residents face limits on offshore investment and must process all foreign currency transactions through SARB-authorised dealers. The SARB Financial Surveillance Department monitors compliance. The annual individual foreign investment allowance is ZAR 10 million with tax clearance, plus a ZAR 1 million discretionary allowance. AML compliance is administered by the Financial Intelligence Centre (FIC) under FICA.",
+    "banking_conversion_practicality": "Foreign currency exchange is available through South Africa's major commercial banks (ABSA, Standard Bank, FNB, Nedbank, Capitec), authorised currency dealers, and some bureaux de change. ATMs accepting international cards are widely available in urban areas. The South African Multiple Option Settlement (SAMOS) system facilitates interbank payments. International transfers require authorised dealer involvement. Exchange rates are published daily by SARB. Rural exchange services may be limited."
+  },
+  "source_authorities": [
+    {
+      "label": "South African Revenue Service (SARS) — Travellers",
+      "url": "https://www.sars.gov.za/customs-and-excise/travellers/",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "South African Revenue Service (SARS) — Customs",
+      "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance",
+      "type": "customs",
+      "tier": "primary"
+    }
+  ],
+  "disclaimer": "This page provides general informational reference only. South Africa maintains significant exchange control regulations that change periodically under SARB guidance. Individual and corporate allowance thresholds are subject to revision. Tax clearance requirements for foreign investment allowances are separate legal obligations. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with SARB, SARS, or a qualified South African legal or compliance professional before making any financial decisions."
+}

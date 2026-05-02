@@ -1,0 +1,46 @@
+{
+  "country_name": "Kuwait",
+  "country_slug": "kuwait",
+  "iso2": "KW",
+  "iso3": "KWT",
+  "region": "Middle East",
+  "currency_code": "KWD",
+  "currency_name": "Kuwaiti Dinar",
+  "schema_version": "1.1",
+  "page_status": "verified",
+  "last_reviewed": "2026-04-30",
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+  "summary": {
+    "traveler": "Kuwait does not impose general restrictions on the amount of foreign currency that may be imported or exported. Travellers carrying cash or monetary instruments equivalent to KWD 3,000 or more (approximately USD 10,000) must declare this to Kuwait Customs at entry or departure. The Kuwaiti dinar is pegged to a basket of currencies (primarily USD) and is one of the world's highest-valued currency units. Kuwait maintains a relatively open financial system with no exchange controls for current account transactions.",
+    "business": "Kuwait operates with a largely open foreign exchange regime administered by the Central Bank of Kuwait (CBK). No general exchange controls apply to current account transactions. Capital account transactions — including foreign direct investment — are liberalised for GCC nationals and subject to some restrictions for non-GCC foreign investors. Businesses may hold foreign currency accounts at CBK-authorised banks. AML obligations apply under Kuwait's Anti-Money Laundering Law (Law No. 106/2013)."
+  },
+  "rules": {
+    "bring_foreign_currency_in": "There are no restrictions on the amount of foreign currency that may be brought into Kuwait. However, as of July 18, 2025, any traveller carrying cash (or cash equivalents including cheques and financial instruments) worth KWD 3,000 or more in any currency must declare this to Kuwait Customs. Additionally, gold in any form and high-value goods above KWD 3,000 must be declared. Declarations are made via the Sahel App or customs forms. The rule applies to all travellers regardless of nationality. The Kuwait dinar is pegged to a basket of currencies with the USD as the dominant component. Source: Kuwait General Administration of Customs (July 18, 2025).",
+    "take_foreign_currency_out": "There are no general restrictions on taking foreign currency out of Kuwait. Travellers must declare amounts of KWD 3,000 or more (or equivalent foreign currency) to customs at departure. Remittances — which are significant given Kuwait's large expatriate workforce — may be sent freely through licensed exchange companies and banks regulated by the CBK. The CBK imposes AML monitoring on remittance flows but does not restrict the amounts that may be transferred.",
+    "cash_declaration_threshold": "As of July 18, 2025, Kuwait requires mandatory declaration of cash, gold, and high-value items exceeding KWD 3,000 (approximately USD 9,800) or its equivalent in any foreign currency. This applies at all entry and exit points for all travellers including Kuwaiti citizens, expatriates, and foreign visitors. Declarable items include: cash, cheques, travellers cheques, financial instruments, all forms of gold (bars, coins, and jewellery even if worn), luxury watches, electronics, and high-value branded goods. Declarations can be made electronically via the Kuwait government's Sahel App prior to travel, or via customs declaration forms at checkpoints. Departing passengers must file before departure; arriving passengers must present the declaration and purchase invoices at customs. Failure to declare results in confiscation, fines, detention, or denial of entry/exit. Source: Kuwait General Administration of Customs, effective July 18, 2025; Sahel App digital declaration system launched February 2026.",
+    "resident_holding_rules": "Kuwaiti residents — both nationals and expatriates — may freely hold foreign currency accounts at CBK-licensed banks. No restrictions apply to holding, purchasing, or converting foreign currency. Kuwait nationals may invest abroad freely. Expatriate residents may remit their earnings abroad through licensed exchange companies and banks without restriction, subject to AML compliance. The Kuwaiti dinar is fully convertible for current account purposes.",
+    "non_resident_rules": "Non-residents may freely bring in and take out foreign currency subject to the declaration threshold. Non-residents may hold accounts at Kuwaiti banks. Non-resident investors may repatriate profits and capital through authorised banking channels. Kuwait welcomes foreign investment, particularly in non-oil sectors, and does not impose restrictions on capital repatriation by foreign investors.",
+    "business_invoicing_settlement": "Kuwaiti businesses may invoice and settle in foreign currencies through CBK-licensed banks and exchange companies. No mandatory conversion requirements apply. The CBK licenses and supervises exchange companies, which play a major role in remittance services given the large expatriate population. All financial institutions are subject to AML/CFT compliance under Law No. 106/2013 and CBK regulations. International transfers are processed via SWIFT.",
+    "exchange_controls": "Kuwait maintains a largely open foreign exchange regime with the Kuwaiti dinar pegged to a basket of currencies (predominantly USD). No exchange controls apply to current account transactions. Capital account transactions are broadly liberalised for GCC investors; some restrictions apply to non-GCC foreign investment in specific sectors. The Central Bank of Kuwait supervises all financial institutions. AML compliance is administered by the Kuwait Financial Intelligence Unit (KFIU) under Law No. 106/2013.",
+    "banking_conversion_practicality": "Foreign currency exchange is widely available through CBK-licensed commercial banks (including NBK, Gulf Bank, Burgan Bank, and others) and a large network of licensed exchange companies. ATMs are widely available and accept international cards. Kuwait has a highly developed banking sector given its oil wealth. Exchange companies are regulated by the CBK and provide competitive rates for currency exchange and remittances. International transfers are broadly supported via SWIFT."
+  },
+  "source_authorities": [
+    {
+      "label": "Central Bank of Kuwait (CBK)",
+      "url": "https://www.cbk.gov.kw/en",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "Kuwait General Administration of Customs",
+      "url": "https://www.customs.gov.kw",
+      "type": "customs",
+      "tier": "primary"
+    }
+  ],
+  "disclaimer": "This page provides general informational reference only. Kuwait's foreign exchange rules are subject to change under CBK regulations. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with the Central Bank of Kuwait, Kuwait Customs, or a qualified legal professional before making any financial or travel decisions."
+}

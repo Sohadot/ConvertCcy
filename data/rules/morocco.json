@@ -1,0 +1,65 @@
+{
+  "country_name": "Morocco",
+  "country_slug": "morocco",
+  "iso2": "MA",
+  "iso3": "MAR",
+  "region": "North Africa",
+  "currency_code": "MAD",
+  "currency_name": "Moroccan Dirham",
+
+  "schema_version": "1.1",
+  "page_status": "verified",
+  "last_reviewed": "2026-04-30",
+
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+
+  "summary": {
+    "traveler": "Visitors may bring in unlimited foreign currency but must declare amounts exceeding MAD 100,000 (approximately USD 10,000) at entry. The Moroccan dirham is not freely convertible — it cannot be exported and must be exchanged through authorised channels. Unconverted dirhams cannot be taken out of the country. Keep currency exchange receipts; they are required to reconvert dirhams back to foreign currency at departure.",
+    "business": "Moroccan companies may hold foreign currency accounts only under specific conditions regulated by the Office des Changes. Cross-border payments, dividends, and capital repatriation require authorisation. Businesses engaged in export may benefit from simplified foreign currency account access. All FX transactions above regulatory thresholds require documentation and are subject to Office des Changes oversight."
+  },
+
+  "rules": {
+    "bring_foreign_currency_in": "Visitors and residents may bring any amount of foreign currency into Morocco without restriction. However, amounts equivalent to or exceeding MAD 100,000 (approximately USD 10,000 depending on current exchange rates) must be declared upon arrival using the mandatory customs declaration form. Failure to declare may result in seizure and administrative penalties under Moroccan exchange regulations.",
+
+    "take_foreign_currency_out": "Foreign nationals may take out the equivalent of the foreign currency they declared upon entry, provided they retain proof of declaration or exchange receipts. Residents face more restrictive conditions and generally require authorisation from the Office des Changes for significant outbound transfers. The Moroccan dirham may not be exported by anyone.",
+
+    "cash_declaration_threshold": "Travellers carrying foreign currency or negotiable instruments equivalent to MAD 100,000 or above must declare these amounts to Moroccan customs upon arrival. The threshold applies to the total value across all currencies and instruments combined. The same threshold applies at departure for foreign currency being taken out of the country.",
+
+    "resident_holding_rules": "Moroccan residents are generally not permitted to hold foreign currency accounts in Morocco unless specifically authorised by the Office des Changes. Residents who earn foreign currency through approved activities such as export income may be granted access to foreign currency accounts under defined conditions. Unauthorised holding of foreign currency is subject to exchange control regulations.",
+
+    "non_resident_rules": "Non-residents and foreign nationals may hold convertible dirham accounts or foreign currency accounts in Morocco through authorised Moroccan banks. These accounts allow for receipt of foreign funds and conversion to dirhams. Non-residents may freely repatriate their declared and documented foreign funds, subject to proper documentation of the original inflow.",
+
+    "business_invoicing_settlement": "Moroccan businesses operating domestically must invoice and settle in Moroccan dirhams. Businesses engaged in import and export activities may invoice and receive payment in foreign currencies, but conversion obligations and reporting requirements apply. Prior approval from the Office des Changes is required for most significant cross-border financial flows including service payments, royalties, and technical assistance fees.",
+
+    "exchange_controls": "Morocco operates a managed exchange control regime administered by the Office des Changes. Capital account transactions — including portfolio investment, dividend repatriation, and loan repayments — require prior approval or are subject to reporting obligations. The dirham exchange rate is managed within a band by Bank Al-Maghrib. Morocco has progressively liberalised some current account transactions but retains controls on capital movements.",
+
+    "banking_conversion_practicality": "Foreign currency can be exchanged at Moroccan banks, authorised bureaux de change, and major hotel desks. ATMs in urban centres typically dispense dirhams against international cards. Exchange receipts should be retained as they are required to reconvert unused dirhams to foreign currency before departure. Currency exchange is generally available in major cities; less so in rural areas."
+  },
+
+  "source_authorities": [
+    {
+      "label": "Office des Changes — Morocco",
+      "url": "https://www.oc.gov.ma",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "Bank Al-Maghrib (Central Bank of Morocco)",
+      "url": "https://www.bkam.ma",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "Administration des Douanes et Impôts Indirects",
+      "url": "https://www.douane.gov.ma",
+      "type": "customs",
+      "tier": "primary"
+    }
+  ],
+
+  "disclaimer": "This page provides general informational reference only. Foreign currency rules in Morocco are subject to change and vary depending on residency status, transaction type, amount, and applicable regulations. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with the Office des Changes, Bank Al-Maghrib, or a qualified legal professional before making any financial or travel decisions."
+}

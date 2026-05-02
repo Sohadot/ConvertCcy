@@ -1,0 +1,52 @@
+{
+  "country_name": "Germany",
+  "country_slug": "germany",
+  "iso2": "DE",
+  "iso3": "DEU",
+  "region": "Western Europe",
+  "currency_code": "EUR",
+  "currency_name": "Euro",
+  "schema_version": "1.1",
+  "page_status": "verified",
+  "last_reviewed": "2026-04-30",
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+  "summary": {
+    "traveler": "Travellers entering or leaving Germany from/to a non-EU country with EUR 10,000 or more in cash or equivalent monetary instruments must declare this to German Customs (Zoll). No declaration is required for travel between EU member states. The EUR 10,000 threshold is set by EU Regulation 2018/1672, directly applicable in Germany. Germany operates within the EU's fully liberalised capital account — no restrictions on the amount moved within the EU.",
+    "business": "Germany operates within the EU's fully liberalised capital account. No exchange controls apply. Businesses may freely hold, invoice, and settle in foreign currencies. The Deutsche Bundesbank is the German national central bank within the Eurosystem. Financial institutions are regulated by BaFin (Bundesanstalt für Finanzdienstleistungsaufsicht). AML obligations are extensive under Germany's Geldwäschegesetz (GwG) implementing EU Anti-Money Laundering Directives."
+  },
+  "rules": {
+    "bring_foreign_currency_in": "There are no restrictions on the amount of cash or foreign currency that may be brought into Germany. From non-EU countries: anyone carrying EUR 10,000 or more in cash or equivalent monetary instruments must immediately and without prompting declare this in writing to German Customs using Form 040001 (English) or 040000 (German). From EU member states: travellers with EUR 10,000 or more must declare verbally when asked by a customs officer. The obligation applies to the person carrying the cash regardless of ownership. Air transit through Germany between two non-EU countries also triggers the declaration obligation. Failure to declare is an administrative offence with a fine of up to EUR 1,000,000. Source: zoll.de/EN/Private-individuals/Travel/Entering-Germany/Restrictions/Cash.",
+    "take_foreign_currency_out": "There are no restrictions on the amount of cash taken out of Germany to another EU member state. For travel to non-EU countries, EUR 10,000 or more must be declared to German Customs at departure. The declaration is made at the point of exit before boarding. The same EUR 10,000 threshold applies in both directions for non-EU travel. Customs may seize undeclared amounts pending investigation.",
+    "cash_declaration_threshold": "The cash declaration threshold in Germany for non-EU arrivals is EUR 10,000, requiring immediate written declaration to German Customs (Zoll) using Form 040001 (English) or 040000 (German). For intra-EU travel, the obligation is verbal: travellers must declare EUR 10,000 or more orally when asked by a customs officer. Both obligations apply to the carrier of the cash regardless of ownership. Distributing cash among multiple people to avoid the threshold is a separate offence punishable by a fine of up to EUR 1,000,000. Air transit passengers stopping in Germany en route between two non-EU countries must also declare. Bullion coins are valued at actual market value, not face value. Jewellery and precious metals are not cash equivalents but must be declared as goods. Foreign currencies are valued at the euro exchange rate on the day of entry. Forms can be completed electronically or by hand; a signed copy must be submitted to customs. Source: zoll.de (German Customs Authority).",
+    "resident_holding_rules": "German residents may freely hold foreign currency accounts in Germany and abroad. EU citizens and residents have full freedom of capital movement under TFEU Article 63. Residents must report foreign accounts on their annual tax return (Anlage KAP and potentially Anlage AUS). German residents with foreign accounts are subject to automatic exchange of financial account information under CRS. No restrictions apply to the amount of foreign currency that residents may hold.",
+    "non_resident_rules": "Non-residents may freely hold bank accounts in Germany and conduct financial transactions subject to AML and identity verification requirements. EU freedom of capital movement applies broadly. Non-residents may freely repatriate funds. EU sanctions (administered by the European Commission) restrict transactions with designated parties — currently including Russia, Belarus, and others.",
+    "business_invoicing_settlement": "German businesses may freely invoice, settle, and hold balances in foreign currencies. No mandatory conversion requirements exist. Germany participates in the SEPA payment area for efficient euro transfers across 36 countries. International transfers to non-SEPA destinations are processed via SWIFT. All financial service providers are regulated by BaFin. AML obligations apply under the Geldwäschegesetz (GwG).",
+    "exchange_controls": "Germany operates within the EU's fully liberalised capital account. No exchange controls apply. The euro is issued by the European Central Bank (ECB) within the Eurosystem; the Deutsche Bundesbank is Germany's national central bank. Capital movements are fully free within the EU under TFEU Article 63. EU-wide sanctions administered by the European Commission restrict transactions with designated parties. AML compliance is administered by the Financial Intelligence Unit (FIU) of the Zollkriminalamt.",
+    "banking_conversion_practicality": "Currency exchange is available in Germany through commercial banks (major banks include Deutsche Bank, Commerzbank, DZ Bank), licensed exchange offices, and online providers. ATMs accepting international cards are broadly accessible. Germany participates in SEPA for fast euro transfers. International transfers to non-SEPA countries are processed via SWIFT. BaFin regulates payment service providers and currency exchange businesses. The Bundesbank operates TARGET2 for large-value euro interbank settlements."
+  },
+  "source_authorities": [
+    {
+      "label": "German Customs Authority (Zoll) — Cash Declaration Rules",
+      "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/Restrictions/Cash/cash_node.html",
+      "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "Deutsche Bundesbank",
+      "url": "https://www.bundesbank.de/en",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "BaFin — Federal Financial Supervisory Authority",
+      "url": "https://www.bafin.de/EN/Homepage/homepage_node.html",
+      "type": "regulator",
+      "tier": "primary"
+    }
+  ],
+  "disclaimer": "This page provides general informational reference only. Germany applies EU-wide regulations on cash declarations and capital movements. Rules differ significantly between intra-EU and non-EU travel. Tax reporting obligations for foreign accounts apply separately under German tax law. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with German Customs (Zoll), the Bundesbank, or a qualified legal professional before making any financial or travel decisions."
+}

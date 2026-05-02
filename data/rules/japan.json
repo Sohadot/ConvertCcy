@@ -1,0 +1,52 @@
+{
+  "country_name": "Japan",
+  "country_slug": "japan",
+  "iso2": "JP",
+  "iso3": "JPN",
+  "region": "East Asia",
+  "currency_code": "JPY",
+  "currency_name": "Japanese Yen",
+  "schema_version": "1.1",
+  "page_status": "verified",
+  "last_reviewed": "2026-04-30",
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+  "summary": {
+    "traveler": "Travellers carrying more than JPY 1,000,000 (approximately USD 6,500-7,000) in cash — or the equivalent in foreign currency, or a combination — must declare this to Japan Customs upon arrival or departure. There is no restriction on the amount that may be brought in or taken out. The declaration is made on the Customs Declaration Form. Japan also imposes a reporting obligation for capital transactions above JPY 30,000,000 under the Foreign Exchange and Foreign Trade Act.",
+    "business": "Japan maintains a largely liberalised foreign exchange regime under the Foreign Exchange and Foreign Trade Act (FEFTA). Capital transactions are generally free but certain types — particularly those involving designated countries or sectors with national security implications — may require prior notification to the Ministry of Finance or the Bank of Japan. Businesses may hold foreign currency accounts freely. AML obligations apply under the Act on Prevention of Transfer of Criminal Proceeds."
+  },
+  "rules": {
+    "bring_foreign_currency_in": "There is no restriction on the amount of foreign currency that may be brought into Japan. However, travellers carrying cash — Japanese yen or foreign currency — equivalent to more than JPY 1,000,000 must declare this to Japan Customs on the Customs Declaration Form (the form distributed on international flights and vessels). If no declaration form is available, the traveller must declare at the airport customs counter. Failure to declare or making a false declaration may result in penalties under the Foreign Exchange and Foreign Trade Act.",
+    "take_foreign_currency_out": "There is no restriction on the amount of foreign currency that may be taken out of Japan. The same JPY 1,000,000 declaration threshold applies at departure. Travellers carrying more than JPY 1,000,000 equivalent in cash must declare to Japan Customs when departing. Capital transactions (investment and business transfers, not traveller cash) above JPY 30,000,000 require post-transaction reporting to the Bank of Japan under the Foreign Exchange and Foreign Trade Act.",
+    "cash_declaration_threshold": "The declaration threshold in Japan is JPY 1,000,000 (1 million yen) or its equivalent in foreign currency. Declarable items include: cash (including foreign currency), cheques, travellers cheques, promissory notes, securities, and gold bullion of at least 90 percent purity exceeding 1 kg. Note: gold bullion above 1 kg must also be declared on the Accompanied Articles Declaration regardless of purity or value. For travel to North Korea, the threshold is JPY 100,000. Declarations are made using the Declaration of Carrying of Means of Payment form, available at customs in airports and seaports, or electronically via NACCS (Nippon Automated Cargo And Port Consolidated System) with prior user registration. Foreign currency is converted using Japan Customs published exchange rates. Penalties for violation: imprisonment up to 1 year or fine up to JPY 500,000. Source: Japan Customs (customs.go.jp/english/summary/passenger.htm).",
+    "resident_holding_rules": "Japanese residents may freely hold foreign currency accounts in Japan and abroad. There are no general restrictions on foreign currency holdings. Under FEFTA, certain capital transactions involving designated countries or sectors with national security implications require prior notification to the Ministry of Finance. Otherwise, residents have broad freedom to hold, convert, and transfer foreign currency through authorised financial institutions.",
+    "non_resident_rules": "Non-residents may freely hold accounts and conduct transactions in Japan subject to AML compliance. Non-residents may repatriate profits, dividends, and capital without restriction in most cases. Japan's FEFTA provides for prior notification requirements for certain inbound foreign direct investments in designated sensitive sectors (defence, nuclear energy, cybersecurity, etc.), but these apply to investment activities rather than general currency holdings or transfers.",
+    "business_invoicing_settlement": "Japanese businesses may invoice and settle in foreign currencies. No mandatory conversion requirements exist for foreign currency holdings or receipts from exports. Under FEFTA, specified capital transactions — including certain foreign direct investment, securities transactions, and transfers involving designated countries — may require prior notification to the Ministry of Finance or the Bank of Japan. AML obligations apply under the Act on Prevention of Transfer of Criminal Proceeds.",
+    "exchange_controls": "Japan maintains a largely liberalised foreign exchange regime under the Foreign Exchange and Foreign Trade Act (FEFTA). The Bank of Japan may intervene in the FX market to address excessive exchange rate volatility — as it did in 2022 and 2024 — but does not impose administrative currency movement restrictions. Certain capital transactions involving designated countries (currently Russia, Belarus, North Korea, Iran, and others) require prior approval. Japan's yen is freely floating.",
+    "banking_conversion_practicality": "Foreign currency exchange is available at Japanese banks, Japan Post, authorised exchange offices at airports and major train stations, and ATMs accepting international cards (primarily at 7-Eleven, post offices, and Japan Post Bank ATMs). Currency exchange at banks typically requires an appointment for large amounts. The Japanese yen is one of the world's most traded currencies. Japan's payment infrastructure is advanced, including the BOJ-NET for large-value interbank settlements."
+  },
+  "source_authorities": [
+    {
+      "label": "Japan Customs — Carrying Cash across the Border",
+      "url": "https://www.customs.go.jp/english/summary/passenger.htm",
+      "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "Bank of Japan — Foreign Exchange",
+      "url": "https://www.boj.or.jp/en/about/services/forex/index.htm",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "Ministry of Finance Japan — Foreign Exchange and Foreign Trade Act",
+      "url": "https://www.mof.go.jp/english/policy/international_policy/gaitame_kawase/index.htm",
+      "type": "ministry",
+      "tier": "primary"
+    }
+  ],
+  "disclaimer": "This page provides general informational reference only. Japan's foreign exchange rules are governed by the Foreign Exchange and Foreign Trade Act (FEFTA), which is subject to amendment, particularly regarding designated countries and sensitive sectors. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with Japan Customs, the Bank of Japan, or the Ministry of Finance before making any financial or travel decisions."
+}
