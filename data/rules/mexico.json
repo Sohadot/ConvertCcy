@@ -1,0 +1,95 @@
+{
+  "country_name": "Mexico",
+  "country_slug": "mexico",
+  "iso2": "MX",
+  "iso3": "MEX",
+  "region": "Latin America",
+  "currency_code": "MXN",
+  "currency_name": "Mexican Peso",
+
+  "schema_version": "1.2",
+  "page_status": "verified",
+  "last_reviewed": "2026-05-02",
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+
+  "country_overview": "Mexico operates a floating exchange rate regime administered by Banco de México (Banxico). The Mexican Peso is subject to certain capital flow management measures and reporting requirements, while current account transactions are largely liberalised.",
+
+  "summary": {
+    "traveler": "Travelers may bring in foreign currency without limit but must declare amounts of USD 10,000 or equivalent. Export of foreign currency is restricted and subject to Banxico rules.",
+    "business": "Businesses must route significant foreign exchange transactions through authorised banks. Capital repatriation and certain payments require Banxico approval or documentation."
+  },
+
+  "rules": {
+    "bring_foreign_currency_in": "Foreign currency may be brought into Mexico without limit. Amounts of USD 10,000 or equivalent must be declared to Mexican Customs upon arrival.",
+    "take_foreign_currency_out": "Foreign currency may be taken out up to the amount declared on entry or supported by authorised bank documentation. Residents are subject to Banxico limits.",
+    "cash_declaration_threshold": "USD 10,000 or equivalent in foreign currency or negotiable instruments at entry and exit. Declaration to Mexican Customs is mandatory.",
+    "resident_holding_rules": "Mexican residents are subject to Banxico limits and approval requirements when holding or using foreign currency accounts. General unrestricted access requires specific authorisation.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds more freely through authorised banks.",
+    "business_invoicing_settlement": "Cross-border business transactions must be settled through authorised banks in accordance with Banxico foreign exchange regulations.",
+    "exchange_controls": "Mexico maintains a floating exchange regime with controls on certain capital account transactions. Current account transactions are largely liberalised.",
+    "banking_conversion_practicality": "Foreign exchange conversion is available through authorised banks and licensed exchange offices. Documentation is required for large transactions."
+  },
+
+  "source_authorities": [
+    {
+      "label": "Banco de México (Banxico) — Foreign Exchange Regulations",
+      "url": "https://www.banxico.org.mx/",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "Mexican Customs (SAT) — Currency Declaration Rules",
+      "url": "https://www.sat.gob.mx/",
+      "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "Banxico — FX Circulars & Liberalisation Measures",
+      "url": "https://www.banxico.org.mx/",
+      "type": "primary_regulator",
+      "tier": "primary"
+    }
+  ],
+
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.banxico.org.mx/", "pages": [], "section": "FX Regime Overview" }
+    ],
+    "summary.traveler": [
+      { "url": "https://www.sat.gob.mx/", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.banxico.org.mx/", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://www.sat.gob.mx/", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://www.sat.gob.mx/", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://www.sat.gob.mx/", "pages": [], "section": "Cash Declaration Rules (USD 10,000 / equivalent)" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.banxico.org.mx/", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.banxico.org.mx/", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.banxico.org.mx/", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.banxico.org.mx/", "pages": [], "section": "Managed Exchange Regime" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.banxico.org.mx/", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Mexico are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Banco de México / Mexican Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with Banco de México or Mexican Customs before making any financial or travel decisions."
+}
