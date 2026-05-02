@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """
 ConvertCCY — Global FX Rules Reference Layer
