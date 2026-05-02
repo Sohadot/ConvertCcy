@@ -6,41 +6,90 @@
   "region": "Latin America",
   "currency_code": "BRL",
   "currency_name": "Brazilian Real",
-  "schema_version": "1.1",
+
+  "schema_version": "1.2",
   "page_status": "verified",
-  "last_reviewed": "2026-04-30",
+  "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
+
+  "country_overview": "Brazil operates a floating exchange rate regime administered by the Central Bank of Brazil (Banco Central do Brasil - BCB). The Brazilian Real is subject to certain capital controls and reporting requirements, while current account transactions are largely liberalised.",
+
   "summary": {
-    "traveler": "Travellers entering or leaving Brazil carrying BRL 10,000 or more (approximately USD 2,000) in Brazilian reais, or the equivalent in foreign currency or monetary instruments, must declare this to the Receita Federal (Brazilian Federal Revenue Service) at customs. There is no restriction on the amount that may be carried; only the declaration obligation applies. The Brazilian real is subject to a managed float administered by the Banco Central do Brasil (BCB).",
-    "business": "Brazil maintains a partially liberalised foreign exchange regime under Resolution CMN 3.568 and subsequent Banco Central regulations. Current account transactions are broadly liberalised. Capital account transactions — including FDI, portfolio investment, and financial derivatives — require registration with the Banco Central do Brasil electronic system (SISBACEN/ROF). Brazilian residents face limits on keeping funds abroad without BCB registration. Businesses must comply with Brazilian AML law under Law 9.613/1998."
+    "traveler": "Travelers may bring in foreign currency without limit but must declare amounts of USD 10,000 or equivalent. Export of foreign currency is restricted and subject to BCB rules.",
+    "business": "Businesses must route significant foreign exchange transactions through authorised banks. Capital repatriation and certain payments require BCB approval or documentation."
   },
+
   "rules": {
-    "bring_foreign_currency_in": "Travellers entering Brazil may bring any amount of foreign currency or Brazilian reais. However, amounts of BRL 10,000 or more (or the equivalent in foreign currency or monetary instruments) must be declared to the Receita Federal at the port of entry on Form e-DBV (Declaração de Porte de Valores) or the electronic equivalent. Failure to declare constitutes a customs violation under Brazilian law and may result in confiscation and administrative penalties.",
-    "take_foreign_currency_out": "Travellers leaving Brazil may take out any amount of currency but must declare amounts of BRL 10,000 or more (or foreign currency equivalent) to the Receita Federal at departure. Foreign currency purchases for international travel must be made through authorised financial institutions. Brazilian residents leaving permanently or semi-permanently must comply with BCB regulations on the maintenance of funds abroad, including registration requirements for deposits in foreign financial institutions.",
-    "cash_declaration_threshold": "The declaration threshold in Brazil is BRL 10,000 or its foreign currency equivalent. Travellers carrying cash, travellers cheques, or pre-paid cards above this amount must complete the Currency Carry-on Electronic Declaration (Declaracao Eletronica de Porte de Valores - E-DPV) issued by the Brazilian Federal Revenue Service (Receita Federal) at receita.fazenda.gov.br/dpv. This applies at both arrival and departure. The BCB confirms that there is no limit on the amount of cash travellers may carry, but amounts above BRL 10,000 must be declared. For domestic exchange transactions above BRL 10,000 in cash, payment must be made by bank transfer or cheque rather than cash. Failure to declare amounts above the threshold may result in confiscation and criminal sanctions under Brazilian law. BCB Resolution No. 277 of December 31, 2022 governs foreign exchange operations. Source: bcb.gov.br/dinheirobrasileiro/en/informacoes-sobre-cambio.html.",
-    "resident_holding_rules": "Brazilian residents are permitted to hold foreign currency accounts abroad but must register these with the Banco Central do Brasil (BCB) through the designated electronic reporting system when balances exceed USD 1,000. Annual reporting to the BCB (Declaração de Capitais Brasileiros no Exterior — CBE) is required for residents with foreign assets above USD 1,000,000 as of 31 December each year. Quarterly reporting applies for residents with foreign assets above USD 100,000,000. Residents may purchase foreign currency for authorised purposes through BCB-licensed financial institutions.",
-    "non_resident_rules": "Non-residents may hold foreign currency accounts in Brazil through BCB-authorised banks. Foreign capital entering Brazil — for investment, loans, or other purposes — must be registered with the BCB through the ROF (Registro de Operações Financeiras) system. Registered foreign capital may be repatriated, including returns and profits, subject to documentation and BCB compliance. Non-registered foreign capital faces restrictions on repatriation.",
-    "business_invoicing_settlement": "Brazilian businesses must conduct foreign exchange transactions through BCB-authorised financial institutions. All FX transactions are reported to the BCB through the electronic SISBACEN system. Export proceeds must generally be received in foreign currency and converted to BRL through an authorised bank within 360 days of shipment. Foreign direct investment and external loans must be registered with the BCB. Businesses may maintain foreign currency accounts abroad for operational purposes subject to BCB registration requirements.",
-    "exchange_controls": "Brazil maintains a partially liberalised foreign exchange regime. The Brazilian real operates under a managed float. Current account transactions (trade, services, transfers) are broadly liberalised. Capital account transactions require BCB registration. The Banco Central do Brasil may intervene in the FX market through spot sales, swaps, and repurchase operations to manage exchange rate volatility. Inflows and outflows of foreign capital are tracked through the BCB's electronic registration systems. AML compliance is required under Law 9.613/1998.",
-    "banking_conversion_practicality": "Foreign currency exchange is available through BCB-authorised banks and licensed exchange dealers. ATMs accepting international cards are broadly available in major cities. Exchange rates for the BRL/USD and BRL/EUR are published daily by the BCB (PTAX rate). Large currency exchange transactions require identity documentation and are subject to BCB reporting. The Brazilian Payments System (SPB) facilitates interbank settlements. International transfers are processed via SWIFT through BCB-authorised institutions."
+    "bring_foreign_currency_in": "Foreign currency may be brought into Brazil without limit. Amounts of USD 10,000 or equivalent must be declared to Brazilian Customs upon arrival.",
+    "take_foreign_currency_out": "Foreign currency may be taken out up to the amount declared on entry or supported by authorised bank documentation. Residents are subject to BCB limits.",
+    "cash_declaration_threshold": "USD 10,000 or equivalent in foreign currency or negotiable instruments at entry and exit. Declaration to Brazilian Customs is mandatory.",
+    "resident_holding_rules": "Brazilian residents are subject to BCB limits and approval requirements when holding or using foreign currency accounts. General unrestricted access requires specific authorisation.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds more freely through authorised banks.",
+    "business_invoicing_settlement": "Cross-border business transactions must be settled through authorised banks in accordance with BCB foreign exchange regulations.",
+    "exchange_controls": "Brazil maintains a floating exchange regime with controls on certain capital account transactions. Current account transactions are largely liberalised.",
+    "banking_conversion_practicality": "Foreign exchange conversion is available through authorised banks and licensed exchange offices. Documentation is required for large transactions."
   },
+
   "source_authorities": [
     {
-      "label": "Banco Central do Brasil (BCB) — Currency Exchange Information",
-      "url": "https://www.bcb.gov.br/dinheirobrasileiro/en/informacoes-sobre-cambio.html",
+      "label": "Banco Central do Brasil (BCB) — Foreign Exchange Regulations",
+      "url": "https://www.bcb.gov.br/en",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "Receita Federal do Brasil — Customs",
-      "url": "https://www.gov.br/receitafederal/en",
+      "label": "Brazilian Federal Revenue Service (Receita Federal) — Customs & Currency Declaration",
+      "url": "https://www.gov.br/receitafederal/pt-br",
       "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "Banco Central do Brasil — FX Circulars",
+      "url": "https://www.bcb.gov.br/en/financialstability/foreignexchange",
+      "type": "primary_regulator",
       "tier": "primary"
     }
   ],
-  "disclaimer": "This page provides general informational reference only. Brazil's foreign exchange rules are complex and subject to frequent regulatory updates by the Banco Central do Brasil. CBE reporting requirements and ROF registration obligations for foreign capital are separate legal requirements. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with the BCB, Receita Federal, or a qualified Brazilian legal or compliance professional before making any financial or travel decisions."
+
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.bcb.gov.br/en", "pages": [], "section": "FX Regime Overview" }
+    ],
+    "summary.traveler": [
+      { "url": "https://www.gov.br/receitafederal/pt-br", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.bcb.gov.br/en/financialstability/foreignexchange", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://www.gov.br/receitafederal/pt-br", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://www.gov.br/receitafederal/pt-br", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://www.gov.br/receitafederal/pt-br", "pages": [], "section": "Cash Declaration Rules (USD 10,000 / equivalent)" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.bcb.gov.br/en", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.bcb.gov.br/en/financialstability/foreignexchange", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.bcb.gov.br/en/financialstability/foreignexchange", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.bcb.gov.br/en", "pages": [], "section": "Managed Exchange Regime" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.bcb.gov.br/en", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Brazil are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Banco Central do Brasil / Receita Federal framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Brazil or Brazilian Customs before making any financial or travel decisions."
 }
