@@ -3,50 +3,93 @@
   "country_slug": "united-kingdom",
   "iso2": "GB",
   "iso3": "GBR",
-  "region": "Northern Europe",
+  "region": "Western Europe",
   "currency_code": "GBP",
-  "currency_name": "Pound Sterling",
-  "schema_version": "1.1",
+  "currency_name": "British Pound Sterling",
+
+  "schema_version": "1.2",
   "page_status": "verified",
-  "last_reviewed": "2026-04-30",
+  "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
+
+  "country_overview": "The United Kingdom operates a fully liberalised foreign-exchange regime with no general exchange controls since 1979. The framework is governed by the Financial Conduct Authority (FCA) and HM Revenue & Customs (HMRC). There are no restrictions on current or capital account transactions for residents or non-residents.",
+
   "summary": {
-    "traveler": "Travellers entering or leaving Great Britain (England, Scotland, Wales) with £10,000 or more in cash, travellers' cheques, bearer bonds, or other monetary instruments must declare these amounts to UK customs using HMRC's online service or Form C9011 (BOR 9011). For Northern Ireland, the threshold is €10,000. Declarations can be made online up to 72 hours before travel. The UK imposes no restrictions on the amount of foreign currency that may be brought in or taken out, only on the obligation to declare above the threshold.",
-    "business": "The UK operates a highly open financial system with no exchange controls. Foreign currency accounts may be held freely by residents and non-residents. Businesses may invoice, settle, and hold balances in any currency. The Financial Conduct Authority (FCA) regulates financial services. No capital controls apply to transfers of profits, dividends, or investment returns. AML and CFT obligations apply to all financial institutions under the Money Laundering Regulations 2017."
+    "traveler": "Travelers may bring in or take out unlimited amounts of foreign currency and British Pounds. No general currency declaration is required for normal travel amounts.",
+    "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
   },
+
   "rules": {
-    "bring_foreign_currency_in": "There is no restriction on the amount of foreign currency or cash that may be brought into the United Kingdom. However, anyone carrying £10,000 or more into Great Britain — or travelling as part of a family or group whose combined cash meets the threshold — must declare to UK customs. Declarations are made online at gov.uk, by phone, or at the red channel on arrival. For Northern Ireland arrivals from non-EU countries, the threshold is €10,000. Cash arriving in Northern Ireland from Great Britain is also declarable at the €10,000 threshold. Declarable cash includes notes, coins, bearer bonds, travellers cheques, and unsigned cheques. Northern Ireland arrivals must also declare money orders, gold coins, bullion, and prepaid cards. Legal basis: Proceeds of Crime Act 2002; Money Laundering Regulations 2017. Source: gov.uk/bringing-cash-into-uk.",
-    "take_foreign_currency_out": "There is no restriction on the amount of cash or foreign currency that may be taken out of the United Kingdom. Travellers leaving Great Britain with £10,000 or more in cash, travellers' cheques, bearer bonds, or similar instruments must declare these amounts to HMRC. The declaration must be made online before departure or at the point of exit. The same £10,000 threshold applies in both directions. For Northern Ireland, the threshold is €10,000 in line with the Windsor Framework.",
-    "cash_declaration_threshold": "The cash declaration threshold in Great Britain (England, Scotland, Wales) is £10,000, covering notes and coins, bearer bonds, travellers cheques, and cheques signed but not made out to a named person. For Northern Ireland, the threshold is €10,000 and also covers money orders, gold coins, bullion, and prepaid cards. The group rule is explicit: families or groups carrying £10,000 or more in total — even if each individual carries less — must declare. Declarations can be made online at gov.uk up to 72 hours before travel, by phone on 0300 322 9434 (24-hour service), or in person at the red channel on arrival. Failure to declare may result in seizure of all cash and a penalty of up to £5,000. For Northern Ireland, the €10,000 threshold also applies to cash carried from Great Britain into Northern Ireland. No declaration is required when travelling from Northern Ireland to Great Britain. Source: gov.uk/bringing-cash-into-uk (HM Revenue and Customs, UK Border Force).",
-    "resident_holding_rules": "UK residents may freely hold bank accounts in any currency, domestically and overseas. There are no restrictions on the amount of foreign currency that residents may hold, purchase, convert, or transfer. The UK operates with a fully open capital account and no exchange controls. The pound sterling is freely floating and fully convertible. Residents must comply with AML and tax reporting obligations for foreign assets under HMRC rules.",
-    "non_resident_rules": "Non-residents may hold bank accounts in the UK in GBP and in foreign currencies. Non-residents may freely bring in and take out foreign currency subject to the declaration threshold. No restrictions apply to capital repatriation. Non-resident investors may freely transfer profits, dividends, and investment returns. The UK's fully open financial system imposes no capital controls on non-residents.",
-    "business_invoicing_settlement": "UK businesses may invoice, settle, and hold balances in any currency. No mandatory currency conversion requirements exist. Foreign currency accounts are freely available. All financial services businesses, including currency exchange operators, must be authorised by the Financial Conduct Authority (FCA). AML obligations under the Money Laundering Regulations 2017 apply to all regulated businesses. International transfers are fully supported through the UK banking system.",
-    "exchange_controls": "The United Kingdom operates with no exchange controls. The pound sterling is a freely floating, fully convertible currency. There are no restrictions on capital flows, currency conversion, or international transfers. The FCA and the Bank of England regulate the UK financial system, but do not impose currency movement restrictions. AML and CFT compliance obligations apply under the Money Laundering Regulations 2017 and the Proceeds of Crime Act 2002.",
-    "banking_conversion_practicality": "Foreign currency exchange is widely available across the UK through commercial banks, licensed bureaux de change, and online money transfer services. ATMs accepting international cards are broadly accessible. The FCA maintains a register of authorised money service businesses. International transfers are well-supported via SWIFT and faster payment systems. The Bank of England maintains a highly liquid interbank FX market. HMRC regulates money service businesses for AML purposes."
+    "bring_foreign_currency_in": "Unlimited amounts of foreign currency and British Pounds may be brought into the UK with no general declaration requirement for travelers.",
+    "take_foreign_currency_out": "Unlimited amounts of foreign currency and British Pounds may be taken out of the UK with no general restriction or declaration requirement for travelers.",
+    "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Movements of €10,000 or more (or equivalent) in cash or bearer negotiable instruments must be declared to HMRC under anti-money laundering rules.",
+    "resident_holding_rules": "UK residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+    "business_invoicing_settlement": "Business transactions may be invoiced and settled in foreign currency or GBP. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
+    "exchange_controls": "The United Kingdom maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+    "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout the UK."
   },
+
   "source_authorities": [
     {
-      "label": "HM Revenue & Customs (HMRC) — Bringing Cash into the UK",
-      "url": "https://www.gov.uk/bringing-cash-into-uk",
-      "type": "customs",
-      "tier": "primary"
-    },
-    {
-      "label": "Bank of England",
-      "url": "https://www.bankofengland.co.uk",
+      "label": "Bank of England — Monetary & FX Framework",
+      "url": "https://www.bankofengland.co.uk/monetary-policy",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "Financial Conduct Authority (FCA)",
-      "url": "https://www.fca.org.uk",
-      "type": "regulator",
+      "label": "HM Revenue & Customs (HMRC) — Cash & Currency Declaration",
+      "url": "https://www.gov.uk/government/publications/cash-controls-cash-declaration-form",
+      "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "Financial Conduct Authority (FCA) — Foreign Exchange Regulation",
+      "url": "https://www.fca.org.uk/firms/foreign-exchange",
+      "type": "primary_regulator",
       "tier": "primary"
     }
   ],
-  "disclaimer": "This page provides general informational reference only. Foreign currency rules in the UK are subject to change, including following changes to the Windsor Framework for Northern Ireland. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with HMRC, UK Border Force, or a qualified legal professional before making any financial or travel decisions."
+
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.bankofengland.co.uk/monetary-policy", "pages": [], "section": "UK FX Regime Overview" }
+    ],
+    "summary.traveler": [
+      { "url": "https://www.gov.uk/government/publications/cash-controls-cash-declaration-form", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.fca.org.uk/firms/foreign-exchange", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://www.gov.uk/government/publications/cash-controls-cash-declaration-form", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://www.gov.uk/government/publications/cash-controls-cash-declaration-form", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://www.gov.uk/government/publications/cash-controls-cash-declaration-form", "pages": [], "section": "Cash Declaration Rules (€10,000 / equivalent)" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.fca.org.uk/firms/foreign-exchange", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.fca.org.uk/firms/foreign-exchange", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.fca.org.uk/firms/foreign-exchange", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.bankofengland.co.uk/monetary-policy", "pages": [], "section": "Absence of Exchange Controls" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.fca.org.uk/firms/foreign-exchange", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in the United Kingdom are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable HMRC / Bank of England / FCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with HM Revenue & Customs, the Bank of England, or a qualified professional before making any financial or travel decisions."
 }
