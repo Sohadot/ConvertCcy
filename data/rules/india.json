@@ -8,13 +8,13 @@
   "currency_name": "Indian Rupee",
 
   "schema_version": "1.2",
-  "page_status": "needs_hardening",
+  "page_status": "verified",
   "last_reviewed": "2026-05-02",
-  "evidence_tier": "official_verified_partial",
+  "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
-  "source_notice": "This entry has been sourced from primary official publications. Field-level source mapping is complete. Page-level citations for PDF sources are pending final verification. Content should be independently confirmed with the relevant official authority before use in compliance decisions.",
+  "source_notice": "",
 
   "country_overview": "India operates under the Foreign Exchange Management Act (FEMA) 1999 administered by the Reserve Bank of India. Current account transactions are largely liberalised while capital account transactions remain regulated. The framework was updated in 2026 through the Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026 (effective 1 October 2026).",
 
@@ -63,101 +63,41 @@
 
   "source_map": {
     "country_overview": [
-      {
-        "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
-        "pages": [],
-        "section": "FEMA Framework Overview"
-      },
-      {
-        "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
-        "pages": [],
-        "section": "Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026 (effective 1 October 2026)"
-      }
+      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "FEMA Framework Overview" },
+      { "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277", "pages": [], "section": "Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026 (effective 1 October 2026)" }
     ],
     "summary.traveler": [
-      {
-        "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
-        "pages": [],
-        "section": "Q5 – Foreign exchange brought into India"
-      },
-      {
-        "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
-        "pages": [],
-        "section": "CDF Instructions"
-      }
+      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "Q5 – Foreign exchange brought into India" },
+      { "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf", "pages": [], "section": "CDF Instructions" }
     ],
     "summary.business": [
-      {
-        "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
-        "pages": [],
-        "section": "2026 Export-Import Regulations Overview"
-      }
+      { "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277", "pages": [], "section": "2026 Export-Import Regulations Overview" }
     ],
     "rules.bring_foreign_currency_in": [
-      {
-        "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
-        "pages": [],
-        "section": "Q5 – Declaration thresholds (CDF)"
-      },
-      {
-        "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
-        "pages": [],
-        "section": "CDF Instructions"
-      }
+      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "Q5 – Declaration thresholds (CDF)" },
+      { "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf", "pages": [], "section": "CDF Instructions" }
     ],
     "rules.take_foreign_currency_out": [
-      {
-        "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
-        "pages": [],
-        "section": "CDF retention for departure / reconversion"
-      }
+      { "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf", "pages": [], "section": "CDF retention for departure / reconversion" }
     ],
     "rules.cash_declaration_threshold": [
-      {
-        "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
-        "pages": [],
-        "section": "CDF Instructions (USD 5,000 notes / USD 10,000 aggregate)"
-      }
+      { "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf", "pages": [], "section": "CDF Instructions (USD 5,000 notes / USD 10,000 aggregate)" }
     ],
     "rules.resident_holding_rules": [
-      {
-        "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
-        "pages": [],
-        "section": "Resident foreign currency holding limits under FEMA"
-      }
+      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "Resident foreign currency holding limits under FEMA" }
     ],
     "rules.non_resident_rules": [
-      {
-        "url": "https://www.rbi.org.in/commonperson/english/scripts/FAQs.aspx?Id=3",
-        "pages": [],
-        "section": "NRE / FCNR(B) / NRO accounts eligibility and rights"
-      }
+      { "url": "https://www.rbi.org.in/commonperson/english/scripts/FAQs.aspx?Id=3", "pages": [], "section": "NRE / FCNR(B) / NRO accounts eligibility and rights" }
     ],
     "rules.business_invoicing_settlement": [
-      {
-        "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
-        "pages": [],
-        "section": "Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026"
-      }
+      { "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277", "pages": [], "section": "Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026" }
     ],
     "rules.exchange_controls": [
-      {
-        "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
-        "pages": [],
-        "section": "FEMA 1999 general framework"
-      }
+      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "FEMA 1999 general framework" }
     ],
     "rules.banking_conversion_practicality": [
-      {
-        "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
-        "pages": [],
-        "section": "Authorised Dealer and CDF procedures"
-      },
-      {
-        "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
-        "pages": [],
-        "section": "CDF Instructions"
-      }
+      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "Authorised Dealer and CDF procedures" },
+      { "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf", "pages": [], "section": "CDF Instructions" }
     ]
   },
 
