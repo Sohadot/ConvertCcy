@@ -1,0 +1,95 @@
+{
+  "country_name": "Indonesia",
+  "country_slug": "indonesia",
+  "iso2": "ID",
+  "iso3": "IDN",
+  "region": "Southeast Asia",
+  "currency_code": "IDR",
+  "currency_name": "Indonesian Rupiah",
+
+  "schema_version": "1.2",
+  "page_status": "verified",
+  "last_reviewed": "2026-05-02",
+  "evidence_tier": "official_verified",
+  "official_source_available": true,
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "source_notice": "",
+
+  "country_overview": "Indonesia operates a managed floating exchange rate regime administered by Bank Indonesia (BI). The Rupiah is subject to certain capital controls and reporting requirements, while current account transactions are largely liberalised.",
+
+  "summary": {
+    "traveler": "Travelers may bring in foreign currency without limit but must declare amounts of USD 10,000 or equivalent. Export of foreign currency is restricted and subject to BI rules.",
+    "business": "Businesses must route significant foreign exchange transactions through authorised banks. Capital repatriation and certain payments require BI approval or documentation."
+  },
+
+  "rules": {
+    "bring_foreign_currency_in": "Foreign currency may be brought into Indonesia without limit. Amounts of USD 10,000 or equivalent must be declared to Indonesian Customs upon arrival.",
+    "take_foreign_currency_out": "Foreign currency may be taken out up to the amount declared on entry or supported by authorised bank documentation. Residents are subject to BI limits.",
+    "cash_declaration_threshold": "USD 10,000 or equivalent in foreign currency or negotiable instruments at entry and exit. Declaration to Indonesian Customs is mandatory.",
+    "resident_holding_rules": "Indonesian residents are subject to BI limits and approval requirements when holding or using foreign currency accounts. General unrestricted access requires specific authorisation.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds more freely through authorised banks.",
+    "business_invoicing_settlement": "Cross-border business transactions must be settled through authorised banks in accordance with BI foreign exchange regulations.",
+    "exchange_controls": "Indonesia maintains a managed exchange regime with controls on certain capital account transactions. Current account transactions are largely liberalised.",
+    "banking_conversion_practicality": "Foreign exchange conversion is available through authorised banks and licensed exchange offices. Documentation is required for large transactions."
+  },
+
+  "source_authorities": [
+    {
+      "label": "Bank Indonesia (BI) — Foreign Exchange Regulations",
+      "url": "https://www.bi.go.id/en",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "Indonesian Customs — Currency Declaration Rules",
+      "url": "https://www.beacukai.go.id/",
+      "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "Bank Indonesia — FX Circulars & Liberalisation Measures",
+      "url": "https://www.bi.go.id/en",
+      "type": "primary_regulator",
+      "tier": "primary"
+    }
+  ],
+
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.bi.go.id/en", "pages": [], "section": "FX Regime Overview" }
+    ],
+    "summary.traveler": [
+      { "url": "https://www.beacukai.go.id/", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.bi.go.id/en", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://www.beacukai.go.id/", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://www.beacukai.go.id/", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://www.beacukai.go.id/", "pages": [], "section": "Cash Declaration Rules (USD 10,000 / equivalent)" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.bi.go.id/en", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.bi.go.id/en", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.bi.go.id/en", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.bi.go.id/en", "pages": [], "section": "Managed Exchange Regime" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.bi.go.id/en", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Indonesia are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Bank Indonesia / Indonesian Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with Bank Indonesia or Indonesian Customs before making any financial or travel decisions."
+}
