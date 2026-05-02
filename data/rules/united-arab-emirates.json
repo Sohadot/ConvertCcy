@@ -1,105 +1,113 @@
 {
-  "country_name": "India",
-  "country_slug": "india",
-  "iso2": "IN",
-  "iso3": "IND",
-  "region": "South Asia",
-  "currency_code": "INR",
-  "currency_name": "Indian Rupee",
+  "country_name": "United Arab Emirates",
+  "country_slug": "united-arab-emirates",
+  "iso2": "AE",
+  "iso3": "ARE",
+  "region": "Middle East",
+  "currency_code": "AED",
+  "currency_name": "UAE Dirham",
 
-  "schema_version": "1.2",
-  "page_status": "verified",
-  "last_reviewed": "2026-05-02",
+  "schema_version": "1.2.1",
+  "page_status": "published",
+  "last_reviewed": "2026-05-01",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
 
-  "country_overview": "India operates under the Foreign Exchange Management Act (FEMA) 1999 administered by the Reserve Bank of India. Current account transactions are largely liberalised while capital account transactions remain regulated. The framework was updated in 2026 through the Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026 (effective 1 October 2026).",
+  "country_overview": "The United Arab Emirates applies a convertible dirham pegged to the US dollar alongside a supervisory framework centred on the Central Bank of the UAE (CBUAE) for licensed banking and regulated exchange-business activity. Customs and traveller transparency measures complement that framework rather than imposing retail exchange quotas: traveller declarations focus on bearer instruments, cash, jewellery, and precious metals above published thresholds rather than banning foreign currency outright. Interpreted together, the Emirates present as a predominantly open-account environment with AML/CFT and customs reporting obligations layered on cross-border carriage and financial-institution workflows.",
 
   "summary": {
-    "traveler": "Any person may bring foreign exchange into India without limit. Declaration on the Currency Declaration Form (CDF) is required if foreign currency notes exceed USD 5,000 or the aggregate foreign exchange exceeds USD 10,000.",
-    "business": "All cross-border trade and capital transactions must be routed through Authorised Dealer banks under FEMA. The 2026 regulations introduce targeted updates for exports, imports, service payments and related operations."
+    "traveler": "Visitors and residents may move foreign currency broadly freely, subject to traveller declaration rules when declared items exceed AED 60,000 in combined value across cash, bearer instruments, jewellery, and precious metals, using approved customs procedures (including designated digital declaration channels where applicable).",
+    "business": "Business invoicing and bank transfers are unconstrained by classic exchange-control ceilings in the sovereign sense used elsewhere; AML/CFT and licensing rules still govern intermediaries trading currency and moving funds at scale."
   },
 
   "rules": {
-    "bring_foreign_currency_in": "Foreign exchange may be brought into India without limit. Declaration on the Currency Declaration Form (CDF) is mandatory if foreign currency notes exceed USD 5,000 or the aggregate value of foreign exchange exceeds USD 10,000.",
-    "take_foreign_currency_out": "Unspent foreign exchange declared on arrival may be taken out, and the Currency Declaration Form should be retained for reconversion or for taking unused foreign exchange out of India.",
-    "cash_declaration_threshold": "On arrival in India: declaration on the Currency Declaration Form (CDF) is required if foreign currency notes exceed USD 5,000 or if aggregate foreign exchange exceeds USD 10,000.",
-    "resident_holding_rules": "Indian residents remain subject to FEMA-based limits and conditions in relation to holding and using foreign exchange. Users should verify account eligibility, retention limits, and transaction-specific permissions directly with RBI rules and the authorised dealer.",
-    "non_resident_rules": "Non-residents (including NRIs and PIOs) may maintain NRE, FCNR(B) or NRO accounts with repatriation rights as permitted under RBI guidelines.",
-    "business_invoicing_settlement": "Import, export, and related cross-border service transactions must be handled through Authorised Dealer banks in accordance with FEMA regulations and the applicable RBI framework.",
-    "exchange_controls": "India maintains a regulated exchange framework under FEMA 1999. Current account transactions are largely liberalised while capital account transactions are subject to regulation and reporting.",
-    "banking_conversion_practicality": "Foreign exchange transactions are executed through Authorised Dealer banks, licensed money changers and authorised airports. The Currency Declaration Form (CDF) must be retained for reconversion and compliance purposes."
+    "bring_foreign_currency_in": "Inbound travellers may carry foreign currency without a legislated statutory cap analogous to rigid import licences. When the traveller carries currencies, cheque-like bearer forms, jewellery, or precious metals whose combined declarable valuation exceeds AED 60,000, UAE customs doctrine expects a declaration aligned with traveller-transparency publications and ICP-aligned digital facilitation at covered ports. Household members under eighteen are not ordinarily required to lodge a standalone declaration beyond inclusion on a guardian declaration where facts support that treatment. Omitting mandated declarations where threshold facts exist is prosecuted as customs evasion risk rather than a routine paperwork preference.",
+
+    "take_foreign_currency_out": "Departure differs operationally from arrival even when headline policy remains permissive: travellers leaving still face the AED 60,000 combined declarable corridor for cash-like and jewellery categories, but the supervisory emphasis shifts to outbound reporting and AML monitoring on later bank or wire corridors. Capital repatriation of salaries, divestment receipts, or investment proceeds is ordinarily not withheld by denomination-specific quotas; compliance teams instead scrutinise sourcing and screening on higher-value corridors. Institutional channels therefore remain the pragmatic choice for sizeable movements that would otherwise collide with traveller-only declaration mechanics.",
+
+    "cash_declaration_threshold": "Federal traveller declaration standards align on a combined AED 60,000 reporting trigger across cash, negotiable instruments without a named payee, jewellery, and precious metals for passengers aged eighteen and above. The measure is grounded in anti-money-laundering transparency rather than a permit to carry only up to that mark. Officials provide structured declaration forms plus, on selected crossings, interoperable electronic submission consistent with ICA/ICP public guidance. Accuracy matters because valuation disputes feed enforcement channels separate from benign tourist exchanges below reporting facts.",
+
+    "resident_holding_rules": "UAE residents maintain AED and multicurrency deposits domestically subject to universal banking AML standards rather than nationality-based holding prescriptions. Everyday conversion between dirhams and majors occurs through authorised institutions where CBUAE licence classes govern who may run exchange counters versus full banking. Residents remitting abroad use SWIFT-like rails with institution-level checks; there is no parallel household foreign-currency ceiling published like hard exchange-control jurisdictions. Relationship managers still expect documentation on unusually large legacy cash deposits.",
+
+    "non_resident_rules": "Non-resident individuals and corporates open AED or foreign-currency accounts with documentation typical of international banking centres. Repatriation of operating profits, sale proceeds, or payroll savings is not administratively throttled by sovereign conversion permits in the classic sense, though banks apply sanctions screening and correspondent-bank constraints. Non-residents engaging in mainland commercial activity coordinate with licensing authorities separately from FX mechanics. Digital wallets and PSP partnerships expand retail access but inherit the same compliance obligations.",
+
+    "business_invoicing_settlement": "UAE entities invoice cross-border counterparties in foreign currency without coercion to forcibly surrender proceeds into AED at a punitive spread. Settlement may therefore remain offshore or route through correspondent nostros as commercial contracts dictate. Any firm selling exchange as a standalone product must hold Central Bank approvals under prevailing exchange-business regulation tiers rather than operating as an unregulated bureau. Consolidated groups still centralise treasury under policies that AML teams audit irrespective of denomination choice.",
+
+    "exchange_controls": "Administrative parlance distinguishes true exchange controls—mandatory approvals per transaction—from the Emirates' supervisory posture, which concentrates on peg maintenance through monetary instruments and regulated institutions while keeping current-account style flows largely liberal. Profit repatriation, services exports, and re-invoicing frameworks do not require pre-clearance dossiers analogous to guarded-capital regimes. Where tension appears, it is typically compliance-driven delays at bank level rather than sovereign denial of lawful conversion.",
+
+    "banking_conversion_practicality": "Liquidity for tourists and corporates flows through multinational banks, local champions, licensed exchange houses, and airport concessions with published boards. Payments rails include instant domestic transfers where supported and cross-border wires with correspondent cut-offs. Corporates leaning on treasury workstations integrate FX hedging externally while domestic spot needs are satisfied OTC. Operational friction concentrates on onboarding due diligence—not on statutory quotas—when aligning with FATF-aligned programmes."
   },
 
   "source_authorities": [
     {
-      "label": "RBI — Miscellaneous Forex Facilities FAQ (updated)",
-      "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
-      "type": "primary_regulator_faq",
+      "label": "Central Bank of the UAE (CBUAE) — Rulebook",
+      "url": "https://rulebook.centralbank.ae",
+      "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "RBI — Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026",
-      "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
-      "type": "primary_regulator",
-      "tier": "primary"
-    },
-    {
-      "label": "RBI — Non-Resident Accounts FAQ",
-      "url": "https://www.rbi.org.in/commonperson/english/scripts/FAQs.aspx?Id=3",
-      "type": "primary_regulator_faq",
-      "tier": "primary"
-    },
-    {
-      "label": "CBIC — Currency Declaration Form (CDF)",
-      "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+      "label": "Dubai Customs — Declaring Money Procedure",
+      "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
       "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "UAE Government Portal — Banking in the UAE",
+      "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+      "type": "ministry",
       "tier": "primary"
     }
   ],
 
   "source_map": {
     "country_overview": [
-      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "FEMA Framework Overview" },
-      { "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277", "pages": [], "section": "Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026 (effective 1 October 2026)" }
+      { "url": "https://rulebook.centralbank.ae", "pages": [], "section": "Institutional supervisory scope (CBUAE rulebook landing)" },
+      { "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae", "pages": [], "section": "National banking overview and convertibility framing" },
+      { "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx", "pages": [], "section": "Travel-related currency declaration posture" }
     ],
     "summary.traveler": [
-      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "Q5 – Foreign exchange brought into India" },
-      { "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf", "pages": [], "section": "CDF Instructions" }
+      { "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx", "pages": [], "section": "Declaring money / traveller thresholds" },
+      { "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae", "pages": [], "section": "Retail banking accessibility for travellers" }
     ],
     "summary.business": [
-      { "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277", "pages": [], "section": "2026 Export-Import Regulations Overview" }
+      { "url": "https://rulebook.centralbank.ae", "pages": [], "section": "Licensed exchange-business and supervisory expectations" },
+      { "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae", "pages": [], "section": "Corporate banking landscape" }
     ],
     "rules.bring_foreign_currency_in": [
-      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "Q5 – Declaration thresholds (CDF)" },
-      { "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf", "pages": [], "section": "CDF Instructions" }
+      { "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx", "pages": [], "section": "Inbound declaration mechanics" },
+      { "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae", "pages": [], "section": "Financial institutions inbound context" }
     ],
     "rules.take_foreign_currency_out": [
-      { "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf", "pages": [], "section": "CDF retention for departure / reconversion" }
+      { "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx", "pages": [], "section": "Outbound / departure reporting" },
+      { "url": "https://rulebook.centralbank.ae", "pages": [], "section": "Institutional AML supervision on larger flows" }
     ],
     "rules.cash_declaration_threshold": [
-      { "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf", "pages": [], "section": "CDF Instructions (USD 5,000 notes / USD 10,000 aggregate)" }
+      { "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx", "pages": [], "section": "AED 60,000 combined traveller reporting trigger" }
     ],
     "rules.resident_holding_rules": [
-      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "Resident foreign currency holding limits under FEMA" }
+      { "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae", "pages": [], "section": "Residents' domestic and foreign currency services" },
+      { "url": "https://rulebook.centralbank.ae", "pages": [], "section": "Licensed financial institution standards" }
     ],
     "rules.non_resident_rules": [
-      { "url": "https://www.rbi.org.in/commonperson/english/scripts/FAQs.aspx?Id=3", "pages": [], "section": "NRE / FCNR(B) / NRO accounts eligibility and rights" }
+      { "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae", "pages": [], "section": "Opening accounts / non-resident access" },
+      { "url": "https://rulebook.centralbank.ae", "pages": [], "section": "Supervised institution onboarding obligations" }
     ],
     "rules.business_invoicing_settlement": [
-      { "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277", "pages": [], "section": "Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026" }
+      { "url": "https://rulebook.centralbank.ae", "pages": [], "section": "Exchange-business licensing prerequisites" },
+      { "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae", "pages": [], "section": "Corporate settlement channels overview" }
     ],
     "rules.exchange_controls": [
-      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "FEMA 1999 general framework" }
+      { "url": "https://rulebook.centralbank.ae", "pages": [], "section": "Central bank supervisory remit versus capital-control jurisdictions" },
+      { "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae", "pages": [], "section": "Economy openness summary" }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829", "pages": [], "section": "Authorised Dealer and CDF procedures" },
-      { "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf", "pages": [], "section": "CDF Instructions" }
+      { "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae", "pages": [], "section": "Retail and corporate FX access pathways" },
+      { "url": "https://rulebook.centralbank.ae", "pages": [], "section": "Regulated intermediary landscape" }
     ]
   },
 
-  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in India are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBI/CBIC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of India, CBIC, or a qualified professional before making any financial or travel decisions."
+  "disclaimer": "This page provides general informational reference only. Customs declaration thresholds and Central Bank supervisory requirements in the UAE can change without notice appearing here. This is not legal, regulatory, tax, financial, or compliance advice. Confirm current obligations with UAE Customs, the Central Bank of the UAE (CBUAE), licensed financial intermediaries, or qualified counsel before committing to travel or treasury decisions."
 }

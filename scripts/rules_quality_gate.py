@@ -12,14 +12,15 @@ Prevent lifecycle leakage between:
 - public sovereign layer
 
 This gate verifies that only `published` country rule entries can exist in the
-public layer and be marked sitemap-eligible.
+sovereign `rules/` layer and be marked sitemap-eligible.
 
 Checks
 ------
 1. rules_manifest.json exists and is valid
-2. manifest structure and counts are coherent
+2. manifest structure and counts are coherent (including `validation_failed_entries`
+   for JSON that failed `validate_rules.py`)
 3. published entries only:
-   - render into public/rules/*.html
+   - render into rules/*.html
    - have sitemap_eligible=True
    - may expose public_url
 4. verified / needs_hardening / secondary_review:
@@ -28,7 +29,7 @@ Checks
    - must not expose public_url
 5. needs_source_review / blocked:
    - do not render at all
-6. public/rules/ contains only published country pages (+ index.html)
+6. rules/ contains only published country pages (+ index.html)
 7. preview/ contains only preview statuses
 8. no lifecycle contamination between directories
 9. public index is indexable; preview indexes are noindex
@@ -113,7 +114,7 @@ def expected_preview_country_html(status: str, slug: str) -> str:
 
 
 def expected_public_country_html(slug: str) -> str:
-    return f"public/rules/{slug}-foreign-currency-rules.html"
+    return f"rules/{slug}-foreign-currency-rules.html"
 
 
 def expected_preview_statuses() -> Set[str]:
@@ -135,6 +136,7 @@ def validate_manifest_structure(manifest: Dict[str, Any], result: GateResult) ->
         "needs_hardening_entries",
         "secondary_review_entries",
         "skipped_entries",
+        "validation_failed_entries",
     }
     missing = required_top - set(manifest.keys())
     if missing:
@@ -150,7 +152,7 @@ def validate_manifest_structure(manifest: Dict[str, Any], result: GateResult) ->
         result.error("Manifest counts must be an object")
         return
 
-    for key in ["published", "verified", "needs_hardening", "secondary_review", "skipped"]:
+    for key in ["published", "verified", "needs_hardening", "secondary_review", "skipped", "validation_failed"]:
         if key not in counts:
             result.error(f"Manifest counts missing key: {key}")
         elif not isinstance(counts[key], int):
@@ -165,6 +167,7 @@ def check_counts(manifest: Dict[str, Any], result: GateResult) -> None:
         "needs_hardening": "needs_hardening_entries",
         "secondary_review": "secondary_review_entries",
         "skipped": "skipped_entries",
+        "validation_failed": "validation_failed_entries",
     }
     for count_key, list_key in mapping.items():
         entries = manifest.get(list_key, [])
@@ -267,7 +270,7 @@ def validate_manifest_entries(site_root: Path, manifest: Dict[str, Any], result:
 
 
 def scan_public_layer(site_root: Path, manifest: Dict[str, Any], result: GateResult) -> None:
-    public_rules_dir = site_root / "public" / "rules"
+    public_rules_dir = site_root / "rules"
     public_rules_dir.mkdir(parents=True, exist_ok=True)
 
     actual_public_pages = {
@@ -287,11 +290,11 @@ def scan_public_layer(site_root: Path, manifest: Dict[str, Any], result: GateRes
 
     if leaked_public:
         result.error(
-            f"Public layer leakage detected. Non-published slugs present in public/rules/: {sorted(leaked_public)}"
+            f"Public layer leakage detected. Non-published slugs present in rules/: {sorted(leaked_public)}"
         )
     if missing_public:
         result.error(
-            f"Published slugs missing from public/rules/: {sorted(missing_public)}"
+            f"Published slugs missing from rules/: {sorted(missing_public)}"
         )
 
 
@@ -356,10 +359,10 @@ def prevent_cross_layer_contamination(site_root: Path, manifest: Dict[str, Any],
     if overlap:
         result.error(f"Lifecycle contamination: slugs appear in both public and preview layers: {sorted(overlap)}")
 
-    public_rules_dir = site_root / "public" / "rules"
+    public_rules_dir = site_root / "rules"
     for slug in preview_slugs:
         if slug and (public_rules_dir / f"{slug}-foreign-currency-rules.html").exists():
-            result.error(f"Preview slug leaked into public layer: {slug}")
+            result.error(f"Preview slug leaked into sovereign public layer (rules/): {slug}")
 
     preview_rules_dir = site_root / "preview" / "rules"
     for slug in published_slugs:
@@ -369,13 +372,13 @@ def prevent_cross_layer_contamination(site_root: Path, manifest: Dict[str, Any],
 
 
 def validate_index_pages(site_root: Path, result: GateResult) -> None:
-    public_index = site_root / "public" / "rules" / "index.html"
+    public_index = site_root / "rules" / "index.html"
     if not public_index.exists():
-        result.error("Missing public/rules/index.html")
+        result.error("Missing rules/index.html")
     else:
         html_text = read_text(public_index)
         if not looks_indexable(html_text):
-            result.error("public/rules/index.html must contain robots=index,follow")
+            result.error("rules/index.html must contain robots=index,follow")
 
     preview_root = site_root / "preview" / "rules"
     for status in expected_preview_statuses():

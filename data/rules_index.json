@@ -5,9 +5,9 @@
     "iso2": "IN",
     "currency_code": "INR",
     "region": "South Asia",
-    "page_status": "verified",
+    "page_status": "published",
     "last_reviewed": "2026-05-02",
-    "url": "/preview/rules/verified/india-foreign-currency-rules.html"
+    "url": "/rules/india-foreign-currency-rules.html"
   },
   {
     "country_name": "Morocco",
@@ -18,5 +18,15 @@
     "page_status": "needs_hardening",
     "last_reviewed": "2026-05-02",
     "url": "/preview/rules/needs_hardening/morocco-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "United Arab Emirates",
+    "country_slug": "united-arab-emirates",
+    "iso2": "AE",
+    "currency_code": "AED",
+    "region": "Middle East",
+    "page_status": "published",
+    "last_reviewed": "2026-05-01",
+    "url": "/rules/united-arab-emirates-foreign-currency-rules.html"
   }
 ]

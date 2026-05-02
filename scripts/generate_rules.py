@@ -5,7 +5,7 @@ ConvertCCY — Global FX Rules Reference Layer
 generate_rules.py v1.2.1
 
 Static HTML generator with strict lifecycle separation:
-- `public/rules/` holds only pages with page_status=`published`
+- `rules/` (site root) holds only pages with page_status=`published`
 - `preview/rules/<status>/` holds verified / needs_hardening / secondary_review
 - `data/generated/rules_manifest.json` records what was emitted and where
 
@@ -552,7 +552,14 @@ def build_manifest_payload(
     verified_entries: List[Dict[str, Any]] = []
     needs_hardening_entries: List[Dict[str, Any]] = []
     secondary_review_entries: List[Dict[str, Any]] = []
-    skipped_entries: List[Dict[str, Any]] = skipped
+    skipped_entries: List[Dict[str, Any]] = []
+    validation_failed_entries: List[Dict[str, Any]] = []
+
+    for item in skipped:
+        if item.get("status") == "skipped_validation_failed":
+            validation_failed_entries.append(item)
+        else:
+            skipped_entries.append(item)
 
     for status, items in grouped.items():
         for data, out_path in items:
@@ -572,6 +579,7 @@ def build_manifest_payload(
         "needs_hardening": len(needs_hardening_entries),
         "secondary_review": len(secondary_review_entries),
         "skipped": len(skipped_entries),
+        "validation_failed": len(validation_failed_entries),
     }
 
     return {
@@ -584,6 +592,7 @@ def build_manifest_payload(
         "needs_hardening_entries": sorted(needs_hardening_entries, key=lambda e: e.get("country_slug", "")),
         "secondary_review_entries": sorted(secondary_review_entries, key=lambda e: e.get("country_slug", "")),
         "skipped_entries": skipped_entries,
+        "validation_failed_entries": validation_failed_entries,
     }
 
 
@@ -820,7 +829,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="ConvertCCY rules HTML generator v1.2.1")
     parser.add_argument("--site-root", default=".", help="Repository root")
     parser.add_argument("--data-dir", default="data/rules", help="Input JSON directory")
-    parser.add_argument("--public-dir", default="public/rules", help="Public output directory")
+    parser.add_argument(
+        "--public-dir",
+        default="rules",
+        help="Published sovereign HTML output directory (site-root relative)",
+    )
     parser.add_argument("--preview-dir", default="preview/rules", help="Preview output root directory")
     parser.add_argument(
         "--only",

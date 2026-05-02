@@ -488,8 +488,8 @@ needs_hardening → verified transition
 # secondary_institutional     | secondary_review    | limited   | false    | no
 # internal                    | review/blocked      | blocked   | false    | no
 #
-# * indexing_allowed may be true by design for verified files, but actual indexing
-#   only begins at published status.
+# * indexing_allowed must be False for verified (release candidate); only published
+#   may set indexing_allowed=True (INDEXABLE_STATUSES invariant).
 #
 #
 # GATE 8 INVARIANTS (evidence / lifecycle consistency)

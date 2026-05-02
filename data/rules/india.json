@@ -8,12 +8,12 @@
   "currency_name": "Indian Rupee",
 
   "schema_version": "1.2.1",
-  "page_status": "verified",
+  "page_status": "published",
   "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": false,
+  "indexing_allowed": true,
   "source_notice": "",
 
   "country_overview": "India operates a statutory foreign-exchange framework under the Foreign Exchange Management Act (FEMA), 1999, administered principally by the Reserve Bank of India (RBI). In practice this is not a discretionary retail-cash jurisdiction: lawful foreign-exchange activity typically routes through authorised dealer banks while border cash controls are exercised through CBIC Indian Customs declarations (including the Currency Declaration Form, CDF) when thresholds apply. Relative to freely convertible regimes, India's FX regime mixes liberalisation on much of the current account with materially tighter regulation on the capital account; users should assume documentation, channels, and transaction-specific approvals matter.",
