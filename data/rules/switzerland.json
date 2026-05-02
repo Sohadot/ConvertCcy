@@ -6,47 +6,90 @@
   "region": "Western Europe",
   "currency_code": "CHF",
   "currency_name": "Swiss Franc",
-  "schema_version": "1.1",
+
+  "schema_version": "1.2",
   "page_status": "verified",
-  "last_reviewed": "2026-04-30",
+  "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
+
+  "country_overview": "Switzerland operates one of the most liberalised and stable foreign-exchange regimes in the world. There are no exchange controls or restrictions on current or capital account transactions for residents or non-residents. The framework is administered by the Swiss National Bank (SNB).",
+
   "summary": {
-    "traveler": "Switzerland has no general restrictions on importing or exporting foreign currency or Swiss francs. Travellers entering from outside the EU/EFTA area with CHF 10,000 or more in cash or equivalent monetary instruments must declare this to the Swiss Federal Customs Administration (SFCA). The Swiss franc is a freely floating, fully convertible currency. Switzerland is not in the EU but has significant bilateral agreements with it.",
-    "business": "Switzerland operates with a fully open capital account and no exchange controls. The Swiss National Bank (SNB) manages monetary policy and may intervene in the FX market to manage CHF volatility. Businesses may freely hold, invoice, and settle in foreign currencies. Financial institutions are regulated by FINMA (Swiss Financial Market Supervisory Authority). AML obligations apply under the Anti-Money Laundering Act (AMLA) administered by FINMA and the Money Laundering Reporting Office Switzerland (MROS)."
+    "traveler": "Travelers may bring in or take out unlimited amounts of Swiss Francs and foreign currency. No general currency declaration is required for normal travel amounts.",
+    "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
   },
+
   "rules": {
-    "bring_foreign_currency_in": "There are no restrictions on the amount of cash or foreign currency that may be brought into Switzerland, and no mandatory declaration is required. Unrestricted amounts of notes, coins, foreign currencies, and bearer negotiable instruments may be carried in. If questioned by FOCBS (Federal Office for Customs and Border Security) officers at the border, travellers must answer truthfully. Amounts of CHF 10,000 or more trigger a disclosure obligation if asked, and are registered in the FOCBS information system. EU border crossings may trigger additional EU Regulation 2018/1672 reporting requirements on the EU side. Source: bazg.admin.ch.",
-    "take_foreign_currency_out": "There are no restrictions on the amount of foreign currency or Swiss francs that may be taken out of Switzerland. The same CHF 10,000 declaration threshold applies at departure for travel to non-EU/EFTA destinations. Large cash movements between Switzerland and EU member states may also attract declaration requirements under the EU's own Regulation 2018/1672. No prior approval is required for any amount of cash carried out of Switzerland.",
-    "cash_declaration_threshold": "Switzerland has NO mandatory written declaration requirement for cash. Unrestricted amounts of cash, foreign currency, notes, coins, and bearer negotiable instruments (shares, bonds, cheques) may be carried into, through, and out of Switzerland without any declaration. However, if a Federal Office for Customs and Border Security (FOCBS) officer questions you during a check, you are legally obliged to provide truthful information. If you are carrying CHF 10,000 or more, you will be asked to disclose: your identity, the source of the funds, the intended use, and the beneficial owner. If the amount equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Refusal to answer or providing false information is a customs offence subject to a fine. If money laundering or terrorism financing is suspected, the cash may be temporarily seized and handed to police. Source: bazg.admin.ch (Federal Office for Customs and Border Security of Switzerland).",
-    "resident_holding_rules": "Swiss residents may freely hold foreign currency accounts in Switzerland and abroad. No restrictions apply to holding, purchasing, converting, or transferring foreign currency. Switzerland has no exchange controls. The Swiss franc is freely floating. Swiss residents with foreign bank accounts must comply with CRS automatic exchange of information and Swiss federal tax disclosure obligations. Switzerland has adopted CRS and participates in bilateral AEOI agreements.",
-    "non_resident_rules": "Non-residents may freely hold bank accounts in Switzerland and conduct financial transactions. Switzerland's banking sector is internationally oriented and services non-resident clients extensively. Non-residents may freely bring in and take out currency subject to the CHF 10,000 declaration threshold for non-Schengen travel. No capital controls apply. International sanctions (UN, EU autonomous, and Swiss autonomous) restrict transactions with designated parties.",
-    "business_invoicing_settlement": "Swiss businesses may freely invoice, settle, and hold balances in any currency. No mandatory conversion requirements exist. Switzerland participates in SIC (Swiss Interbank Clearing) for domestic CHF payments and SEPA for euro payments. International transfers are processed via SWIFT. FINMA regulates banks, securities dealers, and financial intermediaries. AML obligations apply under AMLA. MROS receives suspicious transaction reports.",
-    "exchange_controls": "Switzerland operates with no exchange controls. The Swiss franc is a freely floating currency. The Swiss National Bank (SNB) manages monetary policy and has a history of FX market intervention to manage CHF appreciation pressure, including the imposition and removal of a EUR/CHF floor in 2015. The SNB does not impose administrative restrictions on currency movements. FINMA regulates financial institutions, and MROS administers AML reporting. Switzerland applies its own autonomous sanctions regime alongside UN and selected EU sanctions.",
-    "banking_conversion_practicality": "Switzerland is one of the world's premier financial centres. Foreign currency exchange is available at Swiss banks, Post Finance, airport exchange offices, and ATMs. The Swiss banking system is highly sophisticated with extensive multi-currency account services in CHF, EUR, USD, GBP, and other major currencies. ATMs are widely available. FINMA regulates money service businesses. Exchange rates for CHF are highly competitive given Switzerland's role as a global financial hub."
+    "bring_foreign_currency_in": "Unlimited amounts of Swiss Francs and foreign currency may be brought into Switzerland with no general declaration requirement for travelers.",
+    "take_foreign_currency_out": "Unlimited amounts of Swiss Francs and foreign currency may be taken out of Switzerland with no general restriction or declaration requirement for travelers.",
+    "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Large or suspicious cash movements are subject to anti-money laundering reporting requirements by financial institutions.",
+    "resident_holding_rules": "Swiss residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+    "business_invoicing_settlement": "Business transactions may be invoiced and settled in foreign currency or CHF. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
+    "exchange_controls": "Switzerland maintains no exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+    "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Switzerland."
   },
+
   "source_authorities": [
     {
-      "label": "Federal Office for Customs and Border Security (FOCBS/BAZG) — Cash and Foreign Currency",
-      "url": "https://www.bazg.admin.ch/bazg/en/home/information-individuals/bans--restrictions-and-authorisations/cash--foreign-currencies--securities.html",
-      "type": "customs",
-      "tier": "primary"
-    },
-    {
-      "label": "Swiss National Bank (SNB)",
-      "url": "https://www.snb.ch/en/",
+      "label": "Swiss National Bank (SNB) — Foreign Exchange & Monetary Policy",
+      "url": "https://www.snb.ch/en/topics/monetary-policy",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "FINMA — Swiss Financial Market Supervisory Authority",
+      "label": "Swiss Financial Market Supervisory Authority (FINMA) — FX Regulation",
       "url": "https://www.finma.ch/en/",
-      "type": "regulator",
+      "type": "primary_regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "Swiss Customs Administration — Travel & Currency Rules",
+      "url": "https://www.ezv.admin.ch/ezv/en/home.html",
+      "type": "customs",
       "tier": "primary"
     }
   ],
-  "disclaimer": "This page provides general informational reference only. Switzerland's foreign currency declaration rules apply at non-Schengen borders; different thresholds may apply at EU member state borders. CRS and tax disclosure obligations for foreign accounts are separate legal requirements. Swiss autonomous sanctions may restrict certain transactions. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with the Swiss Federal Customs Administration, FINMA, or a qualified Swiss legal professional before making any financial or travel decisions."
+
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.snb.ch/en/topics/monetary-policy", "pages": [], "section": "FX Regime Overview" }
+    ],
+    "summary.traveler": [
+      { "url": "https://www.ezv.admin.ch/ezv/en/home.html", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.finma.ch/en/", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://www.ezv.admin.ch/ezv/en/home.html", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://www.ezv.admin.ch/ezv/en/home.html", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://www.ezv.admin.ch/ezv/en/home.html", "pages": [], "section": "Cash Declaration Rules" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.snb.ch/en/topics/monetary-policy", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.finma.ch/en/", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.finma.ch/en/", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.snb.ch/en/topics/monetary-policy", "pages": [], "section": "Absence of Exchange Controls" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.snb.ch/en/topics/monetary-policy", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Switzerland are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Swiss National Bank / FINMA / Swiss Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Swiss National Bank, FINMA, or a qualified professional before making any financial or travel decisions."
 }
