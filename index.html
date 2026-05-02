@@ -381,6 +381,44 @@
       font-size: 0.84rem;
     }
 
+    .article-preview .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.65rem;
+      align-items: center;
+      margin-bottom: 0.42rem;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+
+    .article-preview .article-cat {
+      color: var(--accent);
+    }
+
+    .article-preview .article-read {
+      display: inline-block;
+      margin-top: 0.65rem;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+    }
+
+    .articles-all-link {
+      display: inline-block;
+      margin-top: 1.1rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .articles-all-link:hover {
+      text-decoration: underline;
+    }
+
     .guide-card,
     .learn-card {
       text-decoration: none;
@@ -547,7 +585,9 @@
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/currencies.html">Currencies</a>
+      <a href="/articles/">Articles</a>
       <a href="#pairs">Popular Pairs</a>
+      <a href="#articles">Analysis</a>
       <a href="#learn">Learn</a>
       <a href="/about.html">About</a>
       <a href="/contact.html">Contact</a>
@@ -676,6 +716,79 @@
       </div>
     </section>
 
+    <section class="section" id="articles" aria-labelledby="articles-heading">
+      <div class="section-title">Reference articles</div>
+      <h2 id="articles-heading">Deeper reads on currencies, payments, and rates.</h2>
+      <p class="section-intro">
+        Long-form analysis complements the converter: monetary infrastructure, how reference rates differ from bank rates,
+        what moves FX, and which pairs matter most in global markets.
+      </p>
+
+      <div class="learn-grid">
+        <a class="learn-card article-preview" href="/articles/cips-vs-swift-global-payments-power.html">
+          <div class="article-meta">
+            <span class="article-cat">Monetary infrastructure</span>
+            <span>April 30, 2026 · 15 min</span>
+          </div>
+          <h3>CIPS vs SWIFT: The Shadow War Over Global Payments</h3>
+          <p>
+            China’s CIPS versus SWIFT — what the contest over settlement rails means for currency relationships.
+          </p>
+          <span class="article-read">Read analysis →</span>
+        </a>
+
+        <a class="learn-card article-preview" href="/articles/reference-rate-vs-bank-rate.html">
+          <div class="article-meta">
+            <span class="article-cat">Exchange rate mechanics</span>
+            <span>April 30, 2026 · 12 min</span>
+          </div>
+          <h3>Reference Rate vs Bank Rate: Why the Number You See Is Not the Rate You Get</h3>
+          <p>
+            Why on-screen rates rarely match what banks and cards charge, and why that gap matters.
+          </p>
+          <span class="article-read">Read analysis →</span>
+        </a>
+
+        <a class="learn-card article-preview" href="/articles/dollar-power-gold-trust-inflation-new-monetary-order.html">
+          <div class="article-meta">
+            <span class="article-cat">Monetary order</span>
+            <span>April 30, 2026 · 16 min</span>
+          </div>
+          <h3>Dollar Power, Gold Trust, and the Inflation Fracture</h3>
+          <p>
+            Dollar strength, gold as trust asset, and whether global finance is edging toward structural change.
+          </p>
+          <span class="article-read">Read analysis →</span>
+        </a>
+
+        <a class="learn-card article-preview" href="/articles/what-actually-moves-exchange-rates.html">
+          <div class="article-meta">
+            <span class="article-cat">Exchange fundamentals</span>
+            <span>April 30, 2026 · 14 min</span>
+          </div>
+          <h3>What Actually Moves Exchange Rates?</h3>
+          <p>
+            Rates, inflation, trade, flows, and credibility — how major drivers interact in practice.
+          </p>
+          <span class="article-read">Read analysis →</span>
+        </a>
+
+        <a class="learn-card article-preview" href="/articles/why-some-currency-pairs-matter-more-than-others.html">
+          <div class="article-meta">
+            <span class="article-cat">Currency pair structure</span>
+            <span>April 30, 2026 · 13 min</span>
+          </div>
+          <h3>Why Some Currency Pairs Matter More Than Others</h3>
+          <p>
+            Liquidity, reserves, commodities, and policy — why attention clusters on certain crosses.
+          </p>
+          <span class="article-read">Read analysis →</span>
+        </a>
+      </div>
+
+      <a class="articles-all-link" href="/articles/">Browse all articles →</a>
+    </section>
+
     <section class="section" id="learn" aria-labelledby="learn-heading">
   <div class="section-title">Learn</div>
   <h2 id="learn-heading">Understand exchange rates more clearly.</h2>
@@ -730,6 +843,7 @@
   <p style="margin-top:.55rem">
     <a href="/about.html">About</a> &nbsp;·&nbsp;
     <a href="/currencies.html">Currencies</a> &nbsp;·&nbsp;
+    <a href="/articles/">Articles</a> &nbsp;·&nbsp;
     <a href="/manifesto.html">Manifesto</a> &nbsp;·&nbsp;
     <a href="/framework.html">Framework</a> &nbsp;·&nbsp;
     <a href="/methodology.html">Methodology</a> &nbsp;·&nbsp;
