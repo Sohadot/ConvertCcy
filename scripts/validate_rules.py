@@ -1,344 +1,541 @@
+
+#!/usr/bin/env python3
 """
 ConvertCCY — Global FX Rules Reference Layer
-=============================================
-validate_rules.py — Strict validation engine for country rule JSON files.
-A file must pass ALL gates to be eligible for publication.
+============================================
+validate_rules.py v1.2.1
+
+Purpose
+-------
+Strict validator for country rule JSON files under the sovereign reference standard.
+
+Implements:
+- Gate 8: lifecycle consistency
+- Gate 9: source_map integrity
+- Gate 10: country_overview quality signals
+
+Usage
+-----
+    python scripts/validate_rules.py data/rules/india.json
+    python scripts/validate_rules.py data/rules/
 """
 
+from __future__ import annotations
+
+import argparse
 import json
 import re
 import sys
-from pathlib import Path
-from urllib.parse import urlparse
+from dataclasses import dataclass, field
 from difflib import SequenceMatcher
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Set
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
-from rules_schema import (
-    COUNTRY_RULE_SCHEMA, SOURCE_AUTHORITY_SCHEMA, PageStatus, Region,
-    FORBIDDEN_PATTERNS, MIN_CHARS_RULE_FIELD, MIN_CHARS_SUMMARY,
-    MIN_CHARS_OVERVIEW, MAX_SIMILARITY_RATIO, STANDARD_DISCLAIMER
-)
+CURRENT_DIR = Path(__file__).resolve().parent
+PARENT_DIR = CURRENT_DIR.parent
+
+if str(CURRENT_DIR) not in sys.path:
+    sys.path.insert(0, str(CURRENT_DIR))
+if str(PARENT_DIR) not in sys.path:
+    sys.path.insert(0, str(PARENT_DIR))
+
+try:
+    import rules_schema as rs
+except Exception as exc:
+    print(f"ERROR: Could not import rules_schema.py: {exc}", file=sys.stderr)
+    sys.exit(2)
 
 
-# ── Validation result ─────────────────────────────────────────────────────────
-
+@dataclass
 class ValidationResult:
-    def __init__(self):
-        self.errors:   list[str] = []
-        self.warnings: list[str] = []
+    path: Path
+    errors: List[str] = field(default_factory=list)
+    warnings: List[str] = field(default_factory=list)
+    notes: List[str] = field(default_factory=list)
+
+    def error(self, msg: str) -> None:
+        self.errors.append(msg)
+
+    def warn(self, msg: str) -> None:
+        self.warnings.append(msg)
+
+    def note(self, msg: str) -> None:
+        self.notes.append(msg)
 
     @property
-    def passed(self) -> bool:
-        return len(self.errors) == 0
-
-    def error(self, msg: str):
-        self.errors.append(f"[ERROR] {msg}")
-
-    def warn(self, msg: str):
-        self.warnings.append(f"[WARN]  {msg}")
-
-    def report(self, country: str = "") -> str:
-        lines = [f"=== Validation: {country} ==="]
-        lines += self.errors
-        lines += self.warnings
-        lines.append(f"Result: {'PASS' if self.passed else 'FAIL'} "
-                     f"({len(self.errors)} errors, {len(self.warnings)} warnings)")
-        return "\n".join(lines)
+    def ok(self) -> bool:
+        return not self.errors and not self.warnings
 
 
-# ── Gate 1: Schema integrity ──────────────────────────────────────────────────
+TRACKING_QUERY_KEYS = {
+    "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content",
+    "utm_id", "gclid", "fbclid", "mc_cid", "mc_eid", "ref", "ref_src",
+}
 
-def get_source_authorities(data: dict) -> list:
-    """Accept the canonical source_authorities key and the official_sources alias."""
-    return data.get("source_authorities") or data.get("official_sources") or []
 
+def canonicalize_url(url: str) -> str:
+    url = (url or "").strip()
+    if not url:
+        return url
 
-def gate_schema_integrity(data: dict, result: ValidationResult):
-    """All required top-level keys must exist with correct types."""
-    required_top = [
-        "country_name", "country_slug", "iso2", "iso3",
-        "region", "currency_code", "currency_name",
-        "page_status", "last_reviewed", "schema_version",
-        "country_overview", "summary", "rules", "disclaimer",
+    parts = urlsplit(url)
+    scheme = parts.scheme.lower()
+    netloc = parts.netloc.lower()
+
+    filtered_qs = [
+        (k, v)
+        for k, v in parse_qsl(parts.query, keep_blank_values=True)
+        if k not in TRACKING_QUERY_KEYS
     ]
-    for key in required_top:
-        if key not in data:
-            result.error(f"Missing required field: '{key}'")
-        elif not data[key]:
-            result.error(f"Field '{key}' is empty")
+    query = urlencode(filtered_qs, doseq=True)
 
-    if "source_authorities" not in data and "official_sources" not in data:
-        result.error("Missing required field: 'source_authorities' or 'official_sources'")
-    elif not get_source_authorities(data):
-        result.error("Source authority list is empty")
+    path = parts.path or ""
+    if path != "/" and path.endswith("/"):
+        path = path[:-1]
 
-    # summary sub-fields
+    return urlunsplit((scheme, netloc, path, query, ""))
+
+
+def is_https_url(value: Any) -> bool:
+    return isinstance(value, str) and value.startswith("https://")
+
+
+def is_pdf_url(url: str) -> bool:
+    canon = canonicalize_url(url)
+    return any(canon.lower().endswith(suffix) for suffix in rs.PDF_SOURCE_SUFFIXES)
+
+
+def similarity_ratio(a: str, b: str) -> float:
+    return SequenceMatcher(None, a, b).ratio()
+
+
+def text_contains_forbidden_pattern(text: str) -> Optional[str]:
+    lowered = text.lower()
+    for pat in rs.FORBIDDEN_PATTERNS:
+        if pat.lower() in lowered:
+            return pat
+    return None
+
+
+def ensure_non_empty_string(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def ensure_list_of_ints(value: Any) -> bool:
+    return isinstance(value, list) and all(isinstance(v, int) for v in value)
+
+
+def slug_like(value: Any) -> bool:
+    return isinstance(value, str) and bool(re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", value))
+
+
+def parse_json(path: Path) -> Dict[str, Any]:
+    with path.open("r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def gather_json_files(path: Path) -> List[Path]:
+    if path.is_file():
+        return [path]
+    return sorted(p for p in path.glob("*.json") if p.is_file())
+
+
+def validate_top_level_structure(data: Dict[str, Any], result: ValidationResult) -> None:
+    missing = rs.REQUIRED_TOP_LEVEL_KEYS - set(data.keys())
+    if missing:
+        result.error(f"Missing required top-level keys: {sorted(missing)}")
+
+    if data.get("schema_version") != rs.SCHEMA_VERSION_CURRENT:
+        result.error(
+            f"schema_version must be '{rs.SCHEMA_VERSION_CURRENT}', got '{data.get('schema_version')}'"
+        )
+
+    if not slug_like(data.get("country_slug")):
+        result.error("country_slug must be lowercase kebab-case")
+
+    if not ensure_non_empty_string(data.get("country_name")):
+        result.error("country_name must be a non-empty string")
+
+    if not ensure_non_empty_string(data.get("currency_code")):
+        result.error("currency_code must be a non-empty string")
+
+    if data.get("region") not in {r.value for r in rs.Region}:
+        result.error(f"region must be one of {[r.value for r in rs.Region]}")
+
+    summary = data.get("summary")
+    if not isinstance(summary, dict):
+        result.error("summary must be an object")
+    else:
+        missing = rs.REQUIRED_SUMMARY_KEYS - set(summary.keys())
+        if missing:
+            result.error(f"Missing summary keys: {sorted(missing)}")
+
+    rules = data.get("rules")
+    if not isinstance(rules, dict):
+        result.error("rules must be an object")
+    else:
+        missing = rs.REQUIRED_RULE_KEYS - set(rules.keys())
+        if missing:
+            result.error(f"Missing rules keys: {sorted(missing)}")
+
+
+def validate_text_quality(data: Dict[str, Any], result: ValidationResult) -> None:
+    overview = data.get("country_overview")
+    if not ensure_non_empty_string(overview):
+        result.error("country_overview must be a non-empty string")
+    else:
+        if len(overview.strip()) < rs.MIN_CHARS_OVERVIEW:
+            result.error(
+                f"country_overview must be at least {rs.MIN_CHARS_OVERVIEW} characters"
+            )
+        pat = text_contains_forbidden_pattern(overview)
+        if pat:
+            result.error(f"country_overview contains forbidden placeholder pattern: {pat}")
+
     summary = data.get("summary", {})
-    for sub in ("traveler", "business"):
-        if sub not in summary:
-            result.error(f"Missing summary.{sub}")
-        elif not summary[sub] or not summary[sub].strip():
-            result.error(f"summary.{sub} is empty")
+    for key in rs.REQUIRED_SUMMARY_KEYS:
+        value = summary.get(key)
+        if not ensure_non_empty_string(value):
+            result.error(f"summary.{key} must be a non-empty string")
+            continue
+        if len(value.strip()) < rs.MIN_CHARS_SUMMARY:
+            result.error(f"summary.{key} must be at least {rs.MIN_CHARS_SUMMARY} characters")
+        pat = text_contains_forbidden_pattern(value)
+        if pat:
+            result.error(f"summary.{key} contains forbidden placeholder pattern: {pat}")
 
-    # rules sub-fields
     rules = data.get("rules", {})
-    required_rule_fields = [
-        "bring_foreign_currency_in",
-        "take_foreign_currency_out",
-        "cash_declaration_threshold",
-        "resident_holding_rules",
-        "non_resident_rules",
-        "business_invoicing_settlement",
-        "exchange_controls",
-        "banking_conversion_practicality",
-    ]
-    for rf in required_rule_fields:
-        if rf not in rules:
-            result.error(f"Missing rules.{rf}")
-        elif not rules[rf] or not rules[rf].strip():
-            result.error(f"rules.{rf} is empty")
+    rule_values: Dict[str, str] = {}
+    for key in rs.REQUIRED_RULE_KEYS:
+        value = rules.get(key)
+        if not ensure_non_empty_string(value):
+            result.error(f"rules.{key} must be a non-empty string")
+            continue
+        value = value.strip()
+        rule_values[key] = value
+        if len(value) < rs.MIN_CHARS_RULE_FIELD:
+            result.error(f"rules.{key} must be at least {rs.MIN_CHARS_RULE_FIELD} characters")
+        pat = text_contains_forbidden_pattern(value)
+        if pat:
+            result.error(f"rules.{key} contains forbidden placeholder pattern: {pat}")
+
+    keys = list(rule_values.keys())
+    for i in range(len(keys)):
+        for j in range(i + 1, len(keys)):
+            a_key, b_key = keys[i], keys[j]
+            ratio = similarity_ratio(rule_values[a_key], rule_values[b_key])
+            if ratio > rs.MAX_SIMILARITY_RATIO:
+                result.error(
+                    f"rules.{a_key} and rules.{b_key} are too similar ({ratio:.2f} > {rs.MAX_SIMILARITY_RATIO})"
+                )
 
 
-# ── Gate 2: Enum validity ─────────────────────────────────────────────────────
-
-def gate_enum_validity(data: dict, result: ValidationResult):
-    status = data.get("page_status", "")
-    if status not in [e.value for e in PageStatus]:
-        result.error(f"Invalid page_status: '{status}'. "
-                     f"Must be one of {[e.value for e in PageStatus]}")
-
-    region = data.get("region", "")
-    if region not in [e.value for e in Region]:
-        result.warn(f"Region '{region}' not in standard Region enum — verify spelling")
-
-    iso2 = data.get("iso2", "")
-    if not re.match(r"^[A-Z]{2}$", iso2):
-        result.error(f"iso2 '{iso2}' must be exactly 2 uppercase letters")
-
-    iso3 = data.get("iso3", "")
-    if not re.match(r"^[A-Z]{3}$", iso3):
-        result.error(f"iso3 '{iso3}' must be exactly 3 uppercase letters")
-
-    currency = data.get("currency_code", "")
-    if not re.match(r"^[A-Z]{3}$", currency):
-        result.error(f"currency_code '{currency}' must be 3 uppercase letters")
+OVERVIEW_SIGNAL_KEYWORDS = {
+    "regulatory_authority": [
+        "reserve bank", "central bank", "customs", "office des changes",
+        "administered by", "regulated by", "regulator", "authorised dealer",
+        "authorized dealer", "ministry", "authority", "authorities",
+    ],
+    "fx_regime": [
+        "exchange regime", "managed", "floating", "float", "peg", "pegged",
+        "fema", "framework", "foreign exchange management act", "fx regime",
+        "current account", "capital account",
+    ],
+    "convertibility_or_controls": [
+        "convertible", "convertibility", "exchange controls", "exchange control",
+        "controls", "restricted", "regulated", "non-convertible",
+        "capital controls", "liberalised", "liberalized",
+    ],
+}
 
 
-# ── Gate 3: Source integrity ──────────────────────────────────────────────────
-
-def gate_source_integrity(data: dict, result: ValidationResult):
-    sources = get_source_authorities(data)
-
-    if not isinstance(sources, list):
-        result.error("source_authorities/official_sources must be a list")
+def validate_country_overview_signals(data: Dict[str, Any], result: ValidationResult) -> None:
+    overview = data.get("country_overview")
+    if not ensure_non_empty_string(overview):
         return
 
-    if len(sources) < 1:
-        result.error("At least 1 source_authority required")
-        return
+    lowered = overview.lower()
+    missing_signals = []
+    for signal in rs.COUNTRY_OVERVIEW_REQUIRED_SIGNALS:
+        keywords = OVERVIEW_SIGNAL_KEYWORDS.get(signal, [])
+        if not any(k in lowered for k in keywords):
+            missing_signals.append(signal)
 
-    if len(sources) < 2:
-        result.warn("Only 1 source — recommend adding a second official source")
+    if missing_signals:
+        result.error(f"country_overview is missing required quality signals: {sorted(missing_signals)}")
 
-    for i, src in enumerate(sources):
-        if not isinstance(src, dict):
-            result.error(f"source_authorities[{i}] must be a dict")
+
+def validate_source_authorities(data: Dict[str, Any], result: ValidationResult) -> Set[str]:
+    source_authorities = data.get("source_authorities")
+    normalized_urls: Set[str] = set()
+
+    if not isinstance(source_authorities, list) or not source_authorities:
+        result.error("source_authorities must be a non-empty list")
+        return normalized_urls
+
+    primary_count = 0
+
+    for idx, item in enumerate(source_authorities):
+        prefix = f"source_authorities[{idx}]"
+        if not isinstance(item, dict):
+            result.error(f"{prefix} must be an object")
             continue
 
-        for key in ("label", "url", "type"):
-            if key not in src or not src[key]:
-                result.error(f"source_authorities[{i}] missing or empty '{key}'")
+        missing = rs.SOURCE_AUTHORITY_REQUIRED_KEYS - set(item.keys())
+        if missing:
+            result.error(f"{prefix} missing required keys: {sorted(missing)}")
 
-        url = src.get("url", "")
-        parsed = urlparse(url)
-        if parsed.scheme != "https":
-            result.error(f"source_authorities[{i}] URL must use HTTPS: '{url}'")
-        if not parsed.netloc:
-            result.error(f"source_authorities[{i}] URL has no domain: '{url}'")
+        label = item.get("label")
+        url = item.get("url")
+        source_type = item.get("type")
+        tier = item.get("tier")
 
-        valid_types = {"central_bank", "customs", "ministry", "regulator", "other"}
-        if src.get("type", "") not in valid_types:
-            result.error(
-                f"source_authorities[{i}] type '{src.get('type')}' "
-                f"must be one of {valid_types}"
-            )
+        if not ensure_non_empty_string(label):
+            result.error(f"{prefix}.label must be a non-empty string")
+
+        if not is_https_url(url):
+            result.error(f"{prefix}.url must be an HTTPS URL")
+        else:
+            normalized_urls.add(canonicalize_url(url))
+
+        if source_type not in rs.VALID_SOURCE_TYPES:
+            result.error(f"{prefix}.type invalid: {source_type}")
+
+        if tier not in {"primary", "secondary"}:
+            result.error(f"{prefix}.tier must be 'primary' or 'secondary'")
+
+        if source_type in rs.PRIMARY_SOURCE_TYPES and tier != "primary":
+            result.error(f"{prefix} has primary source type but tier='{tier}'")
+
+        if source_type in rs.SECONDARY_SOURCE_TYPES and tier != "secondary":
+            result.error(f"{prefix} has secondary source type but tier='{tier}'")
+
+        if source_type in rs.PRIMARY_SOURCE_TYPES:
+            primary_count += 1
+
+    if primary_count == 0:
+        result.error("source_authorities must include at least one primary official source")
+
+    if primary_count < 2:
+        result.warn("source_authorities has fewer than two primary official sources")
+
+    return normalized_urls
 
 
-# ── Gate 4: Content integrity ─────────────────────────────────────────────────
+PROBLEMATIC_LEGAL_PHRASES = [
+    "guaranteed compliant",
+    "legally guaranteed",
+    "this is legal advice",
+    "certified legal guidance",
+]
 
-def gate_content_integrity(data: dict, result: ValidationResult):
-    """Reject thin, placeholder, or near-duplicate content."""
 
-    def check_field(text: str, field_name: str, min_chars: int):
-        if not text or not text.strip():
-            result.error(f"Content field '{field_name}' is empty")
-            return
+def validate_source_map(data: Dict[str, Any], source_authority_urls: Set[str], result: ValidationResult) -> None:
+    source_map = data.get("source_map")
+    status = data.get("page_status")
 
-        stripped = text.strip()
+    if not isinstance(source_map, dict):
+        result.error("source_map must be present and must be an object")
+        return
 
-        if len(stripped) < min_chars:
-            result.error(
-                f"'{field_name}' too short: {len(stripped)} chars "
-                f"(minimum {min_chars})"
-            )
+    missing_keys = set(rs.SOURCE_MAP_KEYS) - set(source_map.keys())
+    if missing_keys:
+        result.error(f"source_map missing required keys: {sorted(missing_keys)}")
 
-        for pattern in FORBIDDEN_PATTERNS:
-            if pattern.lower() in stripped.lower():
-                result.error(
-                    f"'{field_name}' contains forbidden placeholder: '{pattern}'"
-                )
+    for key in rs.SOURCE_MAP_KEYS:
+        entries = source_map.get(key)
+        if not isinstance(entries, list) or not entries:
+            result.error(f"source_map['{key}'] must be a non-empty list")
+            continue
 
-    # Check summaries
-    check_field(data.get("country_overview", ""), "country_overview", MIN_CHARS_OVERVIEW)
-
-    summary = data.get("summary", {})
-    check_field(summary.get("traveler", ""), "summary.traveler", MIN_CHARS_SUMMARY)
-    check_field(summary.get("business", ""), "summary.business", MIN_CHARS_SUMMARY)
-
-    # Check rules fields
-    rules = data.get("rules", {})
-    rule_fields = [
-        "bring_foreign_currency_in",
-        "take_foreign_currency_out",
-        "cash_declaration_threshold",
-        "resident_holding_rules",
-        "non_resident_rules",
-        "business_invoicing_settlement",
-        "exchange_controls",
-        "banking_conversion_practicality",
-    ]
-    rule_texts = []
-    for rf in rule_fields:
-        text = rules.get(rf, "")
-        check_field(text, f"rules.{rf}", MIN_CHARS_RULE_FIELD)
-        rule_texts.append((rf, text))
-
-    # Similarity check — prevent copy-paste between rule fields
-    for i in range(len(rule_texts)):
-        for j in range(i + 1, len(rule_texts)):
-            name_a, text_a = rule_texts[i]
-            name_b, text_b = rule_texts[j]
-            if not text_a or not text_b:
+        for i, entry in enumerate(entries):
+            prefix = f"source_map['{key}'][{i}]"
+            if not isinstance(entry, dict):
+                result.error(f"{prefix} must be an object; raw string entries are not allowed")
                 continue
-            ratio = SequenceMatcher(None, text_a.lower(), text_b.lower()).ratio()
-            if ratio > MAX_SIMILARITY_RATIO:
-                result.error(
-                    f"Content too similar between '{name_a}' and '{name_b}' "
-                    f"(similarity {ratio:.2f} > {MAX_SIMILARITY_RATIO}) — "
-                    f"likely copy-paste or generic content"
-                )
+
+            missing = rs.SOURCE_MAP_ENTRY_REQUIRED_KEYS - set(entry.keys())
+            if missing:
+                result.error(f"{prefix} missing required keys: {sorted(missing)}")
+
+            unknown = set(entry.keys()) - (rs.SOURCE_MAP_ENTRY_REQUIRED_KEYS | rs.SOURCE_MAP_ENTRY_OPTIONAL_KEYS)
+            if unknown:
+                result.warn(f"{prefix} has unknown keys: {sorted(unknown)}")
+
+            url = entry.get("url")
+            pages = entry.get("pages")
+            section = entry.get("section")
+
+            if not is_https_url(url):
+                result.error(f"{prefix}.url must be an HTTPS URL")
+                continue
+
+            canon_url = canonicalize_url(url)
+            if rs.NORMALIZE_SOURCE_URL_MATCHING and canon_url not in source_authority_urls:
+                result.error(f"{prefix}.url does not match any canonicalized source_authorities URL: {url}")
+
+            if not ensure_list_of_ints(pages):
+                result.error(f"{prefix}.pages must be a list of integers")
+            else:
+                if is_pdf_url(url) and status in {rs.PageStatus.VERIFIED.value, rs.PageStatus.PUBLISHED.value} and len(pages) == 0:
+                    result.error(f"{prefix}.pages must be non-empty for PDF sources when status is {status}")
+
+            if not ensure_non_empty_string(section):
+                result.error(f"{prefix}.section must be a non-empty string")
 
 
-# ── Gate 5: Legal safety ──────────────────────────────────────────────────────
+def validate_lifecycle_consistency(data: Dict[str, Any], result: ValidationResult) -> None:
+    status = data.get("page_status")
+    tier = data.get("evidence_tier")
+    pub_class = data.get("publication_class")
+    indexing = data.get("indexing_allowed")
+    official_available = data.get("official_source_available")
+    source_notice = data.get("source_notice", "")
 
-def gate_legal_safety(data: dict, result: ValidationResult):
-    disclaimer = data.get("disclaimer", "")
-    if not disclaimer or len(disclaimer.strip()) < 60:
-        result.error("Disclaimer missing or too short (min 60 chars)")
+    if status == rs.PageStatus.PUBLISHED.value:
+        if tier != rs.EvidenceTier.OFFICIAL_VERIFIED.value:
+            result.error("published requires evidence_tier=official_verified")
+        if pub_class != rs.PublicationClass.REFERENCE.value:
+            result.error("published requires publication_class=reference")
+        if indexing is not True:
+            result.error("published requires indexing_allowed=True")
 
-    forbidden_legal = [
-        "legal advice", "guaranteed", "definitive", "final answer",
-        "always accurate", "fully up to date", "replace a lawyer",
-        "legally binding",
-    ]
-    for phrase in forbidden_legal:
-        if phrase.lower() in disclaimer.lower():
-            result.error(
-                f"Disclaimer contains problematic phrase: '{phrase}'"
-            )
+    elif status == rs.PageStatus.VERIFIED.value:
+        if tier != rs.EvidenceTier.OFFICIAL_VERIFIED.value:
+            result.error("verified requires evidence_tier=official_verified")
+        if pub_class != rs.PublicationClass.REFERENCE.value:
+            result.error("verified requires publication_class=reference")
+
+    elif status == rs.PageStatus.NEEDS_HARDENING.value:
+        if tier != rs.EvidenceTier.OFFICIAL_VERIFIED_PARTIAL.value:
+            result.error("needs_hardening requires evidence_tier=official_verified_partial")
+        if indexing is not False:
+            result.error("needs_hardening requires indexing_allowed=False")
+        if not ensure_non_empty_string(source_notice):
+            result.error("needs_hardening requires a non-empty source_notice")
+
+    elif status == rs.PageStatus.SECONDARY_REVIEW.value:
+        if tier != rs.EvidenceTier.SECONDARY_INSTITUTIONAL.value:
+            result.error("secondary_review requires evidence_tier=secondary_institutional")
+        if pub_class != rs.PublicationClass.LIMITED.value:
+            result.error("secondary_review requires publication_class=limited")
+        if indexing is not False:
+            result.error("secondary_review requires indexing_allowed=False")
+        if not ensure_non_empty_string(source_notice):
+            result.error("secondary_review requires a non-empty source_notice")
+
+    elif status in {rs.PageStatus.NEEDS_REVIEW.value, rs.PageStatus.BLOCKED.value}:
+        if tier != rs.EvidenceTier.INTERNAL.value:
+            result.error(f"{status} requires evidence_tier=internal")
+        if pub_class != rs.PublicationClass.BLOCKED.value:
+            result.error(f"{status} requires publication_class=blocked")
+        if indexing is not False:
+            result.error(f"{status} requires indexing_allowed=False")
+    else:
+        result.error(f"Invalid page_status: {status}")
+
+    if tier in {rs.EvidenceTier.OFFICIAL_VERIFIED.value, rs.EvidenceTier.OFFICIAL_VERIFIED_PARTIAL.value} and official_available is not True:
+        result.error(f"{tier} requires official_source_available=True")
+
+    if tier in {rs.EvidenceTier.SECONDARY_INSTITUTIONAL.value, rs.EvidenceTier.INTERNAL.value} and official_available is not False:
+        result.error(f"{tier} requires official_source_available=False")
+
+    if status in {rs.PageStatus.VERIFIED.value, rs.PageStatus.PUBLISHED.value}:
+        if source_notice not in {"", None}:
+            result.warn(f"{status} should normally have an empty source_notice")
+
+    if indexing is True and status not in rs.INDEXABLE_STATUSES:
+        result.error(f"indexing_allowed=True is only valid for statuses in {sorted(rs.INDEXABLE_STATUSES)}")
 
 
-# ── Gate 6: Date integrity ────────────────────────────────────────────────────
+def validate_disclaimer(data: Dict[str, Any], result: ValidationResult) -> None:
+    disclaimer = data.get("disclaimer")
+    if not ensure_non_empty_string(disclaimer):
+        result.error("disclaimer must be a non-empty string")
+        return
 
-def gate_date_integrity(data: dict, result: ValidationResult):
-    last_reviewed = data.get("last_reviewed", "")
-    if not re.match(r"^\d{4}-\d{2}-\d{2}$", last_reviewed):
-        result.error(
-            f"last_reviewed '{last_reviewed}' must be ISO format YYYY-MM-DD"
-        )
+    if len(disclaimer.strip()) < rs.MIN_DISCLAIMER_CHARS:
+        result.error(f"disclaimer must be at least {rs.MIN_DISCLAIMER_CHARS} characters")
 
+    lowered = disclaimer.lower()
+    for phrase in PROBLEMATIC_LEGAL_PHRASES:
+        if phrase in lowered:
+            result.error(f"disclaimer contains problematic legal phrase: {phrase}")
 
-# ── Gate 7: Slug integrity ────────────────────────────────────────────────────
-
-def gate_slug_integrity(data: dict, result: ValidationResult):
-    slug = data.get("country_slug", "")
-    if not re.match(r"^[a-z0-9]+(-[a-z0-9]+)*$", slug):
-        result.error(
-            f"country_slug '{slug}' must be lowercase alphanumeric with hyphens only"
-        )
-    expected_suffix = "-foreign-currency-rules"
-    # Slug in data is just the country part; page slug appends suffix in generator
+    pat = text_contains_forbidden_pattern(disclaimer)
+    if pat:
+        result.error(f"disclaimer contains forbidden placeholder pattern: {pat}")
 
 
-# ── Master validation function ────────────────────────────────────────────────
-
-def validate_country_file(filepath: str | Path) -> ValidationResult:
-    result = ValidationResult()
-    path = Path(filepath)
-
-    if not path.exists():
-        result.error(f"File not found: {filepath}")
-        return result
+def validate_file(path: Path) -> ValidationResult:
+    result = ValidationResult(path=path)
 
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-    except json.JSONDecodeError as e:
-        result.error(f"Invalid JSON: {e}")
+        data = parse_json(path)
+    except Exception as exc:
+        result.error(f"Invalid JSON: {exc}")
         return result
 
-    country = data.get("country_name", path.stem)
+    if not isinstance(data, dict):
+        result.error("Top-level JSON must be an object")
+        return result
 
-    gate_schema_integrity(data, result)
-    gate_enum_validity(data, result)
-    gate_source_integrity(data, result)
-    gate_content_integrity(data, result)
-    gate_legal_safety(data, result)
-    gate_date_integrity(data, result)
-    gate_slug_integrity(data, result)
+    validate_top_level_structure(data, result)
+    validate_text_quality(data, result)
+    validate_country_overview_signals(data, result)
+    authority_urls = validate_source_authorities(data, result)
+    validate_source_map(data, authority_urls, result)
+    validate_lifecycle_consistency(data, result)
+    validate_disclaimer(data, result)
 
     return result
 
 
-# ── CLI ───────────────────────────────────────────────────────────────────────
+def print_result(result: ValidationResult) -> None:
+    print(f"\nFILE: {result.path}")
+    for note in result.notes:
+        print(f"  NOTE: {note}")
+    for warning in result.warnings:
+        print(f"  WARNING: {warning}")
+    for error in result.errors:
+        print(f"  ERROR: {error}")
 
-def validate_directory(rules_dir: str = "data/rules") -> dict:
-    """Validate all JSON files in a rules directory. Returns summary dict."""
-    path = Path(rules_dir)
-    if not path.exists():
-        print(f"Directory not found: {rules_dir}")
-        return {}
+    if result.ok:
+        print("  PASS — 0 errors, 0 warnings")
+    else:
+        print(f"  FAIL — {len(result.errors)} error(s), {len(result.warnings)} warning(s)")
 
-    files = sorted(path.glob("*.json"))
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Validate ConvertCCY sovereign FX rules JSON files")
+    parser.add_argument("path", help="Path to a JSON file or a directory containing JSON files")
+    args = parser.parse_args()
+
+    target = Path(args.path).resolve()
+    if not target.exists():
+        print(f"ERROR: path does not exist: {target}", file=sys.stderr)
+        return 2
+
+    files = gather_json_files(target)
     if not files:
-        print(f"No JSON files found in {rules_dir}")
-        return {}
+        print(f"ERROR: no JSON files found under: {target}", file=sys.stderr)
+        return 2
 
-    results = {}
-    passed = failed = 0
+    results = [validate_file(p) for p in files]
+    for result in results:
+        print_result(result)
 
-    for f in files:
-        r = validate_country_file(f)
-        results[f.stem] = r
-        print(r.report(f.stem))
-        print()
-        if r.passed:
-            passed += 1
-        else:
-            failed += 1
+    total_errors = sum(len(r.errors) for r in results)
+    total_warnings = sum(len(r.warnings) for r in results)
 
-    print(f"{'='*50}")
-    print(f"Total: {len(files)} | Passed: {passed} | Failed: {failed}")
-    return results
+    print("\nSUMMARY")
+    print(f"  Files checked: {len(results)}")
+    print(f"  Errors:        {total_errors}")
+    print(f"  Warnings:      {total_warnings}")
+
+    return 0 if total_errors == 0 and total_warnings == 0 else 1
 
 
 if __name__ == "__main__":
-    target = sys.argv[1] if len(sys.argv) > 1 else "data/rules"
-    p = Path(target)
-    if p.is_file():
-        r = validate_country_file(p)
-        print(r.report(p.stem))
-        sys.exit(0 if r.passed else 1)
-    else:
-        results = validate_directory(target)
-        failed = sum(1 for r in results.values() if not r.passed)
-        sys.exit(1 if failed else 0)
+    raise SystemExit(main())
