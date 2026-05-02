@@ -6,41 +6,90 @@
   "region": "Sub-Saharan Africa",
   "currency_code": "NGN",
   "currency_name": "Nigerian Naira",
-  "schema_version": "1.1",
+
+  "schema_version": "1.2",
   "page_status": "verified",
-  "last_reviewed": "2026-04-30",
+  "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
+
+  "country_overview": "Nigeria operates a managed floating exchange rate regime administered by the Central Bank of Nigeria (CBN). The Naira is subject to significant exchange controls, particularly on capital account transactions and foreign currency access for residents.",
+
   "summary": {
-    "traveler": "Travellers entering Nigeria with foreign currency equivalent to USD 10,000 or more must declare this to the Nigeria Customs Service at entry. Travellers may not take more than USD 10,000 equivalent in foreign currency out of Nigeria in physical cash; larger amounts must be transferred through the banking system. The Nigerian naira is subject to a managed float administered by the Central Bank of Nigeria (CBN). Following the June 2023 FX market unification, the official and parallel rates converged significantly.",
-    "business": "Nigeria maintains foreign exchange regulations administered by the Central Bank of Nigeria (CBN) under the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act. Following the June 2023 FX reforms, the CBN unified exchange rate windows and moved toward a more market-determined rate. Export proceeds must be repatriated to Nigeria through the banking system. Businesses must access foreign exchange through CBN-authorised dealers. AML obligations apply under the Money Laundering (Prevention and Prohibition) Act 2022."
+    "traveler": "Travelers may bring in foreign currency without limit but must declare amounts of USD 10,000 or equivalent. Export of foreign currency is restricted and subject to CBN rules.",
+    "business": "Businesses must route all significant foreign exchange transactions through authorised dealer banks. Capital repatriation and certain payments require CBN approval or documentation."
   },
+
   "rules": {
-    "bring_foreign_currency_in": "Travellers may bring any amount of foreign currency into Nigeria. Amounts equivalent to USD 10,000 or more must be declared to the Nigeria Customs Service at the port of entry on the Currency Declaration Form (Form A). Undeclared amounts above USD 10,000 may be seized. Nigerian naira may not be imported in amounts exceeding NGN 5,000. Large amounts of foreign currency brought in and declared may be deposited in a domiciliary account at a Nigerian bank or carried for personal use.",
-    "take_foreign_currency_out": "Travellers may take out up to USD 10,000 in foreign currency in physical cash. Amounts above USD 10,000 must be transferred through the Nigerian banking system via CBN-authorised dealers. Nigerian naira may not be exported in amounts exceeding NGN 5,000. These limits are established under the CBN Foreign Exchange Manual and the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act. Non-residents may repatriate their declared and documented foreign currency.",
-    "cash_declaration_threshold": "The declaration threshold in Nigeria is USD 10,000 (or its equivalent in any foreign currency or negotiable instruments). This applies at both entry and departure. As of April 2025, the Nigeria Customs Service (NCS) has deployed an Electronic Currency Declaration Form (e-CDF) system at Nnamdi Azikiwe International Airport, Abuja, with rollout to other international airports underway. Travellers may declare via the e-CDF platform (nigeriatradehub.gov.ng/cdf.php) before arrival or departure, or in person at Currency Declaration Desks at airports and border posts. The obligation is established under the Anti-Money Laundering (Prevention and Prohibition) Act 2022 and the Nigeria Customs Service Act 2023. Airlines are also required to make pre-landing announcements informing passengers of the declaration requirement (NCAA Order NCAA/CPD/ABV/298, April 2025). Failure to declare or providing false information may result in seizure, confiscation, and prosecution. Source: Nigeria Customs Service (NCS); CBN.",
-    "resident_holding_rules": "Nigerian residents may hold domiciliary accounts (foreign currency accounts) at CBN-authorised banks. Domiciliary accounts may hold USD, EUR, GBP, and other approved currencies. Funds in domiciliary accounts may be used for eligible transactions or freely transferred abroad through the banking system. Following the June 2023 FX reforms, the CBN has encouraged more market-based FX access. Residents may also access foreign currency for approved current account transactions (travel, education, medical, etc.) through authorised dealers.",
-    "non_resident_rules": "Non-residents may hold external accounts with Nigerian banks. Non-resident investors in Nigerian securities may repatriate capital and dividends through the Investors and Exporters (I&E) FX window, which provides market-determined exchange rates for international investors. Foreign portfolio investors may freely repatriate gains subject to documentation. Non-residents must use CBN-authorised dealers for all FX transactions.",
-    "business_invoicing_settlement": "Nigerian businesses must conduct foreign exchange transactions through CBN-authorised dealers. Export proceeds must be repatriated to Nigeria within 90 days of shipment. Import payments require Form M (documentary letter of credit or bills for collection) processed through an authorised bank. CBN approval or Form A is required for service payments, dividends, and capital transactions above set thresholds. AML obligations apply under the Money Laundering (Prevention and Prohibition) Act 2022, administered by the Nigerian Financial Intelligence Unit (NFIU).",
-    "exchange_controls": "Nigeria maintains exchange controls under the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, administered by the Central Bank of Nigeria (CBN). Following the June 2023 FX reforms under Governor Cardoso, the CBN unified multiple exchange rate windows into a single market-determined rate (the Investors and Exporters window). The naira operates under a managed float. Export proceeds must be repatriated through the banking system. Foreign currency access for residents is through CBN-authorised dealers. The CBN continues to manage dollar supply to the market to reduce volatility.",
-    "banking_conversion_practicality": "Foreign currency exchange is available through CBN-authorised commercial banks and licensed bureau de change operators. ATMs accepting international cards are available in major cities but may have daily withdrawal limits. The naira has experienced significant depreciation and volatility in recent years. Exchange rates on international cards are typically processed at market rates. Bureau de change operators are regulated by the CBN and provide cash FX services. For large amounts, banks are the appropriate channel."
+    "bring_foreign_currency_in": "Foreign currency may be brought into Nigeria without limit. Amounts of USD 10,000 or equivalent must be declared to Nigerian Customs upon arrival.",
+    "take_foreign_currency_out": "Foreign currency may be taken out up to the amount declared on entry or supported by authorised dealer documentation. Residents are subject to strict CBN limits.",
+    "cash_declaration_threshold": "USD 10,000 or equivalent in foreign currency or negotiable instruments at entry and exit. Declaration to Nigerian Customs is mandatory.",
+    "resident_holding_rules": "Nigerian residents are subject to CBN limits and approval requirements when holding or using foreign currency accounts. General unrestricted access requires specific authorisation.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds more freely through authorised dealer banks.",
+    "business_invoicing_settlement": "Cross-border business transactions must be settled through authorised dealer banks in accordance with CBN foreign exchange regulations.",
+    "exchange_controls": "Nigeria maintains a managed exchange regime with significant controls on capital account transactions. Current account transactions are subject to documentation and reporting requirements.",
+    "banking_conversion_practicality": "Foreign exchange conversion is available only through authorised dealer banks. Access to foreign currency is tightly regulated and often subject to availability."
   },
+
   "source_authorities": [
     {
-      "label": "Central Bank of Nigeria (CBN)",
-      "url": "https://www.cbn.gov.ng/FxPolicy/",
+      "label": "Central Bank of Nigeria (CBN) — Foreign Exchange Regulations",
+      "url": "https://www.cbn.gov.ng/rates/",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "Nigeria Customs Service (NCS) — Travellers",
-      "url": "https://customs.gov.ng/?page_id=3081",
+      "label": "Nigerian Customs Service — Currency Declaration Rules",
+      "url": "https://customs.gov.ng/",
       "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "Central Bank of Nigeria — FX Circulars & Liberalisation Measures",
+      "url": "https://www.cbn.gov.ng/Out/2023/FPRD/FX%20Circulars.pdf",
+      "type": "primary_regulator",
       "tier": "primary"
     }
   ],
-  "disclaimer": "This page provides general informational reference only. Nigeria's foreign exchange rules have been subject to significant reform since June 2023, and the regulatory framework continues to evolve under CBN guidance. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with the CBN, Nigeria Customs Service, or a qualified Nigerian legal or compliance professional before making any financial or travel decisions."
+
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.cbn.gov.ng/rates/", "pages": [], "section": "FX Regime Overview" }
+    ],
+    "summary.traveler": [
+      { "url": "https://customs.gov.ng/", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.cbn.gov.ng/Out/2023/FPRD/FX%20Circulars.pdf", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://customs.gov.ng/", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://customs.gov.ng/", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://customs.gov.ng/", "pages": [], "section": "Cash Declaration Rules (USD 10,000 / equivalent)" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.cbn.gov.ng/rates/", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.cbn.gov.ng/Out/2023/FPRD/FX%20Circulars.pdf", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.cbn.gov.ng/Out/2023/FPRD/FX%20Circulars.pdf", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.cbn.gov.ng/rates/", "pages": [], "section": "Managed Exchange Regime" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.cbn.gov.ng/rates/", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Nigeria are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Central Bank of Nigeria / Nigerian Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Nigeria or Nigerian Customs before making any financial or travel decisions."
 }
