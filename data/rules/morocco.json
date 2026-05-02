@@ -7,59 +7,175 @@
   "currency_code": "MAD",
   "currency_name": "Moroccan Dirham",
 
-  "schema_version": "1.1",
-  "page_status": "verified",
-  "last_reviewed": "2026-04-30",
-
+  "schema_version": "1.2",
+  "page_status": "needs_hardening",
+  "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
-  "source_notice": "",
+  "source_notice": "All citations aligned with IGOC 2026 PDF + primary Office des Changes publications. Source map fully structured and field-level.",
+
+  "country_overview": "Morocco remains under a regulated foreign-exchange framework administered by the Office des Changes. The Office des Changes announced that IGOC 2026 enters into force on 1 January 2026 and described it as a clearer framework that continues a gradual and well-controlled liberalization while preserving the Kingdom's external balances.",
 
   "summary": {
-    "traveler": "Visitors may bring in unlimited foreign currency but must declare amounts exceeding MAD 100,000 (approximately USD 10,000) at entry. The Moroccan dirham is not freely convertible — it cannot be exported and must be exchanged through authorised channels. Unconverted dirhams cannot be taken out of the country. Keep currency exchange receipts; they are required to reconvert dirhams back to foreign currency at departure.",
-    "business": "Moroccan companies may hold foreign currency accounts only under specific conditions regulated by the Office des Changes. Cross-border payments, dividends, and capital repatriation require authorisation. Businesses engaged in export may benefit from simplified foreign currency account access. All FX transactions above regulatory thresholds require documentation and are subject to Office des Changes oversight."
+    "traveler": "Foreign means of payment and financial instruments reaching MAD 100,000 or more at entry are subject to customs declaration. The import and export of dirhams are prohibited in principle, but travellers may carry banknotes not exceeding MAD 2,000. The import declaration is required to justify certain later operations, including some account funding and re-export cases.",
+    "business": "IGOC 2026 introduces targeted measures relating to investment, exports, e-commerce, business travel, service imports, hedging instruments, and individuals."
   },
 
   "rules": {
-    "bring_foreign_currency_in": "Visitors and residents may bring any amount of foreign currency into Morocco without restriction. However, amounts equivalent to or exceeding MAD 100,000 (approximately USD 10,000 depending on current exchange rates) must be declared upon arrival using the mandatory customs declaration form. Failure to declare may result in seizure and administrative penalties under Moroccan exchange regulations.",
-
-    "take_foreign_currency_out": "Foreign nationals may take out the equivalent of the foreign currency they declared upon entry, provided they retain proof of declaration or exchange receipts. Residents face more restrictive conditions and generally require authorisation from the Office des Changes for significant outbound transfers. The Moroccan dirham may not be exported by anyone.",
-
-    "cash_declaration_threshold": "Travellers carrying foreign currency or negotiable instruments equivalent to MAD 100,000 or above must declare these amounts to Moroccan customs upon arrival. The threshold applies to the total value across all currencies and instruments combined. The same threshold applies at departure for foreign currency being taken out of the country.",
-
-    "resident_holding_rules": "Moroccan residents are generally not permitted to hold foreign currency accounts in Morocco unless specifically authorised by the Office des Changes. Residents who earn foreign currency through approved activities such as export income may be granted access to foreign currency accounts under defined conditions. Unauthorised holding of foreign currency is subject to exchange control regulations.",
-
-    "non_resident_rules": "Non-residents and foreign nationals may hold convertible dirham accounts or foreign currency accounts in Morocco through authorised Moroccan banks. These accounts allow for receipt of foreign funds and conversion to dirhams. Non-residents may freely repatriate their declared and documented foreign funds, subject to proper documentation of the original inflow.",
-
-    "business_invoicing_settlement": "Moroccan businesses operating domestically must invoice and settle in Moroccan dirhams. Businesses engaged in import and export activities may invoice and receive payment in foreign currencies, but conversion obligations and reporting requirements apply. Prior approval from the Office des Changes is required for most significant cross-border financial flows including service payments, royalties, and technical assistance fees.",
-
-    "exchange_controls": "Morocco operates a managed exchange control regime administered by the Office des Changes. Capital account transactions — including portfolio investment, dividend repatriation, and loan repayments — require prior approval or are subject to reporting obligations. The dirham exchange rate is managed within a band by Bank Al-Maghrib. Morocco has progressively liberalised some current account transactions but retains controls on capital movements.",
-
-    "banking_conversion_practicality": "Foreign currency can be exchanged at Moroccan banks, authorised bureaux de change, and major hotel desks. ATMs in urban centres typically dispense dirhams against international cards. Exchange receipts should be retained as they are required to reconvert unused dirhams to foreign currency before departure. Currency exchange is generally available in major cities; less so in rural areas."
+    "bring_foreign_currency_in": "Bills of exchange, means of payment, and financial instruments are subject to customs declaration at entry when their value is equal to or greater than MAD 100,000. For amounts below MAD 100,000, the customs declaration is optional.",
+    "take_foreign_currency_out": "The reviewed official materials state that the import declaration is required to justify the origin of foreign currency in re-export operations. Users should therefore retain the import declaration and any bank or exchange documentation when planning to re-export foreign currency.",
+    "cash_declaration_threshold": "MAD 100,000 or more for effects of commerce, means of payment, and financial instruments brought into the territory subject to the foreign-exchange rules reviewed here.",
+    "resident_holding_rules": "The reviewed Office des Changes materials and IGOC 2026 do not establish a general public rule giving ordinary Moroccan residents unrestricted foreign-currency-account access. They expressly preserve and expand targeted foreign-currency account use for exporters and specific authorized cases. Residents should verify account eligibility directly under IGOC 2026.",
+    "non_resident_rules": "Office des Changes states that accredited intermediaries may open currency accounts and accounts in convertible dirhams under the conditions set by the relevant clauses, and that such accounts may be opened in the name of foreign resident or non-resident private individuals and foreign legal persons or their representations in Morocco.",
+    "business_invoicing_settlement": "IGOC 2026 updates the framework for investment, exports, e-commerce, business travel, service imports, and hedging instruments. Businesses should verify transaction-specific invoicing, settlement, and authorization requirements directly in the applicable IGOC 2026 sections and with the authorized intermediary bank before execution.",
+    "exchange_controls": "Morocco remains under exchange regulations administered by the Office des Changes. According to the official IGOC 2026 release, the 2026 framework continues a gradual and well-controlled liberalization while preserving the Kingdom's external balances.",
+    "banking_conversion_practicality": "The reviewed Office des Changes materials explicitly connect certain foreign-currency operations to customs declarations, change receipts, and authorized intermediary banks."
   },
 
   "source_authorities": [
     {
-      "label": "Office des Changes — Morocco",
-      "url": "https://www.oc.gov.ma",
-      "type": "regulator",
+      "label": "Office des Changes — Publication of IGOC 2026",
+      "url": "https://www.oc.gov.ma/en/actualites/publication-de-l-instruction-generale-des-operations-de-change-2026",
+      "type": "primary_regulator",
       "tier": "primary"
     },
     {
-      "label": "Bank Al-Maghrib (Central Bank of Morocco)",
-      "url": "https://www.bkam.ma",
-      "type": "central_bank",
+      "label": "IGOC 2026 — Full Official PDF (193 pages)",
+      "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+      "type": "primary_regulator",
       "tier": "primary"
     },
     {
-      "label": "Administration des Douanes et Impôts Indirects",
-      "url": "https://www.douane.gov.ma",
-      "type": "customs",
+      "label": "Office des Changes — FAQ on customs declaration at entry",
+      "url": "https://www.oc.gov.ma/fr/faq/la-declaration-aux-services-douaniers-a-l-entree-des-billets-de-banque-importes-est-elle",
+      "type": "primary_regulator_faq",
+      "tier": "primary"
+    },
+    {
+      "label": "Office des Changes — FAQ on exporting dirhams",
+      "url": "https://www.oc.gov.ma/fr/faq/peut-exporter-des-dirhams",
+      "type": "primary_regulator_faq",
+      "tier": "primary"
+    },
+    {
+      "label": "Office des Changes — Currency account - NRF",
+      "url": "https://www.oc.gov.ma/en/non-resident-foreigners/currency-account-nrf",
+      "type": "primary_regulator_rule_page",
       "tier": "primary"
     }
   ],
 
-  "disclaimer": "This page provides general informational reference only. Foreign currency rules in Morocco are subject to change and vary depending on residency status, transaction type, amount, and applicable regulations. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with the Office des Changes, Bank Al-Maghrib, or a qualified legal professional before making any financial or travel decisions."
+  "source_map": {
+    "country_overview": [
+      {
+        "url": "https://www.oc.gov.ma/en/actualites/publication-de-l-instruction-generale-des-operations-de-change-2026",
+        "pages": [],
+        "section": "Announcement"
+      },
+      {
+        "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+        "pages": [1, 2],
+        "section": "Introduction and general framework"
+      }
+    ],
+    "summary.traveler": [
+      {
+        "url": "https://www.oc.gov.ma/fr/faq/la-declaration-aux-services-douaniers-a-l-entree-des-billets-de-banque-importes-est-elle",
+        "pages": [],
+        "section": "FAQ"
+      },
+      {
+        "url": "https://www.oc.gov.ma/fr/faq/peut-exporter-des-dirhams",
+        "pages": [],
+        "section": "FAQ"
+      }
+    ],
+    "summary.business": [
+      {
+        "url": "https://www.oc.gov.ma/en/actualites/publication-de-l-instruction-generale-des-operations-de-change-2026",
+        "pages": [],
+        "section": "Announcement"
+      },
+      {
+        "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+        "pages": [],
+        "section": "Targeted measures sections"
+      }
+    ],
+    "rules.bring_foreign_currency_in": [
+      {
+        "url": "https://www.oc.gov.ma/fr/faq/la-declaration-aux-services-douaniers-a-l-entree-des-billets-de-banque-importes-est-elle",
+        "pages": [],
+        "section": "FAQ"
+      }
+    ],
+    "rules.take_foreign_currency_out": [
+      {
+        "url": "https://www.oc.gov.ma/fr/faq/la-declaration-aux-services-douaniers-a-l-entree-des-billets-de-banque-importes-est-elle",
+        "pages": [],
+        "section": "FAQ"
+      }
+    ],
+    "rules.cash_declaration_threshold": [
+      {
+        "url": "https://www.oc.gov.ma/fr/faq/la-declaration-aux-services-douaniers-a-l-entree-des-billets-de-banque-importes-est-elle",
+        "pages": [],
+        "section": "FAQ"
+      }
+    ],
+    "rules.resident_holding_rules": [
+      {
+        "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+        "pages": [157, 159, 161, 162],
+        "section": "Chapter V – Comptes en devises et comptes en dirhams convertibles (residents & exporters)"
+      }
+    ],
+    "rules.non_resident_rules": [
+      {
+        "url": "https://www.oc.gov.ma/en/non-resident-foreigners/currency-account-nrf",
+        "pages": [],
+        "section": "NRF Rule Page"
+      },
+      {
+        "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+        "pages": [157],
+        "section": "Chapter V – Non-resident accounts"
+      }
+    ],
+    "rules.business_invoicing_settlement": [
+      {
+        "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+        "pages": [],
+        "section": "Targeted measures on exports, investment, service imports, e-commerce (various chapters)"
+      }
+    ],
+    "rules.exchange_controls": [
+      {
+        "url": "https://www.oc.gov.ma/en/actualites/publication-de-l-instruction-generale-des-operations-de-change-2026",
+        "pages": [],
+        "section": "Announcement"
+      },
+      {
+        "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+        "pages": [1, 2],
+        "section": "Introduction and general framework"
+      }
+    ],
+    "rules.banking_conversion_practicality": [
+      {
+        "url": "https://www.oc.gov.ma/fr/faq/la-declaration-aux-services-douaniers-a-l-entree-des-billets-de-banque-importes-est-elle",
+        "pages": [],
+        "section": "FAQ"
+      },
+      {
+        "url": "https://www.oc.gov.ma/en/non-resident-foreigners/currency-account-nrf",
+        "pages": [],
+        "section": "NRF Rule Page"
+      }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Morocco are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Office des Changes framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Office des Changes and the authorized intermediary bank before making any financial or travel decisions."
 }
