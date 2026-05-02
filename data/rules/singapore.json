@@ -6,53 +6,90 @@
   "region": "Southeast Asia",
   "currency_code": "SGD",
   "currency_name": "Singapore Dollar",
-  "schema_version": "1.1",
+
+  "schema_version": "1.2",
   "page_status": "verified",
-  "last_reviewed": "2026-04-30",
+  "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
+
+  "country_overview": "Singapore operates one of the most liberalised and open foreign-exchange regimes in the world. There are no exchange controls or restrictions on current or capital account transactions for residents or non-residents. The framework is administered by the Monetary Authority of Singapore (MAS).",
+
   "summary": {
-    "traveler": "Singapore has no restrictions on the import or export of foreign currency. However, travellers carrying SGD 20,000 or more in cash — in Singapore or foreign currency, or both combined — must declare this to the Immigration and Checkpoints Authority (ICA) or Singapore Customs upon arrival or departure. This is a declaration requirement under the Corruption, Drug Trafficking and Other Serious Crimes (Confiscation of Benefits) Act, not a restriction on carrying amounts.",
-    "business": "Singapore operates with a fully open capital account and no exchange controls. It is a leading international financial centre. Businesses may freely hold, invoice, and settle in foreign currencies. Financial institutions are regulated by the Monetary Authority of Singapore (MAS). No capital controls apply. AML and CFT obligations apply under the Corruption, Drug Trafficking and Other Serious Crimes (Confiscation of Benefits) Act and the MAS Notice on Prevention of Money Laundering."
+    "traveler": "Travelers may bring in or take out unlimited amounts of Singapore Dollars and foreign currency. No general currency declaration is required for normal travel amounts.",
+    "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
   },
+
   "rules": {
-    "bring_foreign_currency_in": "There are no restrictions on the amount of physical currency or bearer negotiable instruments (CBNI) that may be brought into Singapore. However, any traveller carrying SGD 20,000 or more in combined physical currency and CBNI must submit an electronic Cash Movement Report (Form NP 727) via the ICA website or MyICA app within 72 hours before arrival. As of 13 May 2024, paper forms at checkpoints are no longer accepted. CBNI includes bills of exchange, cheques payable to Cash, promissory notes, bearer bonds, money orders, and postal orders. The reporting obligation applies to individuals, couriers, and recipients of mailed or shipped cash. Failure to declare is an offence under the CDSA. This is a transparency and AML measure, not a currency control. Source: ica.gov.sg/enter-transit-depart/at-our-checkpoints/for-travellers/CBNI.",
-    "take_foreign_currency_out": "There are no restrictions on the amount of foreign currency that may be taken out of Singapore. The same SGD 20,000 declaration threshold applies at departure. Travellers must declare to Singapore Customs if they are carrying SGD 20,000 or more in physical currency. This is purely a transparency and AML measure and does not restrict the right to carry or transfer amounts above the threshold.",
-    "cash_declaration_threshold": "The cash declaration threshold in Singapore is SGD 20,000, covering physical currency (coins and printed money) and cash-like bearer negotiable instruments (CBNI) — including bills of exchange, cheques payable to Cash, promissory notes, bearer bonds, money orders, and postal orders. The combined value of currency and CBNI must be declared if it exceeds SGD 20,000 or the equivalent in foreign currency. Since 13 May 2024, declaration is mandatory in electronic form only via Form NP 727, submitted through the ICA website or the MyICA mobile app (iOS/Android). Paper forms at the airport are no longer accepted. Declarations can be submitted within 72 hours before arrival or departure. Failure to declare or submitting an inaccurate report is an offence under Section 60(1) of the Corruption, Drug Trafficking and Other Serious Crimes (Confiscation of Benefits) Act 1992 (CDSA). Penalties: fine up to SGD 50,000, or imprisonment up to 3 years, or both; cash may also be seized. Source: ICA (ica.gov.sg/CBNI); SPF (police.gov.sg/STRO).",
-    "resident_holding_rules": "Singapore residents may freely hold foreign currency accounts domestically and abroad. There are no restrictions on the amount of foreign currency that residents may hold, purchase, convert, or transfer. Singapore's fully open capital account and its position as a global financial centre means foreign currency banking services are widely available in all major currencies. No reporting obligations equivalent to the US FBAR apply for foreign accounts under Singapore law.",
-    "non_resident_rules": "Non-residents may freely hold bank accounts in Singapore in SGD and foreign currencies. No restrictions apply to capital repatriation. Non-resident investors may freely transfer profits, dividends, and capital. Singapore's regulatory framework is designed to attract international capital flows. All transactions are subject to AML and CFT compliance under MAS regulations.",
-    "business_invoicing_settlement": "Singapore businesses may freely invoice, settle, and hold balances in any currency. No mandatory conversion requirements exist. Singapore is a major foreign exchange trading centre, with a deep and liquid FX market. All licensed financial institutions, including banks, payment service providers, and currency exchange businesses, are regulated by MAS. AML and CFT obligations apply under MAS Notices on Prevention of Money Laundering and Countering Terrorism Financing.",
-    "exchange_controls": "Singapore maintains a fully open capital account with no exchange controls. The Singapore dollar is freely convertible. The Monetary Authority of Singapore (MAS) manages the SGD through an exchange rate-based monetary policy centred on the Singapore Dollar Nominal Effective Exchange Rate (SGD NEER), but does not restrict currency movements. Singapore is the world's third-largest FX trading centre by volume. No capital controls apply to inflows or outflows.",
-    "banking_conversion_practicality": "Foreign currency exchange is extremely well-developed in Singapore. Licensed money changers, banks, and online FX platforms offer competitive rates. ATMs accepting international cards are ubiquitous. The banking system is supervised by MAS and is among the world's most sophisticated. Singapore's Clearing House Interbank Payments System (CHIPS equivalent) and FAST payment system facilitate rapid domestic and international transfers. Foreign currency accounts in USD, EUR, GBP, AUD, JPY, HKD, and other currencies are standard offerings."
+    "bring_foreign_currency_in": "Unlimited amounts of Singapore Dollars and foreign currency may be brought into Singapore with no general declaration requirement for travelers.",
+    "take_foreign_currency_out": "Unlimited amounts of Singapore Dollars and foreign currency may be taken out of Singapore with no general restriction or declaration requirement for travelers.",
+    "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Large or suspicious cash movements are subject to anti-money laundering reporting requirements by financial institutions.",
+    "resident_holding_rules": "Singapore residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+    "business_invoicing_settlement": "Business transactions may be invoiced and settled in foreign currency or SGD. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
+    "exchange_controls": "Singapore maintains no exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+    "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Singapore."
   },
+
   "source_authorities": [
     {
-      "label": "Monetary Authority of Singapore (MAS)",
-      "url": "https://www.mas.gov.sg",
+      "label": "Monetary Authority of Singapore (MAS) — Foreign Exchange Policy",
+      "url": "https://www.mas.gov.sg/regulation/foreign-exchange",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "Immigration and Checkpoints Authority (ICA) — Cash and CBNI Declaration",
-      "url": "https://www.ica.gov.sg/enter-transit-depart/at-our-checkpoints/for-travellers/CBNI",
-      "type": "regulator",
+      "label": "MAS — Capital Markets & FX Regulations",
+      "url": "https://www.mas.gov.sg/regulation",
+      "type": "primary_regulator",
       "tier": "primary"
     },
     {
-      "label": "Immigration and Checkpoints Authority (ICA)",
-      "url": "https://www.ica.gov.sg",
-      "type": "regulator",
-      "tier": "primary"
-    },
-    {
-      "label": "Singapore Police Force (SPF) — Cross-Border Cash Reporting",
-      "url": "https://www.police.gov.sg/Advisories/Commercial-Crimes/Suspicious-Transaction-Reporting-Office/Cross-border-cash-movement-reporting",
-      "type": "regulator",
+      "label": "Singapore Customs — Travel & Currency Rules",
+      "url": "https://www.customs.gov.sg/",
+      "type": "customs",
       "tier": "primary"
     }
   ],
-  "disclaimer": "This page provides general informational reference only. Singapore's foreign currency rules are subject to change under MAS regulations and the Corruption, Drug Trafficking and Other Serious Crimes Act. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with Singapore Customs, ICA, or MAS before making any financial or travel decisions."
+
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.mas.gov.sg/regulation/foreign-exchange", "pages": [], "section": "FX Regime Overview" }
+    ],
+    "summary.traveler": [
+      { "url": "https://www.customs.gov.sg/", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.mas.gov.sg/regulation", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://www.customs.gov.sg/", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://www.customs.gov.sg/", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://www.customs.gov.sg/", "pages": [], "section": "Cash Declaration Rules" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.mas.gov.sg/regulation/foreign-exchange", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.mas.gov.sg/regulation", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.mas.gov.sg/regulation", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.mas.gov.sg/regulation/foreign-exchange", "pages": [], "section": "Absence of Exchange Controls" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.mas.gov.sg/regulation", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Singapore are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Monetary Authority of Singapore / Singapore Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Monetary Authority of Singapore or Singapore Customs before making any financial or travel decisions."
 }
