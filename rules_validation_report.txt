@@ -1,0 +1,142 @@
+
+FILE: C:\Projects\ConvertCcy\data\rules\australia.json
+  ERROR: schema_version must be '1.2.1', got '1.2'
+  ERROR: rules.bring_foreign_currency_in and rules.take_foreign_currency_out are too similar (0.90 > 0.72)
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 3 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\brazil.json
+  ERROR: schema_version must be '1.2.1', got '1.2'
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 2 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\canada.json
+  ERROR: Missing required top-level keys: ['country_overview', 'source_map']
+  ERROR: schema_version must be '1.2.1', got '1.1'
+  ERROR: country_overview must be a non-empty string
+  ERROR: source_map must be present and must be an object
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 5 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\china.json
+  ERROR: schema_version must be '1.2.1', got '1.2'
+  ERROR: source_authorities[2].url must be an HTTPS URL
+  ERROR: source_map['summary.traveler'][0].url must be an HTTPS URL
+  ERROR: source_map['rules.bring_foreign_currency_in'][0].url must be an HTTPS URL
+  ERROR: source_map['rules.take_foreign_currency_out'][0].url must be an HTTPS URL
+  ERROR: source_map['rules.cash_declaration_threshold'][0].url must be an HTTPS URL
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 7 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\egypt.json
+  ERROR: schema_version must be '1.2.1', got '1.2'
+  ERROR: needs_hardening requires indexing_allowed=False
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 3 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\france.json
+  ERROR: schema_version must be '1.2.1', got '1.2'
+  ERROR: rules.bring_foreign_currency_in and rules.take_foreign_currency_out are too similar (0.96 > 0.72)
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 3 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\germany.json
+  ERROR: schema_version must be '1.2.1', got '1.2'
+  ERROR: rules.bring_foreign_currency_in and rules.take_foreign_currency_out are too similar (0.96 > 0.72)
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 3 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\india.json
+  PASS — 0 errors, 0 warnings
+
+FILE: C:\Projects\ConvertCcy\data\rules\japan.json
+  ERROR: schema_version must be '1.2.1', got '1.2'
+  ERROR: rules.bring_foreign_currency_in and rules.take_foreign_currency_out are too similar (0.90 > 0.72)
+  ERROR: country_overview is missing required quality signals: ['regulatory_authority']
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 4 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\jordan.json
+  ERROR: Missing required top-level keys: ['country_overview', 'source_map']
+  ERROR: schema_version must be '1.2.1', got '1.1'
+  ERROR: country_overview must be a non-empty string
+  ERROR: source_map must be present and must be an object
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 5 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\kuwait.json
+  ERROR: Missing required top-level keys: ['country_overview', 'source_map']
+  ERROR: schema_version must be '1.2.1', got '1.1'
+  ERROR: country_overview must be a non-empty string
+  ERROR: source_map must be present and must be an object
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 5 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\morocco.json
+  PASS — 0 errors, 0 warnings
+
+FILE: C:\Projects\ConvertCcy\data\rules\nigeria.json
+  ERROR: schema_version must be '1.2.1', got '1.2'
+  ERROR: source_map['summary.business'][0].pages must be non-empty for PDF sources when status is verified
+  ERROR: source_map['rules.non_resident_rules'][0].pages must be non-empty for PDF sources when status is verified
+  ERROR: source_map['rules.business_invoicing_settlement'][0].pages must be non-empty for PDF sources when status is verified
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 5 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\saudi-arabia.json
+  ERROR: schema_version must be '1.2.1', got '1.2'
+  ERROR: rules.bring_foreign_currency_in and rules.take_foreign_currency_out are too similar (0.90 > 0.72)
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 3 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\singapore.json
+  ERROR: schema_version must be '1.2.1', got '1.2'
+  ERROR: rules.bring_foreign_currency_in and rules.take_foreign_currency_out are too similar (0.90 > 0.72)
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 3 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\south-africa.json
+  ERROR: Missing required top-level keys: ['country_overview', 'source_map']
+  ERROR: schema_version must be '1.2.1', got '1.1'
+  ERROR: country_overview must be a non-empty string
+  ERROR: source_map must be present and must be an object
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 5 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\switzerland.json
+  ERROR: Missing required top-level keys: ['country_overview', 'source_map']
+  ERROR: schema_version must be '1.2.1', got '1.1'
+  ERROR: country_overview must be a non-empty string
+  ERROR: source_map must be present and must be an object
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 5 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\turkey.json
+  ERROR: Missing required top-level keys: ['country_overview', 'source_map']
+  ERROR: schema_version must be '1.2.1', got '1.1'
+  ERROR: country_overview must be a non-empty string
+  ERROR: source_map must be present and must be an object
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 5 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\united-arab-emirates.json
+  PASS — 0 errors, 0 warnings
+
+FILE: C:\Projects\ConvertCcy\data\rules\united-kingdom.json
+  ERROR: schema_version must be '1.2.1', got '1.2'
+  ERROR: rules.bring_foreign_currency_in and rules.take_foreign_currency_out are too similar (0.90 > 0.72)
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 3 error(s), 0 warning(s)
+
+FILE: C:\Projects\ConvertCcy\data\rules\united-states.json
+  ERROR: Missing required top-level keys: ['country_overview', 'source_map']
+  ERROR: schema_version must be '1.2.1', got '1.1'
+  ERROR: country_overview must be a non-empty string
+  ERROR: source_map must be present and must be an object
+  ERROR: indexing_allowed=True is only valid for statuses in ['published']
+  FAIL — 5 error(s), 0 warning(s)
+
+SUMMARY
+  Files checked: 21
+  Errors:        74
+  Warnings:      0
