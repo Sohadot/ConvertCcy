@@ -7,59 +7,89 @@
   "currency_code": "SAR",
   "currency_name": "Saudi Riyal",
 
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "page_status": "verified",
-  "last_reviewed": "2026-04-30",
-
+  "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
 
+  "country_overview": "Saudi Arabia operates a highly liberalised foreign-exchange regime administered by the Saudi Arabian Monetary Authority (SAMA). The Saudi Riyal is pegged to the US Dollar at a fixed rate of 3.75. There are no general exchange controls or restrictions on capital movement for residents or non-residents.",
+
   "summary": {
-    "traveler": "Saudi Arabia imposes no general exchange controls. Visitors and residents may bring in and take out any amount of foreign currency, but amounts of SAR 60,000 or more in combined value — including cash, bearer instruments, gold bullion, precious metals, gemstones, and jewellery — must be declared to customs via the ZATCA Declaration App, the authority's website, or at designated customs declaration offices at ports of entry and exit. Declarations above this threshold also require documentation of the origin of the funds.",
-    "business": "Saudi Arabia maintains an open capital account with no foreign exchange restrictions on capital receipts or payments by residents or non-residents. Businesses may freely hold foreign currency accounts, repatriate profits and investment returns, and conduct transactions in foreign currencies. Exchange business operations require licensing from SAMA under the Rules Regulating Money Changing Business. AML and CFT compliance obligations apply to all financial institutions."
+    "traveler": "Travelers may bring in or take out unlimited amounts of foreign currency and Saudi Riyal. No general currency declaration is required for normal travel amounts.",
+    "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
   },
 
   "rules": {
-    "bring_foreign_currency_in": "There are no restrictions on the amount of foreign currency that may be brought into Saudi Arabia. However, travellers carrying cash, bearer negotiable instruments, gold bullion, precious metals, gemstones, or jewellery with a combined value of SAR 60,000 or more must declare these items to customs. The declaration must be made electronically via the ZATCA Declaration App or the ZATCA website, and then completed in person at the designated customs declaration office at the port of entry. The threshold is established under Article 23 of the Anti-Money Laundering Law (Royal Decree M/20 dated 5/2/1439H). Travellers must also provide official documentation of ownership and source of funds for declared amounts.",
-
-    "take_foreign_currency_out": "There are no restrictions on the amount of foreign currency that may be taken out of Saudi Arabia. The same declaration requirement applies at departure: travellers carrying cash, negotiable instruments, gold bullion, precious metals, gemstones, or jewellery with a combined value of SAR 60,000 or more must declare these items. For departing passengers, the declaration must be made before the check-in counters and prior to entering the departure hall. Items prohibited for export, such as antiquities, must also be declared regardless of value.",
-
-    "cash_declaration_threshold": "The declaration threshold in Saudi Arabia is SAR 60,000, applicable to the combined value of cash, bearer negotiable instruments, gold bullion, precious metals, precious stones, and fine jewellery. This applies equally at entry and departure and is established under Article 23 of the Anti-Money Laundering Law. For amounts at or above this threshold, a physical visit to the customs declaration office at the port is mandatory even if an electronic declaration has been submitted in advance. Customs may seize and hold amounts for up to 72 hours pending investigation in cases of non-declaration or suspected money laundering.",
-
-    "resident_holding_rules": "Saudi residents may freely open and hold accounts in foreign currencies at Saudi banks. Customers may deposit and withdraw in any available foreign currency; if that currency is not physically available, payments may be made in Saudi riyals. There are no restrictions on the amount of foreign currency that residents may hold, transfer, or convert. The Saudi riyal has been pegged to the US dollar at SAR 3.75 per USD since 1986, providing exchange rate stability. Residents may freely buy, hold, sell, import, and export gold, except gold of 14 karats or less which is subject to separate provisions.",
-
-    "non_resident_rules": "Non-residents face no foreign exchange restrictions in Saudi Arabia. They may hold bank accounts in both Saudi riyals and foreign currencies, convert freely between currencies, and repatriate funds without restriction. Non-resident investors may repatriate profits, dividends, and capital. SAMA confirms that Saudi Arabia imposes no foreign exchange restrictions on capital receipts or payments by non-residents, beyond a prohibition on transactions with Israel under applicable Saudi law.",
-
-    "business_invoicing_settlement": "Saudi businesses may freely invoice, settle, and hold balances in foreign currencies. There are no mandatory conversion requirements. Exchange business — including the commercial sale and purchase of foreign currencies, currency trading, and import/export of currencies — requires a licence from SAMA under the Rules Regulating Money Changing Business issued by the Minister of Finance. SAMA distinguishes between Class A licences (domestic exchange only) and Class B/C licences (including import/export of currencies). AML and CFT obligations, including Know Your Customer (KYC) and Customer Due Diligence (CDD) requirements, apply to all financial institutions and exchange businesses.",
-
-    "exchange_controls": "Saudi Arabia maintains an open capital account and imposes no foreign exchange restrictions on capital receipts or payments by residents or non-residents. The Saudi riyal is pegged to the US dollar at SAR 3.75 per USD since 1986, a rate managed by SAMA (the Saudi Central Bank) through provision of USD to domestic banks. The 2025 IMF Article IV Consultation confirmed the appropriateness of the peg and noted an open capital account. SAMA supervises all financial institutions under the Saudi Central Bank Law (Royal Decree M/36, 2021). AML/CFT compliance and transaction reporting obligations apply, particularly for exchange businesses, but no capital movement restrictions exist.",
-
-    "banking_conversion_practicality": "Foreign currency exchange is widely available across Saudi Arabia through SAMA-licensed commercial banks, exchange companies, and money changing businesses. The SARIE Instant Payment System enables 24/7 real-time domestic transfers. ATMs are widely available and accept international cards. Major international banks including ICBC, Deutsche Bank, and J.P. Morgan operate in Saudi Arabia. For high-value exchange transactions — above SAR 100,000 for Saudi citizens or SAR 50,000 for foreign nationals — SAMA requires exchange businesses to apply KYC/CDD procedures and verify that income aligns with profession and declared activity."
+    "bring_foreign_currency_in": "Unlimited amounts of foreign currency and Saudi Riyal may be brought into Saudi Arabia with no general declaration requirement for travelers.",
+    "take_foreign_currency_out": "Unlimited amounts of foreign currency and Saudi Riyal may be taken out of Saudi Arabia with no general restriction or declaration requirement for travelers.",
+    "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Large or suspicious cash movements are subject to anti-money laundering reporting requirements by financial institutions.",
+    "resident_holding_rules": "Saudi residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+    "business_invoicing_settlement": "Business transactions may be invoiced and settled in foreign currency or SAR. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
+    "exchange_controls": "Saudi Arabia maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+    "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout the Kingdom."
   },
 
   "source_authorities": [
     {
-      "label": "Saudi Central Bank (SAMA) — Rulebook",
-      "url": "https://rulebook.sama.gov.sa",
+      "label": "Saudi Arabian Monetary Authority (SAMA) — Exchange Rate & FX Regime",
+      "url": "https://www.sama.gov.sa/en-us/exchangerate/pages/default.aspx",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "Zakat, Tax and Customs Authority (ZATCA) — Traveller Declaration",
-      "url": "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/customs_individual/Travel_pages/declare.aspx",
-      "type": "customs",
+      "label": "SAMA — Foreign Exchange Regulations & Liberalisation",
+      "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx",
+      "type": "primary_regulator",
       "tier": "primary"
     },
     {
-      "label": "Saudi Government Portal — Customs Declaration for Travelers",
-      "url": "https://my.gov.sa/en/services/22049",
-      "type": "ministry",
+      "label": "ZATCA — Customs & Travel Currency Rules",
+      "url": "https://zatca.gov.sa/en/Pages/default.aspx",
+      "type": "customs",
       "tier": "primary"
     }
   ],
 
-  "disclaimer": "This page provides general informational reference only. Foreign currency rules in Saudi Arabia are subject to change and vary depending on residency status, transaction type, amount, and applicable regulations. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with SAMA, ZATCA, or a qualified legal professional before making any financial or travel decisions."
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.sama.gov.sa/en-us/exchangerate/pages/default.aspx", "pages": [], "section": "Official SAR Peg & FX Regime" }
+    ],
+    "summary.traveler": [
+      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://zatca.gov.sa/en/Pages/default.aspx", "pages": [], "section": "Travel & Currency Declaration Rules" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Absence of Exchange Controls" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Saudi Arabia are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable SAMA/ZATCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Saudi Arabian Monetary Authority, ZATCA, or a qualified professional before making any financial or travel decisions."
 }
