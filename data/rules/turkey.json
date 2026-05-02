@@ -3,50 +3,93 @@
   "country_slug": "turkey",
   "iso2": "TR",
   "iso3": "TUR",
-  "region": "Middle East",
+  "region": "Eastern Europe",
   "currency_code": "TRY",
   "currency_name": "Turkish Lira",
-  "schema_version": "1.1",
+
+  "schema_version": "1.2",
   "page_status": "verified",
-  "last_reviewed": "2026-04-30",
+  "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
+
+  "country_overview": "Turkey operates a floating exchange rate regime administered by the Central Bank of the Republic of Turkey (CBRT). The Turkish Lira is subject to certain capital controls and reporting requirements, while current account transactions are largely liberalised.",
+
   "summary": {
-    "traveler": "There is no limit on the amount of foreign or Turkish currency that may be brought into Türkiye. However, no more than the equivalent of USD 5,000 in Turkish lira may be taken out of the country, and foreigners and Turkish citizens working abroad may take out up to USD 5,000 in foreign currency with bank documentation. Larger amounts must be transferred abroad through banks. The Turkish lira has been subject to significant depreciation in recent years.",
-    "business": "Turkish residents may freely hold foreign currency accounts and purchase foreign currency from authorised institutions. Decree No. 32 on the Protection of the Value of Turkish Currency governs foreign exchange, and was amended in March 2025 to ease certain foreign currency pricing restrictions for private contracts. Export proceeds must be transferred to Turkey and a portion surrendered to authorised banks under TCMB circular requirements. All exchange business requires authorisation from the Banking Regulation and Supervision Agency (BDDK) and the Central Bank (TCMB)."
+    "traveler": "Travelers may bring in foreign currency without limit but must declare amounts of USD 10,000 or equivalent. Export of foreign currency is restricted and subject to CBRT rules.",
+    "business": "Businesses must route significant foreign exchange transactions through authorised banks. Capital repatriation and certain payments require CBRT approval or documentation."
   },
+
   "rules": {
-    "bring_foreign_currency_in": "There is no restriction on the amount of foreign or Turkish currency that may be brought into Türkiye. Importation of foreign exchange is free under Article 4 of Decree No. 32 on the Protection of the Value of Turkish Currency (as confirmed by the Turkish Ministry of Culture and Tourism). No mandatory declaration threshold exists for incoming foreign currency, though customs officers may ask about the source of funds for large amounts in line with AML requirements.",
-    "take_foreign_currency_out": "A maximum equivalent of USD 5,000 in Turkish lira may be taken out of Türkiye. For foreign currency, travellers may take out up to USD 5,000 in cash. Foreigners residing abroad and Turkish citizens working overseas may take out up to USD 5,000 in foreign currency provided they can document purchase from an authorised bank. Larger amounts of foreign or Turkish currency must be transferred abroad through licensed banks. These limits are established by the Turkish Ministry of Culture and Tourism's official foreign exchange guidance.",
-    "cash_declaration_threshold": "Türkiye does not publish a specific mandatory declaration threshold equivalent to those applied in the EU or US for incoming foreign currency. The outbound limit of USD 5,000 in Turkish lira and USD 5,000 in foreign currency (with bank documentation) is the operative ceiling for travellers. Amounts above these limits must be transferred via the banking system. Customs authorities may apply AML procedures for unusually large cash amounts at their discretion.",
-    "resident_holding_rules": "Turkish residents may freely keep foreign exchange and hold foreign currency accounts at authorised banks under Decree No. 32. Residents may purchase foreign currency from banks, authorised establishments, PTT (postal services), and precious metal brokerage institutions. Foreign currency holdings are not restricted. However, Decree No. 32 has imposed restrictions on certain domestic contracts being priced in foreign currencies or indexed to foreign currency, which were partially eased by an amendment dated 6 March 2025 for sales contracts of moveable assets (excluding transport vehicles).",
-    "non_resident_rules": "Non-residents may hold foreign currency accounts and Turkish lira accounts in Türkiye. Non-resident foreign nationals may bring in and take out foreign currency in accordance with the limits applying to all travellers. Non-resident investors may repatriate profits and capital through authorised banking channels. Foreign loans to Turkish residents must be processed through Turkish banks or financial institutions under BDDK and TCMB regulations.",
-    "business_invoicing_settlement": "Domestic pricing and settlement in Türkiye is generally required to be in Turkish lira under Decree No. 32. The March 2025 amendment relaxed some restrictions on private parties contracting in foreign currencies for sales of moveable assets (excluding transport vehicles). Export proceeds must be transferred to Türkiye and a mandatory portion surrendered to an authorised bank, in accordance with TCMB circulars. All foreign exchange business requires licensing from BDDK. International trade and cross-border transactions may be invoiced and settled in foreign currencies through authorised Turkish banks.",
-    "exchange_controls": "Türkiye operates under Decree No. 32 on the Protection of the Value of Turkish Currency, administered by the Central Bank of the Republic of Türkiye (TCMB) and the Banking Regulation and Supervision Agency (BDDK). Foreign exchange importation is free, but exportation of Turkish lira is capped at USD 5,000 equivalent and foreign currency cash outflows are capped at USD 5,000 per traveller. Exporters must repatriate export proceeds and surrender a portion to authorised banks. The Turkish lira operates under a managed float. Domestic contracts are generally required to be denominated in Turkish lira, with limited exceptions relaxed in 2025.",
-    "banking_conversion_practicality": "Currency exchange is widely available through Turkish banks, licensed exchange bureaus (döviz bürosu), and ATMs accepting international cards. The banking sector is regulated by BDDK. International card withdrawals and foreign currency transfers are broadly supported. The Turkish lira has experienced significant depreciation against major currencies, and exchange rate spreads can be variable. Exchange bureaus are present in major cities, airports, and tourist areas. Large foreign currency transfers must be conducted through the banking system."
+    "bring_foreign_currency_in": "Foreign currency may be brought into Turkey without limit. Amounts of USD 10,000 or equivalent must be declared to Turkish Customs upon arrival.",
+    "take_foreign_currency_out": "Foreign currency may be taken out up to the amount declared on entry or supported by authorised bank documentation. Residents are subject to strict CBRT limits.",
+    "cash_declaration_threshold": "USD 10,000 or equivalent in foreign currency or negotiable instruments at entry and exit. Declaration to Turkish Customs is mandatory.",
+    "resident_holding_rules": "Turkish residents are subject to CBRT limits and approval requirements when holding or using foreign currency accounts. General unrestricted access requires specific authorisation.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds more freely through authorised banks.",
+    "business_invoicing_settlement": "Cross-border business transactions must be settled through authorised banks in accordance with CBRT foreign exchange regulations.",
+    "exchange_controls": "Turkey maintains a floating exchange regime with controls on certain capital account transactions. Current account transactions are largely liberalised.",
+    "banking_conversion_practicality": "Foreign exchange conversion is available through authorised banks and licensed exchange offices. Documentation is required for large transactions."
   },
+
   "source_authorities": [
     {
-      "label": "Turkish Ministry of Culture and Tourism — Foreign Exchange Rules (Official)",
-      "url": "https://www.ktb.gov.tr/EN-120418/foreign-exchange.html",
-      "type": "ministry",
-      "tier": "primary"
-    },
-    {
-      "label": "Central Bank of the Republic of Türkiye (TCMB)",
-      "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/",
+      "label": "Central Bank of the Republic of Turkey (CBRT) — Foreign Exchange Regulations",
+      "url": "https://www.tcmb.gov.tr/",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "Banking Regulation and Supervision Agency (BDDK)",
-      "url": "https://www.bddk.org.tr/en",
-      "type": "regulator",
+      "label": "Turkish Customs — Currency Declaration Rules",
+      "url": "https://www.ticaret.gov.tr/gumruk-islemleri",
+      "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "CBRT — FX Circulars & Liberalisation Measures",
+      "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN",
+      "type": "primary_regulator",
       "tier": "primary"
     }
   ],
-  "disclaimer": "This page provides general informational reference only. Foreign currency rules in Türkiye are subject to change, particularly under Decree No. 32 and TCMB circulars which have been amended multiple times in recent years. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with the TCMB, BDDK, or a qualified legal professional before making any financial or travel decisions."
+
+  "source_map": {
+    "country_overview": [
+      { "url": "https://www.tcmb.gov.tr/", "pages": [], "section": "FX Regime Overview" }
+    ],
+    "summary.traveler": [
+      { "url": "https://www.ticaret.gov.tr/gumruk-islemleri", "pages": [], "section": "Travel & Currency Movement" }
+    ],
+    "summary.business": [
+      { "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN", "pages": [], "section": "Business & Capital Movement" }
+    ],
+    "rules.bring_foreign_currency_in": [
+      { "url": "https://www.ticaret.gov.tr/gumruk-islemleri", "pages": [], "section": "Import of Currency" }
+    ],
+    "rules.take_foreign_currency_out": [
+      { "url": "https://www.ticaret.gov.tr/gumruk-islemleri", "pages": [], "section": "Export of Currency" }
+    ],
+    "rules.cash_declaration_threshold": [
+      { "url": "https://www.ticaret.gov.tr/gumruk-islemleri", "pages": [], "section": "Cash Declaration Rules (USD 10,000 / equivalent)" }
+    ],
+    "rules.resident_holding_rules": [
+      { "url": "https://www.tcmb.gov.tr/", "pages": [], "section": "Resident Foreign Currency Accounts" }
+    ],
+    "rules.non_resident_rules": [
+      { "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+    ],
+    "rules.business_invoicing_settlement": [
+      { "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN", "pages": [], "section": "Business & Cross-Border Payments" }
+    ],
+    "rules.exchange_controls": [
+      { "url": "https://www.tcmb.gov.tr/", "pages": [], "section": "Managed Exchange Regime" }
+    ],
+    "rules.banking_conversion_practicality": [
+      { "url": "https://www.tcmb.gov.tr/", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+    ]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Turkey are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Central Bank of the Republic of Turkey / Turkish Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of the Republic of Turkey or Turkish Customs before making any financial or travel decisions."
 }
