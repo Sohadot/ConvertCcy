@@ -7,8 +7,8 @@
   "currency_code": "EUR",
   "currency_name": "Euro",
 
-  "schema_version": "1.2",
-  "page_status": "verified",
+  "schema_version": "1.2.1",
+  "page_status": "published",
   "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
@@ -24,8 +24,8 @@
   },
 
   "rules": {
-    "bring_foreign_currency_in": "Unlimited amounts of euros and foreign currency may be brought into Germany. Cash movements of €10,000 or more (or equivalent) must be declared to German Customs.",
-    "take_foreign_currency_out": "Unlimited amounts of euros and foreign currency may be taken out of Germany. Cash movements of €10,000 or more (or equivalent) must be declared to German Customs.",
+    "bring_foreign_currency_in": "Unlimited amounts of euros and foreign currency may be brought into Germany. Cash movements of €10,000 or more (or equivalent) must be declared to German Customs upon arrival.",
+    "take_foreign_currency_out": "Unlimited amounts of euros and foreign currency may be taken out of Germany. Cash movements of €10,000 or more (or equivalent) must be declared to German Customs upon departure.",
     "cash_declaration_threshold": "€10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Declaration must be made to German Customs.",
     "resident_holding_rules": "German residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
     "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
