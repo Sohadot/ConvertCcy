@@ -6,47 +6,68 @@
   "region": "North America",
   "currency_code": "CAD",
   "currency_name": "Canadian Dollar",
-  "schema_version": "1.1",
-  "page_status": "verified",
-  "last_reviewed": "2026-04-30",
+
+  "schema_version": "1.2.1",
+  "page_status": "published",
+  "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
+
+  "country_overview": "Canada operates a fully liberalised foreign-exchange regime under the regulatory authority of the Bank of Canada and the Financial Transactions and Reports Analysis Centre of Canada (FINTRAC). There are no general exchange controls or restrictions on current or capital account transactions for residents or non-residents. The Canadian Dollar is freely convertible.",
+
   "summary": {
-    "traveler": "Travellers entering or leaving Canada with CAD 10,000 or more in cash or monetary instruments must report this to the Canada Border Services Agency (CBSA) using the Cross-Border Currency or Monetary Instruments Report (Form E677). There is no restriction on the amount that may be brought in or taken out. Failure to report is an offense under the Proceeds of Crime (Money Laundering) and Terrorist Financing Act and may result in seizure. The CAD 10,000 threshold includes both Canadian and foreign currency.",
-    "business": "Canada operates with a fully open capital account and no exchange controls. Businesses may freely hold, invoice, and settle in foreign currencies. International financial transfers are subject to FINTRAC reporting obligations under the Proceeds of Crime (Money Laundering) and Terrorist Financing Act, including reporting of large cash transactions and international electronic funds transfers above CAD 10,000. The Bank of Canada administers monetary policy but does not impose currency movement restrictions."
+    "traveler": "Travelers may bring in or take out unlimited amounts of Canadian Dollars and foreign currency. Cash movements of CAD 10,000 or more must be reported to the Canada Border Services Agency.",
+    "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
   },
+
   "rules": {
-    "bring_foreign_currency_in": "There are no restrictions on the amount of currency or monetary instruments that may be brought into Canada. However, any person or entity importing CAD 10,000 or more in currency or monetary instruments must report to a Canada Border Services Agency (CBSA) Border Services Officer. Individual travellers carrying currency on their own behalf complete Form E677 (Individual). Currency carried on behalf of others, mailed, or shipped uses Form E667 (General). NEXUS self-reporting cannot be used for currency declarations. The obligation extends to funds mailed or shipped to Canada — recipients must file Form E677 within 15 days of receipt. Bank of Canada exchange rates are used for CAD conversion of foreign currencies. The legal authority is the Proceeds of Crime (Money Laundering) and Terrorist Financing Act. Source: cbsa-asfc.gc.ca.",
-    "take_foreign_currency_out": "There is no restriction on the amount of currency that may be taken out of Canada. The same CAD 10,000 reporting requirement applies at departure. Travellers and businesses exporting CAD 10,000 or more in currency or monetary instruments must complete Form E677 with CBSA before departure. Attempting to structure transactions to avoid the threshold is a separate offense under Canadian law.",
-    "cash_declaration_threshold": "The reporting threshold in Canada is CAD 10,000, covering Canadian and foreign currency (coins and bank notes) and monetary instruments in bearer form. Monetary instruments include: stocks, bonds, debentures, treasury bills, banker drafts, cheques, and money orders. They do NOT include securities with restrictive endorsements or clearing stamps. Individual travellers carrying currency on their own behalf use Form E677; all other cases (including carrying on behalf of another person or entity, or mailing/shipping) use Form E667. Travellers using NEXUS cannot use that program to declare currency — they must report directly to a CBSA Border Services Officer. Foreign currencies are converted to CAD using the Bank of Canada rate at time of import/export. Failure to report results in forfeiture and/or penalty. Source: cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html; Proceeds of Crime (Money Laundering) and Terrorist Financing Act.",
-    "resident_holding_rules": "Canadian residents may freely hold foreign currency accounts in Canada and abroad. There are no restrictions on holding, purchasing, converting, or transferring foreign currency. Canada operates with no exchange controls. Canadian residents with foreign assets are subject to disclosure obligations under the Income Tax Act (T1135 Foreign Income Verification Statement for foreign assets exceeding CAD 100,000). These are reporting obligations, not holding restrictions.",
-    "non_resident_rules": "Non-residents may freely bring in and take out currency subject to the CAD 10,000 reporting threshold. Non-residents may hold bank accounts in Canada and conduct international transfers without restriction beyond AML compliance. Non-resident investors may freely repatriate profits, dividends, and capital. Canada's open capital account applies equally to non-residents.",
-    "business_invoicing_settlement": "Canadian businesses may freely invoice, settle, and hold balances in foreign currencies. No mandatory conversion requirements exist. Financial entities must report international electronic funds transfers of CAD 10,000 or more to FINTRAC. Large cash transactions above CAD 10,000 must also be reported. AML/CFT obligations apply to all regulated financial services businesses, money services businesses, and designated non-financial businesses. FINTRAC oversees compliance.",
-    "exchange_controls": "Canada maintains a fully open capital account with no exchange controls. The Canadian dollar is freely floating and fully convertible. The Bank of Canada manages monetary policy but does not impose currency movement restrictions. AML and CFT compliance is administered by FINTRAC under the Proceeds of Crime (Money Laundering) and Terrorist Financing Act. No sanctions equivalent to OFAC apply beyond Canada's own autonomous sanctions regime, which mirrors many G7 targets.",
-    "banking_conversion_practicality": "Foreign currency exchange is widely available through Canadian chartered banks, licensed money services businesses, and online platforms. ATMs are broadly accessible. The Bank of Canada operates the Large Value Transfer System (LVTS) for interbank settlements. International wire transfers are processed via SWIFT. FINTRAC registers and regulates money services businesses. Exchange rates vary by provider; banks typically offer less favorable rates than specialist services."
+    "bring_foreign_currency_in": "Travelers entering Canada can freely import unlimited amounts of Canadian Dollars and foreign currency into the country. Cash amounts of CAD 10,000 or more must be reported to the Canada Border Services Agency at the point of entry.",
+    "take_foreign_currency_out": "Travelers leaving Canada can freely export unlimited amounts of Canadian Dollars and foreign currency from the country. Cash amounts of CAD 10,000 or more must be reported to the Canada Border Services Agency at the point of exit.",
+    "cash_declaration_threshold": "CAD 10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Reporting is mandatory to the Canada Border Services Agency.",
+    "resident_holding_rules": "Canadian residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+    "business_invoicing_settlement": "Business transactions may be invoiced and settled in Canadian Dollars or foreign currency through authorised financial institutions.",
+    "exchange_controls": "Canada maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+    "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks and authorised dealers throughout Canada."
   },
+
   "source_authorities": [
     {
+      "label": "Bank of Canada — Monetary Policy & FX Framework",
+      "url": "https://www.bankofcanada.ca/",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
       "label": "Canada Border Services Agency (CBSA) — Currency Reporting",
-      "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+      "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html",
       "type": "customs",
       "tier": "primary"
     },
     {
-      "label": "FINTRAC — Financial Transactions and Reports Analysis Centre of Canada",
-      "url": "https://www.fintrac-canafe.gc.ca",
+      "label": "FINTRAC — Large Cash Transaction Reporting",
+      "url": "https://fintrac-canafe.gc.ca/",
       "type": "regulator",
-      "tier": "primary"
-    },
-    {
-      "label": "Bank of Canada",
-      "url": "https://www.bankofcanada.ca",
-      "type": "central_bank",
       "tier": "primary"
     }
   ],
-  "disclaimer": "This page provides general informational reference only. Canadian foreign currency reporting thresholds and AML obligations are subject to change under federal law. T1135 and other tax reporting obligations for residents with foreign assets are separate legal requirements. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules with CBSA, FINTRAC, CRA, or a qualified legal professional before making any financial or travel decisions."
+
+  "source_map": {
+    "country_overview": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "FX Regime Overview" }],
+    "summary.traveler": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Travel & Currency Movement" }],
+    "summary.business": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Business & Capital Movement" }],
+    "rules.bring_foreign_currency_in": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Import of Currency" }],
+    "rules.take_foreign_currency_out": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Export of Currency" }],
+    "rules.cash_declaration_threshold": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Cash Reporting Rules (CAD 10,000 / equivalent)" }],
+    "rules.resident_holding_rules": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Resident Foreign Currency Accounts" }],
+    "rules.non_resident_rules": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Non-Resident Accounts & Transfers" }],
+    "rules.business_invoicing_settlement": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Business & Cross-Border Payments" }],
+    "rules.exchange_controls": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Absence of Exchange Controls" }],
+    "rules.banking_conversion_practicality": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Authorised Dealers & Exchange Houses" }]
+  },
+
+  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Canada are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Bank of Canada / CBSA / FINTRAC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Canada Border Services Agency, Bank of Canada, or a qualified professional before making any financial or travel decisions."
 }
