@@ -1,5 +1,45 @@
 [
   {
+    "country_name": "Australia",
+    "country_slug": "australia",
+    "iso2": "AU",
+    "currency_code": "AUD",
+    "region": "Oceania",
+    "page_status": "published",
+    "last_reviewed": "2026-05-02",
+    "url": "/rules/australia-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Brazil",
+    "country_slug": "brazil",
+    "iso2": "BR",
+    "currency_code": "BRL",
+    "region": "Latin America",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/brazil-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Egypt",
+    "country_slug": "egypt",
+    "iso2": "EG",
+    "currency_code": "EGP",
+    "region": "North Africa",
+    "page_status": "needs_hardening",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/needs_hardening/egypt-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Germany",
+    "country_slug": "germany",
+    "iso2": "DE",
+    "currency_code": "EUR",
+    "region": "Western Europe",
+    "page_status": "published",
+    "last_reviewed": "2026-05-02",
+    "url": "/rules/germany-foreign-currency-rules.html"
+  },
+  {
     "country_name": "India",
     "country_slug": "india",
     "iso2": "IN",
@@ -8,6 +48,16 @@
     "page_status": "published",
     "last_reviewed": "2026-05-02",
     "url": "/rules/india-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Japan",
+    "country_slug": "japan",
+    "iso2": "JP",
+    "currency_code": "JPY",
+    "region": "East Asia",
+    "page_status": "published",
+    "last_reviewed": "2026-05-02",
+    "url": "/rules/japan-foreign-currency-rules.html"
   },
   {
     "country_name": "Morocco",
