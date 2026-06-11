@@ -1,0 +1,762 @@
+{
+  "dataset": "ConvertCCY Foreign Currency Rules Dataset",
+  "url": "https://convertccy.com/rules/dataset.json",
+  "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "ConvertCCY (https://convertccy.com/)",
+  "citation": "ConvertCCY. Foreign Currency Rules Dataset. https://convertccy.com/rules/dataset.json",
+  "generated_at": "2026-06-11T06:02:49+00:00",
+  "count": 5,
+  "countries": [
+    {
+      "country_name": "Australia",
+      "country_slug": "australia",
+      "iso2": "AU",
+      "iso3": "AUS",
+      "region": "Oceania",
+      "currency_code": "AUD",
+      "currency_name": "Australian Dollar",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-05-02",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "Australia operates one of the most liberalised foreign-exchange regimes in the world. There are no general exchange controls or restrictions on current or capital account transactions for residents or non-residents. The framework is administered by the Reserve Bank of Australia (RBA) and the Australian Transaction Reports and Analysis Centre (AUSTRAC).",
+      "summary": {
+        "traveler": "Travelers may bring in or take out unlimited amounts of Australian Dollars and foreign currency. No general currency declaration is required for normal travel amounts.",
+        "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "Unlimited amounts of Australian Dollars and foreign currency may be brought into Australia with no general declaration requirement for travelers.",
+        "take_foreign_currency_out": "Unlimited amounts of Australian Dollars and foreign currency may be taken out of Australia. Residents must comply with RBA limits when exporting large sums of foreign currency.",
+        "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Movements of AUD 10,000 or more (or equivalent) in cash or bearer negotiable instruments must be reported to AUSTRAC under anti-money laundering rules.",
+        "resident_holding_rules": "Australian residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+        "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+        "business_invoicing_settlement": "Business transactions may be invoiced and settled in foreign currency or AUD. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
+        "exchange_controls": "Australia maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+        "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Australia."
+      },
+      "source_authorities": [
+        {
+          "label": "Reserve Bank of Australia (RBA) — Foreign Exchange Policy",
+          "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+          "type": "central_bank",
+          "tier": "primary"
+        },
+        {
+          "label": "AUSTRAC — Cash Reporting Requirements",
+          "url": "https://www.austrac.gov.au/business/how-comply-guidance-resources/guidance-notes",
+          "type": "regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "Australian Border Force — Travel & Currency Rules",
+          "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in",
+          "type": "customs",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+            "pages": [],
+            "section": "FX Regime Overview"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in",
+            "pages": [],
+            "section": "Travel & Currency Movement"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+            "pages": [],
+            "section": "Business & Capital Movement"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in",
+            "pages": [],
+            "section": "Import of Currency"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in",
+            "pages": [],
+            "section": "Export of Currency"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.austrac.gov.au/business/how-comply-guidance-resources/guidance-notes",
+            "pages": [],
+            "section": "Cash Reporting Rules (AUD 10,000 / equivalent)"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+            "pages": [],
+            "section": "Resident Foreign Currency Accounts"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+            "pages": [],
+            "section": "Non-Resident Accounts & Transfers"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+            "pages": [],
+            "section": "Business & Cross-Border Payments"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+            "pages": [],
+            "section": "Absence of Exchange Controls"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+            "pages": [],
+            "section": "Authorised Dealers & Exchange Houses"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Australia are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBA / AUSTRAC / Australian Border Force framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of Australia, AUSTRAC, or a qualified professional before making any financial or travel decisions."
+    },
+    {
+      "country_name": "Germany",
+      "country_slug": "germany",
+      "iso2": "DE",
+      "iso3": "DEU",
+      "region": "Western Europe",
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-05-02",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "Germany operates within the fully liberalised Eurozone foreign-exchange regime under the regulatory authority of the European Central Bank (ECB) and Deutsche Bundesbank. There are no general exchange controls or restrictions on current or capital account transactions for residents or non-residents. The framework ensures free movement of capital across the Eurozone.",
+      "summary": {
+        "traveler": "Travelers may bring in or take out unlimited amounts of euros and foreign currency. Cash movements of €10,000 or more must be declared to German Customs.",
+        "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "Foreign currency and euros can be freely imported into Germany by travelers. Any cash amount of €10,000 or equivalent must be declared to German Customs at the point of entry.",
+        "take_foreign_currency_out": "When leaving Germany, travelers and residents may export unlimited amounts of euros and foreign currency. Cash exceeding €10,000 or equivalent must be declared to German Customs at departure.",
+        "cash_declaration_threshold": "€10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Declaration must be made to German Customs.",
+        "resident_holding_rules": "German residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+        "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+        "business_invoicing_settlement": "Business transactions may be invoiced and settled in euros or foreign currency through authorised financial institutions.",
+        "exchange_controls": "Germany maintains no general exchange controls. The regime is fully liberalised within the Eurozone framework.",
+        "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks and authorised dealers throughout Germany."
+      },
+      "source_authorities": [
+        {
+          "label": "Deutsche Bundesbank — Foreign Exchange & Euro Regime",
+          "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange",
+          "type": "central_bank",
+          "tier": "primary"
+        },
+        {
+          "label": "German Customs (Zoll) — Cash Declaration Rules",
+          "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/restrictions-on-imports-and-exports/restrictions-on-imports-and-exports_node.html",
+          "type": "customs",
+          "tier": "primary"
+        },
+        {
+          "label": "European Central Bank — Eurozone FX Framework",
+          "url": "https://www.ecb.europa.eu/ecb/tasks/policy/html/index.en.html",
+          "type": "central_bank",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange",
+            "pages": [],
+            "section": "Eurozone FX Regime Overview"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/restrictions-on-imports-and-exports/restrictions-on-imports-and-exports_node.html",
+            "pages": [],
+            "section": "Travel & Currency Movement"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange",
+            "pages": [],
+            "section": "Business & Capital Movement"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/restrictions-on-imports-and-exports/restrictions-on-imports-and-exports_node.html",
+            "pages": [],
+            "section": "Import of Currency"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/restrictions-on-imports-and-exports/restrictions-on-imports-and-exports_node.html",
+            "pages": [],
+            "section": "Export of Currency"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/restrictions-on-imports-and-exports/restrictions-on-imports-and-exports_node.html",
+            "pages": [],
+            "section": "Cash Declaration Rules (€10,000 / equivalent)"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange",
+            "pages": [],
+            "section": "Resident Foreign Currency Accounts"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange",
+            "pages": [],
+            "section": "Non-Resident Accounts & Transfers"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange",
+            "pages": [],
+            "section": "Business & Cross-Border Payments"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange",
+            "pages": [],
+            "section": "Absence of Exchange Controls"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange",
+            "pages": [],
+            "section": "Authorised Dealers & Exchange Houses"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Germany are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Deutsche Bundesbank / German Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with German Customs (Zoll), Deutsche Bundesbank, or a qualified professional before making any financial or travel decisions."
+    },
+    {
+      "country_name": "India",
+      "country_slug": "india",
+      "iso2": "IN",
+      "iso3": "IND",
+      "region": "South Asia",
+      "currency_code": "INR",
+      "currency_name": "Indian Rupee",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-05-02",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "India operates a statutory foreign-exchange framework under the Foreign Exchange Management Act (FEMA), 1999, administered principally by the Reserve Bank of India (RBI). In practice this is not a discretionary retail-cash jurisdiction: lawful foreign-exchange activity typically routes through authorised dealer banks while border cash controls are exercised through CBIC Indian Customs declarations (including the Currency Declaration Form, CDF) when thresholds apply. Relative to freely convertible regimes, India's FX regime mixes liberalisation on much of the current account with materially tighter regulation on the capital account; users should assume documentation, channels, and transaction-specific approvals matter.",
+      "summary": {
+        "traveler": "Any person may bring foreign exchange into India without limit. Declaration on the Currency Declaration Form (CDF) is required if foreign currency notes exceed USD 5,000 or the aggregate foreign exchange exceeds USD 10,000.",
+        "business": "All cross-border trade and capital transactions must be routed through Authorised Dealer banks under FEMA. The 2026 regulations introduce targeted updates for exports, imports, service payments and related operations."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "There is ordinarily no prohibition on importing foreign exchange into India, but lawful physical import is framed around declaration and documentation: when foreign currency notes exceed USD 5,000 or aggregate foreign exchange (including traveller instruments in scope of the Currency Declaration Form) exceeds USD 10,000 on arrival, the Currency Declaration Form (CDF) pathway becomes operationally decisive. Practical compliance means carrying supporting documentation consistent with Customs guidance and preserving CDF linkage if you intend to reconvert or carry unutilised foreign exchange outward later.",
+        "take_foreign_currency_out": "Unspent foreign exchange declared on arrival may be taken out, and the Currency Declaration Form should be retained for reconversion or for taking unused foreign exchange out of India.",
+        "cash_declaration_threshold": "The operative arrival-side threshold framing in the Customs materials bundled with Currency Declaration Form (CDF) practice is USD 5,000 for foreign currency notes and USD 10,000 for aggregate foreign exchange (including notes/travellers’ cheques falling under the form’s stated scope). When either threshold applies, Customs expects the relevant declaration channel/process to be followed; travellers should preserve endorsed documentation because it anchors later authorised-dealer conversions and outbound movements.",
+        "resident_holding_rules": "Indian residents remain subject to FEMA-based limits and conditions in relation to holding and using foreign exchange. Users should verify account eligibility, retention limits, and transaction-specific permissions directly with RBI rules and the authorised dealer.",
+        "non_resident_rules": "Non-residents (including NRIs and PIOs) may maintain NRE, FCNR(B) or NRO accounts with repatriation rights as permitted under RBI guidelines.",
+        "business_invoicing_settlement": "Import, export, and related cross-border service transactions must be handled through Authorised Dealer banks in accordance with FEMA regulations and the applicable RBI framework.",
+        "exchange_controls": "India maintains a regulated exchange framework under FEMA 1999. Current account transactions are largely liberalised while capital account transactions are subject to regulation and reporting.",
+        "banking_conversion_practicality": "Foreign exchange transactions are executed through Authorised Dealer banks, licensed money changers and authorised airports. The Currency Declaration Form (CDF) must be retained for reconversion and compliance purposes."
+      },
+      "source_authorities": [
+        {
+          "label": "RBI — Miscellaneous Forex Facilities FAQ (updated)",
+          "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+          "type": "primary_regulator_faq",
+          "tier": "primary"
+        },
+        {
+          "label": "RBI — Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026",
+          "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
+          "type": "primary_regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "RBI — Non-Resident Accounts FAQ",
+          "url": "https://www.rbi.org.in/commonperson/english/scripts/FAQs.aspx?Id=3",
+          "type": "primary_regulator_faq",
+          "tier": "primary"
+        },
+        {
+          "label": "CBIC — Currency Declaration Form (CDF)",
+          "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+          "type": "customs",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "FEMA Framework Overview"
+          },
+          {
+            "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
+            "pages": [],
+            "section": "Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026 (effective 1 October 2026)"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "Q5 – Foreign exchange brought into India"
+          },
+          {
+            "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+            "pages": [
+              1
+            ],
+            "section": "CDF Instructions"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
+            "pages": [],
+            "section": "2026 Export-Import Regulations Overview"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "Q5 – Declaration thresholds (CDF)"
+          },
+          {
+            "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+            "pages": [
+              1
+            ],
+            "section": "CDF Instructions"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+            "pages": [
+              1
+            ],
+            "section": "CDF retention for departure / reconversion"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+            "pages": [
+              1
+            ],
+            "section": "CDF Instructions (USD 5,000 notes / USD 10,000 aggregate)"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "Resident foreign currency holding limits under FEMA"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://www.rbi.org.in/commonperson/english/scripts/FAQs.aspx?Id=3",
+            "pages": [],
+            "section": "NRE / FCNR(B) / NRO accounts eligibility and rights"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
+            "pages": [],
+            "section": "Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "FEMA 1999 general framework"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "Authorised Dealer and CDF procedures"
+          },
+          {
+            "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+            "pages": [
+              1
+            ],
+            "section": "CDF Instructions"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in India are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBI/CBIC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of India, CBIC, or a qualified professional before making any financial or travel decisions."
+    },
+    {
+      "country_name": "Japan",
+      "country_slug": "japan",
+      "iso2": "JP",
+      "iso3": "JPN",
+      "region": "East Asia",
+      "currency_code": "JPY",
+      "currency_name": "Japanese Yen",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-05-02",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "Japan operates a fully liberalised foreign-exchange regime under the regulatory authority of the Ministry of Finance (MOF) and the Bank of Japan (BOJ). The Foreign Exchange and Foreign Trade Act (FEFTA) governs the framework. There are no general exchange controls for current or capital account transactions for residents or non-residents. The yen is freely convertible and Japan maintains one of the most open FX regimes among major economies.",
+      "summary": {
+        "traveler": "Travelers may bring in or take out unlimited amounts of Japanese Yen and foreign currency. No general currency declaration is required for normal travel amounts.",
+        "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "Unlimited amounts of Japanese Yen and foreign currency may be brought into Japan. No general declaration is required for travelers under normal circumstances.",
+        "take_foreign_currency_out": "When departing Japan, travelers may export unlimited amounts of Japanese Yen and foreign currency. Large cash amounts may require reporting under anti-money laundering rules.",
+        "cash_declaration_threshold": "No mandatory declaration threshold applies for ordinary travelers. Movements of JPY 1,000,000 or more (or equivalent) may trigger reporting requirements under AML regulations.",
+        "resident_holding_rules": "Japanese residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+        "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+        "business_invoicing_settlement": "Business transactions may be invoiced and settled in Japanese Yen or foreign currency. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
+        "exchange_controls": "Japan maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+        "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Japan."
+      },
+      "source_authorities": [
+        {
+          "label": "Ministry of Finance (MOF) Japan — Foreign Exchange Regulations",
+          "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html",
+          "type": "primary_regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "Bank of Japan (BOJ) — FX Market & Policy",
+          "url": "https://www.boj.or.jp/en/index.htm",
+          "type": "central_bank",
+          "tier": "primary"
+        },
+        {
+          "label": "Japan Customs — Travel & Currency Rules",
+          "url": "https://www.customs.go.jp/english/",
+          "type": "customs",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html",
+            "pages": [],
+            "section": "FX Regime Overview"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.customs.go.jp/english/",
+            "pages": [],
+            "section": "Travel & Currency Movement"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html",
+            "pages": [],
+            "section": "Business & Capital Movement"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.customs.go.jp/english/",
+            "pages": [],
+            "section": "Import of Currency"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.customs.go.jp/english/",
+            "pages": [],
+            "section": "Export of Currency"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.customs.go.jp/english/",
+            "pages": [],
+            "section": "Cash Reporting Rules"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html",
+            "pages": [],
+            "section": "Resident Foreign Currency Accounts"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html",
+            "pages": [],
+            "section": "Non-Resident Accounts & Transfers"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html",
+            "pages": [],
+            "section": "Business & Cross-Border Payments"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html",
+            "pages": [],
+            "section": "Absence of Exchange Controls"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://www.boj.or.jp/en/index.htm",
+            "pages": [],
+            "section": "Authorised Dealers & Exchange Houses"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Japan are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Ministry of Finance / Bank of Japan / Japan Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Ministry of Finance, Bank of Japan, or a qualified professional before making any financial or travel decisions."
+    },
+    {
+      "country_name": "United Arab Emirates",
+      "country_slug": "united-arab-emirates",
+      "iso2": "AE",
+      "iso3": "ARE",
+      "region": "Middle East",
+      "currency_code": "AED",
+      "currency_name": "UAE Dirham",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-05-01",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "The United Arab Emirates applies a convertible dirham pegged to the US dollar alongside a supervisory framework centred on the Central Bank of the UAE (CBUAE) for licensed banking and regulated exchange-business activity. Customs and traveller transparency measures complement that framework rather than imposing retail exchange quotas: traveller declarations focus on bearer instruments, cash, jewellery, and precious metals above published thresholds rather than banning foreign currency outright. Interpreted together, the Emirates present as a predominantly open-account environment with AML/CFT and customs reporting obligations layered on cross-border carriage and financial-institution workflows.",
+      "summary": {
+        "traveler": "Visitors and residents may move foreign currency broadly freely, subject to traveller declaration rules when declared items exceed AED 60,000 in combined value across cash, bearer instruments, jewellery, and precious metals, using approved customs procedures (including designated digital declaration channels where applicable).",
+        "business": "Business invoicing and bank transfers are unconstrained by classic exchange-control ceilings in the sovereign sense used elsewhere; AML/CFT and licensing rules still govern intermediaries trading currency and moving funds at scale."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "Inbound travellers may carry foreign currency without a legislated statutory cap analogous to rigid import licences. When the traveller carries currencies, cheque-like bearer forms, jewellery, or precious metals whose combined declarable valuation exceeds AED 60,000, UAE customs doctrine expects a declaration aligned with traveller-transparency publications and ICP-aligned digital facilitation at covered ports. Household members under eighteen are not ordinarily required to lodge a standalone declaration beyond inclusion on a guardian declaration where facts support that treatment. Omitting mandated declarations where threshold facts exist is prosecuted as customs evasion risk rather than a routine paperwork preference.",
+        "take_foreign_currency_out": "Departure differs operationally from arrival even when headline policy remains permissive: travellers leaving still face the AED 60,000 combined declarable corridor for cash-like and jewellery categories, but the supervisory emphasis shifts to outbound reporting and AML monitoring on later bank or wire corridors. Capital repatriation of salaries, divestment receipts, or investment proceeds is ordinarily not withheld by denomination-specific quotas; compliance teams instead scrutinise sourcing and screening on higher-value corridors. Institutional channels therefore remain the pragmatic choice for sizeable movements that would otherwise collide with traveller-only declaration mechanics.",
+        "cash_declaration_threshold": "Federal traveller declaration standards align on a combined AED 60,000 reporting trigger across cash, negotiable instruments without a named payee, jewellery, and precious metals for passengers aged eighteen and above. The measure is grounded in anti-money-laundering transparency rather than a permit to carry only up to that mark. Officials provide structured declaration forms plus, on selected crossings, interoperable electronic submission consistent with ICA/ICP public guidance. Accuracy matters because valuation disputes feed enforcement channels separate from benign tourist exchanges below reporting facts.",
+        "resident_holding_rules": "UAE residents maintain AED and multicurrency deposits domestically subject to universal banking AML standards rather than nationality-based holding prescriptions. Everyday conversion between dirhams and majors occurs through authorised institutions where CBUAE licence classes govern who may run exchange counters versus full banking. Residents remitting abroad use SWIFT-like rails with institution-level checks; there is no parallel household foreign-currency ceiling published like hard exchange-control jurisdictions. Relationship managers still expect documentation on unusually large legacy cash deposits.",
+        "non_resident_rules": "Non-resident individuals and corporates open AED or foreign-currency accounts with documentation typical of international banking centres. Repatriation of operating profits, sale proceeds, or payroll savings is not administratively throttled by sovereign conversion permits in the classic sense, though banks apply sanctions screening and correspondent-bank constraints. Non-residents engaging in mainland commercial activity coordinate with licensing authorities separately from FX mechanics. Digital wallets and PSP partnerships expand retail access but inherit the same compliance obligations.",
+        "business_invoicing_settlement": "UAE entities invoice cross-border counterparties in foreign currency without coercion to forcibly surrender proceeds into AED at a punitive spread. Settlement may therefore remain offshore or route through correspondent nostros as commercial contracts dictate. Any firm selling exchange as a standalone product must hold Central Bank approvals under prevailing exchange-business regulation tiers rather than operating as an unregulated bureau. Consolidated groups still centralise treasury under policies that AML teams audit irrespective of denomination choice.",
+        "exchange_controls": "Administrative parlance distinguishes true exchange controls—mandatory approvals per transaction—from the Emirates' supervisory posture, which concentrates on peg maintenance through monetary instruments and regulated institutions while keeping current-account style flows largely liberal. Profit repatriation, services exports, and re-invoicing frameworks do not require pre-clearance dossiers analogous to guarded-capital regimes. Where tension appears, it is typically compliance-driven delays at bank level rather than sovereign denial of lawful conversion.",
+        "banking_conversion_practicality": "Liquidity for tourists and corporates flows through multinational banks, local champions, licensed exchange houses, and airport concessions with published boards. Payments rails include instant domestic transfers where supported and cross-border wires with correspondent cut-offs. Corporates leaning on treasury workstations integrate FX hedging externally while domestic spot needs are satisfied OTC. Operational friction concentrates on onboarding due diligence—not on statutory quotas—when aligning with FATF-aligned programmes."
+      },
+      "source_authorities": [
+        {
+          "label": "Central Bank of the UAE (CBUAE) — Rulebook",
+          "url": "https://rulebook.centralbank.ae",
+          "type": "central_bank",
+          "tier": "primary"
+        },
+        {
+          "label": "Dubai Customs — Declaring Money Procedure",
+          "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
+          "type": "customs",
+          "tier": "primary"
+        },
+        {
+          "label": "UAE Government Portal — Banking in the UAE",
+          "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+          "type": "ministry",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://rulebook.centralbank.ae",
+            "pages": [],
+            "section": "Institutional supervisory scope (CBUAE rulebook landing)"
+          },
+          {
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+            "pages": [],
+            "section": "National banking overview and convertibility framing"
+          },
+          {
+            "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
+            "pages": [],
+            "section": "Travel-related currency declaration posture"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
+            "pages": [],
+            "section": "Declaring money / traveller thresholds"
+          },
+          {
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+            "pages": [],
+            "section": "Retail banking accessibility for travellers"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://rulebook.centralbank.ae",
+            "pages": [],
+            "section": "Licensed exchange-business and supervisory expectations"
+          },
+          {
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+            "pages": [],
+            "section": "Corporate banking landscape"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
+            "pages": [],
+            "section": "Inbound declaration mechanics"
+          },
+          {
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+            "pages": [],
+            "section": "Financial institutions inbound context"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
+            "pages": [],
+            "section": "Outbound / departure reporting"
+          },
+          {
+            "url": "https://rulebook.centralbank.ae",
+            "pages": [],
+            "section": "Institutional AML supervision on larger flows"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
+            "pages": [],
+            "section": "AED 60,000 combined traveller reporting trigger"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+            "pages": [],
+            "section": "Residents' domestic and foreign currency services"
+          },
+          {
+            "url": "https://rulebook.centralbank.ae",
+            "pages": [],
+            "section": "Licensed financial institution standards"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+            "pages": [],
+            "section": "Opening accounts / non-resident access"
+          },
+          {
+            "url": "https://rulebook.centralbank.ae",
+            "pages": [],
+            "section": "Supervised institution onboarding obligations"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://rulebook.centralbank.ae",
+            "pages": [],
+            "section": "Exchange-business licensing prerequisites"
+          },
+          {
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+            "pages": [],
+            "section": "Corporate settlement channels overview"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://rulebook.centralbank.ae",
+            "pages": [],
+            "section": "Central bank supervisory remit versus capital-control jurisdictions"
+          },
+          {
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+            "pages": [],
+            "section": "Economy openness summary"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+            "pages": [],
+            "section": "Retail and corporate FX access pathways"
+          },
+          {
+            "url": "https://rulebook.centralbank.ae",
+            "pages": [],
+            "section": "Regulated intermediary landscape"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Customs declaration thresholds and Central Bank supervisory requirements in the UAE can change without notice appearing here. This is not legal, regulatory, tax, financial, or compliance advice. Confirm current obligations with UAE Customs, the Central Bank of the UAE (CBUAE), licensed financial intermediaries, or qualified counsel before committing to travel or treasury decisions."
+    }
+  ]
+}

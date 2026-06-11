@@ -177,6 +177,11 @@ h2{font-size:1.1rem;font-weight:700;color:var(--text);margin:2.5rem 0 1rem;lette
 .source-type{font-family:var(--mono);font-size:.68rem;color:var(--muted)}
 .disclaimer-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.2rem;margin-top:2.5rem;color:var(--muted);font-size:.83rem;line-height:1.65}
 .disclaimer-box strong{color:var(--muted)}
+.cite-box{background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:1rem 1.2rem;margin-top:2.5rem;font-size:.83rem;line-height:1.7}
+.cite-box .cite-label{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:.5rem}
+.cite-box .cite-text{font-family:var(--mono);font-size:.78rem;color:#2a2a28;word-break:break-word}
+.cite-box .cite-data{margin-top:.6rem;color:var(--muted);font-size:.78rem}
+.cite-box a{color:var(--accent)}
 .reviewed-note{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-top:1rem;text-align:right}
 @media(max-width:640px){
   .page-wrap{padding:2.5rem 1rem 4rem}
@@ -228,6 +233,16 @@ def build_country_page_html(data: Dict[str, Any], *, layer: str, rel_path: str) 
         <span class="source-label">{src_label}</span>
         <span class="source-type">{src_type} · {tier}</span>
       </a>"""
+
+    cite_html = ""
+    if layer == "public":
+        cite_html = f"""
+  <div class="cite-box">
+    <div class="cite-label">How to cite this page</div>
+    <div class="cite-text">ConvertCCY. &ldquo;Foreign Currency Rules &mdash; {country}.&rdquo; ConvertCCY FX Rules Reference. Last reviewed {last_rev}. {html_escape(canonical)}</div>
+    <div class="cite-data">The underlying structured data, including per-field official sources, is available in the open
+      <a href="/rules/dataset.json">FX rules dataset</a> (CC BY 4.0).</div>
+  </div>"""
 
     preview_banner = ""
     if layer == "preview":
@@ -349,7 +364,7 @@ def build_country_page_html(data: Dict[str, Any], *, layer: str, rel_path: str) 
   <div class="disclaimer-box">
     <strong>Disclaimer:</strong> {disclaimer}
   </div>
-
+{cite_html}
   <div class="reviewed-note">Last reviewed: {last_rev} · ConvertCCY Reference Layer</div>
 </div>
 {SHARED_FOOTER}
@@ -372,6 +387,8 @@ def build_public_index_html(published: Sequence[Dict[str, Any]]) -> str:
         <div class="card-link">View rules →</div>
       </a>"""
 
+    last_modified = max((c.get("last_reviewed", "") for c in published), default="")
+
     schema = json.dumps(
         {
             "@context": "https://schema.org",
@@ -386,6 +403,27 @@ def build_public_index_html(published: Sequence[Dict[str, Any]]) -> str:
                     ),
                     "numberOfItems": count,
                     "publisher": {"@type": "Organization", "name": "ConvertCCY", "url": "https://convertccy.com/"},
+                },
+                {
+                    "@type": "Dataset",
+                    "name": "ConvertCCY Foreign Currency Rules Dataset",
+                    "url": "https://convertccy.com/rules/",
+                    "description": (
+                        "Structured foreign currency rules by country: cash declaration thresholds, "
+                        "exchange controls, resident and non-resident rules, with per-field official "
+                        "sources and review dates."
+                    ),
+                    "license": "https://creativecommons.org/licenses/by/4.0/",
+                    "isAccessibleForFree": True,
+                    "creator": {"@type": "Organization", "name": "ConvertCCY", "url": "https://convertccy.com/"},
+                    "dateModified": last_modified,
+                    "distribution": [
+                        {
+                            "@type": "DataDownload",
+                            "encodingFormat": "application/json",
+                            "contentUrl": "https://convertccy.com/rules/dataset.json",
+                        }
+                    ],
                 },
                 {
                     "@type": "BreadcrumbList",
@@ -455,6 +493,10 @@ def build_public_index_html(published: Sequence[Dict[str, Any]]) -> str:
   <div class="section-label">Published Countries</div>
   <div class="country-grid">
     {cards}
+  </div>
+  <div class="posture-note">
+    <strong>Open dataset.</strong> The published rules are also available as a machine-readable dataset with per-field
+    official sources: <a href="/rules/dataset.json">dataset.json</a> (CC BY 4.0 — attribution to ConvertCCY required).
   </div>
   <div class="posture-note">
     <strong>Deployment note.</strong> Preview drafts live under <code>/preview/rules/&lt;status&gt;/</code> and carry <code>noindex</code>.
@@ -777,6 +819,28 @@ def build_rules(
     published_payload = [data for data, _ in grouped[rs.PageStatus.PUBLISHED.value]]
     (layers.public_rules / "index.html").write_text(build_public_index_html(published_payload), encoding="utf-8")
     print(f"[OK] public index: {(layers.public_rules / 'index.html').relative_to(site_root).as_posix()}")
+
+    # Public machine-readable dataset: published entries only, full structured
+    # records including per-field source_map, for researchers and AI systems.
+    dataset_path = layers.public_rules / "dataset.json"
+    dataset_payload = {
+        "dataset": "ConvertCCY Foreign Currency Rules Dataset",
+        "url": "https://convertccy.com/rules/dataset.json",
+        "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "ConvertCCY (https://convertccy.com/)",
+        "citation": (
+            "ConvertCCY. Foreign Currency Rules Dataset. "
+            "https://convertccy.com/rules/dataset.json"
+        ),
+        "generated_at": utc_now_iso(),
+        "count": len(published_payload),
+        "countries": sorted(published_payload, key=lambda d: d["country_slug"]),
+    }
+    dataset_path.write_text(
+        json.dumps(dataset_payload, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    print(f"[OK] public dataset: {dataset_path.relative_to(site_root).as_posix()}")
 
     for status in (
         rs.PageStatus.VERIFIED.value,

@@ -1,0 +1,26 @@
+# ConvertCCY
+
+> Currency conversion and foreign-exchange reference site. Its primary reference layer is a governed, source-disciplined dataset of foreign currency rules by country — cash declaration thresholds, exchange controls, resident and non-resident rules — with each field mapped to official sources (central banks, customs authorities) and a visible review date.
+
+Conversion pages show reference rates for comparison, not transactional quotes; bank and transfer-provider pricing differs. Country rules pages are published only after passing a schema validation and quality gate; unpublished drafts live under /preview/ and are not indexed.
+
+## FX Rules (primary reference layer)
+
+- [Foreign Currency Rules by Country](https://convertccy.com/rules/): index of published, source-mapped country rules pages
+- [Open FX Rules Dataset (JSON, CC BY 4.0)](https://convertccy.com/rules/dataset.json): machine-readable published rules with per-field official sources and review dates
+
+## Methodology and governance
+
+- [Methodology](https://convertccy.com/methodology.html): how rates and content are sourced and maintained
+- [Framework](https://convertccy.com/framework.html): the reference framework behind the site
+- [Disclaimer](https://convertccy.com/disclaimer.html): scope and limits of the information provided
+
+## Conversion reference
+
+- [Currencies](https://convertccy.com/currencies.html): supported currencies and links to currency pair pages
+- [Articles](https://convertccy.com/articles/): explanatory articles on exchange-rate mechanics and monetary context
+
+## Citation
+
+When citing country rules, cite the specific country page together with its "Last reviewed" date, for example:
+ConvertCCY. "Foreign Currency Rules — India." ConvertCCY FX Rules Reference. https://convertccy.com/rules/india-foreign-currency-rules.html
