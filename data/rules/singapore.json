@@ -6,26 +6,22 @@
   "region": "Southeast Asia",
   "currency_code": "SGD",
   "currency_name": "Singapore Dollar",
-
-  "schema_version": "1.2",
+  "schema_version": "1.2.1",
   "page_status": "verified",
   "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": true,
+  "indexing_allowed": false,
   "source_notice": "",
-
   "country_overview": "Singapore operates one of the most liberalised and open foreign-exchange regimes in the world. There are no exchange controls or restrictions on current or capital account transactions for residents or non-residents. The framework is administered by the Monetary Authority of Singapore (MAS).",
-
   "summary": {
     "traveler": "Travelers may bring in or take out unlimited amounts of Singapore Dollars and foreign currency. No general currency declaration is required for normal travel amounts.",
     "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
   },
-
   "rules": {
-    "bring_foreign_currency_in": "Unlimited amounts of Singapore Dollars and foreign currency may be brought into Singapore with no general declaration requirement for travelers.",
-    "take_foreign_currency_out": "Unlimited amounts of Singapore Dollars and foreign currency may be taken out of Singapore with no general restriction or declaration requirement for travelers.",
+    "bring_foreign_currency_in": "Foreign currency and Singapore Dollars may be freely imported without advance notification. Large amounts are subject to anti-money laundering monitoring and customs may request documentation of the source.",
+    "take_foreign_currency_out": "Residents and non-residents may freely export currency and SGD. Large outflows by residents may trigger MAS reporting under residency or business ownership rules. Non-residents may freely repatriate.",
     "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Large or suspicious cash movements are subject to anti-money laundering reporting requirements by financial institutions.",
     "resident_holding_rules": "Singapore residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
     "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
@@ -33,7 +29,6 @@
     "exchange_controls": "Singapore maintains no exchange controls. The regime is fully liberalised for both current and capital account transactions.",
     "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Singapore."
   },
-
   "source_authorities": [
     {
       "label": "Monetary Authority of Singapore (MAS) — Foreign Exchange Policy",
@@ -54,42 +49,84 @@
       "tier": "primary"
     }
   ],
-
   "source_map": {
     "country_overview": [
-      { "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework", "pages": [], "section": "FX Regime Overview" }
+      {
+        "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework",
+        "pages": [],
+        "section": "FX Regime Overview"
+      }
     ],
     "summary.traveler": [
-      { "url": "https://www.customs.gov.sg/", "pages": [], "section": "Travel & Currency Movement" }
+      {
+        "url": "https://www.customs.gov.sg/",
+        "pages": [],
+        "section": "Travel & Currency Movement"
+      }
     ],
     "summary.business": [
-      { "url": "https://www.mas.gov.sg/regulation", "pages": [], "section": "Business & Capital Movement" }
+      {
+        "url": "https://www.mas.gov.sg/regulation",
+        "pages": [],
+        "section": "Business & Capital Movement"
+      }
     ],
     "rules.bring_foreign_currency_in": [
-      { "url": "https://www.customs.gov.sg/", "pages": [], "section": "Import of Currency" }
+      {
+        "url": "https://www.customs.gov.sg/",
+        "pages": [],
+        "section": "Import of Currency"
+      }
     ],
     "rules.take_foreign_currency_out": [
-      { "url": "https://www.customs.gov.sg/", "pages": [], "section": "Export of Currency" }
+      {
+        "url": "https://www.customs.gov.sg/",
+        "pages": [],
+        "section": "Export of Currency"
+      }
     ],
     "rules.cash_declaration_threshold": [
-      { "url": "https://www.customs.gov.sg/", "pages": [], "section": "Cash Declaration Rules" }
+      {
+        "url": "https://www.customs.gov.sg/",
+        "pages": [],
+        "section": "Cash Declaration Rules"
+      }
     ],
     "rules.resident_holding_rules": [
-      { "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework", "pages": [], "section": "Resident Foreign Currency Accounts" }
+      {
+        "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework",
+        "pages": [],
+        "section": "Resident Foreign Currency Accounts"
+      }
     ],
     "rules.non_resident_rules": [
-      { "url": "https://www.mas.gov.sg/regulation", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+      {
+        "url": "https://www.mas.gov.sg/regulation",
+        "pages": [],
+        "section": "Non-Resident Accounts & Transfers"
+      }
     ],
     "rules.business_invoicing_settlement": [
-      { "url": "https://www.mas.gov.sg/regulation", "pages": [], "section": "Business & Cross-Border Payments" }
+      {
+        "url": "https://www.mas.gov.sg/regulation",
+        "pages": [],
+        "section": "Business & Cross-Border Payments"
+      }
     ],
     "rules.exchange_controls": [
-      { "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework", "pages": [], "section": "Absence of Exchange Controls" }
+      {
+        "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework",
+        "pages": [],
+        "section": "Absence of Exchange Controls"
+      }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://www.mas.gov.sg/regulation", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+      {
+        "url": "https://www.mas.gov.sg/regulation",
+        "pages": [],
+        "section": "Authorised Dealers & Exchange Houses"
+      }
     ]
   },
-
   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Singapore are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Monetary Authority of Singapore / Singapore Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Monetary Authority of Singapore or Singapore Customs before making any financial or travel decisions."
 }

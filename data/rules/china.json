@@ -7,13 +7,13 @@
   "currency_code": "CNY",
   "currency_name": "Chinese Yuan (Renminbi)",
 
-  "schema_version": "1.2",
+  "schema_version": "1.2.1",
   "page_status": "verified",
   "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": true,
+  "indexing_allowed": false,
   "source_notice": "",
 
   "country_overview": "China operates a managed floating exchange rate regime under strict capital controls administered by the State Administration of Foreign Exchange (SAFE) and the People's Bank of China (PBOC). The Renminbi is not fully convertible. Current account transactions are largely liberalised, while capital account transactions remain heavily regulated.",

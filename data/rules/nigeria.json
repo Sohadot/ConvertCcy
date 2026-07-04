@@ -6,23 +6,19 @@
   "region": "Sub-Saharan Africa",
   "currency_code": "NGN",
   "currency_name": "Nigerian Naira",
-
-  "schema_version": "1.2",
+  "schema_version": "1.2.1",
   "page_status": "verified",
   "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": true,
+  "indexing_allowed": false,
   "source_notice": "",
-
   "country_overview": "Nigeria operates a managed floating exchange rate regime administered by the Central Bank of Nigeria (CBN). The Naira is subject to significant exchange controls, particularly on capital account transactions and foreign currency access for residents.",
-
   "summary": {
     "traveler": "Travelers may bring in foreign currency without limit but must declare amounts of USD 10,000 or equivalent. Export of foreign currency is restricted and subject to CBN rules.",
     "business": "Businesses must route all significant foreign exchange transactions through authorised dealer banks. Capital repatriation and certain payments require CBN approval or documentation."
   },
-
   "rules": {
     "bring_foreign_currency_in": "Foreign currency may be brought into Nigeria without limit. Amounts of USD 10,000 or equivalent must be declared to Nigerian Customs upon arrival.",
     "take_foreign_currency_out": "Foreign currency may be taken out up to the amount declared on entry or supported by authorised dealer documentation. Residents are subject to strict CBN limits.",
@@ -33,7 +29,6 @@
     "exchange_controls": "Nigeria maintains a managed exchange regime with significant controls on capital account transactions. Current account transactions are subject to documentation and reporting requirements.",
     "banking_conversion_practicality": "Foreign exchange conversion is available only through authorised dealer banks. Access to foreign currency is tightly regulated and often subject to availability."
   },
-
   "source_authorities": [
     {
       "label": "Central Bank of Nigeria (CBN) — Foreign Exchange Regulations",
@@ -54,42 +49,90 @@
       "tier": "primary"
     }
   ],
-
   "source_map": {
     "country_overview": [
-      { "url": "https://www.cbn.gov.ng/rates/", "pages": [], "section": "FX Regime Overview" }
+      {
+        "url": "https://www.cbn.gov.ng/rates/",
+        "pages": [],
+        "section": "FX Regime Overview"
+      }
     ],
     "summary.traveler": [
-      { "url": "https://customs.gov.ng/", "pages": [], "section": "Travel & Currency Movement" }
+      {
+        "url": "https://customs.gov.ng/",
+        "pages": [],
+        "section": "Travel & Currency Movement"
+      }
     ],
     "summary.business": [
-      { "url": "https://www.cbn.gov.ng/Out/2023/FPRD/FX%20Circulars.pdf", "pages": [], "section": "Business & Capital Movement" }
+      {
+        "url": "https://www.cbn.gov.ng/Out/2023/FPRD/FX%20Circulars.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Business & Capital Movement"
+      }
     ],
     "rules.bring_foreign_currency_in": [
-      { "url": "https://customs.gov.ng/", "pages": [], "section": "Import of Currency" }
+      {
+        "url": "https://customs.gov.ng/",
+        "pages": [],
+        "section": "Import of Currency"
+      }
     ],
     "rules.take_foreign_currency_out": [
-      { "url": "https://customs.gov.ng/", "pages": [], "section": "Export of Currency" }
+      {
+        "url": "https://customs.gov.ng/",
+        "pages": [],
+        "section": "Export of Currency"
+      }
     ],
     "rules.cash_declaration_threshold": [
-      { "url": "https://customs.gov.ng/", "pages": [], "section": "Cash Declaration Rules (USD 10,000 / equivalent)" }
+      {
+        "url": "https://customs.gov.ng/",
+        "pages": [],
+        "section": "Cash Declaration Rules (USD 10,000 / equivalent)"
+      }
     ],
     "rules.resident_holding_rules": [
-      { "url": "https://www.cbn.gov.ng/rates/", "pages": [], "section": "Resident Foreign Currency Accounts" }
+      {
+        "url": "https://www.cbn.gov.ng/rates/",
+        "pages": [],
+        "section": "Resident Foreign Currency Accounts"
+      }
     ],
     "rules.non_resident_rules": [
-      { "url": "https://www.cbn.gov.ng/Out/2023/FPRD/FX%20Circulars.pdf", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+      {
+        "url": "https://www.cbn.gov.ng/Out/2023/FPRD/FX%20Circulars.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Non-Resident Accounts & Transfers"
+      }
     ],
     "rules.business_invoicing_settlement": [
-      { "url": "https://www.cbn.gov.ng/Out/2023/FPRD/FX%20Circulars.pdf", "pages": [], "section": "Business & Cross-Border Payments" }
+      {
+        "url": "https://www.cbn.gov.ng/Out/2023/FPRD/FX%20Circulars.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Business & Cross-Border Payments"
+      }
     ],
     "rules.exchange_controls": [
-      { "url": "https://www.cbn.gov.ng/rates/", "pages": [], "section": "Managed Exchange Regime" }
+      {
+        "url": "https://www.cbn.gov.ng/rates/",
+        "pages": [],
+        "section": "Managed Exchange Regime"
+      }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://www.cbn.gov.ng/rates/", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+      {
+        "url": "https://www.cbn.gov.ng/rates/",
+        "pages": [],
+        "section": "Authorised Dealers & Exchange Houses"
+      }
     ]
   },
-
   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Nigeria are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Central Bank of Nigeria / Nigerian Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Nigeria or Nigerian Customs before making any financial or travel decisions."
 }

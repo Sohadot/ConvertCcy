@@ -6,26 +6,22 @@
   "region": "Western Europe",
   "currency_code": "GBP",
   "currency_name": "British Pound Sterling",
-
-  "schema_version": "1.2",
+  "schema_version": "1.2.1",
   "page_status": "verified",
   "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": true,
+  "indexing_allowed": false,
   "source_notice": "",
-
   "country_overview": "The United Kingdom operates a fully liberalised foreign-exchange regime with no general exchange controls since 1979. The framework is governed by the Financial Conduct Authority (FCA) and HM Revenue & Customs (HMRC). There are no restrictions on current or capital account transactions for residents or non-residents.",
-
   "summary": {
     "traveler": "Travelers may bring in or take out unlimited amounts of foreign currency and British Pounds. No general currency declaration is required for normal travel amounts.",
     "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
   },
-
   "rules": {
-    "bring_foreign_currency_in": "Unlimited amounts of foreign currency and British Pounds may be brought into the UK with no general declaration requirement for travelers.",
-    "take_foreign_currency_out": "Unlimited amounts of foreign currency and British Pounds may be taken out of the UK with no general restriction or declaration requirement for travelers.",
+    "bring_foreign_currency_in": "Foreign currency and sterling may be freely imported. Advance declaration of £10,000 or more can be made to Border Force up to 72 hours before travel; declaration at the border is also permitted.",
+    "take_foreign_currency_out": "Residents and non-residents may freely export currency and sterling documented as inbound or earned. Amounts of £10,000 or more require declaration. Non-residents may repatriate their full declared inbound currency.",
     "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Movements of €10,000 or more (or equivalent) in cash or bearer negotiable instruments must be declared to HMRC under anti-money laundering rules.",
     "resident_holding_rules": "UK residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
     "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
@@ -33,7 +29,6 @@
     "exchange_controls": "The United Kingdom maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
     "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout the UK."
   },
-
   "source_authorities": [
     {
       "label": "Bank of England — Monetary & FX Framework",
@@ -54,42 +49,84 @@
       "tier": "primary"
     }
   ],
-
   "source_map": {
     "country_overview": [
-      { "url": "https://www.bankofengland.co.uk/monetary-policy", "pages": [], "section": "UK FX Regime Overview" }
+      {
+        "url": "https://www.bankofengland.co.uk/monetary-policy",
+        "pages": [],
+        "section": "UK FX Regime Overview"
+      }
     ],
     "summary.traveler": [
-      { "url": "https://www.gov.uk/bringing-cash-into-uk", "pages": [], "section": "Travel & Currency Movement" }
+      {
+        "url": "https://www.gov.uk/bringing-cash-into-uk",
+        "pages": [],
+        "section": "Travel & Currency Movement"
+      }
     ],
     "summary.business": [
-      { "url": "https://www.fca.org.uk/markets", "pages": [], "section": "Business & Capital Movement" }
+      {
+        "url": "https://www.fca.org.uk/markets",
+        "pages": [],
+        "section": "Business & Capital Movement"
+      }
     ],
     "rules.bring_foreign_currency_in": [
-      { "url": "https://www.gov.uk/bringing-cash-into-uk", "pages": [], "section": "Import of Currency" }
+      {
+        "url": "https://www.gov.uk/bringing-cash-into-uk",
+        "pages": [],
+        "section": "Import of Currency"
+      }
     ],
     "rules.take_foreign_currency_out": [
-      { "url": "https://www.gov.uk/bringing-cash-into-uk", "pages": [], "section": "Export of Currency" }
+      {
+        "url": "https://www.gov.uk/bringing-cash-into-uk",
+        "pages": [],
+        "section": "Export of Currency"
+      }
     ],
     "rules.cash_declaration_threshold": [
-      { "url": "https://www.gov.uk/bringing-cash-into-uk", "pages": [], "section": "Cash Declaration Rules (€10,000 / equivalent)" }
+      {
+        "url": "https://www.gov.uk/bringing-cash-into-uk",
+        "pages": [],
+        "section": "Cash Declaration Rules (€10,000 / equivalent)"
+      }
     ],
     "rules.resident_holding_rules": [
-      { "url": "https://www.fca.org.uk/markets", "pages": [], "section": "Resident Foreign Currency Accounts" }
+      {
+        "url": "https://www.fca.org.uk/markets",
+        "pages": [],
+        "section": "Resident Foreign Currency Accounts"
+      }
     ],
     "rules.non_resident_rules": [
-      { "url": "https://www.fca.org.uk/markets", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+      {
+        "url": "https://www.fca.org.uk/markets",
+        "pages": [],
+        "section": "Non-Resident Accounts & Transfers"
+      }
     ],
     "rules.business_invoicing_settlement": [
-      { "url": "https://www.fca.org.uk/markets", "pages": [], "section": "Business & Cross-Border Payments" }
+      {
+        "url": "https://www.fca.org.uk/markets",
+        "pages": [],
+        "section": "Business & Cross-Border Payments"
+      }
     ],
     "rules.exchange_controls": [
-      { "url": "https://www.bankofengland.co.uk/monetary-policy", "pages": [], "section": "Absence of Exchange Controls" }
+      {
+        "url": "https://www.bankofengland.co.uk/monetary-policy",
+        "pages": [],
+        "section": "Absence of Exchange Controls"
+      }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://www.fca.org.uk/markets", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+      {
+        "url": "https://www.fca.org.uk/markets",
+        "pages": [],
+        "section": "Authorised Dealers & Exchange Houses"
+      }
     ]
   },
-
   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in the United Kingdom are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable HMRC / Bank of England / FCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with HM Revenue & Customs, the Bank of England, or a qualified professional before making any financial or travel decisions."
 }
