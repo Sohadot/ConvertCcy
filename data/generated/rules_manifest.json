@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-06-11T06:02:49+00:00",
+  "generated_at": "2026-07-04T17:53:38+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 5,
-    "verified": 1,
+    "published": 8,
+    "verified": 13,
     "needs_hardening": 2,
     "secondary_review": 0,
     "skipped": 0,
-    "validation_failed": 16
+    "validation_failed": 0
   },
   "published_entries": [
     {
@@ -18,6 +18,22 @@
       "output_html": "rules/australia-foreign-currency-rules.html",
       "sitemap_eligible": true,
       "public_url": "https://convertccy.com/rules/australia-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
+      "country_slug": "canada",
+      "country_name": "Canada",
+      "output_html": "rules/canada-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/canada-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
+      "country_slug": "france",
+      "country_name": "France",
+      "output_html": "rules/france-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/france-foreign-currency-rules.html"
     },
     {
       "status": "published",
@@ -45,6 +61,14 @@
     },
     {
       "status": "published",
+      "country_slug": "pakistan",
+      "country_name": "Pakistan",
+      "output_html": "rules/pakistan-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/pakistan-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
       "country_slug": "united-arab-emirates",
       "country_name": "United Arab Emirates",
       "output_html": "rules/united-arab-emirates-foreign-currency-rules.html",
@@ -58,6 +82,90 @@
       "country_slug": "brazil",
       "country_name": "Brazil",
       "output_html": "preview/rules/verified/brazil-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "china",
+      "country_name": "China",
+      "output_html": "preview/rules/verified/china-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "indonesia",
+      "country_name": "Indonesia",
+      "output_html": "preview/rules/verified/indonesia-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "mexico",
+      "country_name": "Mexico",
+      "output_html": "preview/rules/verified/mexico-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "nigeria",
+      "country_name": "Nigeria",
+      "output_html": "preview/rules/verified/nigeria-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "saudi-arabia",
+      "country_name": "Saudi Arabia",
+      "output_html": "preview/rules/verified/saudi-arabia-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "singapore",
+      "country_name": "Singapore",
+      "output_html": "preview/rules/verified/singapore-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "south-africa",
+      "country_name": "South Africa",
+      "output_html": "preview/rules/verified/south-africa-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "south-korea",
+      "country_name": "South Korea",
+      "output_html": "preview/rules/verified/south-korea-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "switzerland",
+      "country_name": "Switzerland",
+      "output_html": "preview/rules/verified/switzerland-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "turkey",
+      "country_name": "Turkey",
+      "output_html": "preview/rules/verified/turkey-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "united-kingdom",
+      "country_name": "United Kingdom",
+      "output_html": "preview/rules/verified/united-kingdom-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
+    {
+      "status": "verified",
+      "country_slug": "united-states",
+      "country_name": "United States",
+      "output_html": "preview/rules/verified/united-states-foreign-currency-rules.html",
       "sitemap_eligible": false
     }
   ],
@@ -79,86 +187,5 @@
   ],
   "secondary_review_entries": [],
   "skipped_entries": [],
-  "validation_failed_entries": [
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "canada",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "china",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "france",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "indonesia",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "jordan",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "kuwait",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "mexico",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "nigeria",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "saudi-arabia",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "singapore",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "south-africa",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "south-korea",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "switzerland",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "turkey",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "united-kingdom",
-      "reason": "validation_failed"
-    },
-    {
-      "status": "skipped_validation_failed",
-      "country_slug": "united-states",
-      "reason": "validation_failed"
-    }
-  ]
+  "validation_failed_entries": []
 }
