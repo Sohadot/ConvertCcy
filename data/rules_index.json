@@ -20,6 +20,26 @@
     "url": "/preview/rules/verified/brazil-foreign-currency-rules.html"
   },
   {
+    "country_name": "Canada",
+    "country_slug": "canada",
+    "iso2": "CA",
+    "currency_code": "CAD",
+    "region": "North America",
+    "page_status": "published",
+    "last_reviewed": "2026-05-02",
+    "url": "/rules/canada-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "China",
+    "country_slug": "china",
+    "iso2": "CN",
+    "currency_code": "CNY",
+    "region": "East Asia",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/china-foreign-currency-rules.html"
+  },
+  {
     "country_name": "Egypt",
     "country_slug": "egypt",
     "iso2": "EG",
@@ -28,6 +48,16 @@
     "page_status": "needs_hardening",
     "last_reviewed": "2026-05-02",
     "url": "/preview/rules/needs_hardening/egypt-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "France",
+    "country_slug": "france",
+    "iso2": "FR",
+    "currency_code": "EUR",
+    "region": "Western Europe",
+    "page_status": "published",
+    "last_reviewed": "2026-05-02",
+    "url": "/rules/france-foreign-currency-rules.html"
   },
   {
     "country_name": "Germany",
@@ -50,6 +80,16 @@
     "url": "/rules/india-foreign-currency-rules.html"
   },
   {
+    "country_name": "Indonesia",
+    "country_slug": "indonesia",
+    "iso2": "ID",
+    "currency_code": "IDR",
+    "region": "Southeast Asia",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/indonesia-foreign-currency-rules.html"
+  },
+  {
     "country_name": "Japan",
     "country_slug": "japan",
     "iso2": "JP",
@@ -58,6 +98,16 @@
     "page_status": "published",
     "last_reviewed": "2026-05-02",
     "url": "/rules/japan-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Mexico",
+    "country_slug": "mexico",
+    "iso2": "MX",
+    "currency_code": "MXN",
+    "region": "Latin America",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/mexico-foreign-currency-rules.html"
   },
   {
     "country_name": "Morocco",
@@ -70,6 +120,86 @@
     "url": "/preview/rules/needs_hardening/morocco-foreign-currency-rules.html"
   },
   {
+    "country_name": "Nigeria",
+    "country_slug": "nigeria",
+    "iso2": "NG",
+    "currency_code": "NGN",
+    "region": "Sub-Saharan Africa",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/nigeria-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Pakistan",
+    "country_slug": "pakistan",
+    "iso2": "PK",
+    "currency_code": "PKR",
+    "region": "South Asia",
+    "page_status": "published",
+    "last_reviewed": "2026-05-02",
+    "url": "/rules/pakistan-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Saudi Arabia",
+    "country_slug": "saudi-arabia",
+    "iso2": "SA",
+    "currency_code": "SAR",
+    "region": "Middle East",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/saudi-arabia-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Singapore",
+    "country_slug": "singapore",
+    "iso2": "SG",
+    "currency_code": "SGD",
+    "region": "Southeast Asia",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/singapore-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "South Africa",
+    "country_slug": "south-africa",
+    "iso2": "ZA",
+    "currency_code": "ZAR",
+    "region": "Sub-Saharan Africa",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/south-africa-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "South Korea",
+    "country_slug": "south-korea",
+    "iso2": "KR",
+    "currency_code": "KRW",
+    "region": "East Asia",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/south-korea-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Switzerland",
+    "country_slug": "switzerland",
+    "iso2": "CH",
+    "currency_code": "CHF",
+    "region": "Western Europe",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/switzerland-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "Turkey",
+    "country_slug": "turkey",
+    "iso2": "TR",
+    "currency_code": "TRY",
+    "region": "Eastern Europe",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/turkey-foreign-currency-rules.html"
+  },
+  {
     "country_name": "United Arab Emirates",
     "country_slug": "united-arab-emirates",
     "iso2": "AE",
@@ -78,5 +208,25 @@
     "page_status": "published",
     "last_reviewed": "2026-05-01",
     "url": "/rules/united-arab-emirates-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "United Kingdom",
+    "country_slug": "united-kingdom",
+    "iso2": "GB",
+    "currency_code": "GBP",
+    "region": "Western Europe",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/united-kingdom-foreign-currency-rules.html"
+  },
+  {
+    "country_name": "United States",
+    "country_slug": "united-states",
+    "iso2": "US",
+    "currency_code": "USD",
+    "region": "North America",
+    "page_status": "verified",
+    "last_reviewed": "2026-05-02",
+    "url": "/preview/rules/verified/united-states-foreign-currency-rules.html"
   }
 ]
