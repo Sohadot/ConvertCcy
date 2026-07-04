@@ -6,7 +6,6 @@
   "region": "North America",
   "currency_code": "CAD",
   "currency_name": "Canadian Dollar",
-
   "schema_version": "1.2.1",
   "page_status": "published",
   "last_reviewed": "2026-05-02",
@@ -15,17 +14,14 @@
   "publication_class": "reference",
   "indexing_allowed": true,
   "source_notice": "",
-
   "country_overview": "Canada operates a fully liberalised foreign-exchange regime under the regulatory authority of the Bank of Canada and the Financial Transactions and Reports Analysis Centre of Canada (FINTRAC). There are no general exchange controls or restrictions on current or capital account transactions for residents or non-residents. The Canadian Dollar is freely convertible.",
-
   "summary": {
     "traveler": "Travelers may bring in or take out unlimited amounts of Canadian Dollars and foreign currency. Cash movements of CAD 10,000 or more must be reported to the Canada Border Services Agency.",
     "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
   },
-
   "rules": {
-    "bring_foreign_currency_in": "Travelers entering Canada can freely import unlimited amounts of Canadian Dollars and foreign currency into the country. Cash amounts of CAD 10,000 or more must be reported to the Canada Border Services Agency at the point of entry.",
-    "take_foreign_currency_out": "Travelers leaving Canada can freely export unlimited amounts of Canadian Dollars and foreign currency from the country. Cash amounts of CAD 10,000 or more must be reported to the Canada Border Services Agency at the point of exit.",
+    "bring_foreign_currency_in": "Foreign currency may be freely imported into Canada without restriction. Reporting of CAD 10,000 or more is mandatory and should be made using form E677 to CBSA before clearance, either at airport pre-security (for air) or at the border checkpoint (land/rail/boat).",
+    "take_foreign_currency_out": "Residents and non-residents may freely export foreign currency previously declared or documented. Canadian residents exporting CAD 10,000 or more must report to CBSA (form E677). Non-residents need only verify the amount was lawfully imported. No repatriation restrictions apply.",
     "cash_declaration_threshold": "CAD 10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Reporting is mandatory to the Canada Border Services Agency.",
     "resident_holding_rules": "Canadian residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
     "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
@@ -33,7 +29,6 @@
     "exchange_controls": "Canada maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
     "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks and authorised dealers throughout Canada."
   },
-
   "source_authorities": [
     {
       "label": "Bank of Canada — Monetary Policy & FX Framework",
@@ -43,7 +38,7 @@
     },
     {
       "label": "Canada Border Services Agency (CBSA) — Currency Reporting",
-      "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html",
+      "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
       "type": "customs",
       "tier": "primary"
     },
@@ -54,20 +49,84 @@
       "tier": "primary"
     }
   ],
-
   "source_map": {
-    "country_overview": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "FX Regime Overview" }],
-    "summary.traveler": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Travel & Currency Movement" }],
-    "summary.business": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Business & Capital Movement" }],
-    "rules.bring_foreign_currency_in": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Import of Currency" }],
-    "rules.take_foreign_currency_out": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Export of Currency" }],
-    "rules.cash_declaration_threshold": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Cash Reporting Rules (CAD 10,000 / equivalent)" }],
-    "rules.resident_holding_rules": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Resident Foreign Currency Accounts" }],
-    "rules.non_resident_rules": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Non-Resident Accounts & Transfers" }],
-    "rules.business_invoicing_settlement": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Business & Cross-Border Payments" }],
-    "rules.exchange_controls": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Absence of Exchange Controls" }],
-    "rules.banking_conversion_practicality": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Authorised Dealers & Exchange Houses" }]
+    "country_overview": [
+      {
+        "url": "https://www.bankofcanada.ca/",
+        "pages": [],
+        "section": "FX Regime Overview"
+      }
+    ],
+    "summary.traveler": [
+      {
+        "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+        "pages": [],
+        "section": "Travel & Currency Movement"
+      }
+    ],
+    "summary.business": [
+      {
+        "url": "https://www.bankofcanada.ca/",
+        "pages": [],
+        "section": "Business & Capital Movement"
+      }
+    ],
+    "rules.bring_foreign_currency_in": [
+      {
+        "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+        "pages": [],
+        "section": "Import of Currency"
+      }
+    ],
+    "rules.take_foreign_currency_out": [
+      {
+        "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+        "pages": [],
+        "section": "Export of Currency"
+      }
+    ],
+    "rules.cash_declaration_threshold": [
+      {
+        "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+        "pages": [],
+        "section": "Cash Reporting Rules (CAD 10,000 / equivalent)"
+      }
+    ],
+    "rules.resident_holding_rules": [
+      {
+        "url": "https://www.bankofcanada.ca/",
+        "pages": [],
+        "section": "Resident Foreign Currency Accounts"
+      }
+    ],
+    "rules.non_resident_rules": [
+      {
+        "url": "https://www.bankofcanada.ca/",
+        "pages": [],
+        "section": "Non-Resident Accounts & Transfers"
+      }
+    ],
+    "rules.business_invoicing_settlement": [
+      {
+        "url": "https://www.bankofcanada.ca/",
+        "pages": [],
+        "section": "Business & Cross-Border Payments"
+      }
+    ],
+    "rules.exchange_controls": [
+      {
+        "url": "https://www.bankofcanada.ca/",
+        "pages": [],
+        "section": "Absence of Exchange Controls"
+      }
+    ],
+    "rules.banking_conversion_practicality": [
+      {
+        "url": "https://www.bankofcanada.ca/",
+        "pages": [],
+        "section": "Authorised Dealers & Exchange Houses"
+      }
+    ]
   },
-
   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Canada are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Bank of Canada / CBSA / FINTRAC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Canada Border Services Agency, Bank of Canada, or a qualified professional before making any financial or travel decisions."
 }

@@ -7,13 +7,13 @@
   "currency_code": "CNY",
   "currency_name": "Chinese Yuan (Renminbi)",
 
-  "schema_version": "1.2",
+  "schema_version": "1.2.1",
   "page_status": "verified",
   "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": true,
+  "indexing_allowed": false,
   "source_notice": "",
 
   "country_overview": "China operates a managed floating exchange rate regime under strict capital controls administered by the State Administration of Foreign Exchange (SAFE) and the People's Bank of China (PBOC). The Renminbi is not fully convertible. Current account transactions are largely liberalised, while capital account transactions remain heavily regulated.",
@@ -49,7 +49,7 @@
     },
     {
       "label": "General Administration of Customs — Currency Declaration",
-      "url": "http://english.customs.gov.cn/",
+      "url": "https://english.customs.gov.cn/",
       "type": "customs",
       "tier": "primary"
     }
@@ -60,19 +60,19 @@
       { "url": "https://www.safe.gov.cn/en/", "pages": [], "section": "FX Regime Overview" }
     ],
     "summary.traveler": [
-      { "url": "http://english.customs.gov.cn/", "pages": [], "section": "Travel & Currency Movement" }
+      { "url": "https://english.customs.gov.cn/", "pages": [], "section": "Travel & Currency Movement" }
     ],
     "summary.business": [
       { "url": "https://www.safe.gov.cn/en/", "pages": [], "section": "Business & Capital Movement" }
     ],
     "rules.bring_foreign_currency_in": [
-      { "url": "http://english.customs.gov.cn/", "pages": [], "section": "Import of Currency" }
+      { "url": "https://english.customs.gov.cn/", "pages": [], "section": "Import of Currency" }
     ],
     "rules.take_foreign_currency_out": [
-      { "url": "http://english.customs.gov.cn/", "pages": [], "section": "Export of Currency" }
+      { "url": "https://english.customs.gov.cn/", "pages": [], "section": "Export of Currency" }
     ],
     "rules.cash_declaration_threshold": [
-      { "url": "http://english.customs.gov.cn/", "pages": [], "section": "Cash Declaration Rules (USD 5,000 / equivalent)" }
+      { "url": "https://english.customs.gov.cn/", "pages": [], "section": "Cash Declaration Rules (USD 5,000 / equivalent)" }
     ],
     "rules.resident_holding_rules": [
       { "url": "https://www.safe.gov.cn/en/", "pages": [], "section": "Resident Foreign Currency Accounts" }

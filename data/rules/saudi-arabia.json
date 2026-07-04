@@ -6,26 +6,22 @@
   "region": "Middle East",
   "currency_code": "SAR",
   "currency_name": "Saudi Riyal",
-
-  "schema_version": "1.2",
+  "schema_version": "1.2.1",
   "page_status": "verified",
   "last_reviewed": "2026-05-02",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": true,
+  "indexing_allowed": false,
   "source_notice": "",
-
   "country_overview": "Saudi Arabia operates a highly liberalised foreign-exchange regime administered by the Saudi Arabian Monetary Authority (SAMA). The Saudi Riyal is pegged to the US Dollar at a fixed rate of 3.75. There are no general exchange controls or restrictions on capital movement for residents or non-residents.",
-
   "summary": {
     "traveler": "Travelers may bring in or take out unlimited amounts of foreign currency and Saudi Riyal. No general currency declaration is required for normal travel amounts.",
     "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
   },
-
   "rules": {
-    "bring_foreign_currency_in": "Unlimited amounts of foreign currency and Saudi Riyal may be brought into Saudi Arabia with no general declaration requirement for travelers.",
-    "take_foreign_currency_out": "Unlimited amounts of foreign currency and Saudi Riyal may be taken out of Saudi Arabia with no general restriction or declaration requirement for travelers.",
+    "bring_foreign_currency_in": "Foreign currency and Saudi Riyal may be imported freely. While formal advance declaration is not required, large amounts may trigger anti-money laundering monitoring by customs or receiving banks.",
+    "take_foreign_currency_out": "Residents may export domestic remittances and documented business proceeds through authorized banking channels. Non-residents may freely repatriate funds they documented as inbound income. Large or undocumented outflows are subject to CBJ oversight.",
     "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Large or suspicious cash movements are subject to anti-money laundering reporting requirements by financial institutions.",
     "resident_holding_rules": "Saudi residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
     "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
@@ -33,17 +29,16 @@
     "exchange_controls": "Saudi Arabia maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
     "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout the Kingdom."
   },
-
   "source_authorities": [
     {
       "label": "Saudi Arabian Monetary Authority (SAMA) — Exchange Rate & FX Regime",
-      "url": "https://www.sama.gov.sa/en-us/exchangerate/pages/default.aspx",
+      "url": "https://www.sama.gov.sa/en-US/Currency/FinExc/Pages/Currency.aspx",
       "type": "central_bank",
       "tier": "primary"
     },
     {
       "label": "SAMA — Foreign Exchange Regulations & Liberalisation",
-      "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx",
+      "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx",
       "type": "primary_regulator",
       "tier": "primary"
     },
@@ -54,42 +49,84 @@
       "tier": "primary"
     }
   ],
-
   "source_map": {
     "country_overview": [
-      { "url": "https://www.sama.gov.sa/en-us/exchangerate/pages/default.aspx", "pages": [], "section": "Official SAR Peg & FX Regime" }
+      {
+        "url": "https://www.sama.gov.sa/en-US/Currency/FinExc/Pages/Currency.aspx",
+        "pages": [],
+        "section": "Official SAR Peg & FX Regime"
+      }
     ],
     "summary.traveler": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Travel & Currency Movement" }
+      {
+        "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx",
+        "pages": [],
+        "section": "Travel & Currency Movement"
+      }
     ],
     "summary.business": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Business & Capital Movement" }
+      {
+        "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx",
+        "pages": [],
+        "section": "Business & Capital Movement"
+      }
     ],
     "rules.bring_foreign_currency_in": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Import of Currency" }
+      {
+        "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx",
+        "pages": [],
+        "section": "Import of Currency"
+      }
     ],
     "rules.take_foreign_currency_out": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Export of Currency" }
+      {
+        "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx",
+        "pages": [],
+        "section": "Export of Currency"
+      }
     ],
     "rules.cash_declaration_threshold": [
-      { "url": "https://zatca.gov.sa/en/Pages/default.aspx", "pages": [], "section": "Travel & Currency Declaration Rules" }
+      {
+        "url": "https://zatca.gov.sa/en/Pages/default.aspx",
+        "pages": [],
+        "section": "Travel & Currency Declaration Rules"
+      }
     ],
     "rules.resident_holding_rules": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Resident Foreign Currency Accounts" }
+      {
+        "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx",
+        "pages": [],
+        "section": "Resident Foreign Currency Accounts"
+      }
     ],
     "rules.non_resident_rules": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+      {
+        "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx",
+        "pages": [],
+        "section": "Non-Resident Accounts & Transfers"
+      }
     ],
     "rules.business_invoicing_settlement": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Business & Cross-Border Payments" }
+      {
+        "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx",
+        "pages": [],
+        "section": "Business & Cross-Border Payments"
+      }
     ],
     "rules.exchange_controls": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Absence of Exchange Controls" }
+      {
+        "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx",
+        "pages": [],
+        "section": "Absence of Exchange Controls"
+      }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+      {
+        "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx",
+        "pages": [],
+        "section": "Authorised Dealers & Exchange Houses"
+      }
     ]
   },
-
   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Saudi Arabia are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable SAMA/ZATCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Saudi Arabian Monetary Authority, ZATCA, or a qualified professional before making any financial or travel decisions."
 }

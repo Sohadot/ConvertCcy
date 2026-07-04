@@ -37,7 +37,7 @@
   "source_authorities": [
     {
       "label": "Ministry of Finance (MOF) Japan — Foreign Exchange Regulations",
-      "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html",
+      "url": "https://www.mof.go.jp/english/policy/international_policy/index.html",
       "type": "primary_regulator",
       "tier": "primary"
     },
@@ -56,16 +56,16 @@
   ],
 
   "source_map": {
-    "country_overview": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html", "pages": [], "section": "FX Regime Overview" }],
+    "country_overview": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/index.html", "pages": [], "section": "FX Regime Overview" }],
     "summary.traveler": [{ "url": "https://www.customs.go.jp/english/", "pages": [], "section": "Travel & Currency Movement" }],
-    "summary.business": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html", "pages": [], "section": "Business & Capital Movement" }],
+    "summary.business": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/index.html", "pages": [], "section": "Business & Capital Movement" }],
     "rules.bring_foreign_currency_in": [{ "url": "https://www.customs.go.jp/english/", "pages": [], "section": "Import of Currency" }],
     "rules.take_foreign_currency_out": [{ "url": "https://www.customs.go.jp/english/", "pages": [], "section": "Export of Currency" }],
     "rules.cash_declaration_threshold": [{ "url": "https://www.customs.go.jp/english/", "pages": [], "section": "Cash Reporting Rules" }],
-    "rules.resident_holding_rules": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html", "pages": [], "section": "Resident Foreign Currency Accounts" }],
-    "rules.non_resident_rules": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html", "pages": [], "section": "Non-Resident Accounts & Transfers" }],
-    "rules.business_invoicing_settlement": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html", "pages": [], "section": "Business & Cross-Border Payments" }],
-    "rules.exchange_controls": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/fx/index.html", "pages": [], "section": "Absence of Exchange Controls" }],
+    "rules.resident_holding_rules": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/index.html", "pages": [], "section": "Resident Foreign Currency Accounts" }],
+    "rules.non_resident_rules": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/index.html", "pages": [], "section": "Non-Resident Accounts & Transfers" }],
+    "rules.business_invoicing_settlement": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/index.html", "pages": [], "section": "Business & Cross-Border Payments" }],
+    "rules.exchange_controls": [{ "url": "https://www.mof.go.jp/english/policy/international_policy/index.html", "pages": [], "section": "Absence of Exchange Controls" }],
     "rules.banking_conversion_practicality": [{ "url": "https://www.boj.or.jp/en/index.htm", "pages": [], "section": "Authorised Dealers & Exchange Houses" }]
   },
 
