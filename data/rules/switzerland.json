@@ -37,7 +37,7 @@
   "source_authorities": [
     {
       "label": "Swiss National Bank (SNB) — Foreign Exchange & Monetary Policy",
-      "url": "https://www.snb.ch/en/topics/monetary-policy",
+      "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy",
       "type": "central_bank",
       "tier": "primary"
     },
@@ -57,7 +57,7 @@
 
   "source_map": {
     "country_overview": [
-      { "url": "https://www.snb.ch/en/topics/monetary-policy", "pages": [], "section": "FX Regime Overview" }
+      { "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy", "pages": [], "section": "FX Regime Overview" }
     ],
     "summary.traveler": [
       { "url": "https://www.ezv.admin.ch/ezv/en/home.html", "pages": [], "section": "Travel & Currency Movement" }
@@ -75,7 +75,7 @@
       { "url": "https://www.ezv.admin.ch/ezv/en/home.html", "pages": [], "section": "Cash Declaration Rules" }
     ],
     "rules.resident_holding_rules": [
-      { "url": "https://www.snb.ch/en/topics/monetary-policy", "pages": [], "section": "Resident Foreign Currency Accounts" }
+      { "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy", "pages": [], "section": "Resident Foreign Currency Accounts" }
     ],
     "rules.non_resident_rules": [
       { "url": "https://www.finma.ch/en/", "pages": [], "section": "Non-Resident Accounts & Transfers" }
@@ -84,10 +84,10 @@
       { "url": "https://www.finma.ch/en/", "pages": [], "section": "Business & Cross-Border Payments" }
     ],
     "rules.exchange_controls": [
-      { "url": "https://www.snb.ch/en/topics/monetary-policy", "pages": [], "section": "Absence of Exchange Controls" }
+      { "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy", "pages": [], "section": "Absence of Exchange Controls" }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://www.snb.ch/en/topics/monetary-policy", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+      { "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
     ]
   },
 

@@ -37,7 +37,7 @@
   "source_authorities": [
     {
       "label": "Monetary Authority of Singapore (MAS) — Foreign Exchange Policy",
-      "url": "https://www.mas.gov.sg/regulation/foreign-exchange",
+      "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework",
       "type": "central_bank",
       "tier": "primary"
     },
@@ -57,7 +57,7 @@
 
   "source_map": {
     "country_overview": [
-      { "url": "https://www.mas.gov.sg/regulation/foreign-exchange", "pages": [], "section": "FX Regime Overview" }
+      { "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework", "pages": [], "section": "FX Regime Overview" }
     ],
     "summary.traveler": [
       { "url": "https://www.customs.gov.sg/", "pages": [], "section": "Travel & Currency Movement" }
@@ -75,7 +75,7 @@
       { "url": "https://www.customs.gov.sg/", "pages": [], "section": "Cash Declaration Rules" }
     ],
     "rules.resident_holding_rules": [
-      { "url": "https://www.mas.gov.sg/regulation/foreign-exchange", "pages": [], "section": "Resident Foreign Currency Accounts" }
+      { "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework", "pages": [], "section": "Resident Foreign Currency Accounts" }
     ],
     "rules.non_resident_rules": [
       { "url": "https://www.mas.gov.sg/regulation", "pages": [], "section": "Non-Resident Accounts & Transfers" }
@@ -84,7 +84,7 @@
       { "url": "https://www.mas.gov.sg/regulation", "pages": [], "section": "Business & Cross-Border Payments" }
     ],
     "rules.exchange_controls": [
-      { "url": "https://www.mas.gov.sg/regulation/foreign-exchange", "pages": [], "section": "Absence of Exchange Controls" }
+      { "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework", "pages": [], "section": "Absence of Exchange Controls" }
     ],
     "rules.banking_conversion_practicality": [
       { "url": "https://www.mas.gov.sg/regulation", "pages": [], "section": "Authorised Dealers & Exchange Houses" }

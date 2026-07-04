@@ -37,36 +37,42 @@
   "source_authorities": [
     {
       "label": "Deutsche Bundesbank — Foreign Exchange & Euro Regime",
-      "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange",
+      "url": "https://www.bundesbank.de/en/tasks/monetary-policy",
       "type": "central_bank",
       "tier": "primary"
     },
     {
       "label": "German Customs (Zoll) — Cash Declaration Rules",
-      "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/restrictions-on-imports-and-exports/restrictions-on-imports-and-exports_node.html",
+      "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/Restrictions/Cash/Entering-Germany-from-non-EU-country/entering-germany-from-non-eu-country.html",
+      "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "German Customs (Zoll) — Cash When Leaving Germany",
+      "url": "https://www.zoll.de/EN/Private-individuals/Travel/Leaving-Germany/Restrictions/Cash/cash.html",
       "type": "customs",
       "tier": "primary"
     },
     {
       "label": "European Central Bank — Eurozone FX Framework",
-      "url": "https://www.ecb.europa.eu/ecb/tasks/policy/html/index.en.html",
+      "url": "https://www.ecb.europa.eu/mopo/html/index.en.html",
       "type": "central_bank",
       "tier": "primary"
     }
   ],
 
   "source_map": {
-    "country_overview": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange", "pages": [], "section": "Eurozone FX Regime Overview" }],
-    "summary.traveler": [{ "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/restrictions-on-imports-and-exports/restrictions-on-imports-and-exports_node.html", "pages": [], "section": "Travel & Currency Movement" }],
-    "summary.business": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange", "pages": [], "section": "Business & Capital Movement" }],
-    "rules.bring_foreign_currency_in": [{ "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/restrictions-on-imports-and-exports/restrictions-on-imports-and-exports_node.html", "pages": [], "section": "Import of Currency" }],
-    "rules.take_foreign_currency_out": [{ "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/restrictions-on-imports-and-exports/restrictions-on-imports-and-exports_node.html", "pages": [], "section": "Export of Currency" }],
-    "rules.cash_declaration_threshold": [{ "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/restrictions-on-imports-and-exports/restrictions-on-imports-and-exports_node.html", "pages": [], "section": "Cash Declaration Rules (€10,000 / equivalent)" }],
-    "rules.resident_holding_rules": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange", "pages": [], "section": "Resident Foreign Currency Accounts" }],
-    "rules.non_resident_rules": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange", "pages": [], "section": "Non-Resident Accounts & Transfers" }],
-    "rules.business_invoicing_settlement": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange", "pages": [], "section": "Business & Cross-Border Payments" }],
-    "rules.exchange_controls": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange", "pages": [], "section": "Absence of Exchange Controls" }],
-    "rules.banking_conversion_practicality": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy/foreign-exchange", "pages": [], "section": "Authorised Dealers & Exchange Houses" }]
+    "country_overview": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy", "pages": [], "section": "Eurozone FX Regime Overview" }],
+    "summary.traveler": [{ "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/Restrictions/Cash/Entering-Germany-from-non-EU-country/entering-germany-from-non-eu-country.html", "pages": [], "section": "Travel & Currency Movement" }],
+    "summary.business": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy", "pages": [], "section": "Business & Capital Movement" }],
+    "rules.bring_foreign_currency_in": [{ "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/Restrictions/Cash/Entering-Germany-from-non-EU-country/entering-germany-from-non-eu-country.html", "pages": [], "section": "Import of Currency" }],
+    "rules.take_foreign_currency_out": [{ "url": "https://www.zoll.de/EN/Private-individuals/Travel/Leaving-Germany/Restrictions/Cash/cash.html", "pages": [], "section": "Export of Currency" }],
+    "rules.cash_declaration_threshold": [{ "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/Restrictions/Cash/Entering-Germany-from-non-EU-country/entering-germany-from-non-eu-country.html", "pages": [], "section": "Cash Declaration Rules (€10,000 / equivalent)" }],
+    "rules.resident_holding_rules": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy", "pages": [], "section": "Resident Foreign Currency Accounts" }],
+    "rules.non_resident_rules": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy", "pages": [], "section": "Non-Resident Accounts & Transfers" }],
+    "rules.business_invoicing_settlement": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy", "pages": [], "section": "Business & Cross-Border Payments" }],
+    "rules.exchange_controls": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy", "pages": [], "section": "Absence of Exchange Controls" }],
+    "rules.banking_conversion_practicality": [{ "url": "https://www.bundesbank.de/en/tasks/monetary-policy", "pages": [], "section": "Authorised Dealers & Exchange Houses" }]
   },
 
   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Germany are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Deutsche Bundesbank / German Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with German Customs (Zoll), Deutsche Bundesbank, or a qualified professional before making any financial or travel decisions."

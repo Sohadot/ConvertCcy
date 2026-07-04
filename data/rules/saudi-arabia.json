@@ -37,13 +37,13 @@
   "source_authorities": [
     {
       "label": "Saudi Arabian Monetary Authority (SAMA) — Exchange Rate & FX Regime",
-      "url": "https://www.sama.gov.sa/en-us/exchangerate/pages/default.aspx",
+      "url": "https://www.sama.gov.sa/en-US/Currency/FinExc/Pages/Currency.aspx",
       "type": "central_bank",
       "tier": "primary"
     },
     {
       "label": "SAMA — Foreign Exchange Regulations & Liberalisation",
-      "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx",
+      "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx",
       "type": "primary_regulator",
       "tier": "primary"
     },
@@ -57,37 +57,37 @@
 
   "source_map": {
     "country_overview": [
-      { "url": "https://www.sama.gov.sa/en-us/exchangerate/pages/default.aspx", "pages": [], "section": "Official SAR Peg & FX Regime" }
+      { "url": "https://www.sama.gov.sa/en-US/Currency/FinExc/Pages/Currency.aspx", "pages": [], "section": "Official SAR Peg & FX Regime" }
     ],
     "summary.traveler": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Travel & Currency Movement" }
+      { "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx", "pages": [], "section": "Travel & Currency Movement" }
     ],
     "summary.business": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Business & Capital Movement" }
+      { "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx", "pages": [], "section": "Business & Capital Movement" }
     ],
     "rules.bring_foreign_currency_in": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Import of Currency" }
+      { "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx", "pages": [], "section": "Import of Currency" }
     ],
     "rules.take_foreign_currency_out": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Export of Currency" }
+      { "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx", "pages": [], "section": "Export of Currency" }
     ],
     "rules.cash_declaration_threshold": [
       { "url": "https://zatca.gov.sa/en/Pages/default.aspx", "pages": [], "section": "Travel & Currency Declaration Rules" }
     ],
     "rules.resident_holding_rules": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Resident Foreign Currency Accounts" }
+      { "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx", "pages": [], "section": "Resident Foreign Currency Accounts" }
     ],
     "rules.non_resident_rules": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+      { "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx", "pages": [], "section": "Non-Resident Accounts & Transfers" }
     ],
     "rules.business_invoicing_settlement": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Business & Cross-Border Payments" }
+      { "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx", "pages": [], "section": "Business & Cross-Border Payments" }
     ],
     "rules.exchange_controls": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Absence of Exchange Controls" }
+      { "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx", "pages": [], "section": "Absence of Exchange Controls" }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://www.sama.gov.sa/en-us/financialsector/pages/foreignexchange.aspx", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+      { "url": "https://www.sama.gov.sa/en-US/Laws/Pages/default.aspx", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
     ]
   },
 

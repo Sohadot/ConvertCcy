@@ -43,7 +43,7 @@
     },
     {
       "label": "Canada Border Services Agency (CBSA) — Currency Reporting",
-      "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html",
+      "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
       "type": "customs",
       "tier": "primary"
     },
@@ -57,11 +57,11 @@
 
   "source_map": {
     "country_overview": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "FX Regime Overview" }],
-    "summary.traveler": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Travel & Currency Movement" }],
+    "summary.traveler": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html", "pages": [], "section": "Travel & Currency Movement" }],
     "summary.business": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Business & Capital Movement" }],
-    "rules.bring_foreign_currency_in": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Import of Currency" }],
-    "rules.take_foreign_currency_out": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Export of Currency" }],
-    "rules.cash_declaration_threshold": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/curr-monna-eng.html", "pages": [], "section": "Cash Reporting Rules (CAD 10,000 / equivalent)" }],
+    "rules.bring_foreign_currency_in": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html", "pages": [], "section": "Import of Currency" }],
+    "rules.take_foreign_currency_out": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html", "pages": [], "section": "Export of Currency" }],
+    "rules.cash_declaration_threshold": [{ "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html", "pages": [], "section": "Cash Reporting Rules (CAD 10,000 / equivalent)" }],
     "rules.resident_holding_rules": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Resident Foreign Currency Accounts" }],
     "rules.non_resident_rules": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Non-Resident Accounts & Transfers" }],
     "rules.business_invoicing_settlement": [{ "url": "https://www.bankofcanada.ca/", "pages": [], "section": "Business & Cross-Border Payments" }],

@@ -43,13 +43,13 @@
     },
     {
       "label": "HM Revenue & Customs (HMRC) — Cash & Currency Declaration",
-      "url": "https://www.gov.uk/government/publications/cash-controls-cash-declaration-form",
+      "url": "https://www.gov.uk/bringing-cash-into-uk",
       "type": "customs",
       "tier": "primary"
     },
     {
       "label": "Financial Conduct Authority (FCA) — Foreign Exchange Regulation",
-      "url": "https://www.fca.org.uk/firms/foreign-exchange",
+      "url": "https://www.fca.org.uk/markets",
       "type": "primary_regulator",
       "tier": "primary"
     }
@@ -60,34 +60,34 @@
       { "url": "https://www.bankofengland.co.uk/monetary-policy", "pages": [], "section": "UK FX Regime Overview" }
     ],
     "summary.traveler": [
-      { "url": "https://www.gov.uk/government/publications/cash-controls-cash-declaration-form", "pages": [], "section": "Travel & Currency Movement" }
+      { "url": "https://www.gov.uk/bringing-cash-into-uk", "pages": [], "section": "Travel & Currency Movement" }
     ],
     "summary.business": [
-      { "url": "https://www.fca.org.uk/firms/foreign-exchange", "pages": [], "section": "Business & Capital Movement" }
+      { "url": "https://www.fca.org.uk/markets", "pages": [], "section": "Business & Capital Movement" }
     ],
     "rules.bring_foreign_currency_in": [
-      { "url": "https://www.gov.uk/government/publications/cash-controls-cash-declaration-form", "pages": [], "section": "Import of Currency" }
+      { "url": "https://www.gov.uk/bringing-cash-into-uk", "pages": [], "section": "Import of Currency" }
     ],
     "rules.take_foreign_currency_out": [
-      { "url": "https://www.gov.uk/government/publications/cash-controls-cash-declaration-form", "pages": [], "section": "Export of Currency" }
+      { "url": "https://www.gov.uk/bringing-cash-into-uk", "pages": [], "section": "Export of Currency" }
     ],
     "rules.cash_declaration_threshold": [
-      { "url": "https://www.gov.uk/government/publications/cash-controls-cash-declaration-form", "pages": [], "section": "Cash Declaration Rules (€10,000 / equivalent)" }
+      { "url": "https://www.gov.uk/bringing-cash-into-uk", "pages": [], "section": "Cash Declaration Rules (€10,000 / equivalent)" }
     ],
     "rules.resident_holding_rules": [
-      { "url": "https://www.fca.org.uk/firms/foreign-exchange", "pages": [], "section": "Resident Foreign Currency Accounts" }
+      { "url": "https://www.fca.org.uk/markets", "pages": [], "section": "Resident Foreign Currency Accounts" }
     ],
     "rules.non_resident_rules": [
-      { "url": "https://www.fca.org.uk/firms/foreign-exchange", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+      { "url": "https://www.fca.org.uk/markets", "pages": [], "section": "Non-Resident Accounts & Transfers" }
     ],
     "rules.business_invoicing_settlement": [
-      { "url": "https://www.fca.org.uk/firms/foreign-exchange", "pages": [], "section": "Business & Cross-Border Payments" }
+      { "url": "https://www.fca.org.uk/markets", "pages": [], "section": "Business & Cross-Border Payments" }
     ],
     "rules.exchange_controls": [
       { "url": "https://www.bankofengland.co.uk/monetary-policy", "pages": [], "section": "Absence of Exchange Controls" }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://www.fca.org.uk/firms/foreign-exchange", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+      { "url": "https://www.fca.org.uk/markets", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
     ]
   },
 
