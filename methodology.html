@@ -456,12 +456,12 @@
       <div class="grid">
         <div class="card">
           <p>
-            If the primary live source cannot be reached, ConvertCCY may use predefined fallback rate values in order to preserve functional continuity across the converter and certain pair-page experiences. This fallback behavior exists to prevent total failure of the interface when the external source is temporarily unavailable.
+            The converter and pair pages request the live source first, time-boxed so a slow or unresponsive endpoint cannot leave the interface hanging. If the live source cannot be reached in time, ConvertCCY falls back to a <strong>dated reference snapshot</strong> — a capture of reference rates with an explicit as-of date and a named source, published openly at <a href="/rates/snapshot.json">/rates/snapshot.json</a>. When a snapshot value is shown, it is labelled as a snapshot with its date, never presented as live.
           </p>
         </div>
         <div class="card">
           <p>
-            Fallback values should be treated more cautiously than live values. Their purpose is continuity, not precision leadership. For that reason, fallback logic should be interpreted as a resilience mechanism, not as a substitute for institution-confirmed pricing when money is actually moving.
+            Snapshot values should be treated more cautiously than live values. Their purpose is continuity, not precision leadership, and the snapshot is an indicative reference capture — not a dealing rate and not relicensed source data. If neither the live source nor the snapshot can be reached, the interface states plainly that the rate is unavailable rather than displaying a placeholder or misleading number.
           </p>
         </div>
       </div>
