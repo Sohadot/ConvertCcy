@@ -257,6 +257,42 @@ Probing a brand-new URL *before* its deploy finishes poisons the Cloudflare cach
 
 ---
 
+## Phase 8 — Pair-Page Enrichment (P4)
+**Status:** Ready to merge (branch: claude/p4-pair-page-enrichment)
+
+### Context
+R1 (highest structural risk in the audit): ~28,730 pair pages at 78–86% textual similarity — the profile search engines classify as scaled/thin content. Standing rule #9 forbids abrupt SEO shocks, so the mandate is **enrich, don't delete**.
+
+### Decision: inject per-pair, evidence-bound "Currency Passage & Jurisdiction Rules" intelligence
+
+Every pair page now carries a section that no template clone shares, generated at build time from the governed layer:
+
+- **Governed block** (when a currency's country is published in the sovereign layer — 7 currencies: AED, AUD, CAD, EUR, INR, JPY, PKR): the transcribed declaration threshold(s) and exchange-control posture, with links to the source-mapped `/rules/` entry and the relevant ontology classes. EUR correctly maps to both France and Germany.
+- **Honest factual block** (otherwise): ISO code + symbol only, with an explicit statement that no governed entry exists yet — **no fabricated jurisdictional claims** (the same evidence-over-assertion rule enforced in P2/P3).
+- **Corridor CTA**: when both currencies map to exactly one published jurisdiction, the page may show a pre-filled Passage Check deep-link (`/passage-check.html?from=<slug>&to=<slug>`). If either currency maps to multiple published jurisdictions (e.g. EUR → France, Germany), the page links to Passage Check **without** pre-filling, so the user chooses the exact route — a currency pair is not automatically a jurisdictional corridor. Pairs with no governed endpoint get a generic Passage Check link.
+- **Per-pair macro context**: the existing `macro_context` field (unique per pair) is now surfaced, adding genuine unique prose.
+
+2,324 pages carry at least one governed block; all 28,730 carry the section.
+
+### Engine deep-linking (P3 companion change)
+`passage-check.html` now reads `?from&to&amount&ccy&res` query params, pre-selects, and auto-runs — but only for values that match published jurisdictions/currencies (anything else is ignored), so a stale or hand-edited link can never fabricate a scenario.
+
+### Sitemap made complete and generator-authoritative (SEO integrity)
+Discovered a pre-existing gap: `build_sitemap()` only emitted pairs + static core, while the live sitemap had the articles (7 URLs) and the published rules layer (9 URLs) **hand-merged** after generation. A naive regenerate would have silently dropped the entire sovereign rules layer and all articles from the sitemap. Fixed `build_sitemap()` to emit, from files present on disk: home, static/authority pages, the intelligence layer (governance, standard, ontology hub + 8 class pages, Passage Check), articles hub + posts, the **published** `/rules/` layer only (never `/preview/`), and all pair pages. Net vs the committed sitemap: **0 removed**, +12 (the P1/P2/P3 authority pages, now discoverable). The sitemap no longer needs a manual merge step.
+
+### Discipline & verification
+- No change to canonical tags, robots, indexing flags, or pair URLs (0 added / 0 removed among pair URLs — no SEO shock).
+- All injected values HTML-escaped (XSS-safe); no new external dependencies or network calls; governed data baked at build time.
+- Full build: 28,730 pages in ~12s. Random 250-page sample: 0 malformed, 3/3 JSON-LD blocks intact on every page, 0 broken internal links, 0 missing sections.
+- Browser-verified: enriched pair page renders; Passage Check deep-link auto-runs the correct corridor with no page errors.
+
+### Standing decisions from P4
+- Pair-page enrichment is generator-driven; never hand-edit `pages/*.html`.
+- The governed block only ever shows currencies whose country is published; coverage grows automatically as the sovereign layer grows (the generator reads `rules/passage-check.json`).
+- `build_sitemap()` is now the single source of truth for the sitemap — no manual fragment merge.
+
+---
+
 ## Standing rules (all phases)
 
 - One concern = one PR = one branch

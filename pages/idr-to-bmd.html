@@ -191,7 +191,23 @@ tbody td:last-child{color:var(--accent);font-weight:500}
 footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
 footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--text)}
-@media(max-width:640px){.conv-row{grid-template-columns:1fr}.swap-btn{width:100%;height:36px;border-radius:10px}nav{padding:1rem}.page-wrap{padding:2rem 1rem}}
+.pj-section .sec-h2{margin-bottom:.6rem}
+.pj-macro{font-size:.9rem;color:var(--muted);margin-bottom:1rem}
+.pj-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1rem 0}
+.pj-block{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.2rem}
+.pj-gov{border-color:#c4dfd0;background:var(--accent-light)}
+.pj-head{font-weight:600;font-size:.92rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.pj-badge{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:6px;padding:2px 7px}
+.pj-line{font-size:.85rem;color:var(--text);line-height:1.6;margin-bottom:.35rem}
+.pj-muted{color:var(--muted)}
+.pj-links{font-family:var(--mono);font-size:.78rem;margin-top:.5rem}
+.pj-links a,.pj-cls a{color:var(--accent);text-decoration:none}
+.pj-links a:hover,.pj-cls a:hover{text-decoration:underline}
+.pj-cls{font-family:var(--mono);font-size:.72rem;margin-top:.4rem;color:var(--muted)}
+.pj-corridor{font-size:.88rem;margin-top:.4rem}
+.pj-corridor a{color:var(--accent);text-decoration:none;font-weight:500}
+.pj-corridor a:hover{text-decoration:underline}
+@media(max-width:640px){.conv-row{grid-template-columns:1fr}.swap-btn{width:100%;height:36px;border-radius:10px}nav{padding:1rem}.page-wrap{padding:2rem 1rem}.pj-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -266,6 +282,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>As a currency pair, IDR/BMD helps illustrate how two different monetary systems are priced against each other in changing market conditions.</p>
   </section>
 
+  <section class="section pj-section">
+    <div class="sec-title">Currency Passage &amp; Jurisdiction Rules</div>
+    <div class="sec-h2">Moving IDR and BMD across borders</div>
+    <p>A conversion is a jurisdictional event, not only an arithmetic one. Where ConvertCCY has a published jurisdiction entry associated with a currency, the governed declaration threshold and exchange-control posture are shown below with links to the source-mapped rules entry. Figures are reference-grade; verify against the linked official sources before you travel.</p>
+    <p class="pj-macro">This pair connects the Asia-Pacific and Global macro environments, so cross-regional policy differences, growth expectations, and trade conditions can all influence the rate.</p>
+    <div class="pj-grid">
+      
+        <div class="pj-block pj-plain">
+          <div class="pj-head">IDR — Indonesian Rupiah</div>
+          <div class="pj-line pj-muted">ISO 4217 code IDR. No governed foreign-currency-rules entry for a published jurisdiction associated with this currency exists yet — nothing is shown here, to avoid unsourced claims.</div>
+        </div>
+      
+        <div class="pj-block pj-plain">
+          <div class="pj-head">BMD — Bermudian Dollar</div>
+          <div class="pj-line pj-muted">ISO 4217 code BMD. No governed foreign-currency-rules entry for a published jurisdiction associated with this currency exists yet — nothing is shown here, to avoid unsourced claims.</div>
+        </div>
+    </div>
+    <p class="pj-corridor">See how a conversion is a jurisdictional event — <a href="/passage-check.html">open Passage Check →</a></p>
+  </section>
   <section class="section">
     <div class="sec-title">What an exchange rate means</div>
     <div class="card">

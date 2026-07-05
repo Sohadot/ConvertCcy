@@ -377,12 +377,39 @@ function initSelects(){
   a.value = seen['USD']?'USD':ccys[0];
 }
 
+// Deep-linking: pair pages link here with ?from=<slug>&to=<slug>[&amount=&ccy=&res=].
+// Only values that match published jurisdictions/currencies are honoured; anything
+// else is ignored, so a stale or hand-edited link can never fabricate a scenario.
+function applyQueryParams(){
+  const q=new URLSearchParams(location.search);
+  const setSel=(id,val)=>{
+    if(!val) return false;
+    const el=document.getElementById(id);
+    if([...el.options].some(o=>o.value===val)){ el.value=val; return true; }
+    return false;
+  };
+  const okFrom=setSel('origin', q.get('from'));
+  const okTo=setSel('destination', q.get('to'));
+  setSel('amount-ccy', (q.get('ccy')||'').toUpperCase());
+  const amt=q.get('amount');
+  if(amt && !isNaN(parseFloat(amt))) document.getElementById('amount').value=parseFloat(amt);
+  const res=q.get('res');
+  if(['origin','destination','neither'].includes(res)){
+    const r=document.querySelector(`input[name="residency"][value="${res}"]`); if(r) r.checked=true;
+  }
+  // Auto-run only when both endpoints are valid, distinct published jurisdictions.
+  if(okFrom && okTo && document.getElementById('origin').value!==document.getElementById('destination').value){
+    document.getElementById('pc-form').requestSubmit();
+  }
+}
+
 fetch('/rules/passage-check.json')
   .then(r=>{ if(!r.ok) throw new Error('load'); return r.json(); })
   .then(j=>{
     DATA=j; DATA.countries.forEach(c=>BYSLUG[c.country_slug]=c);
     initSelects();
     document.getElementById('pc-form').addEventListener('submit', run);
+    applyQueryParams();
   })
   .catch(()=>{
     document.getElementById('result').innerHTML=
