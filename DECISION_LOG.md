@@ -207,3 +207,5 @@ Post-patch verification: all 9 ontology pages pass HTML well-formedness; all int
 - No SEO-impacting changes hidden inside security PRs
 - Manual workflow preferred over API-dependent automation
 - - 2026-07-05: Triggered a fresh GitHub Pages deployment after run #122 remained queued following the P0 merge.
+
+- 2026-07-05: Triggered a clean GitHub Pages rebuild after Pages deployment state issue.
