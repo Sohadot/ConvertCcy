@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2HS37BH07J');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Channel Restrictions | Currency Passage Ontology | ConvertCCY</title>
+<meta name="description" content="Different rules for cash, transfer, card, and informal channels. How the mechanism of movement matters to regulators.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://convertccy.com/ontology/channel-restrictions.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f7f5;
+  --surface:#ffffff;
+  --surface-2:#fcfcfa;
+  --border:#e8e8e4;
+  --text:#111110;
+  --muted:#888884;
+  --accent:#1a6b3c;
+  --accent-light:#e8f5ee;
+  --accent-border:#c4dfd0;
+  --shadow:0 8px 24px rgba(17,17,16,.05);
+  --mono:'DM Mono',monospace;
+  --sans:'Sora',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .18s}
+.nav-links a:hover{color:var(--text)}
+.page-wrap{max-width:1060px;margin:0 auto;padding:4rem 2rem 6rem}
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-bottom:2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{opacity:.45}
+.hero-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.74rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-2px;line-height:1.04;margin-bottom:1.1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:1.05rem;color:#2e2e2b;max-width:760px;line-height:1.75;margin-bottom:.8rem}
+.section-divider{border:none;border-top:1px solid var(--border);margin:3rem 0}
+.section-kicker{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:.5rem}
+h2{font-size:1.55rem;font-weight:800;letter-spacing:-.04em;margin-bottom:.9rem;line-height:1.15}
+h3{font-size:1.05rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.55rem}
+p{color:#2a2a28;line-height:1.8;margin-bottom:1.1rem}
+p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:600}
+.box-accent{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
+.box-accent .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-accent p{color:#1e4f2f;margin:0;font-size:.93rem;line-height:1.72}
+.example-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.4rem;margin:1.5rem 0;box-shadow:var(--shadow)}
+.example-label{font-family:var(--mono);font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:.4rem}
+.example-title{font-weight:700;margin-bottom:.6rem}
+.example-desc{font-size:.93rem;color:#2f2f2c;line-height:1.7;margin-bottom:.6rem}
+.example-link{font-family:var(--mono);font-size:.77rem;color:var(--accent);text-decoration:none;font-weight:500}
+.example-link:hover{text-decoration:underline}
+.channel-grid{display:grid;gap:1rem;margin:1.5rem 0;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.channel-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;box-shadow:var(--shadow)}
+.channel-name{font-weight:700;margin-bottom:.4rem;font-size:.95rem}
+.channel-desc{font-size:.88rem;color:#2f2f2c;line-height:1.65}
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+@media(max-width:900px){.grid-3,.closing-nav{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  nav{padding:.8rem 1rem}
+  .page-wrap{padding:2.5rem 1rem 4rem}
+  h1{font-size:2rem}
+  .channel-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">convert<span>ccy</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">Currencies</a>
+    <a href="/rules/">Rules</a>
+    <a href="/articles/">Articles</a>
+    <a href="/framework.html">Framework</a>
+    <a href="/governance.html">Governance</a>
+    <a href="/ontology/">Ontology</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a> <span>/</span> <a href="/ontology/">Ontology</a> <span>/</span> <span>Channel Restrictions</span>
+  </div>
+
+  <div class="hero">
+    <span class="hero-tag">Currency Passage Class 6</span>
+    <h1>Channel Restrictions</h1>
+    <p class="hero-lead">Different rules for cash, transfer, card, and informal channels. How the mechanism of movement matters. The same amount face different thresholds, declaration requirements, and reporting based on how it flows.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Definition</div>
+    <h2>The Mechanism Matters</h2>
+    <p>Channel restrictions create rule differentiation based on how currency moves:</p>
+
+    <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+      <li style="margin-bottom: 0.8rem;"><strong>Cash (physical).</strong> Banknotes, coins. Subject to declaration, customs examination, and physical limit (luggage capacity). Triggers highest scrutiny; easiest to seize.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Bank transfer (wire).</strong> Electronic movement of funds. Subject to reporting (CTR, STR) but not physical scrutiny. Leaves audit trail. Slower but more protected.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Card (debit/credit).</strong> Pre-loaded or accessed balance. Subject to daily/weekly limits on withdrawal. No declaration typically required. Useful for smaller amounts and daily expenses.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Informal (hawala, underground banking).</strong> Untraced transfer through networks. Officially prohibited in most countries; penalties severe if detected. Largest regulatory gap.</li>
+    </ul>
+
+    <div class="box-accent">
+      <span class="box-label">Regulatory Significance</span>
+      <p>Channels reveal policy priorities. Cash gets heavy scrutiny (visible, easy to seize, physical evidence). Transfers get reporting scrutiny (creates audit trail, harder to seize but trackable). Cards get merchant/bank limits (consumer protection framing). Informal channels get criminalization (AML/CFT enforcement). The channel choice is where policy intent becomes visible.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Channel Profiles</div>
+    <h2>How Each Channel Operates</h2>
+
+    <div class="channel-grid">
+      <div class="channel-card">
+        <div class="channel-name">Physical Cash</div>
+        <div class="channel-desc">Declaration required at border (most jurisdictions, USD 10,000+). Customs examination and counting. Subject to seizure if undeclared or source is questioned. No electronic audit trail. Highest friction; highest visibility.</div>
+      </div>
+
+      <div class="channel-card">
+        <div class="channel-name">Bank Wire</div>
+        <div class="channel-desc">Electronic transfer. Subject to bank reporting (CTR, STR) but not traveler declaration typically required. Leaves full audit trail. Slower (1-3 days) but more protected. Requires active bank account access.</div>
+      </div>
+
+      <div class="channel-card">
+        <div class="channel-name">Debit/Credit Card</div>
+        <div class="channel-desc">Pre-loaded balance or linked account. Subject to daily ATM withdrawal limits (typically USD 200-500). No declaration needed. Merchant-capped daily spending. Low friction for daily expenses; unsuitable for large one-time transfers.</div>
+      </div>
+
+      <div class="channel-card">
+        <div class="channel-name">Prepaid Card</div>
+        <div class="channel-desc">Pre-loaded non-banking card. Fewer regulatory restrictions (varies by jurisdiction). Can move amounts up to card limit without declaration. Growing acceptance; regulatory treatment evolving.</div>
+      </div>
+
+      <div class="channel-card">
+        <div class="channel-name">Money Service Business (MSB)</div>
+        <div class="channel-desc">Licensed remittance/money transfer operator (Western Union, MoneyGram, etc.). Subject to AML/KYC requirements and reporting. Fees higher than banks. Useful for recipient countries without banking infrastructure.</div>
+      </div>
+
+      <div class="channel-card">
+        <div class="channel-name">Informal Transfer (Hawala, Underground Banking)</div>
+        <div class="channel-desc">Untraced network-based transfer. Officially prohibited in most countries. Difficult to detect but criminalized if caught. No audit trail. High legal risk; penalties can be severe.</div>
+      </div>
+    </div>
+
+    <p>The channel profiles above are general to how value moves. The published examples below show how a single jurisdiction applies different rules to the same amount depending on the channel. Precise per-channel figures (daily ATM caps, merchant limits) are set by individual providers and are not asserted here as legal thresholds.</p>
+
+    <div class="example-box">
+      <div class="example-label">Canada</div>
+      <div class="example-title">Same Amount, Different Rule by Channel</div>
+      <div class="example-desc">Physical cash of CAD 10,000 or more must be reported to CBSA at the border (form E677). The same value moved by bank wire is not a traveler customs event but sits within the FINTRAC anti-money-laundering framework. Foreign-currency accounts and transfers are freely available through authorised banks. The channel you choose determines which obligation applies, even though the regime overall is fully liberalised.</div>
+      <a href="/rules/canada-foreign-currency-rules.html" class="example-link">View Canada rules entry →</a>
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">India</div>
+      <div class="example-title">Lawful Channel Is the Authorised Dealer</div>
+      <div class="example-desc">India is not a discretionary retail-cash jurisdiction: lawful foreign-exchange activity typically routes through authorised-dealer banks, while border cash is handled through the Currency Declaration Form when thresholds apply (USD 5,000 notes / USD 10,000 aggregate). The practical consequence is channel-defining — the authorised-dealer route is where documentation, permissions, and continuity live; informal networks fall outside that lawful framework entirely.</div>
+      <a href="/rules/india-foreign-currency-rules.html" class="example-link">View India rules entry →</a>
+    </div>
+
+    <div class="box-accent">
+      <span class="box-label">Note on Coverage</span>
+      <p>Some regimes funnel every channel through a single approval authority — bank conversion, wires, and card use all gated or reported to one foreign-exchange regulator, with informal transfer treated as smuggling. Those systems are not yet in the published sovereign layer, so this page does not attach specific approval limits or penalties to them.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Design Decisions</div>
+    <h2>Why Channel Rules Differ</h2>
+
+    <h3>Detection vs Convenience</h3>
+    <p>Cash is detectable but inconvenient (luggage weight, customs lines). Transfers are convenient but leave audit trails. Cards are both convenient and trackable through merchant networks. Informal is undetectable but risky. The tradeoff is convenience vs law enforcement visibility.</p>
+
+    <h3>Revenue vs Control</h3>
+    <p>Formal channels (banks, MSBs) generate fees and transaction data. Informal channels (hawala) generate no revenue and leave no audit trail. Governments prefer formal channels not just for AML but for financial inclusion and tax visibility.</p>
+
+    <h3>Technology & State Capacity</h3>
+    <p>Highly liberalised economies (Canada, Germany, Japan) enforce channel rules through bank networks and electronic monitoring rather than access gating. Regimes that route activity through authorised dealers (India) combine bank monitoring with customs scrutiny at the border. Very low-capacity states may not enforce channel rules at all, creating de facto openness.</p>
+
+    <div class="box-accent">
+      <span class="box-label">For Passage Planning</span>
+      <p>The channel you choose is the rule set you inherit: (1) Which channel fits your amount? (2) What is the threshold for each channel? (3) What declaration/reporting applies to each? (4) What is the friction (time, fees, daily limits)? The channel decision is often more important than the amount decision.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Related Classes</div>
+    <h2>How Channels Connect</h2>
+    <p>Channel restrictions interact with other dimensions:</p>
+
+    <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+      <li style="margin-bottom: 0.8rem;"><strong>Declaration Regimes (Class 1):</strong> Physical cash triggers declaration; transfers may not.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Reporting Obligations (Class 5):</strong> Banks file reports on wire transfers; customs files on cash declarations.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Exchange Controls (Class 2):</strong> Some channels may be restricted entirely (only banks permitted); others unrestricted.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Penalty Regimes (Class 7):</strong> Using prohibited channels (hawala) carries highest penalties; using approved channels carries lower penalties for non-compliance.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2026 ConvertCCY. <a href="/framework.html">Framework</a> • <a href="/governance.html">Governance</a> • <a href="/standard.html">CRIS Standard</a> • <a href="/ontology/">Ontology</a> • <a href="/disclaimer.html">Disclaimer</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

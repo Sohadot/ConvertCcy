@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2HS37BH07J');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reporting Obligations | Currency Passage Ontology | ConvertCCY</title>
+<meta name="description" content="Who reports (individuals, banks, carriers) and to whom. The compliance layer beyond declaration.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://convertccy.com/ontology/reporting-obligations.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f7f5;
+  --surface:#ffffff;
+  --surface-2:#fcfcfa;
+  --border:#e8e8e4;
+  --text:#111110;
+  --muted:#888884;
+  --accent:#1a6b3c;
+  --accent-light:#e8f5ee;
+  --accent-border:#c4dfd0;
+  --shadow:0 8px 24px rgba(17,17,16,.05);
+  --mono:'DM Mono',monospace;
+  --sans:'Sora',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .18s}
+.nav-links a:hover{color:var(--text)}
+.page-wrap{max-width:1060px;margin:0 auto;padding:4rem 2rem 6rem}
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-bottom:2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{opacity:.45}
+.hero-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.74rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-2px;line-height:1.04;margin-bottom:1.1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:1.05rem;color:#2e2e2b;max-width:760px;line-height:1.75;margin-bottom:.8rem}
+.section-divider{border:none;border-top:1px solid var(--border);margin:3rem 0}
+.section-kicker{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:.5rem}
+h2{font-size:1.55rem;font-weight:800;letter-spacing:-.04em;margin-bottom:.9rem;line-height:1.15}
+h3{font-size:1.05rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.55rem}
+p{color:#2a2a28;line-height:1.8;margin-bottom:1.1rem}
+p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:600}
+.box-accent{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
+.box-accent .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-accent p{color:#1e4f2f;margin:0;font-size:.93rem;line-height:1.72}
+.example-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.4rem;margin:1.5rem 0;box-shadow:var(--shadow)}
+.example-label{font-family:var(--mono);font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:.4rem}
+.example-title{font-weight:700;margin-bottom:.6rem}
+.example-desc{font-size:.93rem;color:#2f2f2c;line-height:1.7;margin-bottom:.6rem}
+.example-link{font-family:var(--mono);font-size:.77rem;color:var(--accent);text-decoration:none;font-weight:500}
+.example-link:hover{text-decoration:underline}
+.example-list{margin:1rem 0 0 0;padding-left:1.2rem}
+.example-list li{font-size:.93rem;color:#2f2f2c;line-height:1.6;margin-bottom:.4rem}
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+@media(max-width:900px){.grid-3,.closing-nav{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  nav{padding:.8rem 1rem}
+  .page-wrap{padding:2.5rem 1rem 4rem}
+  h1{font-size:2rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">convert<span>ccy</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">Currencies</a>
+    <a href="/rules/">Rules</a>
+    <a href="/articles/">Articles</a>
+    <a href="/framework.html">Framework</a>
+    <a href="/governance.html">Governance</a>
+    <a href="/ontology/">Ontology</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a> <span>/</span> <a href="/ontology/">Ontology</a> <span>/</span> <span>Reporting Obligations</span>
+  </div>
+
+  <div class="hero">
+    <span class="hero-tag">Currency Passage Class 5</span>
+    <h1>Reporting Obligations</h1>
+    <p class="hero-lead">Who reports (individuals, banks, carriers) and to whom. The compliance layer that exists beyond declaration. Multiple parties may file reports on the same transaction, creating audit trails independent of traveler behavior.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Definition</div>
+    <h2>The Reporting Chain</h2>
+    <p>Reporting obligations create multiple touch points in the compliance system. The chain can include:</p>
+
+    <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+      <li style="margin-bottom: 0.8rem;"><strong>Individual reporting.</strong> The traveler files a declaration (customs form, bank form). This is traveler-initiated.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Bank reporting.</strong> Financial institutions file reports (Currency Transaction Reports, Suspicious Activity Reports) for transactions above thresholds or exhibiting unusual patterns. This is automatic, not traveler-initiated.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Customs reporting.</strong> Border officials file reports of declared amounts and patterns. This is authority-initiated.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Reporting recipient.</strong> Where do reports go? Central bank? FIU (Financial Intelligence Unit)? Tax authority? AML regulator? The recipient determines follow-up consequences.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Retention period.</strong> How long are reports kept? How long are they shared? Can individuals access their own reports?</li>
+    </ul>
+
+    <div class="box-accent">
+      <span class="box-label">Regulatory Significance</span>
+      <p>Reporting obligations are the intelligence layer. They exist even when declaration is not required or when the traveler successfully declares. Banks, customs, and carriers are witness mechanisms independent of compliance intent.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Real-World Examples</div>
+    <h2>How Reporting Chains Operate</h2>
+
+    <p>The examples below name the specific authorities identified on each published rules page. Where a jurisdiction's detailed reporting internals (retention periods, inter-agency sharing) are not established on the source page, this ontology does not assert them.</p>
+
+    <div class="example-box">
+      <div class="example-label">Australia</div>
+      <div class="example-title">AML Reporting via AUSTRAC</div>
+      <div class="example-desc">Australia routes threshold currency movements through anti-money-laundering reporting rather than a routine customs declaration. Movements of AUD 10,000 or more (or equivalent) in cash or bearer negotiable instruments must be reported to AUSTRAC — the Australian Transaction Reports and Analysis Centre — under AML rules. The regime is otherwise fully liberalised, administered alongside the Reserve Bank of Australia.</div>
+      <ul class="example-list">
+        <li>Reporting locus is a dedicated financial-intelligence agency (AUSTRAC)</li>
+        <li>Trigger is the AUD 10,000 AML threshold, not a customs form</li>
+        <li>No general exchange controls sit behind the reporting rule</li>
+      </ul>
+      <a href="/rules/australia-foreign-currency-rules.html" class="example-link">View Australia rules entry →</a>
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">Canada</div>
+      <div class="example-title">Border Report to CBSA, AML Oversight by FINTRAC</div>
+      <div class="example-desc">Canada combines a mandatory border report with financial-intelligence oversight. Cash movements of CAD 10,000 or more must be reported to the Canada Border Services Agency (form E677), while the wider AML framework is administered by FINTRAC alongside the Bank of Canada. The two mechanisms — customs report and AML supervision — operate together.</div>
+      <ul class="example-list">
+        <li>Traveler-initiated customs report at the border (CBSA / E677)</li>
+        <li>Financial-intelligence supervision by FINTRAC</li>
+        <li>Unreported currency can be seized by CBSA</li>
+      </ul>
+      <a href="/rules/canada-foreign-currency-rules.html" class="example-link">View Canada rules entry →</a>
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">France</div>
+      <div class="example-title">Declaration to French Customs (Douane)</div>
+      <div class="example-desc">In France, the traveler declares €10,000 or more (in cash or bearer instruments) to French Customs — through the DALIA online service or a paper form — at entry and exit. The framework sits under the ECB and Banque de France. This page reports the declaration channel established on the source entry; it does not assert downstream inter-agency retention or sharing details that the source does not establish.</div>
+      <ul class="example-list">
+        <li>Traveler-initiated declaration to French Customs</li>
+        <li>Online declaration may be filed up to 30 days in advance</li>
+        <li>No general exchange controls within the Eurozone framework</li>
+      </ul>
+      <a href="/rules/france-foreign-currency-rules.html" class="example-link">View France rules entry →</a>
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">India</div>
+      <div class="example-title">Customs Declaration Anchored to the CDF</div>
+      <div class="example-desc">India's reporting hinges on the Currency Declaration Form (CDF) at CBIC Indian Customs, decisive when foreign-currency notes exceed USD 5,000 or aggregate foreign exchange exceeds USD 10,000 on arrival. Lawful foreign-exchange activity otherwise routes through authorised-dealer banks under FEMA and RBI oversight. The endorsed CDF is the document that links a declared inbound amount to later authorised-dealer conversions and outbound movement.</div>
+      <ul class="example-list">
+        <li>Customs declaration via the CDF pathway (CBIC)</li>
+        <li>Bank activity routes through authorised dealers under FEMA / RBI</li>
+        <li>Documentation continuity, not a single one-off report, is the mechanism</li>
+      </ul>
+      <a href="/rules/india-foreign-currency-rules.html" class="example-link">View India rules entry →</a>
+    </div>
+
+    <div class="box-accent">
+      <span class="box-label">Note on Coverage</span>
+      <p>Highly centralised reporting systems — where a single foreign-exchange authority aggregates bank, customs, and conversion data with restricted individual access — exist in several economies. This page does not attach specific thresholds, retention periods, or sharing arrangements to them until those country entries are published with sources.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Design Decisions</div>
+    <h2>Why Reporting Systems Vary</h2>
+
+    <h3>Threshold Sensitivity</h3>
+    <p>A higher threshold (near a USD 10,000 equivalent, as in Canada, France, and Australia's AML trigger) produces fewer reports focused on larger movements. A lower or note-specific threshold (India's USD 5,000 foreign-currency-note trigger) captures more activity. The threshold reflects risk tolerance and administrative capacity together.</p>
+
+    <h3>Reporting Locus</h3>
+    <p>Some regimes route reporting to a dedicated financial-intelligence agency (AUSTRAC in Australia, FINTRAC in Canada), spreading visibility across institutions. Others centralise intelligence in a single foreign-exchange authority that aggregates bank and customs data. Centralisation is simpler but demands greater state capacity.</p>
+
+    <h3>Transparency Model</h3>
+    <p>Regimes also differ in whether an individual can see the reports filed about them. Some legal frameworks give data-subject access rights; others treat reports purely as state intelligence with restricted access. The choice reflects the balance a jurisdiction strikes between accountability and surveillance.</p>
+
+    <div class="box-accent">
+      <span class="box-label">For Passage Planning</span>
+      <p>Know the reporting chain: (1) Will your transaction trigger a report? (2) Which authority will file it? (3) Where does it go? (4) Can you access it? Understanding the reporting layer is part of compliance, separate from declaration.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Related Classes</div>
+    <h2>How Reporting Connects</h2>
+    <p>Reporting obligations are the enforcement mechanism for other classes:</p>
+
+    <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+      <li style="margin-bottom: 0.8rem;"><strong>Declaration Regimes (Class 1):</strong> Reports verify whether declarations occurred and are accurate.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Exchange Controls (Class 2):</strong> Bank reports flag conversions that violate control limits or licensing.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Penalty Regimes (Class 7):</strong> Reports trigger investigations that lead to penalties.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Channel Restrictions (Class 6):</strong> Bank reporting enforces channel-specific rules (off-channel conversions detected through reporting gaps).</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2026 ConvertCCY. <a href="/framework.html">Framework</a> • <a href="/governance.html">Governance</a> • <a href="/standard.html">CRIS Standard</a> • <a href="/ontology/">Ontology</a> • <a href="/disclaimer.html">Disclaimer</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

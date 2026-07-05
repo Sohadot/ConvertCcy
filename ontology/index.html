@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2HS37BH07J');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Currency Passage Ontology | ConvertCCY</title>
+<meta name="description" content="The eight classes that organize how jurisdictions govern currency movement: declaration regimes, exchange controls, residency divergence, import/export asymmetry, reporting obligations, channel restrictions, penalty regimes, and rate mechanisms.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://convertccy.com/ontology/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f7f5;
+  --surface:#ffffff;
+  --surface-2:#fcfcfa;
+  --border:#e8e8e4;
+  --text:#111110;
+  --muted:#888884;
+  --accent:#1a6b3c;
+  --accent-light:#e8f5ee;
+  --accent-border:#c4dfd0;
+  --shadow:0 8px 24px rgba(17,17,16,.05);
+  --mono:'DM Mono',monospace;
+  --sans:'Sora',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .18s}
+.nav-links a:hover{color:var(--text)}
+.page-wrap{max-width:1060px;margin:0 auto;padding:4rem 2rem 6rem}
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-bottom:2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{opacity:.45}
+.hero-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.74rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-2px;line-height:1.04;margin-bottom:1.1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:1.05rem;color:#2e2e2b;max-width:760px;line-height:1.75;margin-bottom:.8rem}
+.section-divider{border:none;border-top:1px solid var(--border);margin:3rem 0}
+.section-kicker{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:.5rem}
+h2{font-size:1.55rem;font-weight:800;letter-spacing:-.04em;margin-bottom:.9rem;line-height:1.15}
+h3{font-size:1.05rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.55rem}
+p{color:#2a2a28;line-height:1.8;margin-bottom:1.1rem}
+p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:600}
+.box-accent{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
+.box-accent .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-accent p{color:#1e4f2f;margin:0;font-size:.93rem;line-height:1.72}
+.class-grid{display:grid;gap:1rem;margin:1.5rem 0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.class-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.3rem 1.4rem;box-shadow:var(--shadow);transition:border-color .18s}
+.class-card:hover{border-color:var(--accent)}
+.class-num{font-family:var(--mono);font-size:.85rem;font-weight:600;color:var(--accent);margin-bottom:.3rem}
+.class-title{font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.class-desc{font-size:.88rem;color:#2f2f2c;line-height:1.7;margin-bottom:.8rem}
+.class-link{font-family:var(--mono);font-size:.77rem;color:var(--accent);text-decoration:none;font-weight:500}
+.class-link:hover{text-decoration:underline}
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+@media(max-width:900px){.grid-3,.closing-nav{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  nav{padding:.8rem 1rem}
+  .page-wrap{padding:2.5rem 1rem 4rem}
+  h1{font-size:2rem}
+  .class-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">convert<span>ccy</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">Currencies</a>
+    <a href="/rules/">Rules</a>
+    <a href="/articles/">Articles</a>
+    <a href="/framework.html">Framework</a>
+    <a href="/governance.html">Governance</a>
+    <a href="/ontology/">Ontology</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a> <span>/</span> <span>Ontology</span>
+  </div>
+
+  <div class="hero">
+    <span class="hero-tag">Language Foundation</span>
+    <h1>Currency Passage Ontology</h1>
+    <p class="hero-lead">Eight classes organize how jurisdictions respond to currency movement. This is the ConvertCCY governance vocabulary — the conceptual foundation the country rules layer is built to map into.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">The Eight Classes</div>
+    <h2>Currency Movement Governed</h2>
+    <p>When value crosses a border, jurisdictions apply rules. These eight classes capture every dimension of that governance:</p>
+
+    <div class="class-grid">
+      <div class="class-card">
+        <div class="class-num">1</div>
+        <div class="class-title">Declaration Regimes</div>
+        <div class="class-desc">Thresholds, currencies of denomination, and who declares. The primary regulatory trigger for cash movement.</div>
+        <a href="/ontology/declaration-regimes.html" class="class-link">Read class →</a>
+      </div>
+
+      <div class="class-card">
+        <div class="class-num">2</div>
+        <div class="class-title">Exchange Controls</div>
+        <div class="class-desc">Access restrictions, approval regimes, and license requirements. How governments gate the conversion itself.</div>
+        <a href="/ontology/exchange-controls.html" class="class-link">Read class →</a>
+      </div>
+
+      <div class="class-card">
+        <div class="class-num">3</div>
+        <div class="class-title">Residency Divergence</div>
+        <div class="class-desc">Resident vs non-resident treatment asymmetry. Many jurisdictions apply different rules by traveler type.</div>
+        <a href="/ontology/residency-divergence.html" class="class-link">Read class →</a>
+      </div>
+
+      <div class="class-card">
+        <div class="class-num">4</div>
+        <div class="class-title">Import/Export Ceilings</div>
+        <div class="class-desc">Cash in vs cash out asymmetry. Restrictions that differ based on flow direction.</div>
+        <a href="/ontology/import-export-ceilings.html" class="class-link">Read class →</a>
+      </div>
+
+      <div class="class-card">
+        <div class="class-num">5</div>
+        <div class="class-title">Reporting Obligations</div>
+        <div class="class-desc">Who reports (individuals, banks, carriers) and to whom. The compliance layer beyond declaration.</div>
+        <a href="/ontology/reporting-obligations.html" class="class-link">Read class →</a>
+      </div>
+
+      <div class="class-card">
+        <div class="class-num">6</div>
+        <div class="class-title">Channel Restrictions</div>
+        <div class="class-desc">Different rules for cash, transfer, card, and informal channels. How the mechanism of movement matters.</div>
+        <a href="/ontology/channel-restrictions.html" class="class-link">Read class →</a>
+      </div>
+
+      <div class="class-card">
+        <div class="class-num">7</div>
+        <div class="class-title">Penalty Regimes</div>
+        <div class="class-desc">Consequences for violation: confiscation, fines, criminal exposure. The enforcement teeth behind the rules.</div>
+        <a href="/ontology/penalty-regimes.html" class="class-link">Read class →</a>
+      </div>
+
+      <div class="class-card">
+        <div class="class-num">8</div>
+        <div class="class-title">Rate Regimes</div>
+        <div class="class-desc">Floating, pegged, dual-rate, and parallel-market economies. How exchange mechanism shapes access.</div>
+        <a href="/ontology/rate-regimes.html" class="class-link">Read class →</a>
+      </div>
+    </div>
+
+    <div class="box-accent">
+      <span class="box-label">Category Language</span>
+      <p>These eight classes are the ConvertCCY governance vocabulary — the organizing scheme that makes reference-grade FX rules data coherent and citable. Country rules are designed to map into these classes. Each ontology page illustrates the class using jurisdictions already published in the sovereign layer. Together they form the asset's language layer: strong, but bound to the evidence the rules pages carry.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Framework</div>
+    <h2>How Ontology Connects to Rules</h2>
+    <p>The ontology is not independent reference material. It is a mirror of the schema:</p>
+
+    <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+      <li style="margin-bottom: 0.8rem;">The country rules schema carries fields that are designed to map into these eight classes.</li>
+      <li style="margin-bottom: 0.8rem;">Each class page illustrates the class using jurisdictions already published in the public sovereign layer, and links only to those published rules pages.</li>
+      <li style="margin-bottom: 0.8rem;">Cross-linking rules pages back to their ontology classes is planned as the reference layer expands, so each entry becomes part of a larger governance landscape.</li>
+      <li style="margin-bottom: 0.8rem;">The <strong>Passage Check</strong> engine (P3) is intended to use ontology class linkage to help readers navigate consequences: "your scenario crosses into Exchange Controls and Reporting Obligations".</li>
+    </ul>
+
+    <div class="box-accent">
+      <span class="box-label">Authority Position</span>
+      <p>By publishing the ontology openly, ConvertCCY offers a way to organize currency-passage governance that other reference systems can adopt, debate, and improve. The claim is bounded: examples are drawn only from published, source-mapped country entries, so the language layer never asserts more than the evidence supports.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 ConvertCCY. <a href="/framework.html">Framework</a> • <a href="/governance.html">Governance</a> • <a href="/standard.html">CRIS Standard</a> • <a href="/ontology/">Ontology</a> • <a href="/disclaimer.html">Disclaimer</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
