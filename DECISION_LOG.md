@@ -132,6 +132,56 @@ The internal discipline (six-gate pipeline, lifecycle statuses, append-only audi
 
 ---
 
+## Phase 6 — Currency Passage Ontology Publication (P2)
+**Status:** Ready to merge (branch: claude/p2-currency-passage-ontology)
+
+### Decision: Publish eight reference class pages defining currency governance language
+
+The Currency Passage Ontology is ConvertCCY's proprietary language layer — the eight conceptual classes that organize how jurisdictions govern currency movement across borders. By publishing these pages, ConvertCCY becomes the language maker, not the market follower.
+
+#### The Eight Classes
+
+1. **Declaration Regimes** — Thresholds, currencies of denomination, and who declares. The primary regulatory trigger.
+2. **Exchange Controls** — Access restrictions, approval regimes, and licensing. How governments gate conversion.
+3. **Residency Divergence** — Resident vs non-resident asymmetry. Different rules for different people.
+4. **Import/Export Ceilings** — Flow direction asymmetry. Different limits for inbound vs outbound.
+5. **Reporting Obligations** — Who reports (individuals, banks, carriers) and to whom. The compliance intelligence layer.
+6. **Channel Restrictions** — Cash vs transfer vs card vs informal. How the mechanism matters.
+7. **Penalty Regimes** — Confiscation, fines, criminal exposure. The enforcement teeth.
+8. **Rate Regimes** — Floating, pegged, dual-rate, managed float. How exchange mechanism shapes access.
+
+#### Ontology Page Structure
+
+Each class page:
+- **Definition**: Core concepts and regulatory significance
+- **Real-World Examples**: 4-5 jurisdictions (USA, Canada, India, China, Saudi Arabia, EU, etc.) showing how the class operates
+- **Design Decisions**: Why jurisdictions choose different approaches for the same class
+- **Connections**: How each class relates to other classes in the full rule set
+
+#### Navigation Integration
+
+- New `/ontology/index.html` landing page with grid of all eight classes
+- Updated navigation on all authority pages to include `/ontology/` link:
+  - index.html
+  - governance.html
+  - standard.html
+  - framework.html
+- Ontology pages follow same styling and evidentiary tone as governance.html and standard.html
+
+#### Strategic Meaning
+
+The ontology is the asset's vocabulary moat. It is not a general framework borrowed from economics; it is ConvertCCY's specific organization of currency rules. Publishing it openly (with attribution) claims ownership of the conceptual language. Other reference systems can adopt it, but ConvertCCY is its source.
+
+The ontology also supports P3 (Passage Check engine): the engine will use ontology class linkage to help readers navigate consequences ("your scenario crosses into Exchange Controls and Reporting Obligations").
+
+#### Standing decision from P2
+- Ontology pages are reference-grade authority pages (manually governed, like governance and standard)
+- Updates to any ontology page must go through PR review, never direct-to-main
+- Ontology pages are not generated; they are editorially protected
+- Ontology class definitions must remain consistent with CRIS v1.0 standard and country rules schema
+
+---
+
 ## Standing rules (all phases)
 
 - One concern = one PR = one branch
