@@ -274,3 +274,14 @@ A phase is closed only when:
 If build passes but deploy fails with "Deployment failed, try again later",
 the issue is treated as a Pages deployment-state issue, not a content defect,
 unless a build error or broken route is proven.
+
+#### P3 Deployment Gate Verification
+
+Verified live on the custom domain:
+
+- https://convertccy.com/passage-check.html — live, browser-opened, Passage Check interface visible.
+- https://convertccy.com/rules/passage-check.json — live, browser-opened, engine dataset visible.
+
+P3 is now closed. Passage Check is live as a deterministic, evidence-bound diagnostic over the published sovereign rules layer.
+
+Verified: 2026-07-05.
