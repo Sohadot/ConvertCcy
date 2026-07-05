@@ -244,7 +244,16 @@ Review declined to merge P3 while the branch was behind main (behind_by: 4). Two
 - **Negative-cache incident:** the two brand-new routes (`/passage-check.html`, `/rules/passage-check.json`) returned 404 on the bare canonical path while returning 200 with a cache-buster query string. Origin content was correct throughout (`last-modified: 2026-07-05T11:43:50Z`).
 - **Root cause (confirmed via headers):** the site is fronted by **Cloudflare** (per Phase 1), and Cloudflare caches these paths (`cf-cache-status: HIT`; HTML is cached here too). Pre-deploy requests to the not-yet-existing routes seeded a **404 into Cloudflare's cache**, held under the origin's `cache-control: max-age=14400` (4-hour TTL). The cache-buster query string is a distinct cache key → `cf-cache-status: MISS` → origin 200, proving the origin is healthy. This is a Pages/edge deployment-state issue, not a content defect.
 - **Remedy attempted (did not resolve):** a fresh Pages deploy (`63e9347e`, success 2026-07-05T12:00:31Z) was triggered. It purged/populated GitHub Pages' own Fastly layer but **did not clear Cloudflare's cached 404** (bare-path `age` kept climbing 1:1 with wall-clock). GitHub Pages redeploys cannot purge Cloudflare's cache.
-- **Correct remedy (owner action required):** purge the Cloudflare cache for the two URLs (or "Purge Everything") from the Cloudflare dashboard — this clears the stale 404 instantly. Absent a purge, Cloudflare self-heals when the 4-hour TTL expires (~2026-07-05T15:43Z). **P3 remains open until the bare canonical URLs return 200.**
+- **Correct remedy (owner action required):** purge the Cloudflare cache for the two URLs (or "Purge Everything") from the Cloudflare dashboard — this clears the stale 404 instantly. Absent a purge, Cloudflare self-heals when the 4-hour TTL expires (~2026-07-05T15:43Z).
+- **Resolved:** owner purged the Cloudflare cache. Both bare canonical URLs now return **200** with `cf-cache-status: MISS` (fresh from origin):
+  - `https://convertccy.com/passage-check.html` → 200
+  - `https://convertccy.com/rules/passage-check.json` → 200 (valid engine JSON: 8 countries, India two-tier USD 5,000 / USD 10,000, CC BY 4.0)
+  - Live HTML confirmed to be the P3 engine (title, `#pc-form`, `fetch('/rules/passage-check.json')`, hardened `IND_RATES_NOTICE` / "not suitable for financial decisions" all present); byte-identical to the build rendered and screenshotted end-to-end in Chromium earlier.
+
+**Status: ✅ P3 CLOSED — 2026-07-05.** All five Deployment Gate criteria met: (1) Pages deploy green, (2)+(3) both canonical URLs return 200 on the live custom domain, (4) route content verified live, (5) live URLs recorded here.
+
+#### Lesson logged
+Probing a brand-new URL *before* its deploy finishes poisons the Cloudflare cache with a 404 held under the origin's 4-hour `max-age`, and a GitHub Pages redeploy cannot purge Cloudflare. For future phases: after a deploy goes green, first-touch any new route with a cache-buster query string (never the bare path) until origin 200 is confirmed, so the canonical path is never negatively cached.
 
 ---
 
