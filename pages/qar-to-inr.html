@@ -151,7 +151,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-
 .rate-banner{background:var(--text);color:#fff;border-radius:16px;padding:1.4rem 1.7rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
 .rate-main{font-family:var(--mono);font-size:1.9rem;font-weight:500}
 .rate-sub{font-size:.78rem;opacity:.7;font-family:var(--mono);margin-top:4px}
-.rate-badge{background:var(--accent);color:#fff;font-family:var(--mono);font-size:.72rem;padding:4px 12px;border-radius:100px}
+.rate-badge{background:var(--accent);color:#fff;font-family:var(--mono);font-size:.72rem;padding:4px 12px;border-radius:100px;white-space:nowrap}
+.rate-badge.snap{background:#a07000}
+.rate-badge.off{background:#8a2c2c}
+.rate-note{font-size:.76rem;color:var(--muted);margin:-.8rem 0 1.5rem;line-height:1.5}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:1.7rem;margin-bottom:1.5rem;box-shadow:0 2px 20px rgba(0,0,0,.04)}
 .card-title{font-size:.72rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem}
 .conv-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end}
@@ -242,8 +245,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="rate-main" id="live-rate">Loading…</div>
       <div class="rate-sub">1 QAR = <span id="live-rate-num">—</span> INR</div>
     </div>
-    <div class="rate-badge">REFERENCE</div>
+    <div class="rate-badge" id="rate-badge">REFERENCE</div>
   </div>
+  <p class="rate-note">Indicative reference rate — live when available, otherwise a dated reference snapshot. Not a dealing rate; providers apply their own spread and fees.</p>
 
   <div class="card">
     <div class="card-title">Currency Converter</div>
@@ -395,31 +399,86 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 const FROM = 'QAR';
 const TO = 'INR';
 let rate = null;
+let rateMode = '';      // 'live' | 'snapshot' | 'unavailable'
+let snapDate = '';
 const AMOUNTS = [1,5,10,20,50,100,200,500,1000,5000];
+
+async function getLiveRate() {
+  // Time-box the live call: a hanging free endpoint is the most common failure,
+  // so we abort after 3.5s and fall back to the dated snapshot rather than stall.
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 3500);
+  try {
+    const res = await fetch('https://api.exchangerate-api.com/v4/latest/' + FROM, {signal: ctrl.signal});
+    if (!res.ok) throw new Error('live http');
+    const data = await res.json();
+    const r = data && data.rates && data.rates[TO];
+    if (typeof r !== 'number' || !isFinite(r) || r <= 0) throw new Error('live rate missing');
+    return r;
+  } finally { clearTimeout(t); }
+}
+
+// Fallback: same-origin dated reference snapshot (see /rates/snapshot.json).
+// Never presented as live; always labelled with its capture date.
+async function getSnapshotRate() {
+  const res = await fetch('/rates/snapshot.json', {cache: 'no-cache'});
+  if (!res.ok) throw new Error('snapshot http');
+  const s = await res.json();
+  snapDate = s.as_of || '';
+  const rf = s.rates && s.rates[FROM], rt = s.rates && s.rates[TO];
+  if (!rf || !rt) throw new Error('snapshot pair missing');
+  return rt / rf;
+}
 
 async function init() {
   try {
-    const res = await fetch('https://api.exchangerate-api.com/v4/latest/' + FROM);
-    const data = await res.json();
-    rate = data.rates[TO];
+    rate = await getLiveRate(); rateMode = 'live';
   } catch (e) {
-    rate = 1;
+    try { rate = await getSnapshotRate(); rateMode = 'snapshot'; }
+    catch (e2) { rate = null; rateMode = 'unavailable'; }
   }
-
-  document.getElementById('live-rate').textContent = `1 ${FROM} = ${rate.toFixed(4)} ${TO}`;
-  document.getElementById('live-rate-num').textContent = rate.toFixed(4);
-
+  renderRate();
   convertFrom();
   buildTable();
 }
 
+function renderRate() {
+  const main = document.getElementById('live-rate');
+  const num = document.getElementById('live-rate-num');
+  const badge = document.getElementById('rate-badge');
+  if (rateMode === 'unavailable' || rate === null) {
+    main.textContent = 'Rate unavailable right now';
+    num.textContent = '—';
+    badge.textContent = 'UNAVAILABLE'; badge.className = 'rate-badge off';
+    return;
+  }
+  main.textContent = `1 ${FROM} = ${rate.toFixed(4)} ${TO}`;
+  num.textContent = rate.toFixed(4);
+  if (rateMode === 'snapshot') {
+    badge.textContent = snapDate ? `SNAPSHOT · ${snapDate}` : 'SNAPSHOT';
+    badge.className = 'rate-badge snap';
+    badge.title = 'Live source unavailable — showing a dated reference snapshot, not a live rate';
+  } else {
+    badge.textContent = 'REFERENCE'; badge.className = 'rate-badge';
+  }
+}
+
+function rateContext() {
+  if (rateMode === 'snapshot') return ` · reference snapshot as of ${snapDate || 'recent capture'}, not live`;
+  return '';
+}
+
 function convertFrom() {
-  if (!rate) return;
+  if (!rate) {
+    document.getElementById('main-result').textContent = '—';
+    document.getElementById('rate-info').textContent = 'Live rate unavailable and no snapshot for this pair.';
+    return;
+  }
   const a = parseFloat(document.getElementById('from-input').value) || 0;
   const b = a * rate;
   document.getElementById('to-input').value = b.toFixed(4);
   document.getElementById('main-result').textContent = `${a.toLocaleString()} ${FROM} = ${b.toLocaleString('en-US', {maximumFractionDigits:4})} ${TO}`;
-  document.getElementById('rate-info').textContent = `Reference rate: 1 ${FROM} = ${rate.toFixed(4)} ${TO}`;
+  document.getElementById('rate-info').textContent = `Reference rate: 1 ${FROM} = ${rate.toFixed(4)} ${TO}${rateContext()}`;
 }
 
 function convertTo() {
@@ -428,7 +487,7 @@ function convertTo() {
   const a = b / rate;
   document.getElementById('from-input').value = a.toFixed(4);
   document.getElementById('main-result').textContent = `${b.toLocaleString()} ${TO} = ${a.toLocaleString('en-US', {maximumFractionDigits:4})} ${FROM}`;
-  document.getElementById('rate-info').textContent = `Reference rate: 1 ${TO} = ${(1/rate).toFixed(4)} ${FROM}`;
+  document.getElementById('rate-info').textContent = `Reference rate: 1 ${TO} = ${(1/rate).toFixed(4)} ${FROM}${rateContext()}`;
 }
 
 function setAmt(n) {
@@ -438,6 +497,7 @@ function setAmt(n) {
 
 function buildTable() {
   const tbody = document.getElementById('conv-table');
+  if (!rate) { tbody.innerHTML = `<tr><td colspan="2">Conversion table unavailable — no live rate or snapshot for this pair right now.</td></tr>`; return; }
   tbody.innerHTML = AMOUNTS.map(a => {
     const b = (a * rate).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
     return `<tr><td>${a.toLocaleString()} ${FROM}</td><td>${b} ${TO}</td></tr>`;

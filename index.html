@@ -889,32 +889,38 @@
 
     async function fetchRates() {
       const el = document.getElementById('last-updated');
+      // 1) Live first (time-boxed: a hanging endpoint falls back fast, not forever).
       try {
-        const res = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), 3500);
+        let res;
+        try { res = await fetch('https://api.exchangerate-api.com/v4/latest/USD', {signal: ctrl.signal}); }
+        finally { clearTimeout(t); }
+        if (!res.ok) throw new Error('live http');
         const data = await res.json();
-        rates = data.rates || {};
-        if (data.time_last_update_utc) {
-          const d = new Date(data.time_last_update_utc);
-          const fmt = d.toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) +
-                      ', ' + d.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'}) + ' UTC';
-          el.textContent = 'Rate data: ' + fmt;
-        } else {
-          el.textContent = 'Reference rate loaded';
-        }
+        if (!data || !data.rates || !data.rates.USD) throw new Error('live shape');
+        rates = data.rates;
+        el.textContent = data.date ? ('Live reference rates · ' + data.date) : 'Live reference rates loaded';
         el.style.color = '';
-        convert();
-        buildPairs();
-      } catch (e) {
-        rates = {
-          USD:1, EUR:0.92, GBP:0.79, JPY:149.5, CAD:1.36, AUD:1.53, CHF:0.90, CNY:7.24,
-          SAR:3.75, AED:3.67, KWD:0.307, QAR:3.64, EGP:30.9, MAD:10.1, INR:83.2,
-          MXN:17.1, BRL:4.97, SGD:1.34, HKD:7.82, NOK:10.5, SEK:10.4, NZD:1.63,
-          ZAR:18.6, TRY:30.5
-        };
-        el.textContent = '⚠ Using fallback rates — live data unavailable';
-        el.style.color = '#b45309';
-        convert();
-        buildPairs();
+        convert(); buildPairs();
+        return;
+      } catch (e) { /* fall through to snapshot */ }
+      // 2) Dated reference snapshot (same-origin fallback). Never shown as live.
+      try {
+        const res = await fetch('/rates/snapshot.json', {cache: 'no-cache'});
+        if (!res.ok) throw new Error('snap http');
+        const s = await res.json();
+        if (!s || !s.rates || !s.rates.USD) throw new Error('snap shape');
+        rates = s.rates;
+        el.textContent = '⚠ Live source unavailable — showing reference snapshot as of ' + (s.as_of || 'recent capture') + ' (not live)';
+        el.style.color = '#a07000';
+        convert(); buildPairs();
+        return;
+      } catch (e2) {
+        rates = {};
+        el.textContent = '⚠ Rates unavailable right now — live source and snapshot both unreachable';
+        el.style.color = '#8a2c2c';
+        convert(); buildPairs();
       }
     }
 
