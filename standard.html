@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2HS37BH07J');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CRIS v1.0 — Currency Rules Integrity Standard | ConvertCCY</title>
+<meta name="description" content="The Currency Rules Integrity Standard v1.0: the specification that defines what makes a jurisdictional FX rules statement trustworthy, auditable, and reference-grade.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://convertccy.com/standard.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f7f5;
+  --surface:#ffffff;
+  --surface-2:#fcfcfa;
+  --border:#e8e8e4;
+  --text:#111110;
+  --muted:#888884;
+  --accent:#1a6b3c;
+  --accent-light:#e8f5ee;
+  --accent-border:#c4dfd0;
+  --shadow:0 8px 24px rgba(17,17,16,.05);
+  --mono:'DM Mono',monospace;
+  --sans:'Sora',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .18s}
+.nav-links a:hover{color:var(--text)}
+.page-wrap{max-width:1060px;margin:0 auto;padding:4rem 2rem 6rem}
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-bottom:2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{opacity:.45}
+.hero-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.74rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-2px;line-height:1.04;margin-bottom:1.1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:1.05rem;color:#2e2e2b;max-width:760px;line-height:1.75;margin-bottom:.8rem}
+.section-divider{border:none;border-top:1px solid var(--border);margin:3rem 0}
+.section-kicker{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:.5rem}
+h2{font-size:1.55rem;font-weight:800;letter-spacing:-.04em;margin-bottom:.9rem;line-height:1.15}
+h3{font-size:1.05rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.55rem}
+p{color:#2a2a28;line-height:1.8;margin-bottom:1.1rem}
+p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:600}
+.box-accent{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
+.box-accent .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-accent p{color:#1e4f2f;margin:0;font-size:.93rem;line-height:1.72}
+.principle-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.3rem 1.5rem;margin:1.5rem 0;box-shadow:var(--shadow)}
+.principle-num{font-family:var(--mono);font-size:.85rem;font-weight:600;color:var(--accent);margin-bottom:.3rem}
+.principle-title{font-size:.98rem;font-weight:700;margin-bottom:.5rem}
+.principle-desc{font-size:.89rem;color:#2f2f2c;line-height:1.7}
+.code-block{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:1rem;font-family:var(--mono);font-size:.85rem;overflow-x:auto;margin:1rem 0;color:#2a2a28;line-height:1.6}
+.spec-table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+.spec-table td{border:1px solid var(--border);padding:.75rem;font-size:.88rem;line-height:1.65}
+.spec-table td:first-child{font-family:var(--mono);font-weight:600;width:160px;color:var(--accent)}
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+@media(max-width:640px){
+  nav{padding:.8rem 1rem}
+  .page-wrap{padding:2.5rem 1rem 4rem}
+  h1{font-size:2rem}
+  .spec-table td:first-child{width:auto}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">convert<span>ccy</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">Currencies</a>
+    <a href="/rules/">Rules</a>
+    <a href="/articles/">Articles</a>
+    <a href="/framework.html">Framework</a>
+    <a href="/governance.html">Governance</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a> <span>/</span> <span>Standard</span>
+  </div>
+
+  <div class="hero">
+    <span class="hero-tag">CRIS v1.0</span>
+    <h1>Currency Rules Integrity <em>Standard</em></h1>
+    <p class="hero-lead">The specification that defines what makes a jurisdictional foreign exchange rules statement trustworthy, auditable, and reference-grade. Every country entry on ConvertCCY is tested against CRIS v1.0.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Foundation Principle</div>
+    <h2>Why CRIS Exists</h2>
+    <p>In 2026, anyone can generate thousands of pages about currency rules using an AI. The buyer of reference-grade data asks: <em>What makes your rules trustworthy?</em></p>
+
+    <p>ConvertCCY's answer is not reputation. It is a named, versioned, public standard that any reader can audit against. CRIS v1.0 defines the structural, sourcing, and editorial requirements for every country rules entry to be considered <strong>reference-grade</strong>.</p>
+
+    <div class="box-accent">
+      <span class="box-label">Core Claim</span>
+      <p>A country rules entry is reference-grade if and only if it passes CRIS v1.0 validation. Passing means: sources are official, every claim is attributed, content is distinct and substantial, and the entry's lifecycle is transparent.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">The Five Principles</div>
+    <h2>CRIS Architecture</h2>
+
+    <div class="principle-box">
+      <div class="principle-num">Principle 1: Official Source Authority</div>
+      <div class="principle-title">All Claims Must Cite Official Sources</div>
+      <div class="principle-desc">Every statement in a country rules entry must map back to an official source: a central bank, customs authority, ministry, or regulator. Secondary sources (news, law firms, multilateral banks) are allowed as supporting references but not as primary claims. Broken URLs or inaccessible sources fail this principle.</div>
+    </div>
+
+    <div class="principle-box">
+      <div class="principle-num">Principle 2: Per-Field Attribution</div>
+      <div class="principle-title">Granular Source Mapping</div>
+      <div class="principle-desc">It is not enough to say "source: the central bank." Every rule field (declaration threshold, import rules, residency rules, etc.) must specify which source authority and which section or page number supports that claim. Attribution is granular, not global.</div>
+    </div>
+
+    <div class="principle-box">
+      <div class="principle-num">Principle 3: Semantic Distinctness</div>
+      <div class="principle-title">Content Must Reflect Actual Regulatory Difference</div>
+      <div class="principle-desc">If a jurisdiction has different rules for bringing in vs. taking out currency, the text must reflect that difference. No placeholder replication. If the rules are genuinely identical, they must be rewritten to show the actual regulatory framework so the difference becomes clear. Textual similarity >72% is rejected.</div>
+    </div>
+
+    <div class="principle-box">
+      <div class="principle-num">Principle 4: Regulatory Literacy</div>
+      <div class="principle-title">Evidence of Domain Knowledge</div>
+      <div class="principle-desc">The country overview must demonstrate understanding of the jurisdiction's regulatory regime: the name of the regulatory authority, the type of exchange-rate regime (floating, pegged, controlled), and the convertibility status (freely convertible, restricted, non-resident convertible). Generic or placeholder text fails.</div>
+    </div>
+
+    <div class="principle-box">
+      <div class="principle-num">Principle 5: Transparent Lifecycle</div>
+      <div class="principle-title">Clear Publication Status</div>
+      <div class="principle-desc">Every entry must declare its evidence tier (official_verified, official_verified_partial, secondary_institutional, internal), publication status (published, verified, needs_hardening, blocked), and last review date. No silent edits. Changes are appended, dated, and explained. Readers can audit the entry's history.</div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Specification</div>
+    <h2>CRIS v1.0 Validation Schema</h2>
+
+    <h3>Field Requirements</h3>
+    <p>Every country rules entry must include these fields, and each must conform to CRIS v1.0:</p>
+
+    <table class="spec-table">
+      <tr>
+        <td>country_name</td>
+        <td>Non-empty string. Official English name.</td>
+      </tr>
+      <tr>
+        <td>iso2, iso3</td>
+        <td>Valid ISO 3166-1 codes. Required for data interoperability.</td>
+      </tr>
+      <tr>
+        <td>currency_code</td>
+        <td>Valid ISO 4217 code. The jurisdiction's primary currency.</td>
+      </tr>
+      <tr>
+        <td>country_overview</td>
+        <td>≥200 characters. Must contain three regulatory signals: regulatory_authority, fx_regime, convertibility_or_controls. No placeholder text.</td>
+      </tr>
+      <tr>
+        <td>rules.bring_foreign_currency_in</td>
+        <td>≥80 chars. Specific to import. Cite official threshold if any.</td>
+      </tr>
+      <tr>
+        <td>rules.take_foreign_currency_out</td>
+        <td>≥80 chars. Specific to export. Must differ meaningfully from import rule (>28% textually distinct).</td>
+      </tr>
+      <tr>
+        <td>rules.cash_declaration_threshold</td>
+        <td>≥80 chars. State the official threshold amount, currency, and which authorities enforce it.</td>
+      </tr>
+      <tr>
+        <td>source_authorities[]</td>
+        <td>List of official sources with label, URL (HTTPS), type (central_bank, customs, ministry, etc.), and tier (primary or secondary).</td>
+      </tr>
+      <tr>
+        <td>source_map</td>
+        <td>Object. Every rule field maps to specific sources with page numbers (for PDFs on published entries).</td>
+      </tr>
+      <tr>
+        <td>last_reviewed</td>
+        <td>ISO 8601 date. When the entry was last audited against official sources. Stale dates raise concerns.</td>
+      </tr>
+      <tr>
+        <td>page_status</td>
+        <td>One of: published, verified, needs_hardening, needs_source_review, blocked. Transparent lifecycle.</td>
+      </tr>
+    </table>
+
+    <h3>Source Requirements</h3>
+    <p>CRIS v1.0 enforces strict source discipline:</p>
+
+    <div class="code-block">
+✓ Official sources that qualify:
+  - Central Bank
+  - Customs Authority
+  - Ministry of Finance / Economy
+  - Financial Regulator
+  - Official Trade/Commerce Agency
+
+✓ Secondary sources (supporting only):
+  - Law firm analysis
+  - Big Four accounting firm guides
+  - Chamber of Commerce reference
+  - Multilateral bank (IMF, World Bank)
+
+✗ Disqualified sources:
+  - News articles (no original research authority)
+  - Reddit / forums / blogs
+  - Outdated or archived pages (>6 months old without review)
+  - Paywalled sources (inaccessible)
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Example</div>
+    <h2>A CRIS v1.0 Compliant Entry: Canada</h2>
+
+    <div class="code-block">
+{
+  "country_name": "Canada",
+  "iso2": "CA",
+  "iso3": "CAN",
+  "currency_code": "CAD",
+  "currency_name": "Canadian Dollar",
+  "country_overview":
+    "The Bank of Canada administers Canada's monetary policy and forex regime.
+     The Canadian dollar floats freely against other currencies. Canada maintains
+     an open capital account with broadly liberalized current account flows.
+     The CBSA enforces strict cash reporting under anti-money laundering law.",
+  "rules": {
+    "bring_foreign_currency_in":
+      "Foreign currency may be freely imported into Canada without restriction.
+       Reporting of CAD 10,000 or more is mandatory and should be made using
+       form E677 to CBSA before clearance, either at airport pre-security
+       (for air) or at the border checkpoint (land/rail/boat).",
+    "take_foreign_currency_out":
+      "Residents and non-residents may freely export foreign currency previously
+       declared or documented. Canadian residents exporting CAD 10,000 or more
+       must report to CBSA (form E677). Non-residents need only verify the amount
+       was lawfully imported. No repatriation restrictions apply.",
+    ...
+  },
+  "source_authorities": [
+    {
+      "label": "Bank of Canada — Monetary Policy & FX Framework",
+      "url": "https://www.bankofcanada.ca/",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "Canada Border Services Agency (CBSA) — Currency Reporting",
+      "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+      "type": "customs",
+      "tier": "primary"
+    }
+  ],
+  "source_map": {
+    "country_overview": [
+      {
+        "url": "https://www.bankofcanada.ca/",
+        "section": "Monetary Policy & FX",
+        "pages": []
+      }
+    ],
+    "rules.bring_foreign_currency_in": [
+      {
+        "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+        "section": "E677 Currency Reporting Requirements",
+        "pages": []
+      }
+    ]
+  },
+  "page_status": "published",
+  "evidence_tier": "official_verified",
+  "publication_class": "reference",
+  "indexing_allowed": true,
+  "last_reviewed": "2026-07-04"
+}
+    </div>
+
+    <div class="box-accent">
+      <span class="box-label">What Makes This Compliant</span>
+      <p>All required fields present. All claims cite official sources (BoC, CBSA). Import and export rules differ substantively (both can export, but residents must report). Country overview mentions regulatory authority (CBSA), regime type (floating), and capital account status (liberalized). Source map is granular. Status is transparent (published, official_verified). Last reviewed date is current.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Adoption & Future</div>
+    <h2>CRIS as Public Standard</h2>
+    <p>CRIS v1.0 is published openly. Other reference systems, fintech platforms, compliance tools, and AI agents can adopt it. Debate it. Improve it. The standard is ConvertCCY's public contribution to the infrastructure of trust in global financial reference data.</p>
+
+    <p>CRIS v1.0 is final as of 2026. Future versions will be numbered (v1.1, v2.0, etc.) and will not break backward compatibility without major version change.</p>
+
+    <div class="box-accent">
+      <span class="box-label">For Institutions</span>
+      <p>If you are building a fintech product, regtech tool, or international payments platform that needs reference-grade country currency rules, you can license the ConvertCCY dataset under CC BY 4.0 (free for research and open attribution) or contact for commercial licensing. CRIS v1.0 is the standard they will pass.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 ConvertCCY. <a href="/framework.html">Framework</a> • <a href="/governance.html">Governance</a> • <a href="/standard.html">CRIS Standard</a> • <a href="/disclaimer.html">Disclaimer</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
