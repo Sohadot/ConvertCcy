@@ -348,4 +348,31 @@ Verified live on the custom domain:
 
 P3 is now closed. Passage Check is live as a deterministic, evidence-bound diagnostic over the published sovereign rules layer.
 
+### P4 Deployment Gate Verification
+
+P4 was merged to `main` and verified live on the custom domain.
+
+Verified live URLs:
+
+- https://convertccy.com/pages/eur-to-cad.html — live, enriched pair page visible; EUR correctly links to Passage Check generically because it maps to multiple published jurisdictions.
+- https://convertccy.com/pages/inr-to-aed.html — live, enriched pair page visible; one-to-one Passage Check deep-link is present.
+- https://convertccy.com/pages/usd-to-eur.html — live, enriched pair page visible; USD remains non-governed and does not fabricate jurisdictional coverage.
+- https://convertccy.com/sitemap.xml — live, sitemap includes authority pages, ontology, Passage Check, published rules, articles, and pair pages.
+
+Deployment notes:
+
+- First live checks were performed with cache-buster URLs to avoid Cloudflare negative-cache poisoning.
+- Canonical URLs were then verified directly.
+- Cloudflare cache was purged for representative P4 sample URLs and sitemap.
+- No pair URLs were added or removed.
+- No preview rules pages were exposed.
+- No unpublished jurisdiction was used as governed evidence.
+
+Status: ✅ P4 CLOSED — Pair-page enrichment is live as R1 mitigation.
+
+Strategic result:
+
+P4 reduces scaled-content exposure by adding evidence-bound jurisdictional context to pair pages while preserving URL stability, indexability, and the existing pair-page graph.
 Verified: 2026-07-05.
+
+
