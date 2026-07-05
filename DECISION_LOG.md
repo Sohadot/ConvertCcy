@@ -55,6 +55,83 @@ Skipped framework.html   — manually managed, file exists
 
 ---
 
+## Phase 4 — Pipeline Repair & Reference Layer Unblock (P0)
+**Status:** Merged to main
+
+### Context
+16 of 24 country rules files were failing validation, blocking the entire rules pipeline. Drafts existed but the factory was stalled at QA (R3 in audit).
+
+### Decision: Systematic repair of validation-failed entries
+
+1. **Schema version fixes** (Indonesia, Mexico, South Africa, Turkey)
+   - Incremented schema_version from 1.2.0 to 1.2.1 to match CRIS v1.0
+   - Normalized `indexing_allowed` from inconsistent states to False (RC entries not indexed per protocol)
+
+2. **Source authority repairs** (10 countries: Canada, France, Germany, Japan, Saudi Arabia, Singapore, South Korea, Switzerland, UK, China)
+   - Comprehensive dead-link audit: 25+ invalid URLs found in `source_authorities` and `source_map` fields
+   - Method: HTTP status check + official government website search for current URLs
+   - All replacements verified live (HTTP 200)
+   - Examples:
+     - CBSA Canada: `curr-monna-eng.html` → `ttd-vdd-eng.html` (current tariff declaration doc)
+     - French Customs: `/fiche/declaration-des-especes` → `/fiche/vous-voyagez-avec-10-000-euros-ou-plus` (updated declaration guide)
+
+3. **Textual similarity reduction** (8 countries: Canada, France, Saudi Arabia, Singapore, South Korea, Switzerland, UK, USA)
+   - Problem: import and export rules were 90–94% identical (Gate 5 failure)
+   - Solution: rewritten with regulatory focus on *inbound flow regime* vs *repatriation rights*
+   - No placeholder text injected; differences are substantive (import declaration architecture vs outbound source-of-funds verification)
+
+4. **Removed incomplete drafts** (jordan.json, kuwait.json)
+   - Both files had structural stubs only; no source basis in governance context
+   - Removal prevents invalid entries from ever reaching publication layer
+
+### Outcome
+- 23 of 23 country files now pass all six gates
+- Pipeline unblocked; reference layer production can proceed
+- Verified entries ready for RC (preview/) layer; published entries (8) live on sovereign layer
+
+### Principle
+Rules integrity is non-negotiable. Sources are auditable facts, not guesses. Every claim carries its evidence directly visible to readers.
+
+---
+
+## Phase 5 — Governance Layer & Standards Publication (P1)
+**Status:** Ready to merge (pending DECISION_LOG entry)
+
+### Decision: Publish governance protocol and CRIS standard as authority pages
+
+The internal discipline (six-gate pipeline, lifecycle statuses, append-only audit trail) was operational but invisible to readers. P1 makes it visible as trust capital.
+
+#### governance.html
+- Six-gate validation pipeline (full specification)
+- Publication lifecycle statuses (published, verified RC, needs_hardening, blocked)
+- Append-only discipline (dated, attributed, explained, versioned, linked)
+- Pipeline status snapshot (23 validated, 8 published, 13 verified RC, 2 needs_hardening, 15 preview total)
+
+**Rationale:** Readers can now inspect how entries are produced, not just the output. This becomes the asset's competitive moat: anyone can publish FX content; only CRIS-conformant, governance-visible content is reference-grade.
+
+#### standard.html (CRIS v1.0)
+- Public specification of what makes a country rules statement trustworthy
+- Five principles: (1) Official source authority, (2) Per-field attribution, (3) Semantic distinctness, (4) Regulatory literacy, (5) Transparent lifecycle
+- Schema specification with field-level requirements
+- Real-world example: Canada entry as reference
+- Companion page to `/governance.html` (governance = how, standard = what)
+
+**Rationale:** CRIS is not a general framework; it is ConvertCCY's proprietary standard published openly. This makes it language-making authority, not market-follower.
+
+#### Precision corrections applied before merge
+- Fixed numeric error in governance.html: Verified (RC) count corrected from 10 → 13
+- Added Preview total: 15 (13 RC + 2 needs_hardening) for clarity
+- Softened "definitive specification" language in standard.html to "ConvertCCY's public specification" (avoids overclaim before external adoption)
+- Removed premature commercial licensing language from P1 (reserved for P6 monetization phase)
+- Updated navigation across all pages to include `/governance.html` and `/standard.html` links
+
+### Standing decision from P1
+- Governance pages are manually managed (similar to manifesto, methodology, framework)
+- CRIS and governance specs must be updated through PR review, never direct-to-main
+- No monetization language attaches to governed reference content (income is extension of reference, never tax on it)
+
+---
+
 ## Standing rules (all phases)
 
 - One concern = one PR = one branch
