@@ -63,3 +63,4 @@ Skipped framework.html   — manually managed, file exists
 - No noindex on pair pages
 - No SEO-impacting changes hidden inside security PRs
 - Manual workflow preferred over API-dependent automation
+- - 2026-07-05: Triggered a fresh GitHub Pages deployment after run #122 remained queued following the P0 merge.
