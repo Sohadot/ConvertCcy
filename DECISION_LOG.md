@@ -368,6 +368,20 @@ Status: Approved for merge only after public snapshot artifact verification.
 - Files verified present in the branch: `rates/snapshot.json`, `data/rate_snapshot.json`, `scripts/build_rate_snapshot.py`, updated `generate.py`, updated `index.html`, updated `methodology.html`.
 - Deployment Gate note for P5 closure: after merge, confirm `https://convertccy.com/rates/snapshot.json` returns 200 on the live custom domain (first touch with a cache-buster per the P3 lesson), and that a representative pair page shows the correct live/snapshot/unavailable state, before marking P5 closed.
 
+#### P5 Deployment Gate Verification — ✅ CLOSED (2026-07-05)
+Merged to `main` via PR #15.
+
+- **Public artifact live:** `https://convertccy.com/rates/snapshot.json` returns **200** on the custom domain, valid JSON — `type: reference_rate_snapshot`, `purpose: fallback`, `base: USD`, `as_of: 2026-07-05`, `count: 166`, and the strengthened notice ("not live, not official, not governed … not suitable for financial decisions").
+- **Live mode:** a live pair page (AED→EUR) opens with the `REFERENCE` badge and a rate — live-first path confirmed in production.
+- **P4 intact:** the Currency Passage section still renders on live pages; EUR shows France + Germany and links Passage Check generically (no fabricated route).
+- **Forced fallback states verified** against the byte-identical deployed build (the sandbox proxy resets headless-browser connections to the live domain, so live REST/artifact checks were done via curl and the interactive forced states were reproduced on the exact committed `pages/` + `rates/snapshot.json` bytes now on `main`):
+  - Live source blocked → amber **`SNAPSHOT · 2026-07-05`** badge; rate shown as `1 INR = 0.0385 AED` with "reference snapshot as of 2026-07-05, not live". Fallback engages within the 3.5s live time-box.
+  - Live + snapshot both blocked → **`UNAVAILABLE`** badge, "Rate unavailable right now", conversion table shows an unavailable row — **no fabricated 1:1**.
+  Screenshots captured and delivered to the owner.
+- **Composition of proof:** deployed page JS is byte-identical to the tested build, and its only fallback dependency (`/rates/snapshot.json`) is confirmed live and valid — so the forced-fallback behavior proven on the identical build holds in production.
+
+Status: ✅ **P5 CLOSED.** R2 resolved — the single-endpoint dependency now degrades honestly (live → dated snapshot → unavailable) with no 1:1 fabrication.
+
 ---
 
 ## Standing rules (all phases)
