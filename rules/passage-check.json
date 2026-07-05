@@ -1,0 +1,952 @@
+{
+ "engine": "ConvertCCY Passage Check",
+ "version": "1.0",
+ "built_from": "rules/dataset.json",
+ "source_dataset_generated_at": "2026-07-04T17:53:38+00:00",
+ "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "ConvertCCY (https://convertccy.com/)",
+ "notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. Structured thresholds are transcribed from each entry's cash_declaration_threshold field. Currency conversions shown in the tool are indicative only and are not governed figures.",
+ "count": 8,
+ "countries": [
+  {
+   "country_name": "Australia",
+   "country_slug": "australia",
+   "iso2": "AU",
+   "currency_code": "AUD",
+   "currency_name": "Australian Dollar",
+   "region": "Oceania",
+   "last_reviewed": "2026-05-02",
+   "rules_page": "/rules/australia-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "AUD",
+      "scope": "cash or bearer negotiable instruments",
+      "applies": "inbound and outbound",
+      "authority": "AUSTRAC",
+      "mechanism": "AML reporting trigger"
+     }
+    ],
+    "note": "No mandatory customs declaration threshold for ordinary travellers; the figure is an anti-money-laundering reporting trigger reported to AUSTRAC.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (fully liberalised)",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "Unlimited amounts of Australian Dollars and foreign currency may be brought into Australia with no general declaration requirement for travelers.",
+     "source": {
+      "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in",
+      "section": "Import of Currency"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "Unlimited amounts of Australian Dollars and foreign currency may be taken out of Australia. Residents must comply with RBA limits when exporting large sums of foreign currency.",
+     "source": {
+      "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in",
+      "section": "Export of Currency"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "No mandatory currency declaration threshold applies for ordinary travelers. Movements of AUD 10,000 or more (or equivalent) in cash or bearer negotiable instruments must be reported to AUSTRAC under anti-money laundering rules.",
+     "source": {
+      "url": "https://www.austrac.gov.au/business/how-comply-guidance-resources/guidance-notes",
+      "section": "Cash Reporting Rules (AUD 10,000 / equivalent)"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "Australia maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+     "source": {
+      "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+      "section": "Absence of Exchange Controls"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "Australian residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+     "source": {
+      "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+      "section": "Resident Foreign Currency Accounts"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+     "source": {
+      "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+      "section": "Non-Resident Accounts & Transfers"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Australia.",
+     "source": {
+      "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+      "section": "Authorised Dealers & Exchange Houses"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Reserve Bank of Australia (RBA) — Foreign Exchange Policy",
+     "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "AUSTRAC — Cash Reporting Requirements",
+     "url": "https://www.austrac.gov.au/business/how-comply-guidance-resources/guidance-notes",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Australian Border Force — Travel & Currency Rules",
+     "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in",
+     "type": "customs",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Australia are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBA / AUSTRAC / Australian Border Force framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of Australia, AUSTRAC, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "Canada",
+   "country_slug": "canada",
+   "iso2": "CA",
+   "currency_code": "CAD",
+   "currency_name": "Canadian Dollar",
+   "region": "North America",
+   "last_reviewed": "2026-05-02",
+   "rules_page": "/rules/canada-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "CAD",
+      "scope": "cash or bearer negotiable instruments (or equivalent)",
+      "applies": "entry and exit",
+      "authority": "Canada Border Services Agency (CBSA)",
+      "mechanism": "mandatory customs report"
+     }
+    ],
+    "note": null,
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (fully liberalised)",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "Foreign currency may be freely imported into Canada without restriction. Reporting of CAD 10,000 or more is mandatory and should be made using form E677 to CBSA before clearance, either at airport pre-security (for air) or at the border checkpoint (land/rail/boat).",
+     "source": {
+      "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+      "section": "Import of Currency"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "Residents and non-residents may freely export foreign currency previously declared or documented. Canadian residents exporting CAD 10,000 or more must report to CBSA (form E677). Non-residents need only verify the amount was lawfully imported. No repatriation restrictions apply.",
+     "source": {
+      "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+      "section": "Export of Currency"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "CAD 10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Reporting is mandatory to the Canada Border Services Agency.",
+     "source": {
+      "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+      "section": "Cash Reporting Rules (CAD 10,000 / equivalent)"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "Canada maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+     "source": {
+      "url": "https://www.bankofcanada.ca/",
+      "section": "Absence of Exchange Controls"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "Canadian residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+     "source": {
+      "url": "https://www.bankofcanada.ca/",
+      "section": "Resident Foreign Currency Accounts"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+     "source": {
+      "url": "https://www.bankofcanada.ca/",
+      "section": "Non-Resident Accounts & Transfers"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Foreign exchange conversion and transfers are widely available through banks and authorised dealers throughout Canada.",
+     "source": {
+      "url": "https://www.bankofcanada.ca/",
+      "section": "Authorised Dealers & Exchange Houses"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Bank of Canada — Monetary Policy & FX Framework",
+     "url": "https://www.bankofcanada.ca/",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Canada Border Services Agency (CBSA) — Currency Reporting",
+     "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "FINTRAC — Large Cash Transaction Reporting",
+     "url": "https://fintrac-canafe.gc.ca/",
+     "type": "regulator",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Canada are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Bank of Canada / CBSA / FINTRAC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Canada Border Services Agency, Bank of Canada, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "France",
+   "country_slug": "france",
+   "iso2": "FR",
+   "currency_code": "EUR",
+   "currency_name": "Euro",
+   "region": "Western Europe",
+   "last_reviewed": "2026-05-02",
+   "rules_page": "/rules/france-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "cash or bearer negotiable instruments (or equivalent)",
+      "applies": "entry and exit",
+      "authority": "French Customs (Douane)",
+      "mechanism": "mandatory declaration (DALIA online or paper)"
+     }
+    ],
+    "note": null,
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (liberalised within the Eurozone)",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "Foreign currency and euros may be freely imported. Declaration via DALIA online service (or paper form at border) is mandatory for amounts equal to or greater than €10,000 and may be submitted up to 30 days in advance.",
+     "source": {
+      "url": "https://www.douane.gouv.fr/fiche/vous-voyagez-avec-10-000-euros-ou-plus",
+      "section": "Import of Currency"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "Residents and non-residents may freely export currency and euros. Amounts of €10,000 or more in cash or bearer instruments require declaration to French Customs. Non-residents may repatriate the full amount of their declared inbound currency.",
+     "source": {
+      "url": "https://www.douane.gouv.fr/fiche/vous-voyagez-avec-10-000-euros-ou-plus",
+      "section": "Export of Currency"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "€10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Declaration must be made to French Customs.",
+     "source": {
+      "url": "https://www.douane.gouv.fr/fiche/vous-voyagez-avec-10-000-euros-ou-plus",
+      "section": "Cash Declaration Rules (€10,000 / equivalent)"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "France maintains no general exchange controls. The regime is fully liberalised within the Eurozone framework.",
+     "source": {
+      "url": "https://www.banque-france.fr/en/monetary-policy",
+      "section": "Absence of Exchange Controls"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "French residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+     "source": {
+      "url": "https://www.banque-france.fr/en/monetary-policy",
+      "section": "Resident Foreign Currency Accounts"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+     "source": {
+      "url": "https://www.banque-france.fr/en/monetary-policy",
+      "section": "Non-Resident Accounts & Transfers"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Foreign exchange conversion and transfers are widely available through banks and authorised dealers throughout France.",
+     "source": {
+      "url": "https://www.banque-france.fr/en/monetary-policy",
+      "section": "Authorised Dealers & Exchange Houses"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Banque de France — Foreign Exchange & Euro Regime",
+     "url": "https://www.banque-france.fr/en/monetary-policy",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "French Customs (Douane) — Cash Declaration Rules",
+     "url": "https://www.douane.gouv.fr/fiche/vous-voyagez-avec-10-000-euros-ou-plus",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "European Central Bank — Eurozone FX Framework",
+     "url": "https://www.ecb.europa.eu/mopo/html/index.en.html",
+     "type": "central_bank",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in France are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Banque de France / French Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with French Customs (Douane), Banque de France, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "Germany",
+   "country_slug": "germany",
+   "iso2": "DE",
+   "currency_code": "EUR",
+   "currency_name": "Euro",
+   "region": "Western Europe",
+   "last_reviewed": "2026-05-02",
+   "rules_page": "/rules/germany-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "cash or bearer negotiable instruments (or equivalent)",
+      "applies": "entry and exit",
+      "authority": "German Customs",
+      "mechanism": "mandatory declaration"
+     }
+    ],
+    "note": null,
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (liberalised within the Eurozone)",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "Foreign currency and euros can be freely imported into Germany by travelers. Any cash amount of €10,000 or equivalent must be declared to German Customs at the point of entry.",
+     "source": {
+      "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/Restrictions/Cash/Entering-Germany-from-non-EU-country/entering-germany-from-non-eu-country.html",
+      "section": "Import of Currency"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "When leaving Germany, travelers and residents may export unlimited amounts of euros and foreign currency. Cash exceeding €10,000 or equivalent must be declared to German Customs at departure.",
+     "source": {
+      "url": "https://www.zoll.de/EN/Private-individuals/Travel/Leaving-Germany/Restrictions/Cash/cash.html",
+      "section": "Export of Currency"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "€10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Declaration must be made to German Customs.",
+     "source": {
+      "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/Restrictions/Cash/Entering-Germany-from-non-EU-country/entering-germany-from-non-eu-country.html",
+      "section": "Cash Declaration Rules (€10,000 / equivalent)"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "Germany maintains no general exchange controls. The regime is fully liberalised within the Eurozone framework.",
+     "source": {
+      "url": "https://www.bundesbank.de/en/tasks/monetary-policy",
+      "section": "Absence of Exchange Controls"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "German residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+     "source": {
+      "url": "https://www.bundesbank.de/en/tasks/monetary-policy",
+      "section": "Resident Foreign Currency Accounts"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+     "source": {
+      "url": "https://www.bundesbank.de/en/tasks/monetary-policy",
+      "section": "Non-Resident Accounts & Transfers"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Foreign exchange conversion and transfers are widely available through banks and authorised dealers throughout Germany.",
+     "source": {
+      "url": "https://www.bundesbank.de/en/tasks/monetary-policy",
+      "section": "Authorised Dealers & Exchange Houses"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Deutsche Bundesbank — Foreign Exchange & Euro Regime",
+     "url": "https://www.bundesbank.de/en/tasks/monetary-policy",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "German Customs (Zoll) — Cash Declaration Rules",
+     "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/Restrictions/Cash/Entering-Germany-from-non-EU-country/entering-germany-from-non-eu-country.html",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "German Customs (Zoll) — Cash When Leaving Germany",
+     "url": "https://www.zoll.de/EN/Private-individuals/Travel/Leaving-Germany/Restrictions/Cash/cash.html",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "European Central Bank — Eurozone FX Framework",
+     "url": "https://www.ecb.europa.eu/mopo/html/index.en.html",
+     "type": "central_bank",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Germany are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Deutsche Bundesbank / German Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with German Customs (Zoll), Deutsche Bundesbank, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "India",
+   "country_slug": "india",
+   "iso2": "IN",
+   "currency_code": "INR",
+   "currency_name": "Indian Rupee",
+   "region": "South Asia",
+   "last_reviewed": "2026-05-02",
+   "rules_page": "/rules/india-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 5000,
+      "currency": "USD",
+      "scope": "foreign currency notes",
+      "applies": "arrival-side framing",
+      "authority": "CBIC Indian Customs",
+      "mechanism": "Currency Declaration Form (CDF) pathway"
+     },
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "aggregate foreign exchange (notes + in-scope traveller instruments)",
+      "applies": "arrival-side framing",
+      "authority": "CBIC Indian Customs",
+      "mechanism": "Currency Declaration Form (CDF) pathway"
+     }
+    ],
+    "note": "Two-tier threshold: the lower figure applies to foreign-currency notes, the higher to aggregate foreign exchange. Endorsed CDF documentation anchors later authorised-dealer conversions and outbound movement.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "Current account largely liberalised; capital account regulated under FEMA",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "There is ordinarily no prohibition on importing foreign exchange into India, but lawful physical import is framed around declaration and documentation: when foreign currency notes exceed USD 5,000 or aggregate foreign exchange (including traveller instruments in scope of the Currency Declaration Form) exceeds USD 10,000 on arrival, the Currency Declaration Form (CDF) pathway becomes operationally decisive. Practical compliance means carrying supporting documentation consistent with Customs guidance and preserving CDF linkage if you intend to reconvert or carry unutilised foreign exchange outward later.",
+     "source": {
+      "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+      "section": "Q5 – Declaration thresholds (CDF)"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "Unspent foreign exchange declared on arrival may be taken out, and the Currency Declaration Form should be retained for reconversion or for taking unused foreign exchange out of India.",
+     "source": {
+      "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+      "section": "CDF retention for departure / reconversion"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "The operative arrival-side threshold framing in the Customs materials bundled with Currency Declaration Form (CDF) practice is USD 5,000 for foreign currency notes and USD 10,000 for aggregate foreign exchange (including notes/travellers’ cheques falling under the form’s stated scope). When either threshold applies, Customs expects the relevant declaration channel/process to be followed; travellers should preserve endorsed documentation because it anchors later authorised-dealer conversions and outbound movements.",
+     "source": {
+      "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+      "section": "CDF Instructions (USD 5,000 notes / USD 10,000 aggregate)"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "India maintains a regulated exchange framework under FEMA 1999. Current account transactions are largely liberalised while capital account transactions are subject to regulation and reporting.",
+     "source": {
+      "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+      "section": "FEMA 1999 general framework"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "Indian residents remain subject to FEMA-based limits and conditions in relation to holding and using foreign exchange. Users should verify account eligibility, retention limits, and transaction-specific permissions directly with RBI rules and the authorised dealer.",
+     "source": {
+      "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+      "section": "Resident foreign currency holding limits under FEMA"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Non-residents (including NRIs and PIOs) may maintain NRE, FCNR(B) or NRO accounts with repatriation rights as permitted under RBI guidelines.",
+     "source": {
+      "url": "https://www.rbi.org.in/commonperson/english/scripts/FAQs.aspx?Id=3",
+      "section": "NRE / FCNR(B) / NRO accounts eligibility and rights"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Foreign exchange transactions are executed through Authorised Dealer banks, licensed money changers and authorised airports. The Currency Declaration Form (CDF) must be retained for reconversion and compliance purposes.",
+     "source": {
+      "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+      "section": "Authorised Dealer and CDF procedures"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "RBI — Miscellaneous Forex Facilities FAQ (updated)",
+     "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+     "type": "primary_regulator_faq",
+     "tier": "primary"
+    },
+    {
+     "label": "RBI — Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026",
+     "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "RBI — Non-Resident Accounts FAQ",
+     "url": "https://www.rbi.org.in/commonperson/english/scripts/FAQs.aspx?Id=3",
+     "type": "primary_regulator_faq",
+     "tier": "primary"
+    },
+    {
+     "label": "CBIC — Currency Declaration Form (CDF)",
+     "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+     "type": "customs",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in India are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBI/CBIC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of India, CBIC, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "Japan",
+   "country_slug": "japan",
+   "iso2": "JP",
+   "currency_code": "JPY",
+   "currency_name": "Japanese Yen",
+   "region": "East Asia",
+   "last_reviewed": "2026-05-02",
+   "rules_page": "/rules/japan-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 1000000,
+      "currency": "JPY",
+      "scope": "cash or equivalent",
+      "applies": "inbound and outbound",
+      "authority": "Ministry of Finance / Bank of Japan",
+      "mechanism": "may trigger AML reporting"
+     }
+    ],
+    "note": "No mandatory declaration threshold for ordinary travellers; movements at or above this figure may trigger reporting under AML regulations.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (fully liberalised)",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "Unlimited amounts of Japanese Yen and foreign currency may be brought into Japan. No general declaration is required for travelers under normal circumstances.",
+     "source": {
+      "url": "https://www.customs.go.jp/english/",
+      "section": "Import of Currency"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "When departing Japan, travelers may export unlimited amounts of Japanese Yen and foreign currency. Large cash amounts may require reporting under anti-money laundering rules.",
+     "source": {
+      "url": "https://www.customs.go.jp/english/",
+      "section": "Export of Currency"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "No mandatory declaration threshold applies for ordinary travelers. Movements of JPY 1,000,000 or more (or equivalent) may trigger reporting requirements under AML regulations.",
+     "source": {
+      "url": "https://www.customs.go.jp/english/",
+      "section": "Cash Reporting Rules"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "Japan maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+     "source": {
+      "url": "https://www.mof.go.jp/english/policy/international_policy/index.html",
+      "section": "Absence of Exchange Controls"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "Japanese residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+     "source": {
+      "url": "https://www.mof.go.jp/english/policy/international_policy/index.html",
+      "section": "Resident Foreign Currency Accounts"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+     "source": {
+      "url": "https://www.mof.go.jp/english/policy/international_policy/index.html",
+      "section": "Non-Resident Accounts & Transfers"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Japan.",
+     "source": {
+      "url": "https://www.boj.or.jp/en/index.htm",
+      "section": "Authorised Dealers & Exchange Houses"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Ministry of Finance (MOF) Japan — Foreign Exchange Regulations",
+     "url": "https://www.mof.go.jp/english/policy/international_policy/index.html",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Bank of Japan (BOJ) — FX Market & Policy",
+     "url": "https://www.boj.or.jp/en/index.htm",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Japan Customs — Travel & Currency Rules",
+     "url": "https://www.customs.go.jp/english/",
+     "type": "customs",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Japan are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Ministry of Finance / Bank of Japan / Japan Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Ministry of Finance, Bank of Japan, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "Pakistan",
+   "country_slug": "pakistan",
+   "iso2": "PK",
+   "currency_code": "PKR",
+   "currency_name": "Pakistani Rupee",
+   "region": "South Asia",
+   "last_reviewed": "2026-05-02",
+   "rules_page": "/rules/pakistan-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "cash or bearer negotiable instruments (or equivalent)",
+      "applies": "entry and exit",
+      "authority": "Pakistan Customs",
+      "mechanism": "mandatory declaration"
+     }
+    ],
+    "note": null,
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "No general exchange controls on the current account; capital account regulated by the SBP",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "Travelers entering Pakistan may import any amount of foreign currency without restriction. Cash or monetary instruments of USD 10,000 or more (or equivalent) must be declared to Pakistan Customs upon arrival.",
+     "source": {
+      "url": "https://www.pakcustoms.gov.pk/",
+      "section": "Import of Currency"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "Travelers departing Pakistan may export foreign currency up to the amount they declared on arrival or obtained through authorised channels. Export of Pakistani Rupees is generally restricted.",
+     "source": {
+      "url": "https://www.sbp.org.pk/exchange-control-manual.html",
+      "section": "Export of Currency & PKR Restrictions"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "USD 10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Declaration is mandatory to Pakistan Customs.",
+     "source": {
+      "url": "https://www.pakcustoms.gov.pk/",
+      "section": "Cash Declaration Rules (USD 10,000 / equivalent)"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "Pakistan maintains no general exchange controls on current account transactions. Capital account transactions are regulated by the State Bank of Pakistan.",
+     "source": {
+      "url": "https://www.sbp.org.pk/",
+      "section": "Current vs Capital Account Controls"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "Pakistani residents may maintain foreign currency accounts with authorised banks subject to SBP regulations.",
+     "source": {
+      "url": "https://www.sbp.org.pk/",
+      "section": "Resident Foreign Currency Accounts"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Non-residents may open and operate foreign currency accounts and transfer funds freely through authorised dealers.",
+     "source": {
+      "url": "https://www.sbp.org.pk/",
+      "section": "Non-Resident Accounts & Transfers"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Foreign exchange conversion and transfers are available through authorised banks and exchange companies across Pakistan.",
+     "source": {
+      "url": "https://www.sbp.org.pk/",
+      "section": "Authorised Dealers & Exchange Companies"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "State Bank of Pakistan (SBP) — Foreign Exchange Regulations",
+     "url": "https://www.sbp.org.pk/",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Pakistan Customs — Currency Declaration Rules",
+     "url": "https://www.pakcustoms.gov.pk/",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "SBP — Exchange Control Manual",
+     "url": "https://www.sbp.org.pk/exchange-control-manual.html",
+     "type": "primary_regulator",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Pakistan are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable State Bank of Pakistan / Pakistan Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the State Bank of Pakistan, Pakistan Customs, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "United Arab Emirates",
+   "country_slug": "united-arab-emirates",
+   "iso2": "AE",
+   "currency_code": "AED",
+   "currency_name": "UAE Dirham",
+   "region": "Middle East",
+   "last_reviewed": "2026-05-01",
+   "rules_page": "/rules/united-arab-emirates-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 60000,
+      "currency": "AED",
+      "scope": "combined value of cash, negotiable instruments without a named payee, jewellery, and precious metals",
+      "applies": "travellers aged 18 and above, inbound and outbound",
+      "authority": "UAE Customs / Central Bank of the UAE",
+      "mechanism": "AML transparency declaration"
+     }
+    ],
+    "note": "The trigger is a COMBINED declarable value across several asset categories, not cash alone, and applies to passengers aged eighteen and above.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "supervisory_peg",
+    "label": "No per-transaction approval controls; supervisory posture around the US-dollar peg, current-account flows largely liberal",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "Inbound travellers may carry foreign currency without a legislated statutory cap analogous to rigid import licences. When the traveller carries currencies, cheque-like bearer forms, jewellery, or precious metals whose combined declarable valuation exceeds AED 60,000, UAE customs doctrine expects a declaration aligned with traveller-transparency publications and ICP-aligned digital facilitation at covered ports. Household members under eighteen are not ordinarily required to lodge a standalone declaration beyond inclusion on a guardian declaration where facts support that treatment. Omitting mandated declarations where threshold facts exist is prosecuted as customs evasion risk rather than a routine paperwork preference.",
+     "source": {
+      "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
+      "section": "Inbound declaration mechanics"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "Departure differs operationally from arrival even when headline policy remains permissive: travellers leaving still face the AED 60,000 combined declarable corridor for cash-like and jewellery categories, but the supervisory emphasis shifts to outbound reporting and AML monitoring on later bank or wire corridors. Capital repatriation of salaries, divestment receipts, or investment proceeds is ordinarily not withheld by denomination-specific quotas; compliance teams instead scrutinise sourcing and screening on higher-value corridors. Institutional channels therefore remain the pragmatic choice for sizeable movements that would otherwise collide with traveller-only declaration mechanics.",
+     "source": {
+      "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
+      "section": "Outbound / departure reporting"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "Federal traveller declaration standards align on a combined AED 60,000 reporting trigger across cash, negotiable instruments without a named payee, jewellery, and precious metals for passengers aged eighteen and above. The measure is grounded in anti-money-laundering transparency rather than a permit to carry only up to that mark. Officials provide structured declaration forms plus, on selected crossings, interoperable electronic submission consistent with ICA/ICP public guidance. Accuracy matters because valuation disputes feed enforcement channels separate from benign tourist exchanges below reporting facts.",
+     "source": {
+      "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
+      "section": "AED 60,000 combined traveller reporting trigger"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "Administrative parlance distinguishes true exchange controls—mandatory approvals per transaction—from the Emirates' supervisory posture, which concentrates on peg maintenance through monetary instruments and regulated institutions while keeping current-account style flows largely liberal. Profit repatriation, services exports, and re-invoicing frameworks do not require pre-clearance dossiers analogous to guarded-capital regimes. Where tension appears, it is typically compliance-driven delays at bank level rather than sovereign denial of lawful conversion.",
+     "source": {
+      "url": "https://rulebook.centralbank.ae",
+      "section": "Central bank supervisory remit versus capital-control jurisdictions"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "UAE residents maintain AED and multicurrency deposits domestically subject to universal banking AML standards rather than nationality-based holding prescriptions. Everyday conversion between dirhams and majors occurs through authorised institutions where CBUAE licence classes govern who may run exchange counters versus full banking. Residents remitting abroad use SWIFT-like rails with institution-level checks; there is no parallel household foreign-currency ceiling published like hard exchange-control jurisdictions. Relationship managers still expect documentation on unusually large legacy cash deposits.",
+     "source": {
+      "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+      "section": "Residents' domestic and foreign currency services"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Non-resident individuals and corporates open AED or foreign-currency accounts with documentation typical of international banking centres. Repatriation of operating profits, sale proceeds, or payroll savings is not administratively throttled by sovereign conversion permits in the classic sense, though banks apply sanctions screening and correspondent-bank constraints. Non-residents engaging in mainland commercial activity coordinate with licensing authorities separately from FX mechanics. Digital wallets and PSP partnerships expand retail access but inherit the same compliance obligations.",
+     "source": {
+      "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+      "section": "Opening accounts / non-resident access"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Liquidity for tourists and corporates flows through multinational banks, local champions, licensed exchange houses, and airport concessions with published boards. Payments rails include instant domestic transfers where supported and cross-border wires with correspondent cut-offs. Corporates leaning on treasury workstations integrate FX hedging externally while domestic spot needs are satisfied OTC. Operational friction concentrates on onboarding due diligence—not on statutory quotas—when aligning with FATF-aligned programmes.",
+     "source": {
+      "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+      "section": "Retail and corporate FX access pathways"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Central Bank of the UAE (CBUAE) — Rulebook",
+     "url": "https://rulebook.centralbank.ae",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Dubai Customs — Declaring Money Procedure",
+     "url": "https://www.dubaicustoms.gov.ae/en/eServices/ServicesForIndividuals/ViewCustomsProcedure/Pages/DeclaringMoneyProcedure.aspx",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "UAE Government Portal — Banking in the UAE",
+     "url": "https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae",
+     "type": "ministry",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Customs declaration thresholds and Central Bank supervisory requirements in the UAE can change without notice appearing here. This is not legal, regulatory, tax, financial, or compliance advice. Confirm current obligations with UAE Customs, the Central Bank of the UAE (CBUAE), licensed financial intermediaries, or qualified counsel before committing to travel or treasury decisions."
+  }
+ ]
+}
