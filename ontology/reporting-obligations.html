@@ -127,52 +127,59 @@ footer a:hover{color:var(--text)}
     <div class="section-kicker">Real-World Examples</div>
     <h2>How Reporting Chains Operate</h2>
 
+    <p>The examples below name the specific authorities identified on each published rules page. Where a jurisdiction's detailed reporting internals (retention periods, inter-agency sharing) are not established on the source page, this ontology does not assert them.</p>
+
     <div class="example-box">
-      <div class="example-label">United States</div>
-      <div class="example-title">Dual Reporting: Traveler + Bank + Customs</div>
-      <div class="example-desc">Travelers declaring USD 10,000+ file FinCEN Form 105 at customs (traveler-initiated). Banks file Currency Transaction Reports (CTRs) for any transaction USD 10,000+ (bank-initiated, automatic, daily aggregation). If a pattern of structuring is detected (multiple transactions just under the threshold), Suspicious Activity Reports (SARs) are filed to FinCEN. All reports flow to FinCEN, which shares with Secret Service, DEA, and state AML authorities. Retention: 5 years minimum.</div>
+      <div class="example-label">Australia</div>
+      <div class="example-title">AML Reporting via AUSTRAC</div>
+      <div class="example-desc">Australia routes threshold currency movements through anti-money-laundering reporting rather than a routine customs declaration. Movements of AUD 10,000 or more (or equivalent) in cash or bearer negotiable instruments must be reported to AUSTRAC — the Australian Transaction Reports and Analysis Centre — under AML rules. The regime is otherwise fully liberalised, administered alongside the Reserve Bank of Australia.</div>
       <ul class="example-list">
-        <li>Three reporting pathways: traveler declaration, bank CTR, bank SAR</li>
-        <li>Reports go to FinCEN, then distributed to law enforcement and regulators</li>
-        <li>Individuals cannot easily access their own reports</li>
+        <li>Reporting locus is a dedicated financial-intelligence agency (AUSTRAC)</li>
+        <li>Trigger is the AUD 10,000 AML threshold, not a customs form</li>
+        <li>No general exchange controls sit behind the reporting rule</li>
       </ul>
-      <a href="/rules/united-states-foreign-currency-rules.html" class="example-link">View US rules entry →</a>
+      <a href="/rules/australia-foreign-currency-rules.html" class="example-link">View Australia rules entry →</a>
     </div>
 
     <div class="example-box">
-      <div class="example-label">India</div>
-      <div class="example-title">Customs + Bank Reporting, Limited Traveler Initiation</div>
-      <div class="example-desc">Travelers declare on customs form D if carrying foreign currency above threshold. Banks file Currency Transaction Reports (CTR) to FISC (Financial Intelligence Security Council) for conversions above INR 50,000 (USD ~600). Large transactions or patterns also trigger Suspicious Transaction Reports (STR). Customs officers file separate reports on declared amounts. All reports flow to the FIU (Financial Intelligence Unit), which shares with tax authorities and enforcement. Reporting is real-time; retention is permanent.</div>
+      <div class="example-label">Canada</div>
+      <div class="example-title">Border Report to CBSA, AML Oversight by FINTRAC</div>
+      <div class="example-desc">Canada combines a mandatory border report with financial-intelligence oversight. Cash movements of CAD 10,000 or more must be reported to the Canada Border Services Agency (form E677), while the wider AML framework is administered by FINTRAC alongside the Bank of Canada. The two mechanisms — customs report and AML supervision — operate together.</div>
       <ul class="example-list">
-        <li>Threshold low (INR 50,000); reporting very frequent</li>
-        <li>Bank reporting is automatic and mandatory</li>
-        <li>Customs and bank reports are separate; data may cross-check</li>
+        <li>Traveler-initiated customs report at the border (CBSA / E677)</li>
+        <li>Financial-intelligence supervision by FINTRAC</li>
+        <li>Unreported currency can be seized by CBSA</li>
       </ul>
-      <a href="/rules/india-foreign-currency-rules.html" class="example-link">View India rules entry →</a>
+      <a href="/rules/canada-foreign-currency-rules.html" class="example-link">View Canada rules entry →</a>
     </div>
 
     <div class="example-box">
-      <div class="example-label">European Union</div>
-      <div class="example-title">Harmonized EU FIU Reporting</div>
-      <div class="example-desc">Travelers declare at Customs (Schengen borders) if carrying EUR 10,000+. Banks file Suspicious Transaction Reports (STR) to national FIUs for patterns of activity, regardless of transaction size. Customs files border reports to national FIUs. All national FIUs share data through Egmont Group and EU FIU network. Retention: 5 years. Individuals can request their own reports through GDPR subject access.</div>
+      <div class="example-label">France</div>
+      <div class="example-title">Declaration to French Customs (Douane)</div>
+      <div class="example-desc">In France, the traveler declares €10,000 or more (in cash or bearer instruments) to French Customs — through the DALIA online service or a paper form — at entry and exit. The framework sits under the ECB and Banque de France. This page reports the declaration channel established on the source entry; it does not assert downstream inter-agency retention or sharing details that the source does not establish.</div>
       <ul class="example-list">
-        <li>Harmonized threshold (EUR 10,000)</li>
-        <li>Focus on pattern detection (STR) rather than transaction volume reporting</li>
-        <li>GDPR gives individuals transparency into their own reports</li>
+        <li>Traveler-initiated declaration to French Customs</li>
+        <li>Online declaration may be filed up to 30 days in advance</li>
+        <li>No general exchange controls within the Eurozone framework</li>
       </ul>
       <a href="/rules/france-foreign-currency-rules.html" class="example-link">View France rules entry →</a>
     </div>
 
     <div class="example-box">
-      <div class="example-label">China</div>
-      <div class="example-title">Centralized Bank + SAFE Reporting</div>
-      <div class="example-desc">Individuals converting foreign currency through banks report through bank processes (documentation required for permitted use). Banks file reports on all conversions above certain thresholds (often all conversions >USD 5,000) to SAFE (State Administration of Foreign Exchange). Customs also files separate reports on currency imports/exports. All reports go to SAFE, which integrates with tax authority and state security. Retention: Permanent; individual access is restricted.</div>
+      <div class="example-label">India</div>
+      <div class="example-title">Customs Declaration Anchored to the CDF</div>
+      <div class="example-desc">India's reporting hinges on the Currency Declaration Form (CDF) at CBIC Indian Customs, decisive when foreign-currency notes exceed USD 5,000 or aggregate foreign exchange exceeds USD 10,000 on arrival. Lawful foreign-exchange activity otherwise routes through authorised-dealer banks under FEMA and RBI oversight. The endorsed CDF is the document that links a declared inbound amount to later authorised-dealer conversions and outbound movement.</div>
       <ul class="example-list">
-        <li>Single authority (SAFE) aggregates all reporting</li>
-        <li>Reporting thresholds are lower; coverage is comprehensive</li>
-        <li>Individual access to reports is limited</li>
+        <li>Customs declaration via the CDF pathway (CBIC)</li>
+        <li>Bank activity routes through authorised dealers under FEMA / RBI</li>
+        <li>Documentation continuity, not a single one-off report, is the mechanism</li>
       </ul>
-      <a href="/rules/china-foreign-currency-rules.html" class="example-link">View China rules entry →</a>
+      <a href="/rules/india-foreign-currency-rules.html" class="example-link">View India rules entry →</a>
+    </div>
+
+    <div class="box-accent">
+      <span class="box-label">Note on Coverage</span>
+      <p>Highly centralised reporting systems — where a single foreign-exchange authority aggregates bank, customs, and conversion data with restricted individual access — exist in several economies. This page does not attach specific thresholds, retention periods, or sharing arrangements to them until those country entries are published with sources.</p>
     </div>
   </section>
 
@@ -183,13 +190,13 @@ footer a:hover{color:var(--text)}
     <h2>Why Reporting Systems Vary</h2>
 
     <h3>Threshold Sensitivity</h3>
-    <p>High threshold (EUR 10,000, USD 10,000): fewer reports, focus on larger transactions. Low threshold (INR 50,000 ≈ USD 600): more reports, mass surveillance capability. The threshold reflects risk tolerance and administrative capacity.</p>
+    <p>A higher threshold (near a USD 10,000 equivalent, as in Canada, France, and Australia's AML trigger) produces fewer reports focused on larger movements. A lower or note-specific threshold (India's USD 5,000 foreign-currency-note trigger) captures more activity. The threshold reflects risk tolerance and administrative capacity together.</p>
 
     <h3>Reporting Locus</h3>
-    <p>Bank-primary reporting (EU, US): spreads burden to financial institutions; creates decentralized visibility. Authority-primary reporting (China, some emerging markets): centralizes intelligence in one regulator; simpler but requires state capacity.</p>
+    <p>Some regimes route reporting to a dedicated financial-intelligence agency (AUSTRAC in Australia, FINTRAC in Canada), spreading visibility across institutions. Others centralise intelligence in a single foreign-exchange authority that aggregates bank and customs data. Centralisation is simpler but demands greater state capacity.</p>
 
     <h3>Transparency Model</h3>
-    <p>Transparent reporting (EU under GDPR): individuals can access their own reports, creating accountability. Opaque reporting (China, some emerging markets): individuals cannot access; reports are state intelligence tools. The choice reflects trust in government vs individual rights.</p>
+    <p>Regimes also differ in whether an individual can see the reports filed about them. Some legal frameworks give data-subject access rights; others treat reports purely as state intelligence with restricted access. The choice reflects the balance a jurisdiction strikes between accountability and surveillance.</p>
 
     <div class="box-accent">
       <span class="box-label">For Passage Planning</span>

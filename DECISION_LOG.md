@@ -154,7 +154,7 @@ The Currency Passage Ontology is ConvertCCY's proprietary language layer — the
 
 Each class page:
 - **Definition**: Core concepts and regulatory significance
-- **Real-World Examples**: 4-5 jurisdictions (USA, Canada, India, China, Saudi Arabia, EU, etc.) showing how the class operates
+- **Real-World Examples**: jurisdictions drawn only from the 8 published country entries (Australia, Canada, France, Germany, India, Japan, Pakistan, UAE), each linking to its source-mapped rules page (see precision patch below)
 - **Design Decisions**: Why jurisdictions choose different approaches for the same class
 - **Connections**: How each class relates to other classes in the full rule set
 
@@ -179,6 +179,22 @@ The ontology also supports P3 (Passage Check engine): the engine will use ontolo
 - Updates to any ontology page must go through PR review, never direct-to-main
 - Ontology pages are not generated; they are editorially protected
 - Ontology class definitions must remain consistent with CRIS v1.0 standard and country rules schema
+
+#### P2 precision patch (applied before merge)
+
+Review rejected the first P2 draft: conceptually strong but not merge-ready, because the examples violated CRIS's own "evidence over assertion" principle. Three defect classes were found and fixed:
+
+1. **Broken links to unpublished rules pages.** The first draft linked ontology examples to `/rules/united-states-…`, `/rules/china-…`, and `/rules/saudi-arabia-…` — countries that are in preview/verified (RC), not in the public sovereign layer. Only 8 country pages are actually published: Australia, Canada, France, Germany, India, Japan, Pakistan, UAE. All 15 broken links were removed. Every ontology example now links only to a published rules page, and each link target was verified to exist on disk. No ontology page links to `/preview/`.
+
+2. **Factual errors and unsourced precise claims.** The draft asserted specific thresholds, forms, penalties, and agencies that were either wrong or unsupported by any published source:
+   - Canada declaration described as "voluntary but encouraged" — corrected: the CAD 10,000+ report to CBSA (form E677) is **mandatory** at entry and exit.
+   - India threshold given as "INR 50,000" — corrected to the actual USD 5,000 (notes) / USD 10,000 (aggregate) Currency Declaration Form thresholds.
+   - US "FinCEN Form 105 vs CTR/SAR" conflation, a fabricated Indian agency ("FISC"), and precise unsourced penalty figures (prison terms, exact fines for US/Canada/India/China) — all removed.
+   - **Rule applied:** every jurisdiction-specific threshold/form/penalty on an ontology page must either cite a published ConvertCCY country rules page that establishes it, or be removed and kept conceptual. Examples were rebuilt from the 8 published entries, each claim matched to what its source page actually states. Regime types that no published country exemplifies (comprehensive exchange controls, dual-rate/parallel markets, severe penalty regimes) are now described generically in "Note on Coverage" boxes, with no specific figures asserted until those countries are published.
+
+3. **Overclaims softened.** "proprietary language system" → "ConvertCCY governance vocabulary"; "Every country rules page encodes these classes" → "Country rules are designed to map into these classes"; the false present-tense claim that rules pages already link back to ontology classes was changed to planned/future work.
+
+Post-patch verification: all 9 ontology pages pass HTML well-formedness; all internal `/rules/` links resolve to published files; no residual broken links, fabricated agencies, or unsourced precise figures.
 
 ---
 
