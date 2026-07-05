@@ -239,6 +239,11 @@ Review declined to merge P3 while the branch was behind main (behind_by: 4). Two
 
 **Closure criteria (per the Deployment Gate):** P3 is not closed at merge. It is closed only after (1) GitHub Pages deploys green, (2) `https://convertccy.com/passage-check.html` returns 200, (3) `https://convertccy.com/rules/passage-check.json` returns 200, (4) the route is opened in a browser, and (5) the live URLs are recorded here.
 
+#### Deployment verification log (P3)
+- **Merge deploy:** `pages build and deployment` for merge commit `a0bad166` completed **success** at 2026-07-05T11:43:57Z. Deployed content confirmed live: `governance.html` and `ontology/` carry the new Passage Check nav link, and `passage-check.html` is present in the deployed commit (verified via GitHub API at that SHA).
+- **Negative-cache incident:** the two brand-new routes (`/passage-check.html`, `/rules/passage-check.json`) returned 404 on the bare canonical path while returning 200 with a cache-buster query string. Response headers showed `age: ~896`, `cache-control: max-age=14400` — GitHub Pages' Fastly layer had cached a 404 (seeded by pre-deploy requests) under a 4-hour TTL, shadowing the canonical path. Origin content was correct throughout (`last-modified: 2026-07-05T11:43:50Z`). Per the Deployment Gate, this is a Pages deployment-state issue, not a content defect.
+- **Remedy:** triggered a fresh Pages deployment (this commit) to force a CDN purge of the stale negative-cache entries, consistent with the prior rebuild remedy logged under Standing rules.
+
 ---
 
 ## Standing rules (all phases)
