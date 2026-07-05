@@ -46,9 +46,10 @@ BASE = "USD"
 
 NOTICE = (
     "Indicative USD-based reference rates captured for degraded-mode fallback "
-    "display only. Not live, not a dealing rate, and not relicensed. Pages fetch "
-    "live rates first and use this snapshot only when the live source is "
-    "unavailable; when shown, it is labelled with its capture date."
+    "display only. Not live, not official, not governed, not a dealing rate, "
+    "not relicensed, and not suitable for financial decisions. Pages fetch live "
+    "rates first and use this snapshot only when the live source is unavailable; "
+    "when shown, it is labelled as a snapshot with its capture date."
 )
 
 
