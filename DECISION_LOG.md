@@ -260,6 +260,25 @@ Probing a brand-new URL *before* its deploy finishes poisons the Cloudflare cach
 ## Phase 8 — Pair-Page Enrichment (P4)
 **Status:** Ready to merge (branch: claude/p4-pair-page-enrichment)
 
+### Review decision — P4 approved for merge
+
+P4 review passed after the final precision patch.
+
+The original blocker was resolved: pair pages no longer treat a currency pair as an automatic travel corridor. A pre-filled Passage Check deep-link is now generated only when both currencies map to exactly one published jurisdiction.
+
+Confirmed behavior:
+
+- Multi-jurisdiction currencies such as EUR do not receive a pre-filled route.
+- `EUR → CAD` links to Passage Check generically and asks the user to choose the exact origin and destination.
+- One-to-one governed pairs such as `INR → AED` may receive a pre-filled Passage Check route.
+- Non-governed currencies show only factual identity information and do not imply unpublished jurisdictional coverage.
+- Public wording now refers to a “published jurisdiction entry associated with a currency,” not “the currency’s country.”
+- The sitemap remains generator-authoritative and must not be manually merged.
+
+Decision: P4 is approved for merge to `main`.
+
+Status: Ready to merge. Not closed until Deployment Gate is passed.
+
 ### Context
 R1 (highest structural risk in the audit): ~28,730 pair pages at 78–86% textual similarity — the profile search engines classify as scaled/thin content. Standing rule #9 forbids abrupt SEO shocks, so the mandate is **enrich, don't delete**.
 
