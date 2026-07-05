@@ -183,8 +183,11 @@ footer a:hover{color:var(--text)}
 </div>
 
 <script>
-// ---- Indicative reference rates (relative to USD). Convenience only; NOT governed. ----
-// Used strictly to show an approximate cross-currency figure, always labelled indicative.
+// ---- Static illustrative reference rates (relative to USD). Convenience only; NOT governed. ----
+// This is a fixed, hand-set table used only to show an approximate cross-currency figure so a
+// reader can orient against a threshold. It is NOT live FX data and is NOT updated per request.
+const IND_RATES_NOTICE = "Static illustrative reference table for interface comparison only. Not live FX data, not official, not governed, and not suitable for financial decisions.";
+const IND_RATES_ASOF = "2026-05"; // month this illustrative table was last hand-set
 const IND_RATES = {
   USD:1, EUR:0.92, GBP:0.79, JPY:149.5, CAD:1.36, AUD:1.53, CHF:0.90, CNY:7.24,
   SAR:3.75, AED:3.6725, KWD:0.307, QAR:3.64, EGP:30.9, MAD:10.1, INR:83.2,
@@ -232,9 +235,9 @@ function evalThreshold(amount, amountCcy, th){
   if(IND_RATES[amountCcy] && IND_RATES[tccy]){
     const conv=amount*(IND_RATES[tccy]/IND_RATES[amountCcy]);
     const over=conv>=tval;
-    indic=`<div class="indicative">Indicative only: your ${esc(amountCcy)} ${fmt(amount)} ≈ ${esc(tccy)} ${fmt(conv)} at a reference rate — this would be ${over?'at or above':'below'} the threshold. Verify against the stated figure; the conversion is not a governed number.</div>`;
+    indic=`<div class="indicative">Indicative only. This uses a static illustrative table (as of ${esc(IND_RATES_ASOF)}), not live FX data. Your ${esc(amountCcy)} ${fmt(amount)} ≈ ${esc(tccy)} ${fmt(conv)}, which would be ${over?'at or above':'below'} the threshold — but the governed figure remains the threshold as officially stated. Do not rely on this conversion for a financial decision.</div>`;
   } else {
-    indic=`<div class="indicative">Your amount is in ${esc(amountCcy)}; compare it once converted to ${esc(tccy)}. The governed figure is the threshold as stated.</div>`;
+    indic=`<div class="indicative">Your amount is in ${esc(amountCcy)}; compare it once converted to ${esc(tccy)}. The governed figure remains the threshold as officially stated.</div>`;
   }
   return {html:`<div class="threshold-line">${desc}${indic}</div>`};
 }
@@ -351,7 +354,8 @@ function run(e){
   html+=legCard(origin,'origin',amount,amountCcy,residency);
   html+=legCard(dest,'destination',amount,amountCcy,residency);
   html+=`<div class="disc">${esc(origin.disclaimer||'')}</div>`;
-  html+=`<div class="disc">Data: ConvertCCY Passage Check v1.0, built from the published Foreign Currency Rules Dataset (${esc(DATA.license)}). Structured thresholds transcribed from each entry's declaration field. Conversions are indicative, not governed.</div>`;
+  html+=`<div class="disc">Data: ConvertCCY Passage Check v1.0, built from the published Foreign Currency Rules Dataset (${esc(DATA.license)}). Structured thresholds transcribed from each entry's declaration field.</div>`;
+  html+=`<div class="disc"><strong>On currency conversion:</strong> ${esc(IND_RATES_NOTICE)} The governed figure is always the threshold in its officially stated currency.</div>`;
   out.innerHTML=html;
   out.scrollIntoView({behavior:'smooth',block:'start'});
 }

@@ -231,6 +231,14 @@ Exercised end-to-end: India→Canada (two-tier thresholds evaluate correctly), C
 - Indicative currency conversions must always remain visibly separated from governed thresholds and never phrased as a governed verdict.
 - Navigation across the intelligence layer (home, framework, governance, standard, ontology ×9) now links Passage Check.
 
+#### Pre-merge sync & hardening (applied before merge)
+Review declined to merge P3 while the branch was behind main (behind_by: 4). Two corrections were applied:
+
+1. **Branch synced with latest main.** Merged `origin/main` into the P3 branch, preserving the new **Deployment Gate** section and the two 2026-07-05 deployment-log entries. DECISION_LOG merged cleanly (P3 section before Standing rules; Deployment Gate after) with no loss of P0–P3 history. Rebuilt `rules/passage-check.json` afterwards — the drift guard confirmed no change (dataset untouched), so the engine data stays consistent.
+2. **Static conversion table hardened.** The illustrative `IND_RATES` table is now backed by an explicit `IND_RATES_NOTICE` ("Static illustrative reference table for interface comparison only. Not live FX data, not official, not governed, and not suitable for financial decisions.") and an as-of month. Every cross-currency line now reads "Indicative only. This uses a static illustrative table (as of 2026-05), not live FX data … Do not rely on this conversion for a financial decision," and each brief carries a persistent conversion notice. This inoculates Passage Check against being read as an FX calculator.
+
+**Closure criteria (per the Deployment Gate):** P3 is not closed at merge. It is closed only after (1) GitHub Pages deploys green, (2) `https://convertccy.com/passage-check.html` returns 200, (3) `https://convertccy.com/rules/passage-check.json` returns 200, (4) the route is opened in a browser, and (5) the live URLs are recorded here.
+
 ---
 
 ## Standing rules (all phases)
