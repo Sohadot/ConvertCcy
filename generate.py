@@ -505,7 +505,6 @@ def build_currency_passage_section(profile: Dict[str, Any],
                         + (f' · <span class="pj-muted">{esc(g["exch_label"])}</span>' if g.get("exch_label") else "")
                     )
             thresh_html = "".join(f'<div class="pj-line">{b}</div>' for b in thresh_bits)
-            first_slug = next((g["country_slug"] for g in govs if g.get("country_slug")), "")
             return f"""
         <div class="pj-block pj-gov">
           <div class="pj-head"><span class="pj-badge">Governed</span> {esc(code)} — {esc(name)}</div>
@@ -523,23 +522,33 @@ def build_currency_passage_section(profile: Dict[str, Any],
         return f"""
         <div class="pj-block pj-plain">
           <div class="pj-head">{esc(code)} — {esc(name)}</div>
-          <div class="pj-line pj-muted">{ident}. No governed foreign-currency-rules entry is published for this currency's jurisdiction yet — it is not shown here to avoid unsourced claims.</div>
+          <div class="pj-line pj-muted">{ident}. No governed foreign-currency-rules entry for a published jurisdiction associated with this currency exists yet — nothing is shown here, to avoid unsourced claims.</div>
         </div>"""
 
     from_html = currency_block(from_code)
     to_html = currency_block(to_code)
 
-    from_gov = bool(gov_map.get(from_code))
-    to_gov = bool(gov_map.get(to_code))
+    from_govs = gov_map.get(from_code, [])
+    to_govs = gov_map.get(to_code, [])
 
-    corridor = ""
-    if from_gov and to_gov:
-        fs = next((g["country_slug"] for g in gov_map[from_code] if g.get("country_slug")), "")
-        ts = next((g["country_slug"] for g in gov_map[to_code] if g.get("country_slug")), "")
-        q = f"?from={esc(fs)}&amp;to={esc(ts)}" if fs and ts else ""
+    # A currency pair is NOT automatically a travel corridor. A pre-filled Passage
+    # Check deep-link is only honest when BOTH currencies map to exactly one
+    # published jurisdiction. If either currency maps to several (e.g. EUR ->
+    # France, Germany), we must not pick one to stand in for the whole currency —
+    # we link generically and let the user choose the exact route.
+    fs = from_govs[0]["country_slug"] if len(from_govs) == 1 else ""
+    ts = to_govs[0]["country_slug"] if len(to_govs) == 1 else ""
+    if fs and ts:
+        q = f"?from={esc(fs)}&amp;to={esc(ts)}"
         corridor = (
-            f'<p class="pj-corridor">Both jurisdictions publish governed rules. '
+            f'<p class="pj-corridor">Both currencies map to a single published jurisdiction. '
             f'<a href="/passage-check.html{q}">Run this {esc(from_code)} → {esc(to_code)} corridor in Passage Check →</a></p>'
+        )
+    elif from_govs and to_govs:
+        corridor = (
+            '<p class="pj-corridor">Published jurisdictional entries exist for both currencies, '
+            'but at least one currency maps to multiple jurisdictions. '
+            '<a href="/passage-check.html">Open Passage Check and choose the exact origin and destination →</a></p>'
         )
     else:
         corridor = (
@@ -554,7 +563,7 @@ def build_currency_passage_section(profile: Dict[str, Any],
   <section class="section pj-section">
     <div class="sec-title">Currency Passage &amp; Jurisdiction Rules</div>
     <div class="sec-h2">Moving {esc(tokens["FROM_CODE"])} and {esc(tokens["TO_CODE"])} across borders</div>
-    <p>A conversion is a jurisdictional event, not only an arithmetic one. Where a currency's country is published in the ConvertCCY sovereign layer, the governed declaration threshold and exchange-control posture are shown below with links to the source-mapped rules entry. Figures are reference-grade; verify against the linked official sources before you travel.</p>
+    <p>A conversion is a jurisdictional event, not only an arithmetic one. Where ConvertCCY has a published jurisdiction entry associated with a currency, the governed declaration threshold and exchange-control posture are shown below with links to the source-mapped rules entry. Figures are reference-grade; verify against the linked official sources before you travel.</p>
     {macro_html}
     <div class="pj-grid">
       {from_html}

@@ -269,7 +269,7 @@ Every pair page now carries a section that no template clone shares, generated a
 
 - **Governed block** (when a currency's country is published in the sovereign layer — 7 currencies: AED, AUD, CAD, EUR, INR, JPY, PKR): the transcribed declaration threshold(s) and exchange-control posture, with links to the source-mapped `/rules/` entry and the relevant ontology classes. EUR correctly maps to both France and Germany.
 - **Honest factual block** (otherwise): ISO code + symbol only, with an explicit statement that no governed entry exists yet — **no fabricated jurisdictional claims** (the same evidence-over-assertion rule enforced in P2/P3).
-- **Corridor CTA**: when both endpoints are governed, a pre-filled Passage Check deep-link (`/passage-check.html?from=<slug>&to=<slug>`); otherwise a generic Passage Check link.
+- **Corridor CTA**: when both currencies map to exactly one published jurisdiction, the page may show a pre-filled Passage Check deep-link (`/passage-check.html?from=<slug>&to=<slug>`). If either currency maps to multiple published jurisdictions (e.g. EUR → France, Germany), the page links to Passage Check **without** pre-filling, so the user chooses the exact route — a currency pair is not automatically a jurisdictional corridor. Pairs with no governed endpoint get a generic Passage Check link.
 - **Per-pair macro context**: the existing `macro_context` field (unique per pair) is now surfaced, adding genuine unique prose.
 
 2,324 pages carry at least one governed block; all 28,730 carry the section.
