@@ -198,6 +198,41 @@ Post-patch verification: all 9 ontology pages pass HTML well-formedness; all int
 
 ---
 
+## Phase 7 — Passage Check Engine (P3)
+**Status:** Ready to merge (branch: claude/p3-passage-check-engine)
+
+### Decision: Ship a deterministic, evidence-bound currency-passage diagnostic
+
+P3 converts the asset from publisher to factory: the visitor receives an *output* scoped to their scenario, not a page to read. Given an origin, destination, amount, and residency, Passage Check assembles the governed declaration thresholds, exchange-control posture, and residency rules that apply — drawn only from the published, source-mapped country entries.
+
+#### Honesty constraints (the core design decision)
+The dataset stores thresholds as **prose**, not structured numbers. Rather than let the engine parse prose (error-prone) or invent structured claims (the exact CRIS violation caught in P2), the engine is built on three rules:
+
+1. **Evidence-bound.** Every line the engine returns is transcribed from a published rules entry and links to its official source and its ontology class. Nothing is asserted that a published entry does not support.
+2. **Coverage-honest.** The engine covers only the 8 published jurisdictions. Its selectors contain only those countries, and a coverage guard refuses to fabricate a result for anything else.
+3. **Conversion-honest.** The governed figure is always the threshold in its stated currency. When the user's amount is in the same currency, the engine gives a definite meets/below verdict; when currencies differ, it shows a clearly-labelled *indicative* conversion and states it is not a governed number.
+
+#### Components
+- **`scripts/build_passage_check.py`** — derives `rules/passage-check.json` from the published `rules/dataset.json`. It carries the verbatim rule prose (each with its source), plus a **hand-verified transcription** of the declaration thresholds and exchange-control posture, each tagged `transcribed_from` the exact dataset field. The script has a drift guard: it refuses to emit if the transcription table and the published dataset disagree (missing country, unpublished status). The numeric thresholds are transcribed by hand — never auto-parsed — so there is a single reviewed transcription point.
+- **`rules/passage-check.json`** — the engine dataset (8 jurisdictions).
+- **`passage-check.html`** — the UI and deterministic client-side engine. No backend; it fetches the JSON and assembles the brief. Outbound leg uses the origin's export/threshold rules; inbound leg uses the destination's import rules; residency selection resolves resident vs non-resident per leg.
+
+#### Nuances handled faithfully
+- India: two-tier threshold (USD 5,000 notes / USD 10,000 aggregate), both evaluated.
+- Japan / Australia: AML-based reporting triggers ("may trigger"), not customs thresholds — labelled as such.
+- UAE: a *combined* AED 60,000 declarable value across cash, bearer instruments, jewellery, and precious metals, age ≥ 18 — noted explicitly.
+
+#### Verification (browser-driven, Chromium)
+Exercised end-to-end: India→Canada (two-tier thresholds evaluate correctly), Canada→France (below-threshold verdict), Japan→UAE (cross-currency indicative conversions correctly labelled), same-country guard, and empty-amount (thresholds shown without a fabricated verdict). No page errors. Every result line links to a real ontology class, a real published rules page, and the official source from the dataset.
+
+#### Standing decisions from P3
+- `passage-check.json` is a generated artifact: never hand-edited. Regenerate via `scripts/build_passage_check.py` whenever the dataset changes; the drift guard enforces consistency.
+- The engine's coverage grows only as the published sovereign layer grows — it must never present a jurisdiction that is not published.
+- Indicative currency conversions must always remain visibly separated from governed thresholds and never phrased as a governed verdict.
+- Navigation across the intelligence layer (home, framework, governance, standard, ontology ×9) now links Passage Check.
+
+---
+
 ## Standing rules (all phases)
 
 - One concern = one PR = one branch

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2HS37BH07J');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Passage Check — Governed Currency-Passage Diagnostic | ConvertCCY</title>
+<meta name="description" content="A deterministic, evidence-bound diagnostic: enter an origin, destination, amount, and residency, and Passage Check assembles the governed declaration thresholds, exchange controls, and residency rules from ConvertCCY's published, source-mapped country entries.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://convertccy.com/passage-check.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f7f5;
+  --surface:#ffffff;
+  --surface-2:#fcfcfa;
+  --border:#e8e8e4;
+  --text:#111110;
+  --muted:#888884;
+  --accent:#1a6b3c;
+  --accent-light:#e8f5ee;
+  --accent-border:#c4dfd0;
+  --amber:#a07000;
+  --amber-light:#fef8e7;
+  --amber-border:#f5d97a;
+  --shadow:0 8px 24px rgba(17,17,16,.05);
+  --mono:'DM Mono',monospace;
+  --sans:'Sora',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .18s}
+.nav-links a:hover{color:var(--text)}
+.page-wrap{max-width:1060px;margin:0 auto;padding:4rem 2rem 6rem}
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-bottom:2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{opacity:.45}
+.hero-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.74rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-2px;line-height:1.04;margin-bottom:1.1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:1.05rem;color:#2e2e2b;max-width:780px;line-height:1.75;margin-bottom:.8rem}
+.section-divider{border:none;border-top:1px solid var(--border);margin:3rem 0}
+h2{font-size:1.4rem;font-weight:800;letter-spacing:-.04em;margin-bottom:.9rem;line-height:1.15}
+p{color:#2a2a28;line-height:1.8;margin-bottom:1.1rem}
+strong{color:var(--text);font-weight:600}
+.box-accent{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:16px;padding:1.2rem 1.4rem;margin:1.6rem 0}
+.box-accent .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-accent p{color:#1e4f2f;margin:0;font-size:.9rem;line-height:1.7}
+/* form */
+.engine-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:1.6rem;box-shadow:var(--shadow);margin:1.5rem 0}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.2rem}
+.field{display:flex;flex-direction:column}
+.field.full{grid-column:1/-1}
+.field label{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.4rem}
+.field select,.field input{width:100%;padding:.7rem .8rem;border:1.5px solid var(--border);border-radius:10px;font-family:var(--mono);font-size:.95rem;background:var(--bg);color:var(--text);outline:none;transition:border-color .18s;-webkit-appearance:none}
+.field select:focus,.field input:focus{border-color:var(--accent);background:#fff}
+.amount-row{display:grid;grid-template-columns:1fr 130px;gap:.7rem}
+.radio-set{display:flex;flex-direction:column;gap:.5rem}
+.radio-opt{display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;color:#2f2f2c;cursor:pointer;line-height:1.5}
+.radio-opt input{width:auto;margin-top:.35rem;accent-color:var(--accent)}
+.run-btn{grid-column:1/-1;margin-top:.4rem;padding:.9rem 1rem;background:var(--accent);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:1rem;font-weight:600;cursor:pointer;transition:background .18s}
+.run-btn:hover{background:#155230}
+/* results */
+#result{margin-top:2rem}
+.brief-header{background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem;margin-bottom:1.2rem}
+.brief-header .route{font-size:1.15rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.3rem}
+.brief-header .meta{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.leg{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.4rem;margin-bottom:1.2rem;box-shadow:var(--shadow)}
+.leg-title{font-size:1.05rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.2rem}
+.leg-sub{font-family:var(--mono);font-size:.74rem;color:var(--muted);margin-bottom:1rem}
+.row{border-top:1px solid var(--border);padding:.9rem 0}
+.row:first-of-type{border-top:none;padding-top:.2rem}
+.row-label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.row-label .cls{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:6px;padding:1px 7px;font-size:.62rem;text-decoration:none;color:var(--accent)}
+.row-label .cls:hover{background:#dcefe4}
+.row-body{font-size:.92rem;color:#2f2f2c;line-height:1.65}
+.verdict{display:inline-block;font-family:var(--mono);font-size:.78rem;font-weight:500;padding:3px 10px;border-radius:8px;margin:.3rem 0}
+.verdict.over{background:var(--amber-light);color:var(--amber);border:1px solid var(--amber-border)}
+.verdict.under{background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-border)}
+.verdict.info{background:var(--surface-2);color:var(--muted);border:1px solid var(--border)}
+.indicative{font-family:var(--mono);font-size:.74rem;color:var(--muted);margin-top:.25rem}
+.src{font-family:var(--mono);font-size:.72rem;margin-top:.4rem}
+.src a{color:var(--accent);text-decoration:none}
+.src a:hover{text-decoration:underline}
+.threshold-line{margin:.3rem 0;padding-left:.9rem;border-left:2px solid var(--accent-border)}
+.coverage{background:var(--amber-light);border:1px solid var(--amber-border);border-radius:14px;padding:1.2rem 1.4rem}
+.coverage .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.coverage p{color:#5a4000;margin:0 0 .6rem}
+.coverage .list{font-family:var(--mono);font-size:.82rem;color:#5a4000}
+.disc{font-size:.82rem;color:var(--muted);line-height:1.6;margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border)}
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+@media(max-width:640px){
+  nav{padding:.8rem 1rem}
+  .page-wrap{padding:2.5rem 1rem 4rem}
+  h1{font-size:2rem}
+  .form-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">convert<span>ccy</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">Currencies</a>
+    <a href="/rules/">Rules</a>
+    <a href="/ontology/">Ontology</a>
+    <a href="/passage-check.html">Passage Check</a>
+    <a href="/governance.html">Governance</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a> <span>/</span> <span>Passage Check</span>
+  </div>
+
+  <div class="hero">
+    <span class="hero-tag">Governed Diagnostic · Engine v1.0</span>
+    <h1>Passage <em>Check</em></h1>
+    <p class="hero-lead">A conversion is a jurisdictional event, not an arithmetic one. Enter an origin, a destination, an amount, and your residency, and Passage Check assembles the governed declaration thresholds, exchange-control posture, and residency rules that apply — drawn only from ConvertCCY's published, source-mapped country entries.</p>
+  </div>
+
+  <div class="box-accent">
+    <span class="box-label">How this engine behaves</span>
+    <p>Passage Check is deterministic and evidence-bound. It performs no AI inference and invents nothing: every line it returns is transcribed from a published rules entry and links to its official source and ontology class. It covers only jurisdictions already in the public sovereign layer. Currency conversions shown are indicative only — the governed figure is always the threshold in its stated currency.</p>
+  </div>
+
+  <div class="engine-card">
+    <form id="pc-form" class="form-grid" autocomplete="off">
+      <div class="field">
+        <label for="origin">From (origin)</label>
+        <select id="origin"></select>
+      </div>
+      <div class="field">
+        <label for="destination">To (destination)</label>
+        <select id="destination"></select>
+      </div>
+      <div class="field full">
+        <label for="amount">Amount you intend to move</label>
+        <div class="amount-row">
+          <input type="number" id="amount" min="0" step="any" inputmode="decimal" placeholder="e.g. 12000">
+          <select id="amount-ccy"></select>
+        </div>
+      </div>
+      <div class="field full">
+        <label>Your residency</label>
+        <div class="radio-set">
+          <label class="radio-opt"><input type="radio" name="residency" value="origin" checked> <span>I am a resident of the origin, travelling to the destination</span></label>
+          <label class="radio-opt"><input type="radio" name="residency" value="destination"> <span>I am a resident of the destination, returning from the origin</span></label>
+          <label class="radio-opt"><input type="radio" name="residency" value="neither"> <span>I am a resident of neither (third-country traveller)</span></label>
+        </div>
+      </div>
+      <button type="submit" class="run-btn">Run Passage Check</button>
+    </form>
+  </div>
+
+  <div id="result" aria-live="polite"></div>
+
+  <hr class="section-divider">
+
+  <section>
+    <h2>What Passage Check is — and is not</h2>
+    <p><strong>It is</strong> a governed assembly tool. Given two published jurisdictions, it retrieves the exact rules that apply to your movement, evaluates your amount against the stated declaration thresholds, and points you to the official source and the ontology class behind every claim. It turns a page you would have to read into an answer scoped to your scenario.</p>
+    <p><strong>It is not</strong> legal or tax advice, a customs clearance, or a live-rate calculator. It does not cover jurisdictions outside the published sovereign layer, and it does not assert a figure that no published entry supports. When your amount is in a different currency from a threshold, the comparison is shown as indicative; the binding figure is the threshold as officially stated.</p>
+  </section>
+
+  <footer>
+    <p>© 2026 ConvertCCY. <a href="/framework.html">Framework</a> • <a href="/governance.html">Governance</a> • <a href="/standard.html">CRIS Standard</a> • <a href="/ontology/">Ontology</a> • <a href="/rules/dataset.json">Open Dataset</a> • <a href="/disclaimer.html">Disclaimer</a></p>
+  </footer>
+</div>
+
+<script>
+// ---- Indicative reference rates (relative to USD). Convenience only; NOT governed. ----
+// Used strictly to show an approximate cross-currency figure, always labelled indicative.
+const IND_RATES = {
+  USD:1, EUR:0.92, GBP:0.79, JPY:149.5, CAD:1.36, AUD:1.53, CHF:0.90, CNY:7.24,
+  SAR:3.75, AED:3.6725, KWD:0.307, QAR:3.64, EGP:30.9, MAD:10.1, INR:83.2,
+  MXN:17.1, BRL:4.97, SGD:1.34, HKD:7.82, NOK:10.5, SEK:10.4, NZD:1.63,
+  ZAR:18.6, TRY:30.5, PKR:278.0
+};
+const ONTOLOGY = {
+  'declaration-regimes':'Declaration Regimes',
+  'exchange-controls':'Exchange Controls',
+  'residency-divergence':'Residency Divergence',
+  'import-export-ceilings':'Import/Export Ceilings',
+  'reporting-obligations':'Reporting Obligations',
+  'channel-restrictions':'Channel Restrictions',
+  'penalty-regimes':'Penalty Regimes',
+  'rate-regimes':'Rate Regimes'
+};
+let DATA=null, BYSLUG={};
+
+function esc(s){return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function fmt(n){return n.toLocaleString('en-US',{maximumFractionDigits:0});}
+function clsChip(slug){const name=ONTOLOGY[slug]||slug;return `<a class="cls" href="/ontology/${slug}.html">${esc(name)} →</a>`;}
+function srcLine(source){
+  if(!source||!source.url) return '';
+  const sec=source.section?(' — '+esc(source.section)):'';
+  return `<div class="src">Source: <a href="${esc(source.url)}" target="_blank" rel="noopener">${esc(source.url)}</a>${sec}</div>`;
+}
+
+// Evaluate an amount against one threshold. Returns {mode, html}.
+function evalThreshold(amount, amountCcy, th){
+  const tval=th.value, tccy=th.currency;
+  const nativeTh=`${esc(tccy)} ${fmt(tval)}`;
+  const desc=`${nativeTh} <span style="color:var(--muted)">(${esc(th.scope)}; ${esc(th.applies)}; ${esc(th.mechanism)}, ${esc(th.authority)})</span>`;
+  if(!(amount>0)){
+    return {html:`<div class="threshold-line">${desc}</div>`};
+  }
+  if(amountCcy===tccy){
+    const over=amount>=tval;
+    const v=over
+      ? `<span class="verdict over">Your ${esc(tccy)} ${fmt(amount)} is at or above this threshold — it applies.</span>`
+      : `<span class="verdict under">Your ${esc(tccy)} ${fmt(amount)} is below this threshold.</span>`;
+    return {html:`<div class="threshold-line">${desc}<br>${v}</div>`};
+  }
+  // Different currency -> indicative only
+  let indic='';
+  if(IND_RATES[amountCcy] && IND_RATES[tccy]){
+    const conv=amount*(IND_RATES[tccy]/IND_RATES[amountCcy]);
+    const over=conv>=tval;
+    indic=`<div class="indicative">Indicative only: your ${esc(amountCcy)} ${fmt(amount)} ≈ ${esc(tccy)} ${fmt(conv)} at a reference rate — this would be ${over?'at or above':'below'} the threshold. Verify against the stated figure; the conversion is not a governed number.</div>`;
+  } else {
+    indic=`<div class="indicative">Your amount is in ${esc(amountCcy)}; compare it once converted to ${esc(tccy)}. The governed figure is the threshold as stated.</div>`;
+  }
+  return {html:`<div class="threshold-line">${desc}${indic}</div>`};
+}
+
+function roleFor(which, residency){
+  // which: 'origin' | 'destination'. Returns 'resident' | 'non_resident'.
+  if(residency==='neither') return 'non_resident';
+  if(residency==='origin') return which==='origin'?'resident':'non_resident';
+  // residency==='destination'
+  return which==='destination'?'resident':'non_resident';
+}
+
+function residencyRow(country, role){
+  const field = role==='resident' ? 'resident_holding_rules' : 'non_resident_rules';
+  const r=country.rules[field];
+  const roleLabel = role==='resident' ? 'As a resident' : 'As a non-resident';
+  if(!r) return '';
+  return `<div class="row">
+    <div class="row-label">Residency rule — ${roleLabel} ${clsChip('residency-divergence')}</div>
+    <div class="row-body">${esc(r.text)}</div>
+    ${srcLine(r.source)}
+  </div>`;
+}
+
+function directionRow(country, which){
+  // which origin=outbound (take out), destination=inbound (bring in)
+  const field = which==='origin' ? 'take_foreign_currency_out' : 'bring_foreign_currency_in';
+  const r=country.rules[field];
+  if(!r) return '';
+  return `<div class="row">
+    <div class="row-label">${esc(r.label)} ${clsChip(r.ontology)}</div>
+    <div class="row-body">${esc(r.text)}</div>
+    ${srcLine(r.source)}
+  </div>`;
+}
+
+function declarationRow(country, amount, amountCcy){
+  const d=country.declaration;
+  const dsrc=country.rules.cash_declaration_threshold ? country.rules.cash_declaration_threshold.source : null;
+  let lines=d.thresholds.map(th=>evalThreshold(amount, amountCcy, th).html).join('');
+  const note=d.note?`<div class="row-body" style="margin-top:.5rem"><em>${esc(d.note)}</em></div>`:'';
+  return `<div class="row">
+    <div class="row-label">Declaration threshold ${clsChip('declaration-regimes')}</div>
+    ${lines}
+    ${note}
+    ${srcLine(dsrc)}
+  </div>`;
+}
+
+function exchangeRow(country){
+  const ec=country.exchange_controls;
+  const r=country.rules.exchange_controls;
+  return `<div class="row">
+    <div class="row-label">Exchange controls ${clsChip('exchange-controls')}</div>
+    <div class="row-body"><strong>${esc(ec.label)}.</strong> ${r?esc(r.text):''}</div>
+    ${r?srcLine(r.source):''}
+  </div>`;
+}
+
+function legCard(country, which, amount, amountCcy, residency){
+  const role=roleFor(which, residency);
+  const title = which==='origin'
+    ? `Leaving ${esc(country.country_name)} — outbound`
+    : `Entering ${esc(country.country_name)} — inbound`;
+  return `<div class="leg">
+    <div class="leg-title">${title}</div>
+    <div class="leg-sub">${esc(country.currency_code)} · ${esc(country.region)} · reviewed ${esc(country.last_reviewed)} · <a href="${esc(country.rules_page)}" style="color:var(--accent);text-decoration:none">full rules page →</a></div>
+    ${declarationRow(country, amount, amountCcy)}
+    ${directionRow(country, which)}
+    ${exchangeRow(country)}
+    ${residencyRow(country, role)}
+  </div>`;
+}
+
+function coverageMsg(missing){
+  const names=DATA.countries.map(c=>c.country_name).join(', ');
+  return `<div class="coverage">
+    <span class="box-label">Outside current coverage</span>
+    <p>Passage Check covers only jurisdictions published in the sovereign layer. No governed entry exists yet for <strong>${missing.map(esc).join('</strong> and <strong>')}</strong>, so this engine will not fabricate a result for it.</p>
+    <p class="list">Currently covered: ${esc(names)}.</p>
+  </div>`;
+}
+
+function run(e){
+  e.preventDefault();
+  const originSlug=document.getElementById('origin').value;
+  const destSlug=document.getElementById('destination').value;
+  const amount=parseFloat(document.getElementById('amount').value);
+  const amountCcy=document.getElementById('amount-ccy').value;
+  const residency=document.querySelector('input[name="residency"]:checked').value;
+  const out=document.getElementById('result');
+
+  const missing=[];
+  if(!BYSLUG[originSlug]) missing.push(originSlug);
+  if(!BYSLUG[destSlug]) missing.push(destSlug);
+  if(missing.length){ out.innerHTML=coverageMsg(missing); return; }
+
+  if(originSlug===destSlug){
+    out.innerHTML=`<div class="coverage"><span class="box-label">Pick two different jurisdictions</span><p>Origin and destination are the same. Passage Check evaluates movement between two jurisdictions.</p></div>`;
+    return;
+  }
+
+  const origin=BYSLUG[originSlug], dest=BYSLUG[destSlug];
+  const amtTxt = amount>0 ? `${esc(amountCcy)} ${fmt(amount)}` : 'an unspecified amount';
+  const resTxt = residency==='origin' ? `resident of ${esc(origin.country_name)}`
+              : residency==='destination' ? `resident of ${esc(dest.country_name)}`
+              : 'third-country traveller';
+
+  let html=`<div class="brief-header">
+    <div class="route">${esc(origin.country_name)} → ${esc(dest.country_name)}</div>
+    <div class="meta">Moving ${amtTxt} · as a ${resTxt}</div>
+  </div>`;
+  html+=`<div class="box-accent"><span class="box-label">Governed brief</span><p>Assembled from two published, source-mapped entries. Both legs below cite their official source and ontology class. Evaluate, then confirm against the linked sources before you travel.</p></div>`;
+  html+=legCard(origin,'origin',amount,amountCcy,residency);
+  html+=legCard(dest,'destination',amount,amountCcy,residency);
+  html+=`<div class="disc">${esc(origin.disclaimer||'')}</div>`;
+  html+=`<div class="disc">Data: ConvertCCY Passage Check v1.0, built from the published Foreign Currency Rules Dataset (${esc(DATA.license)}). Structured thresholds transcribed from each entry's declaration field. Conversions are indicative, not governed.</div>`;
+  out.innerHTML=html;
+  out.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function initSelects(){
+  const o=document.getElementById('origin'), d=document.getElementById('destination'), a=document.getElementById('amount-ccy');
+  DATA.countries.forEach((c,i)=>{
+    o.appendChild(new Option(`${c.country_name}`, c.country_slug));
+    d.appendChild(new Option(`${c.country_name}`, c.country_slug));
+  });
+  o.value=DATA.countries[0].country_slug;
+  d.value=DATA.countries[1].country_slug;
+  // Amount currency: the 8 published currencies + common majors, de-duplicated.
+  const ccys=[]; const seen={};
+  DATA.countries.forEach(c=>{ if(!seen[c.currency_code]){seen[c.currency_code]=1;ccys.push(c.currency_code);} });
+  ['USD','EUR','GBP'].forEach(x=>{ if(!seen[x]){seen[x]=1;ccys.push(x);} });
+  ccys.sort();
+  ccys.forEach(code=>a.appendChild(new Option(code, code)));
+  a.value = seen['USD']?'USD':ccys[0];
+}
+
+fetch('/rules/passage-check.json')
+  .then(r=>{ if(!r.ok) throw new Error('load'); return r.json(); })
+  .then(j=>{
+    DATA=j; DATA.countries.forEach(c=>BYSLUG[c.country_slug]=c);
+    initSelects();
+    document.getElementById('pc-form').addEventListener('submit', run);
+  })
+  .catch(()=>{
+    document.getElementById('result').innerHTML=
+      '<div class="coverage"><span class="box-label">Engine data unavailable</span><p>The Passage Check dataset could not be loaded. Please try again shortly.</p></div>';
+  });
+</script>
+</body>
+</html>
