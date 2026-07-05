@@ -241,4 +241,21 @@ Exercised end-to-end: India→Canada (two-tier thresholds evaluate correctly), C
 - No noindex on pair pages
 - No SEO-impacting changes hidden inside security PRs
 - Manual workflow preferred over API-dependent automation
-- - 2026-07-05: Triggered a fresh GitHub Pages deployment after run #122 remained queued following the P0 merge.
+
+- 2026-07-05: Triggered a fresh GitHub Pages deployment after run #122 remained queued following the P0 merge.
+- 2026-07-05: Triggered a clean GitHub Pages rebuild after Pages deployment state issue.
+
+## Deployment Gate
+
+A phase is not considered closed when merged to main.
+A phase is closed only when:
+
+1. The GitHub Pages deployment completes successfully.
+2. The affected public URLs return 200 on the live custom domain.
+3. The newly published route is manually opened in browser.
+4. No next phase begins while the previous deployment is failed or queued.
+5. The verified live URLs are recorded in the decision log or release note.
+
+If build passes but deploy fails with "Deployment failed, try again later",
+the issue is treated as a Pages deployment-state issue, not a content defect,
+unless a build error or broken route is proven.
