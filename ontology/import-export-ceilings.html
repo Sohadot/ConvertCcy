@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2HS37BH07J');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Import/Export Ceilings | Currency Passage Ontology | ConvertCCY</title>
+<meta name="description" content="Cash in vs cash out asymmetry. Restrictions that differ based on flow direction and purpose.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://convertccy.com/ontology/import-export-ceilings.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f7f5;
+  --surface:#ffffff;
+  --surface-2:#fcfcfa;
+  --border:#e8e8e4;
+  --text:#111110;
+  --muted:#888884;
+  --accent:#1a6b3c;
+  --accent-light:#e8f5ee;
+  --accent-border:#c4dfd0;
+  --shadow:0 8px 24px rgba(17,17,16,.05);
+  --mono:'DM Mono',monospace;
+  --sans:'Sora',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .18s}
+.nav-links a:hover{color:var(--text)}
+.page-wrap{max-width:1060px;margin:0 auto;padding:4rem 2rem 6rem}
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-bottom:2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{opacity:.45}
+.hero-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.74rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-2px;line-height:1.04;margin-bottom:1.1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:1.05rem;color:#2e2e2b;max-width:760px;line-height:1.75;margin-bottom:.8rem}
+.section-divider{border:none;border-top:1px solid var(--border);margin:3rem 0}
+.section-kicker{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:.5rem}
+h2{font-size:1.55rem;font-weight:800;letter-spacing:-.04em;margin-bottom:.9rem;line-height:1.15}
+h3{font-size:1.05rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.55rem}
+p{color:#2a2a28;line-height:1.8;margin-bottom:1.1rem}
+p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:600}
+.box-accent{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
+.box-accent .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-accent p{color:#1e4f2f;margin:0;font-size:.93rem;line-height:1.72}
+.example-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.4rem;margin:1.5rem 0;box-shadow:var(--shadow)}
+.example-label{font-family:var(--mono);font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:.4rem}
+.example-title{font-weight:700;margin-bottom:.6rem}
+.example-desc{font-size:.93rem;color:#2f2f2c;line-height:1.7;margin-bottom:.6rem}
+.example-link{font-family:var(--mono);font-size:.77rem;color:var(--accent);text-decoration:none;font-weight:500}
+.example-link:hover{text-decoration:underline}
+.example-list{margin:1rem 0 0 0;padding-left:1.2rem}
+.example-list li{font-size:.93rem;color:#2f2f2c;line-height:1.6;margin-bottom:.4rem}
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+@media(max-width:900px){.grid-3,.closing-nav{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  nav{padding:.8rem 1rem}
+  .page-wrap{padding:2.5rem 1rem 4rem}
+  h1{font-size:2rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">convert<span>ccy</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/currencies.html">Currencies</a>
+    <a href="/rules/">Rules</a>
+    <a href="/articles/">Articles</a>
+    <a href="/framework.html">Framework</a>
+    <a href="/governance.html">Governance</a>
+    <a href="/ontology/">Ontology</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a> <span>/</span> <a href="/ontology/">Ontology</a> <span>/</span> <span>Import/Export Ceilings</span>
+  </div>
+
+  <div class="hero">
+    <span class="hero-tag">Currency Passage Class 4</span>
+    <h1>Import/Export Ceilings</h1>
+    <p class="hero-lead">Cash in vs cash out asymmetry. Restrictions that differ based on flow direction. Many jurisdictions permit unequal inbound and outbound movement, reflecting different policy goals for capital inflows vs flight.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Definition</div>
+    <h2>Direction Matters</h2>
+    <p>Import/export ceilings create asymmetry between bringing currency in and taking it out. The asymmetry can manifest as:</p>
+
+    <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+      <li style="margin-bottom: 0.8rem;"><strong>Inbound ceiling (import).</strong> Limit on how much foreign currency or local currency you can bring into the jurisdiction. Often generous or unlimited (countries want inflows).</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Outbound ceiling (export).</strong> Limit on how much local currency or foreign currency you can take out. Often strict (countries fear capital flight).</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Asymmetric magnitude.</strong> Inbound: unlimited or very high. Outbound: capped at annual quotas, one-time allowances, or specific purposes. The gap reflects policy intent.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Purpose differentiation.</strong> Some regimes allow unlimited inbound for tourism/gifts but cap repatriation of own earnings.</li>
+    </ul>
+
+    <div class="box-accent">
+      <span class="box-label">Regulatory Significance</span>
+      <p>Import/export asymmetry reveals a jurisdiction's capital openness. Wide asymmetry (unlimited in, capped out) signals capital controls. Symmetric rules (same limit both directions) signal openness. The gap is policy visibility.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Real-World Examples</div>
+    <h2>How Direction Asymmetry Operates</h2>
+
+    <div class="example-box">
+      <div class="example-label">India</div>
+      <div class="example-title">Inbound Generous, Outbound Capped</div>
+      <div class="example-desc">Non-residents can bring INR 1,000,000+ into India freely; there is no inbound limit for foreign exchange. Residents trying to take INR out face a annual ceiling of INR 250,000 (~USD 3,000) for personal remittance. Capital account exports face individual approval (diaspora bonds, investments require RBI authorization).</div>
+      <ul class="example-list">
+        <li>Inbound: Unrestricted foreign exchange conversion for residents returning to India</li>
+        <li>Outbound: Residents capped at USD 250,000/year for current account; capital account requires license</li>
+        <li>The asymmetry reflects fear of capital flight; inflows are encouraged</li>
+      </ul>
+      <a href="/rules/india-foreign-currency-rules.html" class="example-link">View India rules entry →</a>
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">China</div>
+      <div class="example-title">Dual-Channel Asymmetry</div>
+      <div class="example-desc">Inbound: FDI (foreign investment) and tourism inflows face no meaningful ceiling. Residents bringing foreign currency in for documented purposes (education abroad, business) can import up to USD 1,000,000 per transaction. Outbound: Residents capped at USD 50,000/year for conversion; any amount beyond requires SAFE approval and documentation of permitted use.</div>
+      <ul class="example-list">
+        <li>Asymmetry is explicit: outbound is the controlled direction</li>
+        <li>Capital account exports are rare and require state approval</li>
+        <li>Inbound attracts; outbound is gated</li>
+      </ul>
+      <a href="/rules/china-foreign-currency-rules.html" class="example-link">View China rules entry →</a>
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">United States, Canada, EU</div>
+      <div class="example-title">Symmetric Ceilings (High Parity)</div>
+      <div class="example-desc">No formal ceiling on inbound or outbound movement of personal funds. The only requirement is declaration above threshold (USD 10,000 for US, CAD 10,000 for Canada, EUR 10,000 for EU). The absence of directional asymmetry is itself the governing rule.</div>
+      <ul class="example-list">
+        <li>Inbound: Unrestricted</li>
+        <li>Outbound: Unrestricted (with declaration if above threshold)</li>
+        <li>No asymmetry signals capital openness</li>
+      </ul>
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">Saudi Arabia</div>
+      <div class="example-title">Pegged Asymmetry</div>
+      <div class="example-desc">Both inbound and outbound conversion happen at official SAR/USD peg (3.75), but they are operationally asymmetric: inbound (tourists bringing dollars) is processed at airport exchanges within minutes; outbound (residents converting to emigrate) faces bank review and may be denied or delayed. Legal ceiling is the same; practical friction differs.</div>
+      <a href="/rules/saudi-arabia-foreign-currency-rules.html" class="example-link">View Saudi Arabia rules entry →</a>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Design Decisions</div>
+    <h2>Why Asymmetry Exists</h2>
+
+    <h3>Capital Flight Prevention</h3>
+    <p>Outbound is risky; inbound is beneficial. Stricter outbound ceilings reflect fears of residents taking savings abroad. This is especially acute in countries with history of capital flight (many Latin American, African, Asian economies).</p>
+
+    <h3>Foreign Exchange Reserve Management</h3>
+    <p>Generous inbound (bringing foreign currency in) adds to forex reserves. Strict outbound (taking foreign currency out) preserves them. The asymmetry is a reserve-accumulation strategy.</p>
+
+    <h3>Incentivizing Repatriation</h3>
+    <p>Some regimes differentiate: inbound gifts/inheritance unlimited (encourage diaspora sending money home); outbound personal unlimited (permit residents to take savings). This targets the direction of the money, not the person.</p>
+
+    <div class="box-accent">
+      <span class="box-label">For Passage Planning</span>
+      <p>Check both directions: (1) What is the inbound ceiling? (2) What is the outbound ceiling? (3) Are they symmetric or asymmetric? (4) If asymmetric, which direction is restricted? Asymmetry is where friction lives.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Related Classes</div>
+    <h2>How Import/Export Connects</h2>
+    <p>Flow direction cascades through the rule set:</p>
+
+    <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+      <li style="margin-bottom: 0.8rem;"><strong>Residency Divergence (Class 3):</strong> Inbound and outbound rules often differ for residents vs non-residents.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Exchange Controls (Class 2):</strong> The same control may approve inbound and deny outbound (or vice versa).</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Channel Restrictions (Class 6):</strong> Inbound may allow ATM/card; outbound may require bank wire only.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Penalty Regimes (Class 7):</strong> Penalties for exceeding outbound ceiling are typically harsher than for inbound.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2026 ConvertCCY. <a href="/framework.html">Framework</a> • <a href="/governance.html">Governance</a> • <a href="/standard.html">CRIS Standard</a> • <a href="/ontology/">Ontology</a> • <a href="/disclaimer.html">Disclaimer</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
