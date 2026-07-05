@@ -35,6 +35,10 @@ PAGES_DIR = BASE_DIR / "pages"
 
 CURRENCIES_FILE = DATA_DIR / "currencies.json"
 CONTENT_FILE = DATA_DIR / "content_blocks.json"
+# Governed Passage Check dataset (built by scripts/build_passage_check.py from the
+# published, source-mapped rules layer). Used to enrich pair pages with governed
+# jurisdiction data. Optional: if absent, pair pages still build (no governed block).
+PASSAGE_FILE = BASE_DIR / "rules" / "passage-check.json"
 
 STATIC_CORE_PAGES = [
     "index.html",
@@ -433,8 +437,136 @@ def related_pairs_html(from_code: str, to_code: str, all_codes: List[str], limit
 # HTML TEMPLATES
 # -----------------------------------------------------------------------------
 
-def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], all_codes: List[str]) -> str:
+def load_governed_currency_map() -> Dict[str, List[Dict[str, Any]]]:
+    """Map currency_code -> list of governed jurisdiction records, transcribed from
+    the published Passage Check dataset (rules/passage-check.json). A currency may
+    map to more than one published country (e.g. EUR -> France, Germany).
+
+    Returns {} if the dataset is absent so the pair build never breaks. Every value
+    here is evidence-bound: it originates in a source-mapped published rules entry,
+    and each rendered block links back to that entry.
+    """
+    if not PASSAGE_FILE.exists():
+        return {}
+    try:
+        data = load_json(PASSAGE_FILE)
+    except Exception:
+        return {}
+    gov: Dict[str, List[Dict[str, Any]]] = {}
+    for c in data.get("countries", []):
+        code = str(c.get("currency_code", "")).upper()
+        if not code:
+            continue
+        thresholds = c.get("declaration", {}).get("thresholds", [])
+        gov.setdefault(code, []).append({
+            "country_name": c.get("country_name", ""),
+            "country_slug": c.get("country_slug", ""),
+            "rules_page": c.get("rules_page", ""),
+            "last_reviewed": c.get("last_reviewed", ""),
+            "exch_label": c.get("exchange_controls", {}).get("label", ""),
+            "thresholds": [
+                f'{t.get("currency","")} {int(t.get("value",0)):,}'.strip()
+                for t in thresholds if t.get("value")
+            ],
+        })
+    return gov
+
+
+def build_currency_passage_section(profile: Dict[str, Any],
+                                   currencies: Dict[str, Dict[str, Any]],
+                                   tokens: Dict[str, str],
+                                   gov_map: Dict[str, List[Dict[str, Any]]]) -> str:
+    """Per-pair, evidence-bound enrichment. For each of the two currencies it shows
+    either a governed jurisdiction block (declaration threshold, exchange-control
+    posture, links to the source-mapped rules page + ontology + Passage Check) when
+    the currency's country is published in the sovereign layer, or an honest factual
+    identity block otherwise. This is the R1 mitigation: unique, governed, internally
+    linked intelligence that no template clone carries — never fabricated.
+    """
+    from_code = profile["from_code"]
+    to_code = profile["to_code"]
+
+    def currency_block(code: str) -> str:
+        cur = currencies.get(code, {})
+        name = cur.get("name", code)
+        govs = gov_map.get(code, [])
+        if govs:
+            # Governed: render transcribed thresholds + posture + source links.
+            links = " · ".join(
+                f'<a href="{esc(g["rules_page"])}">{esc(g["country_name"])} rules →</a>'
+                for g in govs if g.get("rules_page")
+            )
+            thresh_bits = []
+            for g in govs:
+                if g.get("thresholds"):
+                    thresh_bits.append(
+                        f'<strong>{esc(g["country_name"])}:</strong> declaration at '
+                        + esc(" / ".join(g["thresholds"]))
+                        + (f' · <span class="pj-muted">{esc(g["exch_label"])}</span>' if g.get("exch_label") else "")
+                    )
+            thresh_html = "".join(f'<div class="pj-line">{b}</div>' for b in thresh_bits)
+            first_slug = next((g["country_slug"] for g in govs if g.get("country_slug")), "")
+            return f"""
+        <div class="pj-block pj-gov">
+          <div class="pj-head"><span class="pj-badge">Governed</span> {esc(code)} — {esc(name)}</div>
+          {thresh_html}
+          <div class="pj-links">{links}</div>
+          <div class="pj-cls"><a href="/ontology/declaration-regimes.html">Declaration Regimes</a> · <a href="/ontology/exchange-controls.html">Exchange Controls</a></div>
+        </div>"""
+        # Not governed: honest, factual identity only. No jurisdictional claims.
+        symbol = cur.get("symbol", "")
+        ident_bits = []
+        if symbol and symbol.upper() != code.upper():
+            ident_bits.append(f'symbol {esc(symbol)}')
+        ident_bits.append(f'ISO 4217 code {esc(code)}')
+        ident = ", ".join(ident_bits)
+        return f"""
+        <div class="pj-block pj-plain">
+          <div class="pj-head">{esc(code)} — {esc(name)}</div>
+          <div class="pj-line pj-muted">{ident}. No governed foreign-currency-rules entry is published for this currency's jurisdiction yet — it is not shown here to avoid unsourced claims.</div>
+        </div>"""
+
+    from_html = currency_block(from_code)
+    to_html = currency_block(to_code)
+
+    from_gov = bool(gov_map.get(from_code))
+    to_gov = bool(gov_map.get(to_code))
+
+    corridor = ""
+    if from_gov and to_gov:
+        fs = next((g["country_slug"] for g in gov_map[from_code] if g.get("country_slug")), "")
+        ts = next((g["country_slug"] for g in gov_map[to_code] if g.get("country_slug")), "")
+        q = f"?from={esc(fs)}&amp;to={esc(ts)}" if fs and ts else ""
+        corridor = (
+            f'<p class="pj-corridor">Both jurisdictions publish governed rules. '
+            f'<a href="/passage-check.html{q}">Run this {esc(from_code)} → {esc(to_code)} corridor in Passage Check →</a></p>'
+        )
+    else:
+        corridor = (
+            '<p class="pj-corridor">See how a conversion is a jurisdictional event — '
+            '<a href="/passage-check.html">open Passage Check →</a></p>'
+        )
+
+    macro = esc(profile.get("macro_context", "")).strip()
+    macro_html = f'<p class="pj-macro">{macro}</p>' if macro else ""
+
+    return f"""
+  <section class="section pj-section">
+    <div class="sec-title">Currency Passage &amp; Jurisdiction Rules</div>
+    <div class="sec-h2">Moving {esc(tokens["FROM_CODE"])} and {esc(tokens["TO_CODE"])} across borders</div>
+    <p>A conversion is a jurisdictional event, not only an arithmetic one. Where a currency's country is published in the ConvertCCY sovereign layer, the governed declaration threshold and exchange-control posture are shown below with links to the source-mapped rules entry. Figures are reference-grade; verify against the linked official sources before you travel.</p>
+    {macro_html}
+    <div class="pj-grid">
+      {from_html}
+      {to_html}
+    </div>
+    {corridor}
+  </section>"""
+
+
+def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], all_codes: List[str], gov_map: Dict[str, List[Dict[str, Any]]] = None) -> str:
     tokens = make_pair_tokens(profile, currencies)
+    gov_map = gov_map or {}
 
     brand = content.get("site_copy", {}).get("brand_name", SITE_NAME)
     tagline = content.get("site_copy", {}).get("tagline", "Currency conversion, done right.")
@@ -458,6 +590,7 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
     title = f'{tokens["FROM_CODE"]} to {tokens["TO_CODE"]} Converter | {brand}'
     description = f'Convert {tokens["FROM_NAME"]} to {tokens["TO_NAME"]} with a clear reference exchange-rate page, conversion table, FAQ, and currency context.'
     related_html = related_pairs_html(profile["from_code"], profile["to_code"], all_codes)
+    passage_section = build_currency_passage_section(profile, currencies, tokens, gov_map)
 
     faq_block_html = ""
     for item in faq_items:
@@ -592,7 +725,23 @@ tbody td:last-child{{color:var(--accent);font-weight:500}}
 footer{{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}}
 footer a{{color:var(--muted);text-decoration:none}}
 footer a:hover{{color:var(--text)}}
-@media(max-width:640px){{.conv-row{{grid-template-columns:1fr}}.swap-btn{{width:100%;height:36px;border-radius:10px}}nav{{padding:1rem}}.page-wrap{{padding:2rem 1rem}}}}
+.pj-section .sec-h2{{margin-bottom:.6rem}}
+.pj-macro{{font-size:.9rem;color:var(--muted);margin-bottom:1rem}}
+.pj-grid{{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1rem 0}}
+.pj-block{{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.2rem}}
+.pj-gov{{border-color:#c4dfd0;background:var(--accent-light)}}
+.pj-head{{font-weight:600;font-size:.92rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}}
+.pj-badge{{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--accent);border-radius:6px;padding:2px 7px}}
+.pj-line{{font-size:.85rem;color:var(--text);line-height:1.6;margin-bottom:.35rem}}
+.pj-muted{{color:var(--muted)}}
+.pj-links{{font-family:var(--mono);font-size:.78rem;margin-top:.5rem}}
+.pj-links a,.pj-cls a{{color:var(--accent);text-decoration:none}}
+.pj-links a:hover,.pj-cls a:hover{{text-decoration:underline}}
+.pj-cls{{font-family:var(--mono);font-size:.72rem;margin-top:.4rem;color:var(--muted)}}
+.pj-corridor{{font-size:.88rem;margin-top:.4rem}}
+.pj-corridor a{{color:var(--accent);text-decoration:none;font-weight:500}}
+.pj-corridor a:hover{{text-decoration:underline}}
+@media(max-width:640px){{.conv-row{{grid-template-columns:1fr}}.swap-btn{{width:100%;height:36px;border-radius:10px}}nav{{padding:1rem}}.page-wrap{{padding:2rem 1rem}}.pj-grid{{grid-template-columns:1fr}}}}
 </style>
 </head>
 <body>
@@ -666,7 +815,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>{esc(to_para)}</p>
     <p>{esc(rel_para)}</p>
   </section>
-
+{passage_section}
   <section class="section">
     <div class="sec-title">{esc(exchange_heading)}</div>
     <div class="card">
@@ -954,14 +1103,42 @@ def build_framework_page(content: Dict[str, Any]) -> str:
 # -----------------------------------------------------------------------------
 
 def build_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> str:
+    """Complete, generator-authoritative sitemap. Includes, in crawl-priority order:
+    home; static/authority pages; the intelligence layer (governance, CRIS standard,
+    ontology hub + class pages, Passage Check); articles; the PUBLISHED sovereign
+    rules layer (only /rules/ — preview/RC entries live under /preview/ and are never
+    listed); and all pair pages. Only files that exist on disk are emitted, so the
+    sitemap can never reference a page that was not built. Previously the rules and
+    article URLs were hand-merged into the sitemap after generation; they are now
+    produced here so the sitemap stays complete on every build."""
     lastmod = iso_today()
-    urls = [
-        f"{BASE_URL}/",
-    ]
+    urls = [f"{BASE_URL}/"]
 
-    for page in STATIC_CORE_PAGES:
-        if file_exists(page) and page != "index.html":
+    # Static + authority pages (only those present on disk).
+    authority_pages = STATIC_CORE_PAGES + ["governance.html", "standard.html", "passage-check.html"]
+    seen_pages = set()
+    for page in authority_pages:
+        if page == "index.html" or page in seen_pages:
+            continue
+        if file_exists(page):
             urls.append(f"{BASE_URL}/{page}")
+            seen_pages.add(page)
+
+    # Directory hubs + their contents (hub index first, then children, sorted).
+    def add_dir(dir_name: str, child_glob: str, index_name: str = "index.html"):
+        d = BASE_DIR / dir_name
+        if not (d / index_name).exists():
+            return
+        urls.append(f"{BASE_URL}/{dir_name}/")
+        for f in sorted(d.glob(child_glob)):
+            if f.name == index_name:
+                continue
+            urls.append(f"{BASE_URL}/{dir_name}/{f.name}")
+
+    add_dir("ontology", "*.html")
+    add_dir("articles", "*.html")
+    # Published sovereign layer only: the country rules files, never /preview/.
+    add_dir("rules", "*-foreign-currency-rules.html")
 
     for profile in sorted(pair_profiles.values(), key=lambda p: p["pair_slug"]):
         urls.append(f'{BASE_URL}/pages/{profile["pair_slug"]}.html')
@@ -985,6 +1162,11 @@ def build_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> str:
 def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], pair_profiles: Dict[str, Dict[str, Any]]) -> int:
     PAGES_DIR.mkdir(parents=True, exist_ok=True)
     all_codes = sorted(currencies.keys(), key=lambda x: (x not in DEFAULT_POPULAR_CODES, x))
+    gov_map = load_governed_currency_map()
+    if gov_map:
+        print(f"Governed currency enrichment active for: {', '.join(sorted(gov_map.keys()))}")
+    else:
+        print("Governed currency enrichment: passage-check.json absent — pair pages build without governed blocks")
 
     count = 0
     skipped = 0
@@ -1001,7 +1183,7 @@ def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str
             skipped += 1
             continue
 
-        html_doc = build_pair_page(profile, currencies, content, all_codes)
+        html_doc = build_pair_page(profile, currencies, content, all_codes, gov_map)
         out_path = PAGES_DIR / f'{profile["pair_slug"]}.html'
         write_text(out_path, html_doc)
         count += 1
