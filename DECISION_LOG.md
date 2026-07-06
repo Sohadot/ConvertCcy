@@ -417,6 +417,21 @@ Pillar 5 (respectable recurring income) was the largest unmet pillar: zero monet
 - Monetization is contact-based only; no payment processing is ever added to the static site. If a checkout is ever needed it must live off-domain, so the reference layer keeps zero payment surface.
 - No page may claim customers, revenue, or endorsements that do not exist.
 
+### Review liability patch (applied before merge)
+"Warranty" is a heavy legal term implying a standing, granted commitment before any commercial contract exists. All occurrences in `licensing.html` (meta description, hero-lead, tier bullet, honesty callout) and this log were softened to conditional wording: "support commitments, update terms, and negotiated enterprise terms suitable for procurement." Zero standalone warranty claim remains. Pure liability calibration, no strategic change.
+
+### P6 Deployment Gate Verification — ✅ CLOSED (2026-07-06)
+Merged to `main` via merge commit `712ffa75`; Pages build completed success.
+
+- **Cache-buster first (per the P3 lesson):** `/briefs/`, `/passage-briefs.html`, `/licensing.html`, `/briefs/india-passage-brief.html`, `/sitemap.xml` all returned **200** with `?cb=` — origin confirmed correct before any canonical touch.
+- **Canonical (bare) URLs:** all five return **200** on the live custom domain. The new routes were never touched bare while 404, so no negative-cache poisoning.
+- **India brief content verified live:** shows the governed threshold (USD 5,000 / USD 10,000), an official source (CBIC/RBI), links to the full `/rules/india-foreign-currency-rules.html` entry, `/licensing.html`, and `/passage-briefs.html`, JSON-LD `isAccessibleForFree: true`, and no "warranty" wording.
+- **Origin sitemap correct:** `/sitemap.xml?cb=` returns **28,778 URLs** including all 11 new P6 URLs (8 briefs + hub + passage-briefs + licensing), **no `/preview/` leak**.
+
+**Known follow-up (edge cache, not a content defect):** the *bare canonical* `https://convertccy.com/sitemap.xml` is currently serving a **stale Cloudflare-cached copy** (`cf-cache-status: HIT`, pre-P6 content, `cache-control: max-age=14400`) — the same Cloudflare-cache class seen in P3, here a stale-200 on an updated file rather than a stale-404 on a new one. Origin is correct; the P6 pages themselves are all live and canonical-200. To let crawlers see the +11 URLs immediately, **purge the Cloudflare cache for `/sitemap.xml`** (owner action, ~10s), or wait for TTL eviction. This does not affect the live P6 pages, only how quickly the updated sitemap propagates to crawlers.
+
+Status: ✅ **P6 CLOSED** (first income surface live and verified). Sitemap edge-cache purge is the only outstanding propagation step, tracked above.
+
 ---
 
 ## Standing rules (all phases)
