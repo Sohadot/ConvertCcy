@@ -384,6 +384,41 @@ Status: ✅ **P5 CLOSED.** R2 resolved — the single-endpoint dependency now de
 
 ---
 
+## Phase 10 — Passage Briefs & Commercial Licensing (P6) — first income
+**Status:** Ready to merge (branch: claude/p6-briefs-and-licensing)
+
+### Context
+Pillar 5 (respectable recurring income) was the largest unmet pillar: zero monetization existed. The methodology's hard rule: income must **extend** the reference, never tax it — no ads on rules pages, no affiliate links in governed content, no claim shaped by a payer. P6 opens the first income surface without violating any of that.
+
+### Decision: two income surfaces, both extensions of the free reference
+
+**1. Country Passage Briefs** (`/passage-briefs.html` + `/briefs/`)
+- `scripts/build_passage_briefs.py` generates a governed, print-optimised one-page brief for each of the 8 published jurisdictions (`/briefs/<slug>-passage-brief.html`) plus a hub (`/briefs/`). Built only from published entries; every figure transcribed from `rules/passage-check.json` + `data/rules/<slug>.json`, every source linked. Distinct *format* from the `/rules/` entry (at-a-glance cards + traveler/business checklists + print CSS), canonical to itself, cross-linked to the full rules page.
+- These free Traveler Briefs are **free to read and print-to-PDF**. The paid tier is a business/compliance edition, bundled multi-jurisdiction PDF packs, and the commercial licence — sold on **format, depth, and licence, never on gating facts**.
+
+**2. Data & Commercial Licensing** (`/licensing.html`) — the legally-accurate dual-licence model
+- The open dataset (`rules/dataset.json`) stays free under **CC BY 4.0, which already permits commercial use with attribution** — so the page does not (and legally cannot) claim commercial use requires payment.
+- A commercial licence is strictly **additive**: attribution-free use, support and update commitments, negotiated enterprise terms, custom formats/bulk delivery, and priority Passage Check API access. The open tier is never downgraded or revoked.
+
+### Governance / credibility discipline
+- **No fabricated traction:** an explicit "Where this is today" section states we do not claim customers or revenue we do not have; the pages are transparent offers, not a track record.
+- **No hidden surface / security:** there is **no checkout and no payment collected on the site** — commercial terms are agreed by email (`contact@convertccy.com`). This keeps the reference layer free of payment scripts and the attack surface minimal. Security sweep: no external scripts beyond the existing GTM/GA, no `target="_blank"` without `rel="noopener"`, no payment/card forms.
+- **Reference stays free:** nothing free today becomes paid; `/rules/`, the dataset, the ontology, Passage Check, and the free briefs remain open.
+
+### SEO
+- Generator-authoritative sitemap now includes the briefs hub + 8 briefs + `passage-briefs.html` + `licensing.html` (**+11 URLs, 0 removed**; pair URLs untouched). All new pages `index,follow`, canonical, with honest JSON-LD (`TechArticle` for briefs, no invented price/review markup). Home footer links Passage Briefs + Licensing.
+- Duplicate-content consideration: briefs reuse governed rule text but in a distinct printable format with their own canonical and cross-links; only 8 pages, not a scaled surface.
+
+### Verification
+- 8 briefs + hub + both offering pages: 0 malformed, JSON-LD valid, 0 broken internal links, governed figures + official sources present, self-canonical. Briefs cover published jurisdictions only (generator filters `page_status == published`). Pair pages unchanged (0 diffs).
+
+### Standing decisions from P6
+- Briefs are generator-driven (`scripts/build_passage_briefs.py`); never hand-edit `briefs/*.html`, and never generate a brief for an unpublished jurisdiction.
+- Monetization is contact-based only; no payment processing is ever added to the static site. If a checkout is ever needed it must live off-domain, so the reference layer keeps zero payment surface.
+- No page may claim customers, revenue, or endorsements that do not exist.
+
+---
+
 ## Standing rules (all phases)
 
 - One concern = one PR = one branch

@@ -1184,7 +1184,7 @@ def build_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> str:
     urls = [f"{BASE_URL}/"]
 
     # Static + authority pages (only those present on disk).
-    authority_pages = STATIC_CORE_PAGES + ["governance.html", "standard.html", "passage-check.html"]
+    authority_pages = STATIC_CORE_PAGES + ["governance.html", "standard.html", "passage-check.html", "passage-briefs.html", "licensing.html"]
     seen_pages = set()
     for page in authority_pages:
         if page == "index.html" or page in seen_pages:
@@ -1206,6 +1206,7 @@ def build_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> str:
 
     add_dir("ontology", "*.html")
     add_dir("articles", "*.html")
+    add_dir("briefs", "*.html")
     # Published sovereign layer only: the country rules files, never /preview/.
     add_dir("rules", "*-foreign-currency-rules.html")
 
