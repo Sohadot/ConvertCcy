@@ -434,6 +434,37 @@ Status: ✅ **P6 CLOSED** (first income surface live and verified). Sitemap edge
 
 ---
 
+## Phase 11 — API Security Boundary Decision (P7-0)
+**Status:** Decision only — no implementation. Recorded before any P7A build.
+
+### Context
+The Passage Check API was listed in the plan as the agentic-web revenue line (Layer 10). Before building anything, we asked a security question first: **would a dynamic API weaken the security of the sovereign asset?** The honest answer is **yes** — and this decision closes the boundary before code is written.
+
+### Why a dynamic backend is rejected on the main surface
+ConvertCCY's security strength today comes from being a **static site on GitHub Pages behind Cloudflare**. The attack surface is near-zero: no running server, no database, no authentication, no secrets/keys, no server-side user input, no payment surface (a standing P5/P6 decision). A conventional metered API would break every one of those properties:
+
+- a persistent server = a runtime attack surface to patch and defend;
+- API keys / auth = secrets to manage and leak, plus an auth surface to abuse;
+- billing/metering = payment data, the most dangerous surface of all;
+- server-side user input = injection, abuse, and DoS exposure;
+- a third-party dependency = a new point of failure and liability.
+
+This directly contradicts the standing rule that keeps the reference layer free of payment scripts and the security surface minimal.
+
+### Decision (binding)
+1. **No dynamic backend API is added to `convertccy.com`.** The main reference surface stays static, immutable, and zero-runtime.
+2. On the main domain there is **no backend, no API keys, no authentication, no billing, no checkout, and no server-side processing of user input** — ever.
+3. The main site may expose **only static, read-only, agent-readable JSON generated from published, governed data** (the same class as `rules/dataset.json` and `rules/passage-check.json`, which are already a read-only data interface). Published jurisdictions only — never `/preview/`.
+4. **Any future metered or authenticated API must be isolated off the sovereign surface** — on a separate host such as `api.convertccy.com` or an external API gateway — so that if it is ever compromised, the reference asset is untouched. It must not share the reference domain's origin, secrets, or trust.
+5. Naming discipline: the static layer is called the **Static Agent Interface** (or Agent-Readable Data Interface), **not** an "API", to avoid implying a server, keys, or auth. Its own page must state plainly: *"This is not a dynamic API. It is a static, read-only data interface."*
+
+### Consequence for sequencing
+- **P7-0** (this entry) records the boundary. No files beyond this log.
+- **P7A** — Static Agent Interface: static JSON + a contract/docs page + `llms.txt`, generated from published governed data. No backend, no auth, no keys, no billing.
+- **P8** — G20+ coverage expansion, executed *after* P7A so every new jurisdiction automatically flows into `/rules/`, `/briefs/`, the Static Agent Interface, Passage Check, and the sitemap — expanding a machine-consumable structure, not just content.
+
+---
+
 ## Standing rules (all phases)
 
 - One concern = one PR = one branch
@@ -442,6 +473,7 @@ Status: ✅ **P6 CLOSED** (first income surface live and verified). Sitemap edge
 - No noindex on pair pages
 - No SEO-impacting changes hidden inside security PRs
 - Manual workflow preferred over API-dependent automation
+- **No dynamic backend on the sovereign surface (P7-0):** `convertccy.com` stays static/zero-runtime — no backend, API keys, auth, billing, checkout, or server-side user input. The site exposes only static, read-only, agent-readable JSON from published data (never `/preview/`). Any metered/authenticated API must be isolated off-domain (e.g. `api.convertccy.com`) so a compromise cannot reach the reference asset.
 
 - 2026-07-05: Triggered a fresh GitHub Pages deployment after run #122 remained queued following the P0 merge.
 - 2026-07-05: Triggered a clean GitHub Pages rebuild after Pages deployment state issue.
