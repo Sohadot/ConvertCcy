@@ -398,7 +398,7 @@ Pillar 5 (respectable recurring income) was the largest unmet pillar: zero monet
 
 **2. Data & Commercial Licensing** (`/licensing.html`) — the legally-accurate dual-licence model
 - The open dataset (`rules/dataset.json`) stays free under **CC BY 4.0, which already permits commercial use with attribution** — so the page does not (and legally cannot) claim commercial use requires payment.
-- A commercial licence is strictly **additive**: attribution-free use, support + update SLA, warranty/enterprise terms, custom formats/bulk delivery, and priority Passage Check API access. The open tier is never downgraded or revoked.
+- A commercial licence is strictly **additive**: attribution-free use, support and update commitments, negotiated enterprise terms, custom formats/bulk delivery, and priority Passage Check API access. The open tier is never downgraded or revoked.
 
 ### Governance / credibility discipline
 - **No fabricated traction:** an explicit "Where this is today" section states we do not claim customers or revenue we do not have; the pages are transparent offers, not a track record.
