@@ -530,6 +530,43 @@ Status: ✅ **P7A CLOSED.** The Static Agent Interface is live, boundary-correct
 
 ---
 
+## Phase 13 — G20+ Coverage Expansion Blueprint (P8-0)
+**Status:** Blueprint only — no publication. Recorded before any P8 research or promotion work.
+
+### Context
+P7A made every published jurisdiction propagate automatically into five public surfaces (`/rules/`, `/briefs/`, Passage Check, the Static Agent Interface, the sitemap). That automation means a coverage-expansion mistake now has five times the blast radius of a single-page error. P8-0 exists to put a controlled intake process — and a machine-checkable guard rail — in place *before* any G20+ research or publication begins, rather than expanding coverage by direct publication.
+
+### Decision: a candidate intake system, separate from the publication pipeline
+Three new files were created and none of them can publish anything:
+
+- **`data/coverage/g20-expansion-candidates.json`** — the 13 G20 member countries not yet published (G20 has 19 country members; 6 are already published — Australia, Canada, France, Germany, India, Japan — alongside the non-G20 Pakistan and UAE, for 8 published total). Each candidate carries `country_name`, `iso2`/`iso3`, `currency_code`, `region`, `expansion_priority`, `complexity_level`, `likely_official_source_authorities_needed` (central bank, customs, FIU/AML, and tax/treasury only if directly relevant), `expected_difficulty`, `known_risk_areas`, `missing_sources`, and `status`. **Every candidate's `status` is `candidate_only`** in this file, regardless of prior internal research state.
+- **`data/coverage/source-intake-matrix.json`** — per-candidate, per-source-category tracking (`not_started` / `identified` / `needs_verification` / `verified_on_file` / `not_applicable`), distinguishing "we know the institution's name" from "we have a live, cited, official source URL already on file."
+- **`scripts/validate_coverage_intake.py`** — a guard rail that fails (non-zero exit) if any candidate is marked `published`, appears in `api/v1/index.json`'s `available_slugs`, appears in `api/v1/rules-index.json`, has a generated file under `api/v1/rules/`, appears in `sitemap.xml` as a rules/brief/API route, appears as a covered link in `llms.txt`, is missing a required field, or if `/preview/` is referenced anywhere in the intake files. It also cross-checks that the candidate list and the source-intake matrix cover the identical set of slugs, and that no candidate slug collides with the 8 already-published jurisdictions.
+- **`docs/P8_G20_EXPANSION_BLUEPRINT.md`** — the human-readable blueprint: the status model, the full candidate table with priority/complexity/internal-research-state, and an explicit list of what this phase deliberately did not do.
+
+### The 13 candidates
+10 already carry an internal `verified`-status research file from earlier project phases (Brazil, China, Indonesia, Mexico, Saudi Arabia, South Africa, South Korea, Turkey, United Kingdom, United States) — real, reusable prior work, but not yet re-reviewed under this intake process's finer-grained source categories (every one of the 10 is missing a financial-intelligence-unit/AML source on file). 3 have no prior research at all beyond a generic seed entry reserving their slug (Argentina, Italy, Russia — slug `russian-federation`) and are from-scratch intakes.
+
+### No-inference discipline (restated, not new)
+No rule, threshold, or exchange-control posture was asserted for any candidate. The "known risk areas" and "expected difficulty" fields describe what makes *research* harder (language, regulatory volatility, agency-name changes, EU-layer sourcing for Italy) — they are not claims about a country's actual regulatory content, and none of it may be copied into a future `data/rules/<slug>.json` file without its own independent, dated, primary-source citation. Italy is explicitly flagged as not assumable to be identical to the already-published France/Germany EUR entries, despite sharing a currency.
+
+### Verification performed before this entry
+- Ran `scripts/validate_coverage_intake.py` against the real repository state: **PASSED** — 13 candidates, all `status: candidate_only`; 8 published jurisdictions confirmed unaffected; no candidate found in `api/v1/`, `sitemap.xml`, or `llms.txt`.
+- Regenerated `sitemap.xml` and diffed `<loc>` sets before/after: **0 removed, 0 added** — this phase touches no public route.
+- Confirmed `api/v1/rules/` still contains exactly the 8 published jurisdictions' files, unchanged.
+- Confirmed no `data/rules/<slug>.json` file (published or otherwise) was modified.
+- Sandbox-tested the validator against 6 injected failure modes (a candidate marked `published`; a candidate slug added to `api/v1/index.json`'s `available_slugs`; a candidate slug added to `sitemap.xml`; a candidate missing a required field; a candidate presented as covered in `llms.txt`; a `/preview/` reference inside an intake file) — all 6 correctly produced a non-zero exit with a specific diagnostic.
+
+### Standing decisions from P8-0
+- `data/coverage/*.json` are intake-tracking files, not publication channels. Setting a candidate's field in these files — including `status` — never publishes anything. Publication happens exclusively by taking a candidate's own `data/rules/<slug>.json` through the existing six-gate pipeline and setting `page_status: published` there.
+- `scripts/validate_coverage_intake.py` must pass before any future P8 research or promotion PR is merged.
+- Every future candidate promotion (`candidate_only` → `source_intake` → `source_review_ready` → `publish_ready` → `published`) is its own reviewed, one-concern change — never a bulk edit across multiple candidates.
+- No jurisdiction's rules may ever be inferred from its currency code, region, G20 membership, EU/AU membership, or a neighboring/already-published country's entry.
+
+Status: ✅ **P8-0 CLOSED.** This is a planning artifact with no live-surface footprint, so there is no Deployment Gate to pass — closure is the validator passing and the blueprint being recorded, both done above.
+
+---
+
 ## Standing rules (all phases)
 
 - One concern = one PR = one branch
