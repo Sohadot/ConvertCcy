@@ -1,0 +1,62 @@
+{
+ "schema_version": "1.0.0",
+ "generated_at": "2026-07-07T17:16:24+00:00",
+ "asset": "ConvertCCY",
+ "interface_type": "static_agent_interface",
+ "dynamic_api": false,
+ "source_scope": "published_governed_data_only",
+ "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "ConvertCCY (https://convertccy.com/)",
+ "disclaimer": "This data is a governed reference, not legal, tax, customs, compliance, or financial advice. It does not predict, hedge, or guarantee any financial outcome. Verify time-sensitive figures against the official sources listed before acting.",
+ "use_boundary": "Static, read-only reference data only. Do not represent this interface as a dynamic API, as live data, or as covering any jurisdiction not listed in this file. A currency code is not the same as a jurisdiction: a shared currency (e.g. EUR) does not imply coverage of every country that uses it. Cite ConvertCCY and the official source(s) when using this data downstream.",
+ "canonical_url": "https://convertccy.com/api/v1/rules/japan.json",
+ "documentation": "https://convertccy.com/api.html",
+ "country_name": "Japan",
+ "country_slug": "japan",
+ "iso2": "JP",
+ "iso3": "JPN",
+ "region": "East Asia",
+ "currency_code": "JPY",
+ "currency_name": "Japanese Yen",
+ "page_status": "published",
+ "last_reviewed": "2026-05-02",
+ "evidence_tier": "official_verified",
+ "rules_page": "/rules/japan-foreign-currency-rules.html",
+ "brief_page": "/briefs/japan-passage-brief.html",
+ "country_overview": "Japan operates a fully liberalised foreign-exchange regime under the regulatory authority of the Ministry of Finance (MOF) and the Bank of Japan (BOJ). The Foreign Exchange and Foreign Trade Act (FEFTA) governs the framework. There are no general exchange controls for current or capital account transactions for residents or non-residents. The yen is freely convertible and Japan maintains one of the most open FX regimes among major economies.",
+ "summary": {
+  "traveler": "Travelers may bring in or take out unlimited amounts of Japanese Yen and foreign currency. No general currency declaration is required for normal travel amounts.",
+  "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+ },
+ "rules": {
+  "bring_foreign_currency_in": "Unlimited amounts of Japanese Yen and foreign currency may be brought into Japan. No general declaration is required for travelers under normal circumstances.",
+  "take_foreign_currency_out": "When departing Japan, travelers may export unlimited amounts of Japanese Yen and foreign currency. Large cash amounts may require reporting under anti-money laundering rules.",
+  "cash_declaration_threshold": "No mandatory declaration threshold applies for ordinary travelers. Movements of JPY 1,000,000 or more (or equivalent) may trigger reporting requirements under AML regulations.",
+  "resident_holding_rules": "Japanese residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+  "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+  "business_invoicing_settlement": "Business transactions may be invoiced and settled in Japanese Yen or foreign currency. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
+  "exchange_controls": "Japan maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+  "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Japan."
+ },
+ "source_authorities": [
+  {
+   "label": "Ministry of Finance (MOF) Japan — Foreign Exchange Regulations",
+   "url": "https://www.mof.go.jp/english/policy/international_policy/index.html",
+   "type": "primary_regulator",
+   "tier": "primary"
+  },
+  {
+   "label": "Bank of Japan (BOJ) — FX Market & Policy",
+   "url": "https://www.boj.or.jp/en/index.htm",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "Japan Customs — Travel & Currency Rules",
+   "url": "https://www.customs.go.jp/english/",
+   "type": "customs",
+   "tier": "primary"
+  }
+ ],
+ "disclaimer_notice": "This page provides general informational reference only. Foreign-exchange rules in Japan are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Ministry of Finance / Bank of Japan / Japan Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Ministry of Finance, Bank of Japan, or a qualified professional before making any financial or travel decisions."
+}

@@ -465,6 +465,57 @@ This directly contradicts the standing rule that keeps the reference layer free 
 
 ---
 
+## Phase 12 — Static Agent Interface (P7A)
+**Status:** Ready to merge (branch: claude/p7-0-startup-6ctahl)
+
+### Context
+P7-0 (Phase 11) recorded a binding boundary: no dynamic backend is ever added to `convertccy.com`. P7A builds the first concrete surface allowed under that boundary — a static, read-only, agent-readable JSON layer generated entirely from already-published governed data. No server, no keys, no auth, no billing, no new attack surface.
+
+### Decision: publish a static agent-readable data interface, not an API
+
+**`scripts/build_static_agent_interface.py`** reads only the two existing public artifacts — `rules/dataset.json` (published CC BY 4.0 dataset) and `rules/passage-check.json` (Passage Check engine dataset) — and writes:
+
+- `api/v1/index.json` — machine entry point: endpoint map, published-jurisdiction count, links to docs and `llms.txt`.
+- `api/v1/rules-index.json` — index of the 8 published jurisdictions, each linking to its per-country file, `/rules/` page, and brief.
+- `api/v1/rules/<slug>.json` — one file per published jurisdiction (8 files), carrying the same governed prose, sources, and review date already public in `rules/dataset.json`.
+- `api/v1/passage-check.json` — a Static-Agent-Interface-wrapped view of the existing Passage Check dataset (same transcribed thresholds and exchange-control posture, same `transcribed_from` provenance).
+- `api/index.html` — a generated, browsable hub listing the endpoints and the currently published jurisdictions.
+
+**`api.html`** is a manually managed authority page (same governance class as `governance.html`, `standard.html`, `licensing.html`) that explains the boundary in plain language, states outright *"This is not a dynamic API. It is a static, read-only data interface,"* documents the machine contract, and restates the P7-0 roadmap boundary (any future metered/authenticated API is isolated off-domain).
+
+**`llms.txt`** gained a "Static Agent Interface" section: the machine entry point, the human documentation link, and explicit rules for agents — do not infer unpublished coverage, do not treat a currency as a country, no legal/tax/customs/compliance/financial advice, always surface source and coverage boundaries, cite ConvertCCY and the official source.
+
+### Machine contract
+Every generated JSON file carries the same header so a consumer can verify scope without leaving the file: `schema_version`, `generated_at`, `asset`, `interface_type: static_agent_interface`, `dynamic_api: false`, `source_scope: published_governed_data_only`, `license`, `attribution`, `disclaimer`, `use_boundary`, `canonical_url`, `documentation`.
+
+### Drift guard
+The script refuses to emit anything if `rules/dataset.json` and `rules/passage-check.json` disagree on which jurisdictions are published, or if a dataset entry's `page_status` is not `published`. This is the same discipline already used by `build_passage_check.py` and `build_passage_briefs.py` — the Static Agent Interface can only ever expose what the two upstream, already-reviewed public artifacts already state.
+
+### What was explicitly excluded (per the P7-0 boundary)
+- No backend, server process, or request execution behind any route — every file is written at build time.
+- No API keys, no authentication, no accounts.
+- No billing, metering, or checkout anywhere on the domain.
+- No server-side processing of user input.
+- No CORS claim: none is made, since none is configured at the hosting/Cloudflare layer.
+- No new security headers claimed beyond what GitHub Pages/Cloudflare already enforce (per the Phase 1 decision).
+- No `/preview/` exposure, no unpublished/verified/needs_hardening jurisdiction, no internal notes, no `DECISION_LOG.md` content, in any generated file.
+
+### Sitemap
+`build_sitemap()` in `generate.py` now additionally emits (only if present on disk, never removing anything): `api.html`, `api/`, `api/v1/index.json`, `api/v1/rules-index.json`, `api/v1/passage-check.json`, `api/v1/rules/<slug>.json` for each published jurisdiction, and `llms.txt`. Verified: regenerating the sitemap produced **0 removed / +14 added** URLs versus the committed sitemap — the 14 new P7A routes only.
+
+### Navigation
+Added an "Agent Interface" link to the primary nav of the site's main hub/authority pages (`index.html`, `governance.html`, `standard.html`, `licensing.html`, `passage-check.html`, `passage-briefs.html`, `ontology/index.html`), pointing at `/api.html`. The 8 individual ontology class pages were left unchanged — out of scope for this phase.
+
+### Standing decisions from P7A
+- `api/v1/*.json`, `api/v1/rules/*.json`, and `api/index.html` are generated artifacts — never hand-edited. Regenerate via `scripts/build_static_agent_interface.py` after `rules/dataset.json` or `rules/passage-check.json` changes.
+- The Static Agent Interface's coverage grows only as the published sovereign layer grows, gated by the same drift guard already used for Passage Check and the briefs.
+- `api.html` is manually managed (same class as governance/standard/licensing) — future edits go through PR review, never direct-to-main.
+- No dynamic backend, authentication, API key, billing, or server-side user-input processing may ever be added to this interface on `convertccy.com`. Any future metered/authenticated API remains off-domain (e.g. `api.convertccy.com`), per the binding P7-0 decision.
+
+Status: Ready to merge. Not closed until the Deployment Gate is passed — the live `api.html`, `api/`, `api/v1/index.json`, one `api/v1/rules/<slug>.json`, and `llms.txt` must all return 200 on the custom domain before P7A is closed.
+
+---
+
 ## Standing rules (all phases)
 
 - One concern = one PR = one branch
