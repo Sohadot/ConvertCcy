@@ -565,6 +565,15 @@ No rule, threshold, or exchange-control posture was asserted for any candidate. 
 
 Status: ✅ **P8-0 CLOSED.** This is a planning/governance artifact with no new indexed or covered public route. It creates no rules page, brief, API country file, Passage Check entry, llms coverage claim, or sitemap URL, so there is no Deployment Gate to pass — closure is the validator passing and the blueprint being recorded, both done above.
 
+### Post-merge integrity check on `main`
+Merged via PR #21 (merge commit `c41e462d6`). Since this phase adds no live public route, there is no Deployment Gate to pass — instead, three integrity checks were run directly against `main` after the merge:
+
+- `python3 scripts/validate_coverage_intake.py` — **PASSED**: 13 candidates recorded, all `status: candidate_only`; 8 published jurisdictions confirmed unaffected; no candidate found in `api/v1/`, `sitemap.xml`, or `llms.txt`.
+- `sitemap.xml` — byte-identical across the merge commit (diffed against the pre-merge parent).
+- `api/v1/rules/` — still exactly 8 files (`australia`, `canada`, `france`, `germany`, `india`, `japan`, `pakistan`, `united-arab-emirates`), unchanged.
+
+**P8-0 remains closed on `main`.**
+
 ---
 
 ## Standing rules (all phases)
