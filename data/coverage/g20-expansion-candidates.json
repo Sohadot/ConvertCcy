@@ -1,0 +1,390 @@
+{
+ "schema_version": "1.0.0",
+ "generated_at": "2026-07-07T00:00:00+00:00",
+ "asset": "ConvertCCY",
+ "phase": "P8-0",
+ "document_type": "coverage_expansion_candidate_list",
+ "purpose": "G20+ coverage expansion blueprint — a candidate intake list only. This is a public repository governance/intake artifact, not a public coverage or rules-publication surface: it is not sitemap-listed, not included in /api/v1/, and not presented as covered jurisdictions in llms.txt, and it cannot publish a country. No candidate listed here may be rendered into /rules/, /briefs/, Passage Check, the Static Agent Interface (/api/v1/), or the sitemap until it independently passes the existing six-gate publication pipeline and its data/rules/<slug>.json page_status is set to published through that pipeline, not through this file.",
+ "not_a_publication_channel_notice": "This file cannot publish a country. It records research/priority metadata only. Promotion to published happens exclusively via the existing data/rules/<slug>.json six-gate pipeline (see governance.html), never by editing this file.",
+ "candidate_status_model": [
+  "candidate_only",
+  "source_intake",
+  "source_review_ready",
+  "blocked",
+  "publish_ready",
+  "published"
+ ],
+ "candidate_status_model_notes": "Every entry in this P8-0 blueprint is recorded as candidate_only, regardless of how much prior internal research exists (see prior_research_state), because no candidate has yet been re-reviewed under this coverage-intake process. Advancing a status is a future, separate, reviewed action — never a bulk edit of this file.",
+ "existing_published_jurisdictions": [
+  "australia",
+  "canada",
+  "france",
+  "germany",
+  "india",
+  "japan",
+  "pakistan",
+  "united-arab-emirates"
+ ],
+ "existing_published_jurisdictions_note": "These 8 jurisdictions are unaffected by this blueprint. Their data/rules/<slug>.json page_status and public surfaces are not touched by P8-0.",
+ "no_inference_rule": "No rule, threshold, or regulatory posture may ever be inferred for a candidate from its currency code, region, G20 membership, EU/AU membership, or a neighboring country's published rules. Every fact requires its own primary official source before it may be published.",
+ "count": 13,
+ "candidates": [
+  {
+   "country_name": "United Kingdom",
+   "country_slug": "united-kingdom",
+   "iso2": "GB",
+   "iso3": "GBR",
+   "currency_code": "GBP",
+   "currency_name": "British Pound Sterling",
+   "region": "Western Europe",
+   "expansion_priority": "high",
+   "complexity_level": "low",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "Bank of England",
+    "customs_or_border_authority": "HM Revenue & Customs (HMRC)",
+    "financial_intelligence_unit_or_aml_authority": "National Crime Agency (NCA) — UK Financial Intelligence Unit",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "Low. Stable, English-language, well-documented regulatory framework; central bank and customs sources already on file internally.",
+   "known_risk_areas": [
+    "Post-Brexit divergence between UK and EU cash-declaration rules must not be conflated"
+   ],
+   "missing_sources": [
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "United States",
+   "country_slug": "united-states",
+   "iso2": "US",
+   "iso3": "USA",
+   "currency_code": "USD",
+   "currency_name": "United States Dollar",
+   "region": "North America",
+   "expansion_priority": "high",
+   "complexity_level": "medium",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "Federal Reserve",
+    "customs_or_border_authority": "US Customs and Border Protection (CBP)",
+    "financial_intelligence_unit_or_aml_authority": "Financial Crimes Enforcement Network (FinCEN)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "Medium. Sources are English-language and authoritative, but BSA/FinCEN reporting (FBAR, Form 105, CTR/SAR) is a distinct regime from customs declaration and must not be conflated — a defect class already caught and corrected once in P2 ontology review.",
+   "known_risk_areas": [
+    "FinCEN Form 105 vs CTR/SAR conflation (previously corrected in ontology P2 review — do not repeat)",
+    "State-level vs federal distinctions are out of scope; federal rules only"
+   ],
+   "missing_sources": [],
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "Mexico",
+   "country_slug": "mexico",
+   "iso2": "MX",
+   "iso3": "MEX",
+   "currency_code": "MXN",
+   "currency_name": "Mexican Peso",
+   "region": "Latin America",
+   "expansion_priority": "high",
+   "complexity_level": "low",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "Banco de México (Banxico)",
+    "customs_or_border_authority": "Mexican Customs (SAT / Aduanas)",
+    "financial_intelligence_unit_or_aml_authority": "Unidad de Inteligencia Financiera (UIF, Secretaría de Hacienda)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "Low-medium. Central bank and customs sources already on file internally; primary sources are Spanish-language and require careful translation review before citation.",
+   "known_risk_areas": [
+    "Spanish-language source translation accuracy"
+   ],
+   "missing_sources": [
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "South Korea",
+   "country_slug": "south-korea",
+   "iso2": "KR",
+   "iso3": "KOR",
+   "currency_code": "KRW",
+   "currency_name": "South Korean Won",
+   "region": "East Asia",
+   "expansion_priority": "high",
+   "complexity_level": "medium",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "Bank of Korea (BOK)",
+    "customs_or_border_authority": "Korea Customs Service",
+    "financial_intelligence_unit_or_aml_authority": "Korea Financial Intelligence Unit (KoFIU)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "Medium. Central bank and customs sources already on file internally; the Foreign Exchange Transactions Act layers reporting duties on top of customs declaration and needs careful field-by-field mapping.",
+   "known_risk_areas": [
+    "Foreign Exchange Transactions Act reporting vs customs declaration distinction",
+    "Korean-language source translation accuracy"
+   ],
+   "missing_sources": [
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "Brazil",
+   "country_slug": "brazil",
+   "iso2": "BR",
+   "iso3": "BRA",
+   "currency_code": "BRL",
+   "currency_name": "Brazilian Real",
+   "region": "Latin America",
+   "expansion_priority": "high",
+   "complexity_level": "medium",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "Banco Central do Brasil (BCB)",
+    "customs_or_border_authority": "Receita Federal (Brazilian Federal Revenue Service)",
+    "financial_intelligence_unit_or_aml_authority": "Conselho de Controle de Atividades Financeiras (COAF)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "Medium. Central bank and customs sources already on file internally; Portuguese-language source translation review still required, and FX regulation has been undergoing consolidation (Law 14,286/2021 New FX Law) that must be checked for current effective text.",
+   "known_risk_areas": [
+    "New FX Law (Lei 14.286/2021) consolidation may have superseded older BCB circulars cited previously",
+    "Portuguese-language source translation accuracy"
+   ],
+   "missing_sources": [
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "Indonesia",
+   "country_slug": "indonesia",
+   "iso2": "ID",
+   "iso3": "IDN",
+   "currency_code": "IDR",
+   "currency_name": "Indonesian Rupiah",
+   "region": "Southeast Asia",
+   "expansion_priority": "medium",
+   "complexity_level": "medium",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "Bank Indonesia (BI)",
+    "customs_or_border_authority": "Direktorat Jenderal Bea dan Cukai (Indonesian Customs)",
+    "financial_intelligence_unit_or_aml_authority": "Pusat Pelaporan dan Analisis Transaksi Keuangan (PPATK)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "Medium. Central bank and customs sources already on file internally; Bahasa Indonesia source translation review still required.",
+   "known_risk_areas": [
+    "Rupiah repatriation/export rules changed materially in recent years and must be checked against the current effective regulation, not an older circular",
+    "Bahasa Indonesia source translation accuracy"
+   ],
+   "missing_sources": [
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "Saudi Arabia",
+   "country_slug": "saudi-arabia",
+   "iso2": "SA",
+   "iso3": "SAU",
+   "currency_code": "SAR",
+   "currency_name": "Saudi Riyal",
+   "region": "Middle East",
+   "expansion_priority": "medium",
+   "complexity_level": "medium",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "Saudi Central Bank (SAMA)",
+    "customs_or_border_authority": "Zakat, Tax and Customs Authority (ZATCA)",
+    "financial_intelligence_unit_or_aml_authority": "Saudi Arabia Financial Intelligence Unit (SAFIU)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "Medium. Central bank and customs sources already on file internally; the peg regime and AML reporting framework require a distinct, separately-sourced treatment.",
+   "known_risk_areas": [
+    "SAR/USD peg mechanics must not be conflated with an exchange-control posture claim"
+   ],
+   "missing_sources": [
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "South Africa",
+   "country_slug": "south-africa",
+   "iso2": "ZA",
+   "iso3": "ZAF",
+   "currency_code": "ZAR",
+   "currency_name": "South African Rand",
+   "region": "Sub-Saharan Africa",
+   "expansion_priority": "medium",
+   "complexity_level": "medium",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "South African Reserve Bank (SARB)",
+    "customs_or_border_authority": "South African Revenue Service (SARS)",
+    "financial_intelligence_unit_or_aml_authority": "Financial Intelligence Centre (FIC)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "Medium. Central bank and customs sources already on file internally; South Africa retains exchange control regulations administered by SARB (Financial Surveillance Department) that require careful, current-text sourcing.",
+   "known_risk_areas": [
+    "Exchange control relaxation has been gradual and multi-year — cite current effective rules, not historical summaries"
+   ],
+   "missing_sources": [
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "Italy",
+   "country_slug": "italy",
+   "iso2": "IT",
+   "iso3": "ITA",
+   "currency_code": "EUR",
+   "currency_name": "Euro",
+   "region": "Southern Europe",
+   "expansion_priority": "medium",
+   "complexity_level": "medium",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "Banca d'Italia",
+    "customs_or_border_authority": "Agenzia delle Dogane e dei Monopoli (Italian Customs and Monopolies Agency)",
+    "financial_intelligence_unit_or_aml_authority": "Unità di Informazione Finanziaria (UIF, housed at Banca d'Italia)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "Medium. No internal research file exists yet — this is a from-scratch intake. Italy's cash-declaration regime sits on top of EU Regulation (EU) 2018/1672 (cross-border cash controls), so both the EU-level instrument and Italy's national implementing authority must be sourced and clearly distinguished from each other.",
+   "known_risk_areas": [
+    "EU-level regulation vs Italy-specific implementing rules must be sourced and cited separately, never merged into one unattributed claim",
+    "Italy shares EUR with Germany and France (already published) — its rules must NOT be assumed identical to either published Eurozone entry",
+    "Italian-language source translation accuracy"
+   ],
+   "missing_sources": [
+    "central_bank_or_monetary_authority",
+    "customs_or_border_authority",
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "no prior internal research exists — this is a from-scratch intake candidate",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "Turkey",
+   "country_slug": "turkey",
+   "iso2": "TR",
+   "iso3": "TUR",
+   "currency_code": "TRY",
+   "currency_name": "Turkish Lira",
+   "region": "Eastern Europe",
+   "expansion_priority": "medium",
+   "complexity_level": "high",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "Central Bank of the Republic of Turkey (CBRT)",
+    "customs_or_border_authority": "Turkish Customs (Ticaret Bakanlığı / Gümrük)",
+    "financial_intelligence_unit_or_aml_authority": "MASAK (Financial Crimes Investigation Board)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "High. Central bank and customs sources already on file internally, but Turkey's FX regime has changed materially and repeatedly in recent years (lira volatility, macroprudential FX measures); current-effective-text verification is essential and Turkish-language sources require careful translation review.",
+   "known_risk_areas": [
+    "Rapid, frequent regulatory change — any transcribed figure has a short shelf life and needs a tight review-date discipline",
+    "Turkish-language source translation accuracy",
+    "Historical multiple-exchange-rate practices must not be conflated with the current regime"
+   ],
+   "missing_sources": [
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "China",
+   "country_slug": "china",
+   "iso2": "CN",
+   "iso3": "CHN",
+   "currency_code": "CNY",
+   "currency_name": "Chinese Yuan Renminbi",
+   "region": "East Asia",
+   "expansion_priority": "medium",
+   "complexity_level": "high",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "People's Bank of China (PBOC)",
+    "customs_or_border_authority": "General Administration of Customs (China)",
+    "financial_intelligence_unit_or_aml_authority": "China Anti-Money Laundering Monitoring and Analysis Center (CAMLMAC)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "High. Central bank and customs sources already on file internally (HTTPS, current as of the Phase 4 source-authority repair), but SAFE's quota-based capital-account system is one of the most complex regimes in scope and Simplified Chinese source translation requires careful, expert-reviewed handling.",
+   "known_risk_areas": [
+    "SAFE capital-account quota system is materially more complex than a simple threshold/declaration model — must not be oversimplified",
+    "Simplified Chinese source translation accuracy"
+   ],
+   "missing_sources": [
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "Argentina",
+   "country_slug": "argentina",
+   "iso2": "AR",
+   "iso3": "ARG",
+   "currency_code": "ARS",
+   "currency_name": "Argentine Peso",
+   "region": "Latin America",
+   "expansion_priority": "low",
+   "complexity_level": "high",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "Banco Central de la República Argentina (BCRA)",
+    "customs_or_border_authority": "Argentina customs/tax authority (agency name to reconfirm — AFIP was restructured into ARCA in 2024; current authoritative name and URL must be verified, not assumed)",
+    "financial_intelligence_unit_or_aml_authority": "Unidad de Información Financiera (UIF)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "High. No internal research file exists yet — from-scratch intake. Argentina has a history of multiple, parallel, and rapidly-changing exchange-rate regimes (official rate, parallel/'blue' rate, various BCRA restriction regimes) that make a single governed threshold statement unusually easy to get wrong or make stale.",
+   "known_risk_areas": [
+    "Multiple/parallel exchange-rate history — must state clearly which rate regime a claim describes, never an unqualified single figure",
+    "Post-2024 agency restructuring (AFIP → ARCA) means the customs/tax authority name and URL must be reconfirmed at time of research, not assumed from older references",
+    "High currency volatility means transcribed figures need an unusually tight review-date discipline",
+    "Spanish-language source translation accuracy"
+   ],
+   "missing_sources": [
+    "central_bank_or_monetary_authority",
+    "customs_or_border_authority",
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "no prior internal research exists — this is a from-scratch intake candidate",
+   "status": "candidate_only"
+  },
+  {
+   "country_name": "Russia",
+   "country_slug": "russian-federation",
+   "iso2": "RU",
+   "iso3": "RUS",
+   "currency_code": "RUB",
+   "currency_name": "Russian Ruble",
+   "region": "Eastern Europe",
+   "expansion_priority": "low",
+   "complexity_level": "high",
+   "likely_official_source_authorities_needed": {
+    "central_bank_or_monetary_authority": "Central Bank of the Russian Federation (Bank of Russia)",
+    "customs_or_border_authority": "Federal Customs Service of Russia (FCS)",
+    "financial_intelligence_unit_or_aml_authority": "Federal Financial Monitoring Service (Rosfinmonitoring)",
+    "tax_treasury_ministry_source": null
+   },
+   "expected_difficulty": "High. No internal research file exists yet — from-scratch intake. Since 2022, Russia has imposed extensive and frequently-revised capital and currency controls in response to international sanctions; the regulatory environment is unusually fast-moving and politically sensitive, and independent verification of official-source reachability and currency must be confirmed before any research begins.",
+   "known_risk_areas": [
+    "Post-2022 capital-control and sanctions-related measures change frequently — an unusually short safe shelf-life for any transcribed figure",
+    "Official source reachability/verification may itself be difficult and must be confirmed before committing research time",
+    "High political sensitivity — content must stay strictly factual/regulatory and cite only primary official sources, no geopolitical commentary",
+    "Russian-language source translation accuracy"
+   ],
+   "missing_sources": [
+    "central_bank_or_monetary_authority",
+    "customs_or_border_authority",
+    "financial_intelligence_unit_or_aml_authority"
+   ],
+   "prior_research_state": "no prior internal research exists — this is a from-scratch intake candidate",
+   "status": "candidate_only"
+  }
+ ]
+}

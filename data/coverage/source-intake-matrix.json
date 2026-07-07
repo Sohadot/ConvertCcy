@@ -1,0 +1,149 @@
+{
+ "schema_version": "1.0.0",
+ "generated_at": "2026-07-07T00:00:00+00:00",
+ "asset": "ConvertCCY",
+ "phase": "P8-0",
+ "document_type": "source_intake_matrix",
+ "purpose": "Tracks, per G20+ expansion candidate, whether each required source-authority category has an official source identified and/or verified on file. This file records research state only. It never grants publication status — that happens exclusively through the existing data/rules/<slug>.json six-gate pipeline.",
+ "source_categories": [
+  "central_bank_or_monetary_authority",
+  "customs_or_border_authority",
+  "financial_intelligence_unit_or_aml_authority",
+  "tax_treasury_ministry_source"
+ ],
+ "intake_status_model": [
+  "not_started",
+  "identified",
+  "needs_verification",
+  "verified_on_file",
+  "not_applicable"
+ ],
+ "intake_status_model_notes": {
+  "not_started": "No candidate authority has been identified for this category yet.",
+  "identified": "A plausible official authority name is known (public knowledge), but no specific official source URL has been fetched, dated, or cited yet.",
+  "needs_verification": "A source URL exists from prior internal research but has not been re-checked for current reachability/effective text under this intake process.",
+  "verified_on_file": "A specific official source URL is already recorded in the corresponding data/rules/<slug>.json source_authorities and was live-verified during that entry's own research (per the existing six-gate pipeline) — restated here for tracking only, not re-verified by this file.",
+  "not_applicable": "This source category is not currently believed to be needed for this candidate's currency-passage rules (starting assumption only, may change once research begins)."
+ },
+ "not_applicable_note": "tax_treasury_ministry_source is marked not_applicable for every candidate below because no candidate in this G20+ intake round has an identified currency-passage rule that depends specifically on a tax/treasury/ministry source distinct from its central bank or customs authority. This may change during actual research; not_applicable is a starting assumption, not a permanent exclusion.",
+ "count": 13,
+ "matrix": [
+  {
+   "country_slug": "united-kingdom",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Bank of England — Monetary & FX Framework", "note": "On file in data/rules/united-kingdom.json"},
+    "customs_or_border_authority": {"status": "verified_on_file", "label": "HM Revenue & Customs (HMRC) — Cash & Currency Declaration", "note": "On file in data/rules/united-kingdom.json"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "National Crime Agency (NCA) — UK Financial Intelligence Unit", "note": "Not yet sourced; name is public knowledge, no citation on file"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "united-states",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Federal Reserve — Monetary Policy & FX Framework", "note": "On file in data/rules/united-states.json"},
+    "customs_or_border_authority": {"status": "verified_on_file", "label": "US Customs and Border Protection (CBP) — Currency & Monetary Instrument Reporting", "note": "On file in data/rules/united-states.json"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "verified_on_file", "label": "Financial Crimes Enforcement Network (FinCEN) — BSA Reporting Requirements", "note": "On file in data/rules/united-states.json, tagged type 'regulator' — functionally the US FIU; re-tag during actual schema promotion"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "mexico",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Banco de México (Banxico) — Foreign Exchange Regulations", "note": "On file in data/rules/mexico.json"},
+    "customs_or_border_authority": {"status": "verified_on_file", "label": "Mexican Customs (SAT) — Currency Declaration Rules", "note": "On file in data/rules/mexico.json"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "Unidad de Inteligencia Financiera (UIF, Secretaría de Hacienda)", "note": "Not yet sourced; name is public knowledge, no citation on file"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "south-korea",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Bank of Korea (BOK) — Foreign Exchange Policy", "note": "On file in data/rules/south-korea.json"},
+    "customs_or_border_authority": {"status": "verified_on_file", "label": "Korea Customs Service — Travel & Currency Rules", "note": "On file in data/rules/south-korea.json"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "Korea Financial Intelligence Unit (KoFIU)", "note": "Not yet sourced; name is public knowledge, no citation on file"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "brazil",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Banco Central do Brasil (BCB) — Foreign Exchange Regulations", "note": "On file in data/rules/brazil.json; recheck against Lei 14.286/2021 consolidation"},
+    "customs_or_border_authority": {"status": "verified_on_file", "label": "Brazilian Federal Revenue Service (Receita Federal) — Customs & Currency Declaration", "note": "On file in data/rules/brazil.json"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "Conselho de Controle de Atividades Financeiras (COAF)", "note": "Not yet sourced; name is public knowledge, no citation on file"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "indonesia",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Bank Indonesia (BI) — Foreign Exchange Regulations", "note": "On file in data/rules/indonesia.json"},
+    "customs_or_border_authority": {"status": "verified_on_file", "label": "Indonesian Customs — Currency Declaration Rules", "note": "On file in data/rules/indonesia.json"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "Pusat Pelaporan dan Analisis Transaksi Keuangan (PPATK)", "note": "Not yet sourced; name is public knowledge, no citation on file"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "saudi-arabia",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Saudi Arabian Monetary Authority (SAMA) — Exchange Rate & FX Regime", "note": "On file in data/rules/saudi-arabia.json; note SAMA's current English branding is 'Saudi Central Bank'"},
+    "customs_or_border_authority": {"status": "verified_on_file", "label": "ZATCA — Customs & Travel Currency Rules", "note": "On file in data/rules/saudi-arabia.json"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "Saudi Arabia Financial Intelligence Unit (SAFIU)", "note": "Not yet sourced; name is public knowledge, no citation on file"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "south-africa",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "South African Reserve Bank (SARB) — Foreign Exchange Regulations", "note": "On file in data/rules/south-africa.json"},
+    "customs_or_border_authority": {"status": "verified_on_file", "label": "South African Revenue Service (SARS) — Currency Declaration Rules", "note": "On file in data/rules/south-africa.json"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "Financial Intelligence Centre (FIC)", "note": "Not yet sourced; name is public knowledge, no citation on file"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "italy",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "identified", "label": "Banca d'Italia", "note": "No research file exists yet; name is public knowledge only"},
+    "customs_or_border_authority": {"status": "identified", "label": "Agenzia delle Dogane e dei Monopoli", "note": "No research file exists yet; must also source the EU-level instrument, Regulation (EU) 2018/1672, separately"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "identified", "label": "Unità di Informazione Finanziaria (UIF, housed at Banca d'Italia)", "note": "No research file exists yet; name is public knowledge only"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "turkey",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Central Bank of the Republic of Turkey (CBRT) — Foreign Exchange Regulations", "note": "On file in data/rules/turkey.json; recheck for post-file regulatory change"},
+    "customs_or_border_authority": {"status": "verified_on_file", "label": "Turkish Customs — Currency Declaration Rules", "note": "On file in data/rules/turkey.json"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "MASAK (Financial Crimes Investigation Board)", "note": "Not yet sourced; name is public knowledge, no citation on file"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "china",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "People's Bank of China (PBOC) — Monetary & FX Policy", "note": "On file in data/rules/china.json, HTTPS URL confirmed"},
+    "customs_or_border_authority": {"status": "verified_on_file", "label": "General Administration of Customs — Currency Declaration", "note": "On file in data/rules/china.json, HTTPS URL confirmed"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "China Anti-Money Laundering Monitoring and Analysis Center (CAMLMAC)", "note": "Not yet sourced; name is public knowledge, no citation on file"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "argentina",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "identified", "label": "Banco Central de la República Argentina (BCRA)", "note": "No research file exists yet; name is public knowledge only"},
+    "customs_or_border_authority": {"status": "identified", "label": "Argentina customs/tax authority (name to reconfirm — AFIP restructured into ARCA in 2024)", "note": "No research file exists yet; current authoritative agency name and URL must be confirmed at research time, not assumed"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "identified", "label": "Unidad de Información Financiera (UIF)", "note": "No research file exists yet; name is public knowledge only"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  },
+  {
+   "country_slug": "russian-federation",
+   "sources": {
+    "central_bank_or_monetary_authority": {"status": "identified", "label": "Central Bank of the Russian Federation (Bank of Russia)", "note": "No research file exists yet; name is public knowledge only; source reachability must be confirmed before research begins"},
+    "customs_or_border_authority": {"status": "identified", "label": "Federal Customs Service of Russia (FCS)", "note": "No research file exists yet; source reachability must be confirmed before research begins"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "identified", "label": "Federal Financial Monitoring Service (Rosfinmonitoring)", "note": "No research file exists yet; source reachability must be confirmed before research begins"},
+    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
+   }
+  }
+ ]
+}
