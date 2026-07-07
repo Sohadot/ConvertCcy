@@ -514,6 +514,20 @@ Added an "Agent Interface" link to the primary nav of the site's main hub/author
 
 Status: Ready to merge. Not closed until the Deployment Gate is passed — the live `api.html`, `api/`, `api/v1/index.json`, one `api/v1/rules/<slug>.json`, and `llms.txt` must all return 200 on the custom domain before P7A is closed.
 
+### P7A Deployment Gate Verification — ✅ CLOSED (2026-07-07)
+Merged to `main` via PR #19 (merge commit `d58c52dfc7`). GitHub Pages `pages build and deployment` for that commit completed **success** (run 28885345638, 2026-07-07T17:21:41Z).
+
+- **Cache-buster first (per the P3 lesson):** `api.html?cb=p7a`, `api/?cb=p7a`, `api/v1/index.json?cb=p7a`, `api/v1/rules/india.json?cb=p7a`, `llms.txt?cb=p7a` all returned **200** — origin confirmed correct before any canonical touch.
+- **Canonical (bare) URLs:** all five return **200** on the live custom domain, `cf-cache-status: HIT` (a valid cached 200, not a stale negative-cached 404 — the P3 incident class did not recur here).
+- **Content verified live and correct:**
+  - `https://convertccy.com/api/v1/index.json` — `schema_version: "1.0.0"`, `interface_type: "static_agent_interface"`, `dynamic_api: false`, `published_jurisdictions_count: 8`.
+  - `https://convertccy.com/api/v1/rules/india.json` — `page_status: "published"`, the governed `cash_declaration_threshold` prose (USD 5,000 / USD 10,000), 4 `source_authorities` including the RBI FAQ, `interface_type: "static_agent_interface"`, `dynamic_api: false`.
+  - `https://convertccy.com/api.html` — title confirms "Not a Dynamic API"; page text states "This is not a dynamic API." verbatim.
+  - `https://convertccy.com/llms.txt` — "## Static Agent Interface" section present with the agent-facing usage rules.
+  - `https://convertccy.com/sitemap.xml` — includes the 13 new `/api...` routes plus `/llms.txt`.
+
+Status: ✅ **P7A CLOSED.** The Static Agent Interface is live, boundary-correct (no dynamic backend, no auth, no billing), and coverage-correct (8 published jurisdictions only). P8 (G20+ expansion) may now begin.
+
 ---
 
 ## Standing rules (all phases)
