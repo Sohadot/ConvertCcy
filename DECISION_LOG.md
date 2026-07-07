@@ -563,7 +563,7 @@ No rule, threshold, or exchange-control posture was asserted for any candidate. 
 - Every future candidate promotion (`candidate_only` → `source_intake` → `source_review_ready` → `publish_ready` → `published`) is its own reviewed, one-concern change — never a bulk edit across multiple candidates.
 - No jurisdiction's rules may ever be inferred from its currency code, region, G20 membership, EU/AU membership, or a neighboring/already-published country's entry.
 
-Status: ✅ **P8-0 CLOSED.** This is a planning artifact with no live-surface footprint, so there is no Deployment Gate to pass — closure is the validator passing and the blueprint being recorded, both done above.
+Status: ✅ **P8-0 CLOSED.** This is a planning/governance artifact with no new indexed or covered public route. It creates no rules page, brief, API country file, Passage Check entry, llms coverage claim, or sitemap URL, so there is no Deployment Gate to pass — closure is the validator passing and the blueprint being recorded, both done above.
 
 ---
 

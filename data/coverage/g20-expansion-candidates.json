@@ -4,7 +4,7 @@
  "asset": "ConvertCCY",
  "phase": "P8-0",
  "document_type": "coverage_expansion_candidate_list",
- "purpose": "G20+ coverage expansion blueprint — a candidate intake list only. Nothing in this file is public content. No candidate listed here may be rendered into /rules/, /briefs/, Passage Check, the Static Agent Interface (/api/v1/), or the sitemap until it independently passes the existing six-gate publication pipeline and its data/rules/<slug>.json page_status is set to published through that pipeline, not through this file.",
+ "purpose": "G20+ coverage expansion blueprint — a candidate intake list only. This is a public repository governance/intake artifact, not a public coverage or rules-publication surface: it is not sitemap-listed, not included in /api/v1/, and not presented as covered jurisdictions in llms.txt, and it cannot publish a country. No candidate listed here may be rendered into /rules/, /briefs/, Passage Check, the Static Agent Interface (/api/v1/), or the sitemap until it independently passes the existing six-gate publication pipeline and its data/rules/<slug>.json page_status is set to published through that pipeline, not through this file.",
  "not_a_publication_channel_notice": "This file cannot publish a country. It records research/priority metadata only. Promotion to published happens exclusively via the existing data/rules/<slug>.json six-gate pipeline (see governance.html), never by editing this file.",
  "candidate_status_model": [
   "candidate_only",
@@ -14,7 +14,7 @@
   "publish_ready",
   "published"
  ],
- "candidate_status_model_notes": "Every entry in this P8-0 blueprint is recorded as candidate_only, regardless of how much prior internal research exists (see existing_internal_data_file), because no candidate has yet been re-reviewed under this coverage-intake process. Advancing a status is a future, separate, reviewed action — never a bulk edit of this file.",
+ "candidate_status_model_notes": "Every entry in this P8-0 blueprint is recorded as candidate_only, regardless of how much prior internal research exists (see prior_research_state), because no candidate has yet been re-reviewed under this coverage-intake process. Advancing a status is a future, separate, reviewed action — never a bulk edit of this file.",
  "existing_published_jurisdictions": [
   "australia",
   "canada",
@@ -52,8 +52,7 @@
    "missing_sources": [
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": "data/rules/united-kingdom.json",
-   "existing_internal_status": "verified (not published; unaffected by this file)",
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
   },
   {
@@ -78,8 +77,7 @@
     "State-level vs federal distinctions are out of scope; federal rules only"
    ],
    "missing_sources": [],
-   "existing_internal_data_file": "data/rules/united-states.json",
-   "existing_internal_status": "verified (not published; unaffected by this file)",
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
   },
   {
@@ -105,8 +103,7 @@
    "missing_sources": [
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": "data/rules/mexico.json",
-   "existing_internal_status": "verified (not published; unaffected by this file)",
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
   },
   {
@@ -133,8 +130,7 @@
    "missing_sources": [
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": "data/rules/south-korea.json",
-   "existing_internal_status": "verified (not published; unaffected by this file)",
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
   },
   {
@@ -161,8 +157,7 @@
    "missing_sources": [
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": "data/rules/brazil.json",
-   "existing_internal_status": "verified (not published; unaffected by this file)",
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
   },
   {
@@ -189,8 +184,7 @@
    "missing_sources": [
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": "data/rules/indonesia.json",
-   "existing_internal_status": "verified (not published; unaffected by this file)",
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
   },
   {
@@ -216,8 +210,7 @@
    "missing_sources": [
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": "data/rules/saudi-arabia.json",
-   "existing_internal_status": "verified (not published; unaffected by this file)",
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
   },
   {
@@ -243,8 +236,7 @@
    "missing_sources": [
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": "data/rules/south-africa.json",
-   "existing_internal_status": "verified (not published; unaffected by this file)",
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
   },
   {
@@ -274,8 +266,7 @@
     "customs_or_border_authority",
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": null,
-   "existing_internal_status": "none — seed only (data/rules_seed_index.json), no research file exists",
+   "prior_research_state": "no prior internal research exists — this is a from-scratch intake candidate",
    "status": "candidate_only"
   },
   {
@@ -303,8 +294,7 @@
    "missing_sources": [
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": "data/rules/turkey.json",
-   "existing_internal_status": "verified (not published; unaffected by this file)",
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
   },
   {
@@ -331,8 +321,7 @@
    "missing_sources": [
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": "data/rules/china.json",
-   "existing_internal_status": "verified (not published; unaffected by this file)",
+   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
   },
   {
@@ -363,8 +352,7 @@
     "customs_or_border_authority",
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": null,
-   "existing_internal_status": "none — seed only (data/rules_seed_index.json), no research file exists",
+   "prior_research_state": "no prior internal research exists — this is a from-scratch intake candidate",
    "status": "candidate_only"
   },
   {
@@ -395,8 +383,7 @@
     "customs_or_border_authority",
     "financial_intelligence_unit_or_aml_authority"
    ],
-   "existing_internal_data_file": null,
-   "existing_internal_status": "none — seed only (data/rules_seed_index.json, slug russian-federation), no research file exists",
+   "prior_research_state": "no prior internal research exists — this is a from-scratch intake candidate",
    "status": "candidate_only"
   }
  ]

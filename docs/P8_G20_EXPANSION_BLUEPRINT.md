@@ -43,8 +43,8 @@ candidate_only → source_intake → source_review_ready → publish_ready → p
   started under this intake process yet. Every candidate in this phase is at
   this status, including the 10 that already have an internal `verified`
   research file from earlier project phases — that prior work is noted for
-  context (`existing_internal_data_file`) but is not treated as fulfilling
-  this intake round's own review.
+  context (`prior_research_state`) but is not treated as fulfilling this
+  intake round's own review.
 - **source_intake** — primary official sources are being actively identified
   and fetched.
 - **source_review_ready** — sources are fetched, dated, and staged for the
@@ -82,7 +82,10 @@ published count is 8.) The 13 that remain:
 | Russia | Low | High | None — from-scratch intake; sanctions/rapid-change risk |
 
 10 of the 13 already carry a `verified`-status internal research file from
-earlier phases of this project (not published, not public). That prior work
+earlier phases of this project (`page_status` is not `published`, so it is
+not rendered into any public rules page or public coverage surface — the
+file's *content* was never designed to be reachable-but-hidden, it is simply
+not yet promoted). That prior work
 is real and reusable, but this blueprint still records every one of them as
 `candidate_only` in the new coverage-tracking system, because none has yet
 been re-reviewed against the source-intake matrix's finer-grained categories
