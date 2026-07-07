@@ -1,0 +1,53 @@
+name: Governance Gate
+
+# Enforces ConvertCCY's standing rules mechanically, not just by review
+# discipline. Every push to main and every pull request targeting main must
+# pass all five checks below before the change is considered safe to merge.
+#
+# This workflow only reads the repository and runs local, dependency-free
+# Python scripts already committed under scripts/. It makes no network
+# calls, requires no secrets, and has no write permissions beyond the
+# default read-only GITHUB_TOKEN.
+#
+# To make this an unbypassable merge gate (not just a visible check), the
+# repository owner must mark "Governance Gate" as a required status check
+# in Settings -> Branches -> Branch protection rules for `main`. This
+# workflow file alone reports status; branch protection is what blocks a
+# merge on failure, and that setting cannot be applied from a workflow file.
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  governance-gate:
+    name: Governance Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rules content & schema gate (validate_rules.py)
+        run: python3 scripts/validate_rules.py data/rules/
+
+      - name: Lifecycle separation gate (rules_quality_gate.py)
+        run: python3 scripts/rules_quality_gate.py --site-root .
+
+      - name: Coverage intake guard rail (validate_coverage_intake.py)
+        run: python3 scripts/validate_coverage_intake.py
+
+      - name: Generated-artifact drift guard (validate_generated_artifacts.py)
+        run: python3 scripts/validate_generated_artifacts.py
+
+      - name: Site hygiene — JSON, target=_blank, preview leaks (validate_site_hygiene.py)
+        run: python3 scripts/validate_site_hygiene.py

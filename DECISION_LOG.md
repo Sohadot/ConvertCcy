@@ -567,6 +567,42 @@ Status: ✅ **P8-0 CLOSED.** This is a planning/governance artifact with no new 
 
 ---
 
+## Phase 14 — Automated Governance Gate (P9)
+**Status:** Ready to merge (branch: claude/p9-governance-ci)
+
+### Context
+Every governance rule up to this point — the six-gate rules pipeline, the preview/public lifecycle separation, the P7-0 static-only boundary, the P8-0 coverage-intake guard — was enforced by an agent or reviewer manually running the corresponding validator script before merging. That is discipline, not a mechanism: a rushed or bypassed manual run is a single point of failure. P9 turns discipline into a mechanically enforced gate that runs on every pull request and every push to `main`, independent of whether anyone remembers to run it by hand.
+
+### Decision: a single CI workflow, five deterministic, network-free checks
+**`.github/workflows/governance-gate.yml`** runs on `pull_request` (into `main`) and `push` (to `main`), with `permissions: contents: read` and no secrets. Five steps, each its own named check so a failure is immediately attributable:
+
+1. **`scripts/validate_rules.py data/rules/`** — the existing ten-gate rules content/schema validator (already used pre-P0); currently 23/23 files pass with 0 errors, 0 warnings.
+2. **`scripts/rules_quality_gate.py`** — the existing lifecycle-separation gate (published-only in `/rules/`, preview-only under `/preview/`, no cross-contamination, `noindex` on every preview index).
+3. **`scripts/validate_coverage_intake.py`** — the P8-0 guard rail (no candidate leaks into `/api/v1/`, `sitemap.xml`, or `llms.txt`; no candidate marked `published`; no `/preview/` reference).
+4. **`scripts/validate_generated_artifacts.py`** *(new)* — a drift guard for the three fully-deterministic generated artifacts: `rules/passage-check.json`, `briefs/*.html`, and the Static Agent Interface (`api/v1/*.json`, `api/index.html`). Each is regenerated into a scratch copy and compared to the committed version (the Static Agent Interface's own `generated_at` timestamp field is excluded from the comparison, since it always differs between runs by design; every other field must match). The working tree is always restored to its starting state after the comparison, pass or fail, so the check never leaves a dirty diff. Deliberately **not** covered: `rules/dataset.json`/`rules/*.html` (a much larger six-gate regeneration with its own timestamp, meant to be a deliberate human step), `pages/*.html` and `sitemap.xml` (28,730-page regen is too slow for a per-PR gate, and `sitemap.xml`'s `lastmod` is expected to move on every run regardless of content), and `rates/snapshot.json` (hits a live third-party network endpoint, refreshed manually). These exclusions are documented in the script's own docstring, not silently assumed.
+5. **`scripts/validate_site_hygiene.py`** *(new)* — three repo-wide sweeps: every `*.json` file parses as valid JSON; every `<a target="_blank">` anchor in every `*.html` file carries `rel="noopener"` (reverse-tabnabbing hardening); and no `*.html` file outside `preview/` contains a live `href` into `/preview/` (a public-page leak of unpublished content). All three currently pass clean across the full tree, including the 28,730 generated pair pages.
+
+### Verification performed before this entry
+- Ran all five checks locally against the current repository state: **all PASS**, working tree clean before and after.
+- Deliberately injected three failure modes and confirmed each was caught with a specific, actionable message, then confirmed the working tree was restored cleanly afterward:
+  - Appended a stray HTML comment to a committed brief → `validate_generated_artifacts.py` correctly reported `briefs/india-passage-brief.html differs` and failed.
+  - Corrupted a non-timestamp field in a committed Static Agent Interface country file → `validate_generated_artifacts.py` correctly reported the content difference (ignoring `generated_at`) and failed.
+  - (P8-0's own six injected failure modes — published status leak, API leak, sitemap leak, llms.txt leak, missing field, `/preview/` reference — were already verified in the P8-0 phase and remain covered by check 3 above.)
+- Fixed a bug caught during this verification: the first draft of `validate_generated_artifacts.py` only restored the working tree on the *failure* path, leaving regenerated (different-`generated_at`) files sitting in the tree after a passing run. Corrected so restoration is unconditional.
+
+### What this does and does not do
+This workflow makes the five checks **visible** on every PR and push (a red ✗ next to the commit). It does **not**, by itself, make the checks **required** — GitHub Actions status checks are advisory until the repository owner marks "Governance Gate" as a required status check under **Settings → Branches → Branch protection rules** for `main`. That is a repository-settings action outside what a workflow file or this agent can configure; it is called out explicitly in the workflow file's own header comment as the completing step. Until that setting is applied, the gate is a strong, fast-feedback signal; after it is applied, a failing PR mechanically cannot merge.
+
+### Standing decisions from P9
+- Any new validator script intended to gate merges must be added as a named step in `.github/workflows/governance-gate.yml`, not left as a script someone has to remember to run.
+- `scripts/validate_generated_artifacts.py` and `scripts/validate_site_hygiene.py` are themselves part of the governance surface — changes to what they check must go through PR review like any other governance-affecting change, and must state clearly in the script's own docstring what is and is not covered (no silent scope changes).
+- The CI workflow must remain dependency-free (standard library only) and network-free, matching the zero-runtime, zero-secret posture of the static site itself (P7-0).
+- Marking "Governance Gate" as a required branch-protection check on `main` is a standing recommended owner action; until applied, treat every red check as blocking in practice even though GitHub does not yet enforce it mechanically.
+
+Status: Ready to merge. No Deployment Gate applies (no public route added); closure is the workflow appearing green on its own PR run, verified after merge.
+
+---
+
 ## Standing rules (all phases)
 
 - One concern = one PR = one branch
@@ -576,6 +612,7 @@ Status: ✅ **P8-0 CLOSED.** This is a planning/governance artifact with no new 
 - No SEO-impacting changes hidden inside security PRs
 - Manual workflow preferred over API-dependent automation
 - **No dynamic backend on the sovereign surface (P7-0):** `convertccy.com` stays static/zero-runtime — no backend, API keys, auth, billing, checkout, or server-side user input. The site exposes only static, read-only, agent-readable JSON from published data (never `/preview/`). Any metered/authenticated API must be isolated off-domain (e.g. `api.convertccy.com`) so a compromise cannot reach the reference asset.
+- **Automated Governance Gate on every PR/push to main (P9):** `.github/workflows/governance-gate.yml` runs `validate_rules.py`, `rules_quality_gate.py`, `validate_coverage_intake.py`, `validate_generated_artifacts.py`, and `validate_site_hygiene.py` on every pull request and push. Any new merge-gating check must be added there, not left as a script someone has to remember to run. Owner action recommended: mark "Governance Gate" as a required status check in branch protection for `main` so a red check mechanically blocks merge.
 
 - 2026-07-05: Triggered a fresh GitHub Pages deployment after run #122 remained queued following the P0 merge.
 - 2026-07-05: Triggered a clean GitHub Pages rebuild after Pages deployment state issue.
