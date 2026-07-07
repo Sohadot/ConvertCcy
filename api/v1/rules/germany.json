@@ -1,0 +1,68 @@
+{
+ "schema_version": "1.0.0",
+ "generated_at": "2026-07-07T17:16:24+00:00",
+ "asset": "ConvertCCY",
+ "interface_type": "static_agent_interface",
+ "dynamic_api": false,
+ "source_scope": "published_governed_data_only",
+ "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "ConvertCCY (https://convertccy.com/)",
+ "disclaimer": "This data is a governed reference, not legal, tax, customs, compliance, or financial advice. It does not predict, hedge, or guarantee any financial outcome. Verify time-sensitive figures against the official sources listed before acting.",
+ "use_boundary": "Static, read-only reference data only. Do not represent this interface as a dynamic API, as live data, or as covering any jurisdiction not listed in this file. A currency code is not the same as a jurisdiction: a shared currency (e.g. EUR) does not imply coverage of every country that uses it. Cite ConvertCCY and the official source(s) when using this data downstream.",
+ "canonical_url": "https://convertccy.com/api/v1/rules/germany.json",
+ "documentation": "https://convertccy.com/api.html",
+ "country_name": "Germany",
+ "country_slug": "germany",
+ "iso2": "DE",
+ "iso3": "DEU",
+ "region": "Western Europe",
+ "currency_code": "EUR",
+ "currency_name": "Euro",
+ "page_status": "published",
+ "last_reviewed": "2026-05-02",
+ "evidence_tier": "official_verified",
+ "rules_page": "/rules/germany-foreign-currency-rules.html",
+ "brief_page": "/briefs/germany-passage-brief.html",
+ "country_overview": "Germany operates within the fully liberalised Eurozone foreign-exchange regime under the regulatory authority of the European Central Bank (ECB) and Deutsche Bundesbank. There are no general exchange controls or restrictions on current or capital account transactions for residents or non-residents. The framework ensures free movement of capital across the Eurozone.",
+ "summary": {
+  "traveler": "Travelers may bring in or take out unlimited amounts of euros and foreign currency. Cash movements of €10,000 or more must be declared to German Customs.",
+  "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+ },
+ "rules": {
+  "bring_foreign_currency_in": "Foreign currency and euros can be freely imported into Germany by travelers. Any cash amount of €10,000 or equivalent must be declared to German Customs at the point of entry.",
+  "take_foreign_currency_out": "When leaving Germany, travelers and residents may export unlimited amounts of euros and foreign currency. Cash exceeding €10,000 or equivalent must be declared to German Customs at departure.",
+  "cash_declaration_threshold": "€10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Declaration must be made to German Customs.",
+  "resident_holding_rules": "German residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+  "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+  "business_invoicing_settlement": "Business transactions may be invoiced and settled in euros or foreign currency through authorised financial institutions.",
+  "exchange_controls": "Germany maintains no general exchange controls. The regime is fully liberalised within the Eurozone framework.",
+  "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks and authorised dealers throughout Germany."
+ },
+ "source_authorities": [
+  {
+   "label": "Deutsche Bundesbank — Foreign Exchange & Euro Regime",
+   "url": "https://www.bundesbank.de/en/tasks/monetary-policy",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "German Customs (Zoll) — Cash Declaration Rules",
+   "url": "https://www.zoll.de/EN/Private-individuals/Travel/Entering-Germany/Restrictions/Cash/Entering-Germany-from-non-EU-country/entering-germany-from-non-eu-country.html",
+   "type": "customs",
+   "tier": "primary"
+  },
+  {
+   "label": "German Customs (Zoll) — Cash When Leaving Germany",
+   "url": "https://www.zoll.de/EN/Private-individuals/Travel/Leaving-Germany/Restrictions/Cash/cash.html",
+   "type": "customs",
+   "tier": "primary"
+  },
+  {
+   "label": "European Central Bank — Eurozone FX Framework",
+   "url": "https://www.ecb.europa.eu/mopo/html/index.en.html",
+   "type": "central_bank",
+   "tier": "primary"
+  }
+ ],
+ "disclaimer_notice": "This page provides general informational reference only. Foreign-exchange rules in Germany are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Deutsche Bundesbank / German Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with German Customs (Zoll), Deutsche Bundesbank, or a qualified professional before making any financial or travel decisions."
+}

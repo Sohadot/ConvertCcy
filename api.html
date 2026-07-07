@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2HS37BH07J');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Static Agent Interface — Not a Dynamic API | ConvertCCY</title>
+<meta name="description" content="ConvertCCY's Static Agent Interface is a static, read-only, agent-readable JSON layer generated from published governed data. It is not a dynamic API: no server, no keys, no authentication, no billing.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://convertccy.com/api.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f7f5;--surface:#fff;--surface-2:#fcfcfa;--border:#e8e8e4;--text:#111110;--muted:#888884;--accent:#1a6b3c;--accent-light:#e8f5ee;--accent-border:#c4dfd0;--amber:#a07000;--amber-light:#fef8e7;--amber-border:#f5d97a;--shadow:0 8px 24px rgba(17,17,16,.05);--mono:'DM Mono',monospace;--sans:'Sora',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .18s}
+.nav-links a:hover{color:var(--text)}
+.page-wrap{max-width:1000px;margin:0 auto;padding:4rem 2rem 6rem}
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-bottom:2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.hero-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.74rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;letter-spacing:-2px;line-height:1.05;margin-bottom:1.1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:1.05rem;color:#2e2e2b;max-width:760px;line-height:1.75}
+.section-divider{border:none;border-top:1px solid var(--border);margin:3rem 0}
+.section-kicker{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:.5rem}
+h2{font-size:1.5rem;font-weight:800;letter-spacing:-.04em;margin-bottom:.9rem;line-height:1.15}
+h3{font-size:1.02rem;font-weight:700;margin-bottom:.5rem}
+p{color:#2a2a28;line-height:1.8;margin-bottom:1.1rem}
+strong{color:var(--text);font-weight:600}
+ul.checklist{list-style:none;margin:1rem 0}
+ul.checklist li{position:relative;padding-left:1.5rem;margin-bottom:.6rem;font-size:.95rem;color:#2a2a28}
+ul.checklist li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700}
+ul.notlist{list-style:none;margin:1rem 0}
+ul.notlist li{position:relative;padding-left:1.5rem;margin-bottom:.6rem;font-size:.95rem;color:#2a2a28}
+ul.notlist li::before{content:'✕';position:absolute;left:0;color:var(--amber);font-weight:700}
+.endpoints{display:grid;gap:1rem;margin:1.5rem 0}
+.ep{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;box-shadow:var(--shadow)}
+.ep .path{font-family:var(--mono);font-size:.92rem;color:var(--accent);word-break:break-all}
+.ep .desc{color:var(--muted);font-size:.88rem;margin-top:.3rem}
+.box-accent{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
+.box-accent .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-accent p{color:#1e4f2f;margin:0;font-size:.93rem;line-height:1.72}
+.box-amber{background:var(--amber-light);border:1px solid var(--amber-border);border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
+.box-amber .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-amber p{color:#5c4300;margin:0;font-size:.93rem;line-height:1.72}
+.code-block{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:1rem;font-family:var(--mono);font-size:.82rem;overflow-x:auto;margin:1rem 0;color:#2a2a28;line-height:1.7;white-space:pre}
+.btn{display:inline-block;font-family:var(--mono);font-size:.82rem;text-decoration:none;padding:.65rem 1.2rem;border-radius:10px;border:1px solid var(--accent-border);color:var(--accent);background:var(--accent-light);margin-top:.4rem}
+.btn:hover{background:#dcefe4}
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+@media(max-width:640px){nav{padding:.8rem 1rem}.page-wrap{padding:2.5rem 1rem 4rem}h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">convert<span>ccy</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/rules/">Rules</a>
+    <a href="/rules/dataset.json">Dataset</a>
+    <a href="/api.html">Agent Interface</a>
+    <a href="/licensing.html">Licensing</a>
+    <a href="/governance.html">Governance</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="breadcrumb"><a href="/">Home</a> / <span>Static Agent Interface</span></div>
+
+  <div class="hero">
+    <span class="hero-tag">Static · Read-only · No server</span>
+    <h1>Static Agent <em>Interface</em></h1>
+    <p class="hero-lead">This page explains how AI agents, scripts, and other automated systems can read ConvertCCY's published, governed currency-rules data. <strong>This is not a dynamic API.</strong> It is a static, read-only data interface: plain JSON files generated at build time from published data, served by GitHub Pages exactly like any other file on this domain.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">What This Is</div>
+    <h2>Static files, not a running service</h2>
+    <p>Every route below is a file on disk, regenerated whenever the published, source-mapped country data changes, and committed to this repository like any other page. There is no process listening for requests, no query parameters that change behaviour, and no per-request computation. Reading one of these files is the same operation as reading <a href="/rules/dataset.json">/rules/dataset.json</a> — the open dataset this site has published since its first governance phase.</p>
+    <ul class="checklist">
+      <li>No server executes a request — files are served statically</li>
+      <li>No API keys exist or are required</li>
+      <li>No authentication or account exists</li>
+      <li>No billing or metering exists on this domain</li>
+      <li>No checkout or payment surface exists anywhere on convertccy.com</li>
+      <li>No user input is processed server-side</li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Machine Entry Point</div>
+    <h2>Start at <code>/api/v1/index.json</code></h2>
+    <p>The entry point lists every available endpoint, the current count of published jurisdictions, and links to this documentation. From there, an agent can walk to the rules index, a specific country file, or the Passage Check dataset.</p>
+    <div class="endpoints">
+      <div class="ep"><div class="path">/api/v1/index.json</div><div class="desc">Entry point: endpoint map, published-jurisdiction count, links to documentation and llms.txt.</div></div>
+      <div class="ep"><div class="path">/api/v1/rules-index.json</div><div class="desc">Index of all published jurisdictions with links to each per-country file, rules page, and brief.</div></div>
+      <div class="ep"><div class="path">/api/v1/rules/&lt;country-slug&gt;.json</div><div class="desc">Full governed rules entry for one published jurisdiction — overview, rule fields, sources, review date.</div></div>
+      <div class="ep"><div class="path">/api/v1/passage-check.json</div><div class="desc">Passage Check engine dataset: declaration thresholds and exchange-control posture, transcribed from governed data, each tagged with its source field.</div></div>
+    </div>
+    <p>A generated, browsable index of these routes and the currently published jurisdictions is also available at <a href="/api/">/api/</a>.</p>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Machine Contract</div>
+    <h2>Every file carries the same header</h2>
+    <p>Each JSON file includes a consistent set of fields so an automated consumer can verify scope and boundary without leaving the file:</p>
+    <div class="code-block">{
+  "schema_version": "1.0.0",
+  "generated_at": "...",
+  "asset": "ConvertCCY",
+  "interface_type": "static_agent_interface",
+  "dynamic_api": false,
+  "source_scope": "published_governed_data_only",
+  "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "ConvertCCY (https://convertccy.com/)",
+  "disclaimer": "...",
+  "use_boundary": "...",
+  "canonical_url": "...",
+  "documentation": "https://convertccy.com/api.html"
+}</div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Coverage Boundary</div>
+    <h2>Published jurisdictions only — never a preview draft</h2>
+    <p>These files are generated only from data that has already passed ConvertCCY's six-gate publication pipeline (see <a href="/governance.html">Governance</a>). Nothing under <code>/preview/</code>, nothing marked <code>verified</code> or <code>needs_hardening</code>, and no internal or draft entry is ever exposed here. A build-time guard refuses to generate these files at all if the published dataset and the Passage Check dataset disagree on which jurisdictions qualify.</p>
+    <div class="box-amber">
+      <span class="box-label">A currency is not a country</span>
+      <p>Several published jurisdictions share a currency with countries that are not published (for example, EUR is shared across the Eurozone). Do not infer that a currency code implies coverage of every country that uses it. Always check the <code>country_slug</code> and the jurisdiction list in <code>/api/v1/rules-index.json</code>.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Use Boundary</div>
+    <h2>Reference data, not advice</h2>
+    <p>This data is a governed reference layer, not legal, tax, customs, compliance, or financial advice. It does not predict exchange-rate movement, does not hedge or recommend hedging, and makes no claim about financial performance or outcome. Time-sensitive figures (thresholds, forms, agency names) should be verified against the official source linked in each entry before anyone relies on them for a real border crossing or transaction.</p>
+    <ul class="notlist">
+      <li>Not legal, tax, customs, or compliance advice</li>
+      <li>Not a prediction of future rates or regulatory changes</li>
+      <li>Not a hedging, trading, or financial-performance claim</li>
+      <li>Not a substitute for checking the official source before acting</li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Licensing</div>
+    <h2>Same dual-licence terms as the open dataset</h2>
+    <p>The data behind this interface is the same governed dataset published at <a href="/rules/dataset.json">/rules/dataset.json</a> under <strong>CC BY 4.0</strong>, which already permits commercial use with attribution — see <a href="/licensing.html">Licensing</a> for the full terms. A commercial licence is available for organizations that need attribution-free use, support commitments, negotiated enterprise terms, custom delivery, or priority access to a future isolated, authenticated API — all of these are additive; the free static interface is never downgraded or revoked.</p>
+    <a class="btn" href="mailto:contact@convertccy.com?subject=ConvertCCY%20Static%20Agent%20Interface">Enquire about commercial terms →</a>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Roadmap Boundary</div>
+    <h2>Any future metered API is isolated off this domain</h2>
+    <p>ConvertCCY's security posture depends on <code>convertccy.com</code> staying a static, zero-runtime site with no backend, no secrets, and no authentication surface. If a metered or authenticated API is ever built, it will be hosted separately — for example at <code>api.convertccy.com</code> — so that it cannot share this domain's origin, trust, or attack surface. This is a binding decision, recorded in the project's decision log, not a future promise made lightly.</p>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">For AI Agents</div>
+    <h2>Read <a href="/llms.txt">/llms.txt</a> first</h2>
+    <p>Agents and language models should read <a href="/llms.txt">/llms.txt</a> for citation guidance and usage boundaries before consuming this data, then fetch <a href="/api/v1/index.json">/api/v1/index.json</a> as the machine entry point.</p>
+  </section>
+
+  <footer>
+    <p>© 2026 ConvertCCY. <a href="/rules/dataset.json">Open Dataset</a> • <a href="/api/">Endpoints</a> • <a href="/licensing.html">Licensing</a> • <a href="/governance.html">Governance</a> • <a href="/disclaimer.html">Disclaimer</a></p>
+  </footer>
+</div>
+</body>
+</html>

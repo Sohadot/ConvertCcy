@@ -1,0 +1,62 @@
+{
+ "schema_version": "1.0.0",
+ "generated_at": "2026-07-07T17:16:24+00:00",
+ "asset": "ConvertCCY",
+ "interface_type": "static_agent_interface",
+ "dynamic_api": false,
+ "source_scope": "published_governed_data_only",
+ "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "ConvertCCY (https://convertccy.com/)",
+ "disclaimer": "This data is a governed reference, not legal, tax, customs, compliance, or financial advice. It does not predict, hedge, or guarantee any financial outcome. Verify time-sensitive figures against the official sources listed before acting.",
+ "use_boundary": "Static, read-only reference data only. Do not represent this interface as a dynamic API, as live data, or as covering any jurisdiction not listed in this file. A currency code is not the same as a jurisdiction: a shared currency (e.g. EUR) does not imply coverage of every country that uses it. Cite ConvertCCY and the official source(s) when using this data downstream.",
+ "canonical_url": "https://convertccy.com/api/v1/rules/australia.json",
+ "documentation": "https://convertccy.com/api.html",
+ "country_name": "Australia",
+ "country_slug": "australia",
+ "iso2": "AU",
+ "iso3": "AUS",
+ "region": "Oceania",
+ "currency_code": "AUD",
+ "currency_name": "Australian Dollar",
+ "page_status": "published",
+ "last_reviewed": "2026-05-02",
+ "evidence_tier": "official_verified",
+ "rules_page": "/rules/australia-foreign-currency-rules.html",
+ "brief_page": "/briefs/australia-passage-brief.html",
+ "country_overview": "Australia operates one of the most liberalised foreign-exchange regimes in the world. There are no general exchange controls or restrictions on current or capital account transactions for residents or non-residents. The framework is administered by the Reserve Bank of Australia (RBA) and the Australian Transaction Reports and Analysis Centre (AUSTRAC).",
+ "summary": {
+  "traveler": "Travelers may bring in or take out unlimited amounts of Australian Dollars and foreign currency. No general currency declaration is required for normal travel amounts.",
+  "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+ },
+ "rules": {
+  "bring_foreign_currency_in": "Unlimited amounts of Australian Dollars and foreign currency may be brought into Australia with no general declaration requirement for travelers.",
+  "take_foreign_currency_out": "Unlimited amounts of Australian Dollars and foreign currency may be taken out of Australia. Residents must comply with RBA limits when exporting large sums of foreign currency.",
+  "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Movements of AUD 10,000 or more (or equivalent) in cash or bearer negotiable instruments must be reported to AUSTRAC under anti-money laundering rules.",
+  "resident_holding_rules": "Australian residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+  "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+  "business_invoicing_settlement": "Business transactions may be invoiced and settled in foreign currency or AUD. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
+  "exchange_controls": "Australia maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+  "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Australia."
+ },
+ "source_authorities": [
+  {
+   "label": "Reserve Bank of Australia (RBA) — Foreign Exchange Policy",
+   "url": "https://www.rba.gov.au/mkt-operations/ex-rate-rba-role-fx-mkt.html",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "AUSTRAC — Cash Reporting Requirements",
+   "url": "https://www.austrac.gov.au/business/how-comply-guidance-resources/guidance-notes",
+   "type": "regulator",
+   "tier": "primary"
+  },
+  {
+   "label": "Australian Border Force — Travel & Currency Rules",
+   "url": "https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in",
+   "type": "customs",
+   "tier": "primary"
+  }
+ ],
+ "disclaimer_notice": "This page provides general informational reference only. Foreign-exchange rules in Australia are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBA / AUSTRAC / Australian Border Force framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of Australia, AUSTRAC, or a qualified professional before making any financial or travel decisions."
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Static Agent Interface — Endpoints | ConvertCCY</title>
+<meta name="description" content="Machine entry point for the ConvertCCY Static Agent Interface — static, read-only JSON generated from published, source-mapped governed data. Not a dynamic API: no server, no keys, no authentication, no billing.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://convertccy.com/api/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f7f5;--surface:#fff;--surface-2:#fcfcfa;--border:#e8e8e4;--text:#111110;--muted:#888884;--accent:#1a6b3c;--accent-light:#e8f5ee;--accent-border:#c4dfd0;--amber:#a07000;--amber-light:#fef8e7;--amber-border:#f5d97a;--shadow:0 8px 24px rgba(17,17,16,.05);--mono:'DM Mono',monospace;--sans:'Sora',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .18s}
+.nav-links a:hover{color:var(--text)}
+.page-wrap{max-width:1000px;margin:0 auto;padding:4rem 2rem 6rem}
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-bottom:2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.hero-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.74rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(2rem,4.6vw,3rem);font-weight:800;letter-spacing:-2px;line-height:1.06;margin-bottom:1.1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:1.05rem;color:#2e2e2b;max-width:760px;line-height:1.75}
+.section-divider{border:none;border-top:1px solid var(--border);margin:3rem 0}
+.section-kicker{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:.5rem}
+h2{font-size:1.4rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.9rem;line-height:1.15}
+p{color:#2a2a28;line-height:1.8;margin-bottom:1.1rem}
+strong{color:var(--text);font-weight:600}
+.endpoints{display:grid;gap:1rem;margin:1.5rem 0}
+.ep{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;box-shadow:var(--shadow)}
+.ep .path{font-family:var(--mono);font-size:.92rem;color:var(--accent);word-break:break-all}
+.ep .desc{color:var(--muted);font-size:.88rem;margin-top:.3rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;margin:1.5rem 0}
+.gcard{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;transition:border-color .18s}
+.gcard:hover{border-color:var(--accent)}
+.gcard .k{font-family:var(--mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.gcard .v{font-weight:700;font-size:.98rem;margin-top:.2rem}
+.box-accent{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
+.box-accent .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-accent p{color:#1e4f2f;margin:0;font-size:.93rem;line-height:1.72}
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+@media(max-width:640px){nav{padding:.8rem 1rem}.page-wrap{padding:2.5rem 1rem 4rem}h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">convert<span>ccy</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/rules/">Rules</a>
+    <a href="/rules/dataset.json">Dataset</a>
+    <a href="/api.html">Agent Interface</a>
+    <a href="/licensing.html">Licensing</a>
+    <a href="/governance.html">Governance</a>
+  </div>
+</nav>
+<div class="page-wrap">
+  <div class="breadcrumb"><a href="/">Home</a> / <a href="/api.html">Agent Interface</a> / <span>Endpoints</span></div>
+  <span class="hero-tag">Static &middot; Read-only &middot; No auth</span>
+  <h1>Static Agent Interface <em>Endpoints</em></h1>
+  <p class="hero-lead">This page is generated. It lists the current static JSON routes and the 8 published jurisdictions they cover. Start at <code>/api/v1/index.json</code> if you are a script or agent.</p>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Machine Entry Point</div>
+    <h2>Core endpoints</h2>
+    <div class="endpoints">
+      <div class="ep"><div class="path">/api/v1/index.json</div><div class="desc">Entry point: endpoint map, published-jurisdiction count, links to documentation.</div></div>
+      <div class="ep"><div class="path">/api/v1/rules-index.json</div><div class="desc">Index of all published jurisdictions with links to each per-country file.</div></div>
+      <div class="ep"><div class="path">/api/v1/rules/&lt;country-slug&gt;.json</div><div class="desc">Full governed rules entry for one published jurisdiction (see list below).</div></div>
+      <div class="ep"><div class="path">/api/v1/passage-check.json</div><div class="desc">Passage Check engine dataset: transcribed declaration thresholds and exchange-control posture.</div></div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Published Jurisdictions</div>
+    <h2>8 countries available now</h2>
+    <div class="grid">
+      <a class="gcard" href="/api/v1/rules/australia.json"><div class="k">AUD &middot; reviewed 2026-05-02</div><div class="v">Australia</div></a><a class="gcard" href="/api/v1/rules/canada.json"><div class="k">CAD &middot; reviewed 2026-05-02</div><div class="v">Canada</div></a><a class="gcard" href="/api/v1/rules/france.json"><div class="k">EUR &middot; reviewed 2026-05-02</div><div class="v">France</div></a><a class="gcard" href="/api/v1/rules/germany.json"><div class="k">EUR &middot; reviewed 2026-05-02</div><div class="v">Germany</div></a><a class="gcard" href="/api/v1/rules/india.json"><div class="k">INR &middot; reviewed 2026-05-02</div><div class="v">India</div></a><a class="gcard" href="/api/v1/rules/japan.json"><div class="k">JPY &middot; reviewed 2026-05-02</div><div class="v">Japan</div></a><a class="gcard" href="/api/v1/rules/pakistan.json"><div class="k">PKR &middot; reviewed 2026-05-02</div><div class="v">Pakistan</div></a><a class="gcard" href="/api/v1/rules/united-arab-emirates.json"><div class="k">AED &middot; reviewed 2026-05-01</div><div class="v">United Arab Emirates</div></a>
+    </div>
+  </section>
+
+  <div class="box-accent">
+    <span class="box-label">Not a dynamic API</span>
+    <p>These are static files, not a live service. There is no key, no login, and no request execution behind them. Read the boundary at <a href="/api.html" style="color:var(--accent);font-weight:600">/api.html</a>.</p>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2026 ConvertCCY. <a href="/rules/dataset.json">Open Dataset</a> &bull; <a href="/api.html">Static Agent Interface</a> &bull; <a href="/licensing.html">Licensing</a> &bull; <a href="/governance.html">Governance</a> &bull; <a href="/disclaimer.html">Disclaimer</a></p>
+</footer>
+</body>
+</html>

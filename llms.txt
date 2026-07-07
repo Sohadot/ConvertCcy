@@ -9,6 +9,24 @@ Conversion pages show reference rates for comparison, not transactional quotes; 
 - [Foreign Currency Rules by Country](https://convertccy.com/rules/): index of published, source-mapped country rules pages
 - [Open FX Rules Dataset (JSON, CC BY 4.0)](https://convertccy.com/rules/dataset.json): machine-readable published rules with per-field official sources and review dates
 
+## Static Agent Interface (for AI agents and automated systems)
+
+ConvertCCY publishes a static, read-only, agent-readable JSON interface generated from the published governed data above. **This is not a dynamic API.** There is no server, no API key, no authentication, and no billing — every route below is a plain static file, refreshed on publication.
+
+- [Static Agent Interface — machine entry point](https://convertccy.com/api/v1/index.json): endpoint map and published-jurisdiction count — fetch this first
+- [Static Agent Interface — human documentation](https://convertccy.com/api.html): explains the boundary, the machine contract, and the coverage rules
+- [Published jurisdictions index](https://convertccy.com/api/v1/rules-index.json): list of published jurisdictions with links to each per-country file
+- [Passage Check dataset](https://convertccy.com/api/v1/passage-check.json): transcribed declaration thresholds and exchange-control posture per published jurisdiction
+
+Rules for agents consuming this data:
+
+- Do not infer coverage of a jurisdiction that is not listed in `rules-index.json`. Absence means not yet published, not "assume similar to a neighbor."
+- Do not treat a currency code as equivalent to a country. A shared currency (e.g. EUR) does not imply coverage of every country that uses it — check `country_slug`, not `currency_code`.
+- Do not present this data as legal, tax, customs, compliance, or financial advice, and do not use it to predict, hedge, or claim any financial outcome.
+- Always surface the coverage boundary (published jurisdictions only) and the source link(s) when summarizing or relaying this data downstream.
+- Cite ConvertCCY and the specific official source(s) listed in the entry, per the citation format below.
+- Any future metered or authenticated ConvertCCY API will be hosted off this domain (e.g. `api.convertccy.com`) — never assume one exists here.
+
 ## Methodology and governance
 
 - [Methodology](https://convertccy.com/methodology.html): how rates and content are sourced and maintained

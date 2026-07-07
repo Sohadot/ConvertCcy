@@ -1,0 +1,62 @@
+{
+ "schema_version": "1.0.0",
+ "generated_at": "2026-07-07T17:16:24+00:00",
+ "asset": "ConvertCCY",
+ "interface_type": "static_agent_interface",
+ "dynamic_api": false,
+ "source_scope": "published_governed_data_only",
+ "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "ConvertCCY (https://convertccy.com/)",
+ "disclaimer": "This data is a governed reference, not legal, tax, customs, compliance, or financial advice. It does not predict, hedge, or guarantee any financial outcome. Verify time-sensitive figures against the official sources listed before acting.",
+ "use_boundary": "Static, read-only reference data only. Do not represent this interface as a dynamic API, as live data, or as covering any jurisdiction not listed in this file. A currency code is not the same as a jurisdiction: a shared currency (e.g. EUR) does not imply coverage of every country that uses it. Cite ConvertCCY and the official source(s) when using this data downstream.",
+ "canonical_url": "https://convertccy.com/api/v1/rules/france.json",
+ "documentation": "https://convertccy.com/api.html",
+ "country_name": "France",
+ "country_slug": "france",
+ "iso2": "FR",
+ "iso3": "FRA",
+ "region": "Western Europe",
+ "currency_code": "EUR",
+ "currency_name": "Euro",
+ "page_status": "published",
+ "last_reviewed": "2026-05-02",
+ "evidence_tier": "official_verified",
+ "rules_page": "/rules/france-foreign-currency-rules.html",
+ "brief_page": "/briefs/france-passage-brief.html",
+ "country_overview": "France operates within the fully liberalised Eurozone foreign-exchange regime under the regulatory authority of the European Central Bank (ECB), Banque de France, and French Customs (Douane). There are no general exchange controls or restrictions on current or capital account transactions for residents or non-residents.",
+ "summary": {
+  "traveler": "Travelers may bring in or take out unlimited amounts of euros and foreign currency. Cash movements of €10,000 or more (or equivalent) must be declared to French Customs.",
+  "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+ },
+ "rules": {
+  "bring_foreign_currency_in": "Foreign currency and euros may be freely imported. Declaration via DALIA online service (or paper form at border) is mandatory for amounts equal to or greater than €10,000 and may be submitted up to 30 days in advance.",
+  "take_foreign_currency_out": "Residents and non-residents may freely export currency and euros. Amounts of €10,000 or more in cash or bearer instruments require declaration to French Customs. Non-residents may repatriate the full amount of their declared inbound currency.",
+  "cash_declaration_threshold": "€10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Declaration must be made to French Customs.",
+  "resident_holding_rules": "French residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+  "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+  "business_invoicing_settlement": "Business transactions may be invoiced and settled in euros or foreign currency through authorised financial institutions.",
+  "exchange_controls": "France maintains no general exchange controls. The regime is fully liberalised within the Eurozone framework.",
+  "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks and authorised dealers throughout France."
+ },
+ "source_authorities": [
+  {
+   "label": "Banque de France — Foreign Exchange & Euro Regime",
+   "url": "https://www.banque-france.fr/en/monetary-policy",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "French Customs (Douane) — Cash Declaration Rules",
+   "url": "https://www.douane.gouv.fr/fiche/vous-voyagez-avec-10-000-euros-ou-plus",
+   "type": "customs",
+   "tier": "primary"
+  },
+  {
+   "label": "European Central Bank — Eurozone FX Framework",
+   "url": "https://www.ecb.europa.eu/mopo/html/index.en.html",
+   "type": "central_bank",
+   "tier": "primary"
+  }
+ ],
+ "disclaimer_notice": "This page provides general informational reference only. Foreign-exchange rules in France are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Banque de France / French Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with French Customs (Douane), Banque de France, or a qualified professional before making any financial or travel decisions."
+}

@@ -1,0 +1,44 @@
+{
+ "schema_version": "1.0.0",
+ "generated_at": "2026-07-07T17:16:24+00:00",
+ "asset": "ConvertCCY",
+ "interface_type": "static_agent_interface",
+ "dynamic_api": false,
+ "source_scope": "published_governed_data_only",
+ "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "ConvertCCY (https://convertccy.com/)",
+ "disclaimer": "This data is a governed reference, not legal, tax, customs, compliance, or financial advice. It does not predict, hedge, or guarantee any financial outcome. Verify time-sensitive figures against the official sources listed before acting.",
+ "use_boundary": "Static, read-only reference data only. Do not represent this interface as a dynamic API, as live data, or as covering any jurisdiction not listed in this file. A currency code is not the same as a jurisdiction: a shared currency (e.g. EUR) does not imply coverage of every country that uses it. Cite ConvertCCY and the official source(s) when using this data downstream.",
+ "canonical_url": "https://convertccy.com/api/v1/index.json",
+ "documentation": "https://convertccy.com/api.html",
+ "title": "ConvertCCY Static Agent Interface — machine entry point",
+ "description": "Static, read-only, agent-readable JSON generated from ConvertCCY's published, source-mapped governed data. There is no server behind these routes: they are files, refreshed on publication, served exactly like any other static asset on this domain.",
+ "not_an_api_notice": "This is not a dynamic API. It is a static data interface. There is no endpoint that executes a request, no API key, no authentication, and no billing. Any future metered or authenticated API will be isolated off this domain (see /api.html).",
+ "published_jurisdictions_count": 8,
+ "endpoints": {
+  "rules_index": {
+   "path": "/api/v1/rules-index.json",
+   "description": "Index of all published jurisdictions with links to their per-country file."
+  },
+  "rules_country": {
+   "path_pattern": "/api/v1/rules/<country-slug>.json",
+   "description": "Full governed rules entry for one published jurisdiction.",
+   "available_slugs": [
+    "australia",
+    "canada",
+    "france",
+    "germany",
+    "india",
+    "japan",
+    "pakistan",
+    "united-arab-emirates"
+   ]
+  },
+  "passage_check": {
+   "path": "/api/v1/passage-check.json",
+   "description": "Passage Check engine dataset: declaration thresholds and exchange-control posture, transcribed from governed data."
+  }
+ },
+ "human_documentation": "/api.html",
+ "llms_txt": "/llms.txt"
+}

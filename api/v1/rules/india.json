@@ -1,0 +1,68 @@
+{
+ "schema_version": "1.0.0",
+ "generated_at": "2026-07-07T17:16:24+00:00",
+ "asset": "ConvertCCY",
+ "interface_type": "static_agent_interface",
+ "dynamic_api": false,
+ "source_scope": "published_governed_data_only",
+ "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "ConvertCCY (https://convertccy.com/)",
+ "disclaimer": "This data is a governed reference, not legal, tax, customs, compliance, or financial advice. It does not predict, hedge, or guarantee any financial outcome. Verify time-sensitive figures against the official sources listed before acting.",
+ "use_boundary": "Static, read-only reference data only. Do not represent this interface as a dynamic API, as live data, or as covering any jurisdiction not listed in this file. A currency code is not the same as a jurisdiction: a shared currency (e.g. EUR) does not imply coverage of every country that uses it. Cite ConvertCCY and the official source(s) when using this data downstream.",
+ "canonical_url": "https://convertccy.com/api/v1/rules/india.json",
+ "documentation": "https://convertccy.com/api.html",
+ "country_name": "India",
+ "country_slug": "india",
+ "iso2": "IN",
+ "iso3": "IND",
+ "region": "South Asia",
+ "currency_code": "INR",
+ "currency_name": "Indian Rupee",
+ "page_status": "published",
+ "last_reviewed": "2026-05-02",
+ "evidence_tier": "official_verified",
+ "rules_page": "/rules/india-foreign-currency-rules.html",
+ "brief_page": "/briefs/india-passage-brief.html",
+ "country_overview": "India operates a statutory foreign-exchange framework under the Foreign Exchange Management Act (FEMA), 1999, administered principally by the Reserve Bank of India (RBI). In practice this is not a discretionary retail-cash jurisdiction: lawful foreign-exchange activity typically routes through authorised dealer banks while border cash controls are exercised through CBIC Indian Customs declarations (including the Currency Declaration Form, CDF) when thresholds apply. Relative to freely convertible regimes, India's FX regime mixes liberalisation on much of the current account with materially tighter regulation on the capital account; users should assume documentation, channels, and transaction-specific approvals matter.",
+ "summary": {
+  "traveler": "Any person may bring foreign exchange into India without limit. Declaration on the Currency Declaration Form (CDF) is required if foreign currency notes exceed USD 5,000 or the aggregate foreign exchange exceeds USD 10,000.",
+  "business": "All cross-border trade and capital transactions must be routed through Authorised Dealer banks under FEMA. The 2026 regulations introduce targeted updates for exports, imports, service payments and related operations."
+ },
+ "rules": {
+  "bring_foreign_currency_in": "There is ordinarily no prohibition on importing foreign exchange into India, but lawful physical import is framed around declaration and documentation: when foreign currency notes exceed USD 5,000 or aggregate foreign exchange (including traveller instruments in scope of the Currency Declaration Form) exceeds USD 10,000 on arrival, the Currency Declaration Form (CDF) pathway becomes operationally decisive. Practical compliance means carrying supporting documentation consistent with Customs guidance and preserving CDF linkage if you intend to reconvert or carry unutilised foreign exchange outward later.",
+  "take_foreign_currency_out": "Unspent foreign exchange declared on arrival may be taken out, and the Currency Declaration Form should be retained for reconversion or for taking unused foreign exchange out of India.",
+  "cash_declaration_threshold": "The operative arrival-side threshold framing in the Customs materials bundled with Currency Declaration Form (CDF) practice is USD 5,000 for foreign currency notes and USD 10,000 for aggregate foreign exchange (including notes/travellers’ cheques falling under the form’s stated scope). When either threshold applies, Customs expects the relevant declaration channel/process to be followed; travellers should preserve endorsed documentation because it anchors later authorised-dealer conversions and outbound movements.",
+  "resident_holding_rules": "Indian residents remain subject to FEMA-based limits and conditions in relation to holding and using foreign exchange. Users should verify account eligibility, retention limits, and transaction-specific permissions directly with RBI rules and the authorised dealer.",
+  "non_resident_rules": "Non-residents (including NRIs and PIOs) may maintain NRE, FCNR(B) or NRO accounts with repatriation rights as permitted under RBI guidelines.",
+  "business_invoicing_settlement": "Import, export, and related cross-border service transactions must be handled through Authorised Dealer banks in accordance with FEMA regulations and the applicable RBI framework.",
+  "exchange_controls": "India maintains a regulated exchange framework under FEMA 1999. Current account transactions are largely liberalised while capital account transactions are subject to regulation and reporting.",
+  "banking_conversion_practicality": "Foreign exchange transactions are executed through Authorised Dealer banks, licensed money changers and authorised airports. The Currency Declaration Form (CDF) must be retained for reconversion and compliance purposes."
+ },
+ "source_authorities": [
+  {
+   "label": "RBI — Miscellaneous Forex Facilities FAQ (updated)",
+   "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+   "type": "primary_regulator_faq",
+   "tier": "primary"
+  },
+  {
+   "label": "RBI — Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026",
+   "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
+   "type": "primary_regulator",
+   "tier": "primary"
+  },
+  {
+   "label": "RBI — Non-Resident Accounts FAQ",
+   "url": "https://www.rbi.org.in/commonperson/english/scripts/FAQs.aspx?Id=3",
+   "type": "primary_regulator_faq",
+   "tier": "primary"
+  },
+  {
+   "label": "CBIC — Currency Declaration Form (CDF)",
+   "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+   "type": "customs",
+   "tier": "primary"
+  }
+ ],
+ "disclaimer_notice": "This page provides general informational reference only. Foreign-exchange rules in India are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBI/CBIC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of India, CBIC, or a qualified professional before making any financial or travel decisions."
+}
