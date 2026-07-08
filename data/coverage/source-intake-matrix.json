@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-07-07T00:00:00+00:00",
+ "generated_at": "2026-07-08T00:00:00+00:00",
  "asset": "ConvertCCY",
  "phase": "P8-0",
  "document_type": "source_intake_matrix",
@@ -33,7 +33,7 @@
    "sources": {
     "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Bank of England — Monetary & FX Framework", "note": "On file in data/rules/united-kingdom.json"},
     "customs_or_border_authority": {"status": "verified_on_file", "label": "HM Revenue & Customs (HMRC) — Cash & Currency Declaration", "note": "On file in data/rules/united-kingdom.json"},
-    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "National Crime Agency (NCA) — UK Financial Intelligence Unit", "note": "Not yet sourced; name is public knowledge, no citation on file"},
+    "financial_intelligence_unit_or_aml_authority": {"status": "verified_on_file", "label": "National Crime Agency — UK Financial Intelligence Unit (UKFIU)", "note": "On file in data/rules/united-kingdom.json — live-verified 2026-07-08: https://www.nationalcrimeagency.gov.uk/what-we-do/crime-threats/money-laundering-and-illicit-finance/ukfiu"},
     "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
    }
   },

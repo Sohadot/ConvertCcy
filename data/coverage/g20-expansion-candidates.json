@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-07-07T00:00:00+00:00",
+ "generated_at": "2026-07-08T00:00:00+00:00",
  "asset": "ConvertCCY",
  "phase": "P8-0",
  "document_type": "coverage_expansion_candidate_list",
@@ -49,11 +49,9 @@
    "known_risk_areas": [
     "Post-Brexit divergence between UK and EU cash-declaration rules must not be conflated"
    ],
-   "missing_sources": [
-    "financial_intelligence_unit_or_aml_authority"
-   ],
+   "missing_sources": [],
    "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
-   "status": "candidate_only"
+   "status": "source_review_ready"
   },
   {
    "country_name": "United States",
