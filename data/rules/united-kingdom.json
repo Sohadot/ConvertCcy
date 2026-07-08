@@ -47,6 +47,12 @@
       "url": "https://www.fca.org.uk/markets",
       "type": "primary_regulator",
       "tier": "primary"
+    },
+    {
+      "label": "National Crime Agency — UK Financial Intelligence Unit (UKFIU)",
+      "url": "https://www.nationalcrimeagency.gov.uk/what-we-do/crime-threats/money-laundering-and-illicit-finance/ukfiu",
+      "type": "fiu",
+      "tier": "primary"
     }
   ],
   "source_map": {

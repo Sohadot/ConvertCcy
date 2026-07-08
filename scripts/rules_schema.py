@@ -204,6 +204,7 @@ VALID_SOURCE_TYPES = {
     "primary_regulator",
     "primary_regulator_faq",
     "primary_regulator_rule_page",
+    "fiu",  # Financial Intelligence Unit / AML authority (e.g. NCA UKFIU, FinCEN, FINTRAC)
     # secondary institutional
     "law_firm",
     "big_four",
@@ -221,6 +222,7 @@ PRIMARY_SOURCE_TYPES = {
     "primary_regulator",
     "primary_regulator_faq",
     "primary_regulator_rule_page",
+    "fiu",
 }
 
 SECONDARY_SOURCE_TYPES = {
