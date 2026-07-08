@@ -610,6 +610,15 @@ This workflow makes the five checks **visible** on every PR and push (a red ✗ 
 
 Status: Ready to merge. No Deployment Gate applies (no public route added); closure is the workflow appearing green on its own PR run, verified after merge.
 
+### P9 closure — merged and branch-protection enforced (2026-07-07)
+Merged to `main` via PR #23 (merge commit `a236a9642a233a1ea4900623cb93f4cf59b8aec2`).
+
+- **Both trigger paths confirmed green:** the `pull_request` run on PR #23 (run `28903374194`, head `49bb7aceb2`) completed with `conclusion: success`; the `push` run on the merge commit to `main` (run `28903643056`, head `a236a9642a`) also completed with `conclusion: success`. The workflow fires and passes on both events it declares (`pull_request` into `main`, `push` to `main`), not only in the PR context.
+- **Branch protection applied on `main` (owner action, confirmed done):** "Governance Gate" is now a required status check, so a PR with a failing check cannot be merged. `main` is also protected against force-push and branch deletion. Direct pushes are blocked — all changes must go through a PR.
+- **"Require approvals" was intentionally left off**, since the repository has a single maintainer and an unmeetable approval requirement would only force an admin-override workaround, defeating the purpose of a mechanical gate rather than strengthening it. The load-bearing rule is the required "Governance Gate" status check, not a second-reviewer requirement that cannot be satisfied by a one-person repository.
+
+**Status: ✅ P9 CLOSED.** `main` is now governed by a mechanical, unbypassable gate: publish-from-main-only, PR-only changes, "Governance Gate" required before merge, no force-push, no branch deletion. This is the point where ConvertCCY moves from a manually-disciplined system to one that structurally cannot merge a rule violation.
+
 ---
 
 ## Standing rules (all phases)
