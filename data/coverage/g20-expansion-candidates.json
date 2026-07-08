@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-07-08T00:00:00+00:00",
+ "generated_at": "2026-07-08T12:00:00+00:00",
  "asset": "ConvertCCY",
  "phase": "P8-0",
  "document_type": "coverage_expansion_candidate_list",
@@ -51,7 +51,7 @@
    ],
    "missing_sources": [],
    "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
-   "status": "source_review_ready"
+   "status": "publish_ready"
   },
   {
    "country_name": "United States",
