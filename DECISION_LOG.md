@@ -576,6 +576,70 @@ Merged via PR #21 (merge commit `c41e462d6`). Since this phase adds no live publ
 
 ---
 
+## Phase 13A — United Kingdom Source-Intake Promotion (P8A-1)
+**Status:** ✅ CLOSED — intake only, no publication
+
+### Context
+P8-0 recorded 13 G20+ expansion candidates and established the intake pipeline. P8A-1 is the first individual promotion step under that pipeline: moving the United Kingdom from `candidate_only` to `source_review_ready` after verifying all required official source categories on file. P8A-1 is deliberately scoped to the coverage/intake layer only — no public route, no rules page, no brief, no API file, no Passage Check entry, no sitemap URL, and no llms.txt coverage claim was created.
+
+### Decision: promote United Kingdom to source_review_ready
+All three required source categories now have a live-verified official URL on file:
+
+| Category | Status | Authority | URL |
+|---|---|---|---|
+| `central_bank_or_monetary_authority` | `verified_on_file` | Bank of England | `bankofengland.co.uk/monetary-policy` |
+| `customs_or_border_authority` | `verified_on_file` | HM Revenue & Customs (HMRC) | `gov.uk/bringing-cash-into-uk` — confirmed live; declares £10,000 (Great Britain) / €10,000 (Northern Ireland) thresholds |
+| `financial_intelligence_unit_or_aml_authority` | `verified_on_file` | National Crime Agency — UK Financial Intelligence Unit (UKFIU) | `nationalcrimeagency.gov.uk/what-we-do/crime-threats/money-laundering-and-illicit-finance/ukfiu` — confirmed live 2026-07-08 |
+| `tax_treasury_ministry_source` | `not_applicable` | — | — |
+
+The NCA/UKFIU URL was live-fetched during this intake pass: the page is the official UKFIU page on the NCA's `.gov.uk` domain, describing the unit's role in receiving and analysing Suspicious Activity Reports (SARs). The Bank of England and HMRC URLs were re-confirmed live in the same pass.
+
+### What changed (4 files, intake layer only)
+- **`data/rules/united-kingdom.json`**: added NCA UKFIU as a `source_authority` entry (`type: "fiu"`, `tier: "primary"`). `page_status` remains `"verified"` — no publication step occurred, and no public route was created or modified.
+- **`data/coverage/source-intake-matrix.json`**: UK `financial_intelligence_unit_or_aml_authority` promoted from `not_started` to `verified_on_file` with label and live-verified URL.
+- **`data/coverage/g20-expansion-candidates.json`**: UK `missing_sources` cleared to `[]`; `status` promoted from `candidate_only` to `source_review_ready`.
+- **`scripts/rules_schema.py`**: added `"fiu"` to both `VALID_SOURCE_TYPES` and `PRIMARY_SOURCE_TYPES`. This schema extension is required for all future G20 FIU source entries (the coverage matrix already uses `financial_intelligence_unit_or_aml_authority` as a named category for every candidate).
+
+### Verification performed on `main` after merge (PR #25, 2026-07-08)
+All checks run directly against the merged state of `main`:
+
+**Intake state correct:**
+- `g20-expansion-candidates.json` → UK `status: "source_review_ready"`, `missing_sources: []` ✓
+- `source-intake-matrix.json` → UK FIU `status: "verified_on_file"` ✓
+
+**Rules file boundary correct:**
+- `data/rules/united-kingdom.json` → `page_status: "verified"` (not `published`) ✓
+- `source_authorities` contains NCA UKFIU entry with `type: "fiu"` ✓
+
+**Schema extension correct:**
+- `scripts/rules_schema.py` → `"fiu"` in `VALID_SOURCE_TYPES: True`, `"fiu"` in `PRIMARY_SOURCE_TYPES: True` ✓
+
+**No public routes created:**
+- `/rules/united-kingdom-foreign-currency-rules.html` — NOT FOUND ✓
+- `/briefs/united-kingdom-passage-brief.html` — NOT FOUND ✓
+- `/api/v1/rules/united-kingdom.json` — NOT FOUND ✓
+- `sitemap.xml` — zero occurrences of `united-kingdom` ✓
+- `llms.txt` — United Kingdom not presented as covered ✓
+
+**Governance Gate — all five checks pass on `main`:**
+- `validate_rules.py data/rules/` → 23/23 files, 0 errors, 0 warnings ✓
+- `rules_quality_gate.py` → PASS (v1.2.1) ✓
+- `validate_coverage_intake.py` → PASSED: 13 candidates, statuses `['candidate_only', 'source_review_ready']`, 8 published jurisdictions unaffected, no candidate in `api/v1/`, `sitemap.xml`, or `llms.txt` ✓
+- `validate_generated_artifacts.py` → passage-check.json, briefs/, api/ all drift-free ✓
+- `validate_site_hygiene.py` → JSON well-formed, `rel="noopener"` hygiene, no public /preview/ links ✓
+
+### Standing decisions from P8A-1
+- `source_review_ready` for United Kingdom means: all official source categories are verified on file and the entry is ready for a formal content review before the six-gate publication pipeline begins. It does not grant any public surface.
+- The `fiu` source type in `rules_schema.py` is now available for all future G20+ entries that add a Financial Intelligence Unit / AML authority as a source authority.
+- P8A-1 is a closed intake step. The next step for United Kingdom is a content review of `data/rules/united-kingdom.json` under the existing six-gate pipeline (validate_rules.py, rules_quality_gate.py, CRIS compliance, text-quality gates). Only after that pipeline passes and `page_status` is set to `published` does any public route appear.
+- Per the P8-0 standing rule: every future G20 candidate promotion is its own one-concern PR — never a bulk edit across multiple candidates.
+
+No Deployment Gate applies (no public route created). Closure is the Governance Gate passing on `main` and the integrity checks above confirming zero public-surface change.
+
+**Status: ✅ P8A-1 CLOSED.** United Kingdom is `source_review_ready` in the intake layer. No public route was created. The published layer (8 jurisdictions) is unchanged.
+
+---
+
 ## Phase 14 — Automated Governance Gate (P9)
 **Status:** Ready to merge (branch: claude/p9-governance-ci)
 
