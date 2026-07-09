@@ -640,6 +640,78 @@ No Deployment Gate applies (no public route created). Closure is the Governance 
 
 ---
 
+## Phase 13B — United Kingdom Publication-Candidate Review (P8A-2)
+**Status:** ✅ CLOSED — publish_ready. No public route created.
+
+### Context
+P8A-1 promoted United Kingdom to `source_review_ready` after verifying all three official source categories on file. P8A-2 is the publication-candidate review: a full pass over `data/rules/united-kingdom.json` against the existing ten-gate validation pipeline and content quality criteria before the file may advance to `publish_ready`. This phase does not publish the UK — `page_status` remains `"verified"` throughout, and no public route (rules page, brief, API file, Passage Check entry, sitemap URL, llms.txt coverage claim) is created.
+
+### Review findings and repairs
+
+Five content defects were found and corrected. No defects blocked validation (all 10 gates passed before and after repairs), but four of the five were factual errors that would have misrepresented UK regulatory requirements to users if published uncorrected.
+
+**Critical — cash declaration thresholds: factually incomplete and internally contradictory (REPAIRED)**
+
+`rules.cash_declaration_threshold` stated only the €10,000 figure, omitting the primary threshold for Great Britain (England, Scotland and Wales) which is **£10,000**. This was internally contradictory: `rules.bring_foreign_currency_in` correctly stated "£10,000 or more" while `cash_declaration_threshold` stated "€10,000 or more" — two different amounts in the same file. The HMRC source (`gov.uk/bringing-cash-into-uk`, live-verified in P8A-1) explicitly states both thresholds, so the omission was not sourced. The post-Brexit divergence is real and material:
+- Great Britain (England, Scotland and Wales): **£10,000** or more
+- Northern Ireland: **€10,000** or more, applying only when travelling to/from non-EU countries outside the UK
+
+All three affected fields were rewritten:
+- `rules.cash_declaration_threshold` — complete rewrite stating the GB/NI split, the declaration body (Border Force, administered by HMRC), and the covered instruments (notes and coins, bearer bonds, signed travellers' cheques; additionally for NI: money orders, gold coins, bullion, prepaid cards)
+- `rules.bring_foreign_currency_in` — added NI €10,000 threshold; replaced "at the border" with "on arrival" for precision
+- `rules.take_foreign_currency_out` — added NI €10,000 threshold; replaced vague "documented as inbound or earned" with "declared on entry"
+
+**Critical — summary.traveler: imprecise threshold language (REPAIRED)**
+
+"No general currency declaration is required for normal travel amounts" was replaced with specific threshold amounts: "No declaration is required for amounts below £10,000 (Great Britain) or €10,000 (Northern Ireland, when travelling to or from non-EU countries outside the UK)." The phrase "normal travel amounts" is not a regulatory concept and could be misread as implying a discretionary rather than a threshold-based rule.
+
+**Critical — NCA UKFIU orphaned in source_authorities with no source_map citation (REPAIRED)**
+
+The NCA UKFIU source authority was added in P8A-1 but had no entry in any `source_map` field. Per the source-map discipline established throughout the rules pipeline, every source_authority must be cited in at least one source_map entry so the authority-to-claim relationship is explicit and auditable. The UKFIU was added to `source_map.rules.cash_declaration_threshold` as a second entry with section label "UK Anti-Money Laundering Framework (NCA UKFIU)". This correctly attributes the AML legislative basis for the declaration thresholds to the UKFIU — without conflating AML/SAR reporting with the customs declaration obligation. The cash declaration (to Border Force) and SAR reporting (by financial institutions to UKFIU) are distinct regimes; the repaired text separates them clearly: the declaration threshold is attributed to HMRC/Border Force, while the UKFIU source map entry documents the AML legislative context that underpins those thresholds.
+
+**Minor — source_map section labels not reflecting GB/NI split (REPAIRED)**
+
+Section labels for `summary.traveler`, `rules.bring_foreign_currency_in`, `rules.take_foreign_currency_out`, and `rules.cash_declaration_threshold` were updated to explicitly note "GB £10,000 / NI €10,000" so the label matches what the field content now states.
+
+**Minor — last_reviewed stale (UPDATED)**
+
+`last_reviewed` was "2026-05-02" (the earlier internal research phase). Updated to "2026-07-08" to reflect the P8A-2 review date.
+
+### Acknowledged source precision gap (not blocking, documented)
+
+The Bank of England source URL (`bankofengland.co.uk/monetary-policy`) is cited for `country_overview` and `exchange_controls`. The monetary policy subpage is specifically about Bank Rate and the MPC's inflation target, not the UK's exchange control posture or open capital account. This is an acknowledged semantic imprecision — however, the same pattern is used consistently across every published entry in the codebase (France uses `banque-france.fr/en/monetary-policy`, Germany uses `bundesbank.de/en/tasks/monetary-policy`, Canada uses `bankofcanada.ca/` homepage), and the Bank of England is the correct authoritative body to cite for the UK's exchange rate framework. A future hardening step could locate a more specific BoE or HM Treasury page that directly addresses the UK's absence of exchange controls (e.g. an BoE explainer on exchange rates, or HM Treasury capital account documentation). This is documented here and not blocking `publish_ready`.
+
+### Validation performed
+All five Governance Gate checks pass after repairs:
+- `validate_rules.py data/rules/united-kingdom.json` — PASS, 0 errors, 0 warnings (10 gates, all clear)
+- `validate_rules.py data/rules/` — PASS, 23/23 files, 0 errors, 0 warnings
+- `rules_quality_gate.py` — PASS (v1.2.1)
+- `validate_coverage_intake.py` — PASSED: 13 candidates; statuses `['candidate_only', 'publish_ready']`; 8 published jurisdictions unaffected; no candidate in `api/v1/`, `sitemap.xml`, or `llms.txt`
+- `validate_generated_artifacts.py` — passage-check.json, briefs/, api/ all drift-free
+- `validate_site_hygiene.py` — JSON well-formed, `rel="noopener"` hygiene, no public /preview/ links
+
+### No-public-route proof (verified after all changes)
+- `/rules/united-kingdom-foreign-currency-rules.html` — NOT FOUND ✓
+- `/briefs/united-kingdom-passage-brief.html` — NOT FOUND ✓
+- `/api/v1/rules/united-kingdom.json` — NOT FOUND ✓
+- `sitemap.xml` — 0 occurrences of `united-kingdom` ✓
+- `llms.txt` — United Kingdom not presented as covered ✓
+- `data/rules/united-kingdom.json` → `page_status: "verified"` (not published) ✓
+
+### Outcome
+United Kingdom moves from `source_review_ready` to **`publish_ready`** in `data/coverage/g20-expansion-candidates.json`. `data/rules/united-kingdom.json` is now substantively correct, source-aligned, and passes all ten validation gates. No publication step has occurred.
+
+### Standing decisions from P8A-2
+- The GB/NI cash-declaration split (£10,000 for Great Britain, €10,000 for Northern Ireland from non-EU countries) is a post-Brexit regulatory distinction that must be stated separately, not collapsed into a single figure. This distinction applies to all future UK content reviews and must not be re-simplified.
+- Every `source_authority` entry must have at least one corresponding `source_map` citation. An orphaned source_authority is a defect to catch and correct during the publication-candidate review, before publication.
+- AML reporting to the UKFIU (SAR regime, obligation on financial institutions and professionals) and customs cash declaration to Border Force (HMRC, obligation on individual travellers) are distinct regimes and must never be conflated in rules text.
+- `publish_ready` in the intake layer means all source categories are verified, content is factually correct and validation-clean, and the file may proceed to the six-gate publication pipeline. It does not grant publication — that requires the six-gate pipeline to complete and `page_status` to be explicitly set to `published`.
+- No Deployment Gate applies to P8A-2 (no public route created).
+
+**Status: ✅ P8A-2 CLOSED.** United Kingdom is `publish_ready`. All content defects repaired, all 10 validation gates pass, no public route created. Next step for UK: the six-gate publication pipeline (`page_status: verified → published`), which is a future, separately reviewed phase.
+
+---
+
 ## Phase 14 — Automated Governance Gate (P9)
 **Status:** Ready to merge (branch: claude/p9-governance-ci)
 
