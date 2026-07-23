@@ -207,13 +207,15 @@
    },
    "expected_difficulty": "Medium. Central bank and customs sources already on file internally; South Africa retains exchange control regulations administered by SARB (Financial Surveillance Department) that require careful, current-text sourcing.",
    "known_risk_areas": [
-    "Exchange control relaxation has been gradual and multi-year — cite current effective rules, not historical summaries"
+    "Exchange control relaxation has been gradual and multi-year — cite current effective rules, not historical summaries",
+     "P8C-1 source-intake finding (2026-07-23): the on-file cash_declaration_threshold conflates the SARB R25,000 rand exchange-control allowance with the R100,000 excess-currency rule and the SARS customs declaration. Correct in the publication-candidate review: R25,000 = SARB limit on carrying rand; excess currency over R100,000 (or foreign currency convertible to Rand over R100,000) requires SARB written permission; SARS administers the traveller declaration (mandatory online from 1 July 2026, or manual TD-01). Keep exchange control (SARB), customs declaration (SARS), and AML (FIC) distinct.",
+     "SARS mandatory online traveller declaration takes effect 1 July 2026 — verify current effective process at the publication-candidate review."
    ],
    "missing_sources": [
     "financial_intelligence_unit_or_aml_authority"
    ],
    "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
-   "status": "candidate_only"
+   "status": "source_review_ready"
   },
   {
    "country_name": "Italy",
