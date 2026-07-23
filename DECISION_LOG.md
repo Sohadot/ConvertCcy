@@ -845,4 +845,25 @@ This is a single-country, one-concern change. The 8 previously published jurisdi
 
 Status: prepared for release on merge — this raises the published sovereign layer from 8 to 9 jurisdictions, completing the first G20 publication cycle after UK.
 
+### P8A-3 Deployment Gate Verification
+
+Merge to `main` does not close a phase. P8A-3 is closed only after the United Kingdom's public routes are verified live on the custom domain, consistent with the P3 and P4 Deployment Gate Verifications above.
+
+PR #31 merged to `main` as merge commit `9152dbbdb804b5995177c44534bf728eacafbddc`. `origin/main` confirmed: `data/rules/united-kingdom.json` `page_status: published` and `rules/dataset.json` count 9.
+
+Verified live on https://convertccy.com:
+
+- https://convertccy.com/api/v1/rules/united-kingdom.json — live, valid JSON, `page_status: published`, thresholds present (Great Britain £10,000 / Northern Ireland €10,000), evidence tier official-verified, last reviewed 2026-07-08.
+- https://convertccy.com/rules/united-kingdom-foreign-currency-rules.html — live (not a 404, not a preview draft), heading "Foreign Currency Rules · United Kingdom", declaration thresholds £10,000 / €10,000 shown, HMRC and Border Force named as administering authorities.
+- https://convertccy.com/briefs/united-kingdom-passage-brief.html — live, heading "United Kingdom — Currency Passage Brief", GBP 10,000 / EUR 10,000 thresholds displayed with the transcribed scope.
+
+Deployment notes:
+
+- All three new UK routes serve live content matching the merged artifacts; the two-tier GB/NI threshold renders correctly on the public page, the brief, and the Static Agent Interface.
+- No preview route was exposed; no unpublished jurisdiction was affected.
+- The 8 previously published jurisdictions remain live and unchanged.
+
+Status: ✅ P8A-3 CLOSED — United Kingdom is live in the published sovereign layer (9 jurisdictions). No further phase may open against P8A-3; the next country (United States) begins with its own publication-candidate review.
+Verified: 2026-07-23.
+
 
