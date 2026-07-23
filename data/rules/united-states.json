@@ -14,20 +14,20 @@
   "publication_class": "reference",
   "indexing_allowed": false,
   "source_notice": "",
-  "country_overview": "The United States Federal Reserve System (the Federal Reserve) is the central bank and sets monetary policy, while U.S. Customs and Border Protection (CBP) and the Financial Crimes Enforcement Network (FinCEN) administer cross-border currency reporting. The United States operates one of the most liberalised foreign-exchange regimes in the world: there are no general exchange controls and no restrictions on current or capital account transactions for residents or non-residents. The US dollar is the world's primary reserve currency.",
+  "country_overview": "The United States Federal Reserve System (the Federal Reserve) is the central bank and sets monetary policy, while U.S. Customs and Border Protection (CBP) and the Financial Crimes Enforcement Network (FinCEN) administer cross-border currency reporting. The United States operates a highly open foreign-exchange framework: no general exchange controls or capital controls on current account and capital account movement were identified in the reviewed federal sources or accessible IMF materials, subject to carve-outs for sanctions (OFAC), AML/Bank Secrecy Act reporting, tax, and sector-specific requirements. The US dollar is the world's primary reserve currency.",
   "summary": {
     "traveler": "Travelers may carry unlimited US dollars or foreign currency, but any person transporting more than USD 10,000 in aggregate — cash or monetary instruments — into or out of the United States must file a Currency and Monetary Instrument Report (FinCEN Form 105) with CBP at the border. Amounts of USD 10,000 or less require no declaration.",
-    "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+    "business": "Businesses and individuals can generally hold, transfer, convert, and repatriate foreign currency through authorised institutions. No general exchange-control or prior-approval regime was identified in the reviewed sources, subject to sanctions, AML reporting, tax, and sector-specific requirements."
   },
   "rules": {
     "bring_foreign_currency_in": "Foreign currency and US dollars may be imported without limit or prohibition. Any person bringing more than USD 10,000 in aggregate (cash or monetary instruments) into the United States must file FinCEN Form 105 (CMIR) with a CBP officer at the port of entry.",
     "take_foreign_currency_out": "US dollars and foreign currency may be exported without limit. Any person taking more than USD 10,000 in aggregate (cash or monetary instruments) out of the United States must file FinCEN Form 105 (CMIR) with CBP before departure; non-residents may freely re-export funds they lawfully brought in.",
     "cash_declaration_threshold": "The reporting threshold is USD 10,000. Under 31 U.S.C. 5316 and 31 CFR 1010.340, transporting an aggregate amount exceeding that figure across the US border triggers a mandatory Currency and Monetary Instrument Report (FinCEN Form 105) to CBP. This traveler border report is distinct from Bank Secrecy Act filings by financial institutions — Currency Transaction Reports (CTR) and Suspicious Activity Reports (SAR) — and from Foreign Bank Account Reports (FBAR); none of those is a traveler declaration.",
-    "resident_holding_rules": "US residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
-    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
-    "business_invoicing_settlement": "Business transactions may be invoiced and settled in foreign currency or USD. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
-    "exchange_controls": "The United States maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
-    "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout the United States."
+    "resident_holding_rules": "No general prior-approval or exchange-control requirement barring US residents from holding or maintaining foreign-currency accounts with authorised institutions was identified in the reviewed federal sources or accessible IMF materials. Account access remains subject to sanctions screening, AML/KYC and reporting obligations, tax reporting, and institution-level requirements.",
+    "non_resident_rules": "For non-residents, no general prior-approval or exchange-control barrier to opening or operating accounts or transferring funds was identified in the reviewed sources. Onboarding and transfers remain subject to sanctions screening, AML/KYC, information-reporting and withholding rules, and each institution's own requirements.",
+    "business_invoicing_settlement": "Business transactions may be invoiced and settled in US dollars or foreign currency. No general exchange-control approval regime for cross-border commercial payments or repatriation was identified in the reviewed sources, subject to sanctions, AML reporting, tax, and sector-specific requirements.",
+    "exchange_controls": "No general exchange-control or prior-approval regime governing the holding, conversion, or cross-border movement of currency was identified in the reviewed federal sources or accessible IMF materials; the United States is an IMF member under Article IV surveillance. Specific carve-outs apply: OFAC-administered economic sanctions, Bank Secrecy Act / AML reporting, tax reporting, and sector or prudential rules.",
+    "banking_conversion_practicality": "In practice, foreign-exchange conversion and transfers are widely available through banks, licensed money-services businesses, and ATMs across the United States. Access is subject to each institution's AML/KYC and sanctions-screening procedures and to applicable reporting."
   },
   "source_authorities": [
     {
@@ -65,6 +65,12 @@
       "url": "https://www.law.cornell.edu/uscode/text/31/5316",
       "type": "other",
       "tier": "secondary"
+    },
+    {
+      "label": "International Monetary Fund — United States country page (Article IV surveillance; institutional secondary evidence). Note: the IMF AREAER database is login-gated and was not accessible for a specific edition/table citation.",
+      "url": "https://www.imf.org/en/Countries/USA",
+      "type": "multilateral",
+      "tier": "secondary"
     }
   ],
   "source_map": {
@@ -72,7 +78,12 @@
       {
         "url": "https://www.federalreserve.gov/monetarypolicy.htm",
         "pages": [],
-        "section": "US monetary authority (Federal Reserve). [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
+        "section": "US monetary authority (Federal Reserve)"
+      },
+      {
+        "url": "https://www.imf.org/en/Countries/USA",
+        "pages": [],
+        "section": "IMF member under Article IV surveillance; open FX system — No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
       }
     ],
     "summary.traveler": [
@@ -84,9 +95,9 @@
     ],
     "summary.business": [
       {
-        "url": "https://www.federalreserve.gov/monetarypolicy.htm",
+        "url": "https://www.imf.org/en/Countries/USA",
         "pages": [],
-        "section": "Liberalised current/capital account. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
+        "section": "No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
       }
     ],
     "rules.bring_foreign_currency_in": [
@@ -134,37 +145,37 @@
     ],
     "rules.resident_holding_rules": [
       {
-        "url": "https://www.federalreserve.gov/monetarypolicy.htm",
+        "url": "https://www.imf.org/en/Countries/USA",
         "pages": [],
-        "section": "Resident foreign-currency accounts. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
+        "section": "No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
       }
     ],
     "rules.non_resident_rules": [
       {
-        "url": "https://www.federalreserve.gov/monetarypolicy.htm",
+        "url": "https://www.imf.org/en/Countries/USA",
         "pages": [],
-        "section": "Non-resident accounts and transfers. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
+        "section": "No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
       }
     ],
     "rules.business_invoicing_settlement": [
       {
-        "url": "https://www.federalreserve.gov/monetarypolicy.htm",
+        "url": "https://www.imf.org/en/Countries/USA",
         "pages": [],
-        "section": "Cross-border business settlement. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
+        "section": "No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
       }
     ],
     "rules.exchange_controls": [
       {
-        "url": "https://www.federalreserve.gov/monetarypolicy.htm",
+        "url": "https://www.imf.org/en/Countries/USA",
         "pages": [],
-        "section": "Absence of exchange controls. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
+        "section": "No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
       }
     ],
     "rules.banking_conversion_practicality": [
       {
-        "url": "https://www.federalreserve.gov/monetarypolicy.htm",
+        "url": "https://www.imf.org/en/Countries/USA",
         "pages": [],
-        "section": "Authorised dealers / exchange availability. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
+        "section": "Practical availability of FX conversion/transfer; No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
       }
     ]
   },

@@ -934,4 +934,22 @@ The US analog of P8A-2: a full content-and-source pass over `data/rules/united-s
 Status: ⏸️ United States remains `source_review_ready`. Declaration content and sources are corrected to publish quality; the liberalisation-field sourcing is an open hardening item that blocks `publish_ready`. Not advanced, not published.
 Verified: 2026-07-23.
 
+### P8B-2b — United States Liberalisation Claims Hardening
+
+Goal: clear the remaining `[HARDENING]` blockers on the US liberalisation fields without overstating the absence of exchange controls. Scope held: `page_status: verified`, `indexing_allowed: false`, no public route / API / sitemap / Passage Check / llms.txt, no publication, no other country changed. US kept at `source_review_ready`.
+
+**Evidence order applied (per the review method):**
+1. *Specific US government source* — none obtained: `cbp.gov` and the official `ecfr.gov` / `uscode.house.gov` hosts bot-block automated fetch, and no federal page affirmatively establishes the absence of a general exchange-control regime. The Federal Reserve monetary-policy page was NOT used as proof of the liberalisation claims; OFAC sanctions pages were NOT used as proof that the broader regime is unrestricted.
+2. *IMF AREAER (institutional secondary)* — the AREAER online database is login-gated (redirects to an IMF SSO/authgateway), so no specific edition/year, US country section, table/field, or database record could be accessed or cited. This limitation is recorded truthfully; the definitive AREAER citation remains pending access.
+3. *Narrow the claim* — applied to every affected field.
+
+**Field changes.** Overstated phrasing was removed — "freely", "freely without prior approval", "no restrictions", "full freedom", "fully liberalised" — and replaced with the epistemic formulation "no general exchange-control or prior-approval regime … was identified in the reviewed federal sources or accessible IMF materials", each carrying explicit carve-outs: OFAC-administered sanctions, Bank Secrecy Act / AML reporting, tax reporting, information-reporting/withholding, prudential, and sector-specific requirements. Fields: `country_overview`, `summary.business`, `resident_holding_rules`, `non_resident_rules`, `business_invoicing_settlement`, `exchange_controls`, `banking_conversion_practicality`.
+
+**Sourcing.** These fields are now cited to the IMF United States country page (`imf.org/en/Countries/USA`, live-verified 2026-07-23) classified as **institutional secondary** evidence (`type: multilateral`, `tier: secondary`) — not primary law, and not the Federal Reserve monetary-policy page. The declaration fields remain sourced to the official primary law (eCFR 31 CFR 1010.340, U.S. Code 31 U.S.C. 5316) and the official FinCEN Form 105 (CMIR) PDF, with Cornell LII as secondary mirrors. All `[HARDENING]` markers were removed field by field after narrowing; zero remain in the file.
+
+**Governance Gate:** all five checks pass; `validate_rules.py` clean (0/0); maximum pairwise rule similarity 0.66 (< 0.72). Boundary confirmed: `page_status: verified`, `indexing_allowed: false`, no public route, zero occurrences in sitemap / passage-check / llms.
+
+Status: ✅ `[HARDENING]` blockers cleared via narrowing + IMF institutional-secondary sourcing. ⏸️ United States remains `source_review_ready`. Because the liberalisation fields now rest on narrowed claims and secondary evidence (with the definitive AREAER citation still pending access), advancing to `publish_ready` is a separate decision — either accept the narrowed + secondary basis, or obtain a specific AREAER record first.
+Verified: 2026-07-23.
+
 
