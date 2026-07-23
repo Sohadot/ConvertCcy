@@ -23,36 +23,13 @@
   "india",
   "japan",
   "pakistan",
-  "united-arab-emirates"
+  "united-arab-emirates",
+  "united-kingdom"
  ],
- "existing_published_jurisdictions_note": "These 8 jurisdictions are unaffected by this blueprint. Their data/rules/<slug>.json page_status and public surfaces are not touched by P8-0.",
+ "existing_published_jurisdictions_note": "These 9 jurisdictions are currently published and sit outside this blueprint; the 12 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file.",
  "no_inference_rule": "No rule, threshold, or regulatory posture may ever be inferred for a candidate from its currency code, region, G20 membership, EU/AU membership, or a neighboring country's published rules. Every fact requires its own primary official source before it may be published.",
- "count": 13,
+ "count": 12,
  "candidates": [
-  {
-   "country_name": "United Kingdom",
-   "country_slug": "united-kingdom",
-   "iso2": "GB",
-   "iso3": "GBR",
-   "currency_code": "GBP",
-   "currency_name": "British Pound Sterling",
-   "region": "Western Europe",
-   "expansion_priority": "high",
-   "complexity_level": "low",
-   "likely_official_source_authorities_needed": {
-    "central_bank_or_monetary_authority": "Bank of England",
-    "customs_or_border_authority": "HM Revenue & Customs (HMRC)",
-    "financial_intelligence_unit_or_aml_authority": "National Crime Agency (NCA) — UK Financial Intelligence Unit",
-    "tax_treasury_ministry_source": null
-   },
-   "expected_difficulty": "Low. Stable, English-language, well-documented regulatory framework; central bank and customs sources already on file internally.",
-   "known_risk_areas": [
-    "Post-Brexit divergence between UK and EU cash-declaration rules must not be conflated"
-   ],
-   "missing_sources": [],
-   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
-   "status": "publish_ready"
-  },
   {
    "country_name": "United States",
    "country_slug": "united-states",

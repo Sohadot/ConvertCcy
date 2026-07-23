@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-04T17:53:38+00:00",
+  "generated_at": "2026-07-23T13:28:06+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 8,
-    "verified": 13,
+    "published": 9,
+    "verified": 12,
     "needs_hardening": 2,
     "secondary_review": 0,
     "skipped": 0,
@@ -74,6 +74,14 @@
       "output_html": "rules/united-arab-emirates-foreign-currency-rules.html",
       "sitemap_eligible": true,
       "public_url": "https://convertccy.com/rules/united-arab-emirates-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
+      "country_slug": "united-kingdom",
+      "country_name": "United Kingdom",
+      "output_html": "rules/united-kingdom-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/united-kingdom-foreign-currency-rules.html"
     }
   ],
   "verified_entries": [
@@ -152,13 +160,6 @@
       "country_slug": "turkey",
       "country_name": "Turkey",
       "output_html": "preview/rules/verified/turkey-foreign-currency-rules.html",
-      "sitemap_eligible": false
-    },
-    {
-      "status": "verified",
-      "country_slug": "united-kingdom",
-      "country_name": "United Kingdom",
-      "output_html": "preview/rules/verified/united-kingdom-foreign-currency-rules.html",
       "sitemap_eligible": false
     },
     {

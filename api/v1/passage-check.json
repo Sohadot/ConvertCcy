@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-07-07T17:16:24+00:00",
+ "generated_at": "2026-07-23T13:28:06+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -15,9 +15,9 @@
  "engine": "ConvertCCY Passage Check",
  "engine_version": "1.0",
  "built_from": "rules/dataset.json",
- "source_dataset_generated_at": "2026-07-04T17:53:38+00:00",
+ "source_dataset_generated_at": "2026-07-23T13:28:06+00:00",
  "engine_notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. Structured thresholds are transcribed from each entry's cash_declaration_threshold field. Currency conversions shown in the tool are indicative only and are not governed figures.",
- "count": 8,
+ "count": 9,
  "countries": [
   {
    "country_name": "Australia",
@@ -958,6 +958,135 @@
     }
    ],
    "disclaimer": "This page provides general informational reference only. Customs declaration thresholds and Central Bank supervisory requirements in the UAE can change without notice appearing here. This is not legal, regulatory, tax, financial, or compliance advice. Confirm current obligations with UAE Customs, the Central Bank of the UAE (CBUAE), licensed financial intermediaries, or qualified counsel before committing to travel or treasury decisions."
+  },
+  {
+   "country_name": "United Kingdom",
+   "country_slug": "united-kingdom",
+   "iso2": "GB",
+   "currency_code": "GBP",
+   "currency_name": "British Pound Sterling",
+   "region": "Western Europe",
+   "last_reviewed": "2026-07-08",
+   "rules_page": "/rules/united-kingdom-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "GBP",
+      "scope": "cash and specified monetary instruments (notes and coins, bearer bonds, signed travellers' cheques), or equivalent in foreign currency",
+      "applies": "Great Britain (England, Scotland, Wales), entering or leaving the UK",
+      "authority": "HM Revenue & Customs (HMRC) via Border Force",
+      "mechanism": "mandatory declaration"
+     },
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "cash and specified monetary instruments (also money orders, gold coins, bullion, prepaid cards), or equivalent",
+      "applies": "Northern Ireland, travelling to or from a non-EU country outside the UK",
+      "authority": "HM Revenue & Customs (HMRC) via Border Force",
+      "mechanism": "mandatory declaration"
+     }
+    ],
+    "note": "Two thresholds by jurisdiction: Great Britain applies GBP 10,000 (or equivalent) on entering or leaving the UK; Northern Ireland applies EUR 10,000 (or equivalent) when travelling between NI and a non-EU country outside the UK. Both derive from UK anti-money-laundering legislation and are administered by HMRC through Border Force.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (fully liberalised for current and capital account)",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "Foreign currency and sterling may be freely imported. Declaration to Border Force is required when carrying cash of £10,000 or more into Great Britain, or €10,000 or more into Northern Ireland from a non-EU country outside the UK, or the equivalent in foreign currency. An advance declaration may be submitted online up to 72 hours before travel; declaration on arrival is also permitted.",
+     "source": {
+      "url": "https://www.gov.uk/bringing-cash-into-uk",
+      "section": "Import of Currency — GB £10,000 / NI €10,000 Declaration"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "Residents and non-residents may freely export foreign currency and sterling. Declaration to Border Force is required when taking out cash of £10,000 or more from Great Britain, or €10,000 or more from Northern Ireland to a non-EU country outside the UK, or the equivalent in foreign currency. Non-residents may repatriate the full amount of currency declared on entry.",
+     "source": {
+      "url": "https://www.gov.uk/bringing-cash-into-uk",
+      "section": "Export of Currency — GB £10,000 / NI €10,000 Declaration"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "Great Britain (England, Scotland and Wales): cash of £10,000 or more, or its equivalent in foreign currency, must be declared to Border Force when entering or leaving the UK. Northern Ireland: cash of €10,000 or more, or its equivalent, must be declared when travelling between Northern Ireland and a non-EU country outside the UK. These thresholds apply to cash and specified monetary instruments including notes and coins, bearer bonds, and signed travellers' cheques; for Northern Ireland the obligation also covers money orders, gold coins, bullion, and prepaid cards. Declarations are administered by HM Revenue & Customs (HMRC) through Border Force and derive from UK anti-money laundering legislation.",
+     "source": {
+      "url": "https://www.gov.uk/bringing-cash-into-uk",
+      "section": "Cash Declaration — Great Britain £10,000 / Northern Ireland €10,000"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "The United Kingdom maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+     "source": {
+      "url": "https://www.bankofengland.co.uk/monetary-policy",
+      "section": "Absence of Exchange Controls"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "UK residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+     "source": {
+      "url": "https://www.fca.org.uk/markets",
+      "section": "Resident Foreign Currency Accounts"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+     "source": {
+      "url": "https://www.fca.org.uk/markets",
+      "section": "Non-Resident Accounts & Transfers"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout the UK.",
+     "source": {
+      "url": "https://www.fca.org.uk/markets",
+      "section": "Authorised Dealers & Exchange Houses"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Bank of England — Monetary & FX Framework",
+     "url": "https://www.bankofengland.co.uk/monetary-policy",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "HM Revenue & Customs (HMRC) — Cash & Currency Declaration",
+     "url": "https://www.gov.uk/bringing-cash-into-uk",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "Financial Conduct Authority (FCA) — Foreign Exchange Regulation",
+     "url": "https://www.fca.org.uk/markets",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "National Crime Agency — UK Financial Intelligence Unit (UKFIU)",
+     "url": "https://www.nationalcrimeagency.gov.uk/what-we-do/crime-threats/money-laundering-and-illicit-finance/ukfiu",
+     "type": "fiu",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in the United Kingdom are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable HMRC / Bank of England / FCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with HM Revenue & Customs, the Bank of England, or a qualified professional before making any financial or travel decisions."
   }
  ]
 }
