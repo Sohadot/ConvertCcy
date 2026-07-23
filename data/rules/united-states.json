@@ -14,20 +14,20 @@
   "publication_class": "reference",
   "indexing_allowed": false,
   "source_notice": "",
-  "country_overview": "The United States Federal Reserve System (the Federal Reserve) is the central bank and sets monetary policy, while U.S. Customs and Border Protection (CBP) and the Financial Crimes Enforcement Network (FinCEN) administer cross-border currency reporting. The United States operates a highly open foreign-exchange framework: no general exchange controls or capital controls on current account and capital account movement were identified in the reviewed federal sources or accessible IMF materials, subject to carve-outs for sanctions (OFAC), AML/Bank Secrecy Act reporting, tax, and sector-specific requirements. The US dollar is the world's primary reserve currency.",
+  "country_overview": "The United States Federal Reserve System (the Federal Reserve) is the central bank and sets monetary policy, while U.S. Customs and Border Protection (CBP) and the Financial Crimes Enforcement Network (FinCEN) administer cross-border currency reporting. The United States has a free-floating exchange-rate arrangement; under IMF Article VIII it maintains an exchange system free of restrictions on payments and transfers for current international transactions (the US dollar is freely convertible, with no multiple currency practices), except for restrictions maintained solely for security reasons. Capital-account movements are separately regulated. The US dollar is the world's primary reserve currency.",
   "summary": {
     "traveler": "Travelers may carry unlimited US dollars or foreign currency, but any person transporting more than USD 10,000 in aggregate — cash or monetary instruments — into or out of the United States must file a Currency and Monetary Instrument Report (FinCEN Form 105) with CBP at the border. Amounts of USD 10,000 or less require no declaration.",
-    "business": "Businesses and individuals can generally hold, transfer, convert, and repatriate foreign currency through authorised institutions. No general exchange-control or prior-approval regime was identified in the reviewed sources, subject to sanctions, AML reporting, tax, and sector-specific requirements."
+    "business": "For current international transactions, businesses and individuals can make and receive payments and transfers without exchange restrictions under the United States' IMF Article VIII status, except for measures maintained solely for security reasons. Foreign-currency account access, repatriation, and capital-account movements are governed separately and remain an open evidence gap pending the US OECD reservation schedule."
   },
   "rules": {
     "bring_foreign_currency_in": "Foreign currency and US dollars may be imported without limit or prohibition. Any person bringing more than USD 10,000 in aggregate (cash or monetary instruments) into the United States must file FinCEN Form 105 (CMIR) with a CBP officer at the port of entry.",
     "take_foreign_currency_out": "US dollars and foreign currency may be exported without limit. Any person taking more than USD 10,000 in aggregate (cash or monetary instruments) out of the United States must file FinCEN Form 105 (CMIR) with CBP before departure; non-residents may freely re-export funds they lawfully brought in.",
     "cash_declaration_threshold": "The reporting threshold is USD 10,000. Under 31 U.S.C. 5316 and 31 CFR 1010.340, transporting an aggregate amount exceeding that figure across the US border triggers a mandatory Currency and Monetary Instrument Report (FinCEN Form 105) to CBP. This traveler border report is distinct from Bank Secrecy Act filings by financial institutions — Currency Transaction Reports (CTR) and Suspicious Activity Reports (SAR) — and from Foreign Bank Account Reports (FBAR); none of those is a traveler declaration.",
-    "resident_holding_rules": "No general prior-approval or exchange-control requirement barring US residents from holding or maintaining foreign-currency accounts with authorised institutions was identified in the reviewed federal sources or accessible IMF materials. Account access remains subject to sanctions screening, AML/KYC and reporting obligations, tax reporting, and institution-level requirements.",
-    "non_resident_rules": "For non-residents, no general prior-approval or exchange-control barrier to opening or operating accounts or transferring funds was identified in the reviewed sources. Onboarding and transfers remain subject to sanctions screening, AML/KYC, information-reporting and withholding rules, and each institution's own requirements.",
-    "business_invoicing_settlement": "Business transactions may be invoiced and settled in US dollars or foreign currency. No general exchange-control approval regime for cross-border commercial payments or repatriation was identified in the reviewed sources, subject to sanctions, AML reporting, tax, and sector-specific requirements.",
-    "exchange_controls": "No general exchange-control or prior-approval regime governing the holding, conversion, or cross-border movement of currency was identified in the reviewed federal sources or accessible IMF materials; the United States is an IMF member under Article IV surveillance. Specific carve-outs apply: OFAC-administered economic sanctions, Bank Secrecy Act / AML reporting, tax reporting, and sector or prudential rules.",
-    "banking_conversion_practicality": "In practice, foreign-exchange conversion and transfers are widely available through banks, licensed money-services businesses, and ATMs across the United States. Access is subject to each institution's AML/KYC and sanctions-screening procedures and to applicable reporting."
+    "resident_holding_rules": "Whether US residents may hold or maintain foreign-currency accounts without a general prior-approval regime is a capital-account / account-access question that the IMF Article VIII current-account finding does not settle. It is recorded as an open evidence gap pending the US reservation schedule under the OECD Code of Liberalisation of Capital Movements; account access is subject to sanctions, AML/KYC, tax, and prudential requirements.",
+    "non_resident_rules": "For non-residents, whether accounts may be opened and funds transferred without a general prior-approval regime is likewise a capital-account / account-access matter not settled by the IMF Article VIII current-account finding, and is recorded as an open evidence gap pending the US OECD reservation schedule. Onboarding is subject to sanctions screening, AML/KYC, information-reporting and withholding, and institution requirements.",
+    "business_invoicing_settlement": "Business transactions may be invoiced and settled in US dollars or foreign currency. For current international transactions, cross-border commercial payments are free of exchange restrictions under the United States' IMF Article VIII status, subject to sanctions, AML reporting, and tax requirements; capital-account elements are governed separately and are not established by that finding.",
+    "exchange_controls": "The United States has a free-floating exchange-rate arrangement and, having accepted IMF Article VIII, maintains an exchange system free of restrictions on payments and transfers for current international transactions, with no multiple currency practices — except for restrictions maintained solely for the preservation of national or international security, notified to the IMF. This finding covers current international transactions; capital-account movements are governed separately under the OECD Code of Liberalisation of Capital Movements and the US reservation schedule.",
+    "banking_conversion_practicality": "In practice, foreign-exchange conversion and transfers are widely offered by US banks, licensed money-services businesses, and ATMs. This is a practical-availability observation that has not been tied to a claim-specific official source, so it is recorded as an open evidence gap; access is subject to each institution's AML/KYC and sanctions-screening procedures."
   },
   "source_authorities": [
     {
@@ -55,20 +55,26 @@
       "tier": "primary"
     },
     {
-      "label": "31 CFR § 1010.340 — Cornell Legal Information Institute (authoritative republication, readability mirror)",
+      "label": "31 CFR § 1010.340 — Cornell LII (authoritative republication, readability mirror)",
       "url": "https://www.law.cornell.edu/cfr/text/31/1010.340",
       "type": "other",
       "tier": "secondary"
     },
     {
-      "label": "31 U.S.C. § 5316 — Cornell Legal Information Institute (authoritative republication, readability mirror)",
+      "label": "31 U.S.C. § 5316 — Cornell LII (authoritative republication, readability mirror)",
       "url": "https://www.law.cornell.edu/uscode/text/31/5316",
       "type": "other",
       "tier": "secondary"
     },
     {
-      "label": "International Monetary Fund — United States country page (Article IV surveillance; institutional secondary evidence). Note: the IMF AREAER database is login-gated and was not accessible for a specific edition/table citation.",
-      "url": "https://www.imf.org/en/Countries/USA",
+      "label": "IMF — United States 2026 Article IV Consultation (Country Report No. 2026/076): exchange-system findings (free-floating; Article VIII; no restrictions on current international payments except for security reasons; no multiple currency practices). Institutional secondary evidence.",
+      "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
+      "type": "multilateral",
+      "tier": "secondary"
+    },
+    {
+      "label": "OECD Code of Liberalisation of Capital Movements — Annex B holds each adhering country's capital-movement reservation schedule (including the United States). Institutional secondary evidence for capital-account/account-access fields.",
+      "url": "https://www.oecd.org/en/publications/oecd-code-of-liberalisation-of-capital-movements_9789264110779-en.html",
       "type": "multilateral",
       "tier": "secondary"
     }
@@ -81,9 +87,9 @@
         "section": "US monetary authority (Federal Reserve)"
       },
       {
-        "url": "https://www.imf.org/en/Countries/USA",
+        "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
         "pages": [],
-        "section": "IMF member under Article IV surveillance; open FX system — No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
+        "section": "Exchange system: free-floating; Article VIII; no restrictions on current international payments (except security); no multiple currency practices (IMF 2026 Article IV, CR 2026/076)"
       }
     ],
     "summary.traveler": [
@@ -95,9 +101,9 @@
     ],
     "summary.business": [
       {
-        "url": "https://www.imf.org/en/Countries/USA",
+        "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
         "pages": [],
-        "section": "No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
+        "section": "Current international transactions free of exchange restrictions under Article VIII (IMF 2026 Article IV); account/repatriation/capital aspects flagged as open evidence gap"
       }
     ],
     "rules.bring_foreign_currency_in": [
@@ -143,39 +149,39 @@
         "section": "31 U.S.C. 5316 — readability mirror (Cornell LII)"
       }
     ],
-    "rules.resident_holding_rules": [
+    "rules.exchange_controls": [
       {
-        "url": "https://www.imf.org/en/Countries/USA",
+        "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
         "pages": [],
-        "section": "No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
-      }
-    ],
-    "rules.non_resident_rules": [
-      {
-        "url": "https://www.imf.org/en/Countries/USA",
-        "pages": [],
-        "section": "No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
+        "section": "Free-floating arrangement; Article VIII exchange system free of restrictions on current international payments, no MCP, security-reason exception; current-account scope only (IMF 2026 Article IV, CR 2026/076)"
       }
     ],
     "rules.business_invoicing_settlement": [
       {
-        "url": "https://www.imf.org/en/Countries/USA",
+        "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
         "pages": [],
-        "section": "No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
+        "section": "Current international transactions free of exchange restrictions under Article VIII (IMF 2026 Article IV); capital-account elements governed separately"
       }
     ],
-    "rules.exchange_controls": [
+    "rules.resident_holding_rules": [
       {
-        "url": "https://www.imf.org/en/Countries/USA",
+        "url": "https://www.oecd.org/en/publications/oecd-code-of-liberalisation-of-capital-movements_9789264110779-en.html",
         "pages": [],
-        "section": "No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
+        "section": "[HARDENING] Capital-account/account-access — not settled by the IMF Article VIII current-account finding. The specific US reservation record in OECD Code Annex B has not yet been extracted/confirmed (large PDF, no tooling available); open evidence gap, publish_ready blocked for this field."
+      }
+    ],
+    "rules.non_resident_rules": [
+      {
+        "url": "https://www.oecd.org/en/publications/oecd-code-of-liberalisation-of-capital-movements_9789264110779-en.html",
+        "pages": [],
+        "section": "[HARDENING] Capital-account/account-access — not settled by the IMF Article VIII current-account finding. The specific US reservation record in OECD Code Annex B has not yet been extracted/confirmed (large PDF, no tooling available); open evidence gap, publish_ready blocked for this field."
       }
     ],
     "rules.banking_conversion_practicality": [
       {
-        "url": "https://www.imf.org/en/Countries/USA",
+        "url": "https://www.oecd.org/en/publications/oecd-code-of-liberalisation-of-capital-movements_9789264110779-en.html",
         "pages": [],
-        "section": "Practical availability of FX conversion/transfer; No general exchange-control/prior-approval regime identified in the reviewed federal sources or the accessible IMF United States page; AREAER database login-gated (definitive AREAER citation pending). Claim narrowed with explicit carve-outs (sanctions/AML/tax/reporting/prudential)."
+        "section": "[HARDENING] Practical-availability observation not tied to a claim-specific official source; open evidence gap. [HARDENING] Capital-account/account-access — not settled by the IMF Article VIII current-account finding. The specific US reservation record in OECD Code Annex B has not yet been extracted/confirmed (large PDF, no tooling available); open evidence gap, publish_ready blocked for this field."
       }
     ]
   },
