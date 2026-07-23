@@ -1029,3 +1029,24 @@ Independent evidence-acquisition phase. The recurring blocker on the United Stat
 
 Status: ✅ tooling blocker resolved; claim-specific page-pinpointed evidence captured for all six `[HARDENING]` fields across the two countries, pending independent review. Recommended follow-ups (not executed here): P8C-2b (South Africa hardening close) and P8B-2c (United States hardening close), each re-taking its country to the readiness gate under the P8C-2a consistency rule.
 Verified: 2026-07-23.
+
+### P8C-2b — South Africa Hardening Close
+
+Applied the independently reviewed P8D-0 evidence to clear all three South Africa `[HARDENING]` markers and advance the country `source_review_ready → publish_ready`. All three fields are now sourced field-by-field to the **Currency and Exchanges Manual for Authorised Dealers, live version 2026-06-25** (SHA-256 `b949e437…c494`), with the exact PDF URL and pinpointed page numbers in `source_map`.
+
+- **`resident_holding_rules`** — single discretionary allowance **R2 million** per calendar year (pp. 102, 111) and foreign capital allowance **R10 million** per applicant per calendar year (pp. 48, 111), processed through Authorised Dealers and subject to the SARS Tax Compliance Status (TCS) process; the two annual limits may not be exceeded.
+- **`non_resident_rules`** — exchange controls on non-residents **abolished**; qualifying non-resident income and securities proceeds **freely transferable** (p. 197); settlement via **Non-resident Rand / vostro accounts** through Authorised Dealers (p. 120); funds introduced from abroad may be **retransferred** (p. 118).
+- **`banking_conversion_practicality`** — Authorised Dealer **customer due diligence under section 21 of the FIC Act** (p. 113); cross-border transactions reported through the **SARB Reporting System** with prescribed purpose codes (p. 99).
+
+**Manual version updated** from 2026-05-15 to **2026-06-25** in the operative references (the rules-file source authority label and the source-intake-matrix SARB note). The historical DECISION_LOG P8C-1 entry and the P8D-0 evidence record are left intact as the append-only audit trail that documents the version correction itself — later entries supersede earlier ones rather than rewriting them.
+
+**Traveller-source separation preserved.** The **R25 000** rand-carrying limit stays sourced to the **SARS Departure** page and the **R100 000** excess-currency permission to the **SARS Travellers** page. The Manual's own R25 000 (an ADLA money-transfer cap, pp. 23/113) is deliberately **not** used for the traveller field.
+
+**`[HARDENING]` removed only after** each field's `source_map` was rewritten to cite the exact Manual PDF URL with non-empty page lists (satisfying the PDF-pages-for-verified invariant). Zero `[HARDENING]` markers remain in `data/rules/south-africa.json`.
+
+**Boundary held.** `page_status: verified`, `evidence_tier: official_verified`, `indexing_allowed: false`; advanced only `source_review_ready → publish_ready`; no rules page, brief, API route, Passage Check entry, sitemap URL, or llms.txt exposure; no publication or deployment; no other country changed (United States remains at `source_review_ready`).
+
+**Governance Gate:** all five pass; `validate_rules.py` clean (0/0); maximum pairwise rule-field similarity 0.33 (< 0.72). Leakage check: zero occurrences of `south-africa` in `sitemap.xml`, Passage Check, `api/v1/rules/`, `briefs/`, or `llms.txt`.
+
+Status: ✅ South Africa hardening closed on pinpointed primary evidence and advanced to `publish_ready`. Not published, not indexed, no public surface. United States remains at `source_review_ready` pending P8B-2c (its Annex B page-134 evidence is captured in P8D-0). Next step (a later, separate phase): South Africa publication + Deployment Gate.
+Verified: 2026-07-23.
