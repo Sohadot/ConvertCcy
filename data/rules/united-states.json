@@ -37,22 +37,34 @@
       "tier": "primary"
     },
     {
-      "label": "31 CFR § 1010.340 — Reports of transportation of currency or monetary instruments (FinCEN Form 105 / CMIR), administered at the border by U.S. Customs and Border Protection",
-      "url": "https://www.law.cornell.edu/cfr/text/31/1010.340",
+      "label": "31 CFR § 1010.340 — Reports of transportation of currency or monetary instruments (FinCEN Form 105 / CMIR) — official eCFR",
+      "url": "https://www.ecfr.gov/current/title-31/section-1010.340",
       "type": "primary_regulator_rule_page",
       "tier": "primary"
     },
     {
-      "label": "31 U.S.C. § 5316 — Reports on exporting and importing monetary instruments",
-      "url": "https://www.law.cornell.edu/uscode/text/31/5316",
+      "label": "31 U.S.C. § 5316 — Reports on exporting and importing monetary instruments — official U.S. Code (OLRC)",
+      "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title31-section5316&num=0&edition=prelim",
       "type": "regulator",
       "tier": "primary"
     },
     {
-      "label": "Financial Crimes Enforcement Network (FinCEN) — Bank Secrecy Act administrator; FinCEN Form 105 (CMIR)",
-      "url": "https://www.fincen.gov/",
+      "label": "FinCEN Form 105 — Report of International Transportation of Currency or Monetary Instruments (CMIR), official form",
+      "url": "https://www.fincen.gov/sites/default/files/shared/fin105_cmir.pdf",
       "type": "fiu",
       "tier": "primary"
+    },
+    {
+      "label": "31 CFR § 1010.340 — Cornell Legal Information Institute (authoritative republication, readability mirror)",
+      "url": "https://www.law.cornell.edu/cfr/text/31/1010.340",
+      "type": "other",
+      "tier": "secondary"
+    },
+    {
+      "label": "31 U.S.C. § 5316 — Cornell Legal Information Institute (authoritative republication, readability mirror)",
+      "url": "https://www.law.cornell.edu/uscode/text/31/5316",
+      "type": "other",
+      "tier": "secondary"
     }
   ],
   "source_map": {
@@ -60,87 +72,99 @@
       {
         "url": "https://www.federalreserve.gov/monetarypolicy.htm",
         "pages": [],
-        "section": "US monetary authority and FX regime"
+        "section": "US monetary authority (Federal Reserve). [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
       }
     ],
     "summary.traveler": [
       {
-        "url": "https://www.law.cornell.edu/cfr/text/31/1010.340",
+        "url": "https://www.ecfr.gov/current/title-31/section-1010.340",
         "pages": [],
-        "section": "Traveler cross-border currency reporting (Form 105 / CMIR)"
+        "section": "Traveler cross-border currency reporting — Form 105 / CMIR"
       }
     ],
     "summary.business": [
       {
         "url": "https://www.federalreserve.gov/monetarypolicy.htm",
         "pages": [],
-        "section": "Liberalised current and capital account"
+        "section": "Liberalised current/capital account. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
       }
     ],
     "rules.bring_foreign_currency_in": [
       {
-        "url": "https://www.law.cornell.edu/cfr/text/31/1010.340",
+        "url": "https://www.ecfr.gov/current/title-31/section-1010.340",
         "pages": [],
-        "section": "Import of currency — Form 105 filing over USD 10,000"
+        "section": "Import of currency — Form 105 filing for transport over USD 10,000"
       }
     ],
     "rules.take_foreign_currency_out": [
       {
-        "url": "https://www.law.cornell.edu/cfr/text/31/1010.340",
+        "url": "https://www.ecfr.gov/current/title-31/section-1010.340",
         "pages": [],
-        "section": "Export of currency — Form 105 filing over USD 10,000"
+        "section": "Export of currency — Form 105 filing for transport over USD 10,000"
       }
     ],
     "rules.cash_declaration_threshold": [
       {
+        "url": "https://www.ecfr.gov/current/title-31/section-1010.340",
+        "pages": [],
+        "section": "31 CFR 1010.340 — report of transportation exceeding USD 10,000 (official eCFR)"
+      },
+      {
+        "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title31-section5316&num=0&edition=prelim",
+        "pages": [],
+        "section": "31 U.S.C. 5316 — statutory basis (official U.S. Code)"
+      },
+      {
+        "url": "https://www.fincen.gov/sites/default/files/shared/fin105_cmir.pdf",
+        "pages": [
+          1
+        ],
+        "section": "FinCEN Form 105 (CMIR) — the official report form"
+      },
+      {
         "url": "https://www.law.cornell.edu/cfr/text/31/1010.340",
         "pages": [],
-        "section": "31 CFR 1010.340 — reporting of transportation exceeding USD 10,000"
+        "section": "31 CFR 1010.340 — readability mirror (Cornell LII)"
       },
       {
         "url": "https://www.law.cornell.edu/uscode/text/31/5316",
         "pages": [],
-        "section": "31 U.S.C. 5316 — statutory basis for the transport report"
-      },
-      {
-        "url": "https://www.fincen.gov/",
-        "pages": [],
-        "section": "FinCEN Form 105 (CMIR) administrator"
+        "section": "31 U.S.C. 5316 — readability mirror (Cornell LII)"
       }
     ],
     "rules.resident_holding_rules": [
       {
         "url": "https://www.federalreserve.gov/monetarypolicy.htm",
         "pages": [],
-        "section": "No restriction on resident foreign-currency accounts"
+        "section": "Resident foreign-currency accounts. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
       }
     ],
     "rules.non_resident_rules": [
       {
         "url": "https://www.federalreserve.gov/monetarypolicy.htm",
         "pages": [],
-        "section": "No restriction on non-resident accounts and transfers"
+        "section": "Non-resident accounts and transfers. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
       }
     ],
     "rules.business_invoicing_settlement": [
       {
         "url": "https://www.federalreserve.gov/monetarypolicy.htm",
         "pages": [],
-        "section": "Free cross-border business settlement"
+        "section": "Cross-border business settlement. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
       }
     ],
     "rules.exchange_controls": [
       {
         "url": "https://www.federalreserve.gov/monetarypolicy.htm",
         "pages": [],
-        "section": "Absence of exchange controls"
+        "section": "Absence of exchange controls. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
       }
     ],
     "rules.banking_conversion_practicality": [
       {
         "url": "https://www.federalreserve.gov/monetarypolicy.htm",
         "pages": [],
-        "section": "Authorised dealers and exchange availability"
+        "section": "Authorised dealers / exchange availability. [HARDENING] Federal Reserve monetary-policy page does not substantiate this liberalisation claim; a dedicated official source is required (or the claim narrowed) before publish_ready."
       }
     ]
   },
