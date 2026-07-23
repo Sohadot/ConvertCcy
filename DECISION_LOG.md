@@ -908,4 +908,29 @@ Merge to `main` does not close a phase (mirrors the P8A-1 closure). PR #33 merge
 Status: ✅ P8B-1 CLOSED — United States is `source_review_ready` in the intake layer, with no public exposure. The three recorded findings (CBP source URL, FinCEN Form 105 pointer, and the `cash_declaration_threshold` mis-framing) are carried into P8B-2, the publication-candidate review, which is the next US step.
 Verified: 2026-07-23.
 
+### P8B-2 — United States Publication-Candidate Review
+
+The US analog of P8A-2: a full content-and-source pass over `data/rules/united-states.json` against the validation pipeline and content-quality criteria, advancing `source_review_ready → publish_ready`. Scope boundary: this phase edits the rules file's content and sources but `page_status` stays `verified` — no rules page, brief, or API route is created, and `sitemap.xml`, Passage Check, and `llms.txt` are untouched. It does **not** publish; publication is a later, separately reviewed P8B-3 with its own deployment gate.
+
+**The three P8B-1 findings — resolved:**
+
+1. **`cash_declaration_threshold` mis-framing (the critical defect).** The field read "No mandatory currency declaration threshold applies for ordinary travelers … must be reported … under anti-money laundering rules" — factually wrong and self-contradicting, since the sibling `bring_foreign_currency_in` / `take_foreign_currency_out` fields already stated the mandatory FinCEN Form 105 filing. Rewritten to state the threshold plainly: transporting an aggregate amount **exceeding USD 10,000** across the US border is a **mandatory** Currency and Monetary Instrument Report (FinCEN Form 105 / CMIR) to CBP under **31 U.S.C. § 5316** and **31 CFR § 1010.340**, and is explicitly distinguished from institutional Bank Secrecy Act filings — CTR (31 U.S.C. 5313), SAR, and FBAR — none of which is a traveler declaration.
+2. **CBP source URL.** The off-topic CBP "prohibited-and-restricted-items" URL (which returned HTTP 403 and did not cover currency) was removed from `source_authorities` and `source_map`. The declaration is now sourced to 31 CFR § 1010.340 and 31 U.S.C. § 5316 (the CMIR legal basis), with CBP named in the rule prose as the administering border agency.
+3. **FinCEN pointer.** FinCEN re-tagged from `regulator` to `fiu` (its correct schema type), retained as the Form 105 / CMIR administrator.
+
+**Additional content-quality defects found and fixed in the same pass:**
+
+- **`country_overview` duplication.** The overview repeated the opening sentence nearly verbatim ("The United States Federal Reserve System … oversees the monetary policy and currency regime" twice) and mislabeled the Federal Reserve as "the primary regulator." Rewritten once, correctly: the Fed is the central bank setting monetary policy, while CBP and FinCEN administer cross-border currency reporting.
+- **`summary.traveler`** corrected to state that transport over USD 10,000 requires the mandatory Form 105 declaration, rather than implying none is required.
+- **Precision.** "USD 10,000 or more" was corrected to "more than USD 10,000" across the declaration fields, matching the statutory language ("more than $10,000" / "exceeding $10,000") — an amount of exactly USD 10,000 does not trigger the report.
+
+**Source set (all live-verified 2026-07-23, HTTPS, primary):** Federal Reserve (`central_bank`, federalreserve.gov); 31 CFR § 1010.340 (`primary_regulator_rule_page`); 31 U.S.C. § 5316 (`regulator`); FinCEN (`fiu`, fincen.gov). `source_map` was rebuilt so every field cites one of these four and every authority is cited at least once; the liberalised-regime fields (resident, non-resident, business settlement) were remapped from FinCEN to the Federal Reserve as the more appropriate monetary authority.
+
+**Transparency on verification:** the official .gov hosts for the statute and regulation (`ecfr.gov`, `uscode.house.gov`) and `cbp.gov` bot-block automated fetching (403 / redirect to a challenge page). The verbatim statutory and regulatory text was therefore verified live via the Cornell Legal Information Institute (`law.cornell.edu`), a recognized authoritative host of the official U.S. Code and CFR; the Federal Reserve and FinCEN pages were fetched directly and confirmed live.
+
+**Governance Gate:** all five checks pass locally. `validate_rules.py` clean (0 errors, 0 warnings); maximum pairwise rule similarity 0.66 (< 0.72). Boundary confirmed: US `page_status: verified`, no public route, zero occurrences in sitemap / passage-check / llms.
+
+Status: ✅ United States advanced `source_review_ready → publish_ready` in the intake layer, with the rules file corrected to superior-quality, source-mapped content. Not published. Next step: P8B-3 — the United States publication release (the P8A-3 analog: `page_status verified → published`, passage-check transcription, artifact regeneration, and a live deployment gate), a separately reviewed phase.
+Verified: 2026-07-23.
+
 
