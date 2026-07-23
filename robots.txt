@@ -4,4 +4,7 @@ Allow: /
 # Preview / internal build surfaces are not part of the public sovereign layer
 Disallow: /preview/
 
+# Cloudflare email-protection endpoint — not a real page, returns 404 when crawled
+Disallow: /cdn-cgi/
+
 Sitemap: https://convertccy.com/sitemap.xml
