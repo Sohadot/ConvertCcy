@@ -896,4 +896,16 @@ These four must never be merged into a single rule, and CTR/SAR/FBAR must never 
 Status: ✅ United States promoted `candidate_only → source_review_ready` in the intake layer only. Not `publish_ready`, not published. Next step: P8B-2 publication-candidate review, which must resolve the three findings above before UK's-style `publish_ready`.
 Verified: 2026-07-23.
 
+### P8B-1 CLOSED — post-merge intake verification
+
+Merge to `main` does not close a phase (mirrors the P8A-1 closure). PR #33 merged as `7791aa8162bd94f9e590d128e3d0ff9dc7018167`. Verified on `origin/main` that the intake stayed inside its boundary and leaked nothing onto a public surface:
+
+- `data/coverage/g20-expansion-candidates.json`: United States `status: source_review_ready`; not in `existing_published_jurisdictions`.
+- `data/coverage/source-intake-matrix.json`: US source categories recorded `verified_on_file` (monetary, customs, FIU) with the live-verification notes and the customs-vs-BSA separation.
+- `data/rules/united-states.json`: `page_status` still `verified` — unchanged, not published.
+- No US public route exists (`/rules/`, `/briefs/`, `/api/v1/rules/`), and `united-states` appears **0** times in `sitemap.xml`, `rules/passage-check.json`, `llms.txt`, and `api/v1/rules-index.json`.
+
+Status: ✅ P8B-1 CLOSED — United States is `source_review_ready` in the intake layer, with no public exposure. The three recorded findings (CBP source URL, FinCEN Form 105 pointer, and the `cash_declaration_threshold` mis-framing) are carried into P8B-2, the publication-candidate review, which is the next US step.
+Verified: 2026-07-23.
+
 
