@@ -96,7 +96,7 @@
       { "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents", "pages": [], "section": "Exchange controls administered by SARB Financial Surveillance under the Exchange Control Regulations, 1961; current-account liberalised, capital-account controlled", "source_kind": "html" }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents", "pages": [], "section": "Authorised Dealers and ADLAs licensed by SARB; documentary evidence, reporting and Financial Intelligence Centre Act obligations", "source_kind": "html" }
+      { "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents", "pages": [], "section": "Authorised Dealers and ADLAs licensed by SARB; documentary evidence, reporting and Financial Intelligence Centre Act obligations. [HARDENING] The FinSurv Documents page confirms the two dealer categories and FICA exist, but the specific licensing/authorisation, documentary-evidence and operational conversion/transfer provisions are set in the Currency and Exchanges Manual PDFs, which could not be pinpointed to a page (no PDF page-pinpoint tooling); open evidence gap.", "source_kind": "html" }
     ]
   },
 
