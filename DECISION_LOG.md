@@ -866,4 +866,34 @@ Deployment notes:
 Status: ✅ P8A-3 CLOSED — United Kingdom is live in the published sovereign layer (9 jurisdictions). No further phase may open against P8A-3; the next country (United States) begins with its own publication-candidate review.
 Verified: 2026-07-23.
 
+### P8B-1 — United States Source Intake
+
+The US analog of P8A-1. Goal, and hard boundary of this phase: `candidate_only → source_review_ready` only. `data/rules/united-states.json` `page_status` remains `verified`; no rules page, brief, or API route is created; `sitemap.xml`, Passage Check, and `llms.txt` are untouched; no advance to `publish_ready`. `missing_sources: []` was NOT treated as evidence of readiness — each source was reviewed live and dated.
+
+**Live source verification (2026-07-23):**
+
+- **Federal Reserve (monetary authority)** — https://www.federalreserve.gov/monetarypolicy.htm — live, authoritative. FX/exchange-rate framing is tangential on this page, acceptable per the pattern used across published entries.
+- **Traveler currency-declaration legal basis** — **31 U.S.C. § 5316** (https://www.law.cornell.edu/uscode/text/31/5316) and **31 CFR § 1010.340** (https://www.law.cornell.edu/cfr/text/31/1010.340) — both live-verified. They establish that any person transporting monetary instruments exceeding USD 10,000 into or out of the United States must file a report (FinCEN Form 105 / CMIR). These are stronger, primary-law sources than what was on file.
+- **US Customs and Border Protection (CBP)** — the on-file URL (`/prohibited-and-restricted-items`) is off-topic (prohibited goods, not currency) and returned HTTP 403. CBP is the correct administering agency, but this URL must be replaced with a CBP/FinCEN currency-reporting page before `publish_ready`.
+- **FinCEN (FIU/AML)** — https://www.fincen.gov/ — live, the Treasury BSA administrator, but a generic landing page that does not itself document Form 105/CMIR; point to the Form 105 page specifically in the next phase.
+
+**The customs vs BSA/AML separation (binding boundary, verified at statute level):**
+
+- **FinCEN Form 105 / CMIR** (31 U.S.C. 5316; 31 CFR 1010.340) — the mandatory *traveler* cross-border transport declaration of currency/monetary instruments over USD 10,000, administered by CBP at the border.
+- **CTR** (Currency Transaction Report, 31 U.S.C. 5313) — filed by *financial institutions* for cash transactions; not a traveler declaration.
+- **SAR** (Suspicious Activity Report) and **FBAR** (Foreign Bank Account Report) — institutional / foreign-account reporting; not a traveler border declaration.
+
+These four must never be merged into a single rule, and CTR/SAR/FBAR must never be presented as a traveler border declaration. This is a defect class already caught once in the P2 ontology review; recorded here again as a standing guard for the US publication-candidate review.
+
+**Findings recorded for the publication-candidate review (P8B-2), not fixed in this phase:**
+
+1. Replace the CBP source URL in `data/rules/united-states.json` with a page that actually covers the currency-reporting requirement (and/or cite 31 U.S.C. 5316 / 31 CFR 1010.340 and FinCEN Form 105 directly).
+2. Point the FinCEN source at the Form 105 / CMIR page rather than the homepage.
+3. The current `cash_declaration_threshold` prose reads "No mandatory currency declaration threshold applies for ordinary travelers … must be reported … under anti-money laundering rules." Per the verified primary law this is a mis-framing: the US **does** impose a mandatory traveler declaration (FinCEN Form 105 / CMIR) above USD 10,000. This content must be corrected in P8B-2 so the mandatory declaration is stated plainly and attributed to CMIR, not to a generic AML reporting trigger.
+
+**Governance Gate:** all five checks pass locally.
+
+Status: ✅ United States promoted `candidate_only → source_review_ready` in the intake layer only. Not `publish_ready`, not published. Next step: P8B-2 publication-candidate review, which must resolve the three findings above before UK's-style `publish_ready`.
+Verified: 2026-07-23.
+
 
