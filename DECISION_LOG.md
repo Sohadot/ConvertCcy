@@ -949,4 +949,28 @@ Goal: harden the US liberalisation fields with claim-specific institutional evid
 Status: ✅ current-account liberalisation claims closed with the exact IMF Article IV Informational Annex (claim-specific, verbatim confirmed). ⏸️ three capital-account/account-access fields retain `[HARDENING]`; `publish_ready` remains BLOCKED until resolved with a claim-specific OECD US reservation record (or another specialised source). United States held at `source_review_ready`.
 Verified: 2026-07-23.
 
+### P8C-1 — South Africa Source Intake Review
+
+The South Africa analog of P8B-1: a fresh source-by-source intake review advancing South Africa `candidate_only → source_review_ready`. Scope boundary held: `data/rules/south-africa.json` `page_status` stays `verified` and its content is untouched; no rules page, brief, API route, Passage Check entry, sitemap URL, or llms.txt exposure is created; no `publish_ready`; no other country changed.
+
+**Live source verification (2026-07-23):**
+
+- **South African Reserve Bank (SARB), Financial Surveillance Department — exchange control.** FinSurv Documents page (`resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents`) verified live; the controlling document is the **Currency and Exchanges Manual for Authorised Dealers, version 2026-05-15**, supported by the 2026 exchange-control circulars. This governs exchange-control approvals, the authorised-dealer framework, and the R25,000 rand / R100,000 excess-currency limits.
+- **South African Revenue Service (SARS) — customs traveller currency declaration.** Travellers page (`sars.gov.za/customs-and-excise/travellers/`) verified live: a **mandatory online Traveller Declaration for all travellers from 1 July 2026**, plus the **manual Traveller Declaration form (TD-01)**; 'excess currency' exceeding **R100,000** (or foreign currency convertible to Rand over R100,000) requires **SARB written permission**.
+- **Financial Intelligence Centre (FIC) — AML/FIU** under the FIC Act, 2001 (`fic.gov.za`): identified. Non-blocking — the SA currency-passage declaration rests on SARS (customs) and SARB (exchange control); a claim-specific FIC citation is needed only if AML-reporting fields are added in the publication-candidate review.
+
+**Critical distinctions kept separate (not conflated):** (1) exchange-control approvals and authorised-dealer rules — SARB; (2) physical cash / customs declaration at the border — SARS; (3) AML reporting — FIC. Field-level mapping: exchange controls, resident/non-resident rules, allowances, capital transfers, foreign-currency accounts, and repatriation are governed by SARB; the physical import/export declaration, thresholds, and administered authority by SARS; AML context by FIC.
+
+**Intake findings recorded for the publication-candidate review (P8C-2) — not fixed in this phase:**
+
+1. The on-file `cash_declaration_threshold` ("ZAR 25,000 or equivalent … Declaration to SARS is mandatory") is a **conflation and is incorrect**: R25,000 is the SARB exchange-control limit on physically carrying South African rand; 'excess currency' over R100,000 requires SARB written permission; SARS administers the traveller declaration. Exchange control (SARB), customs declaration (SARS), and AML (FIC) must be stated distinctly.
+2. The SARS **mandatory online traveller declaration takes effect 1 July 2026** — confirm the current effective process at P8C-2.
+3. `data/rules/south-africa.json` currently cites the **generic `resbank.co.za` / `sars.gov.za` homepages**; replace them with the claim-specific URLs above (Currency and Exchanges Manual v2026-05-15; SARS Travellers page) in P8C-2.
+4. `missing_sources` still lists the FIC (AML) authority; it is identified but not claim-specifically cited, and is non-blocking for the currency-passage rules.
+
+**Governance Gate:** all five checks pass. Proof no public surface changed: SA `page_status: verified`, no `/rules/`, `/briefs/`, or `/api/v1/rules/` route, and zero occurrences of `south-africa` in `sitemap.xml`, Passage Check, or `llms.txt`.
+
+Status: ✅ South Africa advanced `candidate_only → source_review_ready` in the intake layer, with SARB (exchange control) and SARS (customs declaration) verified live against claim-specific, dated official sources and the SARB/SARS/FIC distinction recorded. Not `publish_ready`, not published. Next step: P8C-2 publication-candidate review, which must resolve the four findings above.
+Verified: 2026-07-23.
+
 
