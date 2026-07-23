@@ -26,17 +26,8 @@
   "not_applicable": "This source category is not currently believed to be needed for this candidate's currency-passage rules (starting assumption only, may change once research begins)."
  },
  "not_applicable_note": "tax_treasury_ministry_source is marked not_applicable for every candidate below because no candidate in this G20+ intake round has an identified currency-passage rule that depends specifically on a tax/treasury/ministry source distinct from its central bank or customs authority. This may change during actual research; not_applicable is a starting assumption, not a permanent exclusion.",
- "count": 13,
+ "count": 12,
  "matrix": [
-  {
-   "country_slug": "united-kingdom",
-   "sources": {
-    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Bank of England — Monetary & FX Framework", "note": "On file in data/rules/united-kingdom.json"},
-    "customs_or_border_authority": {"status": "verified_on_file", "label": "HM Revenue & Customs (HMRC) — Cash & Currency Declaration", "note": "On file in data/rules/united-kingdom.json"},
-    "financial_intelligence_unit_or_aml_authority": {"status": "verified_on_file", "label": "National Crime Agency — UK Financial Intelligence Unit (UKFIU)", "note": "On file in data/rules/united-kingdom.json — live-verified 2026-07-08: https://www.nationalcrimeagency.gov.uk/what-we-do/crime-threats/money-laundering-and-illicit-finance/ukfiu"},
-    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
-   }
-  },
   {
    "country_slug": "united-states",
    "sources": {

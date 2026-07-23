@@ -113,6 +113,24 @@ DECLARATION = {
         "note": "The trigger is a COMBINED declarable value across several asset categories, "
                 "not cash alone, and applies to passengers aged eighteen and above.",
     },
+    "united-kingdom": {
+        "thresholds": [
+            {"value": 10000, "currency": "GBP",
+             "scope": "cash and specified monetary instruments (notes and coins, bearer bonds, signed travellers' cheques), or equivalent in foreign currency",
+             "applies": "Great Britain (England, Scotland, Wales), entering or leaving the UK",
+             "authority": "HM Revenue & Customs (HMRC) via Border Force",
+             "mechanism": "mandatory declaration"},
+            {"value": 10000, "currency": "EUR",
+             "scope": "cash and specified monetary instruments (also money orders, gold coins, bullion, prepaid cards), or equivalent",
+             "applies": "Northern Ireland, travelling to or from a non-EU country outside the UK",
+             "authority": "HM Revenue & Customs (HMRC) via Border Force",
+             "mechanism": "mandatory declaration"},
+        ],
+        "note": "Two thresholds by jurisdiction: Great Britain applies GBP 10,000 (or equivalent) "
+                "on entering or leaving the UK; Northern Ireland applies EUR 10,000 (or equivalent) "
+                "when travelling between NI and a non-EU country outside the UK. Both derive from UK "
+                "anti-money-laundering legislation and are administered by HMRC through Border Force.",
+    },
 }
 
 # Transcribed exchange-controls posture, read from rules.exchange_controls prose.
@@ -128,6 +146,7 @@ EXCHANGE_CONTROLS = {
                  "No general exchange controls on the current account; capital account regulated by the SBP"),
     "united-arab-emirates": ("supervisory_peg",
                              "No per-transaction approval controls; supervisory posture around the US-dollar peg, current-account flows largely liberal"),
+    "united-kingdom": ("none", "No general exchange controls (fully liberalised for current and capital account)"),
 }
 
 # Which rule fields the engine surfaces, and the ontology class each maps into.

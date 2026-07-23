@@ -822,4 +822,27 @@ Strategic result:
 P4 reduces scaled-content exposure by adding evidence-bound jurisdictional context to pair pages while preserving URL stability, indexability, and the existing pair-page graph.
 Verified: 2026-07-05.
 
+### P8A-3 — United Kingdom Publication Release
+
+P8A-1 promoted the United Kingdom to `source_review_ready`; P8A-2 was the publication-candidate review that advanced it to `publish_ready` (all ten validation gates passing, content defects repaired, `page_status` deliberately left `verified`, no public route created). P8A-3 is the final publication step: the six-gate publication pipeline that sets `page_status: verified → published` and creates the UK's public sovereign routes. This is the one documented next step for the UK; no other candidate is touched.
+
+This is a single-country, one-concern change. The 8 previously published jurisdictions are unaffected except for regenerated artifact timestamps. No pair pages, canonicals, `noindex`, robots policy, Cloudflare configuration, or the GSC indexing question are touched, and no other candidate advances.
+
+**Publication actions (United Kingdom only):**
+
+- `data/rules/united-kingdom.json`: `page_status` `verified` → `published`; `indexing_allowed` `false` → `true`. No rule prose, source, or review date changed.
+- `scripts/build_passage_check.py`: added the UK's hand-verified declaration-threshold transcription, read directly off `rules.cash_declaration_threshold`. The UK is a **two-tier jurisdiction**: Great Britain applies **GBP 10,000** (or equivalent) on entering or leaving the UK; Northern Ireland applies **EUR 10,000** (or equivalent) when travelling between NI and a non-EU country outside the UK. Both derive from UK anti-money-laundering legislation and are administered by HM Revenue & Customs through Border Force. Exchange-controls posture transcribed as `none` (fully liberalised, current and capital account). The drift guard confirms the transcription table and published dataset agree.
+- Coverage graduation: the UK moves out of the intake pipeline. It is removed from `data/coverage/g20-expansion-candidates.json` `candidates` and from `data/coverage/source-intake-matrix.json` `matrix`, and added to `existing_published_jurisdictions`. Each `count` decremented 13 → 12. This is required by `validate_coverage_intake.py`, which forbids any candidate carrying status `published` or appearing on a public surface — a published country belongs in the published registry, not the candidate list.
+- Regenerated artifacts (generators are the source of truth): `rules/` public page + index, `rules/dataset.json` (count 8 → 9), `rules/passage-check.json`, the Static Agent Interface under `api/v1/` (rules-index count 8 → 9, new `api/v1/rules/united-kingdom.json`), the passage brief + index, `data/generated/rules_manifest.json`, `data/rules_index.json`, and `sitemap.xml`. The UK draft was removed from `/preview/rules/verified/`.
+
+**New public routes:**
+
+- `/rules/united-kingdom-foreign-currency-rules.html`
+- `/briefs/united-kingdom-passage-brief.html`
+- `/api/v1/rules/united-kingdom.json`
+
+**Governance Gate:** all five checks pass locally — `validate_rules.py` (0 errors, 0 warnings), `rules_quality_gate.py` (PASS v1.2.1), `validate_coverage_intake.py` (12 candidates, no leak, UK confirmed graduated), `validate_generated_artifacts.py` (no drift), `validate_site_hygiene.py` (no preview leak).
+
+Status: prepared for release on merge — this raises the published sovereign layer from 8 to 9 jurisdictions, completing the first G20 publication cycle after UK.
+
 

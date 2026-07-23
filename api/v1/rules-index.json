@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-07-07T17:16:24+00:00",
+ "generated_at": "2026-07-23T13:28:06+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -12,8 +12,8 @@
  "canonical_url": "https://convertccy.com/api/v1/rules-index.json",
  "documentation": "https://convertccy.com/api.html",
  "title": "ConvertCCY Published Jurisdictions Index",
- "source_dataset_generated_at": "2026-07-04T17:53:38+00:00",
- "count": 8,
+ "source_dataset_generated_at": "2026-07-23T13:28:06+00:00",
+ "count": 9,
  "coverage_note": "Lists only jurisdictions that have passed ConvertCCY's published, source-mapped review gate. Absence from this list means not yet published — never infer coverage from a currency code.",
  "countries": [
   {
@@ -119,6 +119,19 @@
    "rules_page": "/rules/united-arab-emirates-foreign-currency-rules.html",
    "brief_page": "/briefs/united-arab-emirates-passage-brief.html",
    "api_path": "/api/v1/rules/united-arab-emirates.json"
+  },
+  {
+   "country_name": "United Kingdom",
+   "country_slug": "united-kingdom",
+   "iso2": "GB",
+   "iso3": "GBR",
+   "region": "Western Europe",
+   "currency_code": "GBP",
+   "currency_name": "British Pound Sterling",
+   "last_reviewed": "2026-07-08",
+   "rules_page": "/rules/united-kingdom-foreign-currency-rules.html",
+   "brief_page": "/briefs/united-kingdom-passage-brief.html",
+   "api_path": "/api/v1/rules/united-kingdom.json"
   }
  ]
 }
