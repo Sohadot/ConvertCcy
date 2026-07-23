@@ -908,4 +908,30 @@ Merge to `main` does not close a phase (mirrors the P8A-1 closure). PR #33 merge
 Status: ✅ P8B-1 CLOSED — United States is `source_review_ready` in the intake layer, with no public exposure. The three recorded findings (CBP source URL, FinCEN Form 105 pointer, and the `cash_declaration_threshold` mis-framing) are carried into P8B-2, the publication-candidate review, which is the next US step.
 Verified: 2026-07-23.
 
+### P8B-2 — United States Publication-Candidate Review
+
+The US analog of P8A-2: a full content-and-source pass over `data/rules/united-states.json`. This entry records the phase including a Review-Gate round that corrected an initial over-reach (the first draft claimed all-primary sourcing and advanced to `publish_ready`; both were walked back — see below). Scope boundary held throughout: `page_status` stays `verified`, `indexing_allowed` stays `false`, no rules page / brief / API route is created, and `sitemap.xml`, Passage Check, and `llms.txt` are untouched. No other country is changed.
+
+**Content defects fixed:**
+
+- **`cash_declaration_threshold` mis-framing (critical).** It read "No mandatory currency declaration threshold applies for ordinary travelers … under anti-money laundering rules" — factually wrong and self-contradicting, since the sibling `bring_foreign_currency_in` / `take_foreign_currency_out` fields already stated the mandatory FinCEN Form 105 filing. Rewritten: transporting an aggregate amount **exceeding USD 10,000** across the US border is a **mandatory** Currency and Monetary Instrument Report (FinCEN Form 105 / CMIR) to CBP under 31 U.S.C. § 5316 and 31 CFR § 1010.340, explicitly distinct from institutional Bank Secrecy Act filings — CTR (31 U.S.C. 5313), SAR, and FBAR — none of which is a traveler declaration.
+- **`country_overview` duplication** removed (the opening sentence was repeated nearly verbatim and mislabeled the Fed as "the primary regulator"); rewritten so the Fed is the central bank and CBP/FinCEN administer currency reporting.
+- **`summary.traveler`** corrected to state the mandatory USD 10,000 declaration.
+- **Precision:** "USD 10,000 or more" → "more than USD 10,000" across the declaration fields, matching the statutory "exceeding" language (exactly USD 10,000 does not trigger the report).
+
+**Sources — corrected after the Review Gate (NOT "all primary"):**
+
+- Primary (official issuing sources): Federal Reserve (`central_bank`, federalreserve.gov); **31 CFR § 1010.340 official eCFR** (`primary_regulator_rule_page`); **31 U.S.C. § 5316 official U.S. Code / OLRC** (`regulator`); **official FinCEN Form 105 (CMIR) PDF** (`fiu`).
+- Secondary (authoritative republication, readability mirror): Cornell Legal Information Institute copies of 31 CFR § 1010.340 and 31 U.S.C. § 5316 (`other`, tier `secondary`).
+- The off-topic CBP "prohibited-and-restricted-items" URL (HTTP 403) was removed; CBP is named in the rule prose as the administering border agency. The generic FinCEN homepage was replaced with the Form-105-specific official PDF.
+
+**Verification (2026-07-23), stated truthfully:** the Federal Reserve and FinCEN pages were fetched and confirmed live. The official FinCEN Form 105 PDF was downloaded (≈312 KB) and its embedded document metadata confirms the title "Report of International Transportation of Currency or Monetary Instruments (CMIR)". The official issuing hosts for the statute and regulation (`uscode.house.gov`, `ecfr.gov`) and `cbp.gov` bot-block automated fetching (403 / redirect to a challenge page), so they are cited as the canonical primary URLs while their verbatim text was confirmed live via the Cornell LII secondary mirror. Cornell LII is therefore classified secondary, not primary.
+
+**Review-Gate blocker — held at `source_review_ready`, NOT advanced to `publish_ready`:** the liberalisation fields (`country_overview`, `summary.business`, `resident_holding_rules`, `non_resident_rules`, `business_invoicing_settlement`, `exchange_controls`, `banking_conversion_practicality`) are still mapped to the Federal Reserve monetary-policy page, which does not substantiate those claims. Each `source_map` section for these fields is marked `[HARDENING]`. Per the review rule, a field left for hardening blocks `publish_ready`; the US is therefore **held at `source_review_ready`**. The declaration fields are publish-quality; the liberalisation fields need a dedicated official source (or a narrowed claim) in a follow-up before `publish_ready`.
+
+**Governance Gate:** all five checks pass locally; `validate_rules.py` clean (0 errors, 0 warnings); maximum pairwise rule similarity 0.66 (< 0.72). Boundary confirmed: US `page_status: verified`, `indexing_allowed: false`, no public route, zero occurrences in sitemap / passage-check / llms.
+
+Status: ⏸️ United States remains `source_review_ready`. Declaration content and sources are corrected to publish quality; the liberalisation-field sourcing is an open hardening item that blocks `publish_ready`. Not advanced, not published.
+Verified: 2026-07-23.
+
 
