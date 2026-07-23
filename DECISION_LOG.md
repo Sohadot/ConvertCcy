@@ -974,3 +974,24 @@ Status: ✅ South Africa advanced `candidate_only → source_review_ready` in th
 Verified: 2026-07-23.
 
 
+
+### P8C-2 — South Africa Publication-Candidate Review
+
+Advanced South Africa `source_review_ready → publish_ready` by correcting the governed content and rebuilding the field-level source map. Scope boundary held exactly: `data/rules/south-africa.json` `page_status` stays `verified`, `evidence_tier: official_verified`, `indexing_allowed: false`; no rules page, brief, API route, Passage Check entry, sitemap URL, or llms.txt exposure; no deployment; no other country changed. This resolves the four intake findings from P8C-1.
+
+**The three conflated concepts are now separated and each verified live against an official SARS page (2026-07-23):**
+
+1. **SARB rand-carrying limit — R25,000.** South African bank notes may be taken out up to R25,000, and are unlimited only within the Common Monetary Area (CMA); carrying rand above R25,000 requires prior SARB authorisation. Source: **SARS Departure page** (`sars.gov.za/customs-and-excise/travellers/departure-from-sa/`), which also records that Customs may search and seize currency under Exchange Control Regulations 3(3) and 3(6).
+2. **SARB excess-currency rule — R100,000.** Any amount — rand or foreign currency convertible to rand — in excess of R100,000 is "excess currency" requiring written SARB permission before entering or leaving. Source: **SARS Travellers page** (`sars.gov.za/customs-and-excise/travellers/`). R100,000 is **not** described as a SARS declaration threshold — the SARS source attributes it to the SARB Exchange Control Regulation.
+3. **SARS traveller declaration.** The declaration itself (covering bank notes, foreign currency, securities and gold) is administered by SARS via an online declaration form or the manual Traveller Declaration (TD-01). Source: SARS Travellers page.
+
+SARB exchange control, SARS customs declaration, and FIC AML reporting are kept distinct throughout.
+
+**Field-level source mapping rebuilt.** Generic homepages removed. `source_authorities` now lists four claim-specific primary sources: the **SARB Financial Surveillance Documents** page (HTML; Exchange Control Regulations, 1961, the Currency and Exchanges Manual for Authorised Dealers, and the 2026 circulars), the **Currency and Exchanges Manual for Authorised Dealers (2026 edition) PDF** (confirmed live, 1.7 MB), and the two SARS pages above. Each `source_map` key cites the specific page and section: the traveller/threshold fields to the SARS pages; the framework/capital-account fields (overview, business, resident/non-resident, invoicing, exchange controls, banking practicality) to the SARB FinSurv Documents page, naming the Currency and Exchanges Manual in the section text. The Manual PDF is listed as a source authority for citation but is deliberately **not** used as a `source_map` URL, because a PDF source under `verified` requires pinpointed page numbers and no PDF page-extraction tooling is available here.
+
+**`[HARDENING]` retained** on `resident_holding_rules` and `non_resident_rules`: the framework (transaction through Authorised Dealers, subject to SARB exchange-control allowances and approval) is verified, but the specific current allowance amounts and exact non-resident re-export/approval mechanics live in the Currency and Exchanges Manual PDF, which could not be pinpointed to a page (no poppler / broken pypdf). The public rule text is kept at framework level (no invented figures); the evidence gap is recorded in the `source_map` section, mirroring the US precedent. This is an honest gap, not a publication blocker for the framework-level claims.
+
+**Governance Gate:** `validate_rules.py` clean (0 errors, 0 warnings); maximum pairwise rule-field similarity 0.33 (< 0.72); all rule/summary/overview length minimums met; overview carries all three required quality signals. All five gate scripts pass. Boundary proof: SA `page_status: verified`, `indexing_allowed: false`, and zero occurrences of `south-africa` in `sitemap.xml`, Passage Check, or `llms.txt`.
+
+Status: ✅ South Africa advanced `source_review_ready → publish_ready` with content corrected, the R25,000 / R100,000 / traveller-declaration concepts separated and each traced to a claim-specific official SARS source, and the SARB capital-account framework mapped to the FinSurv Documents page. Two capital-account fields retain `[HARDENING]` for specific allowance figures. Not published, not indexed, no public surface. Next step (a later, separate phase): South Africa publication + Deployment Gate.
+Verified: 2026-07-23.
