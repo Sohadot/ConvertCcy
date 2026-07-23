@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Data &amp; Commercial Licensing — CC BY 4.0 + Commercial Terms | ConvertCCY</title>
-<meta name="description" content="The ConvertCCY Foreign Currency Rules Dataset is free under CC BY 4.0 — including commercial use, with attribution. A commercial licence is available for organizations that need attribution-free use, support commitments, negotiated enterprise terms, custom formats, or API access.">
+<meta name="description" content="The ConvertCCY Foreign Currency Rules Dataset is free under CC BY 4.0 — including commercial use, with attribution. Commercial licences add attribution-free use, scheduled updates, agent/LLM reuse rights, support, and negotiated enterprise terms. The open reference layer is never restricted.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://convertccy.com/licensing.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#f7f7f5;--surface:#fff;--surface-2:#fcfcfa;--border:#e8e8e4;--text:#111110;--muted:#888884;--accent:#1a6b3c;--accent-light:#e8f5ee;--accent-border:#c4dfd0;--amber:#a07000;--amber-light:#fef8e7;--amber-border:#f5d97a;--shadow:0 8px 24px rgba(17,17,16,.05);--mono:'DM Mono',monospace;--sans:'Sora',sans-serif}
+:root{--bg:#f7f7f5;--surface:#fff;--surface-2:#fcfcfa;--border:#e8e8e4;--text:#111110;--muted:#888884;--accent:#1a6b3c;--accent-light:#e8f5ee;--accent-border:#c4dfd0;--amber:#a07000;--amber-light:#fef8e7;--amber-border:#f5d97a;--danger:#a33a2a;--danger-light:#fbeeeb;--danger-border:#ecccc4;--shadow:0 8px 24px rgba(17,17,16,.05);--mono:'DM Mono',monospace;--sans:'Sora',sans-serif}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
 nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
@@ -48,12 +48,28 @@ strong{color:var(--text);font-weight:600}
 .tier li{position:relative;padding-left:1.4rem;margin-bottom:.5rem;font-size:.9rem;line-height:1.55;color:#2a2a28}
 .tier li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700}
 .tier.comm li::before{content:'+';color:var(--amber)}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:1.6rem 0}
+.cat{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.4rem;box-shadow:var(--shadow)}
+.cat .cat-tag{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--amber);background:var(--amber-light);border:1px solid var(--amber-border);border-radius:100px;padding:3px 10px;align-self:flex-start;margin-bottom:.7rem}
+.cat.recurring .cat-tag{color:var(--accent);background:var(--accent-light);border-color:var(--accent-border)}
+.cat h3{font-size:1.05rem;margin-bottom:.45rem}
+.cat p{font-size:.9rem;line-height:1.65;color:#2a2a28;margin-bottom:.7rem}
+.cat .who{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-top:auto;padding-top:.5rem;border-top:1px dashed var(--border)}
+.pricing-note{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin:.4rem 0 0}
 .box-accent{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
 .box-accent .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;display:block}
 .box-accent p{color:#1e4f2f;margin:0;font-size:.93rem;line-height:1.72}
+.box-guard{background:var(--danger-light);border:1px solid var(--danger-border);border-radius:16px;padding:1.3rem 1.6rem;margin:1.6rem 0}
+.box-guard .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--danger);text-transform:uppercase;margin-bottom:.7rem;display:block}
+.box-guard ul{list-style:none;margin:0}
+.box-guard li{position:relative;padding-left:1.5rem;margin-bottom:.55rem;font-size:.9rem;line-height:1.6;color:#3a2a26}
+.box-guard li::before{content:'✕';position:absolute;left:0;color:var(--danger);font-weight:700}
 .code-block{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:1rem;font-family:var(--mono);font-size:.82rem;overflow-x:auto;margin:1rem 0;color:#2a2a28;line-height:1.7}
 .btn{display:inline-block;font-family:var(--mono);font-size:.82rem;text-decoration:none;padding:.65rem 1.2rem;border-radius:10px;border:1px solid var(--accent-border);color:var(--accent);background:var(--accent-light);margin-top:.4rem}
 .btn:hover{background:#dcefe4}
+.btn-amber{border-color:var(--amber-border);color:var(--amber);background:var(--amber-light)}
+.btn-amber:hover{background:#fdf1cf}
+.btn-sm{font-size:.76rem;padding:.5rem 1rem;margin-top:.9rem;align-self:flex-start}
 footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
 footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--text)}
@@ -78,9 +94,9 @@ footer a:hover{color:var(--text)}
   <div class="breadcrumb"><a href="/">Home</a> / <span>Licensing</span></div>
 
   <div class="hero">
-    <span class="hero-tag">Open data · Dual licence</span>
+    <span class="hero-tag">Open reference · Commercial layer</span>
     <h1>Data &amp; Commercial <em>Licensing</em></h1>
-    <p class="hero-lead">The ConvertCCY Foreign Currency Rules Dataset is open. It is free under Creative Commons Attribution 4.0 — including for commercial use — as long as you attribute ConvertCCY. A separate commercial licence exists for organizations that need something CC BY 4.0 does not give: attribution-free use, support and update commitments, negotiated enterprise terms, or custom delivery. The open dataset is never restricted or downgraded.</p>
+    <p class="hero-lead">The ConvertCCY Foreign Currency Rules reference stays open, source-mapped, and citable. It is free under Creative Commons Attribution 4.0 — including for commercial use — as long as you attribute ConvertCCY. Income comes from the <strong>commercial layer above the reference</strong>: attribution-free rights, scheduled updates, packaged delivery, agent/LLM reuse, and support — never from restricting, gating, or diluting the public reference itself.</p>
   </div>
 
   <hr class="section-divider">
@@ -91,7 +107,7 @@ footer a:hover{color:var(--text)}
     <div class="tiers">
       <div class="tier free">
         <div class="tier-label">Free · CC BY 4.0</div>
-        <h3>Open dataset</h3>
+        <h3>Open reference dataset</h3>
         <p style="font-size:.9rem;color:#1e4f2f;margin-bottom:.4rem">Everyone, including businesses, may use it at no cost — provided ConvertCCY is credited.</p>
         <ul>
           <li>Read, download, and cite <a href="/rules/dataset.json" style="color:var(--accent);text-decoration:none">/rules/dataset.json</a></li>
@@ -107,17 +123,111 @@ footer a:hover{color:var(--text)}
         <p style="font-size:.9rem;color:#2f2f2c;margin-bottom:.4rem">For organizations that need terms beyond CC BY 4.0. This does not take anything away from the free tier.</p>
         <ul>
           <li>Use <strong>without the attribution requirement</strong> (attribution-free licence)</li>
-          <li>Support and a defined update / refresh commitment</li>
-          <li>Support commitments, update terms, and negotiated enterprise terms suitable for procurement</li>
-          <li>Custom formats, bulk delivery, or scheduled feeds</li>
-          <li>Priority access to the Passage Check API when it is released</li>
+          <li>Scheduled updates and a defined refresh commitment</li>
+          <li>Negotiated enterprise terms suitable for procurement</li>
+          <li>Packaged JSON/CSV delivery, change logs, and source manifests</li>
+          <li>Agent / LLM ingestion rights and a commercial support channel</li>
         </ul>
-        <a class="btn" href="mailto:contact@convertccy.com?subject=ConvertCCY%20Commercial%20Data%20Licence">Enquire about a commercial licence →</a>
+        <a class="btn btn-amber" href="mailto:agent@sohadot.com?subject=ConvertCCY%20Commercial%20Licence%20Enquiry">Request commercial terms →</a>
       </div>
     </div>
     <div class="box-accent">
       <span class="box-label">Why this is honest</span>
-      <p>CC BY 4.0 already permits commercial use, so we do not — and legally could not — claim that commercial use requires payment. A commercial licence is <strong>additive</strong>: it sells the things CC BY does not provide (no attribution obligation, support, negotiated enterprise terms, custom delivery). The open dataset stays open. We do not downgrade or revoke it.</p>
+      <p>CC BY 4.0 already permits commercial use, so we do not — and legally could not — claim that commercial use requires payment. A commercial licence is <strong>additive</strong>: it sells the things CC BY does not provide (no attribution obligation, scheduled updates, packaged delivery, negotiated enterprise terms, support). The public reference stays open. We do not downgrade or revoke it.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section id="licences">
+    <div class="section-kicker">Commercial Licence Types</div>
+    <h2>Choose the terms that fit how you use the data</h2>
+    <p>Each is a commercial agreement on top of the open reference. Prices are not published — terms are scoped to your use, coverage need, and update cadence, and agreed directly. Every enquiry goes to one place: <strong>agent@sohadot.com</strong>.</p>
+
+    <div class="cat-grid">
+      <div class="cat">
+        <span class="cat-tag">Startup</span>
+        <h3>Startup Licence</h3>
+        <p>Attribution-free commercial use for a single early-stage product or team, with a lightweight support channel. Room to grow into a Business licence as you scale.</p>
+        <div class="who">For: early-stage fintech, travel, and data products</div>
+        <a class="btn btn-amber btn-sm" href="mailto:agent@sohadot.com?subject=ConvertCCY%20Startup%20Licence">Request terms →</a>
+      </div>
+
+      <div class="cat">
+        <span class="cat-tag">Business</span>
+        <h3>Business Licence</h3>
+        <p>Attribution-free use inside a commercial product or internal tooling, with a defined update commitment, packaged JSON/CSV delivery, and a named support contact.</p>
+        <div class="who">For: production apps, internal platforms, SaaS features</div>
+        <a class="btn btn-amber btn-sm" href="mailto:agent@sohadot.com?subject=ConvertCCY%20Business%20Licence">Request terms →</a>
+      </div>
+
+      <div class="cat">
+        <span class="cat-tag">Enterprise</span>
+        <h3>Enterprise Licence</h3>
+        <p>Negotiated enterprise terms suitable for procurement: custom formats, bulk delivery, priority updates, defined support commitments, and multi-team or group-wide coverage.</p>
+        <div class="who">For: banks, corporate travel, compliance-adjacent publishers</div>
+        <a class="btn btn-amber btn-sm" href="mailto:agent@sohadot.com?subject=ConvertCCY%20Enterprise%20Licence">Request terms →</a>
+      </div>
+
+      <div class="cat">
+        <span class="cat-tag">Agent / LLM</span>
+        <h3>Agent / LLM Use Licence</h3>
+        <p>Commercial rights to ingest the governed reference into AI agents, retrieval/RAG systems, and LLM products, with clear citation and coverage-boundary terms for downstream output.</p>
+        <div class="who">For: AI agent platforms, LLM data and retrieval teams</div>
+        <a class="btn btn-amber btn-sm" href="mailto:agent@sohadot.com?subject=ConvertCCY%20Agent%20LLM%20Use%20Licence">Request terms →</a>
+      </div>
+
+      <div class="cat">
+        <span class="cat-tag">Attribution-free</span>
+        <h3>Attribution-Free Commercial Licence</h3>
+        <p>Removes the CC BY 4.0 attribution obligation across your commercial surfaces, so the reference can be used without a visible ConvertCCY credit where that is not workable.</p>
+        <div class="who">For: white-label products, embedded internal use</div>
+        <a class="btn btn-amber btn-sm" href="mailto:agent@sohadot.com?subject=ConvertCCY%20Attribution-Free%20Licence">Request terms →</a>
+      </div>
+
+      <div class="cat recurring">
+        <span class="cat-tag">Recurring</span>
+        <h3>Data Update Subscription</h3>
+        <p>The reference kept current for you: monthly source checks, quarterly jurisdiction reviews, change notices, diff reports, and source-replacement alerts — reviewed timestamps you can rely on, not a one-off snapshot.</p>
+        <div class="who">For: teams that need the reference to stay trustworthy over time</div>
+        <a class="btn btn-amber btn-sm" href="mailto:agent@sohadot.com?subject=ConvertCCY%20Data%20Update%20Subscription">Request terms →</a>
+      </div>
+    </div>
+    <p class="pricing-note">Prices are agreed per engagement and are not published here. Terms scale with coverage, use, and update cadence.</p>
+  </section>
+
+  <hr class="section-divider">
+
+  <section id="feed">
+    <div class="section-kicker">Packaged Product</div>
+    <h2>ConvertCCY Commercial Reference Feed</h2>
+    <p>Under a Business, Enterprise, or subscription licence, the published, source-mapped jurisdictions are delivered as a structured package — not scraped, not unsourced, not stale. It is delivered to licensees; it is not a public download.</p>
+    <p>Use ConvertCCY’s governed currency-passage reference data inside your commercial product without relying on scraped, unsourced, or out-of-date regulatory snippets.</p>
+    <div class="code-block">convertccy-commercial-feed-v1.json   · published jurisdictions, full governed rules
+convertccy-commercial-feed-v1.csv    · flat, spreadsheet- and pipeline-ready
+manifest.json                        · coverage, counts, review dates, tiers
+sources.json                         · every field mapped to its official source
+change-log.json                      · review history and change notices
+license.txt                          · the commercial terms for this delivery</div>
+    <p style="font-size:.9rem;color:var(--muted)">The feed contains <strong>published jurisdictions only</strong> — the same governed layer as the public reference — with per-field source mapping, review dates, and disclaimers carried inline.</p>
+  </section>
+
+  <hr class="section-divider">
+
+  <section id="boundaries">
+    <div class="section-kicker">The Line We Don't Cross</div>
+    <h2>What a commercial licence is <em>not</em></h2>
+    <p>The commercial layer exists to keep the reference trustworthy — so it is fenced by hard limits that no licence, tier, or payment changes:</p>
+    <div class="box-guard">
+      <span class="box-label">We never sell, and never do</span>
+      <ul>
+        <li>The public reference is never gated, restricted, or downgraded — it stays free and citable under CC BY 4.0.</li>
+        <li>We do not sell legal, tax, customs, or compliance advice, and no licence carries a warranty of any regulatory or financial outcome.</li>
+        <li>No "certification", "guaranteed compliance", or endorsement is offered or implied.</li>
+        <li>No claim, field, or conclusion in the reference is ever shaped by a payer.</li>
+        <li>No dynamic API, authentication, billing, or checkout runs on convertccy.com — any future metered API is isolated off-domain (e.g. api.convertccy.com).</li>
+        <li>No advertising or affiliate links on the rules, briefs, governance, licensing, or Agent Interface surfaces.</li>
+      </ul>
     </div>
   </section>
 
@@ -129,7 +239,7 @@ footer a:hover{color:var(--text)}
     <p>Under CC BY 4.0, keep a visible credit to ConvertCCY with a link back. This citation is sufficient:</p>
     <div class="code-block">ConvertCCY. Foreign Currency Rules Dataset.
 https://convertccy.com/rules/dataset.json — licensed under CC BY 4.0.</div>
-    <p>The dataset's own <span style="font-family:var(--mono);font-size:.9rem">license</span>, <span style="font-family:var(--mono);font-size:.9rem">attribution</span>, and <span style="font-family:var(--mono);font-size:.9rem">citation</span> fields carry these terms inline, so an automated consumer can resolve them without leaving the file.</p>
+    <p>The dataset's own <span style="font-family:var(--mono);font-size:.9rem">license</span>, <span style="font-family:var(--mono);font-size:.9rem">attribution</span>, and <span style="font-family:var(--mono);font-size:.9rem">citation</span> fields carry these terms inline, so an automated consumer can resolve them without leaving the file. An attribution-free commercial licence lifts this requirement.</p>
   </section>
 
   <hr class="section-divider">
@@ -140,7 +250,7 @@ https://convertccy.com/rules/dataset.json — licensed under CC BY 4.0.</div>
     <p>The dataset is the published sovereign layer only — jurisdictions that have passed the six-gate pipeline. Every field is mapped to an official source and carries a review date, under the <a href="/standard.html">CRIS v1.0</a> standard and the <a href="/governance.html">governance protocol</a>. It is reference-grade, not a dealing rate or legal advice, and coverage grows only as entries are verified.</p>
     <div class="box-accent">
       <span class="box-label">No hidden surface</span>
-      <p>There is no checkout or payment collected on this site. Commercial licences are agreed directly by email, which keeps the reference layer free of payment scripts and keeps the security surface minimal. Enquiries: <a href="mailto:contact@convertccy.com" style="color:var(--accent);font-weight:600;text-decoration:none">contact@convertccy.com</a>.</p>
+      <p>There is no checkout or payment collected on this site. Commercial licences are agreed directly by email, which keeps the reference layer free of payment scripts and keeps the security surface minimal. Commercial enquiries: <a href="mailto:agent@sohadot.com" style="color:var(--accent);font-weight:600;text-decoration:none">agent@sohadot.com</a>. General enquiries: <a href="mailto:contact@convertccy.com" style="color:var(--accent);font-weight:600;text-decoration:none">contact@convertccy.com</a>.</p>
     </div>
   </section>
 
