@@ -26,7 +26,7 @@
   "united-arab-emirates",
   "united-kingdom"
  ],
- "existing_published_jurisdictions_note": "These 8 jurisdictions are unaffected by this blueprint. Their data/rules/<slug>.json page_status and public surfaces are not touched by P8-0.",
+ "existing_published_jurisdictions_note": "These 9 jurisdictions are currently published and sit outside this blueprint; the 12 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file.",
  "no_inference_rule": "No rule, threshold, or regulatory posture may ever be inferred for a candidate from its currency code, region, G20 membership, EU/AU membership, or a neighboring country's published rules. Every fact requires its own primary official source before it may be published.",
  "count": 12,
  "candidates": [
