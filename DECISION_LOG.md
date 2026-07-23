@@ -934,4 +934,19 @@ The US analog of P8A-2: a full content-and-source pass over `data/rules/united-s
 Status: ⏸️ United States remains `source_review_ready`. Declaration content and sources are corrected to publish quality; the liberalisation-field sourcing is an open hardening item that blocks `publish_ready`. Not advanced, not published.
 Verified: 2026-07-23.
 
+### P8B-2b — United States Liberalisation Claims Hardening
+
+Goal: harden the US liberalisation fields with claim-specific institutional evidence, without overstating the absence of controls. US kept at `source_review_ready`; `page_status: verified`, `indexing_allowed: false`; no public route / API / sitemap / Passage Check / llms; no other country changed. Reached its final form through two review-gate rounds (an earlier draft wrongly cited the generic IMF United States country page and declared all `[HARDENING]` cleared; that was reversed).
+
+**Current international transactions — CLOSED with the exact IMF annex text.** Sourced to the **IMF 2026 Article IV Consultation Informational Annex** (IMF Country Report No. 2026/076; Fund Relations → Exchange Rate Arrangements; published 2 April 2026; IMF eLibrary), classified institutional secondary. The annex text is independently confirmed in the eLibrary — there is no residual annex-text verification limitation. It establishes: a free-floating exchange-rate arrangement; the exchange rate of the US dollar is determined freely in the foreign-exchange market; acceptance of Article VIII; no restrictions on payments and transfers for current international transactions; no multiple currency practices; except for restrictions maintained solely for security reasons (Executive Board Decision No. 144-(52/51)). Applied to `exchange_controls`, `country_overview`, `business_invoicing_settlement`, and `summary.business`. The claim-level `source_map` now cites the eLibrary Informational Annex page; the general IMF publication page is retained only as a bibliographic companion.
+
+**Precision fixes in this round:** (a) removed "the US dollar is freely convertible" and replaced it with the IMF wording — the exchange rate is determined freely in the FX market; (b) narrowed `business_invoicing_settlement` to payments and transfers for current international transactions, explicitly stating the annex does not establish invoice-denomination or capital-account rules; (c) removed the unsupported capital-account sentence "non-residents may freely re-export funds they lawfully brought in" from `take_foreign_currency_out` — Form 105 / CMIR does not establish unrestricted repatriation.
+
+**Capital-account / account-access — `[HARDENING]` RETAINED** for `resident_holding_rules`, `non_resident_rules`, and `banking_conversion_practicality`. Article VIII covers current transactions, not capital movements; the governing instrument is the OECD Code of Liberalisation of Capital Movements (Annex B, US reservation schedule), but the specific US record could not be extracted with available tooling (image-heavy PDF; poppler absent, pypdf native dep broken). Open evidence gap. IMF AREAER remains login-gated (unused). The Federal Reserve monetary-policy page and OFAC pages were NOT used as proof.
+
+**Governance Gate:** all five pass; `validate_rules.py` clean (0/0); maximum pairwise rule similarity 0.39 (< 0.72). Boundary confirmed: `page_status: verified`, `indexing_allowed: false`, no public route, zero occurrences in sitemap / passage-check / llms.
+
+Status: ✅ current-account liberalisation claims closed with the exact IMF Article IV Informational Annex (claim-specific, verbatim confirmed). ⏸️ three capital-account/account-access fields retain `[HARDENING]`; `publish_ready` remains BLOCKED until resolved with a claim-specific OECD US reservation record (or another specialised source). United States held at `source_review_ready`.
+Verified: 2026-07-23.
+
 
