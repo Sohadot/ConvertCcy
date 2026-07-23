@@ -14,18 +14,18 @@
   "publication_class": "reference",
   "indexing_allowed": false,
   "source_notice": "",
-  "country_overview": "The United States Federal Reserve System (the Federal Reserve) is the central bank and sets monetary policy, while U.S. Customs and Border Protection (CBP) and the Financial Crimes Enforcement Network (FinCEN) administer cross-border currency reporting. The United States has a free-floating exchange-rate arrangement; under IMF Article VIII it maintains an exchange system free of restrictions on payments and transfers for current international transactions (the US dollar is freely convertible, with no multiple currency practices), except for restrictions maintained solely for security reasons. Capital-account movements are separately regulated. The US dollar is the world's primary reserve currency.",
+  "country_overview": "The United States Federal Reserve System (the Federal Reserve) is the central bank and sets monetary policy, while U.S. Customs and Border Protection (CBP) and the Financial Crimes Enforcement Network (FinCEN) administer cross-border currency reporting. The United States has a free-floating exchange-rate arrangement — the exchange rate of the US dollar is determined freely in the foreign-exchange market — and, under IMF Article VIII, maintains an exchange system free of restrictions on payments and transfers for current international transactions, with no multiple currency practices, except for restrictions maintained solely for security reasons. Capital-account movements are separately regulated. The US dollar is the world's primary reserve currency.",
   "summary": {
     "traveler": "Travelers may carry unlimited US dollars or foreign currency, but any person transporting more than USD 10,000 in aggregate — cash or monetary instruments — into or out of the United States must file a Currency and Monetary Instrument Report (FinCEN Form 105) with CBP at the border. Amounts of USD 10,000 or less require no declaration.",
     "business": "For current international transactions, businesses and individuals can make and receive payments and transfers without exchange restrictions under the United States' IMF Article VIII status, except for measures maintained solely for security reasons. Foreign-currency account access, repatriation, and capital-account movements are governed separately and remain an open evidence gap pending the US OECD reservation schedule."
   },
   "rules": {
     "bring_foreign_currency_in": "Foreign currency and US dollars may be imported without limit or prohibition. Any person bringing more than USD 10,000 in aggregate (cash or monetary instruments) into the United States must file FinCEN Form 105 (CMIR) with a CBP officer at the port of entry.",
-    "take_foreign_currency_out": "US dollars and foreign currency may be exported without limit. Any person taking more than USD 10,000 in aggregate (cash or monetary instruments) out of the United States must file FinCEN Form 105 (CMIR) with CBP before departure; non-residents may freely re-export funds they lawfully brought in.",
+    "take_foreign_currency_out": "US dollars and foreign currency may be physically transported out without a maximum amount, but transporting more than USD 10,000 in aggregate currency or covered monetary instruments requires FinCEN Form 105.",
     "cash_declaration_threshold": "The reporting threshold is USD 10,000. Under 31 U.S.C. 5316 and 31 CFR 1010.340, transporting an aggregate amount exceeding that figure across the US border triggers a mandatory Currency and Monetary Instrument Report (FinCEN Form 105) to CBP. This traveler border report is distinct from Bank Secrecy Act filings by financial institutions — Currency Transaction Reports (CTR) and Suspicious Activity Reports (SAR) — and from Foreign Bank Account Reports (FBAR); none of those is a traveler declaration.",
     "resident_holding_rules": "Whether US residents may hold or maintain foreign-currency accounts without a general prior-approval regime is a capital-account / account-access question that the IMF Article VIII current-account finding does not settle. It is recorded as an open evidence gap pending the US reservation schedule under the OECD Code of Liberalisation of Capital Movements; account access is subject to sanctions, AML/KYC, tax, and prudential requirements.",
     "non_resident_rules": "For non-residents, whether accounts may be opened and funds transferred without a general prior-approval regime is likewise a capital-account / account-access matter not settled by the IMF Article VIII current-account finding, and is recorded as an open evidence gap pending the US OECD reservation schedule. Onboarding is subject to sanctions screening, AML/KYC, information-reporting and withholding, and institution requirements.",
-    "business_invoicing_settlement": "Business transactions may be invoiced and settled in US dollars or foreign currency. For current international transactions, cross-border commercial payments are free of exchange restrictions under the United States' IMF Article VIII status, subject to sanctions, AML reporting, and tax requirements; capital-account elements are governed separately and are not established by that finding.",
+    "business_invoicing_settlement": "For current international transactions, payments and transfers are not subject to general exchange restrictions under the United States' IMF Article VIII status, except for measures maintained for security reasons. This finding does not establish rules on invoice denomination or capital-account transactions.",
     "exchange_controls": "The United States has a free-floating exchange-rate arrangement and, having accepted IMF Article VIII, maintains an exchange system free of restrictions on payments and transfers for current international transactions, with no multiple currency practices — except for restrictions maintained solely for the preservation of national or international security, notified to the IMF. This finding covers current international transactions; capital-account movements are governed separately under the OECD Code of Liberalisation of Capital Movements and the US reservation schedule.",
     "banking_conversion_practicality": "In practice, foreign-exchange conversion and transfers are widely offered by US banks, licensed money-services businesses, and ATMs. This is a practical-availability observation that has not been tied to a claim-specific official source, so it is recorded as an open evidence gap; access is subject to each institution's AML/KYC and sanctions-screening procedures."
   },
@@ -67,13 +67,19 @@
       "tier": "secondary"
     },
     {
-      "label": "IMF — United States 2026 Article IV Consultation (Country Report No. 2026/076): exchange-system findings (free-floating; Article VIII; no restrictions on current international payments except for security reasons; no multiple currency practices). Institutional secondary evidence.",
+      "label": "IMF Country Report No. 2026/076 — United States 2026 Article IV Consultation, Informational Annex (Fund Relations → Exchange Rate Arrangements), IMF eLibrary, published 2 April 2026. Institutional secondary evidence for the current-account exchange-system findings.",
+      "url": "https://www.elibrary.imf.org/view/journals/002/2026/076/article-A001-en.xml",
+      "type": "multilateral",
+      "tier": "secondary"
+    },
+    {
+      "label": "IMF — United States 2026 Article IV Consultation publication page (bibliographic companion to Country Report No. 2026/076)",
       "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
       "type": "multilateral",
       "tier": "secondary"
     },
     {
-      "label": "OECD Code of Liberalisation of Capital Movements — Annex B holds each adhering country's capital-movement reservation schedule (including the United States). Institutional secondary evidence for capital-account/account-access fields.",
+      "label": "OECD Code of Liberalisation of Capital Movements — Annex B holds each adhering country's capital-movement reservation schedule (incl. the United States). Institutional secondary evidence for capital-account/account-access fields.",
       "url": "https://www.oecd.org/en/publications/oecd-code-of-liberalisation-of-capital-movements_9789264110779-en.html",
       "type": "multilateral",
       "tier": "secondary"
@@ -87,9 +93,14 @@
         "section": "US monetary authority (Federal Reserve)"
       },
       {
+        "url": "https://www.elibrary.imf.org/view/journals/002/2026/076/article-A001-en.xml",
+        "pages": [],
+        "section": "IMF 2026 Article IV Informational Annex (CR 2026/076), Fund Relations → Exchange Rate Arrangements: free-floating; exchange rate determined freely in the FX market; Article VIII; no restrictions on payments/transfers for current international transactions; no multiple currency practices; security-reason exception (EBD 144-(52/51))"
+      },
+      {
         "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
         "pages": [],
-        "section": "Exchange system: free-floating; Article VIII; no restrictions on current international payments (except security); no multiple currency practices (IMF 2026 Article IV, CR 2026/076)"
+        "section": "Bibliographic companion — IMF CR 2026/076 publication page"
       }
     ],
     "summary.traveler": [
@@ -101,9 +112,9 @@
     ],
     "summary.business": [
       {
-        "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
+        "url": "https://www.elibrary.imf.org/view/journals/002/2026/076/article-A001-en.xml",
         "pages": [],
-        "section": "Current international transactions free of exchange restrictions under Article VIII (IMF 2026 Article IV); account/repatriation/capital aspects flagged as open evidence gap"
+        "section": "Current international transactions free of exchange restrictions under Article VIII (IMF 2026 Article IV Informational Annex (CR 2026/076), Fund Relations → Exchange Rate Arrangements: free-floating; exchange rate determined freely in the FX market; Article VIII; no restrictions on payments/transfers for current international transactions; no multiple currency practices; security-reason exception (EBD 144-(52/51))); account/repatriation/capital aspects are a separate open evidence gap"
       }
     ],
     "rules.bring_foreign_currency_in": [
@@ -151,16 +162,16 @@
     ],
     "rules.exchange_controls": [
       {
-        "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
+        "url": "https://www.elibrary.imf.org/view/journals/002/2026/076/article-A001-en.xml",
         "pages": [],
-        "section": "Free-floating arrangement; Article VIII exchange system free of restrictions on current international payments, no MCP, security-reason exception; current-account scope only (IMF 2026 Article IV, CR 2026/076)"
+        "section": "IMF 2026 Article IV Informational Annex (CR 2026/076), Fund Relations → Exchange Rate Arrangements: free-floating; exchange rate determined freely in the FX market; Article VIII; no restrictions on payments/transfers for current international transactions; no multiple currency practices; security-reason exception (EBD 144-(52/51)) — current-account scope only; capital-account governed separately"
       }
     ],
     "rules.business_invoicing_settlement": [
       {
-        "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
+        "url": "https://www.elibrary.imf.org/view/journals/002/2026/076/article-A001-en.xml",
         "pages": [],
-        "section": "Current international transactions free of exchange restrictions under Article VIII (IMF 2026 Article IV); capital-account elements governed separately"
+        "section": "Current international payments/transfers free of exchange restrictions under Article VIII (IMF 2026 Article IV Informational Annex (CR 2026/076), Fund Relations → Exchange Rate Arrangements: free-floating; exchange rate determined freely in the FX market; Article VIII; no restrictions on payments/transfers for current international transactions; no multiple currency practices; security-reason exception (EBD 144-(52/51))); does not establish invoice denomination or capital-account rules"
       }
     ],
     "rules.resident_holding_rules": [
