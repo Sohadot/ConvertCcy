@@ -9,85 +9,94 @@
 
   "schema_version": "1.2.1",
   "page_status": "verified",
-  "last_reviewed": "2026-05-02",
+  "last_reviewed": "2026-07-23",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": false,
   "source_notice": "",
 
-  "country_overview": "South Africa operates a floating exchange rate regime administered by the South African Reserve Bank (SARB). The Rand is subject to certain capital flow management measures and reporting requirements, while current account transactions are largely liberalised.",
+  "country_overview": "South Africa operates a floating exchange-rate regime administered by the South African Reserve Bank (SARB) through its Financial Surveillance Department. Cross-border foreign-exchange transactions are conducted through Authorised Dealers under the Currency and Exchanges Manual for Authorised Dealers. Current-account transactions are largely liberalised, while certain capital-account movements remain subject to exchange controls, prior approval or reporting requirements. Traveller currency movements are enforced at the border by SARS Customs under the Exchange Control Regulations, 1961.",
 
   "summary": {
-    "traveler": "Travelers may bring in foreign currency without limit but must declare amounts of ZAR 25,000 or equivalent. Export of foreign currency is restricted and subject to SARB rules.",
-    "business": "Businesses must route significant foreign exchange transactions through authorised banks. Capital repatriation and certain payments require SARB approval or documentation."
+    "traveler": "Travellers may bring foreign currency into South Africa without limit, subject to declaration. South African bank notes may be taken out up to R25,000, and are unlimited only when travelling within the Common Monetary Area; carrying rand above R25,000 requires prior SARB authorisation. Any currency — rand or foreign currency convertible to rand — in excess of R100,000 is treated as excess currency requiring written SARB permission before entering or leaving. The traveller declaration is administered by SARS through an online form or the manual Traveller Declaration (TD-01).",
+    "business": "Businesses must route cross-border foreign-exchange transactions through Authorised Dealers (banks) appointed by the SARB, in accordance with the Currency and Exchanges Manual for Authorised Dealers. Current-account payments are largely liberalised, while certain capital-account transfers, repatriation and offshore investment remain subject to SARB exchange-control approval, documentation and reporting."
   },
 
   "rules": {
-    "bring_foreign_currency_in": "Foreign currency may be brought into South Africa without limit. Amounts of ZAR 25,000 or equivalent must be declared to South African Revenue Service (SARS) upon arrival.",
-    "take_foreign_currency_out": "Foreign currency may be taken out up to the amount declared on entry or supported by authorised bank documentation. Residents are subject to SARB limits.",
-    "cash_declaration_threshold": "ZAR 25,000 or equivalent in foreign currency or negotiable instruments at entry and exit. Declaration to SARS is mandatory.",
-    "resident_holding_rules": "South African residents are subject to SARB limits and approval requirements when holding or using foreign currency accounts. General unrestricted access requires specific authorisation.",
-    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds more freely through authorised banks.",
-    "business_invoicing_settlement": "Cross-border business transactions must be settled through authorised banks in accordance with SARB foreign exchange regulations.",
-    "exchange_controls": "South Africa maintains a floating exchange regime with controls on certain capital account transactions. Current account transactions are largely liberalised.",
-    "banking_conversion_practicality": "Foreign exchange conversion is available through authorised banks and licensed exchange offices. Documentation is required for large transactions."
+    "bring_foreign_currency_in": "Foreign currency may be brought into South Africa without limit. Travellers must declare the currency in their possession; the traveller declaration is administered by SARS through an online declaration form or the manual Traveller Declaration (TD-01). Any amount in excess of R100,000 — rand or foreign currency convertible to rand — is treated as excess currency under the Exchange Control Regulations and requires prior written permission from the SARB.",
+    "take_foreign_currency_out": "South African bank notes may be taken out up to R25,000, and are unlimited only when travelling within the Common Monetary Area; carrying rand above R25,000 requires prior authorisation from the SARB. Currency in excess of R100,000, whether rand or foreign currency convertible to rand, requires written SARB permission. A traveller leaving South Africa must declare the currency in their possession to SARS Customs, which may search and seize currency under the Exchange Control Regulations.",
+    "cash_declaration_threshold": "Two distinct thresholds apply and must not be conflated. First, the SARB rand-carrying limit: South African bank notes above R25,000 may not be taken out without prior SARB authorisation, and are unlimited only within the Common Monetary Area. Second, the SARB excess-currency rule: any amount, rand or foreign currency convertible to rand, in excess of R100,000 requires written SARB permission before entering or leaving. Separately, the traveller declaration — covering bank notes, foreign currency, securities and gold — is administered by SARS via an online form or the manual TD-01.",
+    "resident_holding_rules": "South African residents transact foreign exchange through Authorised Dealers under the Currency and Exchanges Manual for Authorised Dealers. Resident individuals and entities are subject to SARB exchange-control allowances, approval thresholds and reporting obligations for foreign-currency holdings, offshore transfers and foreign investment. The specific current allowance amounts are set by the Manual and SARB circulars.",
+    "non_resident_rules": "Non-residents may operate non-resident and foreign-currency accounts through Authorised Dealers. Funds introduced from abroad may generally be transferred back once the Authorised Dealer has verified the transaction under the Currency and Exchanges Manual. Certain non-resident transactions require documentary evidence and, in some cases, SARB approval.",
+    "business_invoicing_settlement": "Cross-border business settlement is effected through Authorised Dealers appointed by the SARB, in accordance with the Currency and Exchanges Manual for Authorised Dealers. Current-account payments are largely liberalised, while capital-account transfers, cross-border loans and offshore investment remain subject to SARB exchange-control approval, documentation and reporting.",
+    "exchange_controls": "South Africa maintains a floating exchange-rate regime with exchange controls administered by the SARB Financial Surveillance Department under the Exchange Control Regulations, 1961. Current-account transactions are largely liberalised; certain capital-account movements remain subject to controls, prior approval and reporting.",
+    "banking_conversion_practicality": "Foreign-exchange conversion and cross-border transfers are handled by Authorised Dealers (banks) and Authorised Dealers with limited authority (ADLAs) licensed by the SARB. Documentary evidence and reporting are required for transactions, and dealers apply Financial Intelligence Centre Act obligations."
   },
 
   "source_authorities": [
     {
-      "label": "South African Reserve Bank (SARB) — Foreign Exchange Regulations",
-      "url": "https://www.resbank.co.za/",
+      "label": "SARB — Financial Surveillance Documents (Exchange Control Regulations, 1961; Currency and Exchanges Manual for Authorised Dealers; 2026 Exchange Control Circulars)",
+      "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "South African Revenue Service (SARS) — Currency Declaration Rules",
-      "url": "https://www.sars.gov.za/",
+      "label": "SARB — Currency and Exchanges Manual for Authorised Dealers (2026 edition), Financial Surveillance Department (official PDF)",
+      "url": "https://www.resbank.co.za/content/dam/sarb/what-we-do/financial-surveillance/financial-surveillance-documents/2026/Currency%20and%20Exchanges%20Manual%20for%20Authorised%20Dealers.pdf",
+      "type": "primary_regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "SARS — Travellers (traveller declaration, excess-currency rule, Traveller Declaration TD-01)",
+      "url": "https://www.sars.gov.za/customs-and-excise/travellers/",
       "type": "customs",
       "tier": "primary"
     },
     {
-      "label": "SARB — FX Circulars & Liberalisation Measures",
-      "url": "https://www.resbank.co.za/",
-      "type": "primary_regulator",
+      "label": "SARS — Departure from South Africa (rand-carrying limit, Common Monetary Area, prior SARB authorisation, Customs search and seizure)",
+      "url": "https://www.sars.gov.za/customs-and-excise/travellers/departure-from-sa/",
+      "type": "customs",
       "tier": "primary"
     }
   ],
 
   "source_map": {
     "country_overview": [
-      { "url": "https://www.resbank.co.za/", "pages": [], "section": "FX Regime Overview" }
+      { "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents", "pages": [], "section": "SARB Financial Surveillance framework — floating regime, Exchange Control Regulations, 1961, and Currency and Exchanges Manual for Authorised Dealers", "source_kind": "html" }
     ],
     "summary.traveler": [
-      { "url": "https://www.sars.gov.za/", "pages": [], "section": "Travel & Currency Movement" }
+      { "url": "https://www.sars.gov.za/customs-and-excise/travellers/", "pages": [], "section": "Travellers — excess currency over R100,000 requires SARB written permission; traveller declaration (online form / TD-01)", "source_kind": "html" },
+      { "url": "https://www.sars.gov.za/customs-and-excise/travellers/departure-from-sa/", "pages": [], "section": "Departure — SA bank notes up to R25,000 (unlimited within the Common Monetary Area); above R25,000 requires prior SARB authorisation", "source_kind": "html" }
     ],
     "summary.business": [
-      { "url": "https://www.resbank.co.za/", "pages": [], "section": "Business & Capital Movement" }
+      { "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents", "pages": [], "section": "Authorised Dealer framework and current-account liberalisation — Currency and Exchanges Manual for Authorised Dealers", "source_kind": "html" }
     ],
     "rules.bring_foreign_currency_in": [
-      { "url": "https://www.sars.gov.za/", "pages": [], "section": "Import of Currency" }
+      { "url": "https://www.sars.gov.za/customs-and-excise/travellers/", "pages": [], "section": "Import of currency — traveller declaration (online / TD-01); excess currency over R100,000 (rand or FC convertible to rand) requires SARB written permission", "source_kind": "html" }
     ],
     "rules.take_foreign_currency_out": [
-      { "url": "https://www.sars.gov.za/", "pages": [], "section": "Export of Currency" }
+      { "url": "https://www.sars.gov.za/customs-and-excise/travellers/departure-from-sa/", "pages": [], "section": "Departure — SA bank notes up to R25,000 (unlimited within the CMA); above R25,000 requires prior SARB authorisation; Customs may search and seize under Exchange Control Regulations 3(3) and 3(6)", "source_kind": "html" },
+      { "url": "https://www.sars.gov.za/customs-and-excise/travellers/", "pages": [], "section": "Excess currency over R100,000 requires SARB written permission before leaving", "source_kind": "html" }
     ],
     "rules.cash_declaration_threshold": [
-      { "url": "https://www.sars.gov.za/", "pages": [], "section": "Cash Declaration Rules (ZAR 25,000 / equivalent)" }
+      { "url": "https://www.sars.gov.za/customs-and-excise/travellers/departure-from-sa/", "pages": [], "section": "SARB rand-carrying limit — SA bank notes above R25,000 require prior SARB authorisation (unlimited within the CMA)", "source_kind": "html" },
+      { "url": "https://www.sars.gov.za/customs-and-excise/travellers/", "pages": [], "section": "SARB excess-currency rule — any amount over R100,000 (rand or FC convertible to rand) requires SARB written permission; traveller declaration (bank notes, foreign currency, securities, gold) administered by SARS via online form / TD-01", "source_kind": "html" }
     ],
     "rules.resident_holding_rules": [
-      { "url": "https://www.resbank.co.za/", "pages": [], "section": "Resident Foreign Currency Accounts" }
+      { "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents", "pages": [], "section": "Resident exchange-control allowances and Authorised Dealer framework — Currency and Exchanges Manual for Authorised Dealers. [HARDENING] The specific current resident allowance amounts (e.g. single discretionary allowance, foreign capital allowance) are set in the Manual PDF, which could not be pinpointed to a page (no PDF tooling available); open evidence gap.", "source_kind": "html" }
     ],
     "rules.non_resident_rules": [
-      { "url": "https://www.resbank.co.za/", "pages": [], "section": "Non-Resident Accounts & Transfers" }
+      { "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents", "pages": [], "section": "Non-resident and foreign-currency accounts via Authorised Dealers — Currency and Exchanges Manual for Authorised Dealers. [HARDENING] The exact non-resident transfer/re-export and approval mechanics are set in the Manual PDF, which could not be pinpointed to a page (no PDF tooling available); open evidence gap.", "source_kind": "html" }
     ],
     "rules.business_invoicing_settlement": [
-      { "url": "https://www.resbank.co.za/", "pages": [], "section": "Business & Cross-Border Payments" }
+      { "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents", "pages": [], "section": "Cross-border settlement through Authorised Dealers; current-account liberalisation and capital-account controls — Currency and Exchanges Manual for Authorised Dealers", "source_kind": "html" }
     ],
     "rules.exchange_controls": [
-      { "url": "https://www.resbank.co.za/", "pages": [], "section": "Managed Exchange Regime" }
+      { "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents", "pages": [], "section": "Exchange controls administered by SARB Financial Surveillance under the Exchange Control Regulations, 1961; current-account liberalised, capital-account controlled", "source_kind": "html" }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://www.resbank.co.za/", "pages": [], "section": "Authorised Dealers & Exchange Houses" }
+      { "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents", "pages": [], "section": "Authorised Dealers and ADLAs licensed by SARB; documentary evidence, reporting and Financial Intelligence Centre Act obligations", "source_kind": "html" }
     ]
   },
 
