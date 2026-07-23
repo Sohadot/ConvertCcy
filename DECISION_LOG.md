@@ -995,3 +995,20 @@ SARB exchange control, SARS customs declaration, and FIC AML reporting are kept 
 
 Status: ✅ South Africa advanced `source_review_ready → publish_ready` with content corrected, the R25,000 / R100,000 / traveller-declaration concepts separated and each traced to a claim-specific official SARS source, and the SARB capital-account framework mapped to the FinSurv Documents page. Two capital-account fields retain `[HARDENING]` for specific allowance figures. Not published, not indexed, no public surface. Next step (a later, separate phase): South Africa publication + Deployment Gate.
 Verified: 2026-07-23.
+
+### P8C-2a — South Africa Publication-Readiness Consistency
+
+Corrective phase. P8C-2 advanced South Africa to `publish_ready` while `resident_holding_rules` and `non_resident_rules` still carried `[HARDENING]`. That conflicts with the precedent set in the United States review (P8B-2b), where unresolved `[HARDENING]` on a public rule field keeps the country at `source_review_ready` and blocks `publish_ready`. This phase restores consistency.
+
+**Governance consistency rule (adopted):** *Any unresolved `[HARDENING]` on a public rule field blocks `publish_ready` unless a formal governance exception is explicitly adopted.* A `[HARDENING]` marker records an open, claim-specific evidence gap; `publish_ready` asserts that every public field is publication-grade. The two cannot coexist silently. Clearing the block requires either pinpointed claim-specific evidence that removes the marker, or a deliberately recorded governance exception — never an implicit advance.
+
+**Decision.** The `[HARDENING]` markers on South Africa cannot currently be cleared: the specific resident/non-resident allowance amounts and the operational/licensing/documentary provisions live in the Currency and Exchanges Manual PDFs, which could not be pinpointed to a page (no poppler / broken pypdf — the same tooling gap as the US OECD record). No claim-specific pinpointed evidence is available, and no governance exception is warranted for a sovereign reference field. South Africa is therefore **restored to `source_review_ready`**.
+
+**`banking_conversion_practicality` re-checked.** Its only source is the SARB FinSurv Documents page (HTML), which confirms that the two dealer categories (Authorised Dealers and ADLAs) and the Financial Intelligence Centre Act requirements exist, but does not substantiate the specific licensing/authorisation, documentary-evidence, and operational conversion/transfer provisions asserted in the field — those sit in the Manual PDFs. Consistent with the US precedent (where the analogous field is `[HARDENING]`), it is now also marked `[HARDENING]`. South Africa's `[HARDENING]` set is now exactly `{resident_holding_rules, non_resident_rules, banking_conversion_practicality}` — identical to the United States.
+
+**Unchanged / boundary held.** The corrected, non-conflated traveller and threshold content from P8C-2 stands (R25,000 SARB rand-carrying limit; R100,000 SARB excess-currency rule; SARS traveller declaration / TD-01 — each traced to a claim-specific official SARS page). `page_status` stays `verified`, `evidence_tier: official_verified`, `indexing_allowed: false`; no rules page, brief, API route, Passage Check entry, sitemap URL, or llms.txt exposure; South Africa is not published; no public route created; no other country changed (United States remains at `source_review_ready`).
+
+**Governance Gate:** all five checks pass; `validate_rules.py` clean (0/0). Leakage check: zero occurrences of `south-africa` in `sitemap.xml`, Passage Check, `api/v1/rules/`, `briefs/`, or `llms.txt`.
+
+Status: ⏸️ South Africa restored to `source_review_ready`; three capital-account/account-access fields carry `[HARDENING]`. `publish_ready` remains BLOCKED under the newly-adopted consistency rule until every marker is cleared with claim-specific pinpointed evidence (Currency and Exchanges Manual page references) or a formal governance exception is explicitly adopted.
+Verified: 2026-07-23.
