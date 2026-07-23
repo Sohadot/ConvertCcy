@@ -1,10 +1,70 @@
+# ConvertCCY robots.txt
+# Sovereign reference surface for humans, search engines, and permitted AI reference crawlers.
+# Policy: allow search/reference discovery; reserve rights against AI training and bulk extraction.
+
+# --- Rights reservation (notice) ---
+# The Content-Signal values below are EXPRESS RESERVATIONS OF RIGHTS UNDER
+# ARTICLE 4 OF EU DIRECTIVE 2019/790 ON COPYRIGHT AND RELATED RIGHTS IN THE
+# DIGITAL SINGLE MARKET. A Content-Signal = yes grants that use; = no withholds
+# it; an omitted signal neither grants nor restricts. This is a legal notice and
+# does NOT replace the explicit per-crawler rules below — the per-crawler
+# Allow/Disallow groups are authoritative.
+#   search:   building a search index; returning links / short excerpts.
+#   ai-input: real-time input into AI models (RAG, grounding, generative answers).
+#   ai-train: training or fine-tuning AI models.
+#   use:      how AI systems may consume content (immediate, reference, full).
+
+# Default policy for all agents: readable + citable, training reserved.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no, use=reference
 Allow: /
-
-# Preview / internal build surfaces are not part of the public sovereign layer
 Disallow: /preview/
-
-# Cloudflare email-protection endpoint — not a real page, returns 404 when crawled
 Disallow: /cdn-cgi/
+
+# --- OpenAI ---
+# Search/reference discovery — allowed for ChatGPT Search citation and retrieval.
+# (Own group repeats the preview/cdn-cgi disallows: a crawler obeys only its
+#  most-specific group and does not inherit the User-agent: * rules.)
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /preview/
+Disallow: /cdn-cgi/
+
+# Training opt-out — blocked.
+User-agent: GPTBot
+Disallow: /
+
+# --- Google ---
+# Google Search must remain crawlable.
+User-agent: Googlebot
+Allow: /
+Disallow: /preview/
+Disallow: /cdn-cgi/
+
+# AI training / Gemini / Vertex AI opt-out; does not block Google Search indexing.
+User-agent: Google-Extended
+Disallow: /
+
+# --- Anthropic ---
+# Search/reference visibility — allowed.
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /preview/
+Disallow: /cdn-cgi/
+
+# User-directed retrieval — allowed.
+User-agent: Claude-User
+Allow: /
+Disallow: /preview/
+Disallow: /cdn-cgi/
+
+# Training / model-development crawler — blocked.
+User-agent: ClaudeBot
+Disallow: /
+
+# --- Bulk corpus ---
+# Common Crawl bulk corpus extraction — blocked.
+User-agent: CCBot
+Disallow: /
 
 Sitemap: https://convertccy.com/sitemap.xml
