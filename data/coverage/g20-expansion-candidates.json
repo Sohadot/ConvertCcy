@@ -49,11 +49,12 @@
    "expected_difficulty": "Medium. Sources are English-language and authoritative, but BSA/FinCEN reporting (FBAR, Form 105, CTR/SAR) is a distinct regime from customs declaration and must not be conflated — a defect class already caught and corrected once in P2 ontology review.",
    "known_risk_areas": [
     "FinCEN Form 105 vs CTR/SAR conflation (previously corrected in ontology P2 review — do not repeat)",
-    "State-level vs federal distinctions are out of scope; federal rules only"
+    "State-level vs federal distinctions are out of scope; federal rules only",
+     "CBP on-file source URL (prohibited-and-restricted-items) is off-topic and returned HTTP 403 — must be replaced with a CBP/FinCEN currency-reporting source in the publication-candidate review; declaration substance live-verified via 31 USC 5316 / 31 CFR 1010.340 (P8B-1 source intake, 2026-07-23)"
    ],
    "missing_sources": [],
    "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
-   "status": "candidate_only"
+   "status": "source_review_ready"
   },
   {
    "country_name": "Mexico",
