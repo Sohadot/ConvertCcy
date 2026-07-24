@@ -90,6 +90,16 @@
     "url": "/preview/rules/verified/indonesia-foreign-currency-rules.html"
   },
   {
+    "country_name": "Italy",
+    "country_slug": "italy",
+    "iso2": "IT",
+    "currency_code": "EUR",
+    "region": "Southern Europe",
+    "page_status": "published",
+    "last_reviewed": "2026-07-24",
+    "url": "/rules/italy-foreign-currency-rules.html"
+  },
+  {
     "country_name": "Japan",
     "country_slug": "japan",
     "iso2": "JP",

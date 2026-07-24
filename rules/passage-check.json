@@ -2,11 +2,11 @@
  "engine": "ConvertCCY Passage Check",
  "version": "1.0",
  "built_from": "rules/dataset.json",
- "source_dataset_generated_at": "2026-07-24T09:00:02+00:00",
+ "source_dataset_generated_at": "2026-07-24T13:31:46+00:00",
  "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
  "attribution": "ConvertCCY (https://convertccy.com/)",
  "notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. Structured thresholds are transcribed from each entry's cash_declaration_threshold field. Currency conversions shown in the tool are indicative only and are not governed figures.",
- "count": 11,
+ "count": 12,
  "countries": [
   {
    "country_name": "Australia",
@@ -602,6 +602,165 @@
     }
    ],
    "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in India are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBI/CBIC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of India, CBIC, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "Italy",
+   "country_slug": "italy",
+   "iso2": "IT",
+   "currency_code": "EUR",
+   "currency_name": "Euro",
+   "region": "Southern Europe",
+   "last_reviewed": "2026-07-24",
+   "rules_page": "/rules/italy-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "cash — currency (banknotes and coins), bearer-negotiable instruments, and gold used as a highly liquid store of value",
+      "applies": "entering or leaving the European Union through Italy",
+      "authority": "Agenzia delle Dogane e dei Monopoli (ADM), Italian Customs",
+      "mechanism": "mandatory declaration under Article 3, Regulation (EU) 2018/1672"
+     },
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "same cash categories (currency, bearer-negotiable instruments, gold)",
+      "applies": "entering or leaving Italian national territory, including to or from other EU Member States",
+      "authority": "Agenzia delle Dogane e dei Monopoli (ADM), Italian Customs",
+      "mechanism": "mandatory declaration under Article 3, Legislative Decree 195/2008"
+     }
+    ],
+    "note": "Two parallel EUR 10,000 regimes administered through a single ADM declaration form: the EU external-border regime (Art. 3 Reg (EU) 2018/1672) and the Italian national-territory regime, which also covers intra-EU movements to or from other Member States (Art. 3 D.Lgs 195/2008). Unaccompanied cash sent by post, freight or courier is covered separately by Art. 4 of Regulation (EU) 2018/1672 (disclosure on customs request). This border cash-declaration regime is distinct from the general capital-movement framework under Article 63 TFEU.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No national exchange controls; free movement of capital and payments under Article 63 TFEU, subject to Treaty exceptions (taxation, prudential supervision, public policy/security, certain third-country measures) and to EU sanctions",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "Cash of EUR 10,000 or more brought into Italy must be declared to the Italian customs authority (ADM) at the first border customs office. Where the traveller enters the European Union through Italy the obligation arises under Article 3 of Regulation (EU) 2018/1672; where the traveller enters Italian national territory from another EU Member State it arises under Article 3 of Legislative Decree 195/2008. 'Cash' includes currency, bearer-negotiable instruments and gold used as a highly liquid store of value.",
+     "source": {
+      "url": "https://www.adm.gov.it/portale/documents/20182/153447511/DOG-c-12-07052024.pdf/0ae342f1-47ea-cec2-eba9-96a98393d6a1?t=1715090638974",
+      "section": "ADM Circular 12/2024 (p.1): entry — Article 3 Reg (EU) 2018/1672 (entering the Union) and Article 3 D.Lgs 195/2008 (entering national territory); EUR 10 000; first border customs office"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "Cash of EUR 10,000 or more taken out of Italy must be declared to the Italian customs authority (ADM) at the first border customs office. The obligation applies on leaving the European Union through Italy (Article 3, Regulation (EU) 2018/1672) and on leaving Italian national territory towards another EU Member State (Article 3, Legislative Decree 195/2008). The same cash categories apply; a declaration with inexact or incomplete information does not satisfy the obligation.",
+     "source": {
+      "url": "https://www.adm.gov.it/portale/documents/20182/153447511/DOG-c-12-07052024.pdf/0ae342f1-47ea-cec2-eba9-96a98393d6a1?t=1715090638974",
+      "section": "ADM Circular 12/2024 (p.1): exit — Article 3 Reg (EU) 2018/1672 (leaving the Union) and Article 3 D.Lgs 195/2008 (leaving national territory); EUR 10 000; first border customs office"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "The threshold for a mandatory declaration of accompanied cash carried by a traveller is EUR 10,000 or more. Two parallel regimes apply and are administered through a single ADM declaration form: Article 3 of Regulation (EU) 2018/1672 for cash entering or leaving the European Union, and Article 3 of Legislative Decree 195/2008 for cash entering or leaving Italian national territory (including to and from other EU Member States). Unaccompanied cash sent by post, freight or courier is covered separately by Article 4 of Regulation (EU) 2018/1672 (disclosure on the request of customs). Customs may require production of the cash and apply administrative seizure; specific penalty amounts are fixed by Legislative Decree 195/2008.",
+     "source": {
+      "url": "https://www.adm.gov.it/portale/documents/20182/153447511/DOG-c-12-07052024.pdf/0ae342f1-47ea-cec2-eba9-96a98393d6a1?t=1715090638974",
+      "section": "ADM Circular 12/2024 (p.1): EUR 10 000 or more; two parallel regimes (Art. 3 Reg (EU) 2018/1672 EU border; Art. 3 D.Lgs 195/2008 national territory) via a single declaration form"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "Italy maintains no national exchange-control regime for capital movements or payments. Under Article 63 of the Treaty on the Functioning of the European Union, all restrictions on the movement of capital and on payments, between Member States and with third countries, are prohibited. This is not unconditional: the Treaty preserves exceptions, including measures on taxation and the prudential supervision of financial services and declaration procedures for administrative or statistical purposes (Article 65), the option to maintain certain restrictions on direct investment involving third countries (Article 64), and temporary safeguard measures (Article 66), alongside EU restrictive measures (sanctions). This capital-movement framework is separate from the EUR 10,000 cross-border cash-declaration regimes.",
+     "source": {
+      "url": "https://www.europarl.europa.eu/factsheets/en/sheet/39/free-movement-of-capital",
+      "section": "European Parliament, Fact Sheets on the EU — Free movement of capital: Article 63 TFEU prohibits all restrictions on the movement of capital and on payments (between Member States and with third countries); exceptions in Article 65 (taxation, prudential supervision, declaration procedures, public policy/security), Article 64 (third-country direct investment) and Article 66 (temporary safeguards)"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "Within the EU Treaty framework, general restrictions on capital movements and payments are prohibited (Article 63 TFEU), and no Italy-specific general prior-approval exchange-control regime applies to residents holding or transferring foreign currency. This does not guarantee that any given resident may open any particular foreign-currency account: holding and transferring funds remain subject to sanctions, anti-money-laundering and identity verification, taxation, reporting, prudential rules (Article 65 TFEU), and each supervised intermediary's own conditions.",
+     "source": {
+      "url": "https://www.europarl.europa.eu/factsheets/en/sheet/39/free-movement-of-capital",
+      "section": "European Parliament, Fact Sheets on the EU — Free movement of capital: Article 63 TFEU prohibits all restrictions on the movement of capital and on payments (between Member States and with third countries); exceptions in Article 65 (taxation, prudential supervision, declaration procedures, public policy/security), Article 64 (third-country direct investment) and Article 66 (temporary safeguards) — framework for resident foreign-currency holding; no Italy-specific prior-approval regime; Article 65 controls apply"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Article 63 TFEU prohibits restrictions on capital movements and payments both between Member States and with third countries, so no general exchange-control restriction applies to non-residents holding accounts or transferring funds in Italy. This creates no entitlement to an account or service: onboarding, taxation, sanctions screening, anti-money-laundering and identity verification, reporting, and each institution's conditions apply, and the Treaty preserves certain third-country exceptions (Articles 64 and 65 TFEU).",
+     "source": {
+      "url": "https://www.europarl.europa.eu/factsheets/en/sheet/39/free-movement-of-capital",
+      "section": "European Parliament, Fact Sheets on the EU — Free movement of capital: Article 63 TFEU prohibits all restrictions on the movement of capital and on payments (between Member States and with third countries); exceptions in Article 65 (taxation, prudential supervision, declaration procedures, public policy/security), Article 64 (third-country direct investment) and Article 66 (temporary safeguards) — capital movements and payments with third countries covered; no entitlement to an account/service; Article 64-65 exceptions"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Currency conversion and cross-border payment services in Italy are provided through banks, payment institutions and electronic-money institutions authorised and supervised by Banca d'Italia, which maintains the supervisory registers of these intermediaries. Authorisation and supervision establish the regulatory routing; they do not guarantee that any particular institution offers a given currency, service or price. Access remains subject to each intermediary's onboarding, anti-money-laundering and identity verification, sanctions screening, and reporting requirements.",
+     "source": {
+      "url": "https://www.bancaditalia.it/compiti/vigilanza/intermediari/index.html?com.dotmarketing.htmlpage.language=1",
+      "section": "Banca d'Italia — 'Banks and other financial intermediaries': supervises banks, payment institutions and electronic-money institutions (EMIs) and maintains their supervisory registers — regulatory routing for conversion and cross-border payments; authorisation/supervision is not a service or price guarantee"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Agenzia delle Dogane e dei Monopoli (ADM) — Circular No. 12/2024 (07/05/2024), controls on cash entering or leaving national territory under Regulation (EU) 2018/1672 and Legislative Decree 195/2008 (official PDF; SHA-256 85c3132c4b80397f653a77b467ea94bae99f879b7da3ced9f450d395a25f36db)",
+     "url": "https://www.adm.gov.it/portale/documents/20182/153447511/DOG-c-12-07052024.pdf/0ae342f1-47ea-cec2-eba9-96a98393d6a1?t=1715090638974",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "Agenzia delle Dogane e dei Monopoli (ADM) — Cash Declaration form 'Dichiarazione di denaro contante' (Article 3, Regulation (EU) 2018/1672 / Legislative Decree 195/2008), official PDF; SHA-256 710ef5f62cda7c825fd992485f80be2c5c0ea100ec2e5f5d7cc9a36849409e85",
+     "url": "https://www.adm.gov.it/portale/documents/20182/909007/Modello+di+dichiarazione++denaro+al+seguito.pdf/2229d31d-24a2-4972-8c46-fbc834ada7d6?t=1656056248575",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "European Commission — EU Cash Controls guidance (Regulation (EU) 2018/1672)",
+     "url": "https://taxation-customs.ec.europa.eu/customs/prohibitions-restrictions/eu-cash-controls_en",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Regulation (EU) 2018/1672 on controls on cash entering or leaving the Union — EUR-Lex ELI (OJ L 284, 12.11.2018)",
+     "url": "https://eur-lex.europa.eu/eli/reg/2018/1672/oj/eng",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Legislative Decree 19 November 2008, No. 195 (D.Lgs 195/2008) — Normattiva official consolidated text",
+     "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2008-11-19;195",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Banca d'Italia — Banks and other financial intermediaries (supervision of banks, payment institutions and electronic-money institutions; supervisory registers)",
+     "url": "https://www.bancaditalia.it/compiti/vigilanza/intermediari/index.html?com.dotmarketing.htmlpage.language=1",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Unità di Informazione Finanziaria per l'Italia (UIF), within Banca d'Italia — AML/FIU under Legislative Decree 231/2007",
+     "url": "https://uif.bancaditalia.it/",
+     "type": "fiu",
+     "tier": "primary"
+    },
+    {
+     "label": "Article 63 of the Treaty on the Functioning of the European Union (free movement of capital and payments) — EUR-Lex, consolidated version (OJ C 202, 7 June 2016), CELEX 12016E063 (primary law)",
+     "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:12016E063",
+     "type": "multilateral",
+     "tier": "secondary"
+    },
+    {
+     "label": "European Parliament — Fact Sheets on the European Union: Free movement of capital (Article 63 TFEU framework and Treaty exceptions; official EU-institution reference)",
+     "url": "https://www.europarl.europa.eu/factsheets/en/sheet/39/free-movement-of-capital",
+     "type": "multilateral",
+     "tier": "secondary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange and cash-control rules in Italy are set by EU and Italian law and may change; requirements depend on residency, the movement concerned (entering/leaving the EU versus Italian national territory), amount, documentation, and the applicable ADM, Banca d'Italia, and EU framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Agenzia delle Dogane e dei Monopoli, Banca d'Italia, or a qualified professional before making any financial or travel decisions."
   },
   {
    "country_name": "Japan",

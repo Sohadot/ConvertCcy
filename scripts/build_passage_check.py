@@ -85,6 +85,26 @@ DECLARATION = {
                 "the higher to aggregate foreign exchange. Endorsed CDF documentation anchors "
                 "later authorised-dealer conversions and outbound movement.",
     },
+    "italy": {
+        "thresholds": [
+            {"value": 10000, "currency": "EUR",
+             "scope": "cash — currency (banknotes and coins), bearer-negotiable instruments, and gold used as a highly liquid store of value",
+             "applies": "entering or leaving the European Union through Italy",
+             "authority": "Agenzia delle Dogane e dei Monopoli (ADM), Italian Customs",
+             "mechanism": "mandatory declaration under Article 3, Regulation (EU) 2018/1672"},
+            {"value": 10000, "currency": "EUR",
+             "scope": "same cash categories (currency, bearer-negotiable instruments, gold)",
+             "applies": "entering or leaving Italian national territory, including to or from other EU Member States",
+             "authority": "Agenzia delle Dogane e dei Monopoli (ADM), Italian Customs",
+             "mechanism": "mandatory declaration under Article 3, Legislative Decree 195/2008"},
+        ],
+        "note": "Two parallel EUR 10,000 regimes administered through a single ADM declaration form: the EU "
+                "external-border regime (Art. 3 Reg (EU) 2018/1672) and the Italian national-territory regime, "
+                "which also covers intra-EU movements to or from other Member States (Art. 3 D.Lgs 195/2008). "
+                "Unaccompanied cash sent by post, freight or courier is covered separately by Art. 4 of Regulation "
+                "(EU) 2018/1672 (disclosure on customs request). This border cash-declaration regime is distinct "
+                "from the general capital-movement framework under Article 63 TFEU.",
+    },
     "japan": {
         "thresholds": [
             {"value": 1000000, "currency": "JPY", "scope": "cash or equivalent",
@@ -177,6 +197,8 @@ EXCHANGE_CONTROLS = {
     "germany": ("none", "No general exchange controls (liberalised within the Eurozone)"),
     "india": ("capital_account_regulated",
               "Current account largely liberalised; capital account regulated under FEMA"),
+    "italy": ("none",
+              "No national exchange controls; free movement of capital and payments under Article 63 TFEU, subject to Treaty exceptions (taxation, prudential supervision, public policy/security, certain third-country measures) and to EU sanctions"),
     "japan": ("none", "No general exchange controls (fully liberalised)"),
     "pakistan": ("capital_account_regulated",
                  "No general exchange controls on the current account; capital account regulated by the SBP"),
