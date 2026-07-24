@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-23T20:27:24+00:00",
+  "generated_at": "2026-07-24T09:00:02+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 10,
-    "verified": 11,
+    "published": 11,
+    "verified": 10,
     "needs_hardening": 2,
     "secondary_review": 0,
     "skipped": 0,
@@ -90,6 +90,14 @@
       "output_html": "rules/united-kingdom-foreign-currency-rules.html",
       "sitemap_eligible": true,
       "public_url": "https://convertccy.com/rules/united-kingdom-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
+      "country_slug": "united-states",
+      "country_name": "United States",
+      "output_html": "rules/united-states-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/united-states-foreign-currency-rules.html"
     }
   ],
   "verified_entries": [
@@ -161,13 +169,6 @@
       "country_slug": "turkey",
       "country_name": "Turkey",
       "output_html": "preview/rules/verified/turkey-foreign-currency-rules.html",
-      "sitemap_eligible": false
-    },
-    {
-      "status": "verified",
-      "country_slug": "united-states",
-      "country_name": "United States",
-      "output_html": "preview/rules/verified/united-states-foreign-currency-rules.html",
       "sitemap_eligible": false
     }
   ],
