@@ -1098,3 +1098,21 @@ Closure-only PR for P8C-3. The publication release (#42) is merged; this records
 
 Status: ✅ P8C-3 CLOSED. South Africa is live and indexed as the 10th published jurisdiction; Pages deployment green from the merge commit; all live URLs, content distinctions, counts, Passage Check coverage, and sitemap routing verified. Published jurisdictions: 10. Publish-ready candidates: 0. United States remains at `source_review_ready` (its P8D-0 Annex B evidence is captured, pending P8B-2c).
 Verified (live): 2026-07-24.
+
+### P8B-2c — United States Hardening Close
+
+Applied the independently reviewed P8D-0 OECD Annex B evidence to clear the three remaining United States `[HARDENING]` markers and advance the country `source_review_ready → publish_ready`. Zero `[HARDENING]` markers remain in `data/rules/united-states.json`.
+
+- **`resident_holding_rules`** and **`non_resident_rules`** — sourced to the **OECD Code of Liberalisation of Capital Movements, Annex B, United States reservation schedule** (compiled edition © OECD 2026, **PDF page 134**, printed folio 133; SHA-256 `841dfe37…cb74`, recorded in P8D-0), cited as institutional secondary evidence. The claim is scoped exactly to what the record supports: the US schedule contains **no general capital-movement reservation** restricting residents' holding/conversion/transfer/repatriation, nor ordinary non-resident transfer/repatriation; the only reservations are **enumerated sectoral inward direct investment** (List A, I/A) and a **small-issues securities-registration carve-out** for non-resident issuers (List A, IV/B1-B2). No absolute language ("unrestricted in every circumstance", "no rules apply", "complete freedom"); sanctions, tax, AML/KYC, information-reporting, and prudential caveats preserved; non_resident_rules explicitly does not entitle every non-resident to every account or service.
+- **`banking_conversion_practicality`** — **not** cleared from the OECD absence of reservations. The field was **re-framed** from a market-availability claim into a **regulatory-routing** claim ("ordinary currency conversion and cross-border payments operate through regulated US financial institutions and money-services businesses, subject to BSA/AML, sanctions, tax, reporting, and institution-specific controls") and sourced to a **positive claim-specific** authority: **FinCEN — Money Services Business (MSB) Registration** (`fincen.gov/resources/money-services-business-msb-registration`), which establishes that currency dealers/exchangers and money transmitters must register with FinCEN (Treasury) and comply with Bank Secrecy Act obligations. Added as a `primary`/`fiu` source authority.
+
+**Preserved, already-closed evidence (untouched):** IMF 2026 Article IV Informational Annex (current international payments/transfers, Article VIII); 31 U.S.C. § 5316; 31 CFR § 1010.340; official FinCEN Form 105 / CMIR; strict separation from CTR, SAR, and FBAR. The OECD source authority URL was updated from the publication landing page to the exact compiled-edition PDF used for the page-134 extraction.
+
+**Readiness rule applied.** `[HARDENING]` removed field-by-field only after the supporting source was sufficient; the OECD PDF entries carry non-empty `pages: [134]` (satisfying the PDF-pages-for-verified invariant). With zero markers remaining, the United States advanced `source_review_ready → publish_ready` — no governance exception adopted.
+
+**Boundary held.** `page_status: verified`, `evidence_tier: official_verified`, `indexing_allowed: false`; no public rules page, brief, API route, Passage Check entry, sitemap URL, or llms.txt exposure; no publication or deployment; no other country changed.
+
+**Governance Gate:** all five pass; `validate_rules.py` clean (0/0); maximum pairwise rule-field similarity 0.36 (< 0.72).
+
+Status: ✅ United States hardening closed on the pinpointed OECD Annex B record plus a positive FinCEN MSB source for the banking field, and advanced to `publish_ready`. Not published, not indexed, no public surface. Next step (a later, separate phase): United States publication + Deployment Gate.
+Verified: 2026-07-24.
