@@ -1177,3 +1177,41 @@ The Italy analog of P8B-1 / P8C-1: a fresh, Italy-specific source-by-source inta
 
 Status: ✅ Italy advanced `candidate_only → source_review_ready` in the intake layer, with the EU framework, the Italy-specific intra-EU obligation (D.Lgs 195/2008), the monetary/capital-movement posture, and the AML/domestic-cash-ceiling distinctions verified against official sources and recorded separately. Not `publish_ready`, not published, no rules file, no public surface. Next step: P8E-2 publication-candidate review (build the governed `data/rules/italy.json`, pin exact articles/pages/figures, map source_map field by field).
 Verified: 2026-07-24.
+
+### P8E-2 — Italy Publication-Candidate Review (from-scratch governed build)
+
+Created `data/rules/italy.json` from primary, claim-specific evidence. Because Italy had no rules file, this was a from-scratch governed build, not a revision. `page_status: verified`, `indexing_allowed: false`, `evidence_tier: official_verified`, `publication_class: reference`. Italy is sourced as its own jurisdiction — no France/Germany wording copied, nothing inferred from euro membership alone.
+
+**Primary evidence acquired (Phase 1).** PDF text extraction succeeded via `pdfminer.six` on ADM documents (the ADM site 403-blocks HTML but serves document PDFs): **ADM Circular No. 12/2024** (07/05/2024; SHA-256 `85c3132c…36db`; 9 pp.) and the **ADM cash-declaration form** "Dichiarazione di denaro contante" (SHA-256 `710ef5f6…9e85`; 6 pp.). EUR-Lex, Normattiva article bodies, and the ADM HTML pages are JS-gated / 403 in this environment; the European Commission EU Cash Controls guidance and Banca d'Italia supervision page are fetchable.
+
+**Field-by-field evidence table.**
+
+| Field | Grade | Evidence |
+|---|---|---|
+| bring_foreign_currency_in | ✅ pinpointed | ADM Circular 12/2024 **p.1** (Art. 3 Reg (EU) 2018/1672 EU-entry; Art. 3 D.Lgs 195/2008 national-entry; EUR 10 000; first border customs office) + ADM form **p.1** (cash categories) |
+| take_foreign_currency_out | ✅ pinpointed | ADM Circular 12/2024 **p.1** (exit, both regimes) + ADM form **p.1** |
+| cash_declaration_threshold | ✅ pinpointed | ADM Circular 12/2024 **p.1** (EUR 10 000, two parallel regimes, single form) + **p.4** (Art. 28 administrative seizure) + EC guidance (Art. 4 unaccompanied disclosure) |
+| summary.traveler | ✅ pinpointed | ADM Circular 12/2024 **p.1** + ADM form **p.1** |
+| resident_holding_rules | ⏸ `[HARDENING]` | framework only (Art. 63 TFEU) — no claim-specific primary fetched |
+| non_resident_rules | ⏸ `[HARDENING]` | framework only (Art. 63 TFEU) |
+| business_invoicing_settlement | ⏸ `[HARDENING]` | Banca d'Italia supervision (generic) + framework |
+| exchange_controls | ⏸ `[HARDENING]` | Art. 63 TFEU framework — EUR-Lex text JS-gated |
+| banking_conversion_practicality | ⏸ `[HARDENING]` | Banca d'Italia supervises banks/PIs/EMIs (framework); currency-exchange-provider regime not pinned |
+| summary.business | ⏸ `[HARDENING]` | capital-side framework |
+
+**Disposition of every P8E-1 tentative finding.**
+- Intra-EU obligation exists → **CONFIRMED and CORRECTED to the exact article**: Art. 3 D.Lgs 195/2008 (ADM Circular 12/2024 p.1), parallel to Art. 3 Reg (EU) 2018/1672 for the EU external border.
+- EUR 10 000 or more; cash = currency, bearer-negotiable instruments, gold → **CONFIRMED** (ADM form p.1; EC guidance).
+- Accompanied vs unaccompanied → **CONFIRMED** (accompanied = Art. 3; unaccompanied = Art. 4 Reg (EU) 2018/1672, EC guidance); the current ADM unaccompanied procedure text was not separately pinned (2012 Viaggi&Valuta edition superseded).
+- Penalty EUR 300 up to 40% → **NOT asserted** (came from a search snippet / superseded 2012 edition; the current consolidated figures were not obtained). The rule text states only that penalty amounts are fixed by D.Lgs 195/2008 and that Art. 28 provides an administrative-seizure power — no figures invented.
+- Domestic cash-payment ceiling (D.Lgs 231/2007 Art. 49) → **REMOVED** from the governed rules file: it is a domestic payment limit, not a currency-passage rule, so per the brief it is omitted.
+- Capital-movement freedom (Art. 63 TFEU), Banca d'Italia/ECB, UIF → **RETAINED as framework**, but the capital-side fields are `[HARDENING]` pending claim-specific primary sourcing.
+
+**Language controls honored.** Threshold always tied to its regime (EU border Art. 3 Reg 2018/1672 vs national-territory Art. 3 D.Lgs 195/2008), never a bare "EUR 10,000"; declaration, unaccompanied disclosure, seizure, and penalty kept as separate concepts; free movement of capital presented as a Treaty framework with exceptions and sanctions/AML/tax/prudential carve-outs, never absolute; no Eurozone boilerplate copied; no penalty figures stated.
+
+**Readiness decision: Italy HELD at `source_review_ready` — NOT advanced to `publish_ready`.** Six `[HARDENING]` markers remain (the capital/exchange/resident/non-resident/business/banking cluster). The readiness rule requires zero markers, every material claim on claim-specific evidence, and all PDF claims pinpointed; the declaration cluster meets this, the capital cluster does not. No governance exception adopted. **Exact blocker:** Article 63 TFEU (EUR-Lex) is JS-gated and could not be fetched, and no claim-specific Banca d'Italia / ECB primary page for resident/non-resident/capital/conversion rules was obtainable in this environment — to be resolved in a later P8E-2b hardening phase (analogous to P8B-2c for the US).
+
+**Governance Gate:** all five pass; `validate_rules.py` clean (0/0); max pairwise rule-field similarity 0.53 (< 0.72); all overview quality signals present. **Proof no public surface changed:** `italy.json` is `verified` / `indexing_allowed: false`; no `rules/italy-*.html`, `briefs/italy-*`, `api/v1/rules/italy.json`, or preview HTML exists; zero `italy` references in `sitemap.xml`, `llms.txt`, `rules/passage-check.json`, `rules/dataset.json`, or `api/v1/rules-index.json`.
+
+Status: ✅ `data/rules/italy.json` built from primary pinpointed evidence for the cross-border cash-declaration cluster (ADM Circular 12/2024 + ADM form), with the EU-border / intra-EU distinction correctly attributed to Art. 3 Reg (EU) 2018/1672 and Art. 3 D.Lgs 195/2008. ⏸ capital/banking cluster `[HARDENING]`; Italy held at `source_review_ready`. Not published, not indexed, no public surface.
+Verified: 2026-07-24.
