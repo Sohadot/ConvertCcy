@@ -1255,3 +1255,25 @@ Published Italy through the full governed publication pipeline, advancing it fro
 
 Status: ✅ Italy published in the repository/build. ⏸️ **Deployment Gate pending** — GitHub Pages deploy from the merge commit, live HTTP 200 for the rules page / brief / static-agent JSON, live two-regime EUR 10,000 (Reg (EU) 2018/1672 / D.Lgs 195/2008) distinction, 12-jurisdiction counts in `dataset.json` and the API indexes, Passage Check includes Italy, sitemap contains the new route and no preview route. The verified live URLs and deployment result will be recorded here in a closure-only PR.
 Verified (build): 2026-07-24.
+
+### P8E-3 — Italy Deployment Gate (closure)
+
+Closure-only PR for P8E-3. The publication release (#50) is merged; this records the post-merge live verification. Merge commit: `999bd145712999a11236fdb7379db7dd436fb217`.
+
+**GitHub Pages deployment — green from the merge commit.** Workflow run 30097482766 (`pages build and deployment`) completed `success`, deployed from `999bd145`.
+
+**Live verification (2026-07-24, cache-buster `?cb=<ts>` first, then canonical — all HTTP 200):**
+- `https://convertccy.com/rules/italy-foreign-currency-rules.html` — 200 (cache-buster and canonical); `robots: index,follow`, no `noindex`.
+- `https://convertccy.com/briefs/italy-passage-brief.html` — 200.
+- `https://convertccy.com/api/v1/rules/italy.json` — 200 (cache-buster and canonical).
+
+**Live content distinctions confirmed:** the page carries the two parallel regimes — Regulation (EU) 2018/1672 (EU external border) and Legislative Decree 195/2008 (national territory / intra-EU) — with Article 3 (accompanied) and Article 4 (unaccompanied) distinguished, EUR 10,000, and the separate Article 63 TFEU capital-movement framework. No bare "EUR 10,000" without its regime; no absolute-freedom wording.
+
+**Live SEO confirmed:** descriptive `<title>` ("Foreign Currency Rules — Italy (EUR) | ConvertCCY"), self-canonical, Open Graph (`og:title`), `twitter:card`, and JSON-LD structured data served live; `robots: index,follow`.
+
+**Live counts — 12 published jurisdictions:** `rules/dataset.json` 12 (all `published`, Italy present); `api/v1/index.json` `published_jurisdictions_count` = 12; `api/v1/rules-index.json` 12 (Italy present); `rules/passage-check.json` includes Italy.
+
+**Live sitemap:** `sitemap.xml` contains the Italy rules route (1 occurrence) and zero `/preview/` URLs.
+
+Status: ✅ P8E-3 CLOSED. Italy is live and indexed as the 12th published jurisdiction; Pages deployment green from the merge commit; all live URLs, content distinctions, SEO signals, counts, Passage Check coverage, and sitemap routing verified. Published jurisdictions: 12. Publish-ready candidates: 0. Next: P8F-1 — South Korea source intake (selected by source strength and ease of proof).
+Verified (live): 2026-07-24.
