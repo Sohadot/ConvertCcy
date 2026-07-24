@@ -1072,3 +1072,29 @@ Published South Africa through the full governed publication pipeline, advancing
 
 Status: ✅ South Africa published in the repository/build. ⏸️ **Deployment Gate pending** — GitHub Pages deploy from the merge commit, live HTTP 200 for the rules page / brief / static-agent JSON, live R25,000 / R100,000 / TD-01 distinctions, 10-jurisdiction counts in `dataset.json` and the API indexes, Passage Check includes South Africa, sitemap contains the new route and no preview route. The verified live URLs and deployment result will be recorded here in a closure-only PR.
 Verified (build): 2026-07-23.
+
+### P8C-3 — South Africa Deployment Gate (closure)
+
+Closure-only PR for P8C-3. The publication release (#42) is merged; this records the post-merge live verification. Merge commit: `845833788897033f7b54cf9c94584b168c0f3ac7`.
+
+**GitHub Pages deployment — green from the merge commit.** Workflow run 30077507033 (`pages build and deployment`), all three jobs `success`: build (08:02:27→08:03:08), deploy → "Deploy to GitHub Pages" (08:03:13→08:03:29), report-build-status. Deployed from `845833788`.
+
+**Live verification (2026-07-24, cache-buster `?cb=<ts>` first, then canonical — all HTTP 200):**
+- `https://convertccy.com/rules/south-africa-foreign-currency-rules.html` — 200 (cache-buster and canonical); `robots: index,follow`, no `noindex`.
+- `https://convertccy.com/briefs/south-africa-passage-brief.html` — 200.
+- `https://convertccy.com/api/v1/rules/south-africa.json` — 200 (cache-buster and canonical).
+
+**Live R25,000 / R100,000 / TD-01 distinctions confirmed:**
+- Rules page prose carries "SARB rand-carrying limit" (R25,000, unlimited within the Common Monetary Area), "excess-currency" (R100,000), and "Traveller Declaration (TD-01)" as three distinct concepts.
+- Live `rules/passage-check.json` South Africa block holds two SARB thresholds: R25,000 ZAR (South African bank notes; taking out; unlimited within the CMA; prior SARB authorisation) and R100,000 ZAR ('excess currency' — rand or foreign currency convertible to rand; written SARB permission). Authority recorded as "South African Reserve Bank (SARB); declared to SARS Customs". The R25,000 is not the Manual's ADLA remittance cap.
+
+**Live counts — 10 published jurisdictions:**
+- `rules/dataset.json` — 10 countries, all `published`, South Africa present.
+- `api/v1/index.json` — `published_jurisdictions_count` = 10.
+- `api/v1/rules-index.json` — 10 countries, South Africa present.
+- `rules/passage-check.json` and `api/v1/passage-check.json` — South Africa present.
+
+**Live sitemap:** `sitemap.xml` contains the South Africa rules route (1 occurrence) and zero `/preview/` URLs.
+
+Status: ✅ P8C-3 CLOSED. South Africa is live and indexed as the 10th published jurisdiction; Pages deployment green from the merge commit; all live URLs, content distinctions, counts, Passage Check coverage, and sitemap routing verified. Published jurisdictions: 10. Publish-ready candidates: 0. United States remains at `source_review_ready` (its P8D-0 Annex B evidence is captured, pending P8B-2c).
+Verified (live): 2026-07-24.
