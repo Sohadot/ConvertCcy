@@ -1300,3 +1300,33 @@ The South Korea analog of P8C-1: a fresh, Korea-specific source-by-source intake
 
 Status: ✅ South Korea advanced `candidate_only → source_review_ready` in the intake layer, with Korea Customs (mandatory USD 10,000 declaration) and FETA/BOK (capital-transaction reporting) verified live against claim-specific official sources and the on-file over-liberalisation flagged for correction. Not `publish_ready`, not published, no public surface. Next step: P8F-2 publication-candidate review (correct the governed content, pin exact figures/articles, map source_map field by field).
 Verified: 2026-07-24.
+
+### P8F-2 — South Korea Publication-Candidate Review
+
+Corrected and re-sourced `data/rules/south-korea.json` field by field. P8F-1 established that several core claims were substantively wrong or overstated; this phase fixed them rather than preserving content merely because the file passed schema validation. `page_status` stays `verified`, `evidence_tier: official_verified`, `indexing_allowed: false`; no public surface.
+
+**Defect → repair table.**
+
+| Field | On-file defect | Repair |
+|---|---|---|
+| `cash_declaration_threshold` | "No mandatory currency declaration threshold applies" | Mandatory Korea Customs declaration when means of payment (foreign currency + KRW notes + checks) **exceed USD 10,000** in total; Traveler Declaration Form item no. 3; Certificate of Foreign Currency Declaration; triggered **only above** USD 10,000 |
+| `bring_foreign_currency_in` | "should be prepared to declare the source if questioned" | Mandatory declaration procedure stated precisely (item 3; Certificate); "if questioned" removed |
+| `take_foreign_currency_out` | assumed inbound wording; vague "BoK approval" | Outbound mandatory declaration over USD 10,000, plus FETA capital-transfer notification/permission stated distinctly |
+| `summary.traveler` | "No general currency declaration is required" | Mandatory USD 10,000 declaration; declaration not collapsed into permission |
+| `country_overview` / `exchange_controls` | "highly liberalised … no general exchange controls … fully liberalised for both current and capital account" | FETA three-area structure (transaction type; payment and receipt; method of payment and receipt); current substantially liberalised; capital transactions notification/permission; MOEF/BOK/foreign exchange banks; won not fully internationalised; explicitly **not** an absence of controls |
+| `resident_holding_rules` / `non_resident_rules` | "freely … without prior approval" | FETA account routing via foreign exchange banks; notification/permission by transaction type; no entitlement to any account; sanctions/AML/tax caveats — **`[HARDENING]`** on exact FETA article |
+| `business_invoicing_settlement` | "invoiced and settled in foreign currency or KRW … handled freely" | Narrowed to payment/receipt routing through foreign exchange banks; no invoice-currency guarantee — **`[HARDENING]`** |
+| `banking_conversion_practicality` | "widely available through banks … ATMs" (service availability) | Regulated institutional routing via foreign exchange banks authorised under FETA; not a service/price guarantee |
+
+**Exact threshold wording.** The Korea Customs rule triggers **above USD 10,000** ("means of payment … above USD 10,000 or the equivalent in total"), i.e. exceeding — not "USD 10,000 or more." Aggregated across foreign currency, Korean-won notes, and checks. Mandatory report to Customs via the Traveler Declaration Form (item no. 3), yielding a Certificate of Foreign Currency Declaration; at or below USD 10,000 none is required.
+
+**FETA structure and reporting destinations (from official BOK guidance).** The Foreign Exchange Transactions Act sets procedures in three areas — "transaction type", "payment and receipt", and "method of payment and receipt". Current-account payments/receipts are substantially liberalised; capital transactions involving large fund movements are subject to transaction-specific **notification or permission** through **foreign exchange banks**, the **Bank of Korea Governor**, or **MOEF**. Exact FETA article/enforcement-decree numbers could **not** be pinned: the official text on `law.go.kr` and the KLRI reference translation are JS-gated in this environment (page shells returned without the article body). Recorded as the open blocker.
+
+**Four regimes proven separate** in the governed text: (a) Korea Customs USD 10,000 border declaration; (b) FETA capital-transaction notification/permission; (c) foreign exchange banks' reporting of FX sales over USD 10,000 to the **National Tax Service**; (d) KoFIU AML/CFT reporting. None is conflated with another.
+
+**Readiness decision: South Korea HELD at `source_review_ready` — NOT advanced to `publish_ready`.** Four `[HARDENING]` markers remain (`resident_holding_rules`, `non_resident_rules`, `business_invoicing_settlement`, `summary.business`) because the exact FETA articles for those account/transaction-level claims are not pinpointable here. The declaration cluster, `exchange_controls`, `country_overview`, and `banking_conversion_practicality` are closed with official sources (Korea Customs page; BOK Foreign Exchange System guidance). No governance exception. **Exact blocker:** the controlling FETA article text is JS-gated on `law.go.kr`/KLRI — to be resolved in P8F-2b (analogous to P8B-2c / P8E-2b).
+
+**Governance Gate:** all five pass; `validate_rules.py` clean (0/0); max pairwise rule-field similarity 0.46 (< 0.72); overview signals present; no absolute-liberalisation or "declare-if-questioned" language remains. **Proof no public surface changed:** `south-korea.json` is `verified` / `indexing_allowed: false`; no `rules/south-korea-*.html`, `briefs/south-korea-*`, `api/v1/rules/south-korea.json`, or preview HTML; zero `south-korea` references in `sitemap.xml`, `rules/passage-check.json`, or `rules/dataset.json`. Only South Korea changed.
+
+Status: ✅ South Korea content corrected on official evidence — the mandatory USD 10,000 customs declaration and the FETA notification/permission regime replace the earlier incorrect "no threshold / fully liberalised" claims, with the four cross-border regimes kept separate. ⏸️ four capital account-level fields `[HARDENING]`; South Korea held at `source_review_ready`. Not published, not indexed, no public surface.
+Verified: 2026-07-24.
