@@ -17,15 +17,15 @@
   "country_overview": "South Korea operates a floating exchange-rate regime for the Korean won, with the Bank of Korea (BOK) as the central bank and the Ministry of Economy and Finance (MOEF) responsible for the Foreign Exchange Transactions Act (FETA). Cross-border movements of cash by travellers are administered by the Korea Customs Service, which requires a mandatory declaration when means of payment exceed USD 10,000. Under FETA, current-account payments and receipts are substantially liberalised, while capital transactions involving large fund movements are subject to transaction-specific notification or permission procedures handled through foreign exchange banks, the Bank of Korea Governor, or MOEF. The Korean won is not fully internationalised. This is a regulated framework, not an absence of exchange controls.",
   "summary": {
     "traveler": "Travellers entering or leaving South Korea must file a mandatory declaration with the Korea Customs Service when their means of payment — foreign currency, Korean-won notes and checks combined — exceed USD 10,000 in total; the traveller marks item no. 3 of the Traveler Declaration Form and receives a Certificate of Foreign Currency Declaration. At or below USD 10,000 no declaration is required. This customs declaration is separate from the Foreign Exchange Transactions Act reporting that applies to capital transfers.",
-    "business": "Under the Foreign Exchange Transactions Act, current-account payments and receipts are substantially liberalised, while capital transactions involving large fund movements require transaction-specific notification or permission through foreign exchange banks, the Bank of Korea Governor, or MOEF. Cross-border payments and foreign-currency accounts run through authorised foreign exchange banks; specific resident, non-resident and capital-transfer provisions require claim-specific FETA article sourcing."
+    "business": "Under the Foreign Exchange Transactions Act, current-account payments and receipts are substantially liberalised, while capital transactions (FETA Article 18) and certain methods of payment or receipt (FETA Article 16) require transaction-specific reporting, and some payments to foreign countries may require permission (FETA Article 15). Depending on the transaction, the report is made to a foreign exchange bank, the Bank of Korea Governor, or MOEF, reflecting the Minister's delegation of authority under FETA Article 23; cross-border payments and foreign-currency accounts run through foreign exchange businesses registered under FETA Article 8. These FETA regimes are separate from the Korea Customs USD 10,000 border declaration, foreign exchange banks' reporting of foreign-currency sales over USD 10,000 to the National Tax Service, and KoFIU anti-money-laundering reporting."
   },
   "rules": {
     "bring_foreign_currency_in": "A traveller bringing means of payment into South Korea — foreign currency, Korean-won notes and checks combined — exceeding USD 10,000 in total must file a mandatory declaration with the Korea Customs Service, marking item no. 3 of the Traveler Declaration Form and receiving a Certificate of Foreign Currency Declaration. At or below USD 10,000 no permission or declaration is required. This customs declaration is distinct from any Foreign Exchange Transactions Act reporting on capital transactions.",
     "take_foreign_currency_out": "A traveller leaving South Korea must likewise file a mandatory Korea Customs declaration when means of payment exceed USD 10,000 in total. Separately, under the Foreign Exchange Transactions Act, capital-account transfers by residents may require transaction-specific notification or permission through a foreign exchange bank or the Bank of Korea Governor; that reporting is distinct from the customs border declaration.",
     "cash_declaration_threshold": "The Korea Customs declaration threshold is means of payment exceeding USD 10,000 in total — aggregating foreign currency, Korean-won notes and checks — for a traveller entering or leaving the country; it is a mandatory report to Customs (Traveler Declaration Form item no. 3, yielding a Certificate of Foreign Currency Declaration), not merely a document to produce if questioned, and it is triggered only above USD 10,000. This border declaration is separate from three other regimes: Foreign Exchange Transactions Act capital-transaction notification or permission, foreign exchange banks' reporting of FX sales over USD 10,000 to the National Tax Service, and KoFIU anti-money-laundering reporting.",
-    "resident_holding_rules": "South Korean residents may hold foreign-currency accounts through authorised foreign exchange banks under the Foreign Exchange Transactions Act. Depending on the transaction type and amount, capital transactions may require notification or permission via a foreign exchange bank, the Bank of Korea Governor or MOEF, and holding and transfer remain subject to sanctions, AML/KYC, tax and reporting requirements. This does not guarantee that any resident may open any particular account.",
-    "non_resident_rules": "Non-residents may open and operate non-resident foreign-currency or won accounts through authorised foreign exchange banks under the Foreign Exchange Transactions Act. Certain transactions require transaction-specific notification or permission, and repatriation is not unconditional; account opening remains subject to sanctions screening, AML/KYC, tax and each institution's requirements. There is no entitlement to any particular account or service.",
-    "business_invoicing_settlement": "Cross-border business payments and receipts are routed through authorised foreign exchange banks under the Foreign Exchange Transactions Act, with capital transactions subject to transaction-specific notification or permission and to sanctions, AML and reporting rules. This does not establish an unrestricted choice of invoice currency, which depends on the contract and applicable rules.",
+    "resident_holding_rules": "South Korean residents may open and hold foreign-currency accounts — resident accounts and resident foreign currency trust accounts — through foreign exchange businesses registered under Article 8 of the Foreign Exchange Transactions Act. Capital transactions, which under Article 3 of the Act include deposits, lending, securities and overseas real estate, require advance reporting under FETA Article 18; certain methods of payment or receipt require reporting under Article 16; and some payments to foreign countries may require permission under Article 15. Depending on the transaction the report is made to a foreign exchange bank or the Bank of Korea Governor, and holding and transfer remain subject to sanctions, AML/KYC, tax and reporting requirements. This does not guarantee that any resident may open any particular account.",
+    "non_resident_rules": "Non-residents may open and operate non-resident accounts through foreign exchange businesses registered under the Foreign Exchange Transactions Act — external accounts and non-resident foreign currency trust accounts for foreign-currency funds, and non-resident Korean-won accounts and non-resident free-transfer Korean-won accounts for won funds (Foreign Exchange Transactions Regulations Article 2-6-2). Certain transactions require transaction-specific reporting to a foreign exchange bank or the Bank of Korea Governor (for example FETA Article 18 capital transactions), and repatriation is not unconditional; account opening remains subject to sanctions screening, AML/KYC, tax and each institution's requirements. There is no entitlement to any particular account or service.",
+    "business_invoicing_settlement": "Cross-border business payments and receipts run through foreign exchange businesses registered under Article 8 of the Foreign Exchange Transactions Act. Certain methods of payment or receipt require advance reporting under FETA Article 16 — settlement by offsetting a claim, settlement outside the period set by the Minister, payment to or from a person who is not a party to the transaction, and payment or receipt made without going through a foreign exchange agency — and capital transactions require reporting under Article 18, alongside sanctions, AML and reporting rules. This does not establish an unrestricted choice of invoice currency, which the Act does not govern and which depends on the contract and applicable rules.",
     "exchange_controls": "South Korea regulates foreign exchange through the Foreign Exchange Transactions Act, administered by MOEF and the Bank of Korea. The Act sets procedures in three areas — transaction type, payment and receipt, and method of payment and receipt. Current-account payments and receipts are substantially liberalised, while capital transactions involving large fund movements are subject to transaction-specific notification or permission through foreign exchange banks, the Bank of Korea Governor, or MOEF. The Korean won is not fully internationalised. This is a regulated framework — not an absence of exchange controls and not full liberalisation of the capital account.",
     "banking_conversion_practicality": "Currency conversion and cross-border payments in South Korea are provided through foreign exchange banks and other institutions authorised under the Foreign Exchange Transactions Act within the Bank of Korea / MOEF framework. These authorised intermediaries apply the Act's notification, permission and reporting procedures according to transaction type; authorisation does not guarantee that any particular institution offers a given currency, service or price."
   },
@@ -57,6 +57,24 @@
     {
       "label": "Foreign Exchange Transactions Act — official English text, National Legal Information Center (law.go.kr)",
       "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=191033&viewCls=engLsInfoR&urlMode=engLsInfoR",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "Foreign Exchange Transactions Act — Korea Legislation Research Institute (KLRI) official English reference translation, elaw.klri.re.kr (Art. 3 definitions; Art. 8 registration of foreign exchange business; Art. 15 payment procedures; Art. 16 reporting on methods of payment or receipt; Art. 18 reporting on capital transactions; Art. 23 delegation)",
+      "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=30011&type=part&key=23",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "Enforcement Decree of the Foreign Exchange Transactions Act — KLRI official English reference translation, elaw.klri.re.kr",
+      "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=52298&type=part&key=23",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "Foreign Exchange Transactions Regulations (Notice No. 2023-26, Jul. 4, 2023) — KLRI official English reference translation, elaw.klri.re.kr (Art. 2-1-2 payment/receipt confirmation; Art. 2-2 monthly notice to tax/customs authorities; Art. 2-6-2 resident and non-resident accounts)",
+      "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=64673&type=part&key=23",
       "type": "regulator",
       "tier": "primary"
     },
@@ -100,13 +118,13 @@
       {
         "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
         "pages": [],
-        "section": "FETA current-account liberalisation and capital-transaction notification/permission via foreign exchange banks / BOK Governor / MOEF. [HARDENING] The exact Foreign Exchange Transactions Act article and enforcement-decree provisions for this account/transaction-level claim are not yet pinpointed: the official FETA text on law.go.kr and the KLRI reference translation are JS-gated in this environment (the page shell returns without the article body). The framework prose is sourced to official Bank of Korea guidance; publish_ready is blocked for this field pending the exact FETA article citation (P8F-2b).",
+        "section": "BOK Foreign Exchange System — FETA current-account liberalisation and capital-transaction reporting via foreign exchange banks / BOK Governor / MOEF",
         "source_kind": "html"
       },
       {
-        "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=191033&viewCls=engLsInfoR&urlMode=engLsInfoR",
+        "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=30011&type=part&key=23",
         "pages": [],
-        "section": "Foreign Exchange Transactions Act (official text, law.go.kr) — controlling law for capital-transaction procedures",
+        "section": "Foreign Exchange Transactions Act (KLRI official English reference translation) — Art. 15 payment procedures and permission for certain payments abroad; Art. 16 reporting on methods of payment or receipt; Art. 18 advance reporting on capital transactions; Art. 23 delegation of the Minister's authority to the Bank of Korea Governor, the Financial Services Commission, and foreign exchange agencies",
         "source_kind": "html"
       }
     ],
@@ -150,13 +168,19 @@
       {
         "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
         "pages": [],
-        "section": "FETA — resident foreign-currency accounts via foreign exchange banks; capital transactions notification/permission. [HARDENING] The exact Foreign Exchange Transactions Act article and enforcement-decree provisions for this account/transaction-level claim are not yet pinpointed: the official FETA text on law.go.kr and the KLRI reference translation are JS-gated in this environment (the page shell returns without the article body). The framework prose is sourced to official Bank of Korea guidance; publish_ready is blocked for this field pending the exact FETA article citation (P8F-2b).",
+        "section": "BOK Foreign Exchange System — resident foreign-currency accounts via foreign exchange banks; capital-transaction reporting",
         "source_kind": "html"
       },
       {
-        "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=191033&viewCls=engLsInfoR&urlMode=engLsInfoR",
+        "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=30011&type=part&key=23",
         "pages": [],
-        "section": "Foreign Exchange Transactions Act (official text, law.go.kr) — controlling law",
+        "section": "Foreign Exchange Transactions Act (KLRI official English reference translation) — Art. 8 registration of foreign exchange business; Art. 3 definition of capital transactions (incl. deposits, lending, securities, overseas real estate); Art. 18 advance reporting on capital transactions; Art. 16 reporting on methods of payment or receipt; Art. 15 permission for certain payments abroad",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=64673&type=part&key=23",
+        "pages": [],
+        "section": "Foreign Exchange Transactions Regulations (Notice No. 2023-26, Jul. 4, 2023) Art. 2-6-2 — resident accounts and resident foreign currency trust accounts for the deposit of residents' foreign-currency funds",
         "source_kind": "html"
       }
     ],
@@ -164,13 +188,19 @@
       {
         "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
         "pages": [],
-        "section": "FETA — non-resident accounts via foreign exchange banks; transaction-specific notification/permission; repatriation not unconditional. [HARDENING] The exact Foreign Exchange Transactions Act article and enforcement-decree provisions for this account/transaction-level claim are not yet pinpointed: the official FETA text on law.go.kr and the KLRI reference translation are JS-gated in this environment (the page shell returns without the article body). The framework prose is sourced to official Bank of Korea guidance; publish_ready is blocked for this field pending the exact FETA article citation (P8F-2b).",
+        "section": "BOK Foreign Exchange System — non-resident accounts via foreign exchange banks; transaction-specific reporting; repatriation not unconditional",
         "source_kind": "html"
       },
       {
-        "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=191033&viewCls=engLsInfoR&urlMode=engLsInfoR",
+        "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=64673&type=part&key=23",
         "pages": [],
-        "section": "Foreign Exchange Transactions Act (official text, law.go.kr) — controlling law",
+        "section": "Foreign Exchange Transactions Regulations (Notice No. 2023-26, Jul. 4, 2023) Art. 2-6-2 — external accounts and non-resident foreign currency trust accounts (foreign-currency funds), non-resident Korean-won accounts and non-resident free-transfer Korean-won accounts (won funds); Art. 2-6 declaration to the Bank of Korea Governor for specified transactions",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=30011&type=part&key=23",
+        "pages": [],
+        "section": "Foreign Exchange Transactions Act (KLRI official English reference translation) — Art. 3 definition of non-resident; Art. 18 advance reporting on capital transactions; Art. 8 registration of foreign exchange business",
         "source_kind": "html"
       }
     ],
@@ -178,13 +208,13 @@
       {
         "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
         "pages": [],
-        "section": "FETA — cross-border payments/receipts routed through foreign exchange banks; capital transactions notification/permission; no invoice-currency guarantee. [HARDENING] The exact Foreign Exchange Transactions Act article and enforcement-decree provisions for this account/transaction-level claim are not yet pinpointed: the official FETA text on law.go.kr and the KLRI reference translation are JS-gated in this environment (the page shell returns without the article body). The framework prose is sourced to official Bank of Korea guidance; publish_ready is blocked for this field pending the exact FETA article citation (P8F-2b).",
+        "section": "BOK Foreign Exchange System — cross-border payments/receipts routed through foreign exchange banks; capital-transaction reporting; no invoice-currency guarantee",
         "source_kind": "html"
       },
       {
-        "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=191033&viewCls=engLsInfoR&urlMode=engLsInfoR",
+        "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=30011&type=part&key=23",
         "pages": [],
-        "section": "Foreign Exchange Transactions Act (official text, law.go.kr) — controlling law",
+        "section": "Foreign Exchange Transactions Act (KLRI official English reference translation) — Art. 16 reporting on methods of payment or receipt (settlement by offsetting a claim; settlement outside the Minister's period; payment to/from a non-party; payment or receipt made without going through a foreign exchange agency); Art. 18 reporting on capital transactions; Art. 8 registration of foreign exchange business. The Act does not govern invoice-currency choice.",
         "source_kind": "html"
       }
     ],
