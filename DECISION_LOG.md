@@ -1277,3 +1277,26 @@ Closure-only PR for P8E-3. The publication release (#50) is merged; this records
 
 Status: ✅ P8E-3 CLOSED. Italy is live and indexed as the 12th published jurisdiction; Pages deployment green from the merge commit; all live URLs, content distinctions, SEO signals, counts, Passage Check coverage, and sitemap routing verified. Published jurisdictions: 12. Publish-ready candidates: 0. Next: P8F-1 — South Korea source intake (selected by source strength and ease of proof).
 Verified (live): 2026-07-24.
+
+### P8F-1 — South Korea Source Intake Review
+
+The South Korea analog of P8C-1: a fresh, Korea-specific source-by-source intake review advancing South Korea `candidate_only → source_review_ready`. Like South Africa (and unlike Italy), `data/rules/south-korea.json` pre-exists at `page_status: verified`; this intake records source metadata and advances the candidate status only — its public rule content is **not** modified here, and no public surface is created.
+
+**Source layers verified (2026-07-24).**
+1. **Korea Customs Service — traveller foreign-currency declaration.** Official Korea Customs pages (`customs.go.kr/english`, `mi=10800&cntntsId=5500` declaration of foreign currency; `mi=10802&cntntsId=5503` Traveler Declaration Form) confirm: a traveller entering or leaving Korea with foreign currency, Korean-won notes or checks (means of payment) exceeding **USD 10,000 in total must report it to Customs** — mark item no. 3 on the Traveler Declaration Form, submit it, and receive the **Certificate of Foreign Currency Declaration**; below USD 10,000 no permission or declaration is required. Legal basis: the **Foreign Exchange Transactions Act (FETA)**.
+2. **Bank of Korea / FETA (with the Ministry of Economy and Finance).** BOK Foreign Exchange System pages (`bok.or.kr/eng`, menuNo 400187 Relevant Legislation, 400191 Payments and Transactions, 400195 Internationalization of the Korean Won) confirm FETA regulates the exchange-rate system, FX operations, payment/receipt of FX and capital movements; **capital transactions accompanying large fund movements follow separate transaction-type reporting/notification procedures** (e.g. reported to the Bank of Korea Governor, MOEF, or a foreign exchange bank), banks report FX sales over USD 10,000 (same person/day) to the National Tax Administration, and the **Korean won is not fully internationalized**. Administered by MOEF and BOK.
+3. **KoFIU (Korea Financial Intelligence Unit, Financial Services Commission).** Identified (`kofiu.go.kr`) for AML/CFT reporting only — non-blocking for the currency-passage rules; a claim-specific citation is needed only if AML-reporting fields are added at P8F-2.
+
+**Intake findings recorded for the publication-candidate review (P8F-2) — not fixed in this phase.**
+- The on-file `cash_declaration_threshold` ("No mandatory currency declaration threshold applies for ordinary travelers") is **incorrect** — Korea Customs requires a **mandatory** declaration when means of payment exceed USD 10,000.
+- The on-file `bring_foreign_currency_in` ("should be prepared to declare the source if questioned") is **incorrect** — the USD 10,000 declaration is mandatory, not conditional on being questioned.
+- The on-file `exchange_controls` / `country_overview` ("no general exchange controls … fully liberalised for both current and capital account transactions") is **overstated** and uses an absolute phrase. FETA liberalises the current account but imposes a **notification/reporting regime** on capital transactions; the absolute "fully liberalised" wording must be removed and the FETA regime described at P8F-2.
+- Four regimes must be kept **strictly separate**: (a) Korea Customs USD 10,000 border declaration; (b) FETA capital-transaction reporting to BOK/MOEF/FX banks; (c) bank reporting of FX sales over USD 10,000 to the National Tax Administration; (d) KoFIU AML.
+- On-file `source_authorities` cite the FSS (an institutional supervisor); MOEF and BOK administer FETA and should be sourced explicitly at P8F-2.
+
+**Environment note.** Korea Customs pages are JS-shell for WebFetch (content confirmed via the official `customs.go.kr` search result and the live page returning HTTP 200); BOK pages fetch cleanly. Exact figures, form field numbers, FETA article numbers, and current effective dates are to be pinned at P8F-2 (FETA consolidated English text on `law.go.kr`).
+
+**Governance Gate:** all five checks pass. Proof no public surface changed: `data/rules/south-korea.json` remains `page_status: verified`, content untouched; zero occurrences of `south-korea` as a `/rules/`, `/briefs/`, or `/api/v1/rules/` route, in `sitemap.xml`, in Passage Check, or in `llms.txt` (South Korea is a coverage candidate only).
+
+Status: ✅ South Korea advanced `candidate_only → source_review_ready` in the intake layer, with Korea Customs (mandatory USD 10,000 declaration) and FETA/BOK (capital-transaction reporting) verified live against claim-specific official sources and the on-file over-liberalisation flagged for correction. Not `publish_ready`, not published, no public surface. Next step: P8F-2 publication-candidate review (correct the governed content, pin exact figures/articles, map source_map field by field).
+Verified: 2026-07-24.

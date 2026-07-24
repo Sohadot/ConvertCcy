@@ -78,13 +78,17 @@
    "expected_difficulty": "Medium. Central bank and customs sources already on file internally; the Foreign Exchange Transactions Act layers reporting duties on top of customs declaration and needs careful field-by-field mapping.",
    "known_risk_areas": [
     "Foreign Exchange Transactions Act reporting vs customs declaration distinction",
-    "Korean-language source translation accuracy"
+    "Korean-language source translation accuracy",
+    "P8F-1 finding (2026-07-24): the on-file data/rules/south-korea.json content is INCORRECT/OVERSTATED and must be corrected at P8F-2. cash_declaration_threshold says No mandatory currency declaration threshold and bring_foreign_currency_in says travellers should be prepared to declare if questioned — but Korea Customs requires a MANDATORY declaration when means of payment (foreign currency, Korean-won notes or checks) exceed USD 10,000 in total, via item no. 3 of the Traveler Declaration Form, yielding a Certificate of Foreign Currency Declaration (legal basis: Foreign Exchange Transactions Act).",
+    "P8F-1 finding: exchange_controls/overview claim (no general exchange controls; fully liberalised for both current and capital account) is OVERSTATED. Under the Foreign Exchange Transactions Act (FETA) the current account is liberalised but capital transactions with large fund movements follow separate transaction-type reporting/notification procedures (reported to the Bank of Korea Governor / MOEF / a foreign exchange bank), banks report FX sales over USD 10,000 to the National Tax Administration, and the Korean won is not fully internationalized. Remove the absolute fully liberalised wording at P8F-2 and describe the FETA notification regime.",
+    "P8F-1 finding: keep four regimes strictly separate — (a) Korea Customs USD 10,000 border currency declaration; (b) FETA capital-transaction reporting/notification to BOK/MOEF/foreign exchange banks; (c) bank reporting of FX sales over USD 10,000 to the National Tax Administration; (d) KoFIU AML/CFT reporting. South Korea sourced as its own jurisdiction.",
+    "P8F-1 note: Korea Customs pages are JS-shell for WebFetch (content confirmed via the official customs.go.kr search result and the live page returning HTTP 200); BOK Foreign Exchange System pages fetch cleanly (HTTP 200). Exact figures, form field numbers, FETA article numbers and current effective dates to be pinned at the P8F-2 publication-candidate review; FETA consolidated English text on law.go.kr; on-file source_authorities cite FSS (supervisor) — MOEF+BOK administer FETA and should be sourced explicitly."
    ],
    "missing_sources": [
     "financial_intelligence_unit_or_aml_authority"
    ],
    "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
-   "status": "candidate_only"
+   "status": "source_review_ready"
   },
   {
    "country_name": "Brazil",
