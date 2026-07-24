@@ -21,6 +21,7 @@
   "france",
   "germany",
   "india",
+  "italy",
   "japan",
   "pakistan",
   "south-africa",
@@ -28,9 +29,9 @@
   "united-kingdom",
   "united-states"
  ],
- "existing_published_jurisdictions_note": "These 11 jurisdictions are currently published and sit outside this blueprint; the 10 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file. South Africa graduated from candidate to published via the P8C-3 six-gate publication pipeline (P8C-1 intake -> P8C-2 candidate review -> P8C-2a consistency -> P8D-0 evidence -> P8C-2b hardening close -> P8C-3 release), not through this file. United States graduated from candidate to published via the P8B-3 publication pipeline (P8B-1 intake -> P8B-2 declaration + current-account close -> P8B-2b liberalisation hardening -> P8D-0 evidence -> P8B-2c capital-account hardening close -> P8B-3 release), not through this file.",
+ "existing_published_jurisdictions_note": "These 12 jurisdictions are currently published and sit outside this blueprint; the 9 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file. South Africa graduated from candidate to published via the P8C-3 six-gate publication pipeline (P8C-1 intake -> P8C-2 candidate review -> P8C-2a consistency -> P8D-0 evidence -> P8C-2b hardening close -> P8C-3 release), not through this file. United States graduated from candidate to published via the P8B-3 publication pipeline (P8B-1 intake -> P8B-2 declaration + current-account close -> P8B-2b liberalisation hardening -> P8D-0 evidence -> P8B-2c capital-account hardening close -> P8B-3 release), not through this file. Italy graduated from candidate to published via the P8E publication pipeline (P8E-1 intake -> P8E-2 from-scratch governed build -> P8E-2b capital/banking hardening close -> P8E-3 release), not through this file.",
  "no_inference_rule": "No rule, threshold, or regulatory posture may ever be inferred for a candidate from its currency code, region, G20 membership, EU/AU membership, or a neighboring country's published rules. Every fact requires its own primary official source before it may be published.",
- "count": 10,
+ "count": 9,
  "candidates": [
   {
    "country_name": "Mexico",
@@ -164,39 +165,6 @@
    ],
    "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
-  },
-  {
-   "country_name": "Italy",
-   "country_slug": "italy",
-   "iso2": "IT",
-   "iso3": "ITA",
-   "currency_code": "EUR",
-   "currency_name": "Euro",
-   "region": "Southern Europe",
-   "expansion_priority": "medium",
-   "complexity_level": "medium",
-   "likely_official_source_authorities_needed": {
-    "central_bank_or_monetary_authority": "Banca d'Italia",
-    "customs_or_border_authority": "Agenzia delle Dogane e dei Monopoli (Italian Customs and Monopolies Agency)",
-    "financial_intelligence_unit_or_aml_authority": "Unità di Informazione Finanziaria (UIF, housed at Banca d'Italia)",
-    "tax_treasury_ministry_source": null
-   },
-   "expected_difficulty": "Medium. No internal research file exists yet — this is a from-scratch intake. Italy's cash-declaration regime sits on top of EU Regulation (EU) 2018/1672 (cross-border cash controls), so both the EU-level instrument and Italy's national implementing authority must be sourced and clearly distinguished from each other.",
-   "known_risk_areas": [
-    "EU-level regulation vs Italy-specific implementing rules must be sourced and cited separately, never merged into one unattributed claim",
-    "Italy shares EUR with Germany and France (already published) — its rules must NOT be assumed identical to either published Eurozone entry",
-    "Italian-language source translation accuracy",
-    "P8E-1 finding (2026-07-24): Italy DOES impose a cash-declaration obligation for movements between Italy and other EU countries (intra-EU), via national Legislative Decree 195/2008, on top of the EU external-border rule (Regulation (EU) 2018/1672; EUR 10 000 or more). The two must be cited separately — the EU instrument for the extra-EU external border, D.Lgs 195/2008 for the Italian intra-EU obligation; both administered by Agenzia delle Dogane e dei Monopoli (with Guardia di Finanza), filed at customs offices; penalty EUR 300 up to 40% of the amount exceeding EUR 10 000.",
-    "P8E-1 finding: EU 'cash' definition (Regulation (EU) 2018/1672) covers banknotes and coins, cheques, traveller's cheques, prepaid cards and gold; accompanied cash (carrier) is declared, unaccompanied cash (post/freight/courier) is disclosed on customs request; the Regulation applies from 3 June 2021 (repealed Reg 1889/2005). Exact 'EUR 10 000 or more' wording and article numbers to be pinned from the official source at P8E-2.",
-    "P8E-1 finding: the Italian DOMESTIC cash-payment ceiling (D.Lgs 231/2007 Art. 49; reportedly EUR 5 000 from 1 Jan 2023 by the 2023 Budget Law — pin the exact current figure at P8E-2) is a domestic payment limit and must NOT be confused with the border cash-declaration threshold.",
-    "P8E-1 finding: keep four regimes strictly separate — (a) EU/Italy border cash declaration (ADM); (b) general payment and capital-movement freedom (Banca d'Italia / ECB; no exchange controls; free movement of capital, Art. 63 TFEU); (c) AML reporting (UIF, D.Lgs 231/2007); (d) the domestic cash-payment ceiling. Italy is sourced as its own jurisdiction, not inferred from the published France or Germany entries or a shared EU framework.",
-    "P8E-1 environment note: ADM pages 403-block WebFetch and EUR-Lex is JS-gated here; source existence and content were confirmed via official ADM guidance and EC/EUR-Lex summaries, but exact article/page/form-number pinpointing (EU Regulation articles, D.Lgs 195/2008 articles, ADM declaration-form number, current Travellers' Customs Charter version/date, and exact penalty and cash-ceiling figures) is deferred to the P8E-2 publication-candidate review.",
-     "P8E-2 outcome (2026-07-24): data/rules/italy.json created (page_status verified, indexing false). CONFIRMED via primary ADM Circular 12/2024: the intra-EU obligation is Art. 3 D.Lgs 195/2008 and the EU-border obligation is Art. 3 Reg (EU) 2018/1672 (EUR 10 000; single ADM form; Art. 28 seizure). Declaration fields are publication-grade and pinpointed. Capital/exchange/resident/non-resident/business/banking fields remain [HARDENING] — TFEU Art. 63 (EUR-Lex) is JS-gated and no claim-specific Banca d'Italia/ECB primary page was obtainable. Per the readiness rule, Italy is HELD at source_review_ready (6 [HARDENING] markers remain); no governance exception. Blocker for P8E-2b: fetch/pin TFEU Art. 63 and claim-specific Banca d'Italia sources for the capital/banking cluster. Penalty figures deliberately not asserted.",
-     "P8E-2b outcome (2026-07-24): all six capital/banking [HARDENING] markers CLEARED with fetched official sources. Article 63 TFEU framework and its exceptions (Articles 64-66; Article 65 taxation/prudential/declaration procedures; sanctions) sourced to the official European Parliament fact sheet on free movement of capital (EU-institution, fetched via curl) plus the EUR-Lex Article 63 primary-law citation; banking/payment routing sourced to the Banca d'Italia Banks-and-other-financial-intermediaries supervision page (banks, payment institutions, EMIs, supervisory registers). No absolute freedom or account/service guarantee; capital-movement, payment-intermediary and the EUR 10 000 cash regimes kept separate. Note: the OJ/EUR-Lex consolidated TFEU PDF is environmentally unfetchable (HTTP 202 async and WebFetch empty after 5+ attempts); the Article 63 framework was verified from the official European Parliament fact sheet instead. Zero [HARDENING] remain; Italy advanced source_review_ready to publish_ready under the P8C-2a consistency rule; no governance exception."
-   ],
-   "missing_sources": [],
-   "prior_research_state": "no prior internal research exists — this is a from-scratch intake candidate",
-   "status": "publish_ready"
   },
   {
    "country_name": "Turkey",

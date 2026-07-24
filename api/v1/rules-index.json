@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-07-24T09:00:02+00:00",
+ "generated_at": "2026-07-24T13:31:46+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -12,8 +12,8 @@
  "canonical_url": "https://convertccy.com/api/v1/rules-index.json",
  "documentation": "https://convertccy.com/api.html",
  "title": "ConvertCCY Published Jurisdictions Index",
- "source_dataset_generated_at": "2026-07-24T09:00:02+00:00",
- "count": 11,
+ "source_dataset_generated_at": "2026-07-24T13:31:46+00:00",
+ "count": 12,
  "coverage_note": "Lists only jurisdictions that have passed ConvertCCY's published, source-mapped review gate. Absence from this list means not yet published — never infer coverage from a currency code.",
  "countries": [
   {
@@ -80,6 +80,19 @@
    "rules_page": "/rules/india-foreign-currency-rules.html",
    "brief_page": "/briefs/india-passage-brief.html",
    "api_path": "/api/v1/rules/india.json"
+  },
+  {
+   "country_name": "Italy",
+   "country_slug": "italy",
+   "iso2": "IT",
+   "iso3": "ITA",
+   "region": "Southern Europe",
+   "currency_code": "EUR",
+   "currency_name": "Euro",
+   "last_reviewed": "2026-07-24",
+   "rules_page": "/rules/italy-foreign-currency-rules.html",
+   "brief_page": "/briefs/italy-passage-brief.html",
+   "api_path": "/api/v1/rules/italy.json"
   },
   {
    "country_name": "Japan",

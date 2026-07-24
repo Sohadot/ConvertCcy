@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-24T09:00:02+00:00",
+  "generated_at": "2026-07-24T13:31:46+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 11,
+    "published": 12,
     "verified": 10,
     "needs_hardening": 2,
     "secondary_review": 0,
@@ -50,6 +50,14 @@
       "output_html": "rules/india-foreign-currency-rules.html",
       "sitemap_eligible": true,
       "public_url": "https://convertccy.com/rules/india-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
+      "country_slug": "italy",
+      "country_name": "Italy",
+      "output_html": "rules/italy-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/italy-foreign-currency-rules.html"
     },
     {
       "status": "published",

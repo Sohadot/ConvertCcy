@@ -1240,3 +1240,18 @@ Resolved the six remaining Italy `[HARDENING]` fields with claim-specific, fetch
 
 Status: ✅ Italy capital/banking hardening closed on fetched official sources (European Parliament fact sheet for the Article 63 framework; Banca d'Italia supervision for intermediary routing); zero `[HARDENING]`; Italy advanced to `publish_ready`. Not published, not indexed, no public surface. Next step (a later, separate phase): Italy publication release + Deployment Gate.
 Verified: 2026-07-24.
+
+### P8E-3 — Italy Publication Release
+
+Published Italy through the full governed publication pipeline, advancing it from `publish_ready` to `published` (the 12th published jurisdiction). Release PR only — **merge is not closure**; a separate post-merge Deployment Gate verifies the live site and records the result in a closure-only PR.
+
+**Governed state.** `data/rules/italy.json` → `page_status: published`, `indexing_allowed: true`. Italy removed from `g20-expansion-candidates.json` candidates and `source-intake-matrix.json`, added to `existing_published_jurisdictions` (11 → 12); candidate `count` 10 → 9; note updated (These 12 jurisdictions / 9 entries). No other published country's HTML changed (deterministic generator); other per-country api files change only in their `generated_at` stamp.
+
+**Public artifacts regenerated with the existing generators (no hand-editing).** `generate_rules.py` → `rules/italy-foreign-currency-rules.html` (published; `robots: index,follow`, self-canonical, JSON-LD, Open Graph), `rules/index.html` (12), `rules/dataset.json`, manifest. `build_passage_check.py` → `rules/passage-check.json` (Italy added to the transcription tables: **two parallel EUR 10,000 regimes** — Art. 3 Reg (EU) 2018/1672 EU-border and Art. 3 D.Lgs 195/2008 national-territory/intra-EU, single ADM form, Art. 4 unaccompanied, distinct from Art. 63 TFEU capital framework; posture `none` with the Article 63 + exceptions nuance). `build_passage_briefs.py` → `briefs/italy-passage-brief.html`. `build_static_agent_interface.py` → `api/v1/rules/italy.json`, `api/v1/index.json` (published count 12), `rules-index.json`, `passage-check.json`. `generate_sitemap.py` → `sitemap.xml` (Italy rules route). `llms.txt` needs no edit (dynamic indexes now include Italy).
+
+**Content integrity on live-bound artifacts.** The EU external-border regime (Art. 3 Reg (EU) 2018/1672), the Italian intra-EU regime (Art. 3 D.Lgs 195/2008), unaccompanied cash (Art. 4), the general capital-movement framework (Art. 63 TFEU with Art. 64-66 exceptions and sanctions), regulated payment-intermediary routing (Banca d'Italia), and AML (UIF) are kept as separate regimes; no bare "EUR 10,000" without its regime; no absolute-freedom or account/service-guarantee wording; the superseded 2012 penalty figures are not asserted.
+
+**Pre-PR confirmations.** Governance Gate — all five pass; drift check clean. Published-jurisdiction count 11 → 12. Zero `[HARDENING]` in `data/rules/italy.json`. No `noindex` on the published Italy rules page (`robots: index,follow`). Zero `/preview/` URLs in `sitemap.xml`; Italy rules route present once. Dataset and API indexes report 12 published; Passage Check includes Italy.
+
+Status: ✅ Italy published in the repository/build. ⏸️ **Deployment Gate pending** — GitHub Pages deploy from the merge commit, live HTTP 200 for the rules page / brief / static-agent JSON, live two-regime EUR 10,000 (Reg (EU) 2018/1672 / D.Lgs 195/2008) distinction, 12-jurisdiction counts in `dataset.json` and the API indexes, Passage Check includes Italy, sitemap contains the new route and no preview route. The verified live URLs and deployment result will be recorded here in a closure-only PR.
+Verified (build): 2026-07-24.
