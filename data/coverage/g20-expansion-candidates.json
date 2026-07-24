@@ -23,12 +23,13 @@
   "india",
   "japan",
   "pakistan",
+  "south-africa",
   "united-arab-emirates",
   "united-kingdom"
  ],
- "existing_published_jurisdictions_note": "These 9 jurisdictions are currently published and sit outside this blueprint; the 12 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file.",
+ "existing_published_jurisdictions_note": "These 10 jurisdictions are currently published and sit outside this blueprint; the 11 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file. South Africa graduated from candidate to published via the P8C-3 six-gate publication pipeline (P8C-1 intake -> P8C-2 candidate review -> P8C-2a consistency -> P8D-0 evidence -> P8C-2b hardening close -> P8C-3 release), not through this file.",
  "no_inference_rule": "No rule, threshold, or regulatory posture may ever be inferred for a candidate from its currency code, region, G20 membership, EU/AU membership, or a neighboring country's published rules. Every fact requires its own primary official source before it may be published.",
- "count": 12,
+ "count": 11,
  "candidates": [
   {
    "country_name": "United States",
@@ -188,37 +189,6 @@
    ],
    "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "candidate_only"
-  },
-  {
-   "country_name": "South Africa",
-   "country_slug": "south-africa",
-   "iso2": "ZA",
-   "iso3": "ZAF",
-   "currency_code": "ZAR",
-   "currency_name": "South African Rand",
-   "region": "Sub-Saharan Africa",
-   "expansion_priority": "medium",
-   "complexity_level": "medium",
-   "likely_official_source_authorities_needed": {
-    "central_bank_or_monetary_authority": "South African Reserve Bank (SARB)",
-    "customs_or_border_authority": "South African Revenue Service (SARS)",
-    "financial_intelligence_unit_or_aml_authority": "Financial Intelligence Centre (FIC)",
-    "tax_treasury_ministry_source": null
-   },
-   "expected_difficulty": "Medium. Central bank and customs sources already on file internally; South Africa retains exchange control regulations administered by SARB (Financial Surveillance Department) that require careful, current-text sourcing.",
-   "known_risk_areas": [
-    "Exchange control relaxation has been gradual and multi-year — cite current effective rules, not historical summaries",
-     "P8C-1 source-intake finding (2026-07-23): the on-file cash_declaration_threshold conflates the SARB R25,000 rand exchange-control allowance with the R100,000 excess-currency rule and the SARS customs declaration. Correct in the publication-candidate review: R25,000 = SARB limit on carrying rand; excess currency over R100,000 (or foreign currency convertible to Rand over R100,000) requires SARB written permission; SARS administers the traveller declaration (mandatory online from 1 July 2026, or manual TD-01). Keep exchange control (SARB), customs declaration (SARS), and AML (FIC) distinct.",
-     "SARS mandatory online traveller declaration takes effect 1 July 2026 — verify current effective process at the publication-candidate review.",
-      "P8C-2 resolution (2026-07-23): content corrected and verified against official SARS pages. R25,000 = SARB rand-carrying limit on SA bank notes (unlimited within the Common Monetary Area; above R25,000 needs prior SARB authorisation) per the SARS Departure page; R100,000 = SARB excess-currency threshold (rand or foreign currency convertible to rand) needing SARB written permission per the SARS Travellers page; the traveller declaration (online form / manual TD-01) is administered by SARS. SARB exchange control, SARS customs declaration and FIC AML kept distinct. Specific resident/non-resident allowance amounts in the Currency and Exchanges Manual PDF remain marked [HARDENING] (no PDF page-pinpoint tooling).",
-      "P8C-2a (2026-07-23): consistency correction. P8C-2 wrongly advanced South Africa to publish_ready while resident_holding_rules and non_resident_rules retained [HARDENING], conflicting with the US precedent where unresolved [HARDENING] blocks publish_ready. banking_conversion_practicality was re-examined and also marked [HARDENING] (the FinSurv page confirms the ADLA framework and FICA exist, but the specific licensing/documentary/operational provisions live in the Manual PDFs, not page-pinpointable here). South Africa restored to source_review_ready. Governance rule adopted: any unresolved [HARDENING] on a public rule field blocks publish_ready unless a formal governance exception is explicitly adopted. publish_ready remains BLOCKED until every [HARDENING] marker is cleared with claim-specific pinpointed evidence (e.g. the Currency and Exchanges Manual page references).",
-      "P8C-2b (2026-07-23): all three [HARDENING] markers CLEARED with pinpointed evidence from the Currency and Exchanges Manual for Authorised Dealers, live version 2026-06-25 (P8D-0). resident_holding_rules = R2m single discretionary allowance (pp.102,111) + R10m foreign capital allowance (pp.48,111) via Authorised Dealers under SARS TCS; non_resident_rules = non-resident exchange controls abolished / income freely transferable / Non-resident Rand & vostro accounts / retransfer of introduced funds (pp.118,120,197); banking_conversion_practicality = FIC Act s.21 CDD (p.113) + SARB Reporting System purpose codes (p.99). Traveller R25,000 (SARS Departure) and R100,000 (SARS Travellers) remain SARS-sourced and are NOT re-sourced to the Manual; the Manual R25,000 ADLA remittance cap is kept distinct. South Africa advanced source_review_ready -> publish_ready under the P8C-2a consistency rule (no unresolved [HARDENING])."
-   ],
-   "missing_sources": [
-    "financial_intelligence_unit_or_aml_authority"
-   ],
-   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
-   "status": "publish_ready"
   },
   {
    "country_name": "Italy",

@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-07-23T13:28:06+00:00",
+ "generated_at": "2026-07-23T20:28:26+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -12,8 +12,8 @@
  "canonical_url": "https://convertccy.com/api/v1/rules-index.json",
  "documentation": "https://convertccy.com/api.html",
  "title": "ConvertCCY Published Jurisdictions Index",
- "source_dataset_generated_at": "2026-07-23T13:28:06+00:00",
- "count": 9,
+ "source_dataset_generated_at": "2026-07-23T20:27:24+00:00",
+ "count": 10,
  "coverage_note": "Lists only jurisdictions that have passed ConvertCCY's published, source-mapped review gate. Absence from this list means not yet published — never infer coverage from a currency code.",
  "countries": [
   {
@@ -106,6 +106,19 @@
    "rules_page": "/rules/pakistan-foreign-currency-rules.html",
    "brief_page": "/briefs/pakistan-passage-brief.html",
    "api_path": "/api/v1/rules/pakistan.json"
+  },
+  {
+   "country_name": "South Africa",
+   "country_slug": "south-africa",
+   "iso2": "ZA",
+   "iso3": "ZAF",
+   "region": "Sub-Saharan Africa",
+   "currency_code": "ZAR",
+   "currency_name": "South African Rand",
+   "last_reviewed": "2026-07-23",
+   "rules_page": "/rules/south-africa-foreign-currency-rules.html",
+   "brief_page": "/briefs/south-africa-passage-brief.html",
+   "api_path": "/api/v1/rules/south-africa.json"
   },
   {
    "country_name": "United Arab Emirates",

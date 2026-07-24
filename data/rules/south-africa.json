@@ -8,12 +8,12 @@
   "currency_name": "South African Rand",
 
   "schema_version": "1.2.1",
-  "page_status": "verified",
+  "page_status": "published",
   "last_reviewed": "2026-07-23",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": false,
+  "indexing_allowed": true,
   "source_notice": "",
 
   "country_overview": "South Africa operates a floating exchange-rate regime administered by the South African Reserve Bank (SARB) through its Financial Surveillance Department. Cross-border foreign-exchange transactions are conducted through Authorised Dealers under the Currency and Exchanges Manual for Authorised Dealers. Current-account transactions are largely liberalised, while certain capital-account movements remain subject to exchange controls, prior approval or reporting requirements. Traveller currency movements are enforced at the border by SARS Customs under the Exchange Control Regulations, 1961.",

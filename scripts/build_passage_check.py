@@ -102,6 +102,27 @@ DECLARATION = {
         ],
         "note": None,
     },
+    "south-africa": {
+        "thresholds": [
+            {"value": 25000, "currency": "ZAR", "scope": "South African bank notes",
+             "applies": "taking out; unlimited within the Common Monetary Area",
+             "authority": "South African Reserve Bank (SARB); declared to SARS Customs",
+             "mechanism": "prior SARB authorisation required above this amount"},
+            {"value": 100000, "currency": "ZAR",
+             "scope": "'excess currency' — any amount in rand, or foreign currency convertible to rand",
+             "applies": "entering or leaving",
+             "authority": "South African Reserve Bank (SARB); declared to SARS Customs",
+             "mechanism": "written SARB permission required"},
+        ],
+        "note": "Two distinct SARB exchange-control thresholds: the R25,000 rand-carrying limit on "
+                "South African bank notes (unlimited within the Common Monetary Area, sourced to the "
+                "SARS Departure page) and the R100,000 excess-currency rule covering rand or foreign "
+                "currency convertible to rand (sourced to the SARS Travellers page). Separately, the "
+                "traveller declaration — bank notes, foreign currency, securities and gold — is "
+                "administered by SARS via an online form or the manual Traveller Declaration (TD-01). "
+                "This R25,000 rand-carrying limit is a SARB exchange-control figure and is NOT the "
+                "Currency and Exchanges Manual's R25,000 ADLA money-transfer cap.",
+    },
     "united-arab-emirates": {
         "thresholds": [
             {"value": 60000, "currency": "AED",
@@ -144,6 +165,8 @@ EXCHANGE_CONTROLS = {
     "japan": ("none", "No general exchange controls (fully liberalised)"),
     "pakistan": ("capital_account_regulated",
                  "No general exchange controls on the current account; capital account regulated by the SBP"),
+    "south-africa": ("capital_account_regulated",
+                     "Current account largely liberalised; capital account subject to SARB exchange control administered through Authorised Dealers under the Currency and Exchanges Manual"),
     "united-arab-emirates": ("supervisory_peg",
                              "No per-transaction approval controls; supervisory posture around the US-dollar peg, current-account flows largely liberal"),
     "united-kingdom": ("none", "No general exchange controls (fully liberalised for current and capital account)"),

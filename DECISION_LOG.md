@@ -1050,3 +1050,25 @@ Applied the independently reviewed P8D-0 evidence to clear all three South Afric
 
 Status: ✅ South Africa hardening closed on pinpointed primary evidence and advanced to `publish_ready`. Not published, not indexed, no public surface. United States remains at `source_review_ready` pending P8B-2c (its Annex B page-134 evidence is captured in P8D-0). Next step (a later, separate phase): South Africa publication + Deployment Gate.
 Verified: 2026-07-23.
+
+### P8C-3 — South Africa Publication Release
+
+Published South Africa through the full governed publication pipeline, advancing it from `publish_ready` to `published` (the 10th published jurisdiction). This is the release PR only — **merge is not closure**; a separate post-merge Deployment Gate verifies the live site and records the result in a closure-only PR.
+
+**Governed state.** `data/rules/south-africa.json` → `page_status: published`, `indexing_allowed: true` (evidence_tier `official_verified`, publication_class `reference`). South Africa removed from `data/coverage/g20-expansion-candidates.json` candidates and the `source-intake-matrix.json`, and added to `existing_published_jurisdictions` (9 → 10); the candidate `count` fell 12 → 11 and the note updated (These 10 jurisdictions / 11 entries). The United States candidate block is byte-identical (no US change).
+
+**Public artifacts regenerated with the existing generators (no hand-editing):**
+- `generate_rules.py` → `rules/south-africa-foreign-currency-rules.html` (published, `robots: index,follow`, self-canonical), `rules/index.html` (10 countries), `rules/dataset.json` (SA entry, source_map pages preserved), `data/generated/rules_manifest.json`. The stale `preview/rules/verified/south-africa-*.html` is removed; the verified preview index drops to 11 entries. A pre-existing US preview-HTML drift (from P8B-2b, unrelated to SA) was reverted to keep this PR US-free.
+- `build_passage_check.py` → `rules/passage-check.json` (SA added to the hand-transcription tables: two SARB thresholds R25,000 / R100,000 + `capital_account_regulated` posture).
+- `build_passage_briefs.py` → `briefs/south-africa-passage-brief.html` (+ briefs index).
+- `build_static_agent_interface.py` → `api/v1/rules/south-africa.json`, `api/v1/index.json` (published count 10), `api/v1/rules-index.json`, `api/v1/passage-check.json`, `api/index.html`.
+- `generate_sitemap.py` → `sitemap.xml` (adds the SA rules page; briefs and API JSON are not sitemap entries for any country — SA matches the UK precedent exactly).
+
+**`llms.txt`** required no edit: it links the dynamic indexes (`/rules/`, `dataset.json`, `rules-index.json`, `passage-check.json`), which now include South Africa post-publication; it carries no hard-coded jurisdiction list or count. No pre-publication llms change was made (that would have been a candidate leak).
+
+**Content invariants preserved.** Traveller-source separation intact: R25,000 rand-carrying limit → SARS Departure; R100,000 excess-currency permission → SARS Travellers; Traveller Declaration / TD-01 → SARS; SARB exchange-control framework and FIC AML context kept distinct. Manual version **2026-06-25** throughout. Pinpointed `source_map` pages preserved in the governed data and `rules/dataset.json` (resident 48/102/111; non-resident 118/120/197; banking 99/113). The Passage Check transcription explicitly records that SA's R25,000 is a SARB exchange-control figure and **not** the Manual's R25,000 ADLA remittance cap.
+
+**Pre-PR confirmations.** Governance Gate — all five pass; drift check clean. Published-jurisdiction count 9 → 10. Zero `[HARDENING]` in `data/rules/south-africa.json`. No `noindex` on the published SA rules page (`robots: index,follow`). Zero `/preview/` URLs in `sitemap.xml`.
+
+Status: ✅ South Africa published in the repository/build. ⏸️ **Deployment Gate pending** — GitHub Pages deploy from the merge commit, live HTTP 200 for the rules page / brief / static-agent JSON, live R25,000 / R100,000 / TD-01 distinctions, 10-jurisdiction counts in `dataset.json` and the API indexes, Passage Check includes South Africa, sitemap contains the new route and no preview route. The verified live URLs and deployment result will be recorded here in a closure-only PR.
+Verified (build): 2026-07-23.
