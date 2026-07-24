@@ -152,6 +152,21 @@ DECLARATION = {
                 "when travelling between NI and a non-EU country outside the UK. Both derive from UK "
                 "anti-money-laundering legislation and are administered by HMRC through Border Force.",
     },
+    "united-states": {
+        "thresholds": [
+            {"value": 10000, "currency": "USD",
+             "scope": "aggregate cash or covered monetary instruments",
+             "applies": "into or out of the United States",
+             "authority": "U.S. Customs and Border Protection (CBP) / FinCEN",
+             "mechanism": "mandatory Currency and Monetary Instrument Report (FinCEN Form 105 / CMIR)"}
+        ],
+        "note": "Transporting an aggregate exceeding USD 10,000 across the US border triggers a "
+                "mandatory FinCEN Form 105 (CMIR) to CBP under 31 U.S.C. 5316 and 31 CFR 1010.340. "
+                "This traveller border report is distinct from Bank Secrecy Act filings by financial "
+                "institutions — Currency Transaction Reports (CTR) and Suspicious Activity Reports "
+                "(SAR) — and from Foreign Bank Account Reports (FBAR); none of those is a traveller "
+                "declaration.",
+    },
 }
 
 # Transcribed exchange-controls posture, read from rules.exchange_controls prose.
@@ -170,6 +185,8 @@ EXCHANGE_CONTROLS = {
     "united-arab-emirates": ("supervisory_peg",
                              "No per-transaction approval controls; supervisory posture around the US-dollar peg, current-account flows largely liberal"),
     "united-kingdom": ("none", "No general exchange controls (fully liberalised for current and capital account)"),
+    "united-states": ("none",
+                      "No general exchange controls; free-floating rate accepted under IMF Article VIII for current international transactions; capital-account reservations limited to enumerated sectoral inward direct investment under the OECD Code of Liberalisation of Capital Movements"),
 }
 
 # Which rule fields the engine surfaces, and the ontology class each maps into.

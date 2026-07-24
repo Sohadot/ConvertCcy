@@ -4,8 +4,8 @@
   "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
   "attribution": "ConvertCCY (https://convertccy.com/)",
   "citation": "ConvertCCY. Foreign Currency Rules Dataset. https://convertccy.com/rules/dataset.json",
-  "generated_at": "2026-07-23T20:27:24+00:00",
-  "count": 10,
+  "generated_at": "2026-07-24T09:00:02+00:00",
+  "count": 11,
   "countries": [
     {
       "country_name": "Australia",
@@ -1509,6 +1509,219 @@
         ]
       },
       "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in the United Kingdom are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable HMRC / Bank of England / FCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with HM Revenue & Customs, the Bank of England, or a qualified professional before making any financial or travel decisions."
+    },
+    {
+      "country_name": "United States",
+      "country_slug": "united-states",
+      "iso2": "US",
+      "iso3": "USA",
+      "region": "North America",
+      "currency_code": "USD",
+      "currency_name": "United States Dollar",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-05-02",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "The United States Federal Reserve System (the Federal Reserve) is the central bank and sets monetary policy, while U.S. Customs and Border Protection (CBP) and the Financial Crimes Enforcement Network (FinCEN) administer cross-border currency reporting. The United States has a free-floating exchange-rate arrangement — the exchange rate of the US dollar is determined freely in the foreign-exchange market — and, under IMF Article VIII, maintains an exchange system free of restrictions on payments and transfers for current international transactions, with no multiple currency practices, except for restrictions maintained solely for security reasons. Capital-account movements are separately regulated. The US dollar is the world's primary reserve currency.",
+      "summary": {
+        "traveler": "Travelers may carry unlimited US dollars or foreign currency, but any person transporting more than USD 10,000 in aggregate — cash or monetary instruments — into or out of the United States must file a Currency and Monetary Instrument Report (FinCEN Form 105) with CBP at the border. Amounts of USD 10,000 or less require no declaration.",
+        "business": "For current international transactions, businesses and individuals can make and receive payments and transfers without exchange restrictions under the United States' IMF Article VIII status, except for measures maintained solely for security reasons. Foreign-currency account access, repatriation, and capital-account movements are governed separately and remain an open evidence gap pending the US OECD reservation schedule."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "Foreign currency and US dollars may be imported without limit or prohibition. Any person bringing more than USD 10,000 in aggregate (cash or monetary instruments) into the United States must file FinCEN Form 105 (CMIR) with a CBP officer at the port of entry.",
+        "take_foreign_currency_out": "US dollars and foreign currency may be physically transported out without a maximum amount, but transporting more than USD 10,000 in aggregate currency or covered monetary instruments requires FinCEN Form 105.",
+        "cash_declaration_threshold": "The reporting threshold is USD 10,000. Under 31 U.S.C. 5316 and 31 CFR 1010.340, transporting an aggregate amount exceeding that figure across the US border triggers a mandatory Currency and Monetary Instrument Report (FinCEN Form 105) to CBP. This traveler border report is distinct from Bank Secrecy Act filings by financial institutions — Currency Transaction Reports (CTR) and Suspicious Activity Reports (SAR) — and from Foreign Bank Account Reports (FBAR); none of those is a traveler declaration.",
+        "resident_holding_rules": "The United States does not maintain a general exchange-control regime over residents' foreign-currency holdings: under the OECD Code of Liberalisation of Capital Movements, the US reservation schedule contains no general capital-movement reservation restricting residents' holding, conversion, transfer, or repatriation of foreign currency. Its reservations are limited to enumerated sectoral inward direct investment and a small-issues securities-registration carve-out for non-resident issuers. Account access remains subject to sanctions, AML/KYC, tax, information-reporting, and prudential requirements.",
+        "non_resident_rules": "For non-residents, the US schedule under the OECD Code of Liberalisation of Capital Movements contains no general reservation restricting ordinary transfer or repatriation; the recorded reservations concern enumerated inward-investment sectors and limited securities-registration treatment for non-resident issuers. This does not entitle every non-resident to every bank account or service: onboarding remains subject to sanctions screening, AML/KYC, information-reporting and withholding, and each institution's requirements.",
+        "business_invoicing_settlement": "For current international transactions, payments and transfers are not subject to general exchange restrictions under the United States' IMF Article VIII status, except for measures maintained for security reasons. This finding does not establish rules on invoice denomination or capital-account transactions.",
+        "exchange_controls": "The United States has a free-floating exchange-rate arrangement and, having accepted IMF Article VIII, maintains an exchange system free of restrictions on payments and transfers for current international transactions, with no multiple currency practices — except for restrictions maintained solely for the preservation of national or international security, notified to the IMF. This finding covers current international transactions; capital-account movements are governed separately under the OECD Code of Liberalisation of Capital Movements and the US reservation schedule.",
+        "banking_conversion_practicality": "Ordinary currency conversion and cross-border payments operate through regulated US financial institutions and money-services businesses, subject to BSA/AML, sanctions, tax, reporting, and institution-specific controls. Currency dealers or exchangers and money transmitters are money services businesses that must register with FinCEN under the Bank Secrecy Act and maintain applicable compliance programs."
+      },
+      "source_authorities": [
+        {
+          "label": "Federal Reserve — Monetary Policy & FX Framework",
+          "url": "https://www.federalreserve.gov/monetarypolicy.htm",
+          "type": "central_bank",
+          "tier": "primary"
+        },
+        {
+          "label": "31 CFR § 1010.340 — Reports of transportation of currency or monetary instruments (FinCEN Form 105 / CMIR) — official eCFR",
+          "url": "https://www.ecfr.gov/current/title-31/section-1010.340",
+          "type": "primary_regulator_rule_page",
+          "tier": "primary"
+        },
+        {
+          "label": "31 U.S.C. § 5316 — Reports on exporting and importing monetary instruments — official U.S. Code (OLRC)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title31-section5316&num=0&edition=prelim",
+          "type": "regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "FinCEN Form 105 — Report of International Transportation of Currency or Monetary Instruments (CMIR), official form",
+          "url": "https://www.fincen.gov/sites/default/files/shared/fin105_cmir.pdf",
+          "type": "fiu",
+          "tier": "primary"
+        },
+        {
+          "label": "31 CFR § 1010.340 — Cornell LII (authoritative republication, readability mirror)",
+          "url": "https://www.law.cornell.edu/cfr/text/31/1010.340",
+          "type": "other",
+          "tier": "secondary"
+        },
+        {
+          "label": "31 U.S.C. § 5316 — Cornell LII (authoritative republication, readability mirror)",
+          "url": "https://www.law.cornell.edu/uscode/text/31/5316",
+          "type": "other",
+          "tier": "secondary"
+        },
+        {
+          "label": "IMF Country Report No. 2026/076 — United States 2026 Article IV Consultation, Informational Annex (Fund Relations → Exchange Rate Arrangements), IMF eLibrary, published 2 April 2026. Institutional secondary evidence for the current-account exchange-system findings.",
+          "url": "https://www.elibrary.imf.org/view/journals/002/2026/076/article-A001-en.xml",
+          "type": "multilateral",
+          "tier": "secondary"
+        },
+        {
+          "label": "IMF — United States 2026 Article IV Consultation publication page (bibliographic companion to Country Report No. 2026/076)",
+          "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
+          "type": "multilateral",
+          "tier": "secondary"
+        },
+        {
+          "label": "OECD Code of Liberalisation of Capital Movements, compiled edition (© OECD 2026) — Annex B, United States reservation schedule at PDF page 134 (printed folio 133). SHA-256 841dfe37902cc77052adb1c7ddc8922616e3bbf3d255f2a1f3157addc768cb74 (recorded in P8D-0). Institutional secondary evidence for capital-account/account-access fields.",
+          "url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-issues/investment/Code-capital-movements-EN.pdf",
+          "type": "multilateral",
+          "tier": "secondary"
+        },
+        {
+          "label": "FinCEN — Money Services Business (MSB) Registration: currency dealers/exchangers and money transmitters are money services businesses that must register with FinCEN (Department of the Treasury) and comply with Bank Secrecy Act obligations. Claim-specific source for the regulated-institution routing of currency conversion and cross-border payments.",
+          "url": "https://www.fincen.gov/resources/money-services-business-msb-registration",
+          "type": "fiu",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://www.federalreserve.gov/monetarypolicy.htm",
+            "pages": [],
+            "section": "US monetary authority (Federal Reserve)"
+          },
+          {
+            "url": "https://www.elibrary.imf.org/view/journals/002/2026/076/article-A001-en.xml",
+            "pages": [],
+            "section": "IMF 2026 Article IV Informational Annex (CR 2026/076), Fund Relations → Exchange Rate Arrangements: free-floating; exchange rate determined freely in the FX market; Article VIII; no restrictions on payments/transfers for current international transactions; no multiple currency practices; security-reason exception (EBD 144-(52/51))"
+          },
+          {
+            "url": "https://www.imf.org/en/publications/cr/issues/2026/04/01/united-states-2026-article-iv-consultation-press-release-staff-report-and-statement-by-the-575120",
+            "pages": [],
+            "section": "Bibliographic companion — IMF CR 2026/076 publication page"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.ecfr.gov/current/title-31/section-1010.340",
+            "pages": [],
+            "section": "Traveler cross-border currency reporting — Form 105 / CMIR"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://www.elibrary.imf.org/view/journals/002/2026/076/article-A001-en.xml",
+            "pages": [],
+            "section": "Current international transactions free of exchange restrictions under Article VIII (IMF 2026 Article IV Informational Annex (CR 2026/076), Fund Relations → Exchange Rate Arrangements: free-floating; exchange rate determined freely in the FX market; Article VIII; no restrictions on payments/transfers for current international transactions; no multiple currency practices; security-reason exception (EBD 144-(52/51))); account/repatriation/capital aspects are a separate open evidence gap"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.ecfr.gov/current/title-31/section-1010.340",
+            "pages": [],
+            "section": "Import of currency — Form 105 filing for transport over USD 10,000"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.ecfr.gov/current/title-31/section-1010.340",
+            "pages": [],
+            "section": "Export of currency — Form 105 filing for transport over USD 10,000"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.ecfr.gov/current/title-31/section-1010.340",
+            "pages": [],
+            "section": "31 CFR 1010.340 — report of transportation exceeding USD 10,000 (official eCFR)"
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title31-section5316&num=0&edition=prelim",
+            "pages": [],
+            "section": "31 U.S.C. 5316 — statutory basis (official U.S. Code)"
+          },
+          {
+            "url": "https://www.fincen.gov/sites/default/files/shared/fin105_cmir.pdf",
+            "pages": [
+              1
+            ],
+            "section": "FinCEN Form 105 (CMIR) — the official report form"
+          },
+          {
+            "url": "https://www.law.cornell.edu/cfr/text/31/1010.340",
+            "pages": [],
+            "section": "31 CFR 1010.340 — readability mirror (Cornell LII)"
+          },
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/31/5316",
+            "pages": [],
+            "section": "31 U.S.C. 5316 — readability mirror (Cornell LII)"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://www.elibrary.imf.org/view/journals/002/2026/076/article-A001-en.xml",
+            "pages": [],
+            "section": "IMF 2026 Article IV Informational Annex (CR 2026/076), Fund Relations → Exchange Rate Arrangements: free-floating; exchange rate determined freely in the FX market; Article VIII; no restrictions on payments/transfers for current international transactions; no multiple currency practices; security-reason exception (EBD 144-(52/51)) — current-account scope only; capital-account governed separately"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://www.elibrary.imf.org/view/journals/002/2026/076/article-A001-en.xml",
+            "pages": [],
+            "section": "Current international payments/transfers free of exchange restrictions under Article VIII (IMF 2026 Article IV Informational Annex (CR 2026/076), Fund Relations → Exchange Rate Arrangements: free-floating; exchange rate determined freely in the FX market; Article VIII; no restrictions on payments/transfers for current international transactions; no multiple currency practices; security-reason exception (EBD 144-(52/51))); does not establish invoice denomination or capital-account rules"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-issues/investment/Code-capital-movements-EN.pdf",
+            "pages": [
+              134
+            ],
+            "section": "OECD Code of Liberalisation of Capital Movements, Annex B, United States reservation schedule (page 134). The US lodges reservations only on List A, I/A direct investment in enumerated strategic sectors and List A, IV/B1-B2 (small-issues securities-registration for non-resident issuers); no general capital-movement reservation restricts residents' holding, conversion, transfer, or repatriation. Institutional secondary evidence.",
+            "source_kind": "pdf"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-issues/investment/Code-capital-movements-EN.pdf",
+            "pages": [
+              134
+            ],
+            "section": "OECD Code of Liberalisation of Capital Movements, Annex B, United States reservation schedule (page 134). The recorded reservations concern enumerated inward-investment sectors and small-issues securities-registration for non-resident issuers; no general reservation restricts ordinary non-resident transfer or repatriation. Institutional secondary evidence.",
+            "source_kind": "pdf"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://www.fincen.gov/resources/money-services-business-msb-registration",
+            "pages": [],
+            "section": "FinCEN — Money Services Business (MSB) Registration. Establishes that currency dealers/exchangers and money transmitters are money services businesses that must register with FinCEN (Treasury) and comply with Bank Secrecy Act obligations — the claim-specific source for the regulated-institution routing of ordinary currency conversion and cross-border payments. Not sourced from the OECD absence of reservations.",
+            "source_kind": "html"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in the United States are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Federal Reserve / CBP / FinCEN framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with US Customs and Border Protection, the Federal Reserve, or a qualified professional before making any financial or travel decisions."
     }
   ]
 }

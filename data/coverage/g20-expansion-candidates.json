@@ -25,39 +25,13 @@
   "pakistan",
   "south-africa",
   "united-arab-emirates",
-  "united-kingdom"
+  "united-kingdom",
+  "united-states"
  ],
- "existing_published_jurisdictions_note": "These 10 jurisdictions are currently published and sit outside this blueprint; the 11 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file. South Africa graduated from candidate to published via the P8C-3 six-gate publication pipeline (P8C-1 intake -> P8C-2 candidate review -> P8C-2a consistency -> P8D-0 evidence -> P8C-2b hardening close -> P8C-3 release), not through this file.",
+ "existing_published_jurisdictions_note": "These 11 jurisdictions are currently published and sit outside this blueprint; the 10 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file. South Africa graduated from candidate to published via the P8C-3 six-gate publication pipeline (P8C-1 intake -> P8C-2 candidate review -> P8C-2a consistency -> P8D-0 evidence -> P8C-2b hardening close -> P8C-3 release), not through this file. United States graduated from candidate to published via the P8B-3 publication pipeline (P8B-1 intake -> P8B-2 declaration + current-account close -> P8B-2b liberalisation hardening -> P8D-0 evidence -> P8B-2c capital-account hardening close -> P8B-3 release), not through this file.",
  "no_inference_rule": "No rule, threshold, or regulatory posture may ever be inferred for a candidate from its currency code, region, G20 membership, EU/AU membership, or a neighboring country's published rules. Every fact requires its own primary official source before it may be published.",
- "count": 11,
+ "count": 10,
  "candidates": [
-  {
-   "country_name": "United States",
-   "country_slug": "united-states",
-   "iso2": "US",
-   "iso3": "USA",
-   "currency_code": "USD",
-   "currency_name": "United States Dollar",
-   "region": "North America",
-   "expansion_priority": "high",
-   "complexity_level": "medium",
-   "likely_official_source_authorities_needed": {
-    "central_bank_or_monetary_authority": "Federal Reserve",
-    "customs_or_border_authority": "US Customs and Border Protection (CBP)",
-    "financial_intelligence_unit_or_aml_authority": "Financial Crimes Enforcement Network (FinCEN)",
-    "tax_treasury_ministry_source": null
-   },
-   "expected_difficulty": "Medium. Sources are English-language and authoritative, but BSA/FinCEN reporting (FBAR, Form 105, CTR/SAR) is a distinct regime from customs declaration and must not be conflated — a defect class already caught and corrected once in P2 ontology review.",
-   "known_risk_areas": [
-    "FinCEN Form 105 vs CTR/SAR conflation (previously corrected in ontology P2 review — do not repeat)",
-    "State-level vs federal distinctions are out of scope; federal rules only",
-     "P8B-2 / P8B-2b outcome (2026-07-23): DECLARATION fields publish-quality (official eCFR 31 CFR 1010.340, U.S. Code 31 U.S.C. 5316, official FinCEN Form 105 CMIR PDF; Cornell LII secondary; CTR/SAR/FBAR kept distinct). LIBERALISATION — split by scope: CURRENT-account claims CLOSED using the IMF 2026 Article IV Consultation (CR 2026/076) as institutional secondary evidence (free-floating arrangement; Article VIII; exchange system free of restrictions on current international payments, no multiple currency practices; security-reason exception) — fields exchange_controls, country_overview, business_invoicing_settlement (narrowed to current international transactions), summary.business. The earlier generic IMF United States country-page citation was removed (it did not substantiate these claims). CAPITAL-account / account-access fields RETAIN [HARDENING]: resident_holding_rules, non_resident_rules, banking_conversion_practicality — the IMF Article VIII current-account finding does not settle them, and the specific US reservation record in OECD Code of Liberalisation of Capital Movements Annex B was not extractable with available tooling. publish_ready remains BLOCKED until those fields are resolved with a claim-specific OECD reservation record or another specialised source. Held at source_review_ready. Standing guard: keep Form 105/CMIR distinct from CTR/SAR/FBAR",
-     "P8B-2c (2026-07-24): all three remaining [HARDENING] markers CLEARED using the P8D-0 evidence. resident_holding_rules and non_resident_rules sourced to the OECD Code of Liberalisation of Capital Movements, Annex B, United States schedule (compiled edition (c) OECD 2026, PDF page 134): no general capital-movement reservation restricts holding/conversion/transfer/repatriation; reservations limited to enumerated sectoral inward direct investment and small-issues securities-registration. banking_conversion_practicality was NOT cleared from the OECD absence: it was re-framed as a regulatory-routing claim and sourced to FinCEN Money Services Business (MSB) Registration (currency dealers/exchangers and money transmitters must register with FinCEN under the Bank Secrecy Act). Sanctions/tax/AML/reporting/prudential caveats preserved; no absolute language; already-closed evidence (IMF Article IV Annex, 31 USC 5316, 31 CFR 1010.340, FinCEN Form 105/CMIR, separation from CTR/SAR/FBAR) untouched. Zero [HARDENING] remain; United States advanced source_review_ready -> publish_ready under the P8C-2a consistency rule (no governance exception)."
-   ],
-   "missing_sources": [],
-   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
-   "status": "publish_ready"
-  },
   {
    "country_name": "Mexico",
    "country_slug": "mexico",

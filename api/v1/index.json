@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-07-23T20:28:26+00:00",
+ "generated_at": "2026-07-24T09:00:02+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -14,7 +14,7 @@
  "title": "ConvertCCY Static Agent Interface — machine entry point",
  "description": "Static, read-only, agent-readable JSON generated from ConvertCCY's published, source-mapped governed data. There is no server behind these routes: they are files, refreshed on publication, served exactly like any other static asset on this domain.",
  "not_an_api_notice": "This is not a dynamic API. It is a static data interface. There is no endpoint that executes a request, no API key, no authentication, and no billing. Any future metered or authenticated API will be isolated off this domain (see /api.html).",
- "published_jurisdictions_count": 10,
+ "published_jurisdictions_count": 11,
  "endpoints": {
   "rules_index": {
    "path": "/api/v1/rules-index.json",
@@ -33,7 +33,8 @@
     "pakistan",
     "south-africa",
     "united-arab-emirates",
-    "united-kingdom"
+    "united-kingdom",
+    "united-states"
    ]
   },
   "passage_check": {
