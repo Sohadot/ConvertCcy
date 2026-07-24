@@ -1133,3 +1133,25 @@ Published the United States through the full governed publication pipeline, adva
 
 Status: ✅ United States published in the repository/build. ⏸️ **Deployment Gate pending** — GitHub Pages deploy from the merge commit, live HTTP 200 for the rules page / brief / static-agent JSON, live USD 10,000 Form 105/CMIR vs CTR/SAR/FBAR distinction, 11-jurisdiction counts in `dataset.json` and the API indexes, Passage Check includes the United States, sitemap contains the new route and no preview route. The verified live URLs and deployment result will be recorded here in a closure-only PR.
 Verified (build): 2026-07-24.
+
+### P8B-3 — United States Deployment Gate (closure)
+
+Closure-only PR for P8B-3. The publication release (#45) is merged; this records the post-merge live verification. Merge commit: `f9c9363fbc17c73c1a04ab5e4cf509d0b7ef22ef`.
+
+**GitHub Pages deployment — green from the merge commit.** Workflow run 30081172661 (`pages build and deployment`) completed `success`, deployed from `f9c9363`.
+
+**Live verification (2026-07-24, cache-buster `?cb=<ts>` first, then canonical — all HTTP 200):**
+- `https://convertccy.com/rules/united-states-foreign-currency-rules.html` — 200 (cache-buster and canonical); `robots: index,follow`, no `noindex`.
+- `https://convertccy.com/briefs/united-states-passage-brief.html` — 200.
+- `https://convertccy.com/api/v1/rules/united-states.json` — 200 (cache-buster and canonical).
+
+**Live content distinctions confirmed:** USD 10,000 Form 105 / CMIR present; "CTR", "SAR", "FBAR" each present and held distinct from the traveller report; IMF "Article VIII" (current account) and "OECD Code of Liberalisation" (capital-account, page-134 sectoral reservations) present; banking framed as regulated-institution routing ("money services business", FinCEN). No absolute language.
+
+**Live SEO confirmed:** descriptive `<title>` ("Foreign Currency Rules — United States (USD) | ConvertCCY"), self-canonical, Open Graph (`og:title`), `twitter:card`, and JSON-LD structured data all served live; `robots: index,follow`.
+
+**Live counts — 11 published jurisdictions:** `rules/dataset.json` 11 countries all `published` (US present); `api/v1/index.json` `published_jurisdictions_count` = 11; `api/v1/rules-index.json` 11 countries (US present); `rules/passage-check.json` includes the United States.
+
+**Live sitemap:** `sitemap.xml` contains the United States rules route (1 occurrence) and zero `/preview/` URLs.
+
+Status: ✅ P8B-3 CLOSED. The United States is live and indexed as the 11th published jurisdiction; Pages deployment green from the merge commit; all live URLs, content distinctions, SEO signals, counts, Passage Check coverage, and sitemap routing verified. Published jurisdictions: 11. Publish-ready candidates: 0. Next: return to the 10 remaining candidates and select the next country by source strength and ease of proof, not nominal order.
+Verified (live): 2026-07-24.
