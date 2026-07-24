@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-23T13:28:06+00:00",
+  "generated_at": "2026-07-23T20:27:24+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 9,
-    "verified": 12,
+    "published": 10,
+    "verified": 11,
     "needs_hardening": 2,
     "secondary_review": 0,
     "skipped": 0,
@@ -66,6 +66,14 @@
       "output_html": "rules/pakistan-foreign-currency-rules.html",
       "sitemap_eligible": true,
       "public_url": "https://convertccy.com/rules/pakistan-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
+      "country_slug": "south-africa",
+      "country_name": "South Africa",
+      "output_html": "rules/south-africa-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/south-africa-foreign-currency-rules.html"
     },
     {
       "status": "published",
@@ -132,13 +140,6 @@
       "country_slug": "singapore",
       "country_name": "Singapore",
       "output_html": "preview/rules/verified/singapore-foreign-currency-rules.html",
-      "sitemap_eligible": false
-    },
-    {
-      "status": "verified",
-      "country_slug": "south-africa",
-      "country_name": "South Africa",
-      "output_html": "preview/rules/verified/south-africa-foreign-currency-rules.html",
       "sitemap_eligible": false
     },
     {
