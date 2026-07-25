@@ -1401,5 +1401,5 @@ Closure-only PR for P8F-3. The publication release (#55) is merged; this records
 
 **Live sitemap:** `sitemap.xml` contains the South Korea rules route (1 occurrence) and zero `/preview/` URLs.
 
-Status: ✅ P8F-3 CLOSED. South Korea is live and indexed as the 13th published jurisdiction; Pages deployment green from the merge commit; all live URLs, content distinctions (exceeding USD 10,000; four regimes separate; MOEF vs Article 23 vs filing destination), SEO signals, counts, Passage Check coverage, and sitemap routing verified. Published jurisdictions: 13. Publish-ready candidates: 0.
+Status: ✅ P8F-3 CLOSED. South Korea is published, live, and eligible for indexing as the 13th published jurisdiction; Pages deployment green from the merge commit; all live URLs, content distinctions (exceeding USD 10,000; four regimes separate; MOEF vs Article 23 vs filing destination), SEO signals, counts, Passage Check coverage, and sitemap routing verified. Published jurisdictions: 13. Publish-ready candidates: 0.
 Verified (live): 2026-07-25.
