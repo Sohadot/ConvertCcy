@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-24T13:31:46+00:00",
+  "generated_at": "2026-07-25T06:53:19+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 12,
-    "verified": 10,
+    "published": 13,
+    "verified": 9,
     "needs_hardening": 2,
     "secondary_review": 0,
     "skipped": 0,
@@ -85,6 +85,14 @@
     },
     {
       "status": "published",
+      "country_slug": "south-korea",
+      "country_name": "South Korea",
+      "output_html": "rules/south-korea-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/south-korea-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
       "country_slug": "united-arab-emirates",
       "country_name": "United Arab Emirates",
       "output_html": "rules/united-arab-emirates-foreign-currency-rules.html",
@@ -156,13 +164,6 @@
       "country_slug": "singapore",
       "country_name": "Singapore",
       "output_html": "preview/rules/verified/singapore-foreign-currency-rules.html",
-      "sitemap_eligible": false
-    },
-    {
-      "status": "verified",
-      "country_slug": "south-korea",
-      "country_name": "South Korea",
-      "output_html": "preview/rules/verified/south-korea-foreign-currency-rules.html",
       "sitemap_eligible": false
     },
     {

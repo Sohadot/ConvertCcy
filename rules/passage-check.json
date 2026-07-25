@@ -2,11 +2,11 @@
  "engine": "ConvertCCY Passage Check",
  "version": "1.0",
  "built_from": "rules/dataset.json",
- "source_dataset_generated_at": "2026-07-24T13:31:46+00:00",
+ "source_dataset_generated_at": "2026-07-25T06:53:19+00:00",
  "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
  "attribution": "ConvertCCY (https://convertccy.com/)",
  "notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. Structured thresholds are transcribed from each entry's cash_declaration_threshold field. Currency conversions shown in the tool are indicative only and are not governed figures.",
- "count": 12,
+ "count": 13,
  "countries": [
   {
    "country_name": "Australia",
@@ -1120,6 +1120,157 @@
     }
    ],
    "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in South Africa are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable South African Reserve Bank / SARS framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the South African Reserve Bank or SARS before making any financial or travel decisions."
+  },
+  {
+   "country_name": "South Korea",
+   "country_slug": "south-korea",
+   "iso2": "KR",
+   "currency_code": "KRW",
+   "currency_name": "South Korean Won",
+   "region": "East Asia",
+   "last_reviewed": "2026-07-25",
+   "rules_page": "/rules/south-korea-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "means of payment — foreign currency, Korean-won notes and checks — combined, exceeding this amount in total",
+      "applies": "entering or leaving South Korea",
+      "authority": "Korea Customs Service",
+      "mechanism": "mandatory declaration (Traveler Declaration Form item no. 3; Certificate of Foreign Currency Declaration)"
+     }
+    ],
+    "note": "The declaration is triggered only ABOVE USD 10,000 (exceeding, not 'USD 10,000 or more'), aggregating foreign currency, Korean-won notes and checks; at or below USD 10,000 none is required. This Korea Customs border declaration is distinct from three separate regimes: Foreign Exchange Transactions Act capital-transaction and method-of-payment reporting (FETA Art. 16/18); foreign exchange banks' reporting of FX sales over USD 10,000 to the National Tax Service (FETA Art. 21); and KoFIU anti-money-laundering reporting.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "Current-account payments and receipts substantially liberalised; capital transactions and certain methods of payment or receipt subject to transaction-specific notification, permission or reporting under the Foreign Exchange Transactions Act (via foreign exchange banks, the Bank of Korea Governor, or MOEF as competent authority); the Korean won is not fully internationalised",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "A traveller bringing means of payment into South Korea — foreign currency, Korean-won notes and checks combined — exceeding USD 10,000 in total must file a mandatory declaration with the Korea Customs Service, marking item no. 3 of the Traveler Declaration Form and receiving a Certificate of Foreign Currency Declaration. At or below USD 10,000 no permission or declaration is required. This customs declaration is distinct from any Foreign Exchange Transactions Act reporting on capital transactions.",
+     "source": {
+      "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10800&cntntsId=5500",
+      "section": "Korea Customs — inbound: means of payment exceeding USD 10,000 in total requires a mandatory declaration (Traveler Declaration Form item 3; Certificate of Foreign Currency Declaration); at or below USD 10,000 none required"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "A traveller leaving South Korea must likewise file a mandatory Korea Customs declaration when means of payment exceed USD 10,000 in total. Separately, under the Foreign Exchange Transactions Act, capital-account transfers by residents may require transaction-specific notification or permission through a foreign exchange bank or the Bank of Korea Governor; that reporting is distinct from the customs border declaration.",
+     "source": {
+      "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10800&cntntsId=5500",
+      "section": "Korea Customs — outbound: mandatory declaration when means of payment exceed USD 10,000"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "The Korea Customs declaration threshold is means of payment exceeding USD 10,000 in total — aggregating foreign currency, Korean-won notes and checks — for a traveller entering or leaving the country; it is a mandatory report to Customs (Traveler Declaration Form item no. 3, yielding a Certificate of Foreign Currency Declaration), not merely a document to produce if questioned, and it is triggered only above USD 10,000. This border declaration is separate from three other regimes: Foreign Exchange Transactions Act capital-transaction notification or permission, foreign exchange banks' reporting of FX sales over USD 10,000 to the National Tax Service, and KoFIU anti-money-laundering reporting.",
+     "source": {
+      "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10800&cntntsId=5500",
+      "section": "Korea Customs — declaration threshold: means of payment (foreign currency + KRW notes + checks) exceeding USD 10,000 in total; mandatory report; triggered only above USD 10,000"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "South Korea regulates foreign exchange through the Foreign Exchange Transactions Act, administered by MOEF and the Bank of Korea. The Act sets procedures in three areas — transaction type, payment and receipt, and method of payment and receipt. Current-account payments and receipts are substantially liberalised, while capital transactions involving large fund movements are subject to transaction-specific notification or permission through foreign exchange banks, the Bank of Korea Governor, or MOEF. The Korean won is not fully internationalised. This is a regulated framework — not an absence of exchange controls and not full liberalisation of the capital account.",
+     "source": {
+      "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+      "section": "BOK Foreign Exchange System — FETA three-area structure (transaction type; payment and receipt; method of payment and receipt); current liberalised, capital notification/permission; won not fully internationalised"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "South Korean residents may open and hold foreign-currency accounts — resident accounts and resident foreign currency trust accounts — through foreign exchange businesses registered under Article 8 of the Foreign Exchange Transactions Act. Capital transactions, which under Article 3 of the Act include deposits, lending, securities and overseas real estate, require advance reporting under FETA Article 18; certain methods of payment or receipt require reporting under Article 16; and some payments to foreign countries may require permission under Article 15. Depending on the transaction the report is made to a foreign exchange bank or the Bank of Korea Governor, and holding and transfer remain subject to sanctions, AML/KYC, tax and reporting requirements. This does not guarantee that any resident may open any particular account.",
+     "source": {
+      "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+      "section": "BOK Foreign Exchange System — resident foreign-currency accounts via foreign exchange banks; capital-transaction reporting"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Non-residents may open and operate non-resident accounts through foreign exchange businesses registered under the Foreign Exchange Transactions Act — external accounts and non-resident foreign currency trust accounts for foreign-currency funds, and non-resident Korean-won accounts and non-resident free-transfer Korean-won accounts for won funds (Foreign Exchange Transactions Regulations Article 2-6-2). Certain transactions require transaction-specific reporting to a foreign exchange bank or the Bank of Korea Governor (for example FETA Article 18 capital transactions), and repatriation is not unconditional; account opening remains subject to sanctions screening, AML/KYC, tax and each institution's requirements. There is no entitlement to any particular account or service.",
+     "source": {
+      "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+      "section": "BOK Foreign Exchange System — non-resident accounts via foreign exchange banks; transaction-specific reporting; repatriation not unconditional"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Currency conversion and cross-border payments in South Korea are provided through foreign exchange banks and other institutions authorised under the Foreign Exchange Transactions Act within the Bank of Korea / MOEF framework. These authorised intermediaries apply the Act's notification, permission and reporting procedures according to transaction type; authorisation does not guarantee that any particular institution offers a given currency, service or price.",
+     "source": {
+      "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+      "section": "BOK — conversion and cross-border payments via foreign exchange banks and institutions authorised under FETA; notification/permission/reporting by transaction type; not a service/price guarantee"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Korea Customs Service — Declaration of Foreign Currency (traveller means of payment exceeding USD 10,000; Traveler Declaration Form; Certificate of Foreign Currency Declaration)",
+     "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10800&cntntsId=5500",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "Korea Customs Service — Traveler Declaration Form",
+     "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10802&cntntsId=5503",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "Bank of Korea — Foreign Exchange System: Payments and Transactions (FETA three-area structure; capital-transaction notification/permission; foreign exchange banks)",
+     "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Bank of Korea — Foreign Exchange System: Relevant Legislation (Foreign Exchange Transactions Act)",
+     "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400187",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Foreign Exchange Transactions Act — current official English consolidation, National Legal Information Center (law.go.kr, 국가법령정보센터): Act No. 14525, promulgated 17 Jan 2017, enforced 18 Jul 2017. Verified present and operative in this current version: Art. 15 (Payment Procedures, etc.), Art. 16 (Reporting on Methods of Payment or Receipt), Art. 17 (Reporting on Export and Import of Means of Payment, etc.), Art. 18 (Reporting, etc. on Capital Transactions), Art. 21 (Notification, etc. to Commissioner of National Tax Service), Art. 23 (Delegation, Entrustment, etc. of Authority)",
+     "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=191033&viewCls=engLsInfoR&urlMode=engLsInfoR",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Foreign Exchange Transactions Act — Korea Legislation Research Institute (KLRI) English reference translation, elaw.klri.re.kr (non-binding reference translation, consolidated through Act No. 11407 of 21 Mar 2012; provides the fetchable article body for Art. 3 definitions, Art. 8 registration of foreign exchange business, Art. 15 payment procedures, Art. 16 methods of payment or receipt, Art. 18 capital transactions, Art. 23 delegation — each verified as present and operative in the current official version, Act No. 14525, per law.go.kr)",
+     "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=30011&type=part&key=23",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Enforcement Decree of the Foreign Exchange Transactions Act — KLRI official English reference translation, elaw.klri.re.kr",
+     "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=52298&type=part&key=23",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Foreign Exchange Transactions Regulations (Notice No. 2023-26, Jul. 4, 2023) — KLRI official English reference translation, elaw.klri.re.kr (Art. 2-1-2 payment/receipt confirmation; Art. 2-2 monthly notice to tax/customs authorities; Art. 2-6-2 resident and non-resident accounts)",
+     "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=64673&type=part&key=23",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Ministry of Economy and Finance (MOEF) — competent authority for the Foreign Exchange Transactions Act",
+     "url": "https://english.moef.go.kr/",
+     "type": "ministry",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange and cash-control rules in South Korea are set by the Foreign Exchange Transactions Act and Korea Customs rules and may change; requirements depend on residency, the transaction type and amount, documentation, and the applicable MOEF, Bank of Korea, and Korea Customs Service framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Korea Customs Service, the Bank of Korea, or a qualified professional before making any financial or travel decisions."
   },
   {
    "country_name": "United Arab Emirates",
