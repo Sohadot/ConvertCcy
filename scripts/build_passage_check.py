@@ -143,6 +143,21 @@ DECLARATION = {
                 "This R25,000 rand-carrying limit is a SARB exchange-control figure and is NOT the "
                 "Currency and Exchanges Manual's R25,000 ADLA money-transfer cap.",
     },
+    "south-korea": {
+        "thresholds": [
+            {"value": 10000, "currency": "USD",
+             "scope": "means of payment — foreign currency, Korean-won notes and checks — combined, exceeding this amount in total",
+             "applies": "entering or leaving South Korea",
+             "authority": "Korea Customs Service",
+             "mechanism": "mandatory declaration (Traveler Declaration Form item no. 3; Certificate of Foreign Currency Declaration)"}
+        ],
+        "note": "The declaration is triggered only ABOVE USD 10,000 (exceeding, not 'USD 10,000 or more'), "
+                "aggregating foreign currency, Korean-won notes and checks; at or below USD 10,000 none is "
+                "required. This Korea Customs border declaration is distinct from three separate regimes: "
+                "Foreign Exchange Transactions Act capital-transaction and method-of-payment reporting "
+                "(FETA Art. 16/18); foreign exchange banks' reporting of FX sales over USD 10,000 to the "
+                "National Tax Service (FETA Art. 21); and KoFIU anti-money-laundering reporting.",
+    },
     "united-arab-emirates": {
         "thresholds": [
             {"value": 60000, "currency": "AED",
@@ -204,6 +219,8 @@ EXCHANGE_CONTROLS = {
                  "No general exchange controls on the current account; capital account regulated by the SBP"),
     "south-africa": ("capital_account_regulated",
                      "Current account largely liberalised; capital account subject to SARB exchange control administered through Authorised Dealers under the Currency and Exchanges Manual"),
+    "south-korea": ("capital_account_regulated",
+                    "Current-account payments and receipts substantially liberalised; capital transactions and certain methods of payment or receipt subject to transaction-specific notification, permission or reporting under the Foreign Exchange Transactions Act (via foreign exchange banks, the Bank of Korea Governor, or MOEF as competent authority); the Korean won is not fully internationalised"),
     "united-arab-emirates": ("supervisory_peg",
                              "No per-transaction approval controls; supervisory posture around the US-dollar peg, current-account flows largely liberal"),
     "united-kingdom": ("none", "No general exchange controls (fully liberalised for current and capital account)"),
