@@ -1383,3 +1383,23 @@ Published South Korea through the full governed publication pipeline, advancing 
 
 Status: ✅ South Korea published in the repository/build. ⏸️ **Deployment Gate pending** — GitHub Pages deploy from the merge commit, live HTTP 200 for the rules page / brief / static-agent JSON, live "exceeding USD 10,000" and four-regime separation, 13-jurisdiction counts in `dataset.json` and the API indexes, Passage Check includes South Korea, sitemap contains the new route and no preview route. The verified live URLs and deployment result will be recorded here in a closure-only PR.
 Verified (build): 2026-07-25.
+
+### P8F-3 — South Korea Deployment Gate (closure)
+
+Closure-only PR for P8F-3. The publication release (#55) is merged; this records the post-merge live verification. Merge commit: `9211610fbf0b59cd450bbb912304b10359107f12`.
+
+**GitHub Pages deployment — green from the merge commit.** Workflow `pages build and deployment` run 30148888858 deployed from `9211610f`; the live site serves the merge-commit build (confirmed by the live checks below).
+
+**Live verification (2026-07-25, cache-buster `?cb=<ts>` — all HTTP 200):**
+- `https://convertccy.com/rules/south-korea-foreign-currency-rules.html` — 200; `robots: index,follow`, no `noindex`, self-canonical, JSON-LD + Open Graph served live.
+- `https://convertccy.com/briefs/south-korea-passage-brief.html` — 200.
+- `https://convertccy.com/api/v1/rules/south-korea.json` — 200.
+
+**Live content distinctions confirmed:** the published page renders "exceeding USD 10,000" (3×) and never "USD 10,000 or more"; the four cross-border regimes are kept separate — Korea Customs USD 10,000 border declaration (Traveler Declaration Form item no. 3; Certificate of Foreign Currency Declaration), FETA capital-transaction / method-of-payment reporting, foreign exchange banks' reporting of FX sales over USD 10,000 to the National Tax Service (Art. 21), and KoFIU AML; MOEF is served as the competent authority distinct from the Article 23 delegated authorities and the transaction-dependent filing destination; current account substantially liberalised, won not fully internationalised.
+
+**Live counts — 13 published jurisdictions:** `rules/dataset.json` = 13 (South Korea present); `api/v1/index.json` `published_jurisdictions_count` = 13 (South Korea in `available_slugs`); `api/v1/rules-index.json` = 13 (South Korea present); `rules/passage-check.json` and `api/v1/passage-check.json` include South Korea.
+
+**Live sitemap:** `sitemap.xml` contains the South Korea rules route (1 occurrence) and zero `/preview/` URLs.
+
+Status: ✅ P8F-3 CLOSED. South Korea is live and indexed as the 13th published jurisdiction; Pages deployment green from the merge commit; all live URLs, content distinctions (exceeding USD 10,000; four regimes separate; MOEF vs Article 23 vs filing destination), SEO signals, counts, Passage Check coverage, and sitemap routing verified. Published jurisdictions: 13. Publish-ready candidates: 0.
+Verified (live): 2026-07-25.
