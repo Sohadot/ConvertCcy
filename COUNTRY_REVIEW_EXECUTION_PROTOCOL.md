@@ -39,6 +39,19 @@ No claim enters a country JSON file until it exists in a claim matrix with a kno
 
 The matrix is the pre-write control surface. The JSON is an output artifact, not the place where evidence classification is invented.
 
+### Evidence Budget
+
+Each claim in the matrix must declare upfront:
+
+| Parameter | Definition |
+|---|---|
+| **Authority** | The single institution or legal instrument to start with |
+| **Evidence target** | The CRES level the claim must reach |
+| **Source budget** | Maximum number of primary sources to consult (typically 1–3) |
+| **Stop condition** | If the target is not met within the budget, the claim is immediately downgraded to `bounded` or `verification_target` |
+
+This prevents open-ended "one more source might prove it" loops. The budget is set before research begins and is not extended mid-intake without a documented justification recorded in the matrix revision log.
+
 ### Separation of evidence and workflow
 
 - **Evidence target** answers: "What level of proof must this claim reach?"
