@@ -117,9 +117,12 @@ have its own claim-matched source to reach `E1`/`E0`. This is the Mexico rule of
 Every **published** claim MUST expose all four, or it fails the gate:
 
 1. **Source** — the citation, to the pinpoint (article/section/page) where the
-   level requires it.
+   level requires it. For `E3`, where no claim-matched source is yet verified,
+   this requirement is satisfied by a **declared null-source disclosure** (see
+   "E3 and the Source requirement" below) — the slot is never simply omitted.
 2. **As-of date** — the date the source was verified as current, and (where the
-   source states it) the source's own effective/amendment date.
+   source states it) the source's own effective/amendment date. For `E3`, the
+   date the gap was last confirmed.
 3. **Evidence level** — `E0`–`E3` per §3.
 4. **Known gap** — what remains unverified for this claim. For `E0` this may be
    "none identified"; for `E3` it is the verification target.
@@ -128,40 +131,70 @@ A claim missing any of the four is not publishable. `not_published` claims
 should still carry as many of the four as are known, so the intake ledger is
 complete before surfacing.
 
+**E3 and the Source requirement.** An `E3` claim has no verified source, but the
+Source slot is **declared, not absent**. The null-source disclosure below
+*satisfies* requirement 1, so a published `E3` claim passes this section (and the
+`E3 · published · noindex` state of §2 is therefore gate-legal, not — as a naïve
+reading of "every published claim MUST expose a Source" would have it —
+forbidden):
+
+```json
+{
+  "evidence_level": "E3",
+  "verified_source": null,
+  "source_status": "no_claim_matched_source_verified",
+  "sources_checked": [],
+  "verification_target": "National FX statute or central-bank circular",
+  "known_gap": "Resident holding rules not yet evidenced",
+  "as_of": "2026-07-28"
+}
+```
+
+The Source slot does not disappear; it **asserts** that no claim-matched source
+is verified as of the date, and records what was checked (`sources_checked`) and
+what would resolve the gap (`verification_target`). An `E3` claim MUST NOT be
+published without this disclosure, and MUST NOT present any `verified_source`.
+
 ---
 
-## 5. Source hierarchy and AREAER placement (CRES layer)
+## 5. Source hierarchy: authority tier × workflow role (CRES layer)
 
-Sources are ranked. A higher tier, when available and claim-specific, is
-preferred; a lower tier may *raise confidence* or *fill a gap* but does not
-override a higher tier.
+A source has **two independent** properties. Collapsing them into one ranked
+list is an error — it lets a comparative layer appear "above" a stronger
+authority. CRES keeps them apart.
+
+**Dimension A — Authority tier** (proof strength; sets the *ceiling* on a claim's
+evidence level):
 
 ```
-1. Primary Authority      national legal instrument / official regulator text
-        ↓
-2. AREAER                 IMF Annual Report on Exchange Arrangements & Restrictions
-        ↓                 — discovery / cross-check / gap-detection layer only
-3. Institutional          central bank / ministry / supervisor guidance; official translations
-        ↓
-4. Other references       reputable secondary material (never sole support for a mandatory claim)
+A1. Primary binding authority             national legal instrument / official regulator text        → up to E0
+A2. Official claim-specific institutional  central bank / ministry / supervisor guidance; official translations  → up to E1
+A3. Comparative / secondary references     incl. IMF AREAER; reputable secondary material            → capped at E2 (never sole support for a mandatory claim)
 ```
 
-**AREAER is never a publication authority.** Its role is strictly:
+**Dimension B — Workflow role** (what the source is *used for*; orthogonal to
+tier): **discovery**, **corroboration**, or **publication-support**.
 
-- **Discovery** — surfacing claims to then confirm against primary authority;
-- **Cross-check** — corroborating a claim already found elsewhere;
-- **Gap detection** — revealing where a claim is missing or stale.
+Tier and role are independent. IMF **AREAER** is an authority-tier **A3** source
+(comparative — it caps a claim at `E2`) whose legitimate roles are **discovery,
+cross-check, and gap-detection**. It is strong for *coverage and comparison*
+across jurisdictions, but it is **not a higher proof authority than official
+central-bank or regulator guidance** (A2), and it is **never a publication
+authority**: a claim supported only by AREAER MUST NOT be published as an
+asserted rule, and AREAER never overrides a claim-matched A1/A2 source.
 
-AREAER is **never a final source when a claim-matched primary or institutional
-source exists**, and a claim supported *only* by AREAER is capped at `E2` and
-MUST NOT be published as an asserted rule on the strength of AREAER alone.
+Because tier ≠ role, the contradiction of a single "preference" ladder — placing
+AREAER *above* institutional guidance while also capping AREAER (`E2`) *below*
+institutional (`E1`) — cannot arise: preference for **proof** follows the
+authority tier (A1 > A2 > A3), while AREAER's value lives in the **role**
+dimension.
 
 **AREAER licensing clause (mandatory).** *Compliance with IMF licensing and
 reuse terms is mandatory before incorporating AREAER-derived content or
 metadata.* The cleared/undetermined licensing status MUST be recorded on the
 source entry. Absent a cleared licence, AREAER may be used for internal
-discovery/cross-check/gap-detection only and MUST NOT be reproduced — content or
-metadata — on any public surface.
+discovery / cross-check / gap-detection only and MUST NOT be reproduced —
+content or metadata — on any public surface.
 
 **Regime-separation rule (CRES-specific).** Distinct legal regimes MUST NOT be
 conflated within or across claims — e.g. customs border declaration ≠
@@ -171,10 +204,11 @@ evidence.
 
 ---
 
-## 6. Source language and translation metadata
+## 6. Source language and translation confidence (independent of authority)
 
-Every source entry declares its language and translation standing, so a reader
-(human or machine) can weigh it:
+Legal-source **authority** and **translation confidence** are two independent
+axes and MUST NOT be conflated. Every source entry declares its translation
+standing so it can be weighed *separately* from the source's authority tier (§5):
 
 ```json
 {
@@ -184,15 +218,32 @@ Every source entry declares its language and translation standing, so a reader
 }
 ```
 
-- A **non-binding** or **machine** translation may support at most `E1`, and
-  only when the underlying primary text is cited alongside it; the binding
-  primary-law citation in its original language is always retained.
-- `translation_verified: true` requires a recorded human check against the
-  original.
+**Governing rule.** *Evidence level is determined by the authority that directly
+supports the claim (§5). Translation provenance does not upgrade a source and
+does not automatically downgrade a binding original source; it creates an
+independent translation-confidence disclosure and may create a known gap or a
+human-review requirement.*
 
-This is the structured form of a distinction ConvertCCY already makes in prose
-(e.g. a non-binding reference translation cited *alongside*, and clearly
-subordinate to, the official primary text).
+Consequences:
+
+- A claim tied **directly to a pinpointed binding official legal text**
+  (article/section) may remain **`E0`** even when a machine or non-binding
+  translation was used as a *reading aid* — provided `translation_verified:
+  false` is disclosed and, where the reading is load-bearing, a
+  `known_gap: "translation not human-verified"` (or a human-review requirement)
+  is recorded. The binding original, in its own language, is always the cited
+  authority.
+- A **translation alone** — without the binding original, or not matched to the
+  specific claim — does **not** reach `E0`. It is at most an A2 official
+  institutional source (`E1`), or lower if unofficial.
+- `translation_verified: true` requires a recorded human check against the
+  original; it raises *translation confidence*, not the evidence level.
+
+This is the disciplined form of a distinction ConvertCCY already makes in prose
+— citing the binding primary text as the authority while a non-binding reference
+translation is used, clearly subordinate, as a reading aid (e.g. South Korea:
+the binding `law.go.kr` FETA text as authority, the KLRI non-binding English
+translation as the reading aid, its `translation_verified: false` disclosed).
 
 ---
 
@@ -258,18 +309,34 @@ binding in v0.1; the actual schema change is a later, separately-reviewed phase.
 
 Today each `source_map[<field>]` is already a per-field list of
 `{url, pages, section}`. CRES extends each field with the four disclosure
-attributes, translation metadata on each source, and a history array:
+attributes, translation-confidence metadata on each source (§6), and a history
+array. An **evidenced** field and an **`E3`** field take two shapes — the latter
+uses the null-source disclosure of §4 (so translation fields are
+confidence-only, never a lever on the evidence level):
 
 ```jsonc
 "source_map": {
-  "resident_holding_rules": {
+  "cash_declaration_threshold": {          // evidenced — E0
+    "evidence_level": "E0",
+    "as_of": "2026-07-25",
+    "gap": "none identified",
+    "sources": [
+      { "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LAdua.pdf",
+        "pages": [1], "section": "Ley Aduanera Art. 9o",
+        "language": "es", "machine_translation": true, "translation_verified": false }
+      // binding Spanish original is the authority; the machine translation is a
+      // reading aid and does NOT lower the level below E0 (§6)
+    ],
+    "history": [ /* §8 */ ]
+  },
+  "resident_holding_rules": {              // not yet evidenced — E3 (§4 contract)
     "evidence_level": "E3",
     "as_of": "2026-07-28",
-    "gap": "Primary FX statute / central-bank circular not yet verified",
-    "sources": [
-      { "url": "...", "pages": [], "section": "...",
-        "language": "es", "machine_translation": false, "translation_verified": true }
-    ],
+    "verified_source": null,
+    "source_status": "no_claim_matched_source_verified",
+    "sources_checked": [],
+    "verification_target": "National FX statute or central-bank circular",
+    "known_gap": "Resident holding rules not yet evidenced",
     "history": [ /* §8 */ ]
   }
 }
@@ -327,8 +394,20 @@ Design decisions fixed for this version:
   each claim; a page never inherits a single level (§3).
 - **History location — on the claim.** `history[]` lives in each claim's data;
   `DECISION_LOG.md` keeps project-level rationale; the two are not duplicated (§8).
-- **AREAER — never a publication authority.** Discovery / cross-check /
-  gap-detection only; capped at `E2`; IMF licensing/reuse compliance mandatory
-  before incorporating any AREAER content or metadata (§5).
+- **AREAER — authority tier × workflow role.** Source authority and workflow role
+  are separate dimensions; AREAER is an authority-tier **A3** source (capped at
+  `E2`) whose roles are discovery / cross-check / gap-detection; it is never a
+  publication authority and never outranks a claim-matched A1/A2 source. IMF
+  licensing/reuse compliance is mandatory before incorporating any AREAER content
+  or metadata (§5).
 - **Three independent axes.** Evidence, Publication, and Indexing are orthogonal;
   no axis determines another (§2).
+- **E3 is gate-legal.** A published `E3` claim carries a declared null-source
+  disclosure (`verified_source: null`, `source_status`, `sources_checked`,
+  `verification_target`) that satisfies the four-part Source requirement — so
+  `E3 · published · noindex` is permitted, not forbidden (§4).
+- **Evidence authority ≠ translation confidence.** The evidence level is set by
+  the authority supporting the claim; translation provenance is an independent
+  disclosure that neither upgrades a source nor auto-downgrades a binding
+  original (a pinpointed binding text stays `E0` with an unverified translation
+  aid, the gap disclosed) (§6).
