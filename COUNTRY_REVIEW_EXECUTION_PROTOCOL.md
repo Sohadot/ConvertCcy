@@ -16,16 +16,45 @@ If a claim cannot be supported within the allocated research pass, it does not s
 
 No claim enters a country JSON file until it exists in a claim matrix with a known grade and a claim-matched source.
 
-Required columns:
+### Required columns
 
-| Claim ID | Claim | Matching source | Evidence level | Status |
-|---|---|---|---|---|
-| `MX-FX-01` | Comisión de Cambios has statutory authority to determine the exchange-rate regime | Ley del Banco de México Art. 21 | `E0` | `verified` |
-| `MX-FX-02` | The currently applied regime is free-floating | SHCP/Banxico institutional confirmation | `E1` | `verified` |
-| `MX-ACC-01` | Resident account eligibility / operation | No claim-matched source yet | `E3` | `verification_target` |
-| `MX-NEG-01` | No general authorisation regime identified in the reviewed statutes | Bounded inference from reviewed statutes | `E2` | `bounded` |
+| Column | Purpose |
+|---|---|
+| **Claim ID** | Unique identifier per country (`XX-DOMAIN-NN`) |
+| **Claim** | The proposition as it would appear in the rules file |
+| **Authority** | The specific institution or legal instrument that governs this claim (e.g. Receita Federal, BCB, COAF). Prevents citing the wrong regime's source for a claim. |
+| **Type** | One of: `positive`, `negative`, `operational`, `historical`, `compound`. Determines which Protocol rules apply automatically (e.g. negative-claim rule, compound-claim rule). |
+| **Matching source** | The exact article, circular, or official page that supports the claim, or "none" if unverified |
+| **Evidence target** | The CRES level this claim must reach to be considered verified (`E0`, `E1`, `E2`, `E3`). This is not a prediction; it is the acceptance threshold. |
+| **Workflow status** | One of: `source_intake_pending`, `verified`, `bounded`, `verification_target`, `superseded`. Independent of Evidence target. |
+
+### Example
+
+| Claim ID | Claim | Authority | Type | Matching source | Evidence target | Workflow status |
+|---|---|---|---|---|---|---|
+| `MX-FX-01` | Comisión de Cambios has statutory authority to determine the exchange-rate regime | Ley del Banco de México | `positive` | Art. 21 | `E0` | `verified` |
+| `MX-FX-02` | The currently applied regime is free-floating | SHCP / Banxico | `operational` | SHCP institutional announcement | `E1` | `verified` |
+| `MX-ACC-01` | Resident account eligibility / operation | BCB / Ley Monetaria | `positive` | none | `E1` | `verification_target` |
+| `MX-NEG-01` | No general authorisation regime identified in the reviewed statutes | Ley del Banco de México + Ley Monetaria | `negative` | bounded inference | `E2` | `bounded` |
 
 The matrix is the pre-write control surface. The JSON is an output artifact, not the place where evidence classification is invented.
+
+### Separation of evidence and workflow
+
+- **Evidence target** answers: "What level of proof must this claim reach?"
+- **Workflow status** answers: "Where is this claim in the execution pipeline?"
+
+These must never be conflated. A claim can have evidence target `E1` and workflow status `source_intake_pending` — meaning we know what kind of proof is needed but have not yet obtained it.
+
+### Review Hypotheses (separate from claims)
+
+During matrix construction, the implementer may identify hypotheses about changes to the legal landscape (e.g. "Lei 14.286/2021 may have superseded older BCB circulars"). These are not claims. They live in a separate **Review Hypotheses** section below the matrix:
+
+| Hypothesis ID | Hypothesis | Impact if confirmed |
+|---|---|---|
+| `H1` | Lei 14.286/2021 liberalised resident FX accounts | Claims BR-ACC-01, BR-NEG-02 may be superseded |
+
+Hypotheses guide research direction but do not enter the rules file. If a hypothesis is confirmed during source intake, the affected claims are updated in the matrix (status → `superseded` or evidence level revised). If a hypothesis reveals a genuinely new claim, it becomes a **New Claim Candidate** and is added to the matrix in a controlled revision, not injected mid-research.
 
 ## 3. Compound-Claim Rule
 
@@ -185,5 +214,17 @@ A country PR is merge-ready when all of the following are true:
 3. the final diff is scoped to the reviewed issue set
 4. unresolved claims are honestly downgraded rather than stretched
 5. the final decision is binary: `PASS` or a proven material defect
+
+## 11. Source Intake Scope Rule
+
+Source intake does not discover new claims. It answers only the claims already present in the finalised Claim Matrix.
+
+If research reveals a proposition that deserves its own claim but is not in the matrix:
+
+1. record it as a **New Claim Candidate** with a brief justification
+2. do not add it to the rules file or the matrix mid-research
+3. include it in a controlled matrix revision after the current intake pass completes
+
+This prevents scope creep during research — one of the primary causes of review-cycle inflation.
 
 This protocol is designed to preserve strictness without turning each country into a bespoke research project.
