@@ -1456,7 +1456,7 @@ The first practical application of the Currency Reference Evidence Standard (CRE
 | Claim | Evidence level | Authority tier / source | As-of | Known gap |
 |---|---|---|---|---|
 | `cash_declaration_threshold`, `bring/take`, `summary.traveler` | **E0** | A1 — Ley Aduanera Art. 9 / Art. 185 | 2026-07-29 | none identified |
-| exchange-rate regime (`country_overview`) | **E0/E1** | A1 — Ley Banxico Art. 21; A2 — SHCP announcement | 2026-07-29 | none identified |
+| exchange-rate regime — *current free-floating regime* (`country_overview`) | **E1** | A1 — Ley Banxico Art. 21 (Comisión de Cambios' statutory authority, independently **E0**); A2 — SHCP announcement (the currently applied free float) | 2026-07-29 | composite claim inherits **E1** per §3 (weakest necessary support: the current-float component rests on official institutional confirmation, not a primary text fixing the present regime); the statutory-authority sub-claim alone is **E0** |
 | `business_invoicing_settlement` | **E0** | A1 — Ley Monetaria Art. 8 | 2026-07-29 | invoice-currency choice is contract-dependent (by design, not a gap) |
 | `banking_conversion_practicality` (regulated routing; AML framework exists) | **E1** | A2 — CNBV; A1 — LIC Art. 115 | 2026-07-29 | current US-dollar cash-operation thresholds and customer categories to be verified at P8G-2b |
 | `resident_holding_rules`, `non_resident_rules` (account eligibility, operation, repatriation) | **E3 — verification target** | A1 sources examined (Ley Banxico, Ley Monetaria, LIC Art. 115) establish no claim-matched rule for account eligibility/operation/repatriation | 2026-07-29 | no claim-matched primary source verified; fields written as verification targets, not asserted account rules |
