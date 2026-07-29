@@ -155,6 +155,15 @@ is verified as of the date, and records what was checked (`sources_checked`) and
 what would resolve the gap (`verification_target`). An `E3` claim MUST NOT be
 published without this disclosure, and MUST NOT present any `verified_source`.
 
+**Implementation note (deferred, non-normative).** The `"sources_checked": []`
+used in examples is fine to illustrate the *shape*, but a future gate SHOULD NOT
+accept an empty list as a *confirmed* gap. At implementation, a published `E3`
+should require **either** a non-empty `sources_checked` (the gap was confirmed
+after checking named sources/authorities) **or** an explicit
+`review_status: "not_started"` (the gap is honestly declared as unchecked) — so
+an `E3` is never a silently empty assertion. This is an implementation
+requirement for a later phase, not a v0.1 normative rule.
+
 ---
 
 ## 5. Source hierarchy: authority tier × workflow role (CRES layer)
@@ -256,8 +265,25 @@ When an on-file or proposed claim is **not** corroborated by a verified source:
    authority/source type that would settle it.
 3. It is **never** replaced with the unsupported opposite. "Claim X is
    unsupported" does not establish "not-X."
-4. At the next review it is either **substantiated** (raised to `E0`/`E1`) or
-   **removed**.
+4. At each subsequent review the claim takes **exactly one of three** outcomes:
+   1. **substantiated** — a claim-matched source is found; the claim is raised
+      to `E0`/`E1`;
+   2. **retained as `E3`** — no new source is found, but the gap is still valid
+      and in scope; the claim **stays `E3`**, with its `as_of`,
+      `sources_checked`, `known_gap`, and `verification_target` **refreshed**. A
+      not-yet-evidenced claim may honestly persist across many reviews — that is
+      precisely what `E3` is for, and re-affirming it is a valid review result,
+      not a failure to act;
+   3. **retired** — only when the claim is no longer in scope, is superseded, or
+      is determined not to be a valid question; recorded as one of `retired` /
+      `superseded` / `out_of_scope`.
+
+Because the claim ledger is **append-only** (§8), "retire" is a *status
+transition, not an erasure*: the claim's `history[]` keeps its full trace. The
+word *removed* is deliberately avoided — nothing is deleted from the record. The
+old binary "substantiate or remove" is replaced by this trinary
+"substantiate / retain-and-refresh / formally-retire" lifecycle, so an `E3` claim
+that finds no new source is neither falsely upgraded nor destroyed.
 
 This rule is normative RES core. It is what keeps an evidence standard from
 degrading into an opinion standard.
@@ -411,3 +437,8 @@ Design decisions fixed for this version:
   disclosure that neither upgrades a source nor auto-downgrades a binding
   original (a pinpointed binding text stays `E0` with an unverified translation
   aid, the gap disclosed) (§6).
+- **E3 lifecycle — trinary, append-only.** At each review an `E3` claim is
+  *substantiated* (→ `E0`/`E1`), *retained as `E3`* (refreshed `as_of` /
+  `sources_checked` / `known_gap` / `verification_target`), or *formally
+  retired* (`retired` / `superseded` / `out_of_scope`) — never bare-removed; the
+  claim's `history[]` always persists (§7).
