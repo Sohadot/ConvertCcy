@@ -228,7 +228,20 @@ A country PR is merge-ready when all of the following are true:
 4. unresolved claims are honestly downgraded rather than stretched
 5. the final decision is binary: `PASS` or a proven material defect
 
-## 11. Source Intake Scope Rule
+## 11. Source Intake Outcomes
+
+Every claim must exit source intake with exactly one of four outcomes:
+
+| Outcome | Meaning |
+|---|---|
+| `verified` | A claim-matched primary source meets the evidence target |
+| `bounded` | No source proves the full claim, but a limited formulation is supportable |
+| `verification_target` | The evidence target was not met within the source budget; claim downgraded immediately |
+| `superseded` | A legislative or regulatory change has made the on-file claim factually incorrect |
+
+**A `superseded` outcome is not a research failure. It is a success in detecting knowledge obsolescence.** A sovereign reference defends current truth, not legacy text.
+
+## 12. Source Intake Scope Rule
 
 Source intake does not discover new claims. It answers only the claims already present in the finalised Claim Matrix.
 
