@@ -254,3 +254,44 @@ If research reveals a proposition that deserves its own claim but is not in the 
 This prevents scope creep during research — one of the primary causes of review-cycle inflation.
 
 This protocol is designed to preserve strictness without turning each country into a bespoke research project.
+
+## Appendix A — Governed Country Pipeline (executable)
+
+Human protocol text is normative narrative. **Executable policy** lives at:
+
+- [`data/governance/country_pipeline_policy.json`](data/governance/country_pipeline_policy.json)
+
+Per-country pipeline packs (Phase 1 opt-in) live at:
+
+- `data/coverage/pipeline/{slug}/sources.json`
+- `data/coverage/pipeline/{slug}/claims.json`
+- `data/coverage/pipeline/{slug}/field_bindings.json`
+- `data/coverage/pipeline/{slug}/review_report.json` (generated)
+
+Schema constants: [`scripts/pipeline_schema.py`](scripts/pipeline_schema.py)
+
+### Operator commands
+
+```text
+# Multi-layer review → PASS/BLOCK report
+python scripts/country_pipeline.py review <slug>
+
+# One allowlisted auto-correct cycle, then re-review
+python scripts/country_pipeline.py fix <slug> --apply
+
+# CI / batch (all packs under data/coverage/pipeline/)
+python scripts/validate_country_pipeline.py
+```
+
+Countries without a pipeline pack are skipped by the pipeline validator. Drafting may use only claims with status `verified` or `bounded`. Claims marked `verification_target` or `superseded` must not appear in `field_bindings.json` and must not leak into `data/rules/{slug}.json`.
+
+Publication lifecycle flips (`page_status`, `indexing_allowed`) remain **human-gated** in Phase 1 after `READY TO PUBLISH`.
+
+### Dual CI posture (staging vs publication)
+
+`python scripts/validate_country_pipeline.py` is the single CI entrypoint:
+
+- **Staging packs** (`needs_hardening`, `indexing_allowed: false`): publication readiness findings are informational.
+- **Publication-claiming packs** (`page_status` in `verified`/`published`, or `indexing_allowed: true`): the same command automatically enforces Publication Gate as **blocking** (equivalent to `--require-publish-ready` for those slugs).
+
+Phase 1 is a **Governed Review Pipeline** (policy → bindings → review → bounded fix). It is not yet an end-to-end country production pipeline (intake → claim extraction → draft generation → semantic fidelity → auto PR).

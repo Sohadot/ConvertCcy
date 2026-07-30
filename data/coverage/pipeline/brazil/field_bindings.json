@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "brazil",
+  "notes": "Each rules field may only bind claims with drafting-allowed statuses (verified/bounded).",
+  "bindings": [
+    {
+      "field": "country_overview",
+      "claim_ids": ["BR-FX-01", "BR-FX-02A", "BR-FX-02B", "BR-FX-02C", "BR-BIZ-01"],
+      "wording_boundary": "Floating regime + Law 14.286 free ops without statutory value limit subject to law/BCB regulation + freely agreed rates + operational/reporting/supervisory requirements. Do not use 'largely liberalised'."
+    },
+    {
+      "field": "summary.traveler",
+      "claim_ids": ["BR-CUST-01", "BR-CUST-03"],
+      "wording_boundary": "Declaration above USD 10,000; on departure traveller must present declared cash and applicable supporting evidence."
+    },
+    {
+      "field": "summary.business",
+      "claim_ids": ["BR-BIZ-01"],
+      "wording_boundary": "FX through BCB-authorised institutions under applicable framework."
+    },
+    {
+      "field": "rules.bring_foreign_currency_in",
+      "claim_ids": ["BR-CUST-01", "BR-CUST-02"],
+      "wording_boundary": "Declaration threshold framing; no unrestricted/without-limit absolute."
+    },
+    {
+      "field": "rules.take_foreign_currency_out",
+      "claim_ids": ["BR-CUST-01", "BR-CUST-03"],
+      "wording_boundary": "Must declare; must present declared cash and applicable supporting evidence. Forbid 'may be required'."
+    },
+    {
+      "field": "rules.cash_declaration_threshold",
+      "claim_ids": ["BR-CUST-01"],
+      "wording_boundary": "Above USD 10,000; paper money; entry and exit."
+    },
+    {
+      "field": "rules.resident_holding_rules",
+      "claim_ids": ["BR-ACC-01A", "BR-ACC-01B"],
+      "wording_boundary": "Eligible categories only; no general resident entitlement."
+    },
+    {
+      "field": "rules.non_resident_rules",
+      "claim_ids": ["BR-ACC-02", "BR-ACC-01B"],
+      "wording_boundary": "Category-bound; do not claim non-residents operate more freely."
+    },
+    {
+      "field": "rules.business_invoicing_settlement",
+      "claim_ids": ["BR-BIZ-01"],
+      "wording_boundary": "Authorised institutions; verify transaction-specific arrangements."
+    },
+    {
+      "field": "rules.exchange_controls",
+      "claim_ids": ["BR-FX-01", "BR-FX-02A", "BR-FX-02B"],
+      "wording_boundary": "Floating regime; BCB regulates; freely agreed rates. No capital-controls or liberalisation classification claims."
+    },
+    {
+      "field": "rules.banking_conversion_practicality",
+      "claim_ids": ["BR-BANK-01", "BR-BIZ-01"],
+      "wording_boundary": "Conversion via BCB-authorised institutions/dealers."
+    }
+  ]
+}

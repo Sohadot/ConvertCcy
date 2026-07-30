@@ -1,9 +1,13 @@
 # Currency Reference Evidence Standard (CRES) — v0.1 (DRAFT)
 
 **Status:** v0.1 DRAFT. Normative *principles* are fixed in this document; the
-*data-model* and *gate* implementations are illustrative only and deferred to a
-later phase. **This document changes no schema, no country data, and no public
-surface.** It is a governance specification, not code.
+*data-model* and *gate* implementations for claim-level CRES grades remain
+illustrative here. **Executable drafting/publication policy** for the Governed
+Country Pipeline lives at
+[`data/governance/country_pipeline_policy.json`](data/governance/country_pipeline_policy.json)
+and is enforced by
+[`scripts/validate_country_pipeline.py`](scripts/validate_country_pipeline.py).
+CRES itself still does not redefine CRIS country-file schema enums.
 
 **Relationship to a general standard.** CRES is the currency-domain instance of
 a domain-neutral pattern, the **Reference Evidence Standard (RES)**. Everything

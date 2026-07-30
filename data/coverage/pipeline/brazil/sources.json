@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "brazil",
+  "country_name": "Brazil",
+  "iso2": "BR",
+  "notes": "Official source pack for Governed Country Pipeline Phase 1. Superseded URLs are retained only for audit and must not appear in draft source_map.",
+  "sources": [
+    {
+      "source_id": "SRC-BR-LEI-14286",
+      "label": "Lei 14.286/2021 (Brazilian FX and capital law) — Planalto official text",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm",
+      "type": "ministry",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Presidência da República / Planalto"
+    },
+    {
+      "source_id": "SRC-BR-RECEITA-ENTRY",
+      "label": "Receita Federal — Dinheiro em Espécie na Entrada no Brasil",
+      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/entrada-no-brasil/dinheiro-em-especie",
+      "type": "customs",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Receita Federal"
+    },
+    {
+      "source_id": "SRC-BR-RECEITA-EXIT",
+      "label": "Receita Federal — Dinheiro em Espécie na Saída do Brasil",
+      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/saida-do-brasil/dinheiro-em-especie-na-saida-do-brasil",
+      "type": "customs",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Receita Federal"
+    },
+    {
+      "source_id": "SRC-BR-BCB-POLITICA-CAMBIAL",
+      "label": "Banco Central do Brasil — Política cambial",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/politicacambial",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Banco Central do Brasil"
+    },
+    {
+      "source_id": "SRC-BR-RES-277",
+      "label": "Resolução BCB nº 277/2022 — mercado de câmbio (Lei 14.286)",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Banco Central do Brasil",
+      "note": "Current implementing regulation for Lei 14.286 FX-market framework, including authorised institutions and domestic foreign-currency accounts."
+    },
+    {
+      "source_id": "SRC-BR-BCB-INSTITUICOES",
+      "label": "Banco Central do Brasil — Instituições autorizadas a operar no mercado de câmbio",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/instituicoesoperacambio",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Banco Central do Brasil"
+    },
+    {
+      "source_id": "SRC-BR-MERCOSUL-LEGACY",
+      "label": "BCB Mercosul / regime cambial page (historical; IMF-based 2003 material)",
+      "url": "https://www.bcb.gov.br/htms/mercosul/regcam.asp?frame=1&idpai=",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "superseded",
+      "superseded_by": "SRC-BR-BCB-POLITICA-CAMBIAL",
+      "authority": "Banco Central do Brasil",
+      "note": "Must not be used to prove current institutional composition or current market operations."
+    },
+    {
+      "source_id": "SRC-BR-RMCCI-1-14-LEGACY",
+      "label": "BCB RMCCI 1-14 — Conta em Moeda Estrangeira no País (legacy circular framework)",
+      "url": "https://www.bcb.gov.br/content/estabilidadefinanceira/cambiocapitais/normas_cambio/rmcci/RMCCI-1-14.pdf",
+      "type": "primary_regulator",
+      "tier": "primary",
+      "currency": "superseded",
+      "superseded_by": "SRC-BR-RES-277",
+      "authority": "Banco Central do Brasil",
+      "note": "Superseded for Law 14.286 implementation by Resolução BCB 277/2022."
+    }
+  ],
+  "source_conflicts": [],
+  "missing_authorities": []
+}

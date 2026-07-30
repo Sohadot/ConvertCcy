@@ -1,10 +1,17 @@
 # Brazil Claim Matrix
 
+> **Superseded as executable source of truth.**  
+> Governed Country Pipeline Phase 1 stores the live claim matrix at:  
+> `data/coverage/pipeline/brazil/claims.json`  
+> (with `sources.json` and `field_bindings.json`).  
+> This Markdown file is retained for audit history only. Do not draft from it.
+
 Country: Brazil (`BR` / `BRA`)
 Currency: BRL (Brazilian Real)
 Date created: 2026-07-29
 Source intake completed: 2026-07-29
 Protocol version: COUNTRY_REVIEW_EXECUTION_PROTOCOL.md §2
+Pipeline pack: `data/coverage/pipeline/brazil/` (authoritative since 2026-07-30)
 
 ## Source Intake Summary
 
