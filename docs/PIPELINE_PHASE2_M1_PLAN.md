@@ -1,7 +1,7 @@
 # Governed Country Pipeline — Phase 2 Milestone 1
 
 **Branch:** `claude/governed-country-pipeline-p2-m1`  
-**Status:** PLAN REVISED — contract edits from governance review incorporated; awaiting **APPROVE M1 PLAN** before implementation  
+**Status:** PLAN APPROVED — Phase 2 Milestone 1 implementation authorized (2026-07-30). Contract edits from governance review are incorporated below.  
 **Base:** `main` @ plan merge (`2692761b3` / PR #63), fast-forwarded on this branch before revision  
 **Date:** 2026-07-30  
 **Review decision addressed:** APPROVE WITH EDITS

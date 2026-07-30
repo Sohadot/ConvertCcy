@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-country_pipeline.py — Governed Country Pipeline orchestrator (Phase 1).
+country_pipeline.py — Governed Country Pipeline orchestrator.
 
 Commands:
-  review <slug>   Run multi-layer review and write review_report.json
-  fix <slug>      Apply one cycle of policy-allowlisted auto-corrections, then re-review
+  review <slug>         Phase 1 multi-layer draft review → review_report.json
+  fix <slug>            One bounded auto-correct cycle, then re-review
+  intake-review <slug>  Phase 2 M1 intake review → intake_report.json
 
 Examples:
   python scripts/country_pipeline.py review brazil
   python scripts/country_pipeline.py fix brazil --apply
+  python scripts/country_pipeline.py intake-review brazil
 """
 
 from __future__ import annotations
@@ -31,6 +33,11 @@ from validate_country_pipeline import (  # noqa: E402
     print_result,
     review_country,
     write_review_report,
+)
+from validate_source_intake import (  # noqa: E402
+    print_result as print_intake_result,
+    review_intake,
+    write_intake_report,
 )
 
 
@@ -284,11 +291,18 @@ def cmd_fix(slug: str, apply: bool) -> int:
     return cmd_review(slug)
 
 
+def cmd_intake_review(slug: str) -> int:
+    result, report = review_intake(slug)
+    report_path = write_intake_report(slug, report)
+    print_intake_result(result, report_path)
+    return 0 if result.decision == "PASS" else 1
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(description="Governed Country Pipeline orchestrator")
     sub = parser.add_subparsers(dest="command", required=True)
 
-    p_review = sub.add_parser("review", help="Run multi-layer review")
+    p_review = sub.add_parser("review", help="Run Phase 1 multi-layer draft review")
     p_review.add_argument("slug", help="Country slug (e.g. brazil)")
     p_review.add_argument(
         "--require-publish-ready",
@@ -304,12 +318,20 @@ def main(argv: Optional[List[str]] = None) -> int:
         help="Write corrections (default is dry-run)",
     )
 
+    p_intake = sub.add_parser(
+        "intake-review",
+        help="Run Phase 2 M1 intake review and write intake_report.json",
+    )
+    p_intake.add_argument("slug", help="Country slug (e.g. brazil)")
+
     args = parser.parse_args(argv)
 
     if args.command == "review":
         return cmd_review(args.slug, require_publish_ready=args.require_publish_ready)
     if args.command == "fix":
         return cmd_fix(args.slug, apply=args.apply)
+    if args.command == "intake-review":
+        return cmd_intake_review(args.slug)
     return 2
 
 

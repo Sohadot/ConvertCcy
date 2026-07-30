@@ -141,6 +141,67 @@ PACK_FILENAMES = {
     "claims": "claims.json",
     "field_bindings": "field_bindings.json",
     "review_report": "review_report.json",
+    "evidence_excerpts": "evidence_excerpts.json",
+    "intake_report": "intake_report.json",
+}
+
+# Phase 2 M1 — intake / excerpt enums
+CONTENT_PERSISTENCE = {"preserved", "fingerprinted", "not_preserved"}
+EXCERPT_REPRESENTATIONS = {
+    "verbatim_quote",
+    "faithful_translation",
+    "bounded_paraphrase",
+}
+CAPTURE_STATUSES = {"human_verified", "declared_unverified", "machine_assisted"}
+CLAIM_NEUTRALITY_STATUSES = {"unreviewed", "reviewed", "exception_required"}
+INTAKE_LAYERS = {
+    "structural",
+    "provenance",
+    "authority",
+    "currency",
+    "neutrality",
+    "eligibility",
+}
+
+SOURCE_ITEM_M1_REQUIRED_KEYS = SOURCE_ITEM_REQUIRED_KEYS | {
+    "authority",
+    "authority_kind",
+    "jurisdiction",
+    "accessed_at",
+    "content_persistence",
+}
+
+EXCERPTS_REQUIRED_KEYS = {
+    "schema_version",
+    "country_slug",
+    "excerpts",
+}
+
+EXCERPT_ITEM_REQUIRED_KEYS = {
+    "excerpt_id",
+    "source_id",
+    "representation",
+    "source_text",
+    "source_language",
+    "pinpoint",
+    "capture_status",
+    "verified_by",
+    "verified_at",
+    "verification_method",
+    "captured_at",
+    "captured_by",
+    "method",
+    "source_accessed_at",
+    "claim_neutrality_status",
+}
+
+PINPOINT_LOCATOR_KEYS = {
+    "article",
+    "section",
+    "heading",
+    "page",
+    "url_fragment",
+    "locator_note",
 }
 
 
@@ -162,6 +223,21 @@ def list_pipeline_slugs() -> list[str]:
         if (child / PACK_FILENAMES["claims"]).exists() and (
             child / PACK_FILENAMES["field_bindings"]
         ).exists() and (child / PACK_FILENAMES["sources"]).exists():
+            slugs.append(child.name)
+    return slugs
+
+
+def list_intake_slugs() -> list[str]:
+    """Packs that opted into Phase 2 M1 (have evidence_excerpts.json)."""
+    if not PIPELINE_ROOT.exists():
+        return []
+    slugs = []
+    for child in sorted(PIPELINE_ROOT.iterdir()):
+        if not child.is_dir():
+            continue
+        if (child / PACK_FILENAMES["sources"]).exists() and (
+            child / PACK_FILENAMES["evidence_excerpts"]
+        ).exists():
             slugs.append(child.name)
     return slugs
 
