@@ -1,0 +1,86 @@
+{
+  "policy_id": "country_pipeline_policy",
+  "version": "1.0.0",
+  "derived_from": [
+    "COUNTRY_REVIEW_EXECUTION_PROTOCOL.md",
+    "CRES.md",
+    "scripts/rules_schema.py"
+  ],
+  "notes": "Executable governance for the Governed Country Pipeline. Human protocol docs remain normative narrative; this file is what validators enforce.",
+
+  "drafting": {
+    "allowed_claim_statuses": ["verified", "bounded"],
+    "forbidden_claim_statuses": ["verification_target", "superseded", "source_intake_pending"],
+    "forbid_unmapped_fields": true,
+    "forbid_unmapped_sentences": false,
+    "required_binding_fields": [
+      "country_overview",
+      "summary.traveler",
+      "summary.business",
+      "rules.bring_foreign_currency_in",
+      "rules.take_foreign_currency_out",
+      "rules.cash_declaration_threshold",
+      "rules.resident_holding_rules",
+      "rules.non_resident_rules",
+      "rules.business_invoicing_settlement",
+      "rules.exchange_controls",
+      "rules.banking_conversion_practicality"
+    ]
+  },
+
+  "publication": {
+    "require_indexing_allowed": true,
+    "require_page_status": ["verified", "published"],
+    "require_no_blocking_findings": true,
+    "require_evidence_tier": ["official_verified"],
+    "auto_flip_disabled": true
+  },
+
+  "sources": {
+    "require_official_primary_for": [
+      "legal_thresholds",
+      "mandatory_actions",
+      "prohibited_actions"
+    ],
+    "primary_source_types": [
+      "central_bank",
+      "customs",
+      "ministry",
+      "regulator",
+      "primary_regulator",
+      "primary_regulator_faq",
+      "primary_regulator_rule_page",
+      "fiu"
+    ],
+    "forbid_superseded_urls_in_draft": true
+  },
+
+  "review": {
+    "layers": ["structural", "evidence", "fidelity", "governance"],
+    "max_auto_correct_cycles": 1,
+    "human_review_triggers": [
+      "source_conflict",
+      "multi_interpretation_legal_claim"
+    ]
+  },
+
+  "auto_correct": {
+    "allowed_actions": [
+      "remove_forbidden_status_bindings",
+      "replace_superseded_source_urls",
+      "tighten_soft_modals_from_claim_wording",
+      "remove_forbidden_inference_phrases"
+    ],
+    "disallowed_actions": [
+      "invent_evidence",
+      "upgrade_claim_status",
+      "flip_publication_lifecycle"
+    ]
+  },
+
+  "claim_categories_requiring_primary": [
+    "legal_thresholds",
+    "mandatory_actions",
+    "prohibited_actions"
+  ]
+}

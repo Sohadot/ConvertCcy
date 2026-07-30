@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "brazil",
+  "decision": "PASS",
+  "layers": {
+    "governance": {
+      "blocking_count": 0,
+      "findings": [
+        {
+          "layer": "governance",
+          "field": "publication",
+          "reason": "page_status is 'needs_hardening', publication requires ['verified', 'published'] (informational while draft is staging)",
+          "required_action": "Keep needs_hardening / indexing_allowed=false until READY TO PUBLISH",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "publication",
+          "reason": "indexing_allowed must be true for publication (informational while draft is staging)",
+          "required_action": "Keep needs_hardening / indexing_allowed=false until READY TO PUBLISH",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "publication",
+          "reason": "evidence_tier is 'official_verified_partial', publication requires ['official_verified'] (informational while draft is staging)",
+          "required_action": "Keep needs_hardening / indexing_allowed=false until READY TO PUBLISH",
+          "blocking": false
+        }
+      ]
+    },
+    "fidelity": {
+      "blocking_count": 0,
+      "findings": []
+    },
+    "evidence": {
+      "blocking_count": 0,
+      "findings": []
+    },
+    "structural": {
+      "blocking_count": 0,
+      "findings": []
+    }
+  },
+  "blocking_findings": [],
+  "improvement_findings": [
+    {
+      "layer": "governance",
+      "field": "publication",
+      "reason": "page_status is 'needs_hardening', publication requires ['verified', 'published'] (informational while draft is staging)",
+      "required_action": "Keep needs_hardening / indexing_allowed=false until READY TO PUBLISH",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "publication",
+      "reason": "indexing_allowed must be true for publication (informational while draft is staging)",
+      "required_action": "Keep needs_hardening / indexing_allowed=false until READY TO PUBLISH",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "publication",
+      "reason": "evidence_tier is 'official_verified_partial', publication requires ['official_verified'] (informational while draft is staging)",
+      "required_action": "Keep needs_hardening / indexing_allowed=false until READY TO PUBLISH",
+      "blocking": false
+    }
+  ],
+  "needs_human_review": [],
+  "summary": "PASS (staging — publication readiness still informational)"
+}
