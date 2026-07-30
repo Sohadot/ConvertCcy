@@ -327,3 +327,38 @@ M1 validates **declared provenance** and structural controls. It does **not** in
 `intake_report.downstream_eligible` is true only when decision is PASS, human-review queue is empty, and at least one excerpt is settled (`verbatim_quote` / eligible translation path, `claim_neutrality_status: reviewed`, current primary source, not ambiguous, not superseded).
 
 Milestone 2 may consume only downstream-eligible excerpts. Ambiguous, superseded-linked, unreviewed, or `bounded_paraphrase` excerpts remain blocked by default.
+
+## Appendix C — Phase 2 Milestone 2 (Governed Claim Extraction)
+
+Plan (normative contract): [`docs/PIPELINE_PHASE2_M2_PLAN.md`](docs/PIPELINE_PHASE2_M2_PLAN.md)
+
+Executable claim-extraction policy lives under `claim_extraction` in [`data/governance/country_pipeline_policy.json`](data/governance/country_pipeline_policy.json).
+
+### Artifacts
+
+| File | Role |
+|---|---|
+| `data/coverage/pipeline/{slug}/candidate_claims.json` | Authored and/or generated candidates (not project claims) |
+| `data/coverage/pipeline/{slug}/claim_extraction_report.json` | **Generated** — never hand-write PASS |
+
+### Operator commands
+
+```text
+python scripts/country_pipeline.py claim-extraction-review <slug>
+python scripts/validate_claim_extraction.py --check-drift
+python scripts/validate_pipeline_milestone_scope.py --base origin/main
+```
+
+### Hard M2.0 boundaries
+
+- Exactly one M1-downstream-eligible direct excerpt → zero or one candidate claim
+- No `single_source_composition` or `multi_source_synthesis`
+- `direct_restating` requires same language as the excerpt; cross-language requires `faithful_translation` with closed translation review
+- Defaults: `semantic_review_status: pending`, `support_status: unreviewed`, `downstream_eligible: false`, `authority_preservation_status: unreviewed`
+- Candidate claims are **not** published claims and must not be written into `claims.json`, `field_bindings.json`, or `data/rules/**`
+
+### Downstream promotion (human-gated)
+
+`downstream_eligible: true` requires closed human review with matching fingerprint, closed semantic review, accepted support status, closed exception review (for required claim types), continued M1 excerpt eligibility, and no banned transformation. Any later change to wording, scope, evidence, or transformation invalidates the prior review and returns the candidate to unreviewed / not downstream-eligible.
+
+Structural PASS from `validate_claim_extraction.py` does **not** mean semantic or legal approval.

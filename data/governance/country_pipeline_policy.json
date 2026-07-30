@@ -132,14 +132,79 @@
       "scripts/pipeline_schema.py",
       "scripts/validate_source_intake.py",
       "scripts/validate_pipeline_milestone_scope.py",
+      "scripts/validate_claim_extraction.py",
       "scripts/country_pipeline.py",
       "scripts/validate_country_pipeline.py",
       ".github/workflows/governance-gate.yml",
       "COUNTRY_REVIEW_EXECUTION_PROTOCOL.md",
       "docs/PIPELINE_PHASE2_M1_PLAN.md",
+      "docs/PIPELINE_PHASE2_M2_PLAN.md",
       "data/coverage/pipeline/*/sources.json",
       "data/coverage/pipeline/*/evidence_excerpts.json",
-      "data/coverage/pipeline/*/intake_report.json"
+      "data/coverage/pipeline/*/intake_report.json",
+      "data/coverage/pipeline/*/candidate_claims.json",
+      "data/coverage/pipeline/*/claim_extraction_report.json"
+    ]
+  },
+
+  "claim_extraction": {
+    "generation_mode": "one_eligible_excerpt_to_zero_or_one_claim",
+    "require_exactly_one_direct_excerpt": true,
+    "allowed_claim_types": [
+      "descriptive_rule",
+      "threshold",
+      "required_action",
+      "permitted_action",
+      "prohibited_action",
+      "institutional_role",
+      "regime_description",
+      "documentation_requirement",
+      "exception",
+      "definition"
+    ],
+    "allowed_transformation_modes": [
+      "direct_restating",
+      "faithful_translation",
+      "bounded_normalization"
+    ],
+    "banned_transformation_modes": [
+      "single_source_composition",
+      "multi_source_synthesis"
+    ],
+    "direct_restating_requires_same_language": true,
+    "faithful_translation_requires_closed_translation_review": true,
+    "require_direct_evidence_link": true,
+    "default_semantic_review_status": "pending",
+    "default_support_status": "unreviewed",
+    "default_downstream_eligible": false,
+    "downstream_requires_closed_review_fingerprint": true,
+    "ban_paraphrase_substrate": true,
+    "ban_negative_from_silence": true,
+    "authority_preservation_status_required": true,
+    "exception_review_required_before_downstream": true,
+    "fail_on_report_drift": true,
+    "semantic_approval_default": "not_established",
+    "max_auto_correct_cycles": 1,
+    "required_authored_artifacts": ["candidate_claims.json"],
+    "generated_artifacts": ["claim_extraction_report.json"],
+    "exception_review_required_claim_types": [
+      "descriptive_rule",
+      "threshold",
+      "required_action",
+      "permitted_action",
+      "prohibited_action",
+      "institutional_role",
+      "regime_description",
+      "documentation_requirement",
+      "exception",
+      "definition"
+    ],
+    "atomicity_heuristic_markers": [
+      " e ",
+      " and ",
+      " as well as ",
+      " while ",
+      ";"
     ]
   }
 }

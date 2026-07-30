@@ -143,6 +143,8 @@ PACK_FILENAMES = {
     "review_report": "review_report.json",
     "evidence_excerpts": "evidence_excerpts.json",
     "intake_report": "intake_report.json",
+    "candidate_claims": "candidate_claims.json",
+    "claim_extraction_report": "claim_extraction_report.json",
 }
 
 # Phase 2 M1 — intake / excerpt enums
@@ -161,6 +163,96 @@ INTAKE_LAYERS = {
     "currency",
     "neutrality",
     "eligibility",
+}
+
+# Phase 2 M2 — candidate claim enums
+CANDIDATE_CLAIM_TYPES = {
+    "descriptive_rule",
+    "threshold",
+    "required_action",
+    "permitted_action",
+    "prohibited_action",
+    "institutional_role",
+    "regime_description",
+    "documentation_requirement",
+    "exception",
+    "definition",
+}
+TRANSFORMATION_MODES = {
+    "direct_restating",
+    "faithful_translation",
+    "bounded_normalization",
+    "single_source_composition",
+    "multi_source_synthesis",
+}
+SUPPORT_STATUSES = {
+    "unreviewed",
+    "needs_evidence",
+    "needs_human_review",
+    "supported",
+    "bounded",
+    "rejected",
+    "superseded",
+}
+SEMANTIC_REVIEW_STATUSES = {"pending", "closed"}
+AUTHORITY_PRESERVATION_STATUSES = {
+    "unreviewed",
+    "structurally_consistent",
+    "human_confirmed",
+    "mismatch",
+}
+EXCEPTION_SIGNALS = {"unknown", "none_detected", "present"}
+EXCEPTION_REVIEW_STATUSES = {"pending", "closed"}
+HUMAN_REVIEW_STATUSES = {"pending", "closed"}
+ORIGIN_MODES = {"generated", "human_authored"}
+SUPPORT_ROLES = {
+    "direct",
+    "definition",
+    "scope",
+    "exception",
+    "temporal",
+    "authority",
+}
+TEMPORAL_SCOPES = {
+    "current",
+    "historical",
+    "effective_from",
+    "effective_until",
+    "unknown",
+}
+EXTRACTION_LAYERS = {
+    "structural",
+    "evidence",
+    "transformation",
+    "authority",
+    "exception",
+    "eligibility",
+    "atomicity",
+}
+
+CANDIDATES_REQUIRED_KEYS = {
+    "schema_version",
+    "country_slug",
+    "generation_mode",
+    "candidates",
+}
+
+CANDIDATE_ITEM_REQUIRED_KEYS = {
+    "candidate_id",
+    "candidate_text",
+    "claim_language",
+    "claim_type",
+    "scope",
+    "evidence_links",
+    "transformation",
+    "authority_posture",
+    "exception_handling",
+    "origin",
+    "semantic_review_status",
+    "special_review_required",
+    "support_status",
+    "downstream_eligible",
+    "human_review",
 }
 
 SOURCE_ITEM_M1_REQUIRED_KEYS = SOURCE_ITEM_REQUIRED_KEYS | {
@@ -238,6 +330,19 @@ def list_intake_slugs() -> list[str]:
         if (child / PACK_FILENAMES["sources"]).exists() and (
             child / PACK_FILENAMES["evidence_excerpts"]
         ).exists():
+            slugs.append(child.name)
+    return slugs
+
+
+def list_claim_extraction_slugs() -> list[str]:
+    """Packs that opted into Phase 2 M2 (have candidate_claims.json)."""
+    if not PIPELINE_ROOT.exists():
+        return []
+    slugs = []
+    for child in sorted(PIPELINE_ROOT.iterdir()):
+        if not child.is_dir():
+            continue
+        if (child / PACK_FILENAMES["candidate_claims"]).exists():
             slugs.append(child.name)
     return slugs
 
