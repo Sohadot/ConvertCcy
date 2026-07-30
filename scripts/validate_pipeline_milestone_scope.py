@@ -3,11 +3,8 @@
 """
 validate_pipeline_milestone_scope.py — PR/diff scope gate for pipeline milestones.
 
-Phase 2 M1: when evidence_excerpts / intake files change, forbid simultaneous
-mutation of claims, field_bindings, or data/rules/** (unless explicitly allowed
-via --allow-rules-touch for exceptional documented cases).
-
-This gate inspects git diffs. It does not validate artifact content.
+When M1 intake or M2 claim-extraction paths change, forbid simultaneous mutation
+of claims.json, field_bindings.json, or data/rules/**.
 
 Run:
   python scripts/validate_pipeline_milestone_scope.py
@@ -37,6 +34,7 @@ def git_changed_files(base: str) -> List[str]:
         ["git", "diff", "--name-only", f"{base}...HEAD"],
         ["git", "diff", "--name-only", "--cached"],
         ["git", "diff", "--name-only"],
+        ["git", "ls-files", "--others", "--exclude-standard"],
     ]
     files: Set[str] = set()
     for cmd in cmds:
@@ -57,32 +55,26 @@ def matches_any(path: str, globs: List[str]) -> bool:
 
 def main(argv: List[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Validate pipeline milestone PR scope")
-    parser.add_argument(
-        "--base",
-        default="origin/main",
-        help="Git merge-base reference (default: origin/main)",
-    )
-    parser.add_argument(
-        "--allow-rules-touch",
-        action="store_true",
-        help="Escape hatch: allow data/rules changes (must be justified in PR)",
-    )
+    parser.add_argument("--base", default="origin/main")
+    parser.add_argument("--allow-rules-touch", action="store_true")
     args = parser.parse_args(argv)
 
     policy = load_policy()
     intake = policy.get("intake") or {}
     forbidden = list(intake.get("milestone_scope_forbidden_path_globs") or [])
-    # Soft allowlist is documentation; we enforce forbidden when M1 intake files change.
 
     changed = git_changed_files(args.base)
     if not changed:
         print("Milestone scope check: no changed files detected (ok).")
         return 0
 
-    intake_touched = any(
+    milestone_touched = any(
         fnmatch.fnmatch(p, "data/coverage/pipeline/*/evidence_excerpts.json")
         or fnmatch.fnmatch(p, "data/coverage/pipeline/*/intake_report.json")
+        or fnmatch.fnmatch(p, "data/coverage/pipeline/*/candidate_claims.json")
+        or fnmatch.fnmatch(p, "data/coverage/pipeline/*/claim_extraction_report.json")
         or p.endswith("validate_source_intake.py")
+        or p.endswith("validate_claim_extraction.py")
         or p.endswith("validate_pipeline_milestone_scope.py")
         for p in changed
     )
@@ -91,19 +83,17 @@ def main(argv: List[str] | None = None) -> int:
     for p in changed:
         print(f"  {p}")
 
-    if not intake_touched:
-        print("Milestone scope check: no M1 intake paths touched (ok).")
+    if not milestone_touched:
+        print("Milestone scope check: no M1/M2 milestone paths touched (ok).")
         return 0
 
     errors: List[str] = []
     for path in changed:
-        if args.allow_rules_touch and (
-            path.startswith("data/rules/") or fnmatch.fnmatch(path, "data/rules/**")
-        ):
+        if args.allow_rules_touch and path.startswith("data/rules/"):
             continue
         if matches_any(path, forbidden):
             errors.append(
-                f"M1 scope violation: '{path}' is forbidden while intake milestone files change"
+                f"Milestone scope violation: '{path}' is forbidden while M1/M2 files change"
             )
 
     if errors:
@@ -111,7 +101,7 @@ def main(argv: List[str] | None = None) -> int:
         for e in errors:
             print(f"  - {e}")
         print(
-            "\nPhase 2 M1 must not rewrite claims, field_bindings, or rules. "
+            "\nPipeline milestones must not rewrite claims, field_bindings, or rules. "
             "Split those changes into a separate PR."
         )
         return 1

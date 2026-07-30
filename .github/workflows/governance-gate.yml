@@ -66,7 +66,12 @@ jobs:
         # Regenerates report in-memory and fails on intake_report drift.
         run: python3 scripts/validate_source_intake.py --check-drift
 
+      - name: Claim extraction gate (validate_claim_extraction.py)
+        # Phase 2 M2 opt-in: runs for packs with candidate_claims.json.
+        # Regenerates report in-memory and fails on claim_extraction_report drift.
+        run: python3 scripts/validate_claim_extraction.py --check-drift
+
       - name: Pipeline milestone scope gate (validate_pipeline_milestone_scope.py)
-        # Blocks M1 intake PRs from also rewriting claims/bindings/rules.
+        # Blocks M1/M2 PRs from also rewriting claims/bindings/rules.
         run: python3 scripts/validate_pipeline_milestone_scope.py --base origin/main
         if: github.event_name == 'pull_request'

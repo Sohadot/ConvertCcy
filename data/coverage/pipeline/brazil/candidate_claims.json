@@ -1,0 +1,282 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "brazil",
+  "generation_mode": "governed_extraction",
+  "notes": "M2.0 Brazil pilot: exactly one direct excerpt per candidate; Portuguese same-language claims only; all candidates unreviewed / not downstream-eligible.",
+  "candidates": [
+    {
+      "candidate_id": "CC-BR-FX-001",
+      "candidate_text": "As operações no mercado de câmbio podem ser realizadas livremente, sem limitação de valor, observados a legislação, as diretrizes estabelecidas pelo Conselho Monetário Nacional e o regulamento a ser editado pelo Banco Central do Brasil.",
+      "reviewed_text": null,
+      "claim_language": "pt",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "BR",
+        "subject": "foreign_exchange_market_operations",
+        "actor": null,
+        "transaction_context": "mercado_de_cambio",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-BR-LEI-ART2-OPS",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": ["article_number_prefix_omitted"],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": ["EX-BR-LEI-ART2-OPS"]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-BR-FX-002",
+      "candidate_text": "A taxa de câmbio é livremente pactuada entre as instituições autorizadas a operar no mercado de câmbio e entre as referidas instituições e seus clientes.",
+      "reviewed_text": null,
+      "claim_language": "pt",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "BR",
+        "subject": "fx_transaction_rates",
+        "actor": "instituicoes_autorizadas_e_clientes",
+        "transaction_context": "operacao_de_cambio",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-BR-LEI-ART2-RATE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": ["paragrafo_unico_label_omitted"],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-BR-FX-003",
+      "candidate_text": "As operações no mercado de câmbio podem ser realizadas somente por meio de instituições autorizadas a operar nesse mercado pelo Banco Central do Brasil, na forma do regulamento a ser editado por essa autarquia.",
+      "reviewed_text": null,
+      "claim_language": "pt",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "BR",
+        "subject": "fx_market_channel",
+        "actor": null,
+        "transaction_context": "mercado_de_cambio",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-BR-LEI-ART3",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": ["article_number_prefix_omitted"],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-BR-CUST-001",
+      "candidate_text": "Cada viajante, ao ingressar no Brasil, com montante superior a US$ 10.000,00 ou o equivalente em outra moeda, está obrigado a preencher Declaração Eletrônica de Bens de Viajantes (e-DBV) e apresentá-la à fiscalização aduaneira.",
+      "reviewed_text": null,
+      "claim_language": "pt",
+      "claim_type": "threshold",
+      "scope": {
+        "jurisdiction": "BR",
+        "subject": "cash_declaration_entry",
+        "actor": "viajante",
+        "transaction_context": "ingresso_no_brasil",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-BR-RECEITA-ENTRY",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": ["whitespace_normalization"],
+        "omissions": [
+          "second_paragraph_scope_note_on_papel_moeda_vs_titulos_cheques"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": ["EX-BR-RECEITA-ENTRY"]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-BR-CUST-002",
+      "candidate_text": "Cada viajante, ao sair do Brasil, com montante superior a US$ 10.000,00 ou o equivalente em outra moeda, está obrigado a preencher a Declaração Eletrônica de Bens de Viajantes (e-DBV) e apresentá-la à fiscalização aduaneira, juntamente com o montante declarado e os comprovantes exigidos pela Receita Federal para a saída.",
+      "reviewed_text": null,
+      "claim_language": "pt",
+      "claim_type": "documentation_requirement",
+      "scope": {
+        "jurisdiction": "BR",
+        "subject": "cash_declaration_exit",
+        "actor": "viajante",
+        "transaction_context": "saida_do_brasil",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-BR-RECEITA-EXIT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "enumerated_supporting_documents_compressed_to_comprovantes_exigidos"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": ["EX-BR-RECEITA-EXIT"]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "special_review: document-list compression must not drop material exit presentation requirements"
+      }
+    }
+  ]
+}

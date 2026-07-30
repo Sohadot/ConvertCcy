@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "brazil",
+  "decision": "PASS",
+  "semantic_approval": "not_established",
+  "blocking_findings": [],
+  "improvement_findings": [
+    {
+      "layer": "atomicity",
+      "field": "CC-BR-CUST-001",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-BR-CUST-002",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    }
+  ],
+  "needs_human_review": [
+    "CC-BR-FX-001:semantic_review_pending",
+    "CC-BR-FX-002:semantic_review_pending",
+    "CC-BR-FX-003:semantic_review_pending",
+    "CC-BR-CUST-001:semantic_review_pending",
+    "CC-BR-CUST-002:semantic_review_pending",
+    "CC-BR-CUST-002:special_review"
+  ],
+  "stats": {
+    "candidate_claims_total": 5,
+    "direct_restating": 4,
+    "translation_based": 0,
+    "bounded_normalization": 1,
+    "semantic_review_pending": 5,
+    "downstream_eligible": 0,
+    "human_review_required": 1
+  },
+  "summary": "CLAIM EXTRACTION PASS (structural only)",
+  "capability_note": "M2 validator checks extraction contract structure, evidence eligibility, language/mode consistency, and review/fingerprint gates. It does not establish legal or semantic approval of candidate claims."
+}
