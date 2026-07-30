@@ -1,10 +1,11 @@
 # Governed Country Pipeline — Phase 2 Milestone 2
 
 **Branch:** `claude/governed-country-pipeline-p2-m2`  
-**Status:** PLAN ONLY — awaiting architectural and governance review before implementation  
+**Status:** PLAN REVISED — contract edits from governance review incorporated; awaiting **APPROVE M2 PLAN** before implementation  
 **Base:** `main` @ Phase 2 M1 merge (`9e7f79e79` / PR #65)  
 **Date:** 2026-07-30  
-**Depends on:** Phase 1 (Governed Review) + Phase 2 M1 (Source Intake + Evidence Excerpts)
+**Depends on:** Phase 1 (Governed Review) + Phase 2 M1 (Source Intake + Evidence Excerpts)  
+**Review decision addressed:** APPROVE WITH EDITS
 
 ---
 
@@ -26,8 +27,9 @@ M2 does **not** write into `claims.json`, does **not** generate drafts or field 
 downstream-eligible evidence excerpts
   → candidate claims
   → evidence-bound validation
-  → human review
-  → accepted / bounded / rejected   (human outcomes; not auto-written as project claims)
+  → semantic review (pending by default)
+  → human close (supported / bounded / rejected)
+  → optional downstream_eligible only after closed review + fingerprint match
 ```
 
 ---
@@ -46,13 +48,15 @@ downstream-eligible evidence excerpts
 | Multi-jurisdiction inference | Out of scope |
 | Policy advice / recommendations | Forbidden claim types |
 | Inventing weaker claims to paper over evidence gaps | Fake coverage |
-| Multi-excerpt synthesis without explicit contract | Default **banned** in M2.0 |
+| `single_source_composition` | **Banned in M2.0** (defer to M2.1) |
+| `multi_source_synthesis` | **Banned in M2.0** (defer to M2.1 / M3) |
 | Turning official description into user instructions | Voice inflation |
 | Elevating FAQ/guidance above its authority | Authority mismatch |
 | Inferring absence of controls from silence | Negative-from-silence ban |
 | Generalizing a scoped rule into a universal rule | Scope expansion |
 | Using `bounded_paraphrase` as direct substrate without closed human review | M1 gate |
 | Using non-downstream-eligible excerpts | M1 gate |
+| Labeling cross-language extraction as `direct_restating` | Language/mode mismatch |
 
 If an implementation PR touches any forbidden item, reject or split.
 
@@ -61,12 +65,13 @@ If an implementation PR touches any forbidden item, reject or split.
 ## 3. Success criterion (M2 closed loop)
 
 ```text
-downstream-eligible excerpt(s)
-  → atomic candidate claim
-  → evidence links + transformation declaration
-  → authority / scope / exception / temporal checks
-  → deterministic structural PASS/BLOCK
-  → human review required by default for meaning approval
+exactly one downstream-eligible excerpt
+  → zero or one atomic candidate claim
+  → evidence link + transformation + language-consistent mode
+  → structural PASS/BLOCK
+  → semantic_review_status: pending (default)
+  → human close with fingerprint
+  → downstream_eligible only if review closed and fingerprint matches
 ```
 
 **PASS means:** candidate claims comply structurally with the extraction contract.  
@@ -82,14 +87,12 @@ Report must include:
 
 ## 4. Artifacts
 
-Under existing pack root:
-
 ```text
 data/coverage/pipeline/{slug}/
   sources.json                 # read-only for M2
   evidence_excerpts.json       # read-only for M2
-  intake_report.json           # read-only; used for eligibility cross-check
-  candidate_claims.json        # NEW — authored/generated candidates
+  intake_report.json           # read-only; eligibility cross-check
+  candidate_claims.json        # NEW — generated and/or human-authored candidates
   claim_extraction_report.json # NEW — generated only
   # untouched by default:
   claims.json
@@ -97,13 +100,32 @@ data/coverage/pipeline/{slug}/
   review_report.json
 ```
 
-### Roles
-
 | File | Role |
 |---|---|
-| `candidate_claims.json` | Extraction output (candidates only) |
+| `candidate_claims.json` | Candidate store (not accepted project claims) |
 | `claim_extraction_report.json` | **Generated** — never hand-authored PASS |
-| `claims.json` | Existing Phase 1 matrix; **adoption later**, not extractor write target |
+| `claims.json` | Phase 1 matrix; adoption later only |
+
+Every candidate must declare origin (edit #5):
+
+```json
+"origin": {
+  "mode": "generated",
+  "generator_version": "m2.0",
+  "generated_at": "2026-07-30"
+}
+```
+
+or:
+
+```json
+"origin": {
+  "mode": "human_authored",
+  "authored_by": "operator"
+}
+```
+
+Human-authored candidates receive **no lighter gates** than generated ones.
 
 ---
 
@@ -138,30 +160,16 @@ flowchart TD
   bindings --> rules
 ```
 
-No automatic wire from candidates → `claims.json` in M2.
-
 ---
 
-## 6. `candidate_claims.json` contract
-
-Top-level:
-
-```json
-{
-  "schema_version": "1.0.0",
-  "country_slug": "brazil",
-  "generation_mode": "governed_extraction",
-  "candidates": []
-}
-```
-
-Each candidate (minimum):
+## 6. Candidate object contract (revised)
 
 ```json
 {
   "candidate_id": "CC-BR-FX-001",
-  "claim_text": "Candidate factual statement",
-  "claim_language": "en",
+  "candidate_text": "Generated or human-authored candidate wording",
+  "reviewed_text": null,
+  "claim_language": "pt",
   "claim_type": "descriptive_rule",
   "scope": {
     "jurisdiction": "BR",
@@ -180,21 +188,37 @@ Each candidate (minimum):
     "mode": "direct_restating",
     "normalizations": [],
     "omissions": [],
-    "added_terms": []
+    "added_terms": [],
+    "translation_source": null
   },
   "authority_posture": {
     "source_authority_level": "primary_law",
     "claim_voice": "statutory_description",
-    "authority_preserved": true
+    "authority_preservation_status": "unreviewed"
   },
   "exception_handling": {
-    "evidence_contains_exception": false,
-    "exception_preserved": true,
+    "evidence_exception_signal": "unknown",
+    "exception_review_status": "pending",
+    "exception_preserved": null,
     "exception_excerpt_ids": []
   },
+  "origin": {
+    "mode": "generated",
+    "generator_version": "m2.0",
+    "generated_at": "2026-07-30"
+  },
+  "semantic_review_status": "pending",
+  "special_review_required": false,
   "support_status": "unreviewed",
-  "human_review_required": false,
-  "downstream_eligible": false
+  "downstream_eligible": false,
+  "human_review": {
+    "status": "pending",
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "decision": null,
+    "reviewed_candidate_fingerprint": null,
+    "notes": null
+  }
 }
 ```
 
@@ -202,251 +226,286 @@ Each candidate (minimum):
 
 ```json
 {
+  "semantic_review_status": "pending",
+  "special_review_required": false,
   "support_status": "unreviewed",
-  "downstream_eligible": false
+  "downstream_eligible": false,
+  "human_review": { "status": "pending" },
+  "authority_posture": { "authority_preservation_status": "unreviewed" },
+  "exception_handling": { "exception_review_status": "pending" }
 }
 ```
 
-Extractor must **not** auto-assign `supported` / `bounded` or promote `downstream_eligible: true`.  
-Only closed human review may set:
-
-- `support_status`: `supported` | `bounded` | `rejected` | …
-- `downstream_eligible`: `true` (and only when support_status is an accepted terminal state)
+Do **not** use a lone `human_review_required: false` flag — it falsely implies meaning review is optional.
 
 ---
 
-## 7. Allowed claim types (narrow set)
+## 7. Language ↔ transformation mode (non-bypassable edit #1)
 
-Allowed in M2.0:
+| Mode | Language rule |
+|---|---|
+| `direct_restating` | `claim_language` **must equal** the excerpt `source_language` (same-language restatement of `source_text`) |
+| `faithful_translation` | `claim_language` **≠** source language; requires reviewed translation path |
+| `bounded_normalization` | Same-language only; formal changes only |
 
-- `descriptive_rule`
-- `threshold`
-- `required_action`
-- `permitted_action`
-- `prohibited_action`
-- `institutional_role`
-- `regime_description`
-- `documentation_requirement`
-- `exception`
-- `definition`
+Cross-language Portuguese → English **cannot** be `direct_restating`.
 
-Forbidden in M2.0:
-
-- `recommendation`
-- `risk_assessment`
-- `compliance_advice`
-- `best_practice`
-- `comparative_claim`
-- `market_interpretation`
-- `composite_summary`
-
----
-
-## 8. Transformation modes
-
-| Mode | Meaning | Default gate |
-|---|---|---|
-| `direct_restating` | Limited restatement of one official excerpt | Machine-structurally allowed |
-| `faithful_translation` | Claim from reviewed translation path | Allowed if excerpt translation reviewed |
-| `bounded_normalization` | Formal-only changes (names, ISO dates, currency codes, de-dupe, harmless word order) | Allowed if `normalizations[]` listed and no semantic `added_terms` |
-| `single-source_composition` | Two+ excerpts from **same** official source → one claim | **Always** `human_review_required: true`, `downstream_eligible: false` until closed |
-| `multi-source_synthesis` | Excerpts from two+ sources → one claim | **Banned in M2.0** (defer to M2.1 / M3) |
-
-Any semantic `added_terms` beyond normalization allowlist → **BLOCK**.
-
----
-
-## 9. Generation policy (M2.0 — no free generation)
-
-Safe generator principle:
-
-> **one eligible excerpt → zero or one candidate claim**
-
-Not:
-
-- one excerpt → many speculative claims  
-- many excerpts → one synthesized claim  
-
-Allowed substrate:
-
-- Prefer `representation: verbatim_quote`
-- Allow `faithful_translation` only when translation review is closed in M1
-- **Ban** `bounded_paraphrase` as direct substrate by default
-
-Generator must:
-
-- record every normalization  
-- not assign evidence grades  
-- not decide publication readiness  
-- not invent claims to fill gaps  
-
----
-
-## 10. Core fidelity rules
-
-### 10.1 Atomicity
-
-One candidate = one independently evaluable proposition.
-
-Forbidden compound example:
-
-> Brazil uses a floating exchange-rate regime and travellers must declare cash above X.
-
-Split into separate candidates.
-
-Validator uses **heuristics only** (connectors, semicolons, dual normative clauses). Heuristics do not prove atomicity.
-
-### 10.2 Evidence scope containment
-
-Claim must not be broader than evidence on:
-
-actor · transaction · currency · amount · direction · resident status · institution · jurisdiction · date · exception · legal force
-
-Any expansion must appear in `added_terms`. Semantic additions → BLOCK.
-
-### 10.3 Authority preservation
-
-Claim voice must not exceed source authority.
-
-Declare:
+Required for translation candidates:
 
 ```json
-"authority_posture": {
-  "source_authority_level": "official_guidance",
-  "claim_voice": "guidance_description",
-  "authority_preserved": true
+"transformation": {
+  "mode": "faithful_translation",
+  "translation_source": {
+    "excerpt_id": "EX-BR-…",
+    "translation_review_status": "closed"
+  }
 }
 ```
 
-Block mismatches such as:
+Translation may rest on M1 `translation_text` only when that translation review is closed. Otherwise BLOCK.
 
-- FAQ → “law requires”
-- guidance → “prohibited by statute”
-- institutional description → “legally guaranteed”
+Brazil pilot implication: Portuguese claims from Portuguese excerpts use `direct_restating`; English claims require `faithful_translation` + closed translation review.
 
-unless a primary legal excerpt directly supports that force.
+---
 
-### 10.4 Evidence sufficiency
+## 8. Semantic review vs special review (edit #2)
 
-Every candidate needs ≥1 `evidence_links` entry with `support_role: "direct"`.
+| Field | Meaning |
+|---|---|
+| `semantic_review_status` | `pending` \| `closed` — **every** candidate starts `pending` |
+| `special_review_required` | Extra review for ambiguity / authority risk / composition (composition banned in M2.0) / exception risk |
 
-Roles:
+Meaning approval always requires semantic review close.  
+`special_review_required: true` adds an exceptional queue item but does not replace semantic review.
 
-- `direct` (required)
-- `definition` / `scope` / `exception` / `temporal` / `authority` (supplemental only)
+---
 
-Supplemental roles never replace a missing direct link.
+## 9. Closed human review + fingerprint (non-bypassable edit #3)
 
-All linked excerpts must be downstream-eligible per M1 (`intake_report` / excerpt eligibility).
+```json
+"human_review": {
+  "status": "pending",
+  "reviewed_by": null,
+  "reviewed_at": null,
+  "decision": null,
+  "reviewed_candidate_fingerprint": null,
+  "notes": null
+}
+```
 
-### 10.5 Exceptions
+On close:
 
-If evidence contains an exception/limitation:
+```json
+{
+  "status": "closed",
+  "reviewed_by": "operator-id",
+  "reviewed_at": "2026-07-30",
+  "decision": "supported",
+  "reviewed_candidate_fingerprint": "sha256:…"
+}
+```
+
+Fingerprint covers at least:
+
+- `candidate_text`
+- `reviewed_text` (if set)
+- `scope`
+- `evidence_links`
+- `transformation`
+- `authority_posture.source_authority_level` + `claim_voice`
+- `exception_handling` material fields
+- `claim_type` / `claim_language`
+
+**Invalidation rule:**
+
+> Any later change to claim wording (`candidate_text` / `reviewed_text`), scope, evidence links, or transformation invalidates the closed review and resets `human_review.status` to `pending`, `support_status` to `unreviewed`, and `downstream_eligible` to `false`.
+
+Validator must recompute fingerprint and BLOCK stale closed reviews.
+
+### Downstream eligibility promotion
+
+`downstream_eligible: true` only if **all** hold:
+
+1. `human_review.status == closed`
+2. Fingerprint matches current candidate bytes
+3. `support_status` ∈ {`supported`, `bounded`}
+4. `semantic_review_status == closed`
+5. `exception_review_status` closed for claim types that require it (at least required/prohibited/permitted; prefer all types in M2.0)
+6. Linked excerpts remain M1 downstream-eligible
+7. No banned transformation mode
+
+Machine never auto-sets `downstream_eligible: true`.
+
+---
+
+## 10. Allowed claim types (unchanged narrow set)
+
+Allowed: `descriptive_rule` · `threshold` · `required_action` · `permitted_action` · `prohibited_action` · `institutional_role` · `regime_description` · `documentation_requirement` · `exception` · `definition`
+
+Forbidden: `recommendation` · `risk_assessment` · `compliance_advice` · `best_practice` · `comparative_claim` · `market_interpretation` · `composite_summary`
+
+---
+
+## 11. Transformation modes (M2.0 — edit #4)
+
+| Mode | Allowed in M2.0? | Notes |
+|---|---|---|
+| `direct_restating` | Yes | Same language; one excerpt |
+| `faithful_translation` | Yes | Cross-language; closed translation review |
+| `bounded_normalization` | Yes | Formal-only; listed in `normalizations[]` |
+| `single_source_composition` | **No** | Deferred to M2.1 |
+| `multi_source_synthesis` | **No** | Deferred to M2.1 / M3 |
+
+M2.0 generation rule:
+
+> **one candidate ← exactly one direct excerpt**
+
+Policy:
+
+```json
+"allowed_transformation_modes": [
+  "direct_restating",
+  "faithful_translation",
+  "bounded_normalization"
+],
+"banned_transformation_modes": [
+  "single_source_composition",
+  "multi_source_synthesis"
+]
+```
+
+---
+
+## 12. Generation policy
+
+> one eligible excerpt → zero or one candidate claim
+
+Substrate:
+
+- Prefer `verbatim_quote`
+- Allow `faithful_translation` excerpt path only when translation review closed
+- Ban `bounded_paraphrase` substrate by default
+
+No free multi-claim speculation from one excerpt.  
+No gap-filling weaker claims.
+
+---
+
+## 13. Core fidelity rules
+
+### 13.1 Atomicity
+
+One candidate = one independently evaluable proposition. Heuristic detection only.
+
+### 13.2 Evidence scope containment
+
+No expansion beyond evidence on actor / transaction / currency / amount / direction / residency / institution / jurisdiction / date / exception / legal force. Semantic `added_terms` → BLOCK.
+
+### 13.3 Authority preservation (edit #6)
+
+Replace boolean `authority_preserved: true` with:
+
+`authority_preservation_status` ∈:
+
+- `unreviewed` (default)
+- `structurally_consistent` (machine may set)
+- `human_confirmed` (human only)
+- `mismatch` (machine or human)
+
+Machine may detect known mismatches (FAQ→law requires, guidance→statutory prohibition, etc.) and set `mismatch` / BLOCK.  
+Machine cannot alone prove full force preservation; `human_confirmed` is human-only.
+
+### 13.4 Evidence sufficiency
+
+≥1 `support_role: "direct"` link. Supplemental roles never replace direct. All excerpts must be M1 downstream-eligible.
+
+### 13.5 Exceptions (edit #7)
 
 ```json
 "exception_handling": {
-  "evidence_contains_exception": true,
-  "exception_preserved": true,
-  "exception_excerpt_ids": ["EX-…"]
+  "evidence_exception_signal": "unknown",
+  "exception_review_status": "pending",
+  "exception_preserved": null,
+  "exception_excerpt_ids": []
 }
 ```
 
-Dropping a material exception → BLOCK.  
-If exception prevents atomicity: main claim + separate `exception` claim + `qualified_by` relation — main claim not downstream alone.
+`evidence_exception_signal` ∈ `unknown` | `none_detected` | `present`
 
-### 10.6 Negatives from silence
+- Machine may set `none_detected` or `present` heuristically.
+- Human closes: `none_confirmed` or `preserved` via `exception_review_status: closed` + notes/fields.
+- Candidates are not downstream-eligible before exception review is closed (especially required/prohibited/permitted actions; M2.0 may require for all types).
 
-Forbidden to mint negative claims from absence of mention.
+Self-asserted `evidence_contains_exception: false` is insufficient.
 
-Negative claims require **affirmative** evidence supporting the negation.
+### 13.6 Negatives from silence
 
-### 10.7 Temporal posture
+Forbidden. Negation needs affirmative evidence.
 
-`scope.temporal_scope` ∈ `current` | `historical` | `effective_from` | `effective_until` | `unknown`
+### 13.7 Temporal posture
 
-Not downstream-eligible if:
-
-- source `currency` is `unknown` or `superseded`
-- present-tense claim rests on historical-only evidence
-- effective window unresolved for a `current` claim
+`current` | `historical` | `effective_from` | `effective_until` | `unknown`  
+Not eligible if source superseded/unknown or tense/window inconsistent.
 
 ---
 
-## 11. Support status model
+## 14. Bounded vs generated wording (edit #8)
 
-| Status | Who sets | Meaning |
-|---|---|---|
-| `unreviewed` | extractor default | Structurally present; meaning not approved |
-| `needs_evidence` | human / validator | Missing sufficient direct support |
-| `needs_human_review` | machine or human | Ambiguity / authority / composition |
-| `supported` | **human only** | Accepted for later adoption consideration |
-| `bounded` | **human only** | Accepted with narrowed wording |
-| `rejected` | **human only** | Do not adopt |
-| `superseded` | human | Obsolete candidate |
+Do not silently rewrite generated text.
 
-Machine path stops at structurally valid + `unreviewed` (or forced review flags).  
-Semantic approval remains human.
+| Field | Role |
+|---|---|
+| `candidate_text` | Immutable extraction/authoring wording (audit base) |
+| `reviewed_text` | Null until human sets narrowed/approved wording |
+
+On `bounded` decision:
+
+```json
+{
+  "support_status": "bounded",
+  "reviewed_text": "narrowed human-approved wording",
+  "human_review": { "status": "closed", "decision": "bounded", "reviewed_candidate_fingerprint": "sha256:…" }
+}
+```
+
+Fingerprint includes `reviewed_text` when present. Changing either text after close reopens review.
 
 ---
 
-## 12. Machine vs human guarantees
+## 15. Support status model
+
+| Status | Who sets |
+|---|---|
+| `unreviewed` | default |
+| `needs_evidence` / `needs_human_review` | machine or human |
+| `supported` / `bounded` / `rejected` / `superseded` | **human only** |
+
+---
+
+## 16. Machine vs human guarantees
 
 ### Machine can prove
 
-- IDs/schema completeness  
-- excerpt/source linkage  
-- excerpt downstream eligibility  
-- no orphan links  
-- allowed claim types / transformation modes  
-- declared authority posture consistency (structural)  
-- temporal field parseability  
-- exception-preservation flags present when declared  
-- report drift  
-- milestone scope (no forbidden path edits)  
+Schema/IDs · excerpt eligibility · one-direct-excerpt rule · language↔mode consistency · banned modes absent · fingerprint freshness for closed reviews · report drift · milestone scope · structural authority mismatch heuristics · default pending review fields
 
 ### Machine cannot alone prove
 
-- full legal-meaning preservation  
-- paraphrase/nuance safety  
-- omission immateriality  
-- composition/synthesis correctness  
-- legal-term translation accuracy  
-- sufficiency of source for broader context  
-
-These remain human review.
+Full legal-meaning preservation · nuance of translation · immaterial omissions · exception completeness in the wild · sufficiency for broader context
 
 ---
 
-## 13. Validators
+## 17. Validators
 
-### 13.1 `validate_claim_extraction.py`
+### `validate_claim_extraction.py`
 
-Checks listed in §10–§11 plus:
+All contracts above + `--check-drift` on `claim_extraction_report.json`.
 
-- generated `claim_extraction_report.json` drift (`--check-drift`)  
-- default `downstream_eligible: false` for unreviewed candidates  
-- ban on `multi-source_synthesis` in M2.0  
-- ban on paraphrase substrate by default  
+### Extend `validate_pipeline_milestone_scope.py`
 
-### 13.2 Extend `validate_pipeline_milestone_scope.py`
+Allow M2 candidate/report/policy/schema/validators/docs.  
+Forbid `claims.json`, `field_bindings.json`, `data/rules/**`, publication/indexing metadata.
 
-When M2 paths change, allow:
-
-- `candidate_claims.json`  
-- `claim_extraction_report.json`  
-- M2 policy/schema/validators/CI/docs/protocol  
-- Brazil M2 pilot candidates/report  
-
-Forbid:
-
-- `claims.json`  
-- `field_bindings.json`  
-- `data/rules/**`  
-- publication / indexing metadata  
-
-Prefer total ban on rules/claims edits in the first M2 implementation PR.
-
-### 13.3 Regression gates (must remain green)
+### Regression
 
 ```text
 python scripts/validate_source_intake.py --check-drift
@@ -455,11 +514,9 @@ python scripts/validate_claim_extraction.py --check-drift
 python scripts/validate_pipeline_milestone_scope.py --base origin/main
 ```
 
-Any Phase 1 or M1 regression → BLOCK.
-
 ---
 
-## 14. `claim_extraction_report.json` (generated)
+## 18. Generated report
 
 ```json
 {
@@ -475,76 +532,54 @@ Any Phase 1 or M1 regression → BLOCK.
     "direct_restating": 0,
     "translation_based": 0,
     "bounded_normalization": 0,
-    "human_review_required": 0,
+    "semantic_review_pending": 0,
     "downstream_eligible": 0
   },
   "summary": "CLAIM EXTRACTION PASS (structural only)"
 }
 ```
 
-CI regenerates and fails on drift. Editors never hand-write PASS.
+---
+
+## 19. Auto-correction
+
+One cycle; non-semantic only (IDs, ordering, stats, report regen, casing/whitespace).  
+Never auto-edit claim wording, scope, authority, exceptions, temporal posture, evidence selection, support status, or downstream eligibility.
 
 ---
 
-## 15. Auto-correction (one cycle, non-semantic only)
+## 20. Brazil pilot (implementation phase)
 
-Allowed:
+3–5 candidates, separate categories, **exact one direct excerpt each**.
 
-- ID formatting  
-- field ordering  
-- missing derived stats  
-- report regeneration  
-- normalization metadata hygiene  
-- whitespace / enum casing  
-
-Forbidden auto-fix:
-
-- claim wording  
-- scope  
-- authority level  
-- exception wording  
-- temporal posture  
-- evidence selection  
-- support status  
-- downstream eligibility promotion  
+- Prefer Portuguese `direct_restating` from Portuguese `verbatim_quote` excerpts  
+- English candidates only with `faithful_translation` + closed translation review  
+- No composition/synthesis/paraphrase/superseded/ambiguous  
+- No `claims.json` / `data/rules/brazil.json` edits  
 
 ---
 
-## 16. Brazil pilot (implementation phase only)
-
-Subset, not all excerpts at once: **3–5** direct candidates from separate categories, e.g.:
-
-1. FX / institutional channel (Lei Art. 3)  
-2. Rate / market operation wording (Lei Art. 2)  
-3. Customs declaration threshold (Receita / Lei Art. 14)  
-4. Optional: FX accounts eligibility header (Res. 277 Art. 69–70) — careful atomicity  
-
-Constraints:
-
-- one claim ← one excerpt  
-- verbatim substrate only  
-- no synthesis / paraphrase / superseded / ambiguous  
-- no edits to `claims.json` or `data/rules/brazil.json`  
-
----
-
-## 17. Policy sketch (`intake` companion → `claim_extraction` block)
-
-Add to `data/governance/country_pipeline_policy.json`:
+## 21. Policy sketch
 
 ```json
 {
   "claim_extraction": {
     "generation_mode": "one_eligible_excerpt_to_zero_or_one_claim",
+    "require_exactly_one_direct_excerpt": true,
     "allowed_claim_types": ["descriptive_rule", "threshold", "required_action", "permitted_action", "prohibited_action", "institutional_role", "regime_description", "documentation_requirement", "exception", "definition"],
-    "allowed_transformation_modes": ["direct_restating", "faithful_translation", "bounded_normalization", "single-source_composition"],
-    "banned_transformation_modes": ["multi-source_synthesis"],
+    "allowed_transformation_modes": ["direct_restating", "faithful_translation", "bounded_normalization"],
+    "banned_transformation_modes": ["single_source_composition", "multi_source_synthesis"],
+    "direct_restating_requires_same_language": true,
+    "faithful_translation_requires_closed_translation_review": true,
     "require_direct_evidence_link": true,
+    "default_semantic_review_status": "pending",
     "default_support_status": "unreviewed",
     "default_downstream_eligible": false,
+    "downstream_requires_closed_review_fingerprint": true,
     "ban_paraphrase_substrate": true,
     "ban_negative_from_silence": true,
-    "require_authority_posture": true,
+    "authority_preservation_status_required": true,
+    "exception_review_required_before_downstream": true,
     "fail_on_report_drift": true,
     "semantic_approval_default": "not_established",
     "max_auto_correct_cycles": 1
@@ -554,56 +589,46 @@ Add to `data/governance/country_pipeline_policy.json`:
 
 ---
 
-## 18. Implementation order (after plan approval)
+## 22. Implementation order (after APPROVE M2 PLAN)
 
-1. Plan-only merge / approval on this branch  
-2. Executable `claim_extraction` policy + schema constants  
-3. `validate_claim_extraction.py` + report writer + drift  
-4. Extend milestone scope gate for M2 paths  
-5. Bounded Brazil pilot candidates  
+1. Sync from current `main`  
+2. Executable `claim_extraction` policy + schema  
+3. `validate_claim_extraction.py` + report + drift  
+4. Extend scope gate  
+5. Brazil pilot candidates (same-language preferred)  
 6. Protocol Appendix C  
 7. Run Phase 1 + M1 + M2 gates  
-8. Open M2 implementation PR  
-9. **Stop** (no adoption into `claims.json` in same PR)
+8. Open implementation PR  
+9. Stop — no adoption into `claims.json`
 
 ---
 
-## 19. Implementation PR acceptance criteria
+## 23. Implementation PR acceptance
 
-Merge only if:
-
-- claim extraction validator PASS  
-- report drift PASS  
-- M1 intake PASS  
-- Phase 1 Brazil staging PASS  
-- milestone scope PASS  
-- Governance Gate PASS  
-- unexpected diff NONE  
-
-PR body must state:
-
-1. Scope  
-2. Hard boundaries  
-3. Machine-proven guarantees  
-4. Human-only guarantees  
-5. Brazil pilot results  
-6. Explicit: **candidate claims are not published claims**
+- M2 validator PASS · report drift PASS · M1 PASS · Phase 1 staging PASS · scope PASS · Governance Gate PASS · unexpected diff NONE  
+- PR body states scope, boundaries, machine vs human guarantees, pilot results, and: **candidate claims are not published claims**
 
 ---
 
-## 20. Review focus for this plan (four doors)
+## 24. Non-bypassable corrections (this revision)
 
-Before implementation approval, review only:
+1. **`direct_restating` never crosses languages**; language change ⇒ `faithful_translation`.  
+2. **Every candidate starts with `semantic_review_status: pending`** (no “no human review needed” default).  
+3. **`downstream_eligible: true` requires closed human review bound to candidate fingerprint**.  
+4. **Ban both `single_source_composition` and `multi_source_synthesis` in M2.0**.
 
-1. **Evidence sufficiency** — direct link rules; eligibility gate  
-2. **Semantic containment** — no expansion beyond excerpt  
-3. **Authority preservation** — voice ≤ source force  
-4. **Downstream eligibility** — unreviewed candidates never auto-eligible  
+Also incorporated: origin tagging, authority status model, exception signal independence, `candidate_text` vs `reviewed_text`.
+
+---
+
+## 25. Reviewer decision on this revised plan
+
+Prior decision: **APPROVE WITH EDITS** — edits incorporated.
 
 Please return one of:
 
 1. **APPROVE M2 PLAN** — proceed to bounded implementation  
-2. **APPROVE WITH EDITS** — list required contract changes  
-3. **BLOCK** — cite architectural/governance defect  
+2. **APPROVE WITH EDITS** — further contract changes required  
+3. **BLOCK** — cite remaining defect  
 
-This commit is **plan only**. No executable M2 behavior is introduced yet.
+This revision is **plan only**. No executable M2 behavior is introduced in this commit.
