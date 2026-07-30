@@ -286,3 +286,12 @@ python scripts/validate_country_pipeline.py
 Countries without a pipeline pack are skipped by the pipeline validator. Drafting may use only claims with status `verified` or `bounded`. Claims marked `verification_target` or `superseded` must not appear in `field_bindings.json` and must not leak into `data/rules/{slug}.json`.
 
 Publication lifecycle flips (`page_status`, `indexing_allowed`) remain **human-gated** in Phase 1 after `READY TO PUBLISH`.
+
+### Dual CI posture (staging vs publication)
+
+`python scripts/validate_country_pipeline.py` is the single CI entrypoint:
+
+- **Staging packs** (`needs_hardening`, `indexing_allowed: false`): publication readiness findings are informational.
+- **Publication-claiming packs** (`page_status` in `verified`/`published`, or `indexing_allowed: true`): the same command automatically enforces Publication Gate as **blocking** (equivalent to `--require-publish-ready` for those slugs).
+
+Phase 1 is a **Governed Review Pipeline** (policy → bindings → review → bounded fix). It is not yet an end-to-end country production pipeline (intake → claim extraction → draft generation → semantic fidelity → auto PR).

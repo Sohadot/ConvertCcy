@@ -458,6 +458,16 @@ def validate_rules_structural(slug: str, rules_file: Path, result: ReviewResult)
     return data
 
 
+def publication_posture_claimed(rules: dict) -> bool:
+    """True when the rules file claims a publishable/live posture."""
+    status = rules.get("page_status")
+    indexing = rules.get("indexing_allowed") is True
+    return indexing or status in {
+        rs.PageStatus.VERIFIED.value,
+        rs.PageStatus.PUBLISHED.value,
+    }
+
+
 def validate_publication_readiness(policy: dict, rules: dict, result: ReviewResult, require: bool) -> None:
     pub = policy["publication"]
     status = rules.get("page_status")
@@ -519,9 +529,14 @@ def review_country(slug: str, require_publish_ready: bool = False) -> ReviewResu
     if rules is None:
         return result
 
+    # Staging packs stay informational on publication readiness.
+    # Any pack that already claims verified/published or indexing_allowed
+    # is automatically held to the Publication Gate (blocking).
+    enforce_publish = require_publish_ready or publication_posture_claimed(rules)
+
     validate_evidence_and_governance(policy, bindings, claim_by_id, source_by_id, result)
     validate_fidelity(policy, rules, bindings, claim_by_id, source_by_id, result)
-    validate_publication_readiness(policy, rules, result, require=require_publish_ready)
+    validate_publication_readiness(policy, rules, result, require=enforce_publish)
 
     # Source conflicts from pack
     for conflict in sources.get("source_conflicts") or []:
@@ -599,7 +614,11 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument(
         "--require-publish-ready",
         action="store_true",
-        help="Treat publication lifecycle mismatches as blocking",
+        help=(
+            "Treat publication lifecycle mismatches as blocking for all reviewed slugs. "
+            "Even without this flag, packs that already claim verified/published or "
+            "indexing_allowed=true are held to Publication Gate automatically."
+        ),
     )
     parser.add_argument(
         "--write-report",
