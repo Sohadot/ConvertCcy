@@ -3,7 +3,7 @@
   "country_slug": "brazil",
   "country_name": "Brazil",
   "iso2": "BR",
-  "notes": "Official source pack for Governed Country Pipeline Phase 1. Superseded URLs are retained only for audit and must not appear in draft source_map.",
+  "notes": "Phase 2 M1 source pack. Superseded URLs retained for audit only. content_persistence=not_preserved means offline validator cannot reconstruct historical page bytes.",
   "sources": [
     {
       "source_id": "SRC-BR-LEI-14286",
@@ -12,7 +12,15 @@
       "type": "ministry",
       "tier": "primary",
       "currency": "current",
-      "authority": "Presidência da República / Planalto"
+      "authority": "Presidência da República / Planalto",
+      "authority_kind": "legislature_publication",
+      "jurisdiction": "BR",
+      "language": "pt",
+      "accessed_at": "2026-07-30",
+      "published_date": "2021-12-29",
+      "effective_date": "2022-12-30",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual"
     },
     {
       "source_id": "SRC-BR-RECEITA-ENTRY",
@@ -21,7 +29,14 @@
       "type": "customs",
       "tier": "primary",
       "currency": "current",
-      "authority": "Receita Federal"
+      "authority": "Receita Federal",
+      "authority_kind": "customs",
+      "jurisdiction": "BR",
+      "language": "pt",
+      "accessed_at": "2026-07-30",
+      "last_modified_observed": "2024-11-18",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual"
     },
     {
       "source_id": "SRC-BR-RECEITA-EXIT",
@@ -30,7 +45,14 @@
       "type": "customs",
       "tier": "primary",
       "currency": "current",
-      "authority": "Receita Federal"
+      "authority": "Receita Federal",
+      "authority_kind": "customs",
+      "jurisdiction": "BR",
+      "language": "pt",
+      "accessed_at": "2026-07-30",
+      "last_modified_observed": "2022-12-30",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual"
     },
     {
       "source_id": "SRC-BR-BCB-POLITICA-CAMBIAL",
@@ -39,7 +61,14 @@
       "type": "central_bank",
       "tier": "primary",
       "currency": "current",
-      "authority": "Banco Central do Brasil"
+      "authority": "Banco Central do Brasil",
+      "authority_kind": "central_bank",
+      "jurisdiction": "BR",
+      "language": "pt",
+      "accessed_at": "2026-07-30",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "SPA page; no M1 verbatim excerpt until a quotable capture is preserved."
     },
     {
       "source_id": "SRC-BR-RES-277",
@@ -49,7 +78,14 @@
       "tier": "primary",
       "currency": "current",
       "authority": "Banco Central do Brasil",
-      "note": "Current implementing regulation for Lei 14.286 FX-market framework, including authorised institutions and domestic foreign-currency accounts."
+      "authority_kind": "central_bank",
+      "jurisdiction": "BR",
+      "language": "pt",
+      "accessed_at": "2026-07-30",
+      "published_date": "2022-12-31",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "note": "Current implementing regulation for Lei 14.286 FX-market framework."
     },
     {
       "source_id": "SRC-BR-BCB-INSTITUICOES",
@@ -58,7 +94,13 @@
       "type": "central_bank",
       "tier": "primary",
       "currency": "current",
-      "authority": "Banco Central do Brasil"
+      "authority": "Banco Central do Brasil",
+      "authority_kind": "central_bank",
+      "jurisdiction": "BR",
+      "language": "pt",
+      "accessed_at": "2026-07-30",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual"
     },
     {
       "source_id": "SRC-BR-MERCOSUL-LEGACY",
@@ -69,7 +111,11 @@
       "currency": "superseded",
       "superseded_by": "SRC-BR-BCB-POLITICA-CAMBIAL",
       "authority": "Banco Central do Brasil",
-      "note": "Must not be used to prove current institutional composition or current market operations."
+      "authority_kind": "central_bank",
+      "jurisdiction": "BR",
+      "accessed_at": "2026-07-30",
+      "content_persistence": "not_preserved",
+      "note": "Audit only. Must not prove current institutional composition or market operations."
     },
     {
       "source_id": "SRC-BR-RMCCI-1-14-LEGACY",
@@ -80,6 +126,10 @@
       "currency": "superseded",
       "superseded_by": "SRC-BR-RES-277",
       "authority": "Banco Central do Brasil",
+      "authority_kind": "primary_regulator",
+      "jurisdiction": "BR",
+      "accessed_at": "2026-07-30",
+      "content_persistence": "not_preserved",
       "note": "Superseded for Law 14.286 implementation by Resolução BCB 277/2022."
     }
   ],

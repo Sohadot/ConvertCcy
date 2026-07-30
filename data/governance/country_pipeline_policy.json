@@ -82,5 +82,64 @@
     "legal_thresholds",
     "mandatory_actions",
     "prohibited_actions"
-  ]
+  ],
+
+  "intake": {
+    "required_authored_artifacts": ["sources.json", "evidence_excerpts.json"],
+    "generated_artifacts": ["intake_report.json"],
+    "fail_on_intake_report_drift": true,
+    "official_primary_only": true,
+    "excerpt_requires_current_source": true,
+    "allow_superseded_excerpt_with_human_review": true,
+    "superseded_excerpt_never_downstream_eligible": true,
+    "ambiguous_never_downstream_eligible": true,
+    "bounded_paraphrase_never_downstream_eligible_by_default": true,
+    "require_pinpoint": true,
+    "require_representation_enum": true,
+    "require_content_persistence_declaration": true,
+    "require_capture_status": true,
+    "claim_neutrality_status_required": true,
+    "neutrality_heuristics_are_partial": true,
+    "offline_validator_does_not_prove_textual_fidelity": true,
+    "stale_source_warn_days": 180,
+    "official_authority_kinds": [
+      "central_bank",
+      "customs",
+      "ministry",
+      "legislature_publication",
+      "regulator",
+      "fiu",
+      "primary_regulator",
+      "primary_regulator_faq",
+      "primary_regulator_rule_page"
+    ],
+    "forbidden_operator_voice_patterns": [
+      "page_status",
+      "indexing_allowed",
+      "evidence_tier",
+      "verification_target",
+      "downstream_eligible",
+      "claim_id",
+      "field_bindings"
+    ],
+    "milestone_scope_forbidden_path_globs": [
+      "data/rules/**",
+      "data/coverage/pipeline/*/claims.json",
+      "data/coverage/pipeline/*/field_bindings.json"
+    ],
+    "milestone_scope_allowed_path_globs": [
+      "data/governance/country_pipeline_policy.json",
+      "scripts/pipeline_schema.py",
+      "scripts/validate_source_intake.py",
+      "scripts/validate_pipeline_milestone_scope.py",
+      "scripts/country_pipeline.py",
+      "scripts/validate_country_pipeline.py",
+      ".github/workflows/governance-gate.yml",
+      "COUNTRY_REVIEW_EXECUTION_PROTOCOL.md",
+      "docs/PIPELINE_PHASE2_M1_PLAN.md",
+      "data/coverage/pipeline/*/sources.json",
+      "data/coverage/pipeline/*/evidence_excerpts.json",
+      "data/coverage/pipeline/*/intake_report.json"
+    ]
+  }
 }

@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "brazil",
+  "decision": "PASS",
+  "downstream_eligible": true,
+  "blocking_findings": [],
+  "improvement_findings": [],
+  "needs_human_review": [],
+  "excerpt_eligibility": {
+    "EX-BR-LEI-ART2-OPS": true,
+    "EX-BR-LEI-ART2-RATE": true,
+    "EX-BR-LEI-ART3": true,
+    "EX-BR-LEI-ART5": true,
+    "EX-BR-LEI-ART14-THRESHOLD": true,
+    "EX-BR-RECEITA-ENTRY": true,
+    "EX-BR-RECEITA-EXIT": true,
+    "EX-BR-RES277-ART29": true,
+    "EX-BR-RES277-ART69-70": true
+  },
+  "stats": {
+    "sources_total": 8,
+    "sources_current": 6,
+    "sources_superseded": 2,
+    "excerpts_total": 9,
+    "excerpts_downstream_eligible": 9
+  },
+  "summary": "INTAKE PASS",
+  "capability_note": "M1 validator validates declared provenance and structural evidence controls; it does not independently establish textual fidelity unless a locally preserved source capture is available."
+}

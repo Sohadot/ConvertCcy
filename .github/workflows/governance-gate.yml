@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -58,3 +60,13 @@ jobs:
         # are automatically held to --require-publish-ready semantics inside
         # the validator (Publication Gate becomes blocking for those slugs).
         run: python3 scripts/validate_country_pipeline.py
+
+      - name: Source intake gate (validate_source_intake.py)
+        # Phase 2 M1 opt-in: runs for packs with evidence_excerpts.json.
+        # Regenerates report in-memory and fails on intake_report drift.
+        run: python3 scripts/validate_source_intake.py --check-drift
+
+      - name: Pipeline milestone scope gate (validate_pipeline_milestone_scope.py)
+        # Blocks M1 intake PRs from also rewriting claims/bindings/rules.
+        run: python3 scripts/validate_pipeline_milestone_scope.py --base origin/main
+        if: github.event_name == 'pull_request'

@@ -295,3 +295,35 @@ Publication lifecycle flips (`page_status`, `indexing_allowed`) remain **human-g
 - **Publication-claiming packs** (`page_status` in `verified`/`published`, or `indexing_allowed: true`): the same command automatically enforces Publication Gate as **blocking** (equivalent to `--require-publish-ready` for those slugs).
 
 Phase 1 is a **Governed Review Pipeline** (policy → bindings → review → bounded fix). It is not yet an end-to-end country production pipeline (intake → claim extraction → draft generation → semantic fidelity → auto PR).
+
+## Appendix B — Phase 2 Milestone 1 (Source Intake + Evidence Excerpts)
+
+Plan (normative contract): [`docs/PIPELINE_PHASE2_M1_PLAN.md`](docs/PIPELINE_PHASE2_M1_PLAN.md)
+
+Executable intake policy lives under `intake` in [`data/governance/country_pipeline_policy.json`](data/governance/country_pipeline_policy.json).
+
+### Artifacts
+
+| File | Role |
+|---|---|
+| `data/coverage/pipeline/{slug}/sources.json` | Authored input |
+| `data/coverage/pipeline/{slug}/evidence_excerpts.json` | Authored/captured input |
+| `data/coverage/pipeline/{slug}/intake_report.json` | **Generated** — never hand-write PASS |
+
+### Operator commands
+
+```text
+python scripts/country_pipeline.py intake-review <slug>
+python scripts/validate_source_intake.py --check-drift
+python scripts/validate_pipeline_milestone_scope.py --base origin/main
+```
+
+### Offline honesty
+
+M1 validates **declared provenance** and structural controls. It does **not** independently prove live excerpt-to-page textual fidelity unless a local capture / fingerprint is present.
+
+### Downstream gate
+
+`intake_report.downstream_eligible` is true only when decision is PASS, human-review queue is empty, and at least one excerpt is settled (`verbatim_quote` / eligible translation path, `claim_neutrality_status: reviewed`, current primary source, not ambiguous, not superseded).
+
+Milestone 2 may consume only downstream-eligible excerpts. Ambiguous, superseded-linked, unreviewed, or `bounded_paraphrase` excerpts remain blocked by default.
