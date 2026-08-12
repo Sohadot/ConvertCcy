@@ -1,0 +1,77 @@
+{
+  "sample": "ConvertCCY Governed Currency Rules — Public Sample Dataset",
+  "sample_version": "0.1.0",
+  "source_repository": "https://github.com/Sohadot/ConvertCcy",
+  "source_commit": "7298908e189ee9cedd6d03db4b0632d481c61343",
+  "canonical_dataset_url": "https://convertccy.com/dataset.html",
+  "full_dataset_url": "https://convertccy.com/rules/dataset.json",
+  "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "ConvertCCY (https://convertccy.com/)",
+  "doi": null,
+  "doi_status": "not_reserved",
+  "generated_at": "2026-08-12T10:10:52+00:00",
+  "selection_basis": "representational_diversity",
+  "selection_rule": "A fixed illustrative subset of five already-published governed jurisdictions, selected to expose materially different currency-passage and regulatory structures across regions and authority patterns. Selection is based on representational diversity of the governed model, not traffic, market size, commercial attractiveness, or new research performed for M3. No jurisdiction is included unless it is already eligible in the published governed layer at the pinned source commit.",
+  "included_jurisdictions": [
+    {
+      "country_slug": "south-korea",
+      "country_name": "South Korea",
+      "iso2": "KR",
+      "currency_code": "KRW",
+      "last_reviewed": "2026-07-25",
+      "evidence_tier": "official_verified"
+    },
+    {
+      "country_slug": "india",
+      "country_name": "India",
+      "iso2": "IN",
+      "currency_code": "INR",
+      "last_reviewed": "2026-05-02",
+      "evidence_tier": "official_verified"
+    },
+    {
+      "country_slug": "france",
+      "country_name": "France",
+      "iso2": "FR",
+      "currency_code": "EUR",
+      "last_reviewed": "2026-05-02",
+      "evidence_tier": "official_verified"
+    },
+    {
+      "country_slug": "south-africa",
+      "country_name": "South Africa",
+      "iso2": "ZA",
+      "currency_code": "ZAR",
+      "last_reviewed": "2026-07-23",
+      "evidence_tier": "official_verified"
+    },
+    {
+      "country_slug": "canada",
+      "country_name": "Canada",
+      "iso2": "CA",
+      "currency_code": "CAD",
+      "last_reviewed": "2026-05-02",
+      "evidence_tier": "official_verified"
+    }
+  ],
+  "integrity": {
+    "algorithm": "SHA-256"
+  },
+  "files": [
+    {
+      "path": "CITATION.cff",
+      "bytes": 473,
+      "sha256": "f5b4f60a7bb31ae7fbd34dadf6654b30ef0634355e4a5307adf6ccd4b8cbcfce"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1878,
+      "sha256": "072ffe50c3e31076bfea88b6d2d4eeafd79ad6df712b7a442b8f133b8069d812"
+    },
+    {
+      "path": "convertccy-governed-currency-rules-sample.json",
+      "bytes": 65813,
+      "sha256": "579ec97dff824f4ec6e9b95075a260495cad7744ed62dce4d23396474a35fe69"
+    }
+  ]
+}

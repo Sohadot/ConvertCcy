@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this sample, please cite it as below."
+title: "ConvertCCY Governed Currency Rules — Public Sample Dataset"
+version: "0.1.0"
+license: CC-BY-4.0
+url: "https://convertccy.com/dataset.html"
+repository-code: "https://github.com/Sohadot/ConvertCcy"
+commit: "7298908e189ee9cedd6d03db4b0632d481c61343"
+authors:
+  - name: "ConvertCCY"
+    website: "https://convertccy.com/"
+# doi: reserved on publication (Zenodo). doi_status: not_reserved
