@@ -11,15 +11,23 @@ published layer, and emits them plus reproducibility metadata.
 
 Governed by docs/M3_DATASET_DISCOVERY_PLAN.md (§5.0). Key rules enforced here:
 
+  * The source is read from a PINNED git object (SOURCE_COMMIT below), via
+    `git show <commit>:rules/dataset.json`, NOT from the working tree or HEAD.
+    This makes v0.1.0 exactly reproducible: checkout any commit, run the
+    builder, and the committed data/README/CITATION hashes reproduce. It also
+    prevents attributing uncommitted local edits to a real commit.
   * Fixed five-jurisdiction subset (representational diversity, not traffic).
   * No automatic substitution. If any of the five is not `published` or not
     `indexing_allowed` at the pinned source commit, the sample gate HALTS and
     reports; it never silently swaps in another jurisdiction.
   * DOI is not fabricated: `doi` is null and `doi_status` is "not_reserved"
     until an actual DOI is reserved on Zenodo (M3-2, out of scope here).
-  * The emitted data file carries only values that are stable at a given source
-    commit (no wall-clock), so its SHA-256 is reproducible. The wall-clock
-    `generated_at` lives in the manifest only.
+  * The emitted data file carries only values that are stable at the pinned
+    source commit (no wall-clock), so its SHA-256 is reproducible. The
+    wall-clock `generated_at` lives in the manifest only.
+
+To cut a new version later (e.g. v0.2.0) that tracks newer governed data,
+bump SAMPLE_VERSION and SOURCE_COMMIT together as a deliberate decision.
 
 Run: python3 scripts/build_m3_sample.py
 Exit code 0 = sample written; non-zero = sample gate halted (nothing written).
@@ -35,8 +43,15 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-SOURCE_DATASET = REPO / "rules" / "dataset.json"
 OUT_DIR = REPO / "dataset" / "sample"
+
+# Path of the governed dataset inside the pinned git object.
+SOURCE_DATASET_PATH = "rules/dataset.json"
+
+# The sample is pinned to a specific commit of the governed data, so v0.1.0 is
+# reproducible from a Git object rather than from whatever is in the working
+# tree. Bumping this is a deliberate versioning decision (see module docstring).
+SOURCE_COMMIT = "7298908e189ee9cedd6d03db4b0632d481c61343"
 
 SAMPLE_VERSION = "0.1.0"
 SOURCE_REPOSITORY = "https://github.com/Sohadot/ConvertCcy"
@@ -66,10 +81,22 @@ SELECTION_RULE = (
 )
 
 
-def _source_commit() -> str:
-    return subprocess.check_output(
-        ["git", "-C", str(REPO), "rev-parse", "HEAD"], text=True
-    ).strip()
+def _read_pinned_source() -> str:
+    """Read rules/dataset.json from the PINNED commit's git object.
+
+    Not from the working tree and not from HEAD — this is what makes v0.1.0
+    reproducible and keeps provenance honest.
+    """
+    try:
+        return subprocess.check_output(
+            ["git", "-C", str(REPO), "show", f"{SOURCE_COMMIT}:{SOURCE_DATASET_PATH}"],
+            text=True,
+        )
+    except subprocess.CalledProcessError:
+        _halt(
+            f"cannot read {SOURCE_DATASET_PATH} at pinned commit "
+            f"{SOURCE_COMMIT} (object missing? fetch full history)"
+        )
 
 
 def _sha256(path: Path) -> str:
@@ -94,10 +121,7 @@ def _dump(obj) -> str:
 
 
 def main() -> int:
-    if not SOURCE_DATASET.exists():
-        _halt(f"published dataset not found at {SOURCE_DATASET}")
-
-    dataset = json.loads(SOURCE_DATASET.read_text(encoding="utf-8"))
+    dataset = json.loads(_read_pinned_source())
     by_slug = {c["country_slug"]: c for c in dataset.get("countries", [])}
 
     # --- Sample gate: validate all five, halt (never substitute) on any miss.
@@ -115,7 +139,7 @@ def main() -> int:
             _halt(f"'{slug}' indexing_allowed is not true")
         projected.append(country)
 
-    source_commit = _source_commit()
+    source_commit = SOURCE_COMMIT
 
     # --- Emit the data file (stable at a commit; no wall-clock inside it).
     sample_data = {

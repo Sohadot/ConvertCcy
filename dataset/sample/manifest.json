@@ -9,7 +9,7 @@
   "attribution": "ConvertCCY (https://convertccy.com/)",
   "doi": null,
   "doi_status": "not_reserved",
-  "generated_at": "2026-08-12T10:10:52+00:00",
+  "generated_at": "2026-08-12T10:56:41+00:00",
   "selection_basis": "representational_diversity",
   "selection_rule": "A fixed illustrative subset of five already-published governed jurisdictions, selected to expose materially different currency-passage and regulatory structures across regions and authority patterns. Selection is based on representational diversity of the governed model, not traffic, market size, commercial attractiveness, or new research performed for M3. No jurisdiction is included unless it is already eligible in the published governed layer at the pinned source commit.",
   "included_jurisdictions": [
