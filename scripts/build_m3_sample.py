@@ -35,7 +35,6 @@ Exit code 0 = sample written; non-zero = sample gate halted (nothing written).
 
 from __future__ import annotations
 
-import datetime as _dt
 import hashlib
 import json
 import subprocess
@@ -54,6 +53,12 @@ SOURCE_DATASET_PATH = "rules/dataset.json"
 SOURCE_COMMIT = "7298908e189ee9cedd6d03db4b0632d481c61343"
 
 SAMPLE_VERSION = "0.1.0"
+
+# Frozen build timestamp for this (SAMPLE_VERSION, SOURCE_COMMIT) pair. Fixed —
+# not datetime.now() — so the ENTIRE package, manifest.json included, is
+# byte-identical on every rebuild: same SOURCE_COMMIT + same SAMPLE_VERSION ->
+# identical bytes. Cutting a new version resets this to that build's timestamp.
+SAMPLE_GENERATED_AT = "2026-08-12T10:10:52+00:00"
 SOURCE_REPOSITORY = "https://github.com/Sohadot/ConvertCcy"
 CANONICAL_DATASET_URL = "https://convertccy.com/dataset.html"
 FULL_DATASET_URL = "https://convertccy.com/rules/dataset.json"
@@ -196,9 +201,7 @@ def main() -> int:
         "attribution": ATTRIBUTION,
         "doi": None,
         "doi_status": "not_reserved",
-        "generated_at": _dt.datetime.now(_dt.timezone.utc)
-        .replace(microsecond=0)
-        .isoformat(),
+        "generated_at": SAMPLE_GENERATED_AT,
         "selection_basis": "representational_diversity",
         "selection_rule": SELECTION_RULE,
         "included_jurisdictions": [
