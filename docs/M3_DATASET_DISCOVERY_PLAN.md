@@ -85,19 +85,25 @@ forward. It is adapted to this channel, not weakened.
 
 ### 3.1 Signals we record
 
-| Signal | Meaning | Nature |
+Event names are **canonical** and used identically everywhere in this document
+(§3.1, §3.3, and elsewhere):
+
+| Signal (canonical event) | Meaning | Nature |
 | --- | --- | --- |
-| `dataset_landing_views` | Views of the canonical dataset landing page | leading |
-| `sample_downloads_on_convertccy` | Downloads of the public sample from convertccy.com | leading |
-| `huggingface_downloads` | HF-reported dataset downloads | leading |
-| `commercial_surface_clicks` | Clicks on the "commercial use / licensing" path | leading |
-| `qualified_inquiries` | Inbound asking about commercial use / license / integration / coverage / API / pricing | **decision** |
-| `referrer` / `source` | Where the discovery originated | attribution |
-| `version` | Dataset version the signal is attached to | attribution |
+| `dataset_landing_view` | View of the canonical dataset landing page | leading |
+| `sample_download` | Download of the public sample from convertccy.com | leading |
+| `huggingface_download` | HF-reported dataset download | leading |
+| `enterprise_cta_click` | Click on the Enterprise data services exit | leading |
+| `qualified_inquiry` | Inbound asking about coverage / data / integration / licensing / update delivery / enterprise service / pricing | **decision** |
+
+`referrer`, `source`, and `version` are **attributes** attached to these
+events, not independent signals — `version` pins which dataset version a signal
+belongs to, and `referrer` / `source` record where the discovery originated
+(and may be unknown; see §3.3).
 
 Hugging Face computes dataset downloads server-side, with approximate
 deduplication of repeated pulls from the same client within a short window, so
-`huggingface_downloads` is at least an *independent* count not sourced from our
+`huggingface_download` is at least an *independent* count not sourced from our
 own analytics.
 
 ### 3.2 The rule that governs the contract
@@ -122,10 +128,10 @@ mechanism:
 
 | Signal | Instrument |
 | --- | --- |
-| `dataset_landing_views` | existing GA4 pageview |
+| `dataset_landing_view` | existing GA4 pageview |
 | `sample_download` | explicit GA4 / GTM event on the sample download |
 | `enterprise_cta_click` | explicit GA4 / GTM event on the enterprise exit |
-| `huggingface_downloads` | Hugging Face native download counter |
+| `huggingface_download` | Hugging Face native download counter |
 | `qualified_inquiry` | an actual inbound record, manually classified per §3.4 |
 
 Rule on attribution:
@@ -269,7 +275,7 @@ The pointer announces, plainly:
 - Dataset documentation
 - Zenodo DOI
 - Hugging Face dataset
-- Commercial licensing
+- Enterprise data services
 - Contact
 
 This is cheap and sensible. But because there is no standardized, reliable
