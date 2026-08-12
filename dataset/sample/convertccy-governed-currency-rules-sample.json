@@ -1,0 +1,925 @@
+{
+  "dataset": "ConvertCCY Governed Currency Rules — Public Sample Dataset",
+  "description": "A fixed five-jurisdiction public sample of the ConvertCCY governed foreign-currency-rules dataset. Each field is mapped to official sources with a visible review date. This is a projection of the published governed layer, not a separate dataset.",
+  "canonical_dataset": "https://convertccy.com/dataset.html",
+  "full_dataset": "https://convertccy.com/rules/dataset.json",
+  "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "ConvertCCY (https://convertccy.com/)",
+  "citation": "ConvertCCY. Governed Currency Rules — Public Sample Dataset (v0.1.0). https://convertccy.com/dataset.html",
+  "sample_version": "0.1.0",
+  "source_commit": "7298908e189ee9cedd6d03db4b0632d481c61343",
+  "doi": null,
+  "doi_status": "not_reserved",
+  "selection_rule": "A fixed illustrative subset of five already-published governed jurisdictions, selected to expose materially different currency-passage and regulatory structures across regions and authority patterns. Selection is based on representational diversity of the governed model, not traffic, market size, commercial attractiveness, or new research performed for M3. No jurisdiction is included unless it is already eligible in the published governed layer at the pinned source commit.",
+  "count": 5,
+  "jurisdictions": [
+    {
+      "country_name": "South Korea",
+      "country_slug": "south-korea",
+      "iso2": "KR",
+      "iso3": "KOR",
+      "region": "East Asia",
+      "currency_code": "KRW",
+      "currency_name": "South Korean Won",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-07-25",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "South Korea operates a floating exchange-rate regime for the Korean won, with the Bank of Korea (BOK) as the central bank and the Ministry of Economy and Finance (MOEF) responsible for the Foreign Exchange Transactions Act (FETA). Cross-border movements of cash by travellers are administered by the Korea Customs Service, which requires a mandatory declaration when means of payment exceed USD 10,000. Under FETA, current-account payments and receipts are substantially liberalised, while capital transactions involving large fund movements are subject to transaction-specific notification or permission procedures handled through foreign exchange banks, the Bank of Korea Governor, or MOEF. The Korean won is not fully internationalised. This is a regulated framework, not an absence of exchange controls.",
+      "summary": {
+        "traveler": "Travellers entering or leaving South Korea must file a mandatory declaration with the Korea Customs Service when their means of payment — foreign currency, Korean-won notes and checks combined — exceed USD 10,000 in total; the traveller marks item no. 3 of the Traveler Declaration Form and receives a Certificate of Foreign Currency Declaration. At or below USD 10,000 no declaration is required. This customs declaration is separate from the Foreign Exchange Transactions Act reporting that applies to capital transfers.",
+        "business": "Under the Foreign Exchange Transactions Act, current-account payments and receipts are substantially liberalised, while capital transactions (FETA Article 18) and certain methods of payment or receipt (FETA Article 16) require transaction-specific reporting, and some payments to foreign countries may require permission (FETA Article 15). The Minister of Economy and Finance (MOEF) is the competent authority under the Act; FETA Article 23 delegates specified powers to the Financial Services Commission, the Bank of Korea Governor, the Financial Supervisory Service Governor and foreign exchange agencies, and the actual filing or permission destination — a foreign exchange bank, the Bank of Korea Governor, or MOEF — depends on the transaction type and the applicable Act, Enforcement Decree and Regulations. Cross-border payments and foreign-currency accounts run through foreign exchange businesses registered under FETA Article 8. These FETA regimes are separate from the Korea Customs USD 10,000 border declaration, foreign exchange banks' reporting of foreign-currency sales over USD 10,000 to the National Tax Service (FETA Article 21), and KoFIU anti-money-laundering reporting."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "A traveller bringing means of payment into South Korea — foreign currency, Korean-won notes and checks combined — exceeding USD 10,000 in total must file a mandatory declaration with the Korea Customs Service, marking item no. 3 of the Traveler Declaration Form and receiving a Certificate of Foreign Currency Declaration. At or below USD 10,000 no permission or declaration is required. This customs declaration is distinct from any Foreign Exchange Transactions Act reporting on capital transactions.",
+        "take_foreign_currency_out": "A traveller leaving South Korea must likewise file a mandatory Korea Customs declaration when means of payment exceed USD 10,000 in total. Separately, under the Foreign Exchange Transactions Act, capital-account transfers by residents may require transaction-specific notification or permission through a foreign exchange bank or the Bank of Korea Governor; that reporting is distinct from the customs border declaration.",
+        "cash_declaration_threshold": "The Korea Customs declaration threshold is means of payment exceeding USD 10,000 in total — aggregating foreign currency, Korean-won notes and checks — for a traveller entering or leaving the country; it is a mandatory report to Customs (Traveler Declaration Form item no. 3, yielding a Certificate of Foreign Currency Declaration), not merely a document to produce if questioned, and it is triggered only above USD 10,000. This border declaration is separate from three other regimes: Foreign Exchange Transactions Act capital-transaction notification or permission, foreign exchange banks' reporting of FX sales over USD 10,000 to the National Tax Service, and KoFIU anti-money-laundering reporting.",
+        "resident_holding_rules": "South Korean residents may open and hold foreign-currency accounts — resident accounts and resident foreign currency trust accounts — through foreign exchange businesses registered under Article 8 of the Foreign Exchange Transactions Act. Capital transactions, which under Article 3 of the Act include deposits, lending, securities and overseas real estate, require advance reporting under FETA Article 18; certain methods of payment or receipt require reporting under Article 16; and some payments to foreign countries may require permission under Article 15. Depending on the transaction the report is made to a foreign exchange bank or the Bank of Korea Governor, and holding and transfer remain subject to sanctions, AML/KYC, tax and reporting requirements. This does not guarantee that any resident may open any particular account.",
+        "non_resident_rules": "Non-residents may open and operate non-resident accounts through foreign exchange businesses registered under the Foreign Exchange Transactions Act — external accounts and non-resident foreign currency trust accounts for foreign-currency funds, and non-resident Korean-won accounts and non-resident free-transfer Korean-won accounts for won funds (Foreign Exchange Transactions Regulations Article 2-6-2). Certain transactions require transaction-specific reporting to a foreign exchange bank or the Bank of Korea Governor (for example FETA Article 18 capital transactions), and repatriation is not unconditional; account opening remains subject to sanctions screening, AML/KYC, tax and each institution's requirements. There is no entitlement to any particular account or service.",
+        "business_invoicing_settlement": "Cross-border business payments and receipts run through foreign exchange businesses registered under Article 8 of the Foreign Exchange Transactions Act. Certain methods of payment or receipt require advance reporting under FETA Article 16 — settlement by offsetting a claim, settlement outside the period set by the Minister, payment to or from a person who is not a party to the transaction, and payment or receipt made without going through a foreign exchange agency — and capital transactions require reporting under Article 18, alongside sanctions, AML and reporting rules. This does not establish an unrestricted choice of invoice currency, which the Act does not govern and which depends on the contract and applicable rules.",
+        "exchange_controls": "South Korea regulates foreign exchange through the Foreign Exchange Transactions Act, administered by MOEF and the Bank of Korea. The Act sets procedures in three areas — transaction type, payment and receipt, and method of payment and receipt. Current-account payments and receipts are substantially liberalised, while capital transactions involving large fund movements are subject to transaction-specific notification or permission through foreign exchange banks, the Bank of Korea Governor, or MOEF. The Korean won is not fully internationalised. This is a regulated framework — not an absence of exchange controls and not full liberalisation of the capital account.",
+        "banking_conversion_practicality": "Currency conversion and cross-border payments in South Korea are provided through foreign exchange banks and other institutions authorised under the Foreign Exchange Transactions Act within the Bank of Korea / MOEF framework. These authorised intermediaries apply the Act's notification, permission and reporting procedures according to transaction type; authorisation does not guarantee that any particular institution offers a given currency, service or price."
+      },
+      "source_authorities": [
+        {
+          "label": "Korea Customs Service — Declaration of Foreign Currency (traveller means of payment exceeding USD 10,000; Traveler Declaration Form; Certificate of Foreign Currency Declaration)",
+          "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10800&cntntsId=5500",
+          "type": "customs",
+          "tier": "primary"
+        },
+        {
+          "label": "Korea Customs Service — Traveler Declaration Form",
+          "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10802&cntntsId=5503",
+          "type": "customs",
+          "tier": "primary"
+        },
+        {
+          "label": "Bank of Korea — Foreign Exchange System: Payments and Transactions (FETA three-area structure; capital-transaction notification/permission; foreign exchange banks)",
+          "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+          "type": "central_bank",
+          "tier": "primary"
+        },
+        {
+          "label": "Bank of Korea — Foreign Exchange System: Relevant Legislation (Foreign Exchange Transactions Act)",
+          "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400187",
+          "type": "central_bank",
+          "tier": "primary"
+        },
+        {
+          "label": "Foreign Exchange Transactions Act — current official English consolidation, National Legal Information Center (law.go.kr, 국가법령정보센터): Act No. 14525, promulgated 17 Jan 2017, enforced 18 Jul 2017. Verified present and operative in this current version: Art. 15 (Payment Procedures, etc.), Art. 16 (Reporting on Methods of Payment or Receipt), Art. 17 (Reporting on Export and Import of Means of Payment, etc.), Art. 18 (Reporting, etc. on Capital Transactions), Art. 21 (Notification, etc. to Commissioner of National Tax Service), Art. 23 (Delegation, Entrustment, etc. of Authority)",
+          "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=191033&viewCls=engLsInfoR&urlMode=engLsInfoR",
+          "type": "regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "Foreign Exchange Transactions Act — Korea Legislation Research Institute (KLRI) English reference translation, elaw.klri.re.kr (non-binding reference translation, consolidated through Act No. 11407 of 21 Mar 2012; provides the fetchable article body for Art. 3 definitions, Art. 8 registration of foreign exchange business, Art. 15 payment procedures, Art. 16 methods of payment or receipt, Art. 18 capital transactions, Art. 23 delegation — each verified as present and operative in the current official version, Act No. 14525, per law.go.kr)",
+          "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=30011&type=part&key=23",
+          "type": "regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "Enforcement Decree of the Foreign Exchange Transactions Act — KLRI official English reference translation, elaw.klri.re.kr",
+          "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=52298&type=part&key=23",
+          "type": "regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "Foreign Exchange Transactions Regulations (Notice No. 2023-26, Jul. 4, 2023) — KLRI official English reference translation, elaw.klri.re.kr (Art. 2-1-2 payment/receipt confirmation; Art. 2-2 monthly notice to tax/customs authorities; Art. 2-6-2 resident and non-resident accounts)",
+          "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=64673&type=part&key=23",
+          "type": "regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "Ministry of Economy and Finance (MOEF) — competent authority for the Foreign Exchange Transactions Act",
+          "url": "https://english.moef.go.kr/",
+          "type": "ministry",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+            "pages": [],
+            "section": "BOK Foreign Exchange System — FETA three-area structure; current substantially liberalised, capital transactions notification/permission via foreign exchange banks / BOK Governor / MOEF; won not fully internationalised",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10800&cntntsId=5500",
+            "pages": [],
+            "section": "Korea Customs — mandatory traveller declaration when means of payment exceed USD 10,000",
+            "source_kind": "html"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10800&cntntsId=5500",
+            "pages": [],
+            "section": "Korea Customs — means of payment (foreign currency, KRW notes, checks) exceeding USD 10,000 in total: mandatory report; Traveler Declaration Form item 3; Certificate of Foreign Currency Declaration",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10802&cntntsId=5503",
+            "pages": [],
+            "section": "Traveler Declaration Form — currency declaration item",
+            "source_kind": "html"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+            "pages": [],
+            "section": "BOK Foreign Exchange System — FETA current-account liberalisation and capital-transaction reporting; the Minister (MOEF) is the competent authority and delegates authority to the Bank of Korea, the FSC and the Customs Service; filing destination depends on the transaction",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=191033&viewCls=engLsInfoR&urlMode=engLsInfoR",
+            "pages": [],
+            "section": "Foreign Exchange Transactions Act — current official English consolidation, National Legal Information Center (law.go.kr): Act No. 14525, enforced 18 Jul 2017. MOEF is the competent authority; Art. 15 (payment procedures/permission), Art. 16 (reporting on methods of payment or receipt), Art. 18 (reporting on capital transactions), Art. 21 (notification to the Commissioner of the National Tax Service) and Art. 23 (delegation/entrustment of authority to the FSC, the BOK Governor, the FSS Governor and foreign exchange agencies) verified present and operative in this current version",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=30011&type=part&key=23",
+            "pages": [],
+            "section": "Foreign Exchange Transactions Act (KLRI English reference translation, non-binding; article body for Art. 15 payment procedures and permission for certain payments abroad, Art. 16 reporting on methods of payment or receipt, Art. 18 advance reporting on capital transactions, Art. 23 delegation/entrustment of the Minister's authority to the FSC, the BOK Governor, the FSS Governor and foreign exchange agencies — the Minister/MOEF being the competent authority, not a delegate)",
+            "source_kind": "html"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10800&cntntsId=5500",
+            "pages": [],
+            "section": "Korea Customs — inbound: means of payment exceeding USD 10,000 in total requires a mandatory declaration (Traveler Declaration Form item 3; Certificate of Foreign Currency Declaration); at or below USD 10,000 none required",
+            "source_kind": "html"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10800&cntntsId=5500",
+            "pages": [],
+            "section": "Korea Customs — outbound: mandatory declaration when means of payment exceed USD 10,000",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+            "pages": [],
+            "section": "FETA — capital-account transfers may require transaction-specific notification or permission via a foreign exchange bank or the BOK Governor, distinct from the customs declaration",
+            "source_kind": "html"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?mi=10800&cntntsId=5500",
+            "pages": [],
+            "section": "Korea Customs — declaration threshold: means of payment (foreign currency + KRW notes + checks) exceeding USD 10,000 in total; mandatory report; triggered only above USD 10,000",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+            "pages": [],
+            "section": "Distinct regimes: FETA capital-transaction notification/permission; foreign exchange banks' reporting of FX sales over USD 10,000 to the National Tax Service; KoFIU AML reporting",
+            "source_kind": "html"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+            "pages": [],
+            "section": "BOK Foreign Exchange System — resident foreign-currency accounts via foreign exchange banks; capital-transaction reporting",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=191033&viewCls=engLsInfoR&urlMode=engLsInfoR",
+            "pages": [],
+            "section": "Foreign Exchange Transactions Act — current official English consolidation, National Legal Information Center (law.go.kr): Act No. 14525, enforced 18 Jul 2017; Art. 8 (registration of foreign exchange business), Art. 15, Art. 16 and Art. 18 verified present and operative in this current version",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=30011&type=part&key=23",
+            "pages": [],
+            "section": "Foreign Exchange Transactions Act (KLRI English reference translation, non-binding; article body) — Art. 8 registration of foreign exchange business; Art. 3 definition of capital transactions (incl. deposits, lending, securities, overseas real estate); Art. 18 advance reporting on capital transactions; Art. 16 reporting on methods of payment or receipt; Art. 15 permission for certain payments abroad",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=64673&type=part&key=23",
+            "pages": [],
+            "section": "Foreign Exchange Transactions Regulations (Notice No. 2023-26, Jul. 4, 2023) Art. 2-6-2 — resident accounts and resident foreign currency trust accounts for the deposit of residents' foreign-currency funds",
+            "source_kind": "html"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+            "pages": [],
+            "section": "BOK Foreign Exchange System — non-resident accounts via foreign exchange banks; transaction-specific reporting; repatriation not unconditional",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=64673&type=part&key=23",
+            "pages": [],
+            "section": "Foreign Exchange Transactions Regulations (Notice No. 2023-26, Jul. 4, 2023) Art. 2-6-2 — external accounts and non-resident foreign currency trust accounts (foreign-currency funds), non-resident Korean-won accounts and non-resident free-transfer Korean-won accounts (won funds); Art. 2-6 declaration to the Bank of Korea Governor for specified transactions",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=191033&viewCls=engLsInfoR&urlMode=engLsInfoR",
+            "pages": [],
+            "section": "Foreign Exchange Transactions Act — current official English consolidation, National Legal Information Center (law.go.kr): Act No. 14525, enforced 18 Jul 2017; Art. 18 (reporting on capital transactions) and Art. 8 (registration of foreign exchange business) verified present and operative in this current version",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=30011&type=part&key=23",
+            "pages": [],
+            "section": "Foreign Exchange Transactions Act (KLRI English reference translation, non-binding; article body) — Art. 3 definition of non-resident; Art. 18 advance reporting on capital transactions; Art. 8 registration of foreign exchange business",
+            "source_kind": "html"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+            "pages": [],
+            "section": "BOK Foreign Exchange System — cross-border payments/receipts routed through foreign exchange banks; capital-transaction reporting; no invoice-currency guarantee",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://law.go.kr/LSW/lsInfoP.do?lsiSeq=191033&viewCls=engLsInfoR&urlMode=engLsInfoR",
+            "pages": [],
+            "section": "Foreign Exchange Transactions Act — current official English consolidation, National Legal Information Center (law.go.kr): Act No. 14525, enforced 18 Jul 2017; Art. 16 (reporting on methods of payment or receipt), Art. 18 (reporting on capital transactions) and Art. 8 (registration of foreign exchange business) verified present and operative in this current version",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://elaw.klri.re.kr/eng_mobile/viewer.do?hseq=30011&type=part&key=23",
+            "pages": [],
+            "section": "Foreign Exchange Transactions Act (KLRI English reference translation, non-binding; article body) — Art. 16 reporting on methods of payment or receipt (settlement by offsetting a claim; settlement outside the Minister's period; payment to/from a non-party; payment or receipt made without going through a foreign exchange agency); Art. 18 reporting on capital transactions; Art. 8 registration of foreign exchange business. The Act does not govern invoice-currency choice.",
+            "source_kind": "html"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+            "pages": [],
+            "section": "BOK Foreign Exchange System — FETA three-area structure (transaction type; payment and receipt; method of payment and receipt); current liberalised, capital notification/permission; won not fully internationalised",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400187",
+            "pages": [],
+            "section": "BOK — Relevant Legislation: the Foreign Exchange Transactions Act regulates the exchange-rate system, FX operations, payment/receipt and capital movements",
+            "source_kind": "html"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400191",
+            "pages": [],
+            "section": "BOK — conversion and cross-border payments via foreign exchange banks and institutions authorised under FETA; notification/permission/reporting by transaction type; not a service/price guarantee",
+            "source_kind": "html"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Foreign-exchange and cash-control rules in South Korea are set by the Foreign Exchange Transactions Act and Korea Customs rules and may change; requirements depend on residency, the transaction type and amount, documentation, and the applicable MOEF, Bank of Korea, and Korea Customs Service framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Korea Customs Service, the Bank of Korea, or a qualified professional before making any financial or travel decisions."
+    },
+    {
+      "country_name": "India",
+      "country_slug": "india",
+      "iso2": "IN",
+      "iso3": "IND",
+      "region": "South Asia",
+      "currency_code": "INR",
+      "currency_name": "Indian Rupee",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-05-02",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "India operates a statutory foreign-exchange framework under the Foreign Exchange Management Act (FEMA), 1999, administered principally by the Reserve Bank of India (RBI). In practice this is not a discretionary retail-cash jurisdiction: lawful foreign-exchange activity typically routes through authorised dealer banks while border cash controls are exercised through CBIC Indian Customs declarations (including the Currency Declaration Form, CDF) when thresholds apply. Relative to freely convertible regimes, India's FX regime mixes liberalisation on much of the current account with materially tighter regulation on the capital account; users should assume documentation, channels, and transaction-specific approvals matter.",
+      "summary": {
+        "traveler": "Any person may bring foreign exchange into India without limit. Declaration on the Currency Declaration Form (CDF) is required if foreign currency notes exceed USD 5,000 or the aggregate foreign exchange exceeds USD 10,000.",
+        "business": "All cross-border trade and capital transactions must be routed through Authorised Dealer banks under FEMA. The 2026 regulations introduce targeted updates for exports, imports, service payments and related operations."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "There is ordinarily no prohibition on importing foreign exchange into India, but lawful physical import is framed around declaration and documentation: when foreign currency notes exceed USD 5,000 or aggregate foreign exchange (including traveller instruments in scope of the Currency Declaration Form) exceeds USD 10,000 on arrival, the Currency Declaration Form (CDF) pathway becomes operationally decisive. Practical compliance means carrying supporting documentation consistent with Customs guidance and preserving CDF linkage if you intend to reconvert or carry unutilised foreign exchange outward later.",
+        "take_foreign_currency_out": "Unspent foreign exchange declared on arrival may be taken out, and the Currency Declaration Form should be retained for reconversion or for taking unused foreign exchange out of India.",
+        "cash_declaration_threshold": "The operative arrival-side threshold framing in the Customs materials bundled with Currency Declaration Form (CDF) practice is USD 5,000 for foreign currency notes and USD 10,000 for aggregate foreign exchange (including notes/travellers’ cheques falling under the form’s stated scope). When either threshold applies, Customs expects the relevant declaration channel/process to be followed; travellers should preserve endorsed documentation because it anchors later authorised-dealer conversions and outbound movements.",
+        "resident_holding_rules": "Indian residents remain subject to FEMA-based limits and conditions in relation to holding and using foreign exchange. Users should verify account eligibility, retention limits, and transaction-specific permissions directly with RBI rules and the authorised dealer.",
+        "non_resident_rules": "Non-residents (including NRIs and PIOs) may maintain NRE, FCNR(B) or NRO accounts with repatriation rights as permitted under RBI guidelines.",
+        "business_invoicing_settlement": "Import, export, and related cross-border service transactions must be handled through Authorised Dealer banks in accordance with FEMA regulations and the applicable RBI framework.",
+        "exchange_controls": "India maintains a regulated exchange framework under FEMA 1999. Current account transactions are largely liberalised while capital account transactions are subject to regulation and reporting.",
+        "banking_conversion_practicality": "Foreign exchange transactions are executed through Authorised Dealer banks, licensed money changers and authorised airports. The Currency Declaration Form (CDF) must be retained for reconversion and compliance purposes."
+      },
+      "source_authorities": [
+        {
+          "label": "RBI — Miscellaneous Forex Facilities FAQ (updated)",
+          "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+          "type": "primary_regulator_faq",
+          "tier": "primary"
+        },
+        {
+          "label": "RBI — Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026",
+          "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
+          "type": "primary_regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "RBI — Non-Resident Accounts FAQ",
+          "url": "https://www.rbi.org.in/commonperson/english/scripts/FAQs.aspx?Id=3",
+          "type": "primary_regulator_faq",
+          "tier": "primary"
+        },
+        {
+          "label": "CBIC — Currency Declaration Form (CDF)",
+          "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+          "type": "customs",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "FEMA Framework Overview"
+          },
+          {
+            "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
+            "pages": [],
+            "section": "Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026 (effective 1 October 2026)"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "Q5 – Foreign exchange brought into India"
+          },
+          {
+            "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+            "pages": [
+              1
+            ],
+            "section": "CDF Instructions"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
+            "pages": [],
+            "section": "2026 Export-Import Regulations Overview"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "Q5 – Declaration thresholds (CDF)"
+          },
+          {
+            "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+            "pages": [
+              1
+            ],
+            "section": "CDF Instructions"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+            "pages": [
+              1
+            ],
+            "section": "CDF retention for departure / reconversion"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+            "pages": [
+              1
+            ],
+            "section": "CDF Instructions (USD 5,000 notes / USD 10,000 aggregate)"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "Resident foreign currency holding limits under FEMA"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://www.rbi.org.in/commonperson/english/scripts/FAQs.aspx?Id=3",
+            "pages": [],
+            "section": "NRE / FCNR(B) / NRO accounts eligibility and rights"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13277",
+            "pages": [],
+            "section": "Foreign Exchange Management (Export and Import of Goods and Services) Regulations, 2026"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "FEMA 1999 general framework"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=829",
+            "pages": [],
+            "section": "Authorised Dealer and CDF procedures"
+          },
+          {
+            "url": "https://www.cbic.gov.in/resources/htdocs-cbec/currency_declaration_form_%28cdf%29.pdf",
+            "pages": [
+              1
+            ],
+            "section": "CDF Instructions"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in India are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBI/CBIC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of India, CBIC, or a qualified professional before making any financial or travel decisions."
+    },
+    {
+      "country_name": "France",
+      "country_slug": "france",
+      "iso2": "FR",
+      "iso3": "FRA",
+      "region": "Western Europe",
+      "currency_code": "EUR",
+      "currency_name": "Euro",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-05-02",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "France operates within the fully liberalised Eurozone foreign-exchange regime under the regulatory authority of the European Central Bank (ECB), Banque de France, and French Customs (Douane). There are no general exchange controls or restrictions on current or capital account transactions for residents or non-residents.",
+      "summary": {
+        "traveler": "Travelers may bring in or take out unlimited amounts of euros and foreign currency. Cash movements of €10,000 or more (or equivalent) must be declared to French Customs.",
+        "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "Foreign currency and euros may be freely imported. Declaration via DALIA online service (or paper form at border) is mandatory for amounts equal to or greater than €10,000 and may be submitted up to 30 days in advance.",
+        "take_foreign_currency_out": "Residents and non-residents may freely export currency and euros. Amounts of €10,000 or more in cash or bearer instruments require declaration to French Customs. Non-residents may repatriate the full amount of their declared inbound currency.",
+        "cash_declaration_threshold": "€10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Declaration must be made to French Customs.",
+        "resident_holding_rules": "French residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+        "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+        "business_invoicing_settlement": "Business transactions may be invoiced and settled in euros or foreign currency through authorised financial institutions.",
+        "exchange_controls": "France maintains no general exchange controls. The regime is fully liberalised within the Eurozone framework.",
+        "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks and authorised dealers throughout France."
+      },
+      "source_authorities": [
+        {
+          "label": "Banque de France — Foreign Exchange & Euro Regime",
+          "url": "https://www.banque-france.fr/en/monetary-policy",
+          "type": "central_bank",
+          "tier": "primary"
+        },
+        {
+          "label": "French Customs (Douane) — Cash Declaration Rules",
+          "url": "https://www.douane.gouv.fr/fiche/vous-voyagez-avec-10-000-euros-ou-plus",
+          "type": "customs",
+          "tier": "primary"
+        },
+        {
+          "label": "European Central Bank — Eurozone FX Framework",
+          "url": "https://www.ecb.europa.eu/mopo/html/index.en.html",
+          "type": "central_bank",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://www.banque-france.fr/en/monetary-policy",
+            "pages": [],
+            "section": "Eurozone FX Regime Overview"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.douane.gouv.fr/fiche/vous-voyagez-avec-10-000-euros-ou-plus",
+            "pages": [],
+            "section": "Travel & Currency Movement"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://www.banque-france.fr/en/monetary-policy",
+            "pages": [],
+            "section": "Business & Capital Movement"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.douane.gouv.fr/fiche/vous-voyagez-avec-10-000-euros-ou-plus",
+            "pages": [],
+            "section": "Import of Currency"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.douane.gouv.fr/fiche/vous-voyagez-avec-10-000-euros-ou-plus",
+            "pages": [],
+            "section": "Export of Currency"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.douane.gouv.fr/fiche/vous-voyagez-avec-10-000-euros-ou-plus",
+            "pages": [],
+            "section": "Cash Declaration Rules (€10,000 / equivalent)"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://www.banque-france.fr/en/monetary-policy",
+            "pages": [],
+            "section": "Resident Foreign Currency Accounts"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://www.banque-france.fr/en/monetary-policy",
+            "pages": [],
+            "section": "Non-Resident Accounts & Transfers"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://www.banque-france.fr/en/monetary-policy",
+            "pages": [],
+            "section": "Business & Cross-Border Payments"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://www.banque-france.fr/en/monetary-policy",
+            "pages": [],
+            "section": "Absence of Exchange Controls"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://www.banque-france.fr/en/monetary-policy",
+            "pages": [],
+            "section": "Authorised Dealers & Exchange Houses"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in France are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Banque de France / French Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with French Customs (Douane), Banque de France, or a qualified professional before making any financial or travel decisions."
+    },
+    {
+      "country_name": "South Africa",
+      "country_slug": "south-africa",
+      "iso2": "ZA",
+      "iso3": "ZAF",
+      "region": "Sub-Saharan Africa",
+      "currency_code": "ZAR",
+      "currency_name": "South African Rand",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-07-23",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "South Africa operates a floating exchange-rate regime administered by the South African Reserve Bank (SARB) through its Financial Surveillance Department. Cross-border foreign-exchange transactions are conducted through Authorised Dealers under the Currency and Exchanges Manual for Authorised Dealers. Current-account transactions are largely liberalised, while certain capital-account movements remain subject to exchange controls, prior approval or reporting requirements. Traveller currency movements are enforced at the border by SARS Customs under the Exchange Control Regulations, 1961.",
+      "summary": {
+        "traveler": "Travellers may bring foreign currency into South Africa without limit, subject to declaration. South African bank notes may be taken out up to R25,000, and are unlimited only when travelling within the Common Monetary Area; carrying rand above R25,000 requires prior SARB authorisation. Any currency — rand or foreign currency convertible to rand — in excess of R100,000 is treated as excess currency requiring written SARB permission before entering or leaving. The traveller declaration is administered by SARS through an online form or the manual Traveller Declaration (TD-01).",
+        "business": "Businesses must route cross-border foreign-exchange transactions through Authorised Dealers (banks) appointed by the SARB, in accordance with the Currency and Exchanges Manual for Authorised Dealers. Current-account payments are largely liberalised, while certain capital-account transfers, repatriation and offshore investment remain subject to SARB exchange-control approval, documentation and reporting."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "Foreign currency may be brought into South Africa without limit. Travellers must declare the currency in their possession; the traveller declaration is administered by SARS through an online declaration form or the manual Traveller Declaration (TD-01). Any amount in excess of R100,000 — rand or foreign currency convertible to rand — is treated as excess currency under the Exchange Control Regulations and requires prior written permission from the SARB.",
+        "take_foreign_currency_out": "South African bank notes may be taken out up to R25,000, and are unlimited only when travelling within the Common Monetary Area; carrying rand above R25,000 requires prior authorisation from the SARB. Currency in excess of R100,000, whether rand or foreign currency convertible to rand, requires written SARB permission. A traveller leaving South Africa must declare the currency in their possession to SARS Customs, which may search and seize currency under the Exchange Control Regulations.",
+        "cash_declaration_threshold": "Two distinct thresholds apply and must not be conflated. First, the SARB rand-carrying limit: South African bank notes above R25,000 may not be taken out without prior SARB authorisation, and are unlimited only within the Common Monetary Area. Second, the SARB excess-currency rule: any amount, rand or foreign currency convertible to rand, in excess of R100,000 requires written SARB permission before entering or leaving. Separately, the traveller declaration — covering bank notes, foreign currency, securities and gold — is administered by SARS via an online form or the manual TD-01.",
+        "resident_holding_rules": "South African residents transact foreign exchange through Authorised Dealers under the Currency and Exchanges Manual for Authorised Dealers. Resident individuals are accorded a single discretionary allowance of R2 million per calendar year and a foreign capital allowance of R10 million per applicant per calendar year; the foreign capital allowance and larger transfers are subject to the South African Revenue Service Tax Compliance Status (TCS) process. These two annual allowance limits may not be exceeded.",
+        "non_resident_rules": "Exchange controls on non-residents have been abolished, and qualifying non-resident income and securities proceeds are freely transferable. Non-residents transact through Non-resident Rand accounts and vostro accounts held by Authorised Dealers, and funds introduced from abroad may be retransferred. Certain transactions still require documentary evidence and settlement through approved channels.",
+        "business_invoicing_settlement": "Cross-border business settlement is effected through Authorised Dealers appointed by the SARB, in accordance with the Currency and Exchanges Manual for Authorised Dealers. Current-account payments are largely liberalised, while capital-account transfers, cross-border loans and offshore investment remain subject to SARB exchange-control approval, documentation and reporting.",
+        "exchange_controls": "South Africa maintains a floating exchange-rate regime with exchange controls administered by the SARB Financial Surveillance Department under the Exchange Control Regulations, 1961. Current-account transactions are largely liberalised; certain capital-account movements remain subject to controls, prior approval and reporting.",
+        "banking_conversion_practicality": "Foreign-exchange conversion and cross-border transfers are handled by Authorised Dealers appointed by the SARB. Authorised Dealers perform customer due diligence under section 21 of the Financial Intelligence Centre Act, and all cross-border transactions are reported through the SARB Reporting System using the prescribed purpose codes."
+      },
+      "source_authorities": [
+        {
+          "label": "SARB — Financial Surveillance Documents (Exchange Control Regulations, 1961; Currency and Exchanges Manual for Authorised Dealers; 2026 Exchange Control Circulars)",
+          "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents",
+          "type": "central_bank",
+          "tier": "primary"
+        },
+        {
+          "label": "SARB — Currency and Exchanges Manual for Authorised Dealers (version 2026-06-25), Financial Surveillance Department (official PDF)",
+          "url": "https://www.resbank.co.za/content/dam/sarb/what-we-do/financial-surveillance/financial-surveillance-documents/2026/Currency%20and%20Exchanges%20Manual%20for%20Authorised%20Dealers.pdf",
+          "type": "primary_regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "SARS — Travellers (traveller declaration, excess-currency rule, Traveller Declaration TD-01)",
+          "url": "https://www.sars.gov.za/customs-and-excise/travellers/",
+          "type": "customs",
+          "tier": "primary"
+        },
+        {
+          "label": "SARS — Departure from South Africa (rand-carrying limit, Common Monetary Area, prior SARB authorisation, Customs search and seizure)",
+          "url": "https://www.sars.gov.za/customs-and-excise/travellers/departure-from-sa/",
+          "type": "customs",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents",
+            "pages": [],
+            "section": "SARB Financial Surveillance framework — floating regime, Exchange Control Regulations, 1961, and Currency and Exchanges Manual for Authorised Dealers",
+            "source_kind": "html"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.sars.gov.za/customs-and-excise/travellers/",
+            "pages": [],
+            "section": "Travellers — excess currency over R100,000 requires SARB written permission; traveller declaration (online form / TD-01)",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.sars.gov.za/customs-and-excise/travellers/departure-from-sa/",
+            "pages": [],
+            "section": "Departure — SA bank notes up to R25,000 (unlimited within the Common Monetary Area); above R25,000 requires prior SARB authorisation",
+            "source_kind": "html"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents",
+            "pages": [],
+            "section": "Authorised Dealer framework and current-account liberalisation — Currency and Exchanges Manual for Authorised Dealers",
+            "source_kind": "html"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.sars.gov.za/customs-and-excise/travellers/",
+            "pages": [],
+            "section": "Import of currency — traveller declaration (online / TD-01); excess currency over R100,000 (rand or FC convertible to rand) requires SARB written permission",
+            "source_kind": "html"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.sars.gov.za/customs-and-excise/travellers/departure-from-sa/",
+            "pages": [],
+            "section": "Departure — SA bank notes up to R25,000 (unlimited within the CMA); above R25,000 requires prior SARB authorisation; Customs may search and seize under Exchange Control Regulations 3(3) and 3(6)",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.sars.gov.za/customs-and-excise/travellers/",
+            "pages": [],
+            "section": "Excess currency over R100,000 requires SARB written permission before leaving",
+            "source_kind": "html"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.sars.gov.za/customs-and-excise/travellers/departure-from-sa/",
+            "pages": [],
+            "section": "SARB rand-carrying limit — SA bank notes above R25,000 require prior SARB authorisation (unlimited within the CMA)",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.sars.gov.za/customs-and-excise/travellers/",
+            "pages": [],
+            "section": "SARB excess-currency rule — any amount over R100,000 (rand or FC convertible to rand) requires SARB written permission; traveller declaration (bank notes, foreign currency, securities, gold) administered by SARS via online form / TD-01",
+            "source_kind": "html"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://www.resbank.co.za/content/dam/sarb/what-we-do/financial-surveillance/financial-surveillance-documents/2026/Currency%20and%20Exchanges%20Manual%20for%20Authorised%20Dealers.pdf",
+            "pages": [
+              102,
+              111
+            ],
+            "section": "Single discretionary allowance — R2 million per calendar year (Authorised Dealer Manual section B.4)",
+            "source_kind": "pdf"
+          },
+          {
+            "url": "https://www.resbank.co.za/content/dam/sarb/what-we-do/financial-surveillance/financial-surveillance-documents/2026/Currency%20and%20Exchanges%20Manual%20for%20Authorised%20Dealers.pdf",
+            "pages": [
+              48,
+              111
+            ],
+            "section": "Foreign capital allowance — R10 million per applicant per calendar year; subject to the SARS Tax Compliance Status (TCS) process; the two annual allowance limits may not be exceeded",
+            "source_kind": "pdf"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://www.resbank.co.za/content/dam/sarb/what-we-do/financial-surveillance/financial-surveillance-documents/2026/Currency%20and%20Exchanges%20Manual%20for%20Authorised%20Dealers.pdf",
+            "pages": [
+              197
+            ],
+            "section": "Exchange controls on non-residents abolished; non-resident income and securities proceeds freely transferable; settlement via Non-resident Rand / vostro accounts",
+            "source_kind": "pdf"
+          },
+          {
+            "url": "https://www.resbank.co.za/content/dam/sarb/what-we-do/financial-surveillance/financial-surveillance-documents/2026/Currency%20and%20Exchanges%20Manual%20for%20Authorised%20Dealers.pdf",
+            "pages": [
+              120
+            ],
+            "section": "Non-resident Rand and vostro account settlement through Authorised Dealers",
+            "source_kind": "pdf"
+          },
+          {
+            "url": "https://www.resbank.co.za/content/dam/sarb/what-we-do/financial-surveillance/financial-surveillance-documents/2026/Currency%20and%20Exchanges%20Manual%20for%20Authorised%20Dealers.pdf",
+            "pages": [
+              118
+            ],
+            "section": "Retransfer of funds introduced from abroad",
+            "source_kind": "pdf"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents",
+            "pages": [],
+            "section": "Cross-border settlement through Authorised Dealers; current-account liberalisation and capital-account controls — Currency and Exchanges Manual for Authorised Dealers",
+            "source_kind": "html"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance/financial-surveillance-documents",
+            "pages": [],
+            "section": "Exchange controls administered by SARB Financial Surveillance under the Exchange Control Regulations, 1961; current-account liberalised, capital-account controlled",
+            "source_kind": "html"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://www.resbank.co.za/content/dam/sarb/what-we-do/financial-surveillance/financial-surveillance-documents/2026/Currency%20and%20Exchanges%20Manual%20for%20Authorised%20Dealers.pdf",
+            "pages": [
+              113
+            ],
+            "section": "Authorised Dealer customer due diligence under section 21 of the Financial Intelligence Centre Act",
+            "source_kind": "pdf"
+          },
+          {
+            "url": "https://www.resbank.co.za/content/dam/sarb/what-we-do/financial-surveillance/financial-surveillance-documents/2026/Currency%20and%20Exchanges%20Manual%20for%20Authorised%20Dealers.pdf",
+            "pages": [
+              99
+            ],
+            "section": "SARB Reporting System — purpose-code reporting of cross-border transactions (e.g. subject/description 'SDA')",
+            "source_kind": "pdf"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in South Africa are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable South African Reserve Bank / SARS framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the South African Reserve Bank or SARS before making any financial or travel decisions."
+    },
+    {
+      "country_name": "Canada",
+      "country_slug": "canada",
+      "iso2": "CA",
+      "iso3": "CAN",
+      "region": "North America",
+      "currency_code": "CAD",
+      "currency_name": "Canadian Dollar",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-05-02",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "Canada operates a fully liberalised foreign-exchange regime under the regulatory authority of the Bank of Canada and the Financial Transactions and Reports Analysis Centre of Canada (FINTRAC). There are no general exchange controls or restrictions on current or capital account transactions for residents or non-residents. The Canadian Dollar is freely convertible.",
+      "summary": {
+        "traveler": "Travelers may bring in or take out unlimited amounts of Canadian Dollars and foreign currency. Cash movements of CAD 10,000 or more must be reported to the Canada Border Services Agency.",
+        "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "Foreign currency may be freely imported into Canada without restriction. Reporting of CAD 10,000 or more is mandatory and should be made using form E677 to CBSA before clearance, either at airport pre-security (for air) or at the border checkpoint (land/rail/boat).",
+        "take_foreign_currency_out": "Residents and non-residents may freely export foreign currency previously declared or documented. Canadian residents exporting CAD 10,000 or more must report to CBSA (form E677). Non-residents need only verify the amount was lawfully imported. No repatriation restrictions apply.",
+        "cash_declaration_threshold": "CAD 10,000 or more (or equivalent in foreign currency or bearer negotiable instruments) at entry and exit. Reporting is mandatory to the Canada Border Services Agency.",
+        "resident_holding_rules": "Canadian residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
+        "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
+        "business_invoicing_settlement": "Business transactions may be invoiced and settled in Canadian Dollars or foreign currency through authorised financial institutions.",
+        "exchange_controls": "Canada maintains no general exchange controls. The regime is fully liberalised for both current and capital account transactions.",
+        "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks and authorised dealers throughout Canada."
+      },
+      "source_authorities": [
+        {
+          "label": "Bank of Canada — Monetary Policy & FX Framework",
+          "url": "https://www.bankofcanada.ca/",
+          "type": "central_bank",
+          "tier": "primary"
+        },
+        {
+          "label": "Canada Border Services Agency (CBSA) — Currency Reporting",
+          "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+          "type": "customs",
+          "tier": "primary"
+        },
+        {
+          "label": "FINTRAC — Large Cash Transaction Reporting",
+          "url": "https://fintrac-canafe.gc.ca/",
+          "type": "regulator",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://www.bankofcanada.ca/",
+            "pages": [],
+            "section": "FX Regime Overview"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+            "pages": [],
+            "section": "Travel & Currency Movement"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://www.bankofcanada.ca/",
+            "pages": [],
+            "section": "Business & Capital Movement"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+            "pages": [],
+            "section": "Import of Currency"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+            "pages": [],
+            "section": "Export of Currency"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.cbsa-asfc.gc.ca/travel-voyage/ttd-vdd-eng.html",
+            "pages": [],
+            "section": "Cash Reporting Rules (CAD 10,000 / equivalent)"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://www.bankofcanada.ca/",
+            "pages": [],
+            "section": "Resident Foreign Currency Accounts"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://www.bankofcanada.ca/",
+            "pages": [],
+            "section": "Non-Resident Accounts & Transfers"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://www.bankofcanada.ca/",
+            "pages": [],
+            "section": "Business & Cross-Border Payments"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://www.bankofcanada.ca/",
+            "pages": [],
+            "section": "Absence of Exchange Controls"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://www.bankofcanada.ca/",
+            "pages": [],
+            "section": "Authorised Dealers & Exchange Houses"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Canada are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Bank of Canada / CBSA / FINTRAC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Canada Border Services Agency, Bank of Canada, or a qualified professional before making any financial or travel decisions."
+    }
+  ]
+}

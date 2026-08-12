@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWVB524B');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2HS37BH07J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2HS37BH07J');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Governed Currency Rules Dataset — Public Sample (CC BY 4.0) | ConvertCCY</title>
+<meta name="description" content="The ConvertCCY Governed Currency Rules Dataset as a citable dataset: a free CC BY 4.0 public sample of five jurisdictions with per-field official sources and review dates, plus enterprise data services for broader coverage, managed distributions, and update delivery.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://convertccy.com/dataset.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f7f5;--surface:#fff;--surface-2:#fcfcfa;--border:#e8e8e4;--text:#111110;--muted:#888884;--accent:#1a6b3c;--accent-light:#e8f5ee;--accent-border:#c4dfd0;--amber:#a07000;--amber-light:#fef8e7;--amber-border:#f5d97a;--danger:#a33a2a;--danger-light:#fbeeeb;--danger-border:#ecccc4;--shadow:0 8px 24px rgba(17,17,16,.05);--mono:'DM Mono',monospace;--sans:'Sora',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,247,245,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:58px;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:1.05rem;font-weight:500;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .18s}
+.nav-links a:hover{color:var(--text)}
+.page-wrap{max-width:1000px;margin:0 auto;padding:4rem 2rem 6rem}
+.breadcrumb{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-bottom:2rem}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.hero-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:var(--mono);font-size:.74rem;padding:4px 14px;border-radius:100px;margin-bottom:1.2rem;border:1px solid var(--accent-border)}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;letter-spacing:-2px;line-height:1.05;margin-bottom:1.1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:1.05rem;color:#2e2e2b;max-width:760px;line-height:1.75}
+.section-divider{border:none;border-top:1px solid var(--border);margin:3rem 0}
+.section-kicker{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:.5rem}
+h2{font-size:1.5rem;font-weight:800;letter-spacing:-.04em;margin-bottom:.9rem;line-height:1.15}
+h3{font-size:1.02rem;font-weight:700;margin-bottom:.5rem}
+p{color:#2a2a28;line-height:1.8;margin-bottom:1.1rem}
+strong{color:var(--text);font-weight:600}
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+.tier{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.5rem;box-shadow:var(--shadow)}
+.tier.free{border-color:var(--accent-border);background:var(--accent-light)}
+.tier-label{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.5rem}
+.tier.free .tier-label{color:var(--accent)}.tier.comm .tier-label{color:var(--amber)}
+.tier h3{margin-bottom:.6rem}
+.tier p{font-size:.9rem;line-height:1.6}
+.tier ul{list-style:none;margin:.4rem 0 .9rem}
+.tier li{position:relative;padding-left:1.4rem;margin-bottom:.5rem;font-size:.88rem;line-height:1.55;color:#2a2a28}
+.tier li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700}
+.tier.comm li::before{content:'+';color:var(--amber)}
+.tier .btn{margin-top:auto;align-self:flex-start}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;margin:1.4rem 0}
+.meta{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.9rem 1.1rem;box-shadow:var(--shadow)}
+.meta .k{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:.3rem}
+.meta .v{font-size:.9rem;color:var(--text);word-break:break-word}
+.juris{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 .3rem}
+.juris span{font-family:var(--mono);font-size:.76rem;color:var(--accent);background:var(--accent-light);border:1px solid var(--accent-border);border-radius:100px;padding:4px 12px}
+.box-accent{background:var(--accent-light);border:1px solid var(--accent-border);border-radius:16px;padding:1.3rem 1.5rem;margin:2rem 0}
+.box-accent .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.box-accent p{color:#1e4f2f;margin:0;font-size:.93rem;line-height:1.72}
+.code-block{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:1rem;font-family:var(--mono);font-size:.82rem;overflow-x:auto;margin:1rem 0;color:#2a2a28;line-height:1.7}
+.btn{display:inline-block;font-family:var(--mono);font-size:.82rem;text-decoration:none;padding:.65rem 1.2rem;border-radius:10px;border:1px solid var(--accent-border);color:var(--accent);background:var(--accent-light);margin-top:.4rem;cursor:pointer}
+.btn:hover{background:#dcefe4}
+.btn-amber{border-color:var(--amber-border);color:var(--amber);background:var(--amber-light)}
+.btn-amber:hover{background:#fdf1cf}
+.inline-link{color:var(--accent);font-weight:600;text-decoration:none}
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;margin-top:3rem;font-size:.78rem;color:var(--muted);font-family:var(--mono)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+@media(max-width:640px){nav{padding:.8rem 1rem}.page-wrap{padding:2.5rem 1rem 4rem}h1{font-size:2rem}.tiers{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "ConvertCCY Governed Currency Rules — Public Sample Dataset",
+  "description": "A citable public sample of the ConvertCCY governed foreign-currency-rules dataset: five already-published jurisdictions with per-field official sources (central banks, customs authorities) and visible review dates. The sample is a projection of the published governed layer under the CRIS standard, not a separate dataset.",
+  "url": "https://convertccy.com/dataset.html",
+  "identifier": "https://convertccy.com/dataset.html",
+  "version": "0.1.0",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "isAccessibleForFree": true,
+  "keywords": [
+    "foreign currency rules",
+    "exchange controls",
+    "cash declaration threshold",
+    "currency by country",
+    "central bank sources",
+    "reference dataset"
+  ],
+  "datePublished": "2026-08-12",
+  "dateModified": "2026-08-12",
+  "creator": {
+    "@type": "Organization",
+    "name": "ConvertCCY",
+    "url": "https://convertccy.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ConvertCCY",
+    "url": "https://convertccy.com/"
+  },
+  "citation": "ConvertCCY. Governed Currency Rules — Public Sample Dataset (v0.1.0). https://convertccy.com/dataset.html",
+  "isPartOf": {
+    "@type": "Dataset",
+    "name": "ConvertCCY Foreign Currency Rules Dataset",
+    "url": "https://convertccy.com/rules/dataset.json",
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "Public governed sample — five jurisdictions (JSON)",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://convertccy.com/dataset/sample/convertccy-governed-currency-rules-sample.json"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">convert<span>ccy</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/rules/">Rules</a>
+    <a href="/dataset.html">Dataset</a>
+    <a href="/api.html">Agent Interface</a>
+    <a href="/licensing.html">Licensing</a>
+    <a href="/governance.html">Governance</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="breadcrumb"><a href="/">Home</a> / Dataset</div>
+
+  <span class="hero-tag">Governed dataset · public sample</span>
+  <h1>The Governed Currency&nbsp;Rules <em>Dataset</em></h1>
+  <p class="hero-lead">A source-disciplined dataset of foreign-currency rules by country — cash declaration thresholds, exchange controls, resident and non-resident rules — with every field mapped to an official source and carrying a visible review date. Below is a free, citable public sample; coverage beyond the open published set and managed delivery are available as enterprise data services.</p>
+
+  <div class="tiers">
+    <div class="tier free">
+      <div class="tier-label">Open governed sample · CC BY 4.0</div>
+      <h3>Download the public sample</h3>
+      <p>Five already-published jurisdictions, fully source-mapped. A projection of the published governed layer — free to use, including commercially, with attribution.</p>
+      <ul>
+        <li>Per-field official sources + review dates</li>
+        <li>Reproducible: pinned source commit + SHA-256</li>
+        <li>Machine-readable JSON</li>
+      </ul>
+      <a class="btn" id="sample-download" href="/dataset/sample/convertccy-governed-currency-rules-sample.json" download>Download sample JSON</a>
+    </div>
+    <div class="tier comm">
+      <div class="tier-label">Enterprise data services</div>
+      <h3>Beyond the sample</h3>
+      <p>The paid offer is not permission to use the free sample — it is distinct operational value on top of the governed model.</p>
+      <ul>
+        <li>Additional governed coverage beyond the current open published set</li>
+        <li>Managed / current distributions + update delivery</li>
+        <li>Historical change intelligence, SLA, integration support</li>
+      </ul>
+      <a class="btn btn-amber" id="enterprise-cta" href="mailto:agent@sohadot.com?subject=Enterprise%20data%20services%20%E2%80%94%20ConvertCCY%20governed%20currency%20rules">Talk to us about enterprise data</a>
+    </div>
+  </div>
+
+  <div class="box-accent">
+    <span class="box-label">Free vs. paid — stated plainly</span>
+    <p>The public sample is CC BY 4.0 and may already be reused commercially under that licence, with attribution. The full open dataset at <a class="inline-link" href="/rules/dataset.json">/rules/dataset.json</a> is also free. Enterprise data services do <strong>not</strong> sell the right to use either; they sell governed coverage beyond the current open published set, managed and current distributions, update delivery, change history, an SLA, and integration support. We never paywall the open reference layer.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">What's in the sample</div>
+    <h2>Five jurisdictions, chosen for structural diversity</h2>
+    <p>The sample is a fixed subset selected to expose materially different currency-passage and regulatory structures across regions and authority patterns — not by traffic, market size, or commercial appeal. No jurisdiction is included unless it is already published and eligible for indexing in the governed layer at the pinned source commit.</p>
+    <div class="juris">
+      <span>South Korea · KRW</span>
+      <span>India · INR</span>
+      <span>France · EUR</span>
+      <span>South Africa · ZAR</span>
+      <span>Canada · CAD</span>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section>
+    <div class="section-kicker">Provenance &amp; integrity</div>
+    <h2>Reproducible, citable, honestly identified</h2>
+    <div class="meta-grid">
+      <div class="meta"><div class="k">Version</div><div class="v">0.1.0</div></div>
+      <div class="meta"><div class="k">License</div><div class="v">CC BY 4.0</div></div>
+      <div class="meta"><div class="k">Format</div><div class="v">application/json</div></div>
+      <div class="meta"><div class="k">Integrity</div><div class="v">SHA-256 per file</div></div>
+      <div class="meta"><div class="k">DOI</div><div class="v">not reserved yet</div></div>
+      <div class="meta"><div class="k">Manifest</div><div class="v"><a class="inline-link" href="/dataset/sample/manifest.json">manifest.json</a></div></div>
+    </div>
+    <p>The <a class="inline-link" href="/dataset/sample/manifest.json">sample manifest</a> pins the source repository and commit, lists every file with its SHA-256, and records the selection rule. A Zenodo DOI will be reserved and embedded here before archival publication; until then the manifest carries <span style="font-family:var(--mono);font-size:.85rem">"doi": null, "doi_status": "not_reserved"</span> rather than a placeholder.</p>
+    <p>Full open dataset (all published jurisdictions): <a class="inline-link" href="/rules/dataset.json">/rules/dataset.json</a>. Governance and the CRIS standard behind every field: <a class="inline-link" href="/governance.html">governance</a> · <a class="inline-link" href="/standard.html">CRIS</a>.</p>
+  </section>
+
+  <div class="box-accent">
+    <span class="box-label">Citation</span>
+    <p>ConvertCCY. Governed Currency Rules — Public Sample Dataset (v0.1.0). https://convertccy.com/dataset.html</p>
+  </div>
+
+  <footer>
+    <p>© 2026 ConvertCCY. <a href="/rules/dataset.json">Open Dataset</a> • <a href="/licensing.html">Licensing</a> • <a href="/governance.html">Governance</a> • <a href="/standard.html">CRIS Standard</a> • <a href="/disclaimer.html">Disclaimer</a></p>
+  </footer>
+</div>
+
+<script>
+// M3-0 measurement contract — canonical events on the existing GA4/GTM stack.
+// download != demand: these are leading indicators only.
+(function(){
+  var DATASET_VERSION = '0.1.0';
+  function track(name, params){
+    params = params || {};
+    params.dataset_version = DATASET_VERSION;
+    if (typeof gtag === 'function') { gtag('event', name, params); }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({event: name}, params));
+  }
+  // dataset_landing_view
+  track('dataset_landing_view', {page: 'dataset.html'});
+  // sample_download
+  var s = document.getElementById('sample-download');
+  if (s) { s.addEventListener('click', function(){ track('sample_download', {file: 'convertccy-governed-currency-rules-sample.json'}); }); }
+  // enterprise_cta_click
+  var e = document.getElementById('enterprise-cta');
+  if (e) { e.addEventListener('click', function(){ track('enterprise_cta_click', {surface: 'enterprise_data_services'}); }); }
+})();
+</script>
+</body>
+</html>
