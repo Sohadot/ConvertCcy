@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "brazil",
+  "gate": "brazil_candidate_adoption",
+  "baseline_main": "8521a287f10cc2ac622d6d21e8f4079cf63f0f20",
+  "decided_at": "2026-08-15",
+  "decided_by": "operator",
+  "decision": "PASS",
+  "m2_5_frozen": true,
+  "frozen_artifacts": [
+    "candidate_claims.json",
+    "human_claim_review.json",
+    "claim_review_report.json"
+  ],
+  "notes": "Bounded reconciliation of M2.5 closed candidates against the existing Brazil project claim matrix. No new claims. No duplicate claims. M2.5 artifacts remain frozen historical state. Adoption Gate restored the omitted CMN-guidelines constraint on BR-FX-02C and the country_overview binding before reconciliation. It does not write data/rules/**, publication metadata, or M3. CUST-002 is excluded; departure publication continues to rest on independent BR-CUST-03, which is not an adoption of that candidate.",
+  "stats": {
+    "eligible_candidates": 4,
+    "reconciled_adopted": 4,
+    "new_project_claims": 0,
+    "duplicate_claims_created": 0,
+    "needs_evidence_excluded": 1,
+    "publication_changes": 0,
+    "blocking_overclaims": 0
+  },
+  "adoptions": [
+    {
+      "candidate_id": "CC-BR-FX-001",
+      "m2_5_decision": "supported",
+      "downstream_eligible": true,
+      "adoption_decision": "reconciled",
+      "project_claim_ids": ["BR-FX-02C"],
+      "relationship": "equivalent_existing_claim",
+      "rationale": "EX-BR-LEI-ART2-OPS conditions free FX-market operations on three distinct constraints: legislação, diretrizes do CMN, and regulamento do BCB. The pre-adoption BR-FX-02C rule omitted CMN guidelines ('subject to applicable legislation and BCB regulation'), which would have made a permissive claim wider than the governing excerpt. Adoption Gate restored the three-part constraint on BR-FX-02C.rule and allowed_wording, and on the country_overview binding, before recording equivalent_existing_claim. The 'statutory' value-limit qualifier remains. No new claim."
+    },
+    {
+      "candidate_id": "CC-BR-FX-002",
+      "m2_5_decision": "supported",
+      "downstream_eligible": true,
+      "adoption_decision": "reconciled",
+      "project_claim_ids": ["BR-FX-02A"],
+      "relationship": "narrower_existing_claim",
+      "rationale": "The reviewed candidate has two pactuation legs: authorised institutions with each other, and those institutions with their clients. BR-FX-02A keeps only the institution↔client leg ('freely agreed between authorised institutions and their clients'). The existing claim does not exceed the reviewed evidence; it is a subset. This gate does not mint a second project claim for the institution↔institution leg. No new claim."
+    },
+    {
+      "candidate_id": "CC-BR-FX-003",
+      "m2_5_decision": "supported",
+      "downstream_eligible": true,
+      "adoption_decision": "reconciled",
+      "project_claim_ids": ["BR-BIZ-01"],
+      "relationship": "equivalent_existing_claim",
+      "rationale": "BR-BIZ-01 already states the Art. 3º channel restriction: FX market transactions must be conducted through institutions authorised by BCB. That is the same proposition as the candidate's 'podem ser realizadas somente por meio de instituições autorizadas'. The English 'must be conducted through' does not convert the candidate into a duty to transact; it names the exclusive channel. Res. 277 appears in BR-BIZ-01 source_refs as execution context and is not added into the rule wording. No new claim."
+    },
+    {
+      "candidate_id": "CC-BR-CUST-001",
+      "m2_5_decision": "bounded",
+      "downstream_eligible": true,
+      "adoption_decision": "reconciled",
+      "project_claim_ids": ["BR-CUST-01"],
+      "relationship": "partial_component_existing_claim",
+      "rationale": "The bounded reviewed_text covers entry e-DBV above USD 10,000 and restricts the object to papel-moeda em espécie, excluding títulos de crédito, cheques, and cheques de viagem. BR-CUST-01 already contains that entry/paper-money component ('must be declared through the e-DBV on entry and exit; requirement applies to paper money in cash'). This candidate does not establish the exit limb. BR-CUST-01's exit limb rests on independent matrix sources (Lei 14.286 Art. 14 and Receita exit guidance), not on CC-BR-CUST-001. No new claim. No silent rewrite of BR-CUST-01."
+    },
+    {
+      "candidate_id": "CC-BR-CUST-002",
+      "m2_5_decision": "needs_evidence",
+      "downstream_eligible": false,
+      "adoption_decision": "not_adopted",
+      "project_claim_ids": [],
+      "relationship": "not_adopted_needs_evidence",
+      "rationale": "M2.5 closed this candidate as needs_evidence because the exit document-list compression cannot be supported or safely bounded from EX-BR-RECEITA-EXIT alone. It is not adopted and must not leak into claims.json. Independent project claim BR-CUST-03 already covers departure declaration plus applicable supporting evidence and is not an adoption of CC-BR-CUST-002. Publication of the departure limb, if later allowed, must stay within BR-CUST-03 and its sources, not this candidate."
+    }
+  ]
+}

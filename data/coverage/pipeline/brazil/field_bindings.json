@@ -6,7 +6,7 @@
     {
       "field": "country_overview",
       "claim_ids": ["BR-FX-01", "BR-FX-02A", "BR-FX-02B", "BR-FX-02C", "BR-BIZ-01"],
-      "wording_boundary": "Floating regime + Law 14.286 free ops without statutory value limit subject to law/BCB regulation + freely agreed rates + operational/reporting/supervisory requirements. Do not use 'largely liberalised'."
+      "wording_boundary": "Floating regime + Law 14.286 free ops without statutory value limit subject to applicable law, CMN guidelines, and BCB regulation + freely agreed rates + operational/reporting/supervisory requirements. Do not use 'largely liberalised'."
     },
     {
       "field": "summary.traveler",
