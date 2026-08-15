@@ -78,7 +78,7 @@ jobs:
         run: python3 scripts/validate_human_claim_review.py --check-drift
 
       - name: Human claim review tests (tests.test_human_claim_review)
-        run: python3 -m unittest tests.test_human_claim_review
+        run: python3 -m unittest discover -s tests
 
       - name: Pipeline milestone scope gate (validate_pipeline_milestone_scope.py)
         # Blocks M1/M2/M2.5 PRs from also rewriting claims/bindings/rules.

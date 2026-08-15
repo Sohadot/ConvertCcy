@@ -10,7 +10,8 @@
     "required": 5,
     "recorded": 5,
     "closed": 0,
-    "missing_candidate_ids": []
+    "missing_candidate_ids": [],
+    "historical_reviews": 0
   },
   "blocking_findings": [],
   "improvement_findings": [],
@@ -25,6 +26,7 @@
     "candidates_in_scope": 5,
     "reviews_recorded": 5,
     "reviews_closed": 0,
+    "reviews_historical": 0,
     "supported": 0,
     "bounded": 0,
     "rejected": 0,

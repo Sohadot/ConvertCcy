@@ -39,6 +39,10 @@ def _copy_brazil(tmp: Path) -> Path:
 
 
 def _close_needs_evidence(candidate: dict, review: dict) -> None:
+    review["exception_preserved"] = candidate["exception_handling"].get("exception_preserved")
+    review["authority_preservation_status"] = candidate["authority_posture"].get(
+        "authority_preservation_status"
+    )
     fp = fingerprint_for_review(candidate, None)
     review.update(
         {
@@ -70,6 +74,58 @@ def _close_needs_evidence(candidate: dict, review: dict) -> None:
         "decision": "needs_evidence",
         "reviewed_candidate_fingerprint": fp,
         "notes": "fixture",
+    }
+
+
+def _close_accepted(
+    candidate: dict,
+    review: dict,
+    *,
+    decision: str,
+    reviewed_text=None,
+    special_addressed: bool = False,
+) -> None:
+    if reviewed_text is not None:
+        candidate["reviewed_text"] = reviewed_text
+        review["reviewed_text"] = reviewed_text
+    else:
+        candidate["reviewed_text"] = None
+        review["reviewed_text"] = None
+    candidate["authority_posture"]["authority_preservation_status"] = "human_confirmed"
+    review["authority_preservation_status"] = "human_confirmed"
+    candidate["exception_handling"]["exception_review_status"] = "closed"
+    review["exception_review_status"] = "closed"
+    preserved = candidate["exception_handling"].get("exception_preserved")
+    review["exception_preserved"] = preserved
+    if special_addressed:
+        review["special_review_addressed"] = True
+    fp = fingerprint_for_review(candidate, review.get("reviewed_text"))
+    review.update(
+        {
+            "status": "closed",
+            "decision": decision,
+            "reviewer": "fixture-operator",
+            "reviewed_at": "2026-08-15",
+            "reviewed_candidate_fingerprint": fp,
+            "semantic_review_status": "closed",
+            "rationale": f"fixture:{decision}",
+            "downstream_eligible": True,
+            "adoption_gate_conditions_met": True,
+            "adoption_eligible": True,
+        }
+    )
+    candidate["support_status"] = decision
+    candidate["semantic_review_status"] = "closed"
+    candidate["downstream_eligible"] = True
+    candidate["adoption_gate_conditions_met"] = True
+    candidate["adoption_eligible"] = True
+    candidate["human_review"] = {
+        "status": "closed",
+        "reviewed_by": "fixture-operator",
+        "reviewed_at": "2026-08-15",
+        "decision": decision,
+        "reviewed_candidate_fingerprint": fp,
+        "notes": f"fixture:{decision}",
     }
 
 
@@ -213,6 +269,115 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
             self.assertEqual(report["milestone_decision"], "PENDING")
             self.assertEqual(report["semantic_approval"], "partially_reviewed")
             self.assertEqual(report["review_coverage"]["closed"], 1)
+
+    def test_superseding_review_keeps_five_active_not_six(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            pack = _copy_brazil(Path(raw))
+            candidates = _load(pack / "candidate_claims.json")
+            ledger = _load(pack / "human_claim_review.json")
+            by_id = {c["candidate_id"]: c for c in candidates["candidates"]}
+            for review in ledger["reviews"]:
+                _close_needs_evidence(by_id[review["candidate_id"]], review)
+            historical = dict(ledger["reviews"][0])
+            successor = dict(historical)
+            successor["review_id"] = "HCR-BR-001-SUPERSEDE"
+            successor["invalidates_prior_review"] = True
+            _close_accepted(by_id["CC-BR-FX-001"], successor, decision="supported")
+            ledger["reviews"].append(successor)
+            _save(pack / "candidate_claims.json", candidates)
+            _save(pack / "human_claim_review.json", ledger)
+            result, report = review_human_claim_review("brazil", pack_dir=pack)
+            self.assertEqual(report["infrastructure_decision"], "PASS", result.blocking)
+            self.assertEqual(report["review_completion"], "COMPLETE")
+            self.assertEqual(report["milestone_decision"], "PASS")
+            self.assertEqual(report["review_coverage"]["closed"], 5)
+            self.assertEqual(report["review_coverage"]["historical_reviews"], 1)
+            self.assertEqual(report["stats"]["needs_evidence"], 4)
+            self.assertEqual(report["stats"]["supported"], 1)
+            self.assertEqual(len(ledger["reviews"]), 6)
+            self.assertEqual(by_id["CC-BR-FX-001"]["support_status"], "supported")
+            self.assertEqual(historical["decision"], "needs_evidence")
+
+    def test_authority_mismatch_blocks(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            pack = _copy_brazil(Path(raw))
+            candidates = _load(pack / "candidate_claims.json")
+            ledger = _load(pack / "human_claim_review.json")
+            _close_needs_evidence(candidates["candidates"][0], ledger["reviews"][0])
+            ledger["reviews"][0]["authority_preservation_status"] = "human_confirmed"
+            _save(pack / "candidate_claims.json", candidates)
+            _save(pack / "human_claim_review.json", ledger)
+            result, report = review_human_claim_review("brazil", pack_dir=pack)
+            self.assertEqual(report["infrastructure_decision"], "BLOCK")
+            self.assertTrue(
+                any("authority_preservation_status" in f.reason for f in result.blocking)
+            )
+
+    def test_exception_mismatch_blocks(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            pack = _copy_brazil(Path(raw))
+            candidates = _load(pack / "candidate_claims.json")
+            ledger = _load(pack / "human_claim_review.json")
+            _close_needs_evidence(candidates["candidates"][0], ledger["reviews"][0])
+            candidates["candidates"][0]["exception_handling"]["exception_review_status"] = "pending"
+            _save(pack / "candidate_claims.json", candidates)
+            _save(pack / "human_claim_review.json", ledger)
+            result, report = review_human_claim_review("brazil", pack_dir=pack)
+            self.assertEqual(report["infrastructure_decision"], "BLOCK")
+            self.assertTrue(any("exception_review_status" in f.reason for f in result.blocking))
+
+    def test_supported_path_meets_adoption_conditions(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            pack = _copy_brazil(Path(raw))
+            candidates = _load(pack / "candidate_claims.json")
+            ledger = _load(pack / "human_claim_review.json")
+            by_id = {c["candidate_id"]: c for c in candidates["candidates"]}
+            for review in ledger["reviews"]:
+                cid = review["candidate_id"]
+                if cid == "CC-BR-FX-002":
+                    _close_accepted(by_id[cid], review, decision="supported")
+                else:
+                    _close_needs_evidence(by_id[cid], review)
+            _save(pack / "candidate_claims.json", candidates)
+            _save(pack / "human_claim_review.json", ledger)
+            result, report = review_human_claim_review("brazil", pack_dir=pack)
+            self.assertEqual(report["infrastructure_decision"], "PASS", result.blocking)
+            self.assertEqual(report["milestone_decision"], "PASS")
+            self.assertEqual(report["stats"]["supported"], 1)
+            self.assertEqual(report["stats"]["needs_evidence"], 4)
+            self.assertEqual(report["stats"]["adoption_gate_conditions_met"], 1)
+            self.assertEqual(report["stats"]["adoption_eligible"], 1)
+            self.assertEqual(report["stats"]["downstream_eligible"], 1)
+            self.assertEqual(report["adoption_status"], "not_adopted")
+            self.assertEqual(report["stats"]["claims_adopted"], 0)
+
+    def test_bounded_path_requires_reviewed_text(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            pack = _copy_brazil(Path(raw))
+            candidates = _load(pack / "candidate_claims.json")
+            ledger = _load(pack / "human_claim_review.json")
+            by_id = {c["candidate_id"]: c for c in candidates["candidates"]}
+            narrowed = "Viajante ao sair do Brasil com mais de US$ 10.000,00 deve apresentar e-DBV."
+            for review in ledger["reviews"]:
+                cid = review["candidate_id"]
+                if cid == "CC-BR-CUST-002":
+                    _close_accepted(
+                        by_id[cid],
+                        review,
+                        decision="bounded",
+                        reviewed_text=narrowed,
+                        special_addressed=True,
+                    )
+                else:
+                    _close_needs_evidence(by_id[cid], review)
+            _save(pack / "candidate_claims.json", candidates)
+            _save(pack / "human_claim_review.json", ledger)
+            result, report = review_human_claim_review("brazil", pack_dir=pack)
+            self.assertEqual(report["infrastructure_decision"], "PASS", result.blocking)
+            self.assertEqual(report["milestone_decision"], "PASS")
+            self.assertEqual(report["stats"]["bounded"], 1)
+            self.assertEqual(by_id["CC-BR-CUST-002"]["reviewed_text"], narrowed)
+            self.assertEqual(report["stats"]["adoption_eligible"], 1)
 
 
 if __name__ == "__main__":

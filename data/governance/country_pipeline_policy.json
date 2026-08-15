@@ -151,7 +151,10 @@
       "data/coverage/pipeline/*/candidate_claims.json",
       "data/coverage/pipeline/*/claim_extraction_report.json",
       "data/coverage/pipeline/*/human_claim_review.json",
-      "data/coverage/pipeline/*/claim_review_report.json"
+      "data/coverage/pipeline/*/claim_review_report.json",
+      "tests/test_human_claim_review.py",
+      "tests/test_pipeline_milestone_scope.py",
+      "tests/fixtures/**"
     ]
   },
 

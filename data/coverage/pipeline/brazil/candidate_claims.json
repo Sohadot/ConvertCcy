@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "country_slug": "brazil",
   "generation_mode": "governed_extraction",
-  "notes": "M2.0 Brazil pilot plus M2.5 infrastructure fields. Candidates remain unreviewed / not downstream-eligible / not adoption-eligible. No human semantic close in this gate.",
+  "notes": "M2.0 Brazil pilot: exactly one direct excerpt per candidate; Portuguese same-language claims only; all candidates unreviewed / not downstream-eligible.",
   "candidates": [
     {
       "candidate_id": "CC-BR-FX-001",

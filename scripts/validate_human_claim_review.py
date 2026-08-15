@@ -169,24 +169,87 @@ def compute_adoption_gate_conditions_met(
     return True
 
 
-def _active_reviews(reviews: List[dict]) -> Dict[str, dict]:
-    """Last non-invalidated review per candidate_id wins; default one active."""
+def _active_reviews(reviews: List[dict]) -> Tuple[Dict[str, dict], List[str]]:
+    """One authoritative review per candidate_id.
+
+    A later row with invalidates_prior_review=true replaces the prior active
+    row. Prior rows remain audit history and must not drive current state.
+    Duplicate rows without invalidation are errors; the first stays active.
+    """
     active: Dict[str, dict] = {}
+    duplicate_without_supersession: List[str] = []
     for item in reviews:
         if not isinstance(item, dict):
             continue
         cid = item.get("candidate_id")
         if not cid:
             continue
-        if item.get("invalidates_prior_review") is True:
-            active[cid] = item
-            continue
-        if cid not in active:
-            active[cid] = item
+        if cid in active:
+            if item.get("invalidates_prior_review") is True:
+                active[cid] = item
+            else:
+                duplicate_without_supersession.append(cid)
         else:
-            # duplicate without explicit supersession — keep first, caller BLOCKs
-            pass
-    return active
+            active[cid] = item
+    return active, duplicate_without_supersession
+
+
+def _projection_mismatches(candidate: dict, review: dict) -> List[str]:
+    """Ledger is source of truth; candidate must echo review fields."""
+    ap = candidate.get("authority_posture") or {}
+    eh = candidate.get("exception_handling") or {}
+    hr = candidate.get("human_review") or {}
+    pairs = [
+        (
+            "authority_preservation_status",
+            ap.get("authority_preservation_status"),
+            review.get("authority_preservation_status"),
+        ),
+        (
+            "exception_review_status",
+            eh.get("exception_review_status"),
+            review.get("exception_review_status"),
+        ),
+        (
+            "exception_preserved",
+            eh.get("exception_preserved"),
+            review.get("exception_preserved"),
+        ),
+        ("human_review.status", hr.get("status"), review.get("status")),
+        ("human_review.reviewed_by", hr.get("reviewed_by"), review.get("reviewer")),
+        ("human_review.reviewed_at", hr.get("reviewed_at"), review.get("reviewed_at")),
+        ("human_review.decision", hr.get("decision"), review.get("decision")),
+        (
+            "human_review.reviewed_candidate_fingerprint",
+            hr.get("reviewed_candidate_fingerprint"),
+            review.get("reviewed_candidate_fingerprint"),
+        ),
+        ("reviewed_text", candidate.get("reviewed_text"), review.get("reviewed_text")),
+        (
+            "downstream_eligible",
+            candidate.get("downstream_eligible"),
+            review.get("downstream_eligible"),
+        ),
+        (
+            "adoption_eligible",
+            candidate.get("adoption_eligible"),
+            review.get("adoption_eligible"),
+        ),
+        (
+            "semantic_review_status",
+            candidate.get("semantic_review_status"),
+            review.get("semantic_review_status"),
+        ),
+    ]
+    if review.get("status") == "closed":
+        pairs.append(
+            ("support_status", candidate.get("support_status"), review.get("decision"))
+        )
+    mismatches = []
+    for name, left, right in pairs:
+        if left != right:
+            mismatches.append(f"{name}: candidate={left!r} ledger={right!r}")
+    return mismatches
 
 
 def validate_review_pack(
@@ -266,16 +329,14 @@ def validate_review_pack(
         return
 
     seen_review_ids: Set[str] = set()
-    seen_candidate_ids: Set[str] = set()
-    duplicate_candidates: Set[str] = set()
-    recorded_ids: List[str] = []
-    closed_ids: List[str] = []
-    pending_ids: List[str] = []
+    historical_count = 0
+    valid_rows: List[dict] = []
 
     stats = {
         "candidates_in_scope": len(scoped_ids),
         "reviews_recorded": 0,
         "reviews_closed": 0,
+        "reviews_historical": 0,
         "supported": 0,
         "bounded": 0,
         "rejected": 0,
@@ -300,33 +361,44 @@ def validate_review_pack(
                 "Complete review contract fields",
             )
             continue
-
         rid = review.get("review_id")
-        cid = review.get("candidate_id")
         if rid in seen_review_ids:
             result.error("structural", rid, "Duplicate review_id", "Make review IDs unique")
         seen_review_ids.add(rid)
-        if cid in seen_candidate_ids and review.get("invalidates_prior_review") is not True:
-            duplicate_candidates.add(cid)
+        if review.get("candidate_id") not in candidates and review.get("candidate_id"):
             result.error(
                 "structural",
-                cid,
-                "Duplicate active review for candidate without invalidates_prior_review",
-                "Keep one active review per candidate",
-            )
-        seen_candidate_ids.add(cid)
-        recorded_ids.append(cid)
-        stats["reviews_recorded"] += 1
-
-        if cid not in candidates:
-            result.error(
-                "structural",
-                cid,
+                review.get("candidate_id"),
                 "Review references unknown candidate_id",
                 "Link to candidate_claims.json",
             )
+        valid_rows.append(review)
+
+    active, dupes = _active_reviews(valid_rows)
+    for cid in dupes:
+        result.error(
+            "structural",
+            cid,
+            "Duplicate active review for candidate without invalidates_prior_review",
+            "Keep one active review per candidate, or supersede with invalidates_prior_review=true",
+        )
+    active_ids = set(active.keys())
+    for review in valid_rows:
+        cid = review.get("candidate_id")
+        if cid in active and review is not active[cid]:
+            historical_count += 1
+
+    stats["reviews_historical"] = historical_count
+    recorded_ids: List[str] = []
+    closed_ids: List[str] = []
+    pending_ids: List[str] = []
+
+    for cid, review in active.items():
+        recorded_ids.append(cid)
+        stats["reviews_recorded"] += 1
+        candidate = candidates.get(cid)
+        if candidate is None:
             continue
-        candidate = candidates[cid]
 
         for field_name, value in (
             ("decision", review.get("decision")),
@@ -355,6 +427,25 @@ def validate_review_pack(
             result.error("structural", cid, f"Invalid review status {status!r}", "Use pending|closed")
             continue
 
+        for mismatch in _projection_mismatches(candidate, review):
+            result.error(
+                "projection",
+                cid,
+                f"Ledger ↔ candidate mismatch: {mismatch}",
+                "Project the active review onto the candidate; validator will not mutate artifacts",
+            )
+
+        missing_cand_fields = {"adoption_eligible", "adoption_gate_conditions_met"} - set(
+            candidate.keys()
+        )
+        if missing_cand_fields:
+            result.error(
+                "structural",
+                cid,
+                f"Candidate missing M2.5 fields: {sorted(missing_cand_fields)}",
+                "Add adoption_gate_conditions_met and adoption_eligible (default false)",
+            )
+
         if status == "pending":
             pending_ids.append(cid)
             result.needs_human_review.append(f"{cid}:review_pending")
@@ -365,9 +456,7 @@ def validate_review_pack(
                     "Pending review must not carry a closed decision",
                     "Set decision null until close, or close the review",
                 )
-            if review.get("decision") == "deferred" or (
-                hcr.get("forbids_open_deferred_in_pilot_scope") and review.get("decision") == "deferred"
-            ):
+            if review.get("decision") == "deferred":
                 result.error(
                     "structural",
                     cid,
@@ -381,168 +470,6 @@ def validate_review_pack(
                     "Pending review requires semantic_review_status=pending",
                     "Keep semantic review pending until close",
                 )
-
-        if status == "closed":
-            closed_ids.append(cid)
-            decision = review.get("decision")
-            if decision not in closed_decisions:
-                result.error(
-                    "structural",
-                    cid,
-                    f"Closed decision {decision!r} not allowed",
-                    "Use supported|bounded|rejected|needs_evidence",
-                )
-            if review.get("semantic_review_status") != "closed":
-                result.error(
-                    "projection",
-                    cid,
-                    "Closed review requires semantic_review_status=closed",
-                    "Close semantic review with the human decision",
-                )
-            if review.get("candidate_text_snapshot") != candidate.get("candidate_text"):
-                result.error(
-                    "projection",
-                    cid,
-                    "candidate_text_snapshot does not match candidate_text",
-                    "Do not rewrite candidate_text; refresh snapshot only after human reopen",
-                )
-            if candidate.get("reviewed_text") != review.get("reviewed_text"):
-                result.error(
-                    "projection",
-                    cid,
-                    "reviewed_text mismatch between ledger and candidate",
-                    "Project ledger reviewed_text onto the candidate",
-                )
-            expected_fp = fingerprint_for_review(candidate, review.get("reviewed_text"))
-            stored = review.get("reviewed_candidate_fingerprint")
-            cand_fp = (candidate.get("human_review") or {}).get("reviewed_candidate_fingerprint")
-            if not stored:
-                result.error(
-                    "fingerprint",
-                    cid,
-                    "Closed review missing reviewed_candidate_fingerprint",
-                    "Bind fingerprint at close time",
-                )
-            elif stored != expected_fp:
-                result.error(
-                    "fingerprint",
-                    cid,
-                    "Stale fingerprint: closed review does not match current candidate bytes",
-                    "Human must reopen, reset pending/unreviewed/false, and re-close; validator will not mutate artifacts",
-                )
-            if cand_fp != stored:
-                result.error(
-                    "projection",
-                    cid,
-                    "Candidate human_review fingerprint does not match ledger",
-                    "Project ledger fingerprint onto the candidate",
-                )
-            hr = candidate.get("human_review") or {}
-            if hr.get("status") != "closed" or hr.get("decision") != decision:
-                result.error(
-                    "projection",
-                    cid,
-                    "Candidate human_review does not project closed ledger decision",
-                    "Project status/decision from human_claim_review.json",
-                )
-            if candidate.get("support_status") != decision:
-                result.error(
-                    "projection",
-                    cid,
-                    f"support_status {candidate.get('support_status')!r} != decision {decision!r}",
-                    "Project closed decision onto candidate support_status (candidate-local vocabulary)",
-                )
-            if candidate.get("semantic_review_status") != "closed":
-                result.error(
-                    "projection",
-                    cid,
-                    "Closed review requires candidate semantic_review_status=closed",
-                    "Project semantic_review_status from the ledger",
-                )
-            if decision == "bounded":
-                rt = review.get("reviewed_text")
-                if not isinstance(rt, str) or not rt.strip():
-                    result.error(
-                        "promotion",
-                        cid,
-                        "bounded decision requires reviewed_text",
-                        "Set narrowed reviewed_text before closing as bounded",
-                    )
-            if decision in {"rejected", "needs_evidence"}:
-                if review.get("downstream_eligible") is True or review.get("adoption_eligible") is True:
-                    result.error(
-                        "promotion",
-                        cid,
-                        f"{decision} cannot be downstream_eligible or adoption_eligible",
-                        "Keep both flags false for non-accepted closed outcomes",
-                    )
-            if stats.get(decision) is not None:
-                stats[decision] += 1
-
-            computed = compute_adoption_gate_conditions_met(
-                candidate, review, eligibility, policy
-            )
-            ledger_met = review.get("adoption_gate_conditions_met")
-            cand_met = candidate.get("adoption_gate_conditions_met")
-            if ledger_met is not computed:
-                result.error(
-                    "promotion",
-                    cid,
-                    f"adoption_gate_conditions_met ledger={ledger_met!r} computed={computed!r}",
-                    "Echo the machine-computed value; humans do not invent it",
-                )
-            if cand_met is not computed:
-                result.error(
-                    "projection",
-                    cid,
-                    "Candidate adoption_gate_conditions_met does not match recomputation",
-                    "Project the computed boolean onto the candidate",
-                )
-            if computed:
-                stats["adoption_gate_conditions_met"] += 1
-            if review.get("adoption_eligible") is True:
-                if not computed:
-                    result.error(
-                        "promotion",
-                        cid,
-                        "adoption_eligible true while adoption_gate_conditions_met is false",
-                        "Nominate only after conditions are met",
-                    )
-                else:
-                    stats["adoption_eligible"] += 1
-            if review.get("downstream_eligible") is True:
-                if candidate.get("support_status") not in {"supported", "bounded"}:
-                    result.error(
-                        "promotion",
-                        cid,
-                        "downstream_eligible true requires accepted support_status",
-                        "Keep downstream_eligible false unless supported or bounded",
-                    )
-                if stored != expected_fp:
-                    result.error(
-                        "promotion",
-                        cid,
-                        "downstream_eligible true with stale fingerprint",
-                        "Reopen and re-close before promoting",
-                    )
-                stats["downstream_eligible"] += 1
-            if candidate.get("downstream_eligible") != review.get("downstream_eligible"):
-                result.error(
-                    "projection",
-                    cid,
-                    "downstream_eligible mismatch between ledger and candidate",
-                    "Project ledger downstream_eligible onto the candidate",
-                )
-            if candidate.get("adoption_eligible") != review.get("adoption_eligible"):
-                result.error(
-                    "projection",
-                    cid,
-                    "adoption_eligible mismatch between ledger and candidate",
-                    "Project ledger adoption_eligible onto the candidate",
-                )
-
-        else:
-            # pending projection
             if candidate.get("adoption_eligible") is True or review.get("adoption_eligible") is True:
                 result.error(
                     "promotion",
@@ -550,7 +477,6 @@ def validate_review_pack(
                     "Pending review cannot be adoption_eligible",
                     "Keep adoption_eligible false until closed conditions + human mark",
                 )
-            computed = False
             if review.get("adoption_gate_conditions_met") is not False:
                 result.error(
                     "promotion",
@@ -575,25 +501,117 @@ def validate_review_pack(
                     "Pending candidate_text_snapshot must match candidate_text when set",
                     "Copy candidate_text into the snapshot",
                 )
+            continue
 
-        missing_cand_fields = {"adoption_eligible", "adoption_gate_conditions_met"} - set(
-            candidate.keys()
-        )
-        if missing_cand_fields:
+        # closed active review
+        closed_ids.append(cid)
+        decision = review.get("decision")
+        if decision not in closed_decisions:
             result.error(
                 "structural",
                 cid,
-                f"Candidate missing M2.5 fields: {sorted(missing_cand_fields)}",
-                "Add adoption_gate_conditions_met and adoption_eligible (default false)",
+                f"Closed decision {decision!r} not allowed",
+                "Use supported|bounded|rejected|needs_evidence",
             )
+        if review.get("candidate_text_snapshot") != candidate.get("candidate_text"):
+            result.error(
+                "projection",
+                cid,
+                "candidate_text_snapshot does not match candidate_text",
+                "Do not rewrite candidate_text; refresh snapshot only after human reopen",
+            )
+        expected_fp = fingerprint_for_review(candidate, review.get("reviewed_text"))
+        stored = review.get("reviewed_candidate_fingerprint")
+        if not stored:
+            result.error(
+                "fingerprint",
+                cid,
+                "Closed review missing reviewed_candidate_fingerprint",
+                "Bind fingerprint at close time",
+            )
+        elif stored != expected_fp:
+            result.error(
+                "fingerprint",
+                cid,
+                "Stale fingerprint: closed review does not match current candidate bytes",
+                "Human must reopen, reset pending/unreviewed/false, and re-close; validator will not mutate artifacts",
+            )
+        if decision == "bounded":
+            rt = review.get("reviewed_text")
+            if not isinstance(rt, str) or not rt.strip():
+                result.error(
+                    "promotion",
+                    cid,
+                    "bounded decision requires reviewed_text",
+                    "Set narrowed reviewed_text before closing as bounded",
+                )
+        if decision in {"rejected", "needs_evidence"}:
+            if review.get("downstream_eligible") is True or review.get("adoption_eligible") is True:
+                result.error(
+                    "promotion",
+                    cid,
+                    f"{decision} cannot be downstream_eligible or adoption_eligible",
+                    "Keep both flags false for non-accepted closed outcomes",
+                )
+        if stats.get(decision) is not None:
+            stats[decision] += 1
 
-    missing_ids = [cid for cid in scoped_ids if cid not in seen_candidate_ids]
+        computed = compute_adoption_gate_conditions_met(
+            candidate, review, eligibility, policy
+        )
+        ledger_met = review.get("adoption_gate_conditions_met")
+        cand_met = candidate.get("adoption_gate_conditions_met")
+        if ledger_met is not computed:
+            result.error(
+                "promotion",
+                cid,
+                f"adoption_gate_conditions_met ledger={ledger_met!r} computed={computed!r}",
+                "Echo the machine-computed value; humans do not invent it",
+            )
+        if cand_met is not computed:
+            result.error(
+                "projection",
+                cid,
+                "Candidate adoption_gate_conditions_met does not match recomputation",
+                "Project the computed boolean onto the candidate",
+            )
+        if computed:
+            stats["adoption_gate_conditions_met"] += 1
+        if review.get("adoption_eligible") is True:
+            if not computed:
+                result.error(
+                    "promotion",
+                    cid,
+                    "adoption_eligible true while adoption_gate_conditions_met is false",
+                    "Nominate only after conditions are met",
+                )
+            else:
+                stats["adoption_eligible"] += 1
+        if review.get("downstream_eligible") is True:
+            if candidate.get("support_status") not in {"supported", "bounded"}:
+                result.error(
+                    "promotion",
+                    cid,
+                    "downstream_eligible true requires accepted support_status",
+                    "Keep downstream_eligible false unless supported or bounded",
+                )
+            if stored != expected_fp:
+                result.error(
+                    "promotion",
+                    cid,
+                    "downstream_eligible true with stale fingerprint",
+                    "Reopen and re-close before promoting",
+                )
+            stats["downstream_eligible"] += 1
+
+    missing_ids = [cid for cid in scoped_ids if cid not in active_ids]
     extra_ids = [cid for cid in recorded_ids if cid not in scoped_ids]
     result.coverage = {
         "required": len(scoped_ids),
-        "recorded": len(set(recorded_ids) & set(scoped_ids)),
+        "recorded": len([c for c in active_ids if c in scoped_ids]),
         "closed": len([c for c in closed_ids if c in scoped_ids]),
         "missing_candidate_ids": missing_ids,
+        "historical_reviews": historical_count,
     }
     stats["reviews_closed"] = result.coverage["closed"]
     result.stats = stats
