@@ -12,6 +12,7 @@ When M1/M2/M2.5 paths change:
 Run:
   python scripts/validate_pipeline_milestone_scope.py
   python scripts/validate_pipeline_milestone_scope.py --base origin/main
+  python scripts/validate_pipeline_milestone_scope.py --base origin/main --committed-only
 """
 
 from __future__ import annotations
@@ -49,24 +50,44 @@ def load_policy() -> dict:
     return json.loads(POLICY_PATH.read_text(encoding="utf-8"))
 
 
-def git_changed_files(base: str) -> List[str]:
-    cmds = [
-        ["git", "diff", "--name-only", f"{base}...HEAD"],
-        ["git", "diff", "--name-only", "--cached"],
-        ["git", "diff", "--name-only"],
-        ["git", "ls-files", "--others", "--exclude-standard"],
-    ]
+def collect_changed_files(
+    committed: List[str],
+    staged: Optional[List[str]] = None,
+    unstaged: Optional[List[str]] = None,
+    untracked: Optional[List[str]] = None,
+    committed_only: bool = False,
+) -> List[str]:
+    """Merge git name lists. CI --committed-only uses committed diff only."""
     files: Set[str] = set()
-    for cmd in cmds:
-        try:
-            out = subprocess.check_output(cmd, cwd=REPO, text=True, stderr=subprocess.DEVNULL)
-        except subprocess.CalledProcessError:
-            continue
-        for line in out.splitlines():
-            line = line.strip().replace("\\", "/")
+    groups = [committed]
+    if not committed_only:
+        groups.extend([staged or [], unstaged or [], untracked or []])
+    for group in groups:
+        for path in group:
+            line = path.strip().replace("\\", "/")
             if line:
                 files.add(line)
     return sorted(files)
+
+
+def _git_name_only(cmd: List[str]) -> List[str]:
+    try:
+        out = subprocess.check_output(cmd, cwd=REPO, text=True, stderr=subprocess.DEVNULL)
+    except subprocess.CalledProcessError:
+        return []
+    return [line.strip() for line in out.splitlines() if line.strip()]
+
+
+def git_changed_files(base: str, committed_only: bool = False) -> List[str]:
+    committed = _git_name_only(["git", "diff", "--name-only", f"{base}...HEAD"])
+    if committed_only:
+        return collect_changed_files(committed, committed_only=True)
+    staged = _git_name_only(["git", "diff", "--name-only", "--cached"])
+    unstaged = _git_name_only(["git", "diff", "--name-only"])
+    untracked = _git_name_only(["git", "ls-files", "--others", "--exclude-standard"])
+    return collect_changed_files(
+        committed, staged, unstaged, untracked, committed_only=False
+    )
 
 
 def matches_any(path: str, globs: List[str]) -> bool:
@@ -237,15 +258,24 @@ def main(argv: List[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Validate pipeline milestone PR scope")
     parser.add_argument("--base", default="origin/main")
     parser.add_argument("--allow-rules-touch", action="store_true")
+    parser.add_argument(
+        "--committed-only",
+        action="store_true",
+        help=(
+            "Inspect only git diff <base>...HEAD. Ignore staged, unstaged, and "
+            "untracked files so CI runtime artifacts are not treated as PR scope."
+        ),
+    )
     args = parser.parse_args(argv)
 
     policy = load_policy()
-    changed = git_changed_files(args.base)
+    changed = git_changed_files(args.base, committed_only=args.committed_only)
     if not changed:
         print("Milestone scope check: no changed files detected (ok).")
         return 0
 
-    print(f"Changed files ({len(changed)}):")
+    mode = "committed-only" if args.committed_only else "worktree"
+    print(f"Changed files ({len(changed)}) [{mode}]:")
     for p in changed:
         print(f"  {p}")
 

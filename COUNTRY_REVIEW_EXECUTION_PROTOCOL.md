@@ -384,7 +384,10 @@ python scripts/country_pipeline.py claim-review <slug>
 python scripts/validate_human_claim_review.py --check-drift
 python scripts/validate_human_claim_review.py --require-milestone-complete
 python scripts/validate_pipeline_milestone_scope.py --base origin/main
+python scripts/validate_pipeline_milestone_scope.py --base origin/main --committed-only
 ```
+
+Local scope checks include staged / unstaged / untracked files. CI uses `--committed-only` so runtime-generated worktree files (for example Phase 1 `review_report.json`) are not treated as PR scope.
 
 Default CI allows `infrastructure_decision: PASS` with `milestone_decision: PENDING`. `--require-milestone-complete` is the completion gate.
 

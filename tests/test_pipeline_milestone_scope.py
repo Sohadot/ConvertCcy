@@ -14,10 +14,29 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from validate_pipeline_milestone_scope import (  # noqa: E402
     candidate_field_violations,
+    collect_changed_files,
     evaluate_milestone_scope,
     is_m2_5_surface_touched,
     load_policy,
 )
+
+# Representative M2.5 Infrastructure PR committed set (13 governed files).
+PR_GOVERNED_FILES = [
+    ".github/workflows/governance-gate.yml",
+    "COUNTRY_REVIEW_EXECUTION_PROTOCOL.md",
+    "data/coverage/pipeline/brazil/candidate_claims.json",
+    "data/coverage/pipeline/brazil/claim_review_report.json",
+    "data/coverage/pipeline/brazil/human_claim_review.json",
+    "data/governance/country_pipeline_policy.json",
+    "scripts/country_pipeline.py",
+    "scripts/pipeline_schema.py",
+    "scripts/validate_human_claim_review.py",
+    "scripts/validate_pipeline_milestone_scope.py",
+    "tests/fixtures/m2_5/README.md",
+    "tests/test_human_claim_review.py",
+    "tests/test_pipeline_milestone_scope.py",
+]
+RUNTIME_REVIEW_REPORT = "data/coverage/pipeline/brazil/review_report.json"
 
 
 class MilestoneScopeTests(unittest.TestCase):
@@ -156,6 +175,28 @@ class MilestoneScopeTests(unittest.TestCase):
             changed, self.policy, candidate_violations=field_errors
         )
         self.assertTrue(any("candidate_text" in e for e in errors))
+
+    def test_committed_only_ignores_runtime_generated_review_report(self) -> None:
+        self.assertEqual(len(PR_GOVERNED_FILES), 13)
+        changed = collect_changed_files(
+            PR_GOVERNED_FILES,
+            untracked=[RUNTIME_REVIEW_REPORT],
+            committed_only=True,
+        )
+        self.assertEqual(changed, sorted(PR_GOVERNED_FILES))
+        self.assertNotIn(RUNTIME_REVIEW_REPORT, changed)
+        errors = evaluate_milestone_scope(changed, self.policy)
+        self.assertEqual(errors, [])
+
+    def test_local_mode_blocks_uncommitted_non_allowlisted_file(self) -> None:
+        changed = collect_changed_files(
+            PR_GOVERNED_FILES,
+            untracked=[RUNTIME_REVIEW_REPORT],
+            committed_only=False,
+        )
+        self.assertIn(RUNTIME_REVIEW_REPORT, changed)
+        errors = evaluate_milestone_scope(changed, self.policy)
+        self.assertTrue(any("review_report.json" in e and "allowlist" in e for e in errors))
 
     def test_special_review_required_cannot_be_cleared(self) -> None:
         base = {

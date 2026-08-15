@@ -82,5 +82,8 @@ jobs:
 
       - name: Pipeline milestone scope gate (validate_pipeline_milestone_scope.py)
         # Blocks M1/M2/M2.5 PRs from also rewriting claims/bindings/rules.
-        run: python3 scripts/validate_pipeline_milestone_scope.py --base origin/main
+        # --committed-only inspects origin/main...HEAD only. Earlier steps may
+        # write runtime artifacts (e.g. Phase 1 review_report.json) into the
+        # worktree; those must not be treated as PR scope.
+        run: python3 scripts/validate_pipeline_milestone_scope.py --base origin/main --committed-only
         if: github.event_name == 'pull_request'
