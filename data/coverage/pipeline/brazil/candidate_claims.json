@@ -25,7 +25,9 @@
       ],
       "transformation": {
         "mode": "direct_restating",
-        "normalizations": ["article_number_prefix_omitted"],
+        "normalizations": [
+          "article_number_prefix_omitted"
+        ],
         "omissions": [],
         "added_terms": [],
         "translation_source": null
@@ -33,31 +35,33 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "present",
-        "exception_review_status": "pending",
-        "exception_preserved": null,
-        "exception_excerpt_ids": ["EX-BR-LEI-ART2-OPS"]
+        "exception_review_status": "closed",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-BR-LEI-ART2-OPS"
+        ]
       },
       "origin": {
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": null
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-08-15",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:57709a5b335e17fdf439749d7cb5230f5c9915560bb1de2c00ec75b1771799c0",
+        "notes": "Art. 2º caput supported as written; statutory conditions retained."
       }
     },
     {
@@ -81,7 +85,9 @@
       ],
       "transformation": {
         "mode": "direct_restating",
-        "normalizations": ["paragrafo_unico_label_omitted"],
+        "normalizations": [
+          "paragrafo_unico_label_omitted"
+        ],
         "omissions": [],
         "added_terms": [],
         "translation_source": null
@@ -89,11 +95,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -101,19 +107,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": null
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-08-15",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:69b6d5ea35bcb608e95188159446a1413707f747d23038262573835dd22777b8",
+        "notes": "Art. 2º parágrafo único supported as written; both pactuation legs retained."
       }
     },
     {
@@ -137,7 +143,9 @@
       ],
       "transformation": {
         "mode": "direct_restating",
-        "normalizations": ["article_number_prefix_omitted"],
+        "normalizations": [
+          "article_number_prefix_omitted"
+        ],
         "omissions": [],
         "added_terms": [],
         "translation_source": null
@@ -145,11 +153,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -157,25 +165,25 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": null
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-08-15",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:bb1211355b10cf10417c923d1e6d7e85d21c3e9a1614ec7f89c0f3810f052366",
+        "notes": "Art. 3º supported as written; channel restriction, claim_type unchanged."
       }
     },
     {
       "candidate_id": "CC-BR-CUST-001",
       "candidate_text": "Cada viajante, ao ingressar no Brasil, com montante superior a US$ 10.000,00 ou o equivalente em outra moeda, está obrigado a preencher Declaração Eletrônica de Bens de Viajantes (e-DBV) e apresentá-la à fiscalização aduaneira.",
-      "reviewed_text": null,
+      "reviewed_text": "Cada viajante, ao ingressar no Brasil, com montante superior a US$ 10.000,00 ou o equivalente em outra moeda, está obrigado a preencher Declaração Eletrônica de Bens de Viajantes (e-DBV) e apresentá-la à fiscalização aduaneira. Deve ser declarado o porte de papel-moeda nacional ou estrangeira em espécie, não compreendidos os títulos de crédito, cheques ou cheques de viagem.",
       "claim_language": "pt",
       "claim_type": "threshold",
       "scope": {
@@ -193,7 +201,9 @@
       ],
       "transformation": {
         "mode": "direct_restating",
-        "normalizations": ["whitespace_normalization"],
+        "normalizations": [
+          "whitespace_normalization"
+        ],
         "omissions": [
           "second_paragraph_scope_note_on_papel_moeda_vs_titulos_cheques"
         ],
@@ -203,31 +213,33 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "present",
-        "exception_review_status": "pending",
-        "exception_preserved": null,
-        "exception_excerpt_ids": ["EX-BR-RECEITA-ENTRY"]
+        "exception_review_status": "closed",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-BR-RECEITA-ENTRY"
+        ]
       },
       "origin": {
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": null
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-08-15",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:d5d8be17afd6deed496ea8c267efe2c228f5707a9b33f7b66305e64411f0bc89",
+        "notes": "Bounded: restore papel-moeda em espécie scope from the same excerpt."
       }
     },
     {
@@ -261,31 +273,33 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "present",
-        "exception_review_status": "pending",
-        "exception_preserved": null,
-        "exception_excerpt_ids": ["EX-BR-RECEITA-EXIT"]
+        "exception_review_status": "closed",
+        "exception_preserved": false,
+        "exception_excerpt_ids": [
+          "EX-BR-RECEITA-EXIT"
+        ]
       },
       "origin": {
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
+      "support_status": "needs_evidence",
       "downstream_eligible": false,
       "adoption_gate_conditions_met": false,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "special_review: document-list compression must not drop material exit presentation requirements"
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-08-15",
+        "decision": "needs_evidence",
+        "reviewed_candidate_fingerprint": "sha256:1df317ef198babf5e73bee11b624675e075440b84e48265fab589e5344f1e105",
+        "notes": "special_review addressed: document-list compression cannot be supported or safely bounded from this excerpt alone."
       }
     }
   ]

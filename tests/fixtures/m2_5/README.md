@@ -1,8 +1,7 @@
-# M2.5 infrastructure fixtures
+# M2.5 review fixtures
 
-Brazil pack under `data/coverage/pipeline/brazil/` is the live **PENDING**
-infrastructure fixture (five review rows, zero closed human decisions).
-
-Deterministic PASS / BLOCK / stale / missing / vocabulary cases are built at
-test time in `tests/test_human_claim_review.py` from a copy of that pack so
-fingerprints stay fresh and Brazil is never auto-classified.
+Live Brazil pack under `data/coverage/pipeline/brazil/` is the closed 5/5
+human-review pack. Mutation tests in `tests/test_human_claim_review.py`
+reopen a copy to pending before constructing PASS / BLOCK / stale /
+missing / vocabulary cases so fingerprints stay fresh and live decisions
+are not overwritten.
