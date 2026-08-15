@@ -3,8 +3,8 @@
 """
 validate_pipeline_milestone_scope.py — PR/diff scope gate for pipeline milestones.
 
-When M1 intake or M2 claim-extraction paths change, forbid simultaneous mutation
-of claims.json, field_bindings.json, or data/rules/**.
+When M1 intake, M2 claim-extraction, or M2.5 human-review paths change, forbid
+simultaneous mutation of claims.json, field_bindings.json, or data/rules/**.
 
 Run:
   python scripts/validate_pipeline_milestone_scope.py
@@ -73,8 +73,11 @@ def main(argv: List[str] | None = None) -> int:
         or fnmatch.fnmatch(p, "data/coverage/pipeline/*/intake_report.json")
         or fnmatch.fnmatch(p, "data/coverage/pipeline/*/candidate_claims.json")
         or fnmatch.fnmatch(p, "data/coverage/pipeline/*/claim_extraction_report.json")
+        or fnmatch.fnmatch(p, "data/coverage/pipeline/*/human_claim_review.json")
+        or fnmatch.fnmatch(p, "data/coverage/pipeline/*/claim_review_report.json")
         or p.endswith("validate_source_intake.py")
         or p.endswith("validate_claim_extraction.py")
+        or p.endswith("validate_human_claim_review.py")
         or p.endswith("validate_pipeline_milestone_scope.py")
         for p in changed
     )
@@ -84,7 +87,7 @@ def main(argv: List[str] | None = None) -> int:
         print(f"  {p}")
 
     if not milestone_touched:
-        print("Milestone scope check: no M1/M2 milestone paths touched (ok).")
+        print("Milestone scope check: no M1/M2/M2.5 milestone paths touched (ok).")
         return 0
 
     errors: List[str] = []
@@ -93,7 +96,7 @@ def main(argv: List[str] | None = None) -> int:
             continue
         if matches_any(path, forbidden):
             errors.append(
-                f"Milestone scope violation: '{path}' is forbidden while M1/M2 files change"
+                f"Milestone scope violation: '{path}' is forbidden while M1/M2/M2.5 files change"
             )
 
     if errors:

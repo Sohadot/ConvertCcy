@@ -8,12 +8,14 @@ Commands:
   fix <slug>                      One bounded auto-correct cycle, then re-review
   intake-review <slug>            Phase 2 M1 intake review → intake_report.json
   claim-extraction-review <slug>  Phase 2 M2 claim extraction → claim_extraction_report.json
+  claim-review <slug>             Phase 2 M2.5 human candidate review → claim_review_report.json
 
 Examples:
   python scripts/country_pipeline.py review brazil
   python scripts/country_pipeline.py fix brazil --apply
   python scripts/country_pipeline.py intake-review brazil
   python scripts/country_pipeline.py claim-extraction-review brazil
+  python scripts/country_pipeline.py claim-review brazil
 """
 
 from __future__ import annotations
@@ -45,6 +47,11 @@ from validate_claim_extraction import (  # noqa: E402
     print_result as print_extraction_result,
     review_extraction,
     write_report as write_extraction_report,
+)
+from validate_human_claim_review import (  # noqa: E402
+    print_result as print_claim_review_result,
+    review_human_claim_review,
+    write_report as write_claim_review_report,
 )
 
 
@@ -312,6 +319,15 @@ def cmd_claim_extraction_review(slug: str) -> int:
     return 0 if result.decision == "PASS" else 1
 
 
+def cmd_claim_review(slug: str) -> int:
+    result, report = review_human_claim_review(slug)
+    report_path = write_claim_review_report(slug, report)
+    print_claim_review_result(result, report, report_path)
+    # Infrastructure PASS with pending reviews is success for this command.
+    # Milestone completion is a separate --require-milestone-complete gate.
+    return 0 if report.get("infrastructure_decision") == "PASS" else 1
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(description="Governed Country Pipeline orchestrator")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -344,6 +360,12 @@ def main(argv: Optional[List[str]] = None) -> int:
     )
     p_extract.add_argument("slug", help="Country slug (e.g. brazil)")
 
+    p_claim_review = sub.add_parser(
+        "claim-review",
+        help="Run Phase 2 M2.5 human candidate review and write claim_review_report.json",
+    )
+    p_claim_review.add_argument("slug", help="Country slug (e.g. brazil)")
+
     args = parser.parse_args(argv)
 
     if args.command == "review":
@@ -354,6 +376,8 @@ def main(argv: Optional[List[str]] = None) -> int:
         return cmd_intake_review(args.slug)
     if args.command == "claim-extraction-review":
         return cmd_claim_extraction_review(args.slug)
+    if args.command == "claim-review":
+        return cmd_claim_review(args.slug)
     return 2
 
 

@@ -362,3 +362,54 @@ python scripts/validate_pipeline_milestone_scope.py --base origin/main
 `downstream_eligible: true` requires closed human review with matching fingerprint, closed semantic review, accepted support status, closed exception review (for required claim types), continued M1 excerpt eligibility, and no banned transformation. Any later change to wording, scope, evidence, or transformation invalidates the prior review and returns the candidate to unreviewed / not downstream-eligible.
 
 Structural PASS from `validate_claim_extraction.py` does **not** mean semantic or legal approval.
+
+## Appendix D — Phase 2 Milestone 2.5 (Governed Human Candidate Claim Review)
+
+Plan (normative contract): [`docs/PIPELINE_PHASE2_M2_5_PLAN.md`](docs/PIPELINE_PHASE2_M2_5_PLAN.md)
+
+Executable review policy lives under `human_claim_review` in [`data/governance/country_pipeline_policy.json`](data/governance/country_pipeline_policy.json).
+
+### Artifacts
+
+| File | Role |
+|---|---|
+| `data/coverage/pipeline/{slug}/human_claim_review.json` | Authored human review ledger (source of truth) |
+| `data/coverage/pipeline/{slug}/claim_review_report.json` | **Generated** — never hand-write PASS |
+| `data/coverage/pipeline/{slug}/candidate_claims.json` | Projection target for review fields only |
+
+### Operator commands
+
+```text
+python scripts/country_pipeline.py claim-review <slug>
+python scripts/validate_human_claim_review.py --check-drift
+python scripts/validate_human_claim_review.py --require-milestone-complete
+python scripts/validate_pipeline_milestone_scope.py --base origin/main
+```
+
+Default CI allows `infrastructure_decision: PASS` with `milestone_decision: PENDING`. `--require-milestone-complete` is the completion gate.
+
+### Dual gates
+
+- **Infrastructure Gate:** schema, validator, drift, scope, regressions. May PASS while reviews are pending.
+- **Brazil Review Completion Gate:** 5/5 closed human decisions with fresh fingerprints. Required for `milestone_decision: PASS`.
+
+Infrastructure PASS is **not** M2.5 complete.
+
+### Vocabulary boundary
+
+M2.5 decisions are candidate-local and are **not** project-claim statuses:
+
+```text
+supported        ≠ verified
+needs_evidence   ≠ verification_target
+```
+
+`decision=bounded` means the candidate wording is acceptable only in a narrowed `reviewed_text`. It does not map to Phase 1 / CRES workflow status `bounded`. No M2.5 decision is written into `claims.json`.
+
+### Stale fingerprint
+
+The validator **BLOCKS** fingerprint drift. It does **not** mutate `candidate_claims.json` or `human_claim_review.json`. A human must reopen, apply pending/unreviewed/false, and re-close.
+
+### Hard write bans
+
+M2.5 must not write `claims.json`, `field_bindings.json`, `data/rules/**`, or publication/indexing metadata, and must not modify M3 surfaces. `adoption_eligible` is a nomination for a later Adoption Gate, not adoption.
