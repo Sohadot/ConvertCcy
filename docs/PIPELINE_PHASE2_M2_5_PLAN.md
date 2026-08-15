@@ -866,3 +866,20 @@ Please return one of:
 ## 24. One-line charter
 
 > M2.5 is complete only when infrastructure passes **and** all five Brazil candidates have closed human review outcomes; even then, adoption-eligible candidates are not `claims.json` entries.
+
+---
+
+## 25. Planning-process exception (append-only; do not rewrite history)
+
+Recorded **2026-08-15** during the **M2.5 Governance Ratification Gate**. This section documents a process exception. It does not change the M2.5 contract, does not approve implementation, and must not be used to rewrite Git history.
+
+| Event | Git object | Path |
+|---|---|---|
+| Plan v1 merged | `54f585928` / PR #68 | governed PR into `main` |
+| Approve-with-edits revision (six contract edits) | `0978812a0` | **direct commit to `main`** (no PR) |
+
+`0978812a0` remains the current plan text on `main`. That commit is **not** amended, rebased, or force-pushed.
+
+Future plan revisions, including any ratification edits from this gate, use a pull request. Direct-to-`main` planning commits are not a standing process.
+
+This ratification gate reviews `docs/PIPELINE_PHASE2_M2_5_PLAN.md` against the governed baseline as of `682f2e368` (M3-0/M3-1 / PR #70). M3-2 remains paused. No M2.5 executable behavior is introduced by this note.
