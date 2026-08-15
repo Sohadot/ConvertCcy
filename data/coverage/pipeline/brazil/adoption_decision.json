@@ -12,7 +12,7 @@
     "human_claim_review.json",
     "claim_review_report.json"
   ],
-  "notes": "Bounded reconciliation of M2.5 closed candidates against the existing Brazil project claim matrix. No new claims. No duplicate claims. M2.5 artifacts remain frozen historical state. This gate does not write field_bindings.json, data/rules/**, publication metadata, or M3. CUST-002 is excluded; departure publication continues to rest on independent BR-CUST-03, which is not an adoption of that candidate.",
+  "notes": "Bounded reconciliation of M2.5 closed candidates against the existing Brazil project claim matrix. No new claims. No duplicate claims. M2.5 artifacts remain frozen historical state. Adoption Gate restored the omitted CMN-guidelines constraint on BR-FX-02C and the country_overview binding before reconciliation. It does not write data/rules/**, publication metadata, or M3. CUST-002 is excluded; departure publication continues to rest on independent BR-CUST-03, which is not an adoption of that candidate.",
   "stats": {
     "eligible_candidates": 4,
     "reconciled_adopted": 4,
@@ -30,7 +30,7 @@
       "adoption_decision": "reconciled",
       "project_claim_ids": ["BR-FX-02C"],
       "relationship": "equivalent_existing_claim",
-      "rationale": "BR-FX-02C already states the same Art. 2º caput essence: FX-market operations may be conducted freely without a statutory value limit, subject to applicable legislation and BCB regulation. The project claim's 'statutory' qualifier is narrower than a bare 'no value limit' reading and matches the M2.5 close (supported wording is not a finding that BCB regulations contain no operational limits). CMN guidelines appear in the candidate text and are not separately named in the project rule; that omission does not make BR-FX-02C exceed the reviewed proposition. No new claim."
+      "rationale": "EX-BR-LEI-ART2-OPS conditions free FX-market operations on three distinct constraints: legislação, diretrizes do CMN, and regulamento do BCB. The pre-adoption BR-FX-02C rule omitted CMN guidelines ('subject to applicable legislation and BCB regulation'), which would have made a permissive claim wider than the governing excerpt. Adoption Gate restored the three-part constraint on BR-FX-02C.rule and allowed_wording, and on the country_overview binding, before recording equivalent_existing_claim. The 'statutory' value-limit qualifier remains. No new claim."
     },
     {
       "candidate_id": "CC-BR-FX-002",

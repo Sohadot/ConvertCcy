@@ -63,7 +63,7 @@
       "status": "verified",
       "type": "positive",
       "subject": "FX operations without statutory value limit",
-      "rule": "Under Law 14.286/2021, FX-market operations may be conducted freely without a statutory value limit, subject to applicable legislation and BCB regulation",
+      "rule": "Under Law 14.286/2021, FX-market operations may be conducted freely without a statutory value limit, subject to applicable legislation, CMN guidelines, and BCB regulation",
       "scope": "FX-market operations",
       "authority": "Lei 14.286/2021",
       "category": "operational",
@@ -72,7 +72,7 @@
       "source_budget": 1,
       "source_refs": ["SRC-BR-LEI-14286", "SRC-BR-RES-277"],
       "matching_source_note": "Lei 14.286/2021 Art. 2 and Art. 5; executed through authorised institutions under Res. 277",
-      "allowed_wording": ["without a statutory value limit", "subject to applicable legislation and BCB regulation"],
+      "allowed_wording": ["without a statutory value limit", "subject to applicable legislation, CMN guidelines, and BCB regulation"],
       "forbidden_inferences": ["current-account transactions are largely liberalised", "unrestricted FX"]
     },
     {
