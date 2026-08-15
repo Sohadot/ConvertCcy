@@ -71,7 +71,19 @@ jobs:
         # Regenerates report in-memory and fails on claim_extraction_report drift.
         run: python3 scripts/validate_claim_extraction.py --check-drift
 
+      - name: Human claim review gate (validate_human_claim_review.py)
+        # Phase 2 M2.5 opt-in: runs for packs with human_claim_review.json.
+        # Infrastructure PASS with pending reviews is allowed; milestone
+        # completion is a later gate (--require-milestone-complete).
+        run: python3 scripts/validate_human_claim_review.py --check-drift
+
+      - name: Human claim review tests (tests.test_human_claim_review)
+        run: python3 -m unittest discover -s tests
+
       - name: Pipeline milestone scope gate (validate_pipeline_milestone_scope.py)
-        # Blocks M1/M2 PRs from also rewriting claims/bindings/rules.
-        run: python3 scripts/validate_pipeline_milestone_scope.py --base origin/main
+        # Blocks M1/M2/M2.5 PRs from also rewriting claims/bindings/rules.
+        # --committed-only inspects origin/main...HEAD only. Earlier steps may
+        # write runtime artifacts (e.g. Phase 1 review_report.json) into the
+        # worktree; those must not be treated as PR scope.
+        run: python3 scripts/validate_pipeline_milestone_scope.py --base origin/main --committed-only
         if: github.event_name == 'pull_request'

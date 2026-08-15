@@ -125,7 +125,11 @@
     "milestone_scope_forbidden_path_globs": [
       "data/rules/**",
       "data/coverage/pipeline/*/claims.json",
-      "data/coverage/pipeline/*/field_bindings.json"
+      "data/coverage/pipeline/*/field_bindings.json",
+      "dataset.html",
+      "dataset/**",
+      "docs/M3_DATASET_DISCOVERY_PLAN.md",
+      "scripts/build_m3_sample.py"
     ],
     "milestone_scope_allowed_path_globs": [
       "data/governance/country_pipeline_policy.json",
@@ -133,17 +137,24 @@
       "scripts/validate_source_intake.py",
       "scripts/validate_pipeline_milestone_scope.py",
       "scripts/validate_claim_extraction.py",
+      "scripts/validate_human_claim_review.py",
       "scripts/country_pipeline.py",
       "scripts/validate_country_pipeline.py",
       ".github/workflows/governance-gate.yml",
       "COUNTRY_REVIEW_EXECUTION_PROTOCOL.md",
       "docs/PIPELINE_PHASE2_M1_PLAN.md",
       "docs/PIPELINE_PHASE2_M2_PLAN.md",
+      "docs/PIPELINE_PHASE2_M2_5_PLAN.md",
       "data/coverage/pipeline/*/sources.json",
       "data/coverage/pipeline/*/evidence_excerpts.json",
       "data/coverage/pipeline/*/intake_report.json",
       "data/coverage/pipeline/*/candidate_claims.json",
-      "data/coverage/pipeline/*/claim_extraction_report.json"
+      "data/coverage/pipeline/*/claim_extraction_report.json",
+      "data/coverage/pipeline/*/human_claim_review.json",
+      "data/coverage/pipeline/*/claim_review_report.json",
+      "tests/test_human_claim_review.py",
+      "tests/test_pipeline_milestone_scope.py",
+      "tests/fixtures/**"
     ]
   },
 
@@ -205,6 +216,58 @@
       " as well as ",
       " while ",
       ";"
+    ]
+  },
+
+  "human_claim_review": {
+    "milestone": "m2.5",
+    "forbids_claims_adoption": true,
+    "forbids_field_bindings": true,
+    "forbids_rules_writes": true,
+    "forbids_publication_indexing": true,
+    "forbids_multi_source_synthesis": true,
+    "forbids_automatic_semantic_approval": true,
+    "forbids_open_deferred_in_pilot_scope": true,
+    "requires_fingerprint_on_close": true,
+    "requires_candidate_text_immutability": true,
+    "requires_review_scope_coverage": true,
+    "milestone_pass_requires_full_closed_coverage": true,
+    "bounded_requires_reviewed_text": true,
+    "supported_may_keep_reviewed_text_null": true,
+    "closed_decisions": ["supported", "bounded", "rejected", "needs_evidence"],
+    "forbidden_project_claim_statuses": ["verified", "verification_target"],
+    "adoption_gate_conditions_met_is_computed": true,
+    "adoption_eligible_is_explicit_human_mark": true,
+    "adoption_eligible_requires_conditions_met": true,
+    "missing_adoption_eligible_mark_is_not_error_when_conditions_met": true,
+    "downstream_eligible_does_not_mean_adopted": true,
+    "adoption_eligible_does_not_mean_adopted": true,
+    "stats_claims_adopted_must_be_zero": true,
+    "fail_on_report_drift": true,
+    "max_auto_correct_cycles": 1,
+    "brazil_review_scope": {
+      "candidate_ids": [
+        "CC-BR-FX-001",
+        "CC-BR-FX-002",
+        "CC-BR-FX-003",
+        "CC-BR-CUST-001",
+        "CC-BR-CUST-002"
+      ],
+      "required_reviews": 5
+    },
+    "required_authored_artifacts": ["human_claim_review.json"],
+    "generated_artifacts": ["claim_review_report.json"],
+    "allowed_candidate_mutation_fields": [
+      "reviewed_text",
+      "semantic_review_status",
+      "support_status",
+      "downstream_eligible",
+      "adoption_gate_conditions_met",
+      "adoption_eligible",
+      "authority_posture.authority_preservation_status",
+      "exception_handling.exception_review_status",
+      "exception_handling.exception_preserved",
+      "human_review"
     ]
   }
 }

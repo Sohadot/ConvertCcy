@@ -49,6 +49,8 @@
       "special_review_required": false,
       "support_status": "unreviewed",
       "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
       "human_review": {
         "status": "pending",
         "reviewed_by": null,
@@ -103,6 +105,8 @@
       "special_review_required": false,
       "support_status": "unreviewed",
       "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
       "human_review": {
         "status": "pending",
         "reviewed_by": null,
@@ -157,6 +161,8 @@
       "special_review_required": false,
       "support_status": "unreviewed",
       "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
       "human_review": {
         "status": "pending",
         "reviewed_by": null,
@@ -213,6 +219,8 @@
       "special_review_required": false,
       "support_status": "unreviewed",
       "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
       "human_review": {
         "status": "pending",
         "reviewed_by": null,
@@ -269,6 +277,8 @@
       "special_review_required": true,
       "support_status": "unreviewed",
       "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
       "human_review": {
         "status": "pending",
         "reviewed_by": null,

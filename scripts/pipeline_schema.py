@@ -145,6 +145,8 @@ PACK_FILENAMES = {
     "intake_report": "intake_report.json",
     "candidate_claims": "candidate_claims.json",
     "claim_extraction_report": "claim_extraction_report.json",
+    "human_claim_review": "human_claim_review.json",
+    "claim_review_report": "claim_review_report.json",
 }
 
 # Phase 2 M1 — intake / excerpt enums
@@ -205,6 +207,24 @@ EXCEPTION_SIGNALS = {"unknown", "none_detected", "present"}
 EXCEPTION_REVIEW_STATUSES = {"pending", "closed"}
 HUMAN_REVIEW_STATUSES = {"pending", "closed"}
 ORIGIN_MODES = {"generated", "human_authored"}
+CLOSED_REVIEW_DECISIONS = {"supported", "bounded", "rejected", "needs_evidence"}
+FORBIDDEN_PROJECT_CLAIM_STATUSES = {"verified", "verification_target"}
+SEMANTIC_APPROVAL_STATES = {
+    "not_established",
+    "partially_reviewed",
+    "human_review_closed",
+}
+REVIEW_COMPLETION_STATES = {"PENDING", "COMPLETE", "BLOCK"}
+MILESTONE_DECISIONS = {"PASS", "PENDING", "BLOCK"}
+CLAIM_REVIEW_LAYERS = {
+    "structural",
+    "coverage",
+    "vocabulary",
+    "fingerprint",
+    "projection",
+    "promotion",
+    "eligibility",
+}
 SUPPORT_ROLES = {
     "direct",
     "definition",
@@ -252,7 +272,36 @@ CANDIDATE_ITEM_REQUIRED_KEYS = {
     "special_review_required",
     "support_status",
     "downstream_eligible",
+    "adoption_gate_conditions_met",
+    "adoption_eligible",
     "human_review",
+}
+
+HUMAN_CLAIM_REVIEW_REQUIRED_KEYS = {
+    "schema_version",
+    "country_slug",
+    "milestone",
+    "review_scope",
+    "reviews",
+}
+
+HUMAN_REVIEW_ITEM_REQUIRED_KEYS = {
+    "review_id",
+    "candidate_id",
+    "reviewer",
+    "reviewed_at",
+    "status",
+    "decision",
+    "candidate_text_snapshot",
+    "reviewed_text",
+    "reviewed_candidate_fingerprint",
+    "semantic_review_status",
+    "authority_preservation_status",
+    "exception_review_status",
+    "downstream_eligible",
+    "adoption_gate_conditions_met",
+    "adoption_eligible",
+    "rationale",
 }
 
 SOURCE_ITEM_M1_REQUIRED_KEYS = SOURCE_ITEM_REQUIRED_KEYS | {
@@ -343,6 +392,19 @@ def list_claim_extraction_slugs() -> list[str]:
         if not child.is_dir():
             continue
         if (child / PACK_FILENAMES["candidate_claims"]).exists():
+            slugs.append(child.name)
+    return slugs
+
+
+def list_human_claim_review_slugs() -> list[str]:
+    """Packs that opted into Phase 2 M2.5 (have human_claim_review.json)."""
+    if not PIPELINE_ROOT.exists():
+        return []
+    slugs = []
+    for child in sorted(PIPELINE_ROOT.iterdir()):
+        if not child.is_dir():
+            continue
+        if (child / PACK_FILENAMES["human_claim_review"]).exists():
             slugs.append(child.name)
     return slugs
 
