@@ -1,13 +1,15 @@
 # Governed Country Pipeline — Phase 2 Milestone 2.5
 
-**Title:** Governed Human Claim Review / Adoption Gate  
-**Branch:** `claude/governed-country-pipeline-p2-m2.5`  
-**Status:** PLAN REVISED — contract edits from governance review incorporated; awaiting **APPROVE M2.5 PLAN** before implementation  
-**Base:** `main` @ Phase 2 M2.0 merge (`fd2bfaa57` / PR #67)  
-**Date:** 2026-07-30  
+**Title:** Governed Human Candidate Claim Review  
+**Branch:** `claude/m2.5-ratification-gate`  
+**Status:** PLAN REVISED — ratification contract edits incorporated; awaiting **APPROVE M2.5 PLAN** before implementation  
+**Current governed baseline:** `main` @ `682f2e368` / PR #70  
+**Original plan base (historical):** `main` @ Phase 2 M2.0 merge (`fd2bfaa57` / PR #67)  
+**Date:** 2026-08-15  
 **Depends on:** Phase 1 + Phase 2 M1 + Phase 2 M2.0 (candidates only)  
-**Does not open:** M2.1 composition/synthesis · claims adoption · field bindings · rules · publication  
-**Review decision addressed:** APPROVE WITH EDITS
+**Does not open:** M2.1 composition/synthesis · claims adoption · field bindings · rules · publication · M3-2  
+**M3 freeze:** M3-0/M3-1 are frozen governed baseline. M2.5 implementation MUST NOT modify M3 surfaces. M3-2 remains paused.  
+**Review decision addressed:** APPROVE WITH EDITS — ratification not yet complete until this patch is reviewed
 
 ---
 
@@ -42,6 +44,31 @@ infrastructure PASS              ≠  milestone PASS
 
 A candidate may be closed, classified, and marked adoption-eligible for a **later** Adoption Gate. M2.5 never writes project claims.
 
+### 1.1 Vocabulary Boundary (non-bypassable)
+
+M2.5 candidate-review vocabulary is local to `candidate_claims.json` / `human_claim_review.json` and MUST NOT be interpreted as project-claim status.
+
+```text
+supported        ≠ verified
+needs_evidence   ≠ verification_target
+```
+
+M2.5 `decision=bounded` means:
+
+> the candidate wording is acceptable only in a narrowed reviewed form.
+
+It does **not** automatically map to the project-claim workflow status `bounded`.
+
+No M2.5 decision is projected into `claims.json`.  
+Any mapping between candidate-review decisions and project-claim statuses belongs exclusively to the later Adoption Gate.
+
+| M2.5 candidate decision | Must not be read as |
+|---|---|
+| `supported` | Phase 1 / CRES `verified` |
+| `bounded` | Phase 1 / CRES workflow status `bounded` |
+| `needs_evidence` | CRES / Phase 1 `verification_target` |
+| `rejected` | a project-claim row of any status |
+
 ---
 
 ## 2. Explicit non-goals (hard boundaries)
@@ -64,6 +91,9 @@ A candidate may be closed, classified, and marked adoption-eligible for a **late
 | Closing review without fingerprint match | Invalid / stale approval |
 | Silent rewrite of `candidate_text` | Audit base must remain; use `reviewed_text` |
 | Open-ended `deferred` for Brazil pilot candidates | Edit #5 — every in-scope candidate needs a closed outcome |
+| Interpreting M2.5 decisions as project-claim statuses | Vocabulary Boundary — mapping is later Adoption Gate only |
+| Machine-mutating review fields on fingerprint drift | Validator BLOCKS; human reopens |
+| M3 surfaces (`dataset.html`, sample package, Zenodo/HF, M3 plan/impl) | M3-0/M3-1 frozen; M3-2 paused |
 
 If an implementation PR touches any forbidden item, reject or split.
 
@@ -406,16 +436,27 @@ On close:
 
 ### Invalidation rule
 
-> Any later change to `candidate_text`, `reviewed_text`, `scope`, `evidence_links`, or `transformation` invalidates the closed review and forces:
->
-> - `human_review.status → pending`
-> - `support_status → unreviewed`
-> - `downstream_eligible → false`
-> - `adoption_gate_conditions_met → false`
-> - `adoption_eligible → false`
-> - `semantic_review_status → pending`
+> Any later change to `candidate_text`, `reviewed_text`, `scope`, `evidence_links`, or `transformation` makes a previously closed review **stale**.
 
-M2.5 validator must detect stale fingerprints even if humans forget to reopen.
+```text
+fingerprint drift
+  → validator BLOCKS
+```
+
+The validator MUST NOT mutate `candidate_claims.json` or `human_claim_review.json`.
+
+A human must explicitly reopen the stale review, apply the required pending / unreviewed / false state, and later close it again with a fresh fingerprint.
+
+Required resulting state **after human reopen** (not machine-applied):
+
+- `human_review.status → pending`
+- `support_status → unreviewed`
+- `downstream_eligible → false`
+- `adoption_gate_conditions_met → false`
+- `adoption_eligible → false`
+- `semantic_review_status → pending`
+
+> Detect automatically; repair/reopen explicitly by human.
 
 ---
 
@@ -634,7 +675,7 @@ Never auto-edit:
 - `reviewed_text` / `candidate_text`  
 - authority or exception human outcomes  
 
-Machine may recompute and rewrite `adoption_gate_conditions_met` and report coverage stats.
+Machine may recompute and rewrite `adoption_gate_conditions_met` and report coverage stats **in generated reports only**. It must not apply stale-fingerprint field resets to authored artifacts.
 
 ---
 
@@ -770,7 +811,7 @@ Extend `candidate_claims` items with defaults:
 
 ## 18. Protocol
 
-Add **Appendix D — Phase 2 Milestone 2.5 (Governed Human Claim Review / Adoption Gate)** to `COUNTRY_REVIEW_EXECUTION_PROTOCOL.md`.
+Add **Appendix D — Phase 2 Milestone 2.5 (Governed Human Candidate Claim Review)** to `COUNTRY_REVIEW_EXECUTION_PROTOCOL.md`.
 
 Must state:
 
@@ -786,7 +827,7 @@ Must state:
 
 ## 19. Implementation order (after APPROVE M2.5 PLAN)
 
-1. Sync from current `main` (post–M2.0)  
+1. Sync from current `main` (`682f2e368` / PR #70); do not modify M3 surfaces  
 2. Executable `human_claim_review` policy + schema (coverage, dual decisions, `needs_evidence`, adoption condition split)  
 3. `validate_human_claim_review.py` + report + drift  
 4. Extend scope gate + CI  
@@ -835,6 +876,8 @@ Steps 8–9 may be one PR if humans actually close all five in that PR; report f
 | **M2.5 Completion** | Close 5/5 human reviews + mark adoption-eligible | Write `claims.json` / synthesize |
 | Later Adoption Gate | Copy nominated candidates into `claims.json` | Skip human review |
 | M2.1 | Composition (if ever approved) | Bypass M2.5 review |
+| M3-0/M3-1 | Frozen governed baseline | Reopen without regression |
+| M3-2 | Paused | Start from M2.5 implementation |
 
 ---
 
@@ -845,7 +888,10 @@ Steps 8–9 may be one PR if humans actually close all five in that PR; report f
 3. **`semantic_approval` ladder** — `not_established` → `partially_reviewed` → `human_review_closed`.  
 4. **Infrastructure Gate ≠ Review Completion Gate** — governing M2.5 complete only when both pass.  
 5. **Closed outcomes only for pilot** — `supported` \| `bounded` \| `rejected` \| `needs_evidence`; ban open `deferred`.  
-6. **`adoption_gate_conditions_met` (computed) ≠ `adoption_eligible` (human mark)** — conservative non-nomination is valid.
+6. **`adoption_gate_conditions_met` (computed) ≠ `adoption_eligible` (human mark)** — conservative non-nomination is valid.  
+7. **Vocabulary Boundary** — M2.5 decisions are candidate-local; `supported ≠ verified`, `needs_evidence ≠ verification_target`; `bounded` is wording-narrowing, not a project-claim status; no projection into `claims.json`.  
+8. **Stale fingerprint → BLOCK only** — validator detects drift and does not mutate artifacts; human reopens and repairs.  
+9. **Current baseline + M3 freeze** — plan tracks `main` @ `682f2e368` / PR #70; M2.5 must not modify M3 surfaces; M3-2 remains paused. Title is Governed Human Candidate Claim Review (not Adoption Gate).
 
 ---
 
