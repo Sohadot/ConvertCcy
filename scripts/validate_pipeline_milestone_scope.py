@@ -6,7 +6,8 @@ validate_pipeline_milestone_scope.py — PR/diff scope gate for pipeline milesto
 When M1/M2/M2.5 paths change:
   - every changed file must match the positive allowlist
   - forbidden globs (claims/bindings/rules/M3) still BLOCK
-  - candidate_claims.json may only mutate allowed review fields vs --base
+  - candidate_claims.json review-field freeze applies only when an M2.5
+    surface is in the diff (ledger/report/validator)
 
 Run:
   python scripts/validate_pipeline_milestone_scope.py
@@ -33,6 +34,12 @@ MILESTONE_TOUCH_GLOBS = [
     "data/coverage/pipeline/*/intake_report.json",
     "data/coverage/pipeline/*/candidate_claims.json",
     "data/coverage/pipeline/*/claim_extraction_report.json",
+    "data/coverage/pipeline/*/human_claim_review.json",
+    "data/coverage/pipeline/*/claim_review_report.json",
+]
+
+# Field-level freeze of candidate_claims.json is M2.5-only.
+M2_5_SURFACE_GLOBS = [
     "data/coverage/pipeline/*/human_claim_review.json",
     "data/coverage/pipeline/*/claim_review_report.json",
 ]
@@ -64,6 +71,14 @@ def git_changed_files(base: str) -> List[str]:
 
 def matches_any(path: str, globs: List[str]) -> bool:
     return any(fnmatch.fnmatch(path, g) for g in globs)
+
+
+def is_m2_5_surface_touched(changed: List[str]) -> bool:
+    """True when the diff includes M2.5 ledger, report, or validator."""
+    return any(
+        matches_any(p, M2_5_SURFACE_GLOBS) or p.endswith("validate_human_claim_review.py")
+        for p in changed
+    )
 
 
 def _nested_get(obj: Any, dotted: str) -> Any:
@@ -246,7 +261,9 @@ def main(argv: List[str] | None = None) -> int:
         print("Milestone scope check: no M1/M2/M2.5 milestone paths touched (ok).")
         return 0
 
-    field_errors = candidate_violations_vs_base(args.base, changed, policy)
+    field_errors: List[str] = []
+    if is_m2_5_surface_touched(changed):
+        field_errors = candidate_violations_vs_base(args.base, changed, policy)
     errors = evaluate_milestone_scope(
         changed, policy, allow_rules_touch=args.allow_rules_touch, candidate_violations=field_errors
     )

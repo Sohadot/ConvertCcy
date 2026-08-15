@@ -260,7 +260,6 @@
     "allowed_candidate_mutation_fields": [
       "reviewed_text",
       "semantic_review_status",
-      "special_review_required",
       "support_status",
       "downstream_eligible",
       "adoption_gate_conditions_met",

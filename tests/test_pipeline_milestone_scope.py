@@ -15,6 +15,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 from validate_pipeline_milestone_scope import (  # noqa: E402
     candidate_field_violations,
     evaluate_milestone_scope,
+    is_m2_5_surface_touched,
     load_policy,
 )
 
@@ -125,6 +126,55 @@ class MilestoneScopeTests(unittest.TestCase):
         head["notes"] = "changed"
         errors = candidate_field_violations(base, head, self.allowed_fields)
         self.assertTrue(any("notes" in e for e in errors))
+
+    def test_m2_only_candidate_text_correction_does_not_freeze_fields(self) -> None:
+        changed = [
+            "data/coverage/pipeline/brazil/candidate_claims.json",
+            "scripts/validate_claim_extraction.py",
+        ]
+        self.assertFalse(is_m2_5_surface_touched(changed))
+        errors = evaluate_milestone_scope(changed, self.policy)
+        self.assertEqual(errors, [])
+
+    def test_m2_5_surface_plus_candidate_text_blocks(self) -> None:
+        changed = [
+            "data/coverage/pipeline/brazil/candidate_claims.json",
+            "data/coverage/pipeline/brazil/human_claim_review.json",
+        ]
+        self.assertTrue(is_m2_5_surface_touched(changed))
+        base = {
+            "schema_version": "1.0.0",
+            "country_slug": "brazil",
+            "candidates": [
+                {"candidate_id": "CC-BR-FX-001", "candidate_text": "original", "support_status": "unreviewed"}
+            ],
+        }
+        head = json.loads(json.dumps(base))
+        head["candidates"][0]["candidate_text"] = "corrected in same PR as M2.5"
+        field_errors = candidate_field_violations(base, head, self.allowed_fields)
+        errors = evaluate_milestone_scope(
+            changed, self.policy, candidate_violations=field_errors
+        )
+        self.assertTrue(any("candidate_text" in e for e in errors))
+
+    def test_special_review_required_cannot_be_cleared(self) -> None:
+        base = {
+            "schema_version": "1.0.0",
+            "country_slug": "brazil",
+            "candidates": [
+                {
+                    "candidate_id": "CC-BR-CUST-002",
+                    "candidate_text": "text",
+                    "special_review_required": True,
+                    "support_status": "unreviewed",
+                    "human_review": {"status": "pending"},
+                }
+            ],
+        }
+        head = json.loads(json.dumps(base))
+        head["candidates"][0]["special_review_required"] = False
+        errors = candidate_field_violations(base, head, self.allowed_fields)
+        self.assertTrue(any("special_review_required" in e for e in errors))
 
 
 if __name__ == "__main__":

@@ -377,6 +377,9 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
             self.assertEqual(report["milestone_decision"], "PASS")
             self.assertEqual(report["stats"]["bounded"], 1)
             self.assertEqual(by_id["CC-BR-CUST-002"]["reviewed_text"], narrowed)
+            self.assertTrue(by_id["CC-BR-CUST-002"]["special_review_required"])
+            cust_review = next(r for r in ledger["reviews"] if r["candidate_id"] == "CC-BR-CUST-002")
+            self.assertTrue(cust_review["special_review_addressed"])
             self.assertEqual(report["stats"]["adoption_eligible"], 1)
 
 
