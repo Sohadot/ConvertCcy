@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Deterministic M2.5 infrastructure tests. No Brazil human semantic close."""
+"""Deterministic M2.5 review tests. Live Brazil is the closed 5/5 pack."""
 
 from __future__ import annotations
 
@@ -36,6 +36,60 @@ def _copy_brazil(tmp: Path) -> Path:
     dest = tmp / "brazil"
     shutil.copytree(BRAZIL, dest)
     return dest
+
+
+def _reopen_pending(candidate: dict, review: dict) -> None:
+    """Restore M2.0 pending defaults so mutation tests do not depend on live close."""
+    review.update(
+        {
+            "reviewer": None,
+            "reviewed_at": None,
+            "status": "pending",
+            "decision": None,
+            "reviewed_text": None,
+            "reviewed_candidate_fingerprint": None,
+            "semantic_review_status": "pending",
+            "authority_preservation_status": "unreviewed",
+            "exception_review_status": "pending",
+            "exception_preserved": None,
+            "special_review_addressed": False,
+            "downstream_eligible": False,
+            "adoption_gate_conditions_met": False,
+            "adoption_eligible": False,
+            "rationale": None,
+            "findings": [],
+            "invalidates_prior_review": False,
+        }
+    )
+    candidate["reviewed_text"] = None
+    candidate["semantic_review_status"] = "pending"
+    candidate["support_status"] = "unreviewed"
+    candidate["downstream_eligible"] = False
+    candidate["adoption_gate_conditions_met"] = False
+    candidate["adoption_eligible"] = False
+    candidate["authority_posture"]["authority_preservation_status"] = "unreviewed"
+    candidate["exception_handling"]["exception_review_status"] = "pending"
+    candidate["exception_handling"]["exception_preserved"] = None
+    candidate["human_review"] = {
+        "status": "pending",
+        "reviewed_by": None,
+        "reviewed_at": None,
+        "decision": None,
+        "reviewed_candidate_fingerprint": None,
+        "notes": None,
+    }
+
+
+def _copy_brazil_pending(tmp: Path) -> Path:
+    pack = _copy_brazil(tmp)
+    candidates = _load(pack / "candidate_claims.json")
+    ledger = _load(pack / "human_claim_review.json")
+    by_id = {c["candidate_id"]: c for c in candidates["candidates"]}
+    for review in ledger["reviews"]:
+        _reopen_pending(by_id[review["candidate_id"]], review)
+    _save(pack / "candidate_claims.json", candidates)
+    _save(pack / "human_claim_review.json", ledger)
+    return pack
 
 
 def _close_needs_evidence(candidate: dict, review: dict) -> None:
@@ -130,25 +184,41 @@ def _close_accepted(
 
 
 class HumanClaimReviewInfrastructureTests(unittest.TestCase):
-    def test_brazil_pending_is_infrastructure_pass_not_milestone(self) -> None:
+    def test_brazil_closed_is_milestone_pass_not_adoption(self) -> None:
         result, report = review_human_claim_review("brazil")
         self.assertEqual(report["infrastructure_decision"], "PASS")
-        self.assertEqual(report["review_completion"], "PENDING")
-        self.assertEqual(report["milestone_decision"], "PENDING")
-        self.assertEqual(report["semantic_approval"], "not_established")
+        self.assertEqual(report["review_completion"], "COMPLETE")
+        self.assertEqual(report["milestone_decision"], "PASS")
+        self.assertEqual(report["semantic_approval"], "human_review_closed")
         self.assertEqual(report["adoption_status"], "not_adopted")
         self.assertEqual(report["stats"]["claims_adopted"], 0)
+        self.assertEqual(report["stats"]["adoption_eligible"], 0)
+        self.assertEqual(report["stats"]["supported"], 3)
+        self.assertEqual(report["stats"]["bounded"], 1)
+        self.assertEqual(report["stats"]["rejected"], 0)
+        self.assertEqual(report["stats"]["needs_evidence"], 1)
         self.assertEqual(report["review_coverage"]["required"], 5)
         self.assertEqual(report["review_coverage"]["recorded"], 5)
-        self.assertEqual(report["review_coverage"]["closed"], 0)
+        self.assertEqual(report["review_coverage"]["closed"], 5)
         self.assertEqual(report["review_coverage"]["missing_candidate_ids"], [])
         self.assertTrue(report["vocabulary_boundary"]["supported_is_not_verified"])
         self.assertNotIn("verified", json.dumps(report["stats"]))
         self.assertEqual(result.infrastructure_decision, "PASS")
 
+    def test_pending_copy_is_infrastructure_pass_not_milestone(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            pack = _copy_brazil_pending(Path(raw))
+            result, report = review_human_claim_review("brazil", pack_dir=pack)
+            self.assertEqual(report["infrastructure_decision"], "PASS")
+            self.assertEqual(report["review_completion"], "PENDING")
+            self.assertEqual(report["milestone_decision"], "PENDING")
+            self.assertEqual(report["semantic_approval"], "not_established")
+            self.assertEqual(report["review_coverage"]["closed"], 0)
+            self.assertEqual(result.infrastructure_decision, "PASS")
+
     def test_missing_review_blocks_completion_not_infrastructure(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
-            pack = _copy_brazil(Path(raw))
+            pack = _copy_brazil_pending(Path(raw))
             ledger = _load(pack / "human_claim_review.json")
             ledger["reviews"] = ledger["reviews"][:-1]
             _save(pack / "human_claim_review.json", ledger)
@@ -161,7 +231,7 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
 
     def test_stale_fingerprint_blocks_and_does_not_mutate(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
-            pack = _copy_brazil(Path(raw))
+            pack = _copy_brazil_pending(Path(raw))
             candidates = _load(pack / "candidate_claims.json")
             ledger = _load(pack / "human_claim_review.json")
             cand = candidates["candidates"][0]
@@ -183,7 +253,7 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
 
     def test_vocabulary_verified_is_not_supported(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
-            pack = _copy_brazil(Path(raw))
+            pack = _copy_brazil_pending(Path(raw))
             candidates = _load(pack / "candidate_claims.json")
             ledger = _load(pack / "human_claim_review.json")
             cand = candidates["candidates"][0]
@@ -202,7 +272,7 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
 
     def test_vocabulary_verification_target_is_not_needs_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
-            pack = _copy_brazil(Path(raw))
+            pack = _copy_brazil_pending(Path(raw))
             candidates = _load(pack / "candidate_claims.json")
             ledger = _load(pack / "human_claim_review.json")
             cand = candidates["candidates"][0]
@@ -219,7 +289,7 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
 
     def test_five_closed_needs_evidence_is_milestone_pass_not_adoption(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
-            pack = _copy_brazil(Path(raw))
+            pack = _copy_brazil_pending(Path(raw))
             candidates = _load(pack / "candidate_claims.json")
             ledger = _load(pack / "human_claim_review.json")
             by_id = {c["candidate_id"]: c for c in candidates["candidates"]}
@@ -257,7 +327,7 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
 
     def test_partial_close_is_partially_reviewed(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
-            pack = _copy_brazil(Path(raw))
+            pack = _copy_brazil_pending(Path(raw))
             candidates = _load(pack / "candidate_claims.json")
             ledger = _load(pack / "human_claim_review.json")
             _close_needs_evidence(candidates["candidates"][0], ledger["reviews"][0])
@@ -272,7 +342,7 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
 
     def test_superseding_review_keeps_five_active_not_six(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
-            pack = _copy_brazil(Path(raw))
+            pack = _copy_brazil_pending(Path(raw))
             candidates = _load(pack / "candidate_claims.json")
             ledger = _load(pack / "human_claim_review.json")
             by_id = {c["candidate_id"]: c for c in candidates["candidates"]}
@@ -300,7 +370,7 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
 
     def test_authority_mismatch_blocks(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
-            pack = _copy_brazil(Path(raw))
+            pack = _copy_brazil_pending(Path(raw))
             candidates = _load(pack / "candidate_claims.json")
             ledger = _load(pack / "human_claim_review.json")
             _close_needs_evidence(candidates["candidates"][0], ledger["reviews"][0])
@@ -315,7 +385,7 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
 
     def test_exception_mismatch_blocks(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
-            pack = _copy_brazil(Path(raw))
+            pack = _copy_brazil_pending(Path(raw))
             candidates = _load(pack / "candidate_claims.json")
             ledger = _load(pack / "human_claim_review.json")
             _close_needs_evidence(candidates["candidates"][0], ledger["reviews"][0])
@@ -328,7 +398,7 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
 
     def test_supported_path_meets_adoption_conditions(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
-            pack = _copy_brazil(Path(raw))
+            pack = _copy_brazil_pending(Path(raw))
             candidates = _load(pack / "candidate_claims.json")
             ledger = _load(pack / "human_claim_review.json")
             by_id = {c["candidate_id"]: c for c in candidates["candidates"]}
@@ -353,7 +423,7 @@ class HumanClaimReviewInfrastructureTests(unittest.TestCase):
 
     def test_bounded_path_requires_reviewed_text(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
-            pack = _copy_brazil(Path(raw))
+            pack = _copy_brazil_pending(Path(raw))
             candidates = _load(pack / "candidate_claims.json")
             ledger = _load(pack / "human_claim_review.json")
             by_id = {c["candidate_id"]: c for c in candidates["candidates"]}
