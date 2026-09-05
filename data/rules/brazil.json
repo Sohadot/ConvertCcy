@@ -8,15 +8,15 @@
   "currency_name": "Brazilian Real",
 
   "schema_version": "1.2.1",
-  "page_status": "needs_hardening",
-  "last_reviewed": "2026-07-30",
-  "evidence_tier": "official_verified_partial",
+  "page_status": "published",
+  "last_reviewed": "2026-09-05",
+  "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": false,
-  "source_notice": "Draft rebuilt from the reviewed Brazil claim matrix. Primary legal and operational sources are mapped field-by-field, but final pinpoint hardening and full draft-fidelity review are still pending.",
+  "indexing_allowed": true,
+  "source_notice": "",
 
-  "country_overview": "Brazil operates a floating exchange-rate regime regulated by the Banco Central do Brasil (BCB). Under Law 14.286/2021, FX-market operations may be conducted freely without a statutory value limit, subject to applicable legislation and BCB regulation, and transaction rates are freely agreed between authorised institutions and their clients. Specific activities remain subject to operational, reporting, and supervisory requirements.",
+  "country_overview": "Brazil operates a floating exchange-rate regime regulated by the Banco Central do Brasil (BCB). Under Law 14.286/2021, FX-market operations may be conducted freely without a statutory value limit, subject to applicable legislation, CMN guidelines, and BCB regulation, and transaction rates are freely agreed between authorised institutions and their clients. Specific activities remain subject to operational, reporting, and supervisory requirements.",
 
   "summary": {
     "traveler": "Travellers may carry cash across Brazil's border, but amounts above USD 10,000 or the equivalent in another currency must be declared through the e-DBV. On departure, the traveller must present the declared cash and the applicable supporting evidence identified by Receita Federal.",
@@ -75,51 +75,51 @@
 
   "source_map": {
     "country_overview": [
-      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 2, parágrafo único; Art. 5" },
-      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/politicacambial", "pages": [], "section": "Política cambial — floating exchange-rate regime" },
+      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 2º, caput (operações no mercado de câmbio realizadas livremente, sem limitação de valor, observados a legislação, as diretrizes do CMN e o regulamento do BCB) e parágrafo único (taxa livremente pactuada); Art. 3º (operações somente por instituições autorizadas pelo BCB); Art. 5º (competência do BCB)" },
+      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/politicacambial", "pages": [], "section": "Política cambial — regime de câmbio flutuante (floating exchange-rate regime)" },
       { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Art. 29 — instituições autorizadas a operar no mercado de câmbio" }
     ],
     "summary.traveler": [
-      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/entrada-no-brasil/dinheiro-em-especie", "pages": [], "section": "Dinheiro em Espécie na Entrada no Brasil" },
-      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/saida-do-brasil/dinheiro-em-especie-na-saida-do-brasil", "pages": [], "section": "Dinheiro em Espécie na Saída do Brasil" }
+      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/entrada-no-brasil/dinheiro-em-especie", "pages": [], "section": "Guia do Viajante — Dinheiro em Espécie na Entrada no Brasil (e-DBV obrigatória acima de US$ 10.000; papel-moeda em espécie)" },
+      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/saida-do-brasil/dinheiro-em-especie-na-saida-do-brasil", "pages": [], "section": "Guia do Viajante — Dinheiro em Espécie na Saída do Brasil (e-DBV acima de US$ 10.000; apresentar à fiscalização o montante declarado e a comprovação aplicável)" }
     ],
     "summary.business": [
-      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 3; Art. 5" },
-      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Art. 29" }
+      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 3º (operações somente por instituições autorizadas pelo BCB); Art. 5º (competência do BCB)" },
+      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Art. 29 — instituições autorizadas a operar no mercado de câmbio" }
     ],
     "rules.bring_foreign_currency_in": [
-      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 14 §1-I" },
-      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/entrada-no-brasil/dinheiro-em-especie", "pages": [], "section": "Dinheiro em Espécie na Entrada no Brasil" }
+      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 14, caput e § 1º, I (porte, em espécie, até US$ 10.000 ou equivalente dispensado de declaração; acima do limiar, declaração obrigatória)" },
+      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/entrada-no-brasil/dinheiro-em-especie", "pages": [], "section": "Guia do Viajante — Dinheiro em Espécie na Entrada no Brasil (e-DBV obrigatória acima de US$ 10.000)" }
     ],
     "rules.take_foreign_currency_out": [
-      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/saida-do-brasil/dinheiro-em-especie-na-saida-do-brasil", "pages": [], "section": "Dinheiro em Espécie na Saída do Brasil" }
+      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/saida-do-brasil/dinheiro-em-especie-na-saida-do-brasil", "pages": [], "section": "Guia do Viajante — Dinheiro em Espécie na Saída do Brasil (apresentar à fiscalização: montante declarado, e-DBV e a comprovação aplicável indicada pela Receita Federal)" }
     ],
     "rules.cash_declaration_threshold": [
-      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 14 §1-I; §3" },
-      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/entrada-no-brasil/dinheiro-em-especie", "pages": [], "section": "Dinheiro em Espécie na Entrada no Brasil" },
-      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/saida-do-brasil/dinheiro-em-especie-na-saida-do-brasil", "pages": [], "section": "Dinheiro em Espécie na Saída do Brasil" }
+      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 14, caput e § 1º, I (limiar de US$ 10.000 ou equivalente para o porte em espécie)" },
+      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/entrada-no-brasil/dinheiro-em-especie", "pages": [], "section": "Guia do Viajante — Dinheiro em Espécie na Entrada no Brasil (papel-moeda em espécie; excluídos títulos de crédito, cheques e cheques de viagem)" },
+      { "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/saida-do-brasil/dinheiro-em-especie-na-saida-do-brasil", "pages": [], "section": "Guia do Viajante — Dinheiro em Espécie na Saída do Brasil (mesmo limiar na saída)" }
     ],
     "rules.resident_holding_rules": [
-      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 5-IX" },
-      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Art. 69–70 — contas em moeda estrangeira no País; titulares elegíveis" }
+      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 5º, IX (competência do BCB sobre contas em moeda estrangeira no País)" },
+      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Título VIII, Art. 69–70 — contas de depósito em moeda estrangeira no País; titulares elegíveis" }
     ],
     "rules.non_resident_rules": [
-      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 5-VIII; Art. 5-IX" },
-      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Art. 69–70 — contas em moeda estrangeira; categorias elegíveis (incl. não residentes)" }
+      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 5º, VIII e IX (competência do BCB sobre contas em moeda estrangeira e sobre não residentes)" },
+      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Título VIII, Art. 69–70 — contas de depósito em moeda estrangeira; categorias elegíveis de titulares" }
     ],
     "rules.business_invoicing_settlement": [
-      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 3; Art. 5" },
-      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Art. 29" }
+      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 3º (operações somente por instituições autorizadas pelo BCB); Art. 5º (competência do BCB)" },
+      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Art. 29 — operações autorizadas por classe de instituição" }
     ],
     "rules.exchange_controls": [
-      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 2, parágrafo único; Art. 5" },
-      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/politicacambial", "pages": [], "section": "Política cambial — floating exchange-rate regime" },
-      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Art. 29 — instituições autorizadas" }
+      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 2º, caput e parágrafo único (mercado livre; taxa livremente pactuada); Art. 5º (competência do BCB)" },
+      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/politicacambial", "pages": [], "section": "Política cambial — regime de câmbio flutuante (floating exchange-rate regime)" },
+      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Art. 29 — instituições autorizadas a operar no mercado de câmbio" }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 3" },
-      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Art. 29 — bancos e demais instituições autorizadas" },
-      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/instituicoesoperacambio", "pages": [], "section": "Instituições autorizadas a operar no mercado de câmbio" }
+      { "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm", "pages": [], "section": "Art. 3º (operações somente por instituições autorizadas pelo BCB)" },
+      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB", "pages": [], "section": "Art. 29, I — bancos e a Caixa Econômica Federal: todas as operações do mercado de câmbio" },
+      { "url": "https://www.bcb.gov.br/estabilidadefinanceira/instituicoesoperacambio", "pages": [], "section": "Instituições autorizadas a operar no mercado de câmbio (lista oficial do BCB)" }
     ]
   },
 

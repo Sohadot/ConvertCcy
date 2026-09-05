@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-25T06:53:19+00:00",
+  "generated_at": "2026-09-05T09:50:24+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 13,
-    "verified": 9,
+    "published": 14,
+    "verified": 8,
     "needs_hardening": 2,
     "secondary_review": 0,
     "skipped": 0,
@@ -18,6 +18,14 @@
       "output_html": "rules/australia-foreign-currency-rules.html",
       "sitemap_eligible": true,
       "public_url": "https://convertccy.com/rules/australia-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
+      "country_slug": "brazil",
+      "country_name": "Brazil",
+      "output_html": "rules/brazil-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/brazil-foreign-currency-rules.html"
     },
     {
       "status": "published",
@@ -117,13 +125,6 @@
     }
   ],
   "verified_entries": [
-    {
-      "status": "verified",
-      "country_slug": "brazil",
-      "country_name": "Brazil",
-      "output_html": "preview/rules/verified/brazil-foreign-currency-rules.html",
-      "sitemap_eligible": false
-    },
     {
       "status": "verified",
       "country_slug": "china",

@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-07-25T06:53:19+00:00",
+ "generated_at": "2026-09-05T09:54:56+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -12,8 +12,8 @@
  "canonical_url": "https://convertccy.com/api/v1/rules-index.json",
  "documentation": "https://convertccy.com/api.html",
  "title": "ConvertCCY Published Jurisdictions Index",
- "source_dataset_generated_at": "2026-07-25T06:53:19+00:00",
- "count": 13,
+ "source_dataset_generated_at": "2026-09-05T09:50:23+00:00",
+ "count": 14,
  "coverage_note": "Lists only jurisdictions that have passed ConvertCCY's published, source-mapped review gate. Absence from this list means not yet published — never infer coverage from a currency code.",
  "countries": [
   {
@@ -28,6 +28,19 @@
    "rules_page": "/rules/australia-foreign-currency-rules.html",
    "brief_page": "/briefs/australia-passage-brief.html",
    "api_path": "/api/v1/rules/australia.json"
+  },
+  {
+   "country_name": "Brazil",
+   "country_slug": "brazil",
+   "iso2": "BR",
+   "iso3": "BRA",
+   "region": "Latin America",
+   "currency_code": "BRL",
+   "currency_name": "Brazilian Real",
+   "last_reviewed": "2026-09-05",
+   "rules_page": "/rules/brazil-foreign-currency-rules.html",
+   "brief_page": "/briefs/brazil-passage-brief.html",
+   "api_path": "/api/v1/rules/brazil.json"
   },
   {
    "country_name": "Canada",

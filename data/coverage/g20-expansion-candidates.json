@@ -17,6 +17,7 @@
  "candidate_status_model_notes": "Every entry in this P8-0 blueprint is recorded as candidate_only, regardless of how much prior internal research exists (see prior_research_state), because no candidate has yet been re-reviewed under this coverage-intake process. Advancing a status is a future, separate, reviewed action — never a bulk edit of this file.",
  "existing_published_jurisdictions": [
   "australia",
+  "brazil",
   "canada",
   "france",
   "germany",
@@ -30,9 +31,9 @@
   "united-kingdom",
   "united-states"
  ],
- "existing_published_jurisdictions_note": "These 13 jurisdictions are currently published and sit outside this blueprint; the 8 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file. South Africa graduated from candidate to published via the P8C-3 six-gate publication pipeline (P8C-1 intake -> P8C-2 candidate review -> P8C-2a consistency -> P8D-0 evidence -> P8C-2b hardening close -> P8C-3 release), not through this file. United States graduated from candidate to published via the P8B-3 publication pipeline (P8B-1 intake -> P8B-2 declaration + current-account close -> P8B-2b liberalisation hardening -> P8D-0 evidence -> P8B-2c capital-account hardening close -> P8B-3 release), not through this file. Italy graduated from candidate to published via the P8E publication pipeline (P8E-1 intake -> P8E-2 from-scratch governed build -> P8E-2b capital/banking hardening close -> P8E-3 release), not through this file. South Korea graduated from candidate to published via the P8F publication pipeline (P8F-1 intake -> P8F-2 publication-candidate review -> P8F-2b capital-account hardening close -> P8F-3 release), not through this file.",
+ "existing_published_jurisdictions_note": "These 14 jurisdictions are currently published and sit outside this blueprint; the 7 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file. South Africa graduated from candidate to published via the P8C-3 six-gate publication pipeline (P8C-1 intake -> P8C-2 candidate review -> P8C-2a consistency -> P8D-0 evidence -> P8C-2b hardening close -> P8C-3 release), not through this file. United States graduated from candidate to published via the P8B-3 publication pipeline (P8B-1 intake -> P8B-2 declaration + current-account close -> P8B-2b liberalisation hardening -> P8D-0 evidence -> P8B-2c capital-account hardening close -> P8B-3 release), not through this file. Italy graduated from candidate to published via the P8E publication pipeline (P8E-1 intake -> P8E-2 from-scratch governed build -> P8E-2b capital/banking hardening close -> P8E-3 release), not through this file. South Korea graduated from candidate to published via the P8F publication pipeline (P8F-1 intake -> P8F-2 publication-candidate review -> P8F-2b capital-account hardening close -> P8F-3 release), not through this file. Brazil graduated from candidate to published via the BR-PUBLICATION-CLOSURE pipeline (Phase 1 governed review + Phase 2 M1 source intake -> M2 claim extraction -> M2.5 human claim review -> Adoption Gate PASS -> final claim-to-source fidelity review + pinpoint hardening -> Publication Gate), not through this file.",
  "no_inference_rule": "No rule, threshold, or regulatory posture may ever be inferred for a candidate from its currency code, region, G20 membership, EU/AU membership, or a neighboring country's published rules. Every fact requires its own primary official source before it may be published.",
- "count": 8,
+ "count": 7,
  "candidates": [
   {
    "country_name": "Mexico",
@@ -65,33 +66,6 @@
    ],
    "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
    "status": "source_review_ready"
-  },
-  {
-   "country_name": "Brazil",
-   "country_slug": "brazil",
-   "iso2": "BR",
-   "iso3": "BRA",
-   "currency_code": "BRL",
-   "currency_name": "Brazilian Real",
-   "region": "Latin America",
-   "expansion_priority": "high",
-   "complexity_level": "medium",
-   "likely_official_source_authorities_needed": {
-    "central_bank_or_monetary_authority": "Banco Central do Brasil (BCB)",
-    "customs_or_border_authority": "Receita Federal (Brazilian Federal Revenue Service)",
-    "financial_intelligence_unit_or_aml_authority": "Conselho de Controle de Atividades Financeiras (COAF)",
-    "tax_treasury_ministry_source": null
-   },
-   "expected_difficulty": "Medium. Central bank and customs sources already on file internally; Portuguese-language source translation review still required, and FX regulation has been undergoing consolidation (Law 14,286/2021 New FX Law) that must be checked for current effective text.",
-   "known_risk_areas": [
-    "New FX Law (Lei 14.286/2021) consolidation may have superseded older BCB circulars cited previously",
-    "Portuguese-language source translation accuracy"
-   ],
-   "missing_sources": [
-    "financial_intelligence_unit_or_aml_authority"
-   ],
-   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
-   "status": "candidate_only"
   },
   {
    "country_name": "Indonesia",
