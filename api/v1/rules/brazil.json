@@ -1,0 +1,80 @@
+{
+ "schema_version": "1.0.0",
+ "generated_at": "2026-09-05T09:54:56+00:00",
+ "asset": "ConvertCCY",
+ "interface_type": "static_agent_interface",
+ "dynamic_api": false,
+ "source_scope": "published_governed_data_only",
+ "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "ConvertCCY (https://convertccy.com/)",
+ "disclaimer": "This data is a governed reference, not legal, tax, customs, compliance, or financial advice. It does not predict, hedge, or guarantee any financial outcome. Verify time-sensitive figures against the official sources listed before acting.",
+ "use_boundary": "Static, read-only reference data only. Do not represent this interface as a dynamic API, as live data, or as covering any jurisdiction not listed in this file. A currency code is not the same as a jurisdiction: a shared currency (e.g. EUR) does not imply coverage of every country that uses it. Cite ConvertCCY and the official source(s) when using this data downstream.",
+ "canonical_url": "https://convertccy.com/api/v1/rules/brazil.json",
+ "documentation": "https://convertccy.com/api.html",
+ "country_name": "Brazil",
+ "country_slug": "brazil",
+ "iso2": "BR",
+ "iso3": "BRA",
+ "region": "Latin America",
+ "currency_code": "BRL",
+ "currency_name": "Brazilian Real",
+ "page_status": "published",
+ "last_reviewed": "2026-09-05",
+ "evidence_tier": "official_verified",
+ "rules_page": "/rules/brazil-foreign-currency-rules.html",
+ "brief_page": "/briefs/brazil-passage-brief.html",
+ "country_overview": "Brazil operates a floating exchange-rate regime regulated by the Banco Central do Brasil (BCB). Under Law 14.286/2021, FX-market operations may be conducted freely without a statutory value limit, subject to applicable legislation, CMN guidelines, and BCB regulation, and transaction rates are freely agreed between authorised institutions and their clients. Specific activities remain subject to operational, reporting, and supervisory requirements.",
+ "summary": {
+  "traveler": "Travellers may carry cash across Brazil's border, but amounts above USD 10,000 or the equivalent in another currency must be declared through the e-DBV. On departure, the traveller must present the declared cash and the applicable supporting evidence identified by Receita Federal.",
+  "business": "Foreign-exchange transactions generally must be conducted through institutions authorised by BCB, under the applicable regulatory and documentation framework."
+ },
+ "rules": {
+  "bring_foreign_currency_in": "The reviewed rules establish a declaration threshold rather than an explicit maximum carrying amount for travellers. Cash above USD 10,000 or the equivalent in another currency must be declared to Receita Federal through the e-DBV on entry.",
+  "take_foreign_currency_out": "Cash above USD 10,000 or the equivalent in another currency must be declared through the e-DBV on departure. The traveller must present the declared cash and the applicable supporting evidence identified by Receita Federal, such as proof of purchase from an authorised FX institution, a prior entry declaration, or qualifying proof of receipt or withdrawal.",
+  "cash_declaration_threshold": "Amounts above USD 10,000 or the equivalent in another currency must be declared to Receita Federal on entry and exit through the e-DBV. The reviewed customs guidance applies this requirement to paper money in cash, excluding credit instruments, checks, and traveller's checks.",
+  "resident_holding_rules": "Domestic foreign-currency accounts are available only under BCB-defined conditions and eligible account-holder categories. The reviewed sources do not establish unrestricted general access for all Brazilian residents.",
+  "non_resident_rules": "The reviewed BCB framework governs foreign-currency accounts through defined eligible categories and operating conditions. The sources reviewed for this draft do not support a broad general statement that non-residents may operate such accounts 'more freely'; users should verify account eligibility under the current BCB rules applicable to their category.",
+  "business_invoicing_settlement": "FX market transactions must be conducted through institutions authorised by BCB. Transaction-specific settlement, documentation, and account arrangements should be verified under the applicable BCB regulatory framework and with the authorised institution handling the operation.",
+  "exchange_controls": "Brazil operates a floating exchange-rate regime. BCB regulates the FX market, and FX transaction rates are freely agreed between authorised institutions and their clients.",
+  "banking_conversion_practicality": "Foreign-exchange conversion is available through institutions authorised by BCB to operate in the FX market, including banks and other authorised dealers identified in the current BCB framework."
+ },
+ "source_authorities": [
+  {
+   "label": "Lei 14.286/2021 (Brazilian FX and capital law) — Planalto official text",
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14286.htm",
+   "type": "ministry",
+   "tier": "primary"
+  },
+  {
+   "label": "Receita Federal — Dinheiro em Espécie na Entrada no Brasil",
+   "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/entrada-no-brasil/dinheiro-em-especie",
+   "type": "customs",
+   "tier": "primary"
+  },
+  {
+   "label": "Receita Federal — Dinheiro em Espécie na Saída do Brasil",
+   "url": "https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante/saida-do-brasil/dinheiro-em-especie-na-saida-do-brasil",
+   "type": "customs",
+   "tier": "primary"
+  },
+  {
+   "label": "Banco Central do Brasil — Política cambial",
+   "url": "https://www.bcb.gov.br/estabilidadefinanceira/politicacambial",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "Resolução BCB nº 277/2022 — mercado de câmbio (Lei 14.286)",
+   "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=277&tipo=Resolucao+BCB",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "Banco Central do Brasil — Instituições autorizadas a operar no mercado de câmbio",
+   "url": "https://www.bcb.gov.br/estabilidadefinanceira/instituicoesoperacambio",
+   "type": "central_bank",
+   "tier": "primary"
+  }
+ ],
+ "disclaimer_notice": "This page provides general informational reference only. Foreign-exchange rules in Brazil are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Banco Central do Brasil / Receita Federal framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Brazil or Brazilian Customs before making any financial or travel decisions."
+}

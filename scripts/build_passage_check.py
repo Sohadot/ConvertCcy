@@ -5,8 +5,9 @@ build_passage_check.py — assemble the Passage Check engine dataset.
 The Passage Check engine is deterministic and evidence-bound. It may only
 surface what the published, source-mapped country entries already state.
 
-This script reads rules/dataset.json (the published CC BY 4.0 dataset, 8
-countries) and emits rules/passage-check.json, an engine-optimised view that
+This script reads rules/dataset.json (the published CC BY 4.0
+governed-jurisdiction dataset) and emits rules/passage-check.json, an
+engine-optimised view that
 carries, per published jurisdiction:
 
   - identity (name, slug, iso, currency)
@@ -47,6 +48,20 @@ DECLARATION = {
         ],
         "note": "No mandatory customs declaration threshold for ordinary travellers; "
                 "the figure is an anti-money-laundering reporting trigger reported to AUSTRAC.",
+    },
+    "brazil": {
+        "thresholds": [
+            {"value": 10000, "currency": "USD",
+             "scope": "paper money in cash (national or foreign), excluding credit instruments, cheques and traveller's cheques; or the equivalent in another currency",
+             "applies": "entry and exit",
+             "authority": "Receita Federal (Brazilian Federal Revenue / Customs)",
+             "mechanism": "mandatory declaration via the Declaração Eletrônica de Bens de Viajantes (e-DBV)"}
+        ],
+        "note": "Declaration is triggered ABOVE USD 10,000 (or the equivalent in another currency), applied to "
+                "paper money in cash and excluding credit instruments, cheques and traveller's cheques. On "
+                "departure the traveller must also present the declared cash and the applicable supporting "
+                "evidence identified by Receita Federal. This Receita Federal customs border-declaration regime "
+                "is distinct from the Banco Central do Brasil FX-market framework under Law 14.286/2021.",
     },
     "canada": {
         "thresholds": [
@@ -207,6 +222,8 @@ DECLARATION = {
 # Transcribed exchange-controls posture, read from rules.exchange_controls prose.
 EXCHANGE_CONTROLS = {
     "australia": ("none", "No general exchange controls (fully liberalised)"),
+    "brazil": ("floating_regulated_market",
+               "Floating exchange-rate regime regulated by the Banco Central do Brasil; FX transaction rates freely agreed between authorised institutions and their clients"),
     "canada": ("none", "No general exchange controls (fully liberalised)"),
     "france": ("none", "No general exchange controls (liberalised within the Eurozone)"),
     "germany": ("none", "No general exchange controls (liberalised within the Eurozone)"),
