@@ -5,8 +5,9 @@ build_passage_check.py — assemble the Passage Check engine dataset.
 The Passage Check engine is deterministic and evidence-bound. It may only
 surface what the published, source-mapped country entries already state.
 
-This script reads rules/dataset.json (the published CC BY 4.0 dataset, 8
-countries) and emits rules/passage-check.json, an engine-optimised view that
+This script reads rules/dataset.json (the published CC BY 4.0
+governed-jurisdiction dataset) and emits rules/passage-check.json, an
+engine-optimised view that
 carries, per published jurisdiction:
 
   - identity (name, slug, iso, currency)
