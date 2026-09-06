@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-05T09:50:24+00:00",
+  "generated_at": "2026-09-06T18:37:16+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 14,
-    "verified": 8,
+    "published": 15,
+    "verified": 7,
     "needs_hardening": 2,
     "secondary_review": 0,
     "skipped": 0,
@@ -77,6 +77,14 @@
     },
     {
       "status": "published",
+      "country_slug": "mexico",
+      "country_name": "Mexico",
+      "output_html": "rules/mexico-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/mexico-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
       "country_slug": "pakistan",
       "country_name": "Pakistan",
       "output_html": "rules/pakistan-foreign-currency-rules.html",
@@ -137,13 +145,6 @@
       "country_slug": "indonesia",
       "country_name": "Indonesia",
       "output_html": "preview/rules/verified/indonesia-foreign-currency-rules.html",
-      "sitemap_eligible": false
-    },
-    {
-      "status": "verified",
-      "country_slug": "mexico",
-      "country_name": "Mexico",
-      "output_html": "preview/rules/verified/mexico-foreign-currency-rules.html",
       "sitemap_eligible": false
     },
     {

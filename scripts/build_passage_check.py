@@ -129,6 +129,22 @@ DECLARATION = {
         "note": "No mandatory declaration threshold for ordinary travellers; movements at or "
                 "above this figure may trigger reporting under AML regulations.",
     },
+    "mexico": {
+        "thresholds": [
+            {"value": 10000, "currency": "USD",
+             "scope": "means of payment — cash, national or foreign checks, payment orders or any other collectible document, or a combination — exceeding this amount in total",
+             "applies": "entering or leaving Mexico",
+             "authority": "Agencia Nacional de Aduanas de México (ANAM); SAT-approved form",
+             "mechanism": "mandatory customs declaration (Ley Aduanera Art. 9)"}
+        ],
+        "note": "The declaration is triggered only ABOVE USD 10,000 (exceeding, not 'USD 10,000 or more'), "
+                "aggregating cash, national or foreign checks, payment orders and other collectible documents; "
+                "failure to declare carries a fine of 20%–40% of the excess (Ley Aduanera Art. 185 fr. VII). "
+                "This is a customs currency-transparency declaration, not a currency-control cap, and is distinct "
+                "from the anti-money-laundering controls and quantitative US-dollar cash-operation limits banks "
+                "apply under Article 115 of the Ley de Instituciones de Crédito, from UIF AML reporting, and from "
+                "the LFPIORPI domestic cash-payment limits.",
+    },
     "pakistan": {
         "thresholds": [
             {"value": 10000, "currency": "USD", "scope": "cash or bearer negotiable instruments (or equivalent)",
@@ -232,6 +248,8 @@ EXCHANGE_CONTROLS = {
     "italy": ("none",
               "No national exchange controls; free movement of capital and payments under Article 63 TFEU, subject to Treaty exceptions (taxation, prudential supervision, public policy/security, certain third-country measures) and to EU sanctions"),
     "japan": ("none", "No general exchange controls (fully liberalised)"),
+    "mexico": ("floating_regulated_market",
+               "Free-floating exchange-rate regime set by the Comisión de Cambios (SHCP and Banco de México); the reviewed official sources do not establish a general foreign-exchange authorisation regime, with anti-money-laundering, US-dollar cash-operation, customs-declaration and any sectoral restrictions kept distinct"),
     "pakistan": ("capital_account_regulated",
                  "No general exchange controls on the current account; capital account regulated by the SBP"),
     "south-africa": ("capital_account_regulated",
