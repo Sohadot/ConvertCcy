@@ -19,7 +19,7 @@ import os
 import re
 from pathlib import Path
 from datetime import datetime, timezone
-from typing import Dict, List, Any, Tuple
+from typing import Dict, List, Any, Tuple, Optional, Set
 
 # -----------------------------------------------------------------------------
 # CONFIG
@@ -1246,7 +1246,7 @@ def build_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> str:
 # BUILD
 # -----------------------------------------------------------------------------
 
-def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], pair_profiles: Dict[str, Dict[str, Any]]) -> int:
+def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], pair_profiles: Dict[str, Dict[str, Any]], only_currencies: Optional[Set[str]] = None) -> int:
     PAGES_DIR.mkdir(parents=True, exist_ok=True)
     all_codes = sorted(currencies.keys(), key=lambda x: (x not in DEFAULT_POPULAR_CODES, x))
     gov_map = load_governed_currency_map()
@@ -1255,8 +1255,12 @@ def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str
     else:
         print("Governed currency enrichment: passage-check.json absent — pair pages build without governed blocks")
 
+    if only_currencies:
+        print(f"Scoped regeneration: only pair pages involving {', '.join(sorted(only_currencies))}")
+
     count = 0
     skipped = 0
+    out_of_scope = 0
 
     for pair_key, profile in pair_profiles.items():
         from_code = profile["from_code"]
@@ -1270,6 +1274,13 @@ def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str
             skipped += 1
             continue
 
+        # Scoped run: only regenerate pages where one side matches a requested
+        # currency. build_pair_page is deterministic per-profile, so the subset
+        # output is byte-identical to the same pages in a full build.
+        if only_currencies and from_code not in only_currencies and to_code not in only_currencies:
+            out_of_scope += 1
+            continue
+
         html_doc = build_pair_page(profile, currencies, content, all_codes, gov_map)
         out_path = PAGES_DIR / f'{profile["pair_slug"]}.html'
         write_text(out_path, html_doc)
@@ -1278,6 +1289,8 @@ def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str
     print(f"Generated {count} pair pages")
     if skipped:
         print(f"Skipped {skipped} invalid or incomplete profiles")
+    if only_currencies:
+        print(f"Left {out_of_scope} out-of-scope pair pages untouched")
     return count
 
 MANUALLY_MANAGED_BUILDERS = [
@@ -1303,7 +1316,39 @@ def generate_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> None:
     write_text(BASE_DIR / "sitemap.xml", build_sitemap(pair_profiles))
     print("Generated sitemap.xml")
 
+def parse_only_currencies(values: Optional[List[str]]) -> Optional[Set[str]]:
+    if not values:
+        return None
+    codes: Set[str] = set()
+    for item in values:
+        for c in str(item).split(","):
+            c = c.strip().upper()
+            if c:
+                codes.add(c)
+    return codes or None
+
+
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(
+        description="Generate ConvertCCY pair pages and supporting surfaces"
+    )
+    parser.add_argument(
+        "--only-currency",
+        action="append",
+        default=None,
+        metavar="CODE",
+        help=(
+            "Regenerate only pair pages where the FROM or TO currency matches CODE "
+            "(repeatable, or comma-separated). Scopes the run to those pair pages; "
+            "support pages and sitemap.xml are left untouched. Omit for a full build. "
+            "Deterministic: the scoped output is byte-identical to the same pages in "
+            "a full build."
+        ),
+    )
+    args = parser.parse_args()
+    only_currencies = parse_only_currencies(args.only_currency)
+
     if not CURRENCIES_FILE.exists():
         raise FileNotFoundError(f"Missing file: {CURRENCIES_FILE}")
 
@@ -1316,6 +1361,18 @@ def main():
 
     print(f"Loaded {len(currencies)} currencies")
     print(f"Loaded {len(pair_profiles)} pair profiles")
+
+    if only_currencies:
+        unknown = sorted(c for c in only_currencies if c not in currencies)
+        if unknown:
+            print(f"Warning: requested currency code(s) not in currencies.json: {', '.join(unknown)}")
+        generate_pair_pages(currencies, content, pair_profiles, only_currencies=only_currencies)
+        print(
+            f"\nScoped build complete for {', '.join(sorted(only_currencies))}. "
+            "Support pages and sitemap.xml intentionally left unchanged "
+            "(pair-page URLs are stable, so the sitemap does not move)."
+        )
+        return
 
     generate_pair_pages(currencies, content, pair_profiles)
     generate_support_pages(currencies, content)
