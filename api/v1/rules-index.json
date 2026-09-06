@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-09-05T09:54:56+00:00",
+ "generated_at": "2026-09-06T18:37:21+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -12,8 +12,8 @@
  "canonical_url": "https://convertccy.com/api/v1/rules-index.json",
  "documentation": "https://convertccy.com/api.html",
  "title": "ConvertCCY Published Jurisdictions Index",
- "source_dataset_generated_at": "2026-09-05T09:50:23+00:00",
- "count": 14,
+ "source_dataset_generated_at": "2026-09-06T18:37:16+00:00",
+ "count": 15,
  "coverage_note": "Lists only jurisdictions that have passed ConvertCCY's published, source-mapped review gate. Absence from this list means not yet published — never infer coverage from a currency code.",
  "countries": [
   {
@@ -119,6 +119,19 @@
    "rules_page": "/rules/japan-foreign-currency-rules.html",
    "brief_page": "/briefs/japan-passage-brief.html",
    "api_path": "/api/v1/rules/japan.json"
+  },
+  {
+   "country_name": "Mexico",
+   "country_slug": "mexico",
+   "iso2": "MX",
+   "iso3": "MEX",
+   "region": "Latin America",
+   "currency_code": "MXN",
+   "currency_name": "Mexican Peso",
+   "last_reviewed": "2026-09-06",
+   "rules_page": "/rules/mexico-foreign-currency-rules.html",
+   "brief_page": "/briefs/mexico-passage-brief.html",
+   "api_path": "/api/v1/rules/mexico.json"
   },
   {
    "country_name": "Pakistan",

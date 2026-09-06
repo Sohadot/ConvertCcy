@@ -2,11 +2,11 @@
  "engine": "ConvertCCY Passage Check",
  "version": "1.0",
  "built_from": "rules/dataset.json",
- "source_dataset_generated_at": "2026-09-05T09:50:23+00:00",
+ "source_dataset_generated_at": "2026-09-06T18:37:16+00:00",
  "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
  "attribution": "ConvertCCY (https://convertccy.com/)",
  "notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. Structured thresholds are transcribed from each entry's cash_declaration_threshold field. Currency conversions shown in the tool are indicative only and are not governed figures.",
- "count": 14,
+ "count": 15,
  "countries": [
   {
    "country_name": "Australia",
@@ -1009,6 +1009,163 @@
     }
    ],
    "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Japan are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Ministry of Finance / Bank of Japan / Japan Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Ministry of Finance, Bank of Japan, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "Mexico",
+   "country_slug": "mexico",
+   "iso2": "MX",
+   "currency_code": "MXN",
+   "currency_name": "Mexican Peso",
+   "region": "Latin America",
+   "last_reviewed": "2026-09-06",
+   "rules_page": "/rules/mexico-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "means of payment — cash, national or foreign checks, payment orders or any other collectible document, or a combination — exceeding this amount in total",
+      "applies": "entering or leaving Mexico",
+      "authority": "Agencia Nacional de Aduanas de México (ANAM); SAT-approved form",
+      "mechanism": "mandatory customs declaration (Ley Aduanera Art. 9)"
+     }
+    ],
+    "note": "The declaration is triggered only ABOVE USD 10,000 (exceeding, not 'USD 10,000 or more'), aggregating cash, national or foreign checks, payment orders and other collectible documents; failure to declare carries a fine of 20%–40% of the excess (Ley Aduanera Art. 185 fr. VII). This is a customs currency-transparency declaration, not a currency-control cap, and is distinct from the anti-money-laundering controls and quantitative US-dollar cash-operation limits banks apply under Article 115 of the Ley de Instituciones de Crédito, from UIF AML reporting, and from the LFPIORPI domestic cash-payment limits.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "floating_regulated_market",
+    "label": "Free-floating exchange-rate regime set by the Comisión de Cambios (SHCP and Banco de México); the reviewed official sources do not establish a general foreign-exchange authorisation regime, with anti-money-laundering, US-dollar cash-operation, customs-declaration and any sectoral restrictions kept distinct",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "A traveller entering Mexico must file a mandatory customs declaration when the means of payment carried — cash, national or foreign checks, payment orders or any other collectible document, or a combination — exceed the equivalent of USD 10,000 in total (Ley Aduanera, Article 9), on the official form approved by the SAT. At or below that amount no declaration is required. The operational customs authority is the Agencia Nacional de Aduanas de México (ANAM). This customs declaration is distinct from the anti-money-laundering controls and cash-operation limits on US-dollar cash operations at banks.",
+     "source": {
+      "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LAdua.pdf",
+      "section": "Ley Aduanera Art. 9 — inbound: mandatory declaration when means of payment exceed USD 10,000; SAT-approved form; ANAM authority"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "A traveller leaving Mexico must likewise file a mandatory customs declaration when the means of payment carried exceed the equivalent of USD 10,000 in total (Ley Aduanera, Article 9); the obligation is symmetric with entry. The reviewed official sources do not establish a Banco de México permission or export limit on physically carrying currency out of the country; the only monetary threshold on the traveller identified is the customs declaration duty. Anti-money-laundering controls and US-dollar cash-operation limits apply separately to cash operations conducted through banks.",
+     "source": {
+      "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LAdua.pdf",
+      "section": "Ley Aduanera Art. 9 — outbound: mandatory declaration when means of payment exceed USD 10,000 (symmetric with entry)"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "The customs declaration threshold is means of payment — cash, national or foreign checks, payment orders or any other collectible document, or a combination — exceeding the equivalent of USD 10,000 in total, for a traveller entering or leaving the country (Ley Aduanera, Article 9). It is a mandatory report to the customs authorities (ANAM) on the SAT-approved form, triggered only above USD 10,000; failure to declare carries a fine of 20% to 40% of the excess (Article 185, fracción VII). This border declaration is separate from three other regimes: anti-money-laundering controls and quantitative limits on US-dollar cash operations (Ley de Instituciones de Crédito, Article 115), UIF suspicious- and cash-transaction reporting, and the LFPIORPI domestic cash-payment limits.",
+     "source": {
+      "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LAdua.pdf",
+      "section": "Ley Aduanera Art. 9 (threshold: means of payment exceeding USD 10,000 in total, entry and exit; mandatory) and Art. 185 fr. VII (penalty)"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "Mexico's foreign-exchange regime is free-floating and set by the Comisión de Cambios — the SHCP and Banco de México — under Article 21 of the Ley del Banco de México; the Comisión determines the exchange-rate regime and Banco de México sets the rules for determining the exchange rate (Ley Monetaria, Article 8). The reviewed official sources do not establish a general authorisation, permission or approval regime for buying, holding or transferring currency; this reflects the limits of the sources reviewed, not a positive finding that no sectoral or capital-movement restriction exists. The operative restrictions identified are of a different character and are kept distinct — anti-money-laundering controls and quantitative limits on US-dollar cash operations (Ley de Instituciones de Crédito, Article 115), the customs border declaration (Ley Aduanera, Article 9), and AML reporting. Whether any narrower sectoral or capital-movement restriction exists outside the reviewed sources is not established either way.",
+     "source": {
+      "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/74.pdf",
+      "section": "Ley del Banco de México Art. 21–22 — Comisión de Cambios sets the exchange-rate regime (free float). The reviewed sources do not establish a general FX authorisation regime"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "Under Banco de México Circular 3/2012, credit institutions may open peso (national-currency) deposit accounts to both natural and legal persons, with the lowest-tier and special-savings accounts reserved for natural persons. The reviewed official sources do not establish an unrestricted right for any resident to hold a foreign-currency (US-dollar) account: foreign-currency sight deposits payable in Mexico are available only to defined categories — natural persons domiciled in the northern 20-kilometre border strip or in Baja California and Baja California Sur, legal persons domiciled in national territory, and official representations of foreign governments and international organisations — while US-dollar transfer (SPID) accounts are opened only to legal persons domiciled in national territory. Banks also apply anti-money-laundering monitoring and reporting requirements to foreign-currency cash operations, together with quantitative daily and monthly limits on US-dollar cash operations for individual users differentiated by nationality, under the general provisions for Article 115 of the Ley de Instituciones de Crédito. Account opening remains subject to AML/KYC and each institution's own conditions; eligibility does not guarantee that any particular account will be opened.",
+     "source": {
+      "url": "https://dof.gob.mx/nota_detalle.php?codigo=5236273&fecha=02/03/2012",
+      "section": "Banco de México Circular 3/2012 — Art. 8 (peso deposit accounts open to personas físicas y morales; lowest-tier and special-savings accounts only personas físicas); Art. 45–46 (foreign-currency sight deposits: personas físicas domiciled in the 20 km northern border strip or Baja California / Baja California Sur; personas morales domiciled in territorio nacional; official foreign-government and international-organisation representations); US-dollar transfer (SPID) accounts only personas morales domiciled in territorio nacional. The reviewed sources do not establish a general resident right to a foreign-currency account. Current-compiled article numbers to be pinpoint-confirmed against the consolidated text"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "The reviewed official sources do not establish a general entitlement for non-residents to hold foreign-currency accounts in Mexico: eligibility for foreign-currency sight deposits and for US-dollar transfer (SPID) accounts is tied to domicile in national territory, so non-resident persons generally fall outside these categories, aside from official representations of foreign governments and international organisations. A separate peso-denominated deposit and prepaid-card regime exists for Mexican nationals whose place of residence is abroad. US-dollar cash operations are additionally subject to anti-money-laundering controls and to quantitative limits for individual users differentiated by nationality under Article 115 of the Ley de Instituciones de Crédito. Account opening remains subject to sanctions, anti-money-laundering and know-your-customer screening and each institution's requirements; there is no entitlement to any particular account or service.",
+     "source": {
+      "url": "https://dof.gob.mx/nota_detalle.php?codigo=5236273&fecha=02/03/2012",
+      "section": "Banco de México Circular 3/2012 Art. 45–46 — foreign-currency deposit eligibility keyed to domicile in territorio nacional (personas morales) or the northern border strip / Baja California (personas físicas), plus official foreign-government and international-organisation representations; US-dollar transfer (SPID) accounts only personas morales domiciled in territorio nacional. A distinct peso regime exists for Mexican nationals resident abroad. The reviewed sources do not establish general non-resident foreign-currency-account eligibility. Current-compiled article numbers to be pinpoint-confirmed"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Currency conversion and cross-border payments in Mexico are provided through banks, and through casas de cambio and centros cambiarios authorised and supervised under Mexican law by the Comisión Nacional Bancaria y de Valores (CNBV) and Banco de México. These authorised intermediaries apply anti-money-laundering identification and controls on US-dollar cash operations under Article 115 of the Ley de Instituciones de Crédito, including quantitative limits on US-dollar cash operations for individual users differentiated by nationality; authorisation does not guarantee that any particular institution offers a given currency, service or price.",
+     "source": {
+      "url": "https://www.gob.mx/cnbv",
+      "section": "CNBV — supervisor of banks and authorised foreign-exchange intermediaries (casas de cambio, centros cambiarios)"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Ley Aduanera — Article 9 (mandatory declaration of means of payment exceeding USD 10,000, entry and exit; SAT-approved forms) and Article 185 fracción VII (fine of 20%–40% of the excess); Cámara de Diputados, texto vigente (última reforma DOF 19-11-2025)",
+     "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LAdua.pdf",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "Ley del Banco de México — Articles 21–22 (Comisión de Cambios: the SHCP and Banco de México set the exchange-rate regime); Cámara de Diputados, texto vigente (última reforma DOF 10-01-2014)",
+     "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/74.pdf",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Ley Monetaria de los Estados Unidos Mexicanos — Article 8 (foreign currency is not legal tender; obligations in foreign currency payable in Mexico are settled in pesos at the exchange rate set per Banco de México rules); Cámara de Diputados, texto vigente",
+     "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf_mov/Ley_Monetaria.pdf",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Ley de Instituciones de Crédito — Article 115 (anti-money-laundering framework; legal basis for the SHCP/CNBV general provisions on US-dollar cash operations); Cámara de Diputados, texto vigente",
+     "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LIC.pdf",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Banco de México — Circular 3/2012 (Disposiciones aplicables a las operaciones de las Instituciones de Crédito): deposit-account eligibility — Art. 8 (peso accounts, personas físicas y morales), Art. 45–46 (foreign-currency deposits and eligible holders) and the US-dollar transfer (SPID) accounts; texto original publicado en el DOF, reviewed together with subsequent official amendments through 2026 (current consolidated article numbering to be pinpoint-confirmed)",
+     "url": "https://dof.gob.mx/nota_detalle.php?codigo=5236273&fecha=02/03/2012",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "SHCP — Disposiciones de carácter general a que se refiere el artículo 115 de la Ley de Instituciones de Crédito, Disposición 33ª Quáter (quantitative US-dollar cash-operation limits for natural persons, differentiated by nationality), as reformed by the Resolution published in the DOF on 10 July 2026 (in force the day after publication; 18-month implementation period for institutions)",
+     "url": "https://dof.gob.mx/nota_detalle.php?codigo=5793357&fecha=10/07/2026",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Secretaría de Hacienda y Crédito Público (SHCP) — Anuncio de la Comisión de Cambios (exchange-rate regime set by the Comisión de Cambios)",
+     "url": "https://www.gob.mx/shcp/prensa/anuncio-de-la-comision-de-cambios-343899",
+     "type": "ministry",
+     "tier": "primary"
+    },
+    {
+     "label": "Banco de México — central bank; foreign-exchange regime and rules for determining the exchange rate",
+     "url": "https://www.banxico.org.mx/",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Comisión Nacional Bancaria y de Valores (CNBV) — supervisor of banks and authorised foreign-exchange intermediaries",
+     "url": "https://www.gob.mx/cnbv",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Unidad de Inteligencia Financiera (UIF), SHCP — anti-money-laundering / counter-terrorist-financing reporting",
+     "url": "https://www.gob.mx/hacienda/uif",
+     "type": "fiu",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs and anti-money-laundering rules in Mexico are set by the Ley Monetaria, the Ley del Banco de México, the Ley Aduanera, the Ley de Instituciones de Crédito and related regulations, and may change; requirements depend on residency, the transaction type and amount, documentation, and the applicable Banco de México, SHCP, CNBV, ANAM and UIF framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with Banco de México, the customs authority (ANAM), or a qualified professional before making any financial or travel decisions."
   },
   {
    "country_name": "Pakistan",

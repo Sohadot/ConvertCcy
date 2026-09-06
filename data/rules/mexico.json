@@ -8,12 +8,12 @@
   "currency_name": "Mexican Peso",
 
   "schema_version": "1.2.1",
-  "page_status": "verified",
+  "page_status": "published",
   "last_reviewed": "2026-09-06",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": false,
+  "indexing_allowed": true,
   "source_notice": "",
 
   "country_overview": "Mexico operates a free-floating exchange-rate regime, set by the Comisión de Cambios — officials of the Secretaría de Hacienda y Crédito Público (SHCP) and Banco de México — under Article 21 of the Ley del Banco de México, with Banco de México as the central bank. Under Article 8 of the Ley Monetaria, foreign currency is not legal tender in Mexico and payment obligations denominated in foreign currency for fulfilment in Mexico are discharged in pesos at the prevailing exchange rate. Cross-border movements of cash by travellers are administered by the customs authorities under Article 9 of the Ley Aduanera, which requires a mandatory declaration when means of payment exceed the equivalent of USD 10,000. Banks separately apply anti-money-laundering controls, together with quantitative limits on US-dollar cash operations for individual users differentiated by nationality, under Article 115 of the Ley de Instituciones de Crédito — anti-money-laundering and cash-operation-limit measures, not an exchange control. The reviewed official sources do not establish a general Banco de México authorisation or approval requirement for holding or transferring currency; this reflects the limits of the sources reviewed, not a positive finding that no sectoral or capital-movement restriction exists. The customs, exchange-rate, AML and reporting regimes are kept distinct and are not conflated.",
