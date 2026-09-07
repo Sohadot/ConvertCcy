@@ -29,15 +29,6 @@
  "count": 12,
  "matrix": [
   {
-   "country_slug": "indonesia",
-   "sources": {
-    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Bank Indonesia (BI) — Foreign Exchange Regulations", "note": "On file in data/rules/indonesia.json"},
-    "customs_or_border_authority": {"status": "verified_on_file", "label": "Indonesian Customs — Currency Declaration Rules", "note": "On file in data/rules/indonesia.json"},
-    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "Pusat Pelaporan dan Analisis Transaksi Keuangan (PPATK)", "note": "Not yet sourced; name is public knowledge, no citation on file"},
-    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
-   }
-  },
-  {
    "country_slug": "turkey",
    "sources": {
     "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Central Bank of the Republic of Turkey (CBRT) — Foreign Exchange Regulations", "note": "On file in data/rules/turkey.json; recheck for post-file regulatory change"},

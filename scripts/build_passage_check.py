@@ -100,6 +100,16 @@ DECLARATION = {
                 "the higher to aggregate foreign exchange. Endorsed CDF documentation anchors "
                 "later authorised-dealer conversions and outbound movement.",
     },
+    "indonesia": {
+        "thresholds": [
+            {"value": 100000000, "currency": "IDR",
+             "scope": "cash and/or bearer payment instruments (cheques, traveller's cheques, promissory notes, bills of exchange), in Rupiah or foreign currency, reaching or exceeding this amount in total",
+             "applies": "entering or leaving Indonesia",
+             "authority": "Indonesian Customs (Directorate General of Customs and Excise / Bea Cukai)",
+             "mechanism": "mandatory Customs Declaration via the applicable channel (All Indonesia integrated declaration for air/sea arrivals; Bea Cukai e-CD for land-border arrivals and outbound cash declarations); Government Regulation 99/2016"}
+        ],
+        "note": "The declaration is triggered when the total value REACHES OR EXCEEDS IDR 100,000,000 (>=; 'IDR 100,000,000 or more'), or the equivalent in another currency, aggregating cash and bearer payment instruments in Rupiah or foreign currency, symmetric on entry and exit; failure to declare carries an administrative fine of 10% of the amount carried, up to a maximum of IDR 300,000,000. This is a customs / anti-money-laundering border-transparency declaration, NOT a currency import/export ceiling or a currency-control cap. It is distinct from three separate regimes that must not be conflated with it: the physical-Rupiah carriage rules (outbound Rupiah of IDR 100,000,000 or more requires prior Bank Indonesia permission; inbound is subject to a Customs authenticity examination), the foreign-banknote (UKA) carriage rules (IDR 1,000,000,000 or more restricted to Bank Indonesia-authorised entities), and the DHE SDA export-proceeds retention/placement regime.",
+    },
     "italy": {
         "thresholds": [
             {"value": 10000, "currency": "EUR",
@@ -263,6 +273,8 @@ EXCHANGE_CONTROLS = {
     "germany": ("none", "No general exchange controls (liberalised within the Eurozone)"),
     "india": ("capital_account_regulated",
               "Current account largely liberalised; capital account regulated under FEMA"),
+    "indonesia": ("capital_account_regulated",
+                  "Free-foreign-exchange framework (Law 24/1999) with a floating Rupiah under a Flexible Inflation Targeting Framework, stated as a monetary-regime fact kept separate from controls; the reviewed official sources do not establish a single general exchange-control authorisation regime, but specific layered rules apply and are kept distinct — DHE SDA sector-specific export-proceeds retention/placement, non-resident Rupiah/foreign-exchange-market restrictions, the domestic Rupiah-use obligation, and the cross-border cash-declaration and Rupiah/UKA carriage regimes; absence of a located restriction is not evidence that none exists"),
     "italy": ("none",
               "No national exchange controls; free movement of capital and payments under Article 63 TFEU, subject to Treaty exceptions (taxation, prudential supervision, public policy/security, certain third-country measures) and to EU sanctions"),
     "japan": ("none", "No general exchange controls (fully liberalised)"),
