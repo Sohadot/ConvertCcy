@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-09-06T18:37:21+00:00",
+ "generated_at": "2026-09-07T13:28:56+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -15,9 +15,9 @@
  "engine": "ConvertCCY Passage Check",
  "engine_version": "1.0",
  "built_from": "rules/dataset.json",
- "source_dataset_generated_at": "2026-09-06T18:37:16+00:00",
+ "source_dataset_generated_at": "2026-09-07T13:28:38+00:00",
  "engine_notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. Structured thresholds are transcribed from each entry's cash_declaration_threshold field. Currency conversions shown in the tool are indicative only and are not governed figures.",
- "count": 15,
+ "count": 16,
  "countries": [
   {
    "country_name": "Australia",
@@ -1292,6 +1292,139 @@
     }
    ],
    "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Pakistan are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable State Bank of Pakistan / Pakistan Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the State Bank of Pakistan, Pakistan Customs, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "Saudi Arabia",
+   "country_slug": "saudi-arabia",
+   "iso2": "SA",
+   "currency_code": "SAR",
+   "currency_name": "Saudi Riyal",
+   "region": "Middle East",
+   "last_reviewed": "2026-09-06",
+   "rules_page": "/rules/saudi-arabia-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 40000,
+      "currency": "SAR",
+      "scope": "currency (Saudi or foreign), bearer negotiable instruments, gold bullion, precious metals, gemstones and worked jewellery — combined total value reaching or exceeding this amount, or the equivalent in another currency",
+      "applies": "entering or leaving the Kingdom",
+      "authority": "Zakat, Tax and Customs Authority (ZATCA); Article 23/1 of the Implementing Regulation to the Anti-Money Laundering Law (Umm Al-Qura)",
+      "mechanism": "mandatory written declaration under the prescribed form"
+     }
+    ],
+    "note": "The declaration is triggered when the combined total value REACHES OR EXCEEDS SAR 40,000 (>=; 'SAR 40,000 or more', not merely 'exceeding'), or the equivalent in another currency, aggregating currency, bearer negotiable instruments, gold bullion, precious metals, gemstones and worked jewellery, symmetric on entry and exit. This is a border anti-money-laundering / customs transparency declaration under Article 23/1 of the Implementing Regulation to the Anti-Money Laundering Law (primary legal locator in the Umm Al-Qura official gazette; operationally corroborated by the ZATCA traveller-declaration page), NOT a currency-control cap or an export ceiling, and is distinct from bank AML/KYC reporting and from SAMA's account-eligibility rules. The fixed SAR/USD peg is a separate monetary-regime fact.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "supervisory_peg",
+    "label": "Saudi riyal maintained at a fixed rate against the US dollar (SAR 3.75) by the Saudi Central Bank (SAMA) as a monetary-regime fact, kept separate from control posture; the reviewed official sources establish a licensed, SAMA-regulated foreign-exchange market (banks and money-exchange businesses) but do not establish a general exchange-control authorisation regime for buying, holding or transferring currency, and absence of a located restriction is not evidence that none exists — the AML border declaration, account-eligibility and any sectoral rules are kept distinct",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "A traveller entering Saudi Arabia must declare to ZATCA any currency (Saudi or foreign), bearer negotiable instruments, gold bullion, precious metals, gemstones or worked jewellery whose total value reaches or exceeds SAR 40,000 or the equivalent in another currency, using the prescribed declaration mechanism. Below that threshold no declaration is required. The declaration duty derives from Article 23/1 of the Implementing Regulation to the Anti-Money Laundering Law.",
+     "source": {
+      "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243",
+      "section": "Art. 23/1 (amended, Umm Al-Qura) — primary legal locator: inbound written declaration when covered items reach or exceed (>=) SAR 40,000 or equivalent, under the prescribed form"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "A traveller leaving Saudi Arabia must likewise declare currency, bearer negotiable instruments, gold bullion, precious metals, gemstones or worked jewellery whose total value reaches or exceeds SAR 40,000 or the equivalent (Article 23/1 of the Implementing Regulation to the Anti-Money Laundering Law); the obligation is symmetric with entry. The reviewed official sources do not establish a separate Saudi Central Bank permission or export cap on physically carrying currency out beyond this declaration duty.",
+     "source": {
+      "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243",
+      "section": "Art. 23/1 (amended, Umm Al-Qura) — primary legal locator: outbound written declaration when covered items reach or exceed (>=) SAR 40,000 or equivalent (symmetric with entry), under the prescribed form"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "The declaration threshold is a total value reaching or exceeding SAR 40,000 (or the equivalent in another currency) in currency, bearer negotiable instruments, gold bullion, precious metals, gemstones or worked jewellery, for a traveller entering or leaving the Kingdom (Article 23/1 of the Implementing Regulation to the Anti-Money Laundering Law), declared to ZATCA through the prescribed mechanism. This anti-money-laundering border declaration is distinct from bank AML/KYC reporting and from SAMA's account-eligibility rules.",
+     "source": {
+      "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243",
+      "section": "Art. 23/1 (amended, Umm Al-Qura) — primary legal locator establishing the current rule directly: threshold SAR 40,000 or equivalent, trigger 'reaches or exceeds' (>=), entry and exit, covered items (currency, bearer negotiable instruments, gold bullion, precious metals, gemstones and worked jewellery), written declaration under the prescribed form"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "The Saudi Riyal is maintained at a fixed exchange rate against the US Dollar (SAR 3.75) by the Saudi Central Bank (SAMA); this is a monetary-regime fact and does not by itself establish the presence or absence of exchange or capital-movement controls. The reviewed official sources establish a licensed foreign-exchange market (banks and SAMA-licensed money-exchange businesses), account-eligibility conditions by customer category, a cross-border AML declaration regime and AML/KYC requirements; they do not establish a general exchange-control authorisation regime for buying, holding or transferring currency. Absence of a located restriction is not evidence that none exists, and narrower sectoral or transaction-specific rules may apply.",
+     "source": {
+      "url": "https://www.sama.gov.sa/en-US/MediaCenter/News/Pages/news-557.aspx",
+      "section": "SAMA 'Affirms Commitment to Exchange Rate Policy' (5 Apr 2020) — SAR/USD peg at 3.75 as a monetary-regime fact only, kept separate from exchange-control posture; the peg is not used to infer convertibility, capital-account liberalisation, or absence of controls"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "Under SAMA's Account Opening Rules, bank customers may open accounts in any available foreign currency and deposit and withdraw in that currency; where the currency is unavailable, payment may be made in Saudi riyal. Eligibility to open and operate an account depends on the account-opening conditions for the customer's category and on AML/KYC requirements; the reviewed sources do not establish an unconditional right for any person to hold a particular account.",
+     "source": {
+      "url": "https://rulebook.sama.gov.sa/en/account-opening-rules",
+      "section": "Account Opening Rules — customers may open foreign-currency accounts and deposit/withdraw in that currency, subject to category-based account-opening conditions and AML/KYC"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Under SAMA's Account Opening Rules, banks may not open a Saudi-riyal account, a foreign-currency account, or any other account for non-Saudi, non-GCC natural persons who do not reside in Saudi Arabia unless written approval from the Ministry of Interior or the Ministry of Foreign Affairs is obtained through SAMA. Saudi citizens residing abroad and GCC nationals are addressed by their own account-opening rules within the same framework. The reviewed sources therefore do not support a general statement that non-residents may open or operate accounts freely; eligibility is category-specific and, for non-Saudi/non-GCC non-residents, conditional on the prescribed approval.",
+     "source": {
+      "url": "https://rulebook.sama.gov.sa/en/account-opening-rules",
+      "section": "Account Opening Rules — banks shall not open SAR / foreign-currency / any account for non-Saudi, non-GCC natural persons not residing in the Kingdom without written MOI/MOFA approval through SAMA; distinct rules for Saudi citizens abroad and GCC nationals"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Currency conversion and transfers are available through licensed banks and SAMA-licensed money-exchange businesses, within their respective licensed scope. Any client conditions or limits that SAMA applies to money-exchange businesses are specific to those licensees and are not general limits on bank customers. Availability of a particular currency, service or price is not guaranteed by any institution.",
+     "source": {
+      "url": "https://rulebook.sama.gov.sa/en/account-opening-rules",
+      "section": "Account Opening Rules — bank customers' foreign-currency accounts and conversion; category-based eligibility"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Saudi Central Bank (SAMA) — 'SAMA Affirms Commitment to Exchange Rate Policy' (5 Apr 2020): directly states pegging the Saudi riyal to the US dollar and maintaining the official rate of 3.75 riyals to the dollar as an anchor of monetary and financial stability",
+     "url": "https://www.sama.gov.sa/en-US/MediaCenter/News/Pages/news-557.aspx",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "SAMA Rulebook — Account Opening Rules (foreign-currency accounts; customer-category eligibility; non-Saudi/non-GCC non-resident written-approval requirement)",
+     "url": "https://rulebook.sama.gov.sa/en/account-opening-rules",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "SAMA Rulebook — Rules Regulating Money Changing Business (SAMA Decision No. 4686, 1441H/2020; in force): licensing of money-changing business (Art. 6); permitted activities (Art. 11) — purchase, sale and trading of foreign currencies inside the Kingdom, and import/export of currencies for company/foreign-branch money changers; money transfers inside and outside the Kingdom permitted only to holders of valid SAMA licences at issuance (no new branches for that activity). Scope specific to money-exchange licensees; not general limits on bank customers",
+     "url": "https://rulebook.sama.gov.sa/en/rules-regulating-money-changing-business",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Implementing Regulation to the Anti-Money Laundering Law — Article 23/1 (amended traveller declaration: currency, bearer negotiable instruments, gold bullion, precious metals, gemstones and worked jewellery reaching or exceeding SAR 40,000 or equivalent, entry and exit, written declaration under the prescribed form), Umm Al-Qura official gazette",
+     "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Implementing Regulation to the Anti-Money Laundering Law — Article 23, SAMA Rulebook copy — SUPERSEDED/HISTORICAL SOURCE ONLY: still displays the pre-amendment SAR 60,000 wording; retained for provenance and not the current legal authority (superseded by the amended Article 23/1 in Umm Al-Qura above)",
+     "url": "https://rulebook.sama.gov.sa/en/article-23-15",
+     "type": "regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Zakat, Tax and Customs Authority (ZATCA) — traveller currency/valuables declaration (operational corroboration: SAR 40,000 or more, entry and exit, covered items, declaration mechanism, penalties for failure to declare)",
+     "url": "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/customs-individual/Travel-pages/declare.aspx",
+     "type": "customs",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs and anti-money-laundering rules in Saudi Arabia are set by the Saudi Central Bank (SAMA), the Zakat, Tax and Customs Authority (ZATCA), and the Anti-Money Laundering Law and its Implementing Regulation, and may change; requirements depend on residency and nationality, customer category, the transaction type and amount, documentation, and the applicable SAMA/ZATCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Saudi Central Bank (SAMA), ZATCA, or a qualified professional before making any financial or travel decisions."
   },
   {
    "country_name": "South Africa",
