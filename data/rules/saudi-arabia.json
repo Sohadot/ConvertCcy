@@ -13,7 +13,7 @@
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": false,
-  "source_notice": "This entry has been mapped field-by-field to primary official sources (Saudi Central Bank / SAMA Account Opening Rules; Implementing Regulation to the Anti-Money Laundering Law, Article 23/1; ZATCA traveller declaration). Several account, exchange-control and business fields remain bounded, and final pinpoint hardening (including exact SAMA peg and money-exchange locators and the amended Article 23 gazette reference) is still pending. It is not yet part of the public sovereign reference layer.",
+  "source_notice": "This entry has been mapped field-by-field to primary official sources (Saudi Central Bank / SAMA Account Opening Rules; Implementing Regulation to the Anti-Money Laundering Law, Article 23/1; ZATCA traveller declaration). The current traveller declaration rule is now pinned to the amended Article 23/1 in the Umm Al-Qura official gazette as its primary legal locator, with the superseded SAMA Rulebook SAR 60,000 copy retained only for provenance. Several account, exchange-control and business fields remain bounded, and final pinpoint hardening (including exact SAMA peg and money-exchange/licensing locators) is still pending. It is not yet part of the public sovereign reference layer.",
   "country_overview": "Saudi Arabia's monetary regime is administered by the Saudi Central Bank (SAMA), which maintains a fixed exchange rate for the Saudi Riyal against the US Dollar (SAR 3.75 per USD). Foreign exchange is provided through licensed banks and SAMA-licensed money-exchange businesses. Bank-account opening is governed by SAMA's Account Opening Rules, which set eligibility conditions by customer category, and travellers crossing the border must declare currency and specified valuables at or above a threshold set under the Anti-Money Laundering Law's Implementing Regulation. The foreign-exchange market is licensed and regulated by SAMA. The reviewed official sources do not establish a general regime of exchange controls or a currency-authorisation requirement; absence of a located restriction is not evidence that none exists. The monetary peg, the licensed foreign-exchange market, account-eligibility rules, the cross-border declaration and AML requirements are distinct regimes and are not conflated.",
   "summary": {
     "traveler": "Travellers entering or leaving Saudi Arabia must submit a declaration to the Zakat, Tax and Customs Authority (ZATCA) when the currency, bearer negotiable instruments, gold bullion, precious metals, gemstones or worked jewellery they carry reach or exceed SAR 40,000 (or the equivalent in another currency) in total. The obligation is symmetric on entry and exit and is filed through the prescribed ZATCA declaration mechanism.",
@@ -43,14 +43,20 @@
       "tier": "primary"
     },
     {
-      "label": "Implementing Regulation to the Anti-Money Laundering Law — Article 23 (traveller declaration of currency and specified valuables), SAMA Rulebook",
+      "label": "Implementing Regulation to the Anti-Money Laundering Law — Article 23/1 (amended traveller declaration: currency, bearer negotiable instruments, gold bullion, precious metals, gemstones and worked jewellery reaching or exceeding SAR 40,000 or equivalent, entry and exit, written declaration under the prescribed form), Umm Al-Qura official gazette",
+      "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "Implementing Regulation to the Anti-Money Laundering Law — Article 23, SAMA Rulebook copy — SUPERSEDED/HISTORICAL SOURCE ONLY: still displays the pre-amendment SAR 60,000 wording; retained for provenance and not the current legal authority (superseded by the amended Article 23/1 in Umm Al-Qura above)",
       "url": "https://rulebook.sama.gov.sa/en/article-23-15",
       "type": "regulator",
       "tier": "primary"
     },
     {
-      "label": "Zakat, Tax and Customs Authority (ZATCA) — traveller currency/valuables declaration",
-      "url": "https://zatca.gov.sa/en/RulesRegulations/Pages/systems.aspx",
+      "label": "Zakat, Tax and Customs Authority (ZATCA) — traveller currency/valuables declaration (operational corroboration: SAR 40,000 or more, entry and exit, covered items, declaration mechanism, penalties for failure to declare)",
+      "url": "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/customs-individual/Travel-pages/declare.aspx",
       "type": "customs",
       "tier": "primary"
     }
@@ -62,24 +68,28 @@
       { "url": "https://rulebook.sama.gov.sa/en/article-23-15", "pages": [], "section": "Implementing Regulation to the AML Law, Art. 23 — cross-border declaration regime" }
     ],
     "summary.traveler": [
-      { "url": "https://rulebook.sama.gov.sa/en/article-23-15", "pages": [], "section": "Art. 23/1 — declaration on entry or exit at or above the value threshold; covered items" },
-      { "url": "https://zatca.gov.sa/en/RulesRegulations/Pages/systems.aspx", "pages": [], "section": "ZATCA traveller declaration — operational confirmation of SAR 40,000 threshold" }
+      { "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243", "pages": [], "section": "Art. 23/1 (amended, Umm Al-Qura) — primary legal locator: written declaration on entry and exit when currency, bearer negotiable instruments, gold bullion, precious metals, gemstones or worked jewellery reach or exceed (>=) SAR 40,000 or equivalent, under the prescribed form" },
+      { "url": "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/customs-individual/Travel-pages/declare.aspx", "pages": [], "section": "ZATCA traveller-declaration page — operational corroboration: SAR 40,000 or more, entry and exit, covered items, declaration mechanism, penalties for failure to declare" },
+      { "url": "https://rulebook.sama.gov.sa/en/article-23-15", "pages": [], "section": "SAMA Rulebook Art. 23 copy — superseded/historical only (still displays pre-amendment SAR 60,000 wording); not the current legal authority" }
     ],
     "summary.business": [
       { "url": "https://rulebook.sama.gov.sa/en/account-opening-rules", "pages": [], "section": "Account Opening Rules — foreign-currency accounts; category-based eligibility" },
       { "url": "https://www.sama.gov.sa/en-US/", "pages": [], "section": "Saudi Central Bank — licensed banks and money-exchange businesses (exact page pending pinpoint hardening)" }
     ],
     "rules.bring_foreign_currency_in": [
-      { "url": "https://rulebook.sama.gov.sa/en/article-23-15", "pages": [], "section": "Art. 23/1 — inbound declaration at or above SAR 40,000 or equivalent; covered items" },
-      { "url": "https://zatca.gov.sa/en/RulesRegulations/Pages/systems.aspx", "pages": [], "section": "ZATCA traveller declaration mechanism (entry)" }
+      { "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243", "pages": [], "section": "Art. 23/1 (amended, Umm Al-Qura) — primary legal locator: inbound written declaration when covered items reach or exceed (>=) SAR 40,000 or equivalent, under the prescribed form" },
+      { "url": "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/customs-individual/Travel-pages/declare.aspx", "pages": [], "section": "ZATCA traveller-declaration page — operational corroboration of the entry declaration mechanism (SAR 40,000 or more; covered items; penalties)" },
+      { "url": "https://rulebook.sama.gov.sa/en/article-23-15", "pages": [], "section": "SAMA Rulebook Art. 23 copy — superseded/historical only (pre-amendment SAR 60,000 wording); not the current legal authority" }
     ],
     "rules.take_foreign_currency_out": [
-      { "url": "https://rulebook.sama.gov.sa/en/article-23-15", "pages": [], "section": "Art. 23/1 — outbound declaration at or above SAR 40,000 or equivalent (symmetric with entry)" },
-      { "url": "https://zatca.gov.sa/en/RulesRegulations/Pages/systems.aspx", "pages": [], "section": "ZATCA traveller declaration mechanism (exit)" }
+      { "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243", "pages": [], "section": "Art. 23/1 (amended, Umm Al-Qura) — primary legal locator: outbound written declaration when covered items reach or exceed (>=) SAR 40,000 or equivalent (symmetric with entry), under the prescribed form" },
+      { "url": "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/customs-individual/Travel-pages/declare.aspx", "pages": [], "section": "ZATCA traveller-declaration page — operational corroboration of the exit declaration mechanism (SAR 40,000 or more; covered items; penalties)" },
+      { "url": "https://rulebook.sama.gov.sa/en/article-23-15", "pages": [], "section": "SAMA Rulebook Art. 23 copy — superseded/historical only (pre-amendment SAR 60,000 wording); not the current legal authority" }
     ],
     "rules.cash_declaration_threshold": [
-      { "url": "https://rulebook.sama.gov.sa/en/article-23-15", "pages": [], "section": "Art. 23/1 — current effective threshold SAR 40,000 or equivalent, trigger 'reaches or exceeds' (>=), entry and exit, per the updated Implementing Regulation published through Umm Al-Qura and current ZATCA guidance. NOTE: the SAMA Rulebook copy still displays the superseded pre-amendment SAR 60,000 wording (operator 'exceeding'); that figure is retained here only as historical/superseded and must not be used as the current threshold" },
-      { "url": "https://zatca.gov.sa/en/RulesRegulations/Pages/systems.aspx", "pages": [], "section": "ZATCA traveller declaration — SAR 40,000 or more, currency/BNI/gold/precious metals/gemstones/jewellery, entry and exit" }
+      { "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243", "pages": [], "section": "Art. 23/1 (amended, Umm Al-Qura) — primary legal locator establishing the current rule directly: threshold SAR 40,000 or equivalent, trigger 'reaches or exceeds' (>=), entry and exit, covered items (currency, bearer negotiable instruments, gold bullion, precious metals, gemstones and worked jewellery), written declaration under the prescribed form" },
+      { "url": "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/customs-individual/Travel-pages/declare.aspx", "pages": [], "section": "ZATCA traveller-declaration page — operational corroboration: SAR 40,000 or more, entry and exit, covered items, declaration mechanism, penalties for failure to declare" },
+      { "url": "https://rulebook.sama.gov.sa/en/article-23-15", "pages": [], "section": "SAMA Rulebook Art. 23 copy — SUPERSEDED/HISTORICAL only: still displays the pre-amendment SAR 60,000 wording (operator 'exceeding'); retained for provenance and must not be used as the current legal authority or threshold" }
     ],
     "rules.resident_holding_rules": [
       { "url": "https://rulebook.sama.gov.sa/en/account-opening-rules", "pages": [], "section": "Account Opening Rules — customers may open foreign-currency accounts and deposit/withdraw in that currency, subject to category-based account-opening conditions and AML/KYC" }
