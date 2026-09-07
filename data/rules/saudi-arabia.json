@@ -13,7 +13,7 @@
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": false,
-  "source_notice": "This entry has been mapped field-by-field to primary official sources (Saudi Central Bank / SAMA Account Opening Rules; Implementing Regulation to the Anti-Money Laundering Law, Article 23/1; ZATCA traveller declaration). The current traveller declaration rule is now pinned to the amended Article 23/1 in the Umm Al-Qura official gazette as its primary legal locator, with the superseded SAMA Rulebook SAR 60,000 copy retained only for provenance. Several account, exchange-control and business fields remain bounded, and final pinpoint hardening (including exact SAMA peg and money-exchange/licensing locators) is still pending. It is not yet part of the public sovereign reference layer.",
+  "source_notice": "This entry has been mapped field-by-field to primary official sources (Saudi Central Bank / SAMA Account Opening Rules; Implementing Regulation to the Anti-Money Laundering Law, Article 23/1; ZATCA traveller declaration). The current traveller declaration rule is pinned to the amended Article 23/1 in the Umm Al-Qura official gazette as its primary legal locator, with the superseded SAMA Rulebook SAR 60,000 copy retained only for provenance. The SAR/USD peg at 3.75 is now pinned to SAMA's 'Affirms Commitment to Exchange Rate Policy' statement (as a monetary-regime fact only), and the licensed money-exchange regime is pinned to the SAMA Rulebook 'Rules Regulating Money Changing Business' (Decision 4686, 1441H/2020). The remaining account, exchange-control and business fields are bounded deliberately: the reviewed official sources do not establish a broader proposition (in particular, unrestricted capital repatriation and a general absence of exchange controls are not asserted). It is not yet part of the public sovereign reference layer.",
   "country_overview": "Saudi Arabia's monetary regime is administered by the Saudi Central Bank (SAMA), which maintains a fixed exchange rate for the Saudi Riyal against the US Dollar (SAR 3.75 per USD). Foreign exchange is provided through licensed banks and SAMA-licensed money-exchange businesses. Bank-account opening is governed by SAMA's Account Opening Rules, which set eligibility conditions by customer category, and travellers crossing the border must declare currency and specified valuables at or above a threshold set under the Anti-Money Laundering Law's Implementing Regulation. The foreign-exchange market is licensed and regulated by SAMA. The reviewed official sources do not establish a general regime of exchange controls or a currency-authorisation requirement; absence of a located restriction is not evidence that none exists. The monetary peg, the licensed foreign-exchange market, account-eligibility rules, the cross-border declaration and AML requirements are distinct regimes and are not conflated.",
   "summary": {
     "traveler": "Travellers entering or leaving Saudi Arabia must submit a declaration to the Zakat, Tax and Customs Authority (ZATCA) when the currency, bearer negotiable instruments, gold bullion, precious metals, gemstones or worked jewellery they carry reach or exceed SAR 40,000 (or the equivalent in another currency) in total. The obligation is symmetric on entry and exit and is filed through the prescribed ZATCA declaration mechanism.",
@@ -31,14 +31,20 @@
   },
   "source_authorities": [
     {
-      "label": "Saudi Central Bank (SAMA) — monetary regime and the fixed SAR/USD exchange rate (peg at 3.75)",
-      "url": "https://www.sama.gov.sa/en-US/",
+      "label": "Saudi Central Bank (SAMA) — 'SAMA Affirms Commitment to Exchange Rate Policy' (5 Apr 2020): directly states pegging the Saudi riyal to the US dollar and maintaining the official rate of 3.75 riyals to the dollar as an anchor of monetary and financial stability",
+      "url": "https://www.sama.gov.sa/en-US/MediaCenter/News/Pages/news-557.aspx",
       "type": "central_bank",
       "tier": "primary"
     },
     {
       "label": "SAMA Rulebook — Account Opening Rules (foreign-currency accounts; customer-category eligibility; non-Saudi/non-GCC non-resident written-approval requirement)",
       "url": "https://rulebook.sama.gov.sa/en/account-opening-rules",
+      "type": "primary_regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "SAMA Rulebook — Rules Regulating Money Changing Business (SAMA Decision No. 4686, 1441H/2020; in force): licensing of money-changing business (Art. 6); permitted activities (Art. 11) — purchase, sale and trading of foreign currencies inside the Kingdom, and import/export of currencies for company/foreign-branch money changers; money transfers inside and outside the Kingdom permitted only to holders of valid SAMA licences at issuance (no new branches for that activity). Scope specific to money-exchange licensees; not general limits on bank customers",
+      "url": "https://rulebook.sama.gov.sa/en/rules-regulating-money-changing-business",
       "type": "primary_regulator",
       "tier": "primary"
     },
@@ -63,9 +69,10 @@
   ],
   "source_map": {
     "country_overview": [
-      { "url": "https://www.sama.gov.sa/en-US/", "pages": [], "section": "Saudi Central Bank — fixed SAR/USD peg (3.75); monetary regime (exact page pending pinpoint hardening)" },
+      { "url": "https://www.sama.gov.sa/en-US/MediaCenter/News/Pages/news-557.aspx", "pages": [], "section": "SAMA 'Affirms Commitment to Exchange Rate Policy' (5 Apr 2020) — directly states the SAR/USD peg at the official rate of 3.75 riyals to the dollar (monetary-regime fact only)" },
+      { "url": "https://rulebook.sama.gov.sa/en/rules-regulating-money-changing-business", "pages": [], "section": "Rules Regulating Money Changing Business (Decision 4686, 1441H/2020) — SAMA-licensed money-exchange businesses and the licensed FX market (Art. 6 licensing; Art. 11 permitted FX activities)" },
       { "url": "https://rulebook.sama.gov.sa/en/account-opening-rules", "pages": [], "section": "Account Opening Rules — customer-category eligibility; foreign-currency accounts" },
-      { "url": "https://rulebook.sama.gov.sa/en/article-23-15", "pages": [], "section": "Implementing Regulation to the AML Law, Art. 23 — cross-border declaration regime" }
+      { "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243", "pages": [], "section": "Implementing Regulation to the AML Law, Art. 23/1 (amended, Umm Al-Qura) — cross-border declaration regime" }
     ],
     "summary.traveler": [
       { "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243", "pages": [], "section": "Art. 23/1 (amended, Umm Al-Qura) — primary legal locator: written declaration on entry and exit when currency, bearer negotiable instruments, gold bullion, precious metals, gemstones or worked jewellery reach or exceed (>=) SAR 40,000 or equivalent, under the prescribed form" },
@@ -74,7 +81,7 @@
     ],
     "summary.business": [
       { "url": "https://rulebook.sama.gov.sa/en/account-opening-rules", "pages": [], "section": "Account Opening Rules — foreign-currency accounts; category-based eligibility" },
-      { "url": "https://www.sama.gov.sa/en-US/", "pages": [], "section": "Saudi Central Bank — licensed banks and money-exchange businesses (exact page pending pinpoint hardening)" }
+      { "url": "https://rulebook.sama.gov.sa/en/rules-regulating-money-changing-business", "pages": [], "section": "Rules Regulating Money Changing Business (Decision 4686, 1441H/2020) — SAMA-licensed money-exchange businesses; permitted FX conversion activity (Art. 11), scope specific to those licensees" }
     ],
     "rules.bring_foreign_currency_in": [
       { "url": "https://www.uqn.gov.sa/decisions-and-regulations/4001243", "pages": [], "section": "Art. 23/1 (amended, Umm Al-Qura) — primary legal locator: inbound written declaration when covered items reach or exceed (>=) SAR 40,000 or equivalent, under the prescribed form" },
@@ -99,14 +106,15 @@
     ],
     "rules.business_invoicing_settlement": [
       { "url": "https://rulebook.sama.gov.sa/en/account-opening-rules", "pages": [], "section": "Account Opening Rules — settlement through licensed banks; category-based eligibility (no unconditional invoice/repatriation right established)" },
-      { "url": "https://www.sama.gov.sa/en-US/", "pages": [], "section": "Saudi Central Bank — licensed banks and money-exchange businesses (exact page pending pinpoint hardening)" }
+      { "url": "https://rulebook.sama.gov.sa/en/rules-regulating-money-changing-business", "pages": [], "section": "Rules Regulating Money Changing Business (Decision 4686, 1441H/2020) — SAMA-licensed money-exchange businesses and their permitted FX activities (Art. 11); does not establish an unconditional invoice/repatriation right" }
     ],
     "rules.exchange_controls": [
-      { "url": "https://www.sama.gov.sa/en-US/", "pages": [], "section": "Saudi Central Bank — fixed SAR/USD peg (3.75) as monetary regime, kept separate from exchange-control posture (exact page pending pinpoint hardening)" },
+      { "url": "https://www.sama.gov.sa/en-US/MediaCenter/News/Pages/news-557.aspx", "pages": [], "section": "SAMA 'Affirms Commitment to Exchange Rate Policy' (5 Apr 2020) — SAR/USD peg at 3.75 as a monetary-regime fact only, kept separate from exchange-control posture; the peg is not used to infer convertibility, capital-account liberalisation, or absence of controls" },
       { "url": "https://rulebook.sama.gov.sa/en/account-opening-rules", "pages": [], "section": "Account Opening Rules — account-eligibility conditions; no general FX authorisation regime established by the reviewed sources" }
     ],
     "rules.banking_conversion_practicality": [
-      { "url": "https://rulebook.sama.gov.sa/en/account-opening-rules", "pages": [], "section": "Account Opening Rules / SAMA licensing — licensed banks and money-exchange businesses; money-exchange client conditions not generalised to bank customers" }
+      { "url": "https://rulebook.sama.gov.sa/en/account-opening-rules", "pages": [], "section": "Account Opening Rules — bank customers' foreign-currency accounts and conversion; category-based eligibility" },
+      { "url": "https://rulebook.sama.gov.sa/en/rules-regulating-money-changing-business", "pages": [], "section": "Rules Regulating Money Changing Business (Decision 4686, 1441H/2020) — money-exchange licensees' permitted scope (Art. 11: FX purchase/sale/trading; transfers limited to pre-existing licensees). These money-exchange-specific conditions are not generalised to bank customers" }
     ]
   },
   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs and anti-money-laundering rules in Saudi Arabia are set by the Saudi Central Bank (SAMA), the Zakat, Tax and Customs Authority (ZATCA), and the Anti-Money Laundering Law and its Implementing Regulation, and may change; requirements depend on residency and nationality, customer category, the transaction type and amount, documentation, and the applicable SAMA/ZATCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Saudi Central Bank (SAMA), ZATCA, or a qualified professional before making any financial or travel decisions."
