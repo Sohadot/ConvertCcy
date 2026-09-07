@@ -38,15 +38,6 @@
    }
   },
   {
-   "country_slug": "saudi-arabia",
-   "sources": {
-    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Saudi Arabian Monetary Authority (SAMA) — Exchange Rate & FX Regime", "note": "On file in data/rules/saudi-arabia.json; note SAMA's current English branding is 'Saudi Central Bank'"},
-    "customs_or_border_authority": {"status": "verified_on_file", "label": "ZATCA — Customs & Travel Currency Rules", "note": "On file in data/rules/saudi-arabia.json"},
-    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "Saudi Arabia Financial Intelligence Unit (SAFIU)", "note": "Not yet sourced; name is public knowledge, no citation on file"},
-    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
-   }
-  },
-  {
    "country_slug": "turkey",
    "sources": {
     "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Central Bank of the Republic of Turkey (CBRT) — Foreign Exchange Regulations", "note": "On file in data/rules/turkey.json; recheck for post-file regulatory change"},

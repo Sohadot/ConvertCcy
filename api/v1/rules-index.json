@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-09-06T18:37:21+00:00",
+ "generated_at": "2026-09-07T13:28:56+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -12,8 +12,8 @@
  "canonical_url": "https://convertccy.com/api/v1/rules-index.json",
  "documentation": "https://convertccy.com/api.html",
  "title": "ConvertCCY Published Jurisdictions Index",
- "source_dataset_generated_at": "2026-09-06T18:37:16+00:00",
- "count": 15,
+ "source_dataset_generated_at": "2026-09-07T13:28:38+00:00",
+ "count": 16,
  "coverage_note": "Lists only jurisdictions that have passed ConvertCCY's published, source-mapped review gate. Absence from this list means not yet published — never infer coverage from a currency code.",
  "countries": [
   {
@@ -145,6 +145,19 @@
    "rules_page": "/rules/pakistan-foreign-currency-rules.html",
    "brief_page": "/briefs/pakistan-passage-brief.html",
    "api_path": "/api/v1/rules/pakistan.json"
+  },
+  {
+   "country_name": "Saudi Arabia",
+   "country_slug": "saudi-arabia",
+   "iso2": "SA",
+   "iso3": "SAU",
+   "region": "Middle East",
+   "currency_code": "SAR",
+   "currency_name": "Saudi Riyal",
+   "last_reviewed": "2026-09-06",
+   "rules_page": "/rules/saudi-arabia-foreign-currency-rules.html",
+   "brief_page": "/briefs/saudi-arabia-passage-brief.html",
+   "api_path": "/api/v1/rules/saudi-arabia.json"
   },
   {
    "country_name": "South Africa",

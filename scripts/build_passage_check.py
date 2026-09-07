@@ -153,6 +153,24 @@ DECLARATION = {
         ],
         "note": None,
     },
+    "saudi-arabia": {
+        "thresholds": [
+            {"value": 40000, "currency": "SAR",
+             "scope": "currency (Saudi or foreign), bearer negotiable instruments, gold bullion, precious metals, gemstones and worked jewellery — combined total value reaching or exceeding this amount, or the equivalent in another currency",
+             "applies": "entering or leaving the Kingdom",
+             "authority": "Zakat, Tax and Customs Authority (ZATCA); Article 23/1 of the Implementing Regulation to the Anti-Money Laundering Law (Umm Al-Qura)",
+             "mechanism": "mandatory written declaration under the prescribed form"}
+        ],
+        "note": "The declaration is triggered when the combined total value REACHES OR EXCEEDS SAR 40,000 (>=; "
+                "'SAR 40,000 or more', not merely 'exceeding'), or the equivalent in another currency, aggregating "
+                "currency, bearer negotiable instruments, gold bullion, precious metals, gemstones and worked "
+                "jewellery, symmetric on entry and exit. This is a border anti-money-laundering / customs "
+                "transparency declaration under Article 23/1 of the Implementing Regulation to the Anti-Money "
+                "Laundering Law (primary legal locator in the Umm Al-Qura official gazette; operationally "
+                "corroborated by the ZATCA traveller-declaration page), NOT a currency-control cap or an export "
+                "ceiling, and is distinct from bank AML/KYC reporting and from SAMA's account-eligibility rules. "
+                "The fixed SAR/USD peg is a separate monetary-regime fact.",
+    },
     "south-africa": {
         "thresholds": [
             {"value": 25000, "currency": "ZAR", "scope": "South African bank notes",
@@ -252,6 +270,8 @@ EXCHANGE_CONTROLS = {
                "Free-floating exchange-rate regime set by the Comisión de Cambios (SHCP and Banco de México); the reviewed official sources do not establish a general foreign-exchange authorisation regime, with anti-money-laundering, US-dollar cash-operation, customs-declaration and any sectoral restrictions kept distinct"),
     "pakistan": ("capital_account_regulated",
                  "No general exchange controls on the current account; capital account regulated by the SBP"),
+    "saudi-arabia": ("supervisory_peg",
+                     "Saudi riyal maintained at a fixed rate against the US dollar (SAR 3.75) by the Saudi Central Bank (SAMA) as a monetary-regime fact, kept separate from control posture; the reviewed official sources establish a licensed, SAMA-regulated foreign-exchange market (banks and money-exchange businesses) but do not establish a general exchange-control authorisation regime for buying, holding or transferring currency, and absence of a located restriction is not evidence that none exists — the AML border declaration, account-eligibility and any sectoral rules are kept distinct"),
     "south-africa": ("capital_account_regulated",
                      "Current account largely liberalised; capital account subject to SARB exchange control administered through Authorised Dealers under the Currency and Exchanges Manual"),
     "south-korea": ("capital_account_regulated",
