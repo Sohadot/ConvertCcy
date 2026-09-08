@@ -437,6 +437,24 @@ def related_pairs_html(from_code: str, to_code: str, all_codes: List[str], limit
 # HTML TEMPLATES
 # -----------------------------------------------------------------------------
 
+def pair_surface_threshold_body(gov_entry: Dict[str, Any]) -> str:
+    """Compact threshold/regime line for pair pages.
+
+    Prefer an optional governed ``pair_surface_summary`` from Passage Check when
+    present (mixed declaration / permit / carriage regimes). Otherwise keep the
+    legacy numeric join used by ordinary single-threshold jurisdictions:
+
+        declaration at <currency> <value>[ / …]
+    """
+    summary = str(gov_entry.get("pair_surface_summary") or "").strip()
+    if summary:
+        return summary
+    thresholds = gov_entry.get("thresholds") or []
+    if thresholds:
+        return "declaration at " + " / ".join(thresholds)
+    return ""
+
+
 def load_governed_currency_map() -> Dict[str, List[Dict[str, Any]]]:
     """Map currency_code -> list of governed jurisdiction records, transcribed from
     the published Passage Check dataset (rules/passage-check.json). A currency may
@@ -457,13 +475,16 @@ def load_governed_currency_map() -> Dict[str, List[Dict[str, Any]]]:
         code = str(c.get("currency_code", "")).upper()
         if not code:
             continue
-        thresholds = c.get("declaration", {}).get("thresholds", [])
+        decl = c.get("declaration", {}) or {}
+        thresholds = decl.get("thresholds", [])
         gov.setdefault(code, []).append({
             "country_name": c.get("country_name", ""),
             "country_slug": c.get("country_slug", ""),
             "rules_page": c.get("rules_page", ""),
             "last_reviewed": c.get("last_reviewed", ""),
             "exch_label": c.get("exchange_controls", {}).get("label", ""),
+            "exch_posture": c.get("exchange_controls", {}).get("posture", ""),
+            "pair_surface_summary": str(decl.get("pair_surface_summary") or "").strip(),
             "thresholds": [
                 f'{t.get("currency","")} {int(t.get("value",0)):,}'.strip()
                 for t in thresholds if t.get("value")
@@ -498,10 +519,11 @@ def build_currency_passage_section(profile: Dict[str, Any],
             )
             thresh_bits = []
             for g in govs:
-                if g.get("thresholds"):
+                body = pair_surface_threshold_body(g)
+                if body:
                     thresh_bits.append(
-                        f'<strong>{esc(g["country_name"])}:</strong> declaration at '
-                        + esc(" / ".join(g["thresholds"]))
+                        f'<strong>{esc(g["country_name"])}:</strong> '
+                        + esc(body)
                         + (f' · <span class="pj-muted">{esc(g["exch_label"])}</span>' if g.get("exch_label") else "")
                     )
             thresh_html = "".join(f'<div class="pj-line">{b}</div>' for b in thresh_bits)

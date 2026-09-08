@@ -103,6 +103,15 @@ DECLARATION = {
                 "Physical RMB CNY 20,000 is a separate carriage limit (PBOC Announcement〔2004〕No. 18 / State Council Order No. 108). "
                 "Negotiable/payment instruments are not silently folded into Huifa〔2003〕102 foreign-cash thresholds. "
                 "The USD 50,000 individual annual 便利化额度 is NOT a border-cash threshold and must not be read from this declaration block.",
+        # Optional compact pair-page presentation metadata. Does not replace the
+        # structured thresholds above; generate.py uses this when present so mixed
+        # declaration / permit / carriage regimes are not flattened into one
+        # generic "declaration at … / …" numeric list.
+        "pair_surface_summary": (
+            "inbound FX cash > USD 5,000 declaration · "
+            "outbound FX ≤5k / >5k–≤10k / >10k permit architecture · "
+            "RMB CNY 20,000 carriage limit"
+        ),
     },
     "france": {
         "thresholds": [
