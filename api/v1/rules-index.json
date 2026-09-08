@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-09-08T19:17:53+00:00",
+ "generated_at": "2026-09-08T21:01:41+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -12,8 +12,8 @@
  "canonical_url": "https://convertccy.com/api/v1/rules-index.json",
  "documentation": "https://convertccy.com/api.html",
  "title": "ConvertCCY Published Jurisdictions Index",
- "source_dataset_generated_at": "2026-09-08T19:16:29+00:00",
- "count": 21,
+ "source_dataset_generated_at": "2026-09-08T21:01:40+00:00",
+ "count": 22,
  "coverage_note": "Lists only jurisdictions that have passed ConvertCCY's published, source-mapped review gate. Absence from this list means not yet published — never infer coverage from a currency code.",
  "countries": [
   {
@@ -67,6 +67,19 @@
    "rules_page": "/rules/china-foreign-currency-rules.html",
    "brief_page": "/briefs/china-passage-brief.html",
    "api_path": "/api/v1/rules/china.json"
+  },
+  {
+   "country_name": "Egypt",
+   "country_slug": "egypt",
+   "iso2": "EG",
+   "iso3": "EGY",
+   "region": "North Africa",
+   "currency_code": "EGP",
+   "currency_name": "Egyptian Pound",
+   "last_reviewed": "2026-09-08",
+   "rules_page": "/rules/egypt-foreign-currency-rules.html",
+   "brief_page": "/briefs/egypt-passage-brief.html",
+   "api_path": "/api/v1/rules/egypt.json"
   },
   {
    "country_name": "France",

@@ -1,0 +1,110 @@
+{
+ "schema_version": "1.0.0",
+ "generated_at": "2026-09-08T21:01:41+00:00",
+ "asset": "ConvertCCY",
+ "interface_type": "static_agent_interface",
+ "dynamic_api": false,
+ "source_scope": "published_governed_data_only",
+ "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "ConvertCCY (https://convertccy.com/)",
+ "disclaimer": "This data is a governed reference, not legal, tax, customs, compliance, or financial advice. It does not predict, hedge, or guarantee any financial outcome. Verify time-sensitive figures against the official sources listed before acting.",
+ "use_boundary": "Static, read-only reference data only. Do not represent this interface as a dynamic API, as live data, or as covering any jurisdiction not listed in this file. A currency code is not the same as a jurisdiction: a shared currency (e.g. EUR) does not imply coverage of every country that uses it. Cite ConvertCCY and the official source(s) when using this data downstream.",
+ "canonical_url": "https://convertccy.com/api/v1/rules/egypt.json",
+ "documentation": "https://convertccy.com/api.html",
+ "country_name": "Egypt",
+ "country_slug": "egypt",
+ "iso2": "EG",
+ "iso3": "EGY",
+ "region": "North Africa",
+ "currency_code": "EGP",
+ "currency_name": "Egyptian Pound",
+ "page_status": "published",
+ "last_reviewed": "2026-09-08",
+ "evidence_tier": "official_verified",
+ "rules_page": "/rules/egypt-foreign-currency-rules.html",
+ "brief_page": "/briefs/egypt-passage-brief.html",
+ "country_overview": "Egypt's currency is the Egyptian pound (EGP). Under Law No. 194 of 2020 Art. 211 (Official Gazette / NIB PDF p. 106), the Central Bank of Egypt (CBE) Board issues the rules governing the foreign-exchange market, and the EGP exchange rate against foreign currencies is determined by the interaction of supply and demand in that market — a market-determined exchange-rate framework kept analytically separate from FX-channel regulation. The CBE Special MPC of 6 March 2024 stated that the exchange rate is allowed to be determined by market forces while the CBE continues transitioning toward a flexible inflation-targeting regime; current 2026 CBE Monetary Policy Report and live market/CBE exchange-rate pages treat the market-determined rate as operative. Cross-border FX operations are regulated and must be conducted through banks or other entities licensed under Law 194, subject to Board rules (Art. 212) — not a claim of unrestricted convertibility of every source of funds. Traveller cash is dual-layered: Law 194 Art. 213 governs foreign-currency physical carriage and Art. 213-form disclosure for نقد أجنبي, while AML Law 80/2002 Art. 12 and Executive Regulation Art. 14 add a distinct customs-disclosure layer for foreign currency and bearer negotiable instruments (including a lower outbound AML disclosure trigger). Physical EGP banknote carriage is a separate Board-set ceiling under Decision 2200/2020. Absence of a located restriction is not evidence that none exists.",
+ "summary": {
+  "traveler": "Dual architecture — do not collapse. Law 194/2020 Art. 213 (FX cash only): inbound foreign currency free with no general quantitative ceiling; Art. 213-form disclosure when the amount exceeds USD 10,000 equivalent (جاوز / strictly >; exactly USD 10,000 outside this inbound trigger); outbound ordinary FX carriage not exceeding USD 10,000 equivalent (ألا يزيد على / <=); travellers may also carry the remainder of FX previously disclosed on arrival even where that remainder exceeds USD 10,000. Separately, AML Law 80/2002 Art. 12 / Exec Reg Art. 14 require customs disclosure of foreign currency and/or bearer negotiable instruments (or both combined): inbound when value exceeds USD 10,000; outbound when value exceeds USD 5,000 — the outbound AML disclosure threshold is distinct from and lower than the Art. 213 FX carriage ceiling. Physical EGP banknotes: Decision 2200/2020 Art. 1 sets a five-thousand-EGP carriage ceiling for persons entering or leaving; Exec Reg Art. 14(5) also limits EGP banknotes or BNI to five thousand EGP. Postal conveyance of Egyptian or foreign cash is prohibited.",
+  "business": "Law 194/2020 Art. 212 permits natural and legal persons to conduct FX operations, including inward and outward transfers, through banks or other licensed entities under Board rules and procedures. Domestic transactions inside Egypt are in EGP unless an international agreement, another law, or a Board-authorised case provides otherwise. Arts 214–215 and CBE supervision establish a licensed multi-channel FX market (banks, exchange companies and other licensed FX entities), not a bank-only monopoly. This is not a claim that every cross-border payment is unrestricted."
+ },
+ "rules": {
+  "bring_foreign_currency_in": "Law 194/2020 Art. 213 (Official Gazette / NIB PDF p. 106) provides that bringing foreign currency into Egypt is guaranteed for all arrivals. There is no general quantitative inbound import ceiling in Art. 213. Disclosure on the prescribed form is required when the amount exceeds USD 10,000 or its equivalent in other foreign currencies (Arabic: إذا جاوز عشرة آلاف دولار — strictly 'exceeds' / 'جاوز', not '>=' / 'USD 10,000 or more'). Exactly USD 10,000 is outside this Art. 213 inbound disclosure trigger. This Art. 213 inbound limb addresses foreign currency (نقد أجنبي) only. Separately, AML Law 80/2002 Art. 12 and Exec Reg Art. 14(3) require customs disclosure when the value of foreign currency, bearer negotiable instruments, or both combined exceeds USD 10,000 equivalent (تجاوز / >) — an AML customs-disclosure layer, not an Art. 213 import ceiling and not a reason to fold BNI into Art. 213.",
+  "take_foreign_currency_out": "Outbound foreign-currency cash under Law 194/2020 Art. 213 (Official Gazette / NIB PDF pp. 106–107) is not symmetric with inbound. Ordinary departure rule: foreign currency may be taken out provided it does not exceed USD 10,000 or equivalent (Arabic: بشرط ألا يزيد على عشرة آلاف دولار — ordinary physical-carriage ceiling, operator <=). Separate exception: at departure, travellers may carry what remains of amounts previously disclosed upon arrival even where that remainder exceeds USD 10,000 (Art. 213 applies this remainder to travellers generally for FX). Separately, AML Exec Reg Art. 14(4) requires outbound customs disclosure when foreign currency, BNI, or both combined exceed USD 5,000 equivalent — a disclosure threshold distinct from the Art. 213 FX carriage ceiling, expressly without prejudice to the banking-law carriage architecture. Do not publish a symmetric 'USD 10,000 declaration at entry and exit'. Postal conveyance of Egyptian or foreign cash by letters/parcels is prohibited under Art. 213 and Exec Reg Art. 14(6). Physical EGP banknotes remain a separate Board-limit regime (Decision 2200/2020).",
+  "cash_declaration_threshold": "Keep layers separate. (A) Law 194 Art. 213 FX cash: inbound disclosure when FX exceeds USD 10,000 (جاوز / >); no general inbound FX ceiling; outbound ordinary FX carriage <= USD 10,000 plus previously-disclosed inbound remainder exception. (B) AML Law 80 Art. 12 / Exec Reg Art. 14 customs disclosure for FX and/or BNI (aggregated): inbound disclosure when value exceeds USD 10,000; outbound disclosure when value exceeds USD 5,000 — outbound disclosure threshold ≠ outbound Art. 213 FX carriage ceiling. (C) EGP physical banknotes: Decision 2200/2020 Art. 1 — carriage within five thousand EGP entering or leaving (carriage ceiling, not a declaration threshold); Exec Reg Art. 14(5) also caps EGP banknotes or BNI at five thousand EGP. (D) BNI: defined in Exec Reg Art. 1; entry/exit treatment under Art. 12 / Art. 14 — not Art. 213 FX semantics. Do not collapse these into one symmetric USD 10,000 entry/exit figure.",
+  "resident_holding_rules": "Law 194/2020 Art. 212 (Official Gazette / NIB PDF p. 106) establishes that every natural or legal person may retain, own or possess foreign currency accruing to, owned by or held by that person, and may conduct foreign-exchange operations including inward and outward transfers, through banks or other entities licensed under the Law, according to rules and procedures set by the CBE Board. Pinpoint CBE currentness sweep located no residency-specific overlay that restores a general resident FX-holding authorisation requirement. Art. 212 is an eligibility / channel architecture, not a guaranteed entitlement to every bank product or account type, and not permission to deal outside licensed channels. Domestic transactions inside Egypt must be in EGP unless an international agreement, another law, or a Board-authorised case provides otherwise — a domestic settlement rule kept separate from international transfer rights.",
+  "non_resident_rules": "Art. 212 is framed for every natural or legal person. Pinpoint CBE currentness sweep located no primary residency-divergence overlay establishing a general freer non-resident convertibility baseline. Non-resident and resident treatment therefore start from the same Art. 212 licensed-channel baseline. Product/account-specific non-resident categories remain transaction-specific and are not asserted as a general freer convertibility right. Note: AML Exec Reg Art. 14(2)'s remainder limb is drafted for non-Egyptians on the AML carriage overlay; Law 194 Art. 213's previously-disclosed FX remainder applies to travellers generally and is the banking-system FX rule.",
+  "business_invoicing_settlement": "Cross-border FX settlement follows Art. 212: operations including inward/outward transfers through banks or other licensed entities under Board rules — not bank-only. Art. 214 (Official Gazette / NIB PDF p. 107) authorises banks to conduct FX operations (deposits, dealing, inward/outward transfers, deployment/cover); banks may import/export foreign currencies with CBE approval. Art. 215 requires banks, exchange companies and other licensed FX entities to report FX operations to the CBE, which supervises implementation. Domestic Egyptian transactions default to EGP under Art. 212 unless a legal exception applies. A 2024–2026 Foreign Currency Activities / related circular currentness sweep through execution date did not locate a post–6 March 2024 instrument re-imposing shortage-era general FX-access denial or a universal bank-only eligibility rule; operational reporting requirements are distinguished from legal eligibility. Absence of a located transaction-specific restriction is not evidence that none exists.",
+  "exchange_controls": "Egypt's current architecture is not usefully summarised as legacy 'managed float with resident capital controls / largely liberalised current account'. The statute and current CBE monetary evidence establish: (i) market-determined EGP rate by supply and demand under Board FX-market rules (Art. 211), reinforced by the 6 March 2024 Special MPC market-forces decision and current 2026 monetary reporting; (ii) a broad Art. 212 right to retain FX and transfer inward/outward through licensed channels under Board procedures; (iii) a domestic EGP settlement default; (iv) dual traveller-cash layers — Art. 213 FX carriage/disclosure plus AML Art. 12 / Exec Reg Art. 14 FX+BNI customs disclosure (including outbound AML disclosure > USD 5,000); and (v) Arts 214–215 licensed multi-channel FX market supervision. On existing Passage Check taxonomy the exchange-control posture is floating_regulated_market: a market-determined exchange-rate framework with FX retention and inward/outward transfers through licensed channels, while domestic EGP settlement rules, licensed-market supervision and separate AML/cross-border cash controls remain operative — not a free float, not 'no exchange controls', and not a claim of fully liberalised or unregulated convertibility.",
+  "banking_conversion_practicality": "Foreign-exchange conversion for the public is available through CBE-supervised banks and through exchange companies and other entities licensed to deal in foreign exchange under Law 194/2020 (Arts 212, 214–215; CBE On-Site Supervision page). FX conversion is therefore a licensed multi-channel activity, not bank-only and not an unregulated free-for-all. Availability of a particular currency, rate or product remains subject to licence scope, Board rules, documentary requirements and commercial terms."
+ },
+ "source_authorities": [
+  {
+   "label": "CBE — Banking Laws index (Law No. 194 of 2020 primary CBE locator)",
+   "url": "https://www.cbe.org.eg/en/laws-regulations/laws/banking-laws",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "Official Gazette / NIB.gov.eg government-hosted Law No. 194 of 2020 Arabic text (الجريدة الرسمية العدد 37 مكرر (و) 15 سبتمبر 2020; Arts 211–215 pp. 106–107)",
+   "url": "https://www.nib.gov.eg/PDF/library/%D9%82%D8%A7%D9%86%D9%88%D9%86%20%D8%B1%D9%82%D9%85%20194%20%D9%84%D8%B3%D9%86%D8%A9%202020%20%D8%A8%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%A7%D9%84%D8%A8%D9%86%D9%83%20%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89%20%D9%88%D8%A7%D9%84%D8%AC%D9%87%D8%A7%D8%B2%20%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%81%D9%89.pdf",
+   "type": "ministry",
+   "tier": "primary"
+  },
+  {
+   "label": "CBE — Other Laws index (Board Decision No. 2200 of 2020 — maximum Egyptian banknotes entering or leaving Egypt; Official Gazette / الوقائع المصرية Issue 220 Supplement 30 Sept 2020 Art. 1 = five thousand EGP)",
+   "url": "https://www.cbe.org.eg/en/laws-regulations/laws/other-laws",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "FRA — Law No. 80 of 2002 Anti-Money Laundering (official updated text; Art. 12 customs disclosure of FX and BNI; Law 154/2022 coexistence update)",
+   "url": "https://fra.gov.eg/wp-content/uploads/2024/05/%D9%82%D8%A7%D9%86%D9%88%D9%86-%D9%85%D9%83%D8%A7%D9%81%D8%AD%D8%A9-%D8%BA%D8%B3%D9%84-%D8%A7%D9%84%D8%A3%D9%85%D9%88%D8%A7%D9%84-1.pdf",
+   "type": "primary_regulator",
+   "tier": "primary"
+  },
+  {
+   "label": "FRA — Executive Regulations of the AML Law (PM Decision 951/2003 current consolidation incl. 457/2020 Art. 14 cash/BNI limbs and 3331/2023 updates; Art. 1 BNI definition; Art. 14)",
+   "url": "https://fra.gov.eg/wp-content/uploads/2025/04/%D8%A7%D9%84%D9%84%D8%A7%D8%A6%D8%AD%D8%A9-%D8%A7%D9%84%D8%AA%D9%86%D9%81%D9%8A%D8%B0%D9%8A%D8%A9-%D9%84%D9%82%D8%A7%D9%86%D9%88%D9%86-%D9%85%D9%83%D8%A7%D9%81%D8%AD%D8%A9-%D8%BA%D8%B3%D9%84-%D8%A7%D9%84%D8%A3%D9%85%D9%88%D8%A7%D9%84-1-1.pdf",
+   "type": "primary_regulator",
+   "tier": "primary"
+  },
+  {
+   "label": "CBE — Special MPC press release, 6 March 2024 (market-forces exchange rate)",
+   "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/mpc-meetings/2024/english/special-mpc-press-release---6-march-2024.pdf",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "CBE — Monetary Policy Report Q2 2026",
+   "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/publication/monetary-policy-report/2026/monetary-policy-report---q2-2026.pdf",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "CBE — Monetary Policy Framework (Law 194 mandate; FX system/policy)",
+   "url": "https://www.cbe.org.eg/en/monetary-policy/monetary-policy-framework",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "CBE — Market Exchange Rates (live; last updated early Sept 2026)",
+   "url": "https://www.cbe.org.eg/en/economic-research/statistics/exchange-rates",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "CBE — CBE Exchange Rates (live; last updated early Sept 2026)",
+   "url": "https://www.cbe.org.eg/en/economic-research/statistics/cbe-exchange-rates",
+   "type": "central_bank",
+   "tier": "primary"
+  },
+  {
+   "label": "CBE — On-Site Supervision (banks, exchange companies, licensed FX entities; Art. 215)",
+   "url": "https://www.cbe.org.eg/en/financial-stability/on-site",
+   "type": "central_bank",
+   "tier": "primary"
+  }
+ ],
+ "disclaimer_notice": "This page provides general informational reference only. Foreign-exchange, monetary-policy and cross-border cash rules in Egypt are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, licensing and the applicable Central Bank of Egypt / Customs / AML framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Egypt, Egyptian Customs and a licensed intermediary before making any financial or travel decisions."
+}

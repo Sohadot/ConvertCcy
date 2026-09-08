@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-08T19:16:29+00:00",
+  "generated_at": "2026-09-08T21:01:40+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 21,
+    "published": 22,
     "verified": 2,
-    "needs_hardening": 2,
+    "needs_hardening": 1,
     "secondary_review": 0,
     "skipped": 0,
     "validation_failed": 0
@@ -42,6 +42,14 @@
       "output_html": "rules/china-foreign-currency-rules.html",
       "sitemap_eligible": true,
       "public_url": "https://convertccy.com/rules/china-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
+      "country_slug": "egypt",
+      "country_name": "Egypt",
+      "output_html": "rules/egypt-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/egypt-foreign-currency-rules.html"
     },
     {
       "status": "published",
@@ -202,13 +210,6 @@
       "country_slug": "argentina",
       "country_name": "Argentina",
       "output_html": "preview/rules/needs_hardening/argentina-foreign-currency-rules.html",
-      "sitemap_eligible": false
-    },
-    {
-      "status": "needs_hardening",
-      "country_slug": "egypt",
-      "country_name": "Egypt",
-      "output_html": "preview/rules/needs_hardening/egypt-foreign-currency-rules.html",
       "sitemap_eligible": false
     }
   ],
