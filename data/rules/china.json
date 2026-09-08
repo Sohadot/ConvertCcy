@@ -73,7 +73,13 @@
       "tier": "primary"
     },
     {
-      "label": "General Administration of Customs — Customs Clearance Guide for International Passengers: inbound/outbound red-channel money conditions including foreign-currency cash equivalent to US$5,000 or above and RMB 20,000 cash or above; EXCHANGE CONTROL text — declare FX cash worth more than USD 5,000; RMB carriage limit CNY 20,000 with exceeding part prohibited. Customs declaration conditions in both directions do not replace the outbound SAFE permit architecture",
+      "label": "Chinese Customs / China International Trade Single Window — current passenger declaration service guide: inbound and outbound written declaration / red-channel condition when 人民币现钞超过20000元 or 外币现钞折合超过5000美元 (RMB cash exceeding CNY 20,000; foreign-currency cash exceeding USD 5,000 equivalent). Strict-exceeding operators (超过); Customs declaration conditions in both directions do not replace the outbound SAFE permit architecture under Huifa〔2003〕102 / Art. 89",
+      "url": "https://online.customs.gov.cn/static/pages/guides/000629014002/000629014002.html",
+      "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "General Administration of Customs — English Customs Clearance Guide for International Passengers (corroborating operational guidance only): EXCHANGE CONTROL text states declare FX cash worth more than USD 5,000 and RMB carriage limit CNY 20,000 with exceeding part prohibited. The English table phrasing 'or above' is not used to override the Chinese official operator 超过",
       "url": "https://english.customs.gov.cn/statics/88707c1e-aa4e-40ca-a968-bdbdbb565e4f.html",
       "type": "customs",
       "tier": "primary"
@@ -118,6 +124,11 @@
   "source_map": {
     "country_overview": [
       {
+        "url": "https://online.customs.gov.cn/static/pages/guides/000629014002/000629014002.html",
+        "pages": [],
+        "section": "Current Chinese Customs passenger declaration guide — inbound and outbound: 人民币现钞超过20000元 / 外币现钞折合超过5000美元; written declaration / red-channel condition (strict exceeding; does not recreate a symmetric USD5k entry-and-exit legal architecture)"
+      },
+      {
         "url": "https://www.pbc.gov.cn/redianzhuanti/118742/4657542/4678415/index.html",
         "pages": [],
         "section": "PBOC — managed floating RMB regime based on market supply/demand with currency-basket reference; monetary fact kept separate from SAFE controls"
@@ -133,21 +144,21 @@
         "section": "SAFE current-effective regulations directory through 30 June 2026 — freshness chain"
       },
       {
-        "url": "https://english.customs.gov.cn/statics/88707c1e-aa4e-40ca-a968-bdbdbb565e4f.html",
-        "pages": [],
-        "section": "GACC passenger guide — foreign-cash declaration and separate RMB cash carriage layer"
-      },
-      {
         "url": "https://www.pbc.gov.cn/zhengwugongkai/4081330/4406346/4693545/2025112114420592818/index.html",
         "pages": [],
         "section": "PBOC Announcement〔2004〕No. 18 — CNY 20,000 national-currency carriage limit under State Council Order No. 108 framework"
+      },
+      {
+        "url": "https://english.customs.gov.cn/statics/88707c1e-aa4e-40ca-a968-bdbdbb565e4f.html",
+        "pages": [],
+        "section": "GACC English passenger guide — corroborating operational guidance only; EXCHANGE CONTROL 'worth more than USD 5,000' / RMB CNY 20,000 exceeding part prohibited; English table 'or above' does not override Chinese 超过"
       }
     ],
     "summary.traveler": [
       {
-        "url": "https://english.customs.gov.cn/statics/88707c1e-aa4e-40ca-a968-bdbdbb565e4f.html",
+        "url": "https://online.customs.gov.cn/static/pages/guides/000629014002/000629014002.html",
         "pages": [],
-        "section": "GACC guide — inbound FX cash declare when worth more than USD 5,000; RMB limit CNY 20,000 exceeding part prohibited"
+        "section": "Current Chinese Customs passenger declaration guide — inbound and outbound: 人民币现钞超过20000元 / 外币现钞折合超过5000美元; written declaration / red-channel condition (strict exceeding; does not recreate a symmetric USD5k entry-and-exit legal architecture)"
       },
       {
         "url": "https://www.safe.gov.cn/safe/2003/0828/5444.html",
@@ -168,6 +179,11 @@
         "url": "https://www.safe.gov.cn/safe/file/file/20200831/f0127756271c43ef9b3908d5d157bd91.pdf",
         "pages": [],
         "section": "Current Account Guide Art. 89 PDF — 超过等值5000美元; repeated-entry rule; outbound inbound-declaration linkage"
+      },
+      {
+        "url": "https://english.customs.gov.cn/statics/88707c1e-aa4e-40ca-a968-bdbdbb565e4f.html",
+        "pages": [],
+        "section": "GACC English passenger guide — corroborating operational guidance only; EXCHANGE CONTROL 'worth more than USD 5,000' / RMB CNY 20,000 exceeding part prohibited; English table 'or above' does not override Chinese 超过"
       }
     ],
     "summary.business": [
@@ -189,9 +205,9 @@
     ],
     "rules.bring_foreign_currency_in": [
       {
-        "url": "https://english.customs.gov.cn/statics/88707c1e-aa4e-40ca-a968-bdbdbb565e4f.html",
+        "url": "https://online.customs.gov.cn/static/pages/guides/000629014002/000629014002.html",
         "pages": [],
-        "section": "GACC — no quantitative FX import ceiling; declare FX cash worth more than USD 5,000; dual forms for intended re-export; RMB CNY 20,000 limit"
+        "section": "Current Chinese Customs passenger declaration guide — inbound and outbound: 人民币现钞超过20000元 / 外币现钞折合超过5000美元; written declaration / red-channel condition (strict exceeding; does not recreate a symmetric USD5k entry-and-exit legal architecture)"
       },
       {
         "url": "https://www.safe.gov.cn/safe/2020/0831/24016.html",
@@ -212,18 +228,23 @@
         "url": "https://www.pbc.gov.cn/zhengwugongkai/4081330/4406346/4693545/2025112114420592818/index.html",
         "pages": [],
         "section": "PBOC Announcement〔2004〕No. 18 — CNY 20,000 RMB carriage limit legal basis"
-      }
-    ],
-    "rules.take_foreign_currency_out": [
-      {
-        "url": "https://www.safe.gov.cn/safe/2003/0828/5444.html",
-        "pages": [],
-        "section": "Huifa〔2003〕102 — ≤5000含 no 携带证; 5000以上至10000含 bank 携带证; 原则上不得超过10000 except specified SAFE cases"
       },
       {
         "url": "https://english.customs.gov.cn/statics/88707c1e-aa4e-40ca-a968-bdbdbb565e4f.html",
         "pages": [],
-        "section": "GACC — outbound release on last inbound declaration; discrepancy via FX bureau/authorised-bank certificate; separate RMB limit"
+        "section": "GACC English passenger guide — corroborating operational guidance only; EXCHANGE CONTROL 'worth more than USD 5,000' / RMB CNY 20,000 exceeding part prohibited; English table 'or above' does not override Chinese 超过"
+      }
+    ],
+    "rules.take_foreign_currency_out": [
+      {
+        "url": "https://online.customs.gov.cn/static/pages/guides/000629014002/000629014002.html",
+        "pages": [],
+        "section": "Current Chinese Customs passenger declaration guide — inbound and outbound: 人民币现钞超过20000元 / 外币现钞折合超过5000美元; written declaration / red-channel condition (strict exceeding; does not recreate a symmetric USD5k entry-and-exit legal architecture)"
+      },
+      {
+        "url": "https://www.safe.gov.cn/safe/2003/0828/5444.html",
+        "pages": [],
+        "section": "Huifa〔2003〕102 — ≤5000含 no 携带证; 5000以上至10000含 bank 携带证; 原则上不得超过10000 except specified SAFE cases"
       },
       {
         "url": "https://www.safe.gov.cn/safe/file/file/20200831/f0127756271c43ef9b3908d5d157bd91.pdf",
@@ -234,9 +255,19 @@
         "url": "https://www.pbc.gov.cn/zhengwugongkai/4081330/4406346/4693545/2025112114420592818/index.html",
         "pages": [],
         "section": "PBOC Announcement〔2004〕No. 18 — CNY 20,000 RMB carriage limit legal basis"
+      },
+      {
+        "url": "https://english.customs.gov.cn/statics/88707c1e-aa4e-40ca-a968-bdbdbb565e4f.html",
+        "pages": [],
+        "section": "GACC English passenger guide — corroborating operational guidance only; EXCHANGE CONTROL 'worth more than USD 5,000' / RMB CNY 20,000 exceeding part prohibited; English table 'or above' does not override Chinese 超过"
       }
     ],
     "rules.cash_declaration_threshold": [
+      {
+        "url": "https://online.customs.gov.cn/static/pages/guides/000629014002/000629014002.html",
+        "pages": [],
+        "section": "Current Chinese Customs passenger declaration guide — inbound and outbound: 人民币现钞超过20000元 / 外币现钞折合超过5000美元; written declaration / red-channel condition (strict exceeding; does not recreate a symmetric USD5k entry-and-exit legal architecture)"
+      },
       {
         "url": "https://www.safe.gov.cn/safe/2020/0831/24016.html",
         "pages": [],
@@ -248,11 +279,6 @@
         "section": "Huifa〔2003〕102 — outbound three-tier foreign-cash permit/carriage architecture"
       },
       {
-        "url": "https://english.customs.gov.cn/statics/88707c1e-aa4e-40ca-a968-bdbdbb565e4f.html",
-        "pages": [],
-        "section": "GACC passenger guide — red-channel RMB >20,000 / FX cash conditions; distinct from outbound permit tiers"
-      },
-      {
         "url": "https://www.safe.gov.cn/safe/file/file/20200831/f0127756271c43ef9b3908d5d157bd91.pdf",
         "pages": [],
         "section": "Huifa〔2020〕14 Art. 89 — inbound >USD5k / repeated-entry / outbound permit linkage to inbound declaration"
@@ -261,6 +287,11 @@
         "url": "https://www.pbc.gov.cn/zhengwugongkai/4081330/4406346/4693545/2025112114420592818/index.html",
         "pages": [],
         "section": "PBOC Announcement〔2004〕No. 18 — CNY 20,000 RMB carriage limit legal basis"
+      },
+      {
+        "url": "https://english.customs.gov.cn/statics/88707c1e-aa4e-40ca-a968-bdbdbb565e4f.html",
+        "pages": [],
+        "section": "GACC English passenger guide — corroborating operational guidance only; EXCHANGE CONTROL 'worth more than USD 5,000' / RMB CNY 20,000 exceeding part prohibited; English table 'or above' does not override Chinese 超过"
       }
     ],
     "rules.resident_holding_rules": [
