@@ -3,19 +3,19 @@
   "country_slug": "brazil",
   "decision": "PASS",
   "layers": {
-    "governance": {
-      "blocking_count": 0,
-      "findings": []
-    },
     "evidence": {
       "blocking_count": 0,
       "findings": []
     },
-    "fidelity": {
+    "structural": {
       "blocking_count": 0,
       "findings": []
     },
-    "structural": {
+    "governance": {
+      "blocking_count": 0,
+      "findings": []
+    },
+    "fidelity": {
       "blocking_count": 0,
       "findings": []
     }
