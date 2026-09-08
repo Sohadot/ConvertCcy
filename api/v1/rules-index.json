@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-09-08T11:36:11+00:00",
+ "generated_at": "2026-09-08T13:25:49+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -12,8 +12,8 @@
  "canonical_url": "https://convertccy.com/api/v1/rules-index.json",
  "documentation": "https://convertccy.com/api.html",
  "title": "ConvertCCY Published Jurisdictions Index",
- "source_dataset_generated_at": "2026-09-08T11:36:10+00:00",
- "count": 18,
+ "source_dataset_generated_at": "2026-09-08T13:25:48+00:00",
+ "count": 19,
  "coverage_note": "Lists only jurisdictions that have passed ConvertCCY's published, source-mapped review gate. Absence from this list means not yet published — never infer coverage from a currency code.",
  "countries": [
   {
@@ -54,6 +54,19 @@
    "rules_page": "/rules/canada-foreign-currency-rules.html",
    "brief_page": "/briefs/canada-passage-brief.html",
    "api_path": "/api/v1/rules/canada.json"
+  },
+  {
+   "country_name": "China",
+   "country_slug": "china",
+   "iso2": "CN",
+   "iso3": "CHN",
+   "region": "East Asia",
+   "currency_code": "CNY",
+   "currency_name": "Chinese Yuan (Renminbi)",
+   "last_reviewed": "2026-09-08",
+   "rules_page": "/rules/china-foreign-currency-rules.html",
+   "brief_page": "/briefs/china-passage-brief.html",
+   "api_path": "/api/v1/rules/china.json"
   },
   {
    "country_name": "France",

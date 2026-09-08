@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-08T11:36:10+00:00",
+  "generated_at": "2026-09-08T13:25:48+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 18,
-    "verified": 4,
+    "published": 19,
+    "verified": 3,
     "needs_hardening": 2,
     "secondary_review": 0,
     "skipped": 0,
@@ -34,6 +34,14 @@
       "output_html": "rules/canada-foreign-currency-rules.html",
       "sitemap_eligible": true,
       "public_url": "https://convertccy.com/rules/canada-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
+      "country_slug": "china",
+      "country_name": "China",
+      "output_html": "rules/china-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/china-foreign-currency-rules.html"
     },
     {
       "status": "published",
@@ -157,13 +165,6 @@
     }
   ],
   "verified_entries": [
-    {
-      "status": "verified",
-      "country_slug": "china",
-      "country_name": "China",
-      "output_html": "preview/rules/verified/china-foreign-currency-rules.html",
-      "sitemap_eligible": false
-    },
     {
       "status": "verified",
       "country_slug": "nigeria",

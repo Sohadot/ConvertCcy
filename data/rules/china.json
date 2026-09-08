@@ -7,13 +7,13 @@
   "currency_code": "CNY",
   "currency_name": "Chinese Yuan (Renminbi)",
   "schema_version": "1.2.1",
-  "page_status": "needs_hardening",
+  "page_status": "published",
   "last_reviewed": "2026-09-08",
-  "evidence_tier": "official_verified_partial",
+  "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
-  "indexing_allowed": false,
-  "source_notice": "China / CNY Evidence Closure (PR #94) and Pinpoint Hardening are complete. The CNY 20,000 physical-RMB carriage limit is pinned to PBOC Announcement〔2004〕No. 18 (关于调整国家货币出入境限额) under the State Council national-currency carriage framework (中华人民共和国国家货币出入境管理办法 / State Council Order No. 108), with Customs applying 人民币现钞超过20000元 as a red-channel/declaration condition. Foreign-currency cash is pinned to Current Account Guide (Huifa〔2020〕14) Art. 89 (超过等值5000美元; repeated-entry special rule; outbound inbound-declaration linkage) reconciled with Huifa〔2003〕102 permit tiers. Overseas-institution NRA accounts are pinned to Huifa〔2009〕29 Arts 3–8. Material public claims are now either verified against current primary official sources or deliberately bounded; no material evidence-deficient field remains. China remains unpublished and candidate_only pending a separate Publication Closure.",
+  "indexing_allowed": true,
+  "source_notice": "",
   "country_overview": "China's currency is the Renminbi (RMB), coded CNY for ConvertCCY. The People's Bank of China (PBOC) administers monetary policy and the RMB exchange-rate regime: a managed floating exchange-rate regime based on market supply and demand, with reference to a basket of currencies (以市场供求为基础、参考一篮子货币进行调节、有管理的浮动汇率制度). That monetary-regime fact is kept analytically separate from foreign-exchange administration. Foreign-exchange administration is performed by the State Administration of Foreign Exchange (SAFE) under the Regulations of the People's Republic of China on Foreign Exchange Administration (State Council Decree No. 532): current international payments and transfers are not generally restricted (国家对经常性国际支付和转移不予限制), but current-account FX receipts and payments must have a genuine and lawful transaction basis and are subject to bank authenticity/consistency review; capital-account FX handling is transaction-specific and may involve bank processing, registration, reporting, account or permitted-use controls, quotas, or approval where a specific rule requires it — not a single universal SAFE-approval regime. Passenger physical-currency movement is enforced by Chinese Customs and is layered separately: inbound foreign-currency cash exceeding the equivalent of USD 5,000 triggers written declaration; outbound foreign-currency cash follows a ≤ USD 5,000 / > USD 5,000–≤ USD 10,000 / > USD 10,000 permit architecture under SAFE/Customs cash-carriage rules; physical RMB cash is subject to a separate CNY 20,000 per-person, per-entry/exit carriage limit under PBOC Announcement〔2004〕No. 18. Absence of a located restriction is not evidence that none exists.",
   "summary": {
     "traveler": "Inbound foreign-currency cash may be brought into China without a general quantitative import ceiling, but amounts exceeding (超过) the equivalent of USD 5,000 must be declared in writing to Chinese Customs under Current Account Guide Art. 89 — a declaration trigger, not an import ceiling. Same-day or short-interval repeated travellers must declare on the second and subsequent entries regardless of amount (Art. 89); that special rule is not the ordinary passenger threshold. Outbound foreign-currency cash is not a mirror of inbound: Huifa〔2003〕102 and Art. 89 together provide that amounts not exceeding USD 5,000 equivalent (含) generally need no carrying permit; where there is no latest inbound declaration record or the amount exceeds that record, amounts above USD 5,000 up to and including USD 10,000 require a bank-issued Permit for Carrying Foreign Exchange Abroad (携带外汇出境许可证 / 携带证); amounts above USD 10,000 may in principle not be carried, subject to specifically provided exceptional SAFE permit cases. Physical RMB cash is a separate carriage limit: PBOC Announcement〔2004〕No. 18 sets the per-person, per-entry/exit national-currency limit at CNY 20,000 under the State Council national-currency carriage framework; Customs applies 人民币现钞超过20000元 as a declaration/red-channel condition — not the same legal mechanism as the foreign-cash declaration threshold. Negotiable instruments and securities are not treated as the same threshold as foreign-currency cash under Huifa〔2003〕102.",
@@ -177,7 +177,9 @@
       },
       {
         "url": "https://www.safe.gov.cn/safe/file/file/20200831/f0127756271c43ef9b3908d5d157bd91.pdf",
-        "pages": [],
+        "pages": [
+          33
+        ],
         "section": "Current Account Guide Art. 89 PDF — 超过等值5000美元; repeated-entry rule; outbound inbound-declaration linkage"
       },
       {
@@ -221,7 +223,9 @@
       },
       {
         "url": "https://www.safe.gov.cn/safe/file/file/20200831/f0127756271c43ef9b3908d5d157bd91.pdf",
-        "pages": [],
+        "pages": [
+          33
+        ],
         "section": "Huifa〔2020〕14 Art. 89 — inbound >USD5k / repeated-entry / outbound permit linkage to inbound declaration"
       },
       {
@@ -248,7 +252,9 @@
       },
       {
         "url": "https://www.safe.gov.cn/safe/file/file/20200831/f0127756271c43ef9b3908d5d157bd91.pdf",
-        "pages": [],
+        "pages": [
+          33
+        ],
         "section": "Huifa〔2020〕14 Art. 89 — inbound >USD5k / repeated-entry / outbound permit linkage to inbound declaration"
       },
       {
@@ -280,7 +286,9 @@
       },
       {
         "url": "https://www.safe.gov.cn/safe/file/file/20200831/f0127756271c43ef9b3908d5d157bd91.pdf",
-        "pages": [],
+        "pages": [
+          33
+        ],
         "section": "Huifa〔2020〕14 Art. 89 — inbound >USD5k / repeated-entry / outbound permit linkage to inbound declaration"
       },
       {

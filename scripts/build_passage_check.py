@@ -71,6 +71,39 @@ DECLARATION = {
         ],
         "note": None,
     },
+    "china": {
+        "thresholds": [
+            {"value": 5000, "currency": "USD",
+             "scope": "foreign-currency physical cash or equivalent",
+             "applies": "entering China / ordinary inbound passenger rule",
+             "authority": "Chinese Customs / SAFE",
+             "mechanism": "mandatory written Customs declaration when exceeding (超过等值5000美元, strictly >); declaration trigger, NOT an import ceiling"},
+            {"value": 5000, "currency": "USD",
+             "scope": "foreign-currency physical cash",
+             "applies": "leaving China",
+             "authority": "Chinese Customs / SAFE",
+             "mechanism": "Customs declaration/red-channel condition when exceeding; outbound legal treatment is NOT symmetric with inbound; where there is no/insufficient latest inbound declaration, > USD 5,000 through ≤ USD 10,000 enters the bank-issued 携带证 pathway"},
+            {"value": 10000, "currency": "USD",
+             "scope": "foreign-currency physical cash",
+             "applies": "leaving China",
+             "authority": "SAFE / Chinese Customs",
+             "mechanism": "amounts exceeding USD 10,000 are in principle not carried, subject to specifically provided exceptional SAFE permit cases; NOT a universal ordinary export allowance of USD 10,000"},
+            {"value": 20000, "currency": "CNY",
+             "scope": "physical Renminbi cash",
+             "applies": "entering or leaving China",
+             "authority": "PBOC / Chinese Customs",
+             "mechanism": "CNY 20,000 per-person, per-entry/exit carriage limit under PBOC Announcement〔2004〕No. 18 / State Council Order No. 108; Customs uses 人民币现钞超过20000元 as the strict-exceeding declaration/red-channel condition; the exceeding part is prohibited as a carriage-limit matter"},
+        ],
+        "note": "Inbound FX cash > USD 5,000 (超过等值5000美元, strictly '>', never '>=') is a Customs declaration trigger, not an import ceiling. "
+                "Art. 89 also imposes a special regardless-of-amount written-declaration rule for same-day / short-interval second-and-subsequent inbound entries; "
+                "that repeated-entry rule is a bounded qualification, NOT a second ordinary numeric threshold record. "
+                "Customs may list > USD 5,000 declaration conditions in both directions, but the outbound legal architecture is not symmetric with inbound: "
+                "outbound FX preserves ≤ USD 5,000 (generally no 携带证) / > USD 5,000–≤ USD 10,000 (bank-issued 携带证 where applicable) / > USD 10,000 "
+                "(in principle not carried except specified SAFE permit cases), and outbound treatment depends where applicable on the latest inbound declaration record. "
+                "Physical RMB CNY 20,000 is a separate carriage limit (PBOC Announcement〔2004〕No. 18 / State Council Order No. 108). "
+                "Negotiable/payment instruments are not silently folded into Huifa〔2003〕102 foreign-cash thresholds. "
+                "The USD 50,000 individual annual 便利化额度 is NOT a border-cash threshold and must not be read from this declaration block.",
+    },
     "france": {
         "thresholds": [
             {"value": 10000, "currency": "EUR", "scope": "cash or bearer negotiable instruments (or equivalent)",
@@ -292,6 +325,12 @@ EXCHANGE_CONTROLS = {
     "brazil": ("floating_regulated_market",
                "Floating exchange-rate regime regulated by the Banco Central do Brasil; FX transaction rates freely agreed between authorised institutions and their clients"),
     "canada": ("none", "No general exchange controls (fully liberalised)"),
+    "china": ("capital_account_regulated",
+              "Current international payments and transfers are not generally restricted under State Council Decree No. 532 Art. 5; "
+              "current-account FX remains subject to genuine/lawful transaction basis and bank authenticity/consistency review under Art. 12; "
+              "capital-account FX is transaction-specific and may involve bank handling, registration, reporting, account/permitted-use controls, "
+              "quotas or approval where specifically required; the PBOC managed-floating RMB regime is a separate monetary-regime fact and is not "
+              "itself an exchange-control rule; no universal SAFE approval regime is asserted. Absence of a located restriction is not evidence that none exists."),
     "france": ("none", "No general exchange controls (liberalised within the Eurozone)"),
     "germany": ("none", "No general exchange controls (liberalised within the Eurozone)"),
     "india": ("capital_account_regulated",
