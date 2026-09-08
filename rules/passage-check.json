@@ -2,11 +2,11 @@
  "engine": "ConvertCCY Passage Check",
  "version": "1.0",
  "built_from": "rules/dataset.json",
- "source_dataset_generated_at": "2026-09-08T11:36:10+00:00",
+ "source_dataset_generated_at": "2026-09-08T13:25:48+00:00",
  "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
  "attribution": "ConvertCCY (https://convertccy.com/)",
  "notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. Structured thresholds are transcribed from each entry's cash_declaration_threshold field. Currency conversions shown in the tool are indicative only and are not governed figures.",
- "count": 18,
+ "count": 19,
  "countries": [
   {
    "country_name": "Australia",
@@ -370,6 +370,217 @@
     }
    ],
    "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Canada are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Bank of Canada / CBSA / FINTRAC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Canada Border Services Agency, Bank of Canada, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "China",
+   "country_slug": "china",
+   "iso2": "CN",
+   "currency_code": "CNY",
+   "currency_name": "Chinese Yuan (Renminbi)",
+   "region": "East Asia",
+   "last_reviewed": "2026-09-08",
+   "rules_page": "/rules/china-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 5000,
+      "currency": "USD",
+      "scope": "foreign-currency physical cash or equivalent",
+      "applies": "entering China / ordinary inbound passenger rule",
+      "authority": "Chinese Customs / SAFE",
+      "mechanism": "mandatory written Customs declaration when exceeding (超过等值5000美元, strictly >); declaration trigger, NOT an import ceiling"
+     },
+     {
+      "value": 5000,
+      "currency": "USD",
+      "scope": "foreign-currency physical cash",
+      "applies": "leaving China",
+      "authority": "Chinese Customs / SAFE",
+      "mechanism": "Customs declaration/red-channel condition when exceeding; outbound legal treatment is NOT symmetric with inbound; where there is no/insufficient latest inbound declaration, > USD 5,000 through ≤ USD 10,000 enters the bank-issued 携带证 pathway"
+     },
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "foreign-currency physical cash",
+      "applies": "leaving China",
+      "authority": "SAFE / Chinese Customs",
+      "mechanism": "amounts exceeding USD 10,000 are in principle not carried, subject to specifically provided exceptional SAFE permit cases; NOT a universal ordinary export allowance of USD 10,000"
+     },
+     {
+      "value": 20000,
+      "currency": "CNY",
+      "scope": "physical Renminbi cash",
+      "applies": "entering or leaving China",
+      "authority": "PBOC / Chinese Customs",
+      "mechanism": "CNY 20,000 per-person, per-entry/exit carriage limit under PBOC Announcement〔2004〕No. 18 / State Council Order No. 108; Customs uses 人民币现钞超过20000元 as the strict-exceeding declaration/red-channel condition; the exceeding part is prohibited as a carriage-limit matter"
+     }
+    ],
+    "note": "Inbound FX cash > USD 5,000 (超过等值5000美元, strictly '>', never '>=') is a Customs declaration trigger, not an import ceiling. Art. 89 also imposes a special regardless-of-amount written-declaration rule for same-day / short-interval second-and-subsequent inbound entries; that repeated-entry rule is a bounded qualification, NOT a second ordinary numeric threshold record. Customs may list > USD 5,000 declaration conditions in both directions, but the outbound legal architecture is not symmetric with inbound: outbound FX preserves ≤ USD 5,000 (generally no 携带证) / > USD 5,000–≤ USD 10,000 (bank-issued 携带证 where applicable) / > USD 10,000 (in principle not carried except specified SAFE permit cases), and outbound treatment depends where applicable on the latest inbound declaration record. Physical RMB CNY 20,000 is a separate carriage limit (PBOC Announcement〔2004〕No. 18 / State Council Order No. 108). Negotiable/payment instruments are not silently folded into Huifa〔2003〕102 foreign-cash thresholds. The USD 50,000 individual annual 便利化额度 is NOT a border-cash threshold and must not be read from this declaration block.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "Current international payments and transfers are not generally restricted under State Council Decree No. 532 Art. 5; current-account FX remains subject to genuine/lawful transaction basis and bank authenticity/consistency review under Art. 12; capital-account FX is transaction-specific and may involve bank handling, registration, reporting, account/permitted-use controls, quotas or approval where specifically required; the PBOC managed-floating RMB regime is a separate monetary-regime fact and is not itself an exchange-control rule; no universal SAFE approval regime is asserted. Absence of a located restriction is not evidence that none exists.",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "There is no general quantitative restriction on bringing foreign currencies into China. Under Current Account Guide (Huifa〔2020〕14) Art. 89, inward passengers must make a written Customs declaration if carrying foreign-currency cash exceeding the equivalent of USD 5,000 (超过等值5000美元) — strictly exceeding, not '>=' — a declaration trigger, not an import ceiling. Art. 89 further provides that for same-day repeated travellers and short-interval repeated travellers, the second and subsequent entries require written Customs declaration regardless of the amount of foreign-currency cash carried (当天多次往返及短期内多次往返者第二次及以上入境，不论携带外币现钞的金额大小，均应向海关书面申报); that special rule is kept distinct from the ordinary > USD 5,000 threshold and is not expanded into a second headline numeric figure. Passengers intending later to take the same cash out should obtain the Customs-endorsed declaration record used for outbound release. Physical RMB cash is separate: PBOC Announcement〔2004〕No. 18 adjusts the national-currency carriage limit to CNY 20,000 per person per entry/exit under the State Council Measures for the Administration of the Entry and Exit of National Currency (State Council Order No. 108); Customs guidance applies 人民币现钞超过20000元 as a red-channel/declaration condition, with the exceeding part prohibited as a carriage limit. Negotiable instruments / payment instruments are not collapsed into this foreign-cash declaration threshold under Huifa〔2003〕102.",
+     "source": {
+      "url": "https://online.customs.gov.cn/static/pages/guides/000629014002/000629014002.html",
+      "section": "Current Chinese Customs passenger declaration guide — inbound and outbound: 人民币现钞超过20000元 / 外币现钞折合超过5000美元; written declaration / red-channel condition (strict exceeding; does not recreate a symmetric USD5k entry-and-exit legal architecture)"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "Outbound foreign-currency cash follows a layered SAFE/Customs architecture distinct from inbound declaration. Huifa〔2003〕102 and Current Account Guide Art. 89 are reconciled, not treated as competing regimes: (1) carrying foreign-currency cash not exceeding the equivalent of USD 5,000 (不超过等值5000美元（含5000美元）) generally requires no Permit for Carrying Foreign Exchange Abroad (携带证), and Customs releases; (2) where the traveller has no latest inbound foreign-cash declaration record, or carries more than that recorded amount, amounts above USD 5,000 up to and including USD 10,000 (等值5000美元以上至1万美元（含） / 5000美元以上至10000美元（含）) require a bank-issued 携带证, which Customs verifies on exit (Art. 89; Huifa〔2003〕102); (3) amounts above USD 10,000 may in principle not be carried (原则上不得携带超过等值10000美元), subject to specifically provided exceptional SAFE permit cases (Art. 89 identifies exceptional destination/need cases for SAFE 携带证; Huifa〔2003〕102 enumerates special-case pathways). Physical RMB cash remains a separate CNY 20,000 carriage limit under PBOC Announcement〔2004〕No. 18. This architecture is not a single symmetric USD 5,000 entry-and-exit declaration threshold and is not a universal USD 10,000 export ceiling. Customs listing of foreign-cash declaration conditions in both directions does not replace the outbound permit tiers.",
+     "source": {
+      "url": "https://online.customs.gov.cn/static/pages/guides/000629014002/000629014002.html",
+      "section": "Current Chinese Customs passenger declaration guide — inbound and outbound: 人民币现钞超过20000元 / 外币现钞折合超过5000美元; written declaration / red-channel condition (strict exceeding; does not recreate a symmetric USD5k entry-and-exit legal architecture)"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "China does not have one simple symmetric cash-declaration figure. Three distinct border regimes apply and must not be collapsed: (1) inbound foreign-currency cash — Current Account Guide Art. 89 written Customs declaration when the amount exceeds (超过) the equivalent of USD 5,000; declaration trigger, not an import ceiling; repeated same-day/short-interval second-and-subsequent entries require declaration regardless of amount under Art. 89 (bounded qualification, not a second ordinary threshold); (2) outbound foreign-currency cash — layered carriage/permit architecture under Huifa〔2003〕102 reconciled with Art. 89 inbound-declaration linkage: ≤ USD 5,000 equivalent (含) generally no 携带证; > USD 5,000 and ≤ USD 10,000 bank 携带证 where no/insufficient inbound record; > USD 10,000 in principle not carried except specifically provided SAFE permit cases; (3) physical RMB cash — separate CNY 20,000 per-person, per-entry/exit carriage limit set by PBOC Announcement〔2004〕No. 18 under the State Council national-currency carriage framework (Order No. 108), with Customs applying 人民币现钞超过20000元 as a declaration/red-channel condition. Huifa〔2003〕102 foreign-currency cash rules are not extended here to foreign payment instruments or securities. Enforcement sits with Chinese Customs; SAFE sets the FX cash-carriage administrative framework jointly with Customs.",
+     "source": {
+      "url": "https://online.customs.gov.cn/static/pages/guides/000629014002/000629014002.html",
+      "section": "Current Chinese Customs passenger declaration guide — inbound and outbound: 人民币现钞超过20000元 / 外币现钞折合超过5000美元; written declaration / red-channel condition (strict exceeding; does not recreate a symmetric USD5k entry-and-exit legal architecture)"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "China's reviewed official sources do not establish a single general foreign-exchange authorisation regime. Distinct layers apply and must not be conflated: (i) a PBOC managed floating RMB exchange-rate regime based on market supply and demand with reference to a currency basket — a monetary fact kept separate from SAFE administration; (ii) current international payments and transfers not generally restricted, subject to genuine/lawful basis and bank authenticity/consistency review; (iii) capital-account FX handling that is transaction-specific (bank handling, registration, reporting, account/permitted-use controls, quotas, or approval where expressly required), including under the Capital Project FX Business Guide (2024) and subsequent 2025 cross-border investment/financing reforms; (iv) individual FX annual convenience amounts and account rules; and (v) Customs-enforced physical-cash declaration and carriage rules (foreign cash and RMB separately). Absence of a located restriction is not evidence that none exists.",
+     "source": {
+      "url": "https://www.pbc.gov.cn/redianzhuanti/118742/4657542/4678415/index.html",
+      "section": "PBOC — managed floating + basket; market decisive role; separate from SAFE capital/current administration"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "Domestic individuals (境内个人) may open FX savings accounts at banks on presentation of valid identity documents (Individual FX Measures Art. 32: 个人可以凭本人有效身份证件在银行开立外汇储蓄账户). Individual FX Measures Art. 2 distinguishes domestic vs overseas individuals and current vs capital individual FX; Art. 9 subjects individual settlement (结汇) and domestic-individual purchase (境内个人购汇) to annual total management. The current annual convenience amount (便利化额度) under the implementing rules / 2026 SAFE guidance is the equivalent of USD 50,000 per person per year for each of those categories. Within the convenience amount, transactions are handled at banks on identity documents; genuine current-account transactions outside the convenience amount may proceed with identity documents plus transaction-purpose evidence — the USD 50,000 figure is not asserted as a foreign-currency holding ceiling, bank-balance cap, universal remittance ceiling, universal transaction ceiling, or capital-account allowance. Purchased FX may, under the implementing rules, be remitted abroad, deposited into the individual's FX savings account, or carried abroad subject to the separate physical-cash rules. Outward current-account remittance from an FX savings account and hand-carried cash remittance follow their own documentary thresholds and are kept distinct from the convenience amount and from capital-account items (Individual FX Measures Ch. 3).",
+     "source": {
+      "url": "https://www.safe.gov.cn/safe/2006/1225/5319.html",
+      "section": "Individual FX Measures Arts 2, 5, 9, 32 — domestic/overseas; current/capital; channels including 代兑点; annual totals; FX savings accounts"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "The reviewed sources distinguish overseas individuals (境外个人) from overseas institutions and do not support a comparative claim that non-residents 'transfer funds more freely'. Overseas individuals may open FX savings accounts on valid identity documents (Individual FX Measures Art. 32); current-account outward remittance of FX held in a savings account is handled at banks on identity documents under the implementing rules, while hand-carried foreign cash follows separate documentary thresholds. Overseas institutions legally established abroad may open domestic FX accounts under Huifa〔2009〕29: Art. 3 — domestic banks review overseas incorporation/registration documents, and except where SAFE otherwise provides, account opening does not require SAFE/branch approval; Art. 4 — accounts are labelled NRA (NON-RESIDENT ACCOUNT); Art. 5 — FX receipts/payments between domestic institutions/individuals and NRA accounts are managed as cross-border transactions, with banks reviewing applicable valid commercial documents; Art. 6 — NRA accounts may receive funds from inside/outside China, transfer between NRA accounts, transfer with offshore accounts, and pay outward, and domestic banks may process based on customer instructions unless SAFE provides otherwise (not an unrestricted-transfer entitlement); Art. 7 — balance-of-payments statistical reporting applies; Art. 8 — without approval of the competent SAFE branch/department, foreign-currency cash may not be deposited into or withdrawn from NRA accounts, and NRA funds may not be directly or indirectly settled into RMB. This is not a blanket entitlement to every banking product, and institutional NRA rules are not generalised here to all non-residents.",
+     "source": {
+      "url": "https://www.safe.gov.cn/safe/2006/1225/5319.html",
+      "section": "Individual FX Measures — 境外个人 definition; FX savings accounts; current-account overseas-individual pathways"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Foreign-exchange purchase, sale and related personal FX services are handled through banks and, under the Individual Foreign Exchange Measures, also through remittance institutions and foreign-currency exchange institutions including exchange points (汇款机构及外币兑换机构（含代兑点）) in accordance with SAFE rules. Financial institutions' operation of settlement and sale of foreign exchange is subject to SAFE approval under the Foreign Exchange Administration Regulations; non-financial institutions may operate settlement and sale of foreign exchange only if approved by SAFE (Art. 53). The availability of a particular currency, channel, rate or service is not guaranteed. The legacy claim that conversion is available only through authorised banks is not asserted.",
+     "source": {
+      "url": "https://www.safe.gov.cn/safe/2006/1225/5319.html",
+      "section": "Individual FX Measures Art. 5 — banks; remittance institutions; FX exchange institutions including exchange points (代兑点)"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "SAFE — Current-effective foreign-exchange regulations directory (现行有效外汇管理主要法规目录), current through 30 June 2026; published 5 August 2026 (168 instruments; freshness chain for Individual FX Measures, Huifa〔2003〕102 cash carriage, Current Account Guide, Capital Project Guide, NRA account rules and related instruments)",
+     "url": "https://www.safe.gov.cn/safe/2026/0805/27769.html",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "State Council Decree No. 532 — Regulations of the PRC on Foreign Exchange Administration (中华人民共和国外汇管理条例): Art. 2 SAFE as FX administration organ; Art. 5 current international payments/transfers not generally restricted (国家对经常性国际支付和转移不予限制); Art. 12 genuine/lawful current-account basis and bank authenticity/consistency review; Arts 16–23 capital-project registration/approval architecture; Art. 22 approval before capital payment where required; Art. 27 managed floating RMB rate (statute); Art. 53 non-bank FX settlement/sale subject to SAFE approval",
+     "url": "https://www.safe.gov.cn/safe/2008/0806/5321.html",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "PBOC Order〔2006〕No. 3 — Measures for the Administration of Individual Foreign Exchange (个人外汇管理办法): Art. 2 domestic vs overseas individual and current vs capital distinction; Art. 5 banks, remittance institutions and FX exchange institutions including 代兑点; Art. 9 annual total management; Art. 32 FX savings accounts on identity documents",
+     "url": "https://www.safe.gov.cn/safe/2006/1225/5319.html",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "PBOC Announcement〔2004〕No. 18 — Adjustment of the National-Currency Entry/Exit Limit (中国人民银行公告〔2004〕第18号《关于调整国家货币出入境限额》): sets the per-person, per-entry/exit RMB carriage limit at CNY 20,000 under the State Council Measures for the Administration of the Entry and Exit of National Currency (中华人民共和国国家货币出入境管理办法 / State Council Order No. 108); physical-RMB carriage LIMIT distinct from the > USD 5,000 inbound foreign-cash declaration trigger",
+     "url": "https://www.pbc.gov.cn/zhengwugongkai/4081330/4406346/4693545/2025112114420592818/index.html",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "SAFE Huifa〔2007〕1 — Detailed Rules for the Implementation of the Individual Foreign Exchange Measures (个人外汇管理办法实施细则), as amended and republished: Art. 2 annual totals each equivalent to USD 50,000 for personal settlement (结汇) and domestic-individual purchase (购汇); Arts on remittance, cash deposit/withdrawal and account categories; current-effective status reflected in the June 2026 SAFE directory",
+     "url": "https://www.safe.gov.cn/tianjin/2024/0430/2464.html",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "SAFE 2026 individual FX internet guidance — confirms current annual convenience amount (便利化额度) of USD 50,000 equivalent per person per year and out-of-quota current-account documentary handling (not a holding ceiling)",
+     "url": "https://www.safe.gov.cn/tianjin/2026/0706/3085.html",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "SAFE and GACC Huifa〔2003〕102 — Interim Measures for Carrying Foreign Currency Cash into and out of China (携带外币现钞出入境管理暂行办法): outbound ≤ USD 5,000 (含) no 携带证; > USD 5,000 to ≤ USD 10,000 bank 携带证; > USD 10,000 in principle not carried except specified SAFE permit cases; foreign payment instruments/securities not administered by Customs under this cash regime; reconciled with Current Account Guide Art. 89; current-effective status reflected in the June 2026 SAFE directory",
+     "url": "https://www.safe.gov.cn/safe/2003/0828/5444.html",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "Chinese Customs / China International Trade Single Window — current passenger declaration service guide: inbound and outbound written declaration / red-channel condition when 人民币现钞超过20000元 or 外币现钞折合超过5000美元 (RMB cash exceeding CNY 20,000; foreign-currency cash exceeding USD 5,000 equivalent). Strict-exceeding operators (超过); Customs declaration conditions in both directions do not replace the outbound SAFE permit architecture under Huifa〔2003〕102 / Art. 89",
+     "url": "https://online.customs.gov.cn/static/pages/guides/000629014002/000629014002.html",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "General Administration of Customs — English Customs Clearance Guide for International Passengers (corroborating operational guidance only): EXCHANGE CONTROL text states declare FX cash worth more than USD 5,000 and RMB carriage limit CNY 20,000 with exceeding part prohibited. The English table phrasing 'or above' is not used to override the Chinese official operator 超过",
+     "url": "https://english.customs.gov.cn/statics/88707c1e-aa4e-40ca-a968-bdbdbb565e4f.html",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "SAFE Huifa〔2020〕14 — Current Account Foreign Exchange Business Guide (经常项目外汇业务指引（2020年版）), as amended: Art. 89 inbound foreign-cash declaration 超过等值5000美元; repeated-entry second-and-subsequent declaration regardless of amount; outbound bank 携带证 where no/insufficient latest inbound declaration for >5k–≤10k; exceptional SAFE 携带证 pathway above USD 10,000; current-effective status reflected in the June 2026 SAFE directory",
+     "url": "https://www.safe.gov.cn/safe/2020/0831/24016.html",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "SAFE Huifa〔2020〕14 attachment — Current Account Foreign Exchange Business Guide (2020) PDF: Art. 89 exact text for inbound 超过等值5000美元, repeated-entry declaration rule, and outbound 携带证 linkage to latest inbound declaration / exceptional SAFE pathway above USD 10,000",
+     "url": "https://www.safe.gov.cn/safe/file/file/20200831/f0127756271c43ef9b3908d5d157bd91.pdf",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "SAFE Huifa〔2024〕12 — Capital Project Foreign Exchange Business Guide (2024) (资本项目外汇业务指引（2024年版）): current capital-project operating umbrella; transaction-specific bank handling, registration, account and use rules",
+     "url": "https://www.safe.gov.cn/safe/2024/0412/24226.html",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "SAFE Huifa〔2025〕43 — Notice on deepening cross-border investment and financing foreign-exchange management reform: subsequent reforms to the 2024 capital architecture (including facilitation / direct bank handling / simplified registration elements for specified FDI and cross-border financing flows)",
+     "url": "https://www.safe.gov.cn/safe/2025/0915/26538.html",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "SAFE Huifa〔2009〕29 — Notice on domestic FX accounts of overseas institutions: Arts 3–8 — bank review of overseas incorporation documents and opening generally without SAFE approval unless otherwise provided (Art. 3); NRA (NON-RESIDENT ACCOUNT) labelling (Art. 4); cross-border treatment of domestic↔NRA FX receipts/payments with document review (Art. 5); instruction-based receipts/transfers/outward payments unless SAFE otherwise provides (Art. 6 — not unrestricted); BOP statistical reporting (Art. 7); no NRA cash deposit/withdrawal or RMB settlement without competent SAFE approval (Art. 8); current-effective status reflected in the June 2026 SAFE directory",
+     "url": "https://www.safe.gov.cn/safe/2009/0713/5326.html",
+     "type": "primary_regulator",
+     "tier": "primary"
+    },
+    {
+     "label": "PBOC — RMB exchange-rate policy characterisation: managed floating regime based on market supply and demand with reference to a basket of currencies (以市场供求为基础、参考一篮子货币进行调节、有管理的浮动汇率制度); market plays the decisive role in exchange-rate formation; kept separate from SAFE FX-administration layers",
+     "url": "https://www.pbc.gov.cn/redianzhuanti/118742/4657542/4678415/index.html",
+     "type": "central_bank",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange and passenger cash rules in China are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, account type and the applicable SAFE / PBOC / Chinese Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the State Administration of Foreign Exchange, the People's Bank of China, Chinese Customs or an authorised FX institution before making any financial or travel decisions."
   },
   {
    "country_name": "France",

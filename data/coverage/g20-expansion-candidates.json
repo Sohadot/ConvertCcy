@@ -1,132 +1,106 @@
 {
- "schema_version": "1.0.0",
- "generated_at": "2026-07-08T12:00:00+00:00",
- "asset": "ConvertCCY",
- "phase": "P8-0",
- "document_type": "coverage_expansion_candidate_list",
- "purpose": "G20+ coverage expansion blueprint — a candidate intake list only. This is a public repository governance/intake artifact, not a public coverage or rules-publication surface: it is not sitemap-listed, not included in /api/v1/, and not presented as covered jurisdictions in llms.txt, and it cannot publish a country. No candidate listed here may be rendered into /rules/, /briefs/, Passage Check, the Static Agent Interface (/api/v1/), or the sitemap until it independently passes the existing six-gate publication pipeline and its data/rules/<slug>.json page_status is set to published through that pipeline, not through this file.",
- "not_a_publication_channel_notice": "This file cannot publish a country. It records research/priority metadata only. Promotion to published happens exclusively via the existing data/rules/<slug>.json six-gate pipeline (see governance.html), never by editing this file.",
- "candidate_status_model": [
-  "candidate_only",
-  "source_intake",
-  "source_review_ready",
-  "blocked",
-  "publish_ready",
-  "published"
- ],
- "candidate_status_model_notes": "Every entry in this P8-0 blueprint is recorded as candidate_only, regardless of how much prior internal research exists (see prior_research_state), because no candidate has yet been re-reviewed under this coverage-intake process. Advancing a status is a future, separate, reviewed action — never a bulk edit of this file.",
- "existing_published_jurisdictions": [
-  "australia",
-  "brazil",
-  "canada",
-  "france",
-  "germany",
-  "india",
-  "indonesia",
-  "italy",
-  "japan",
-  "mexico",
-  "pakistan",
-  "saudi-arabia",
-  "south-africa",
-  "south-korea",
-  "turkey",
-  "united-arab-emirates",
-  "united-kingdom",
-  "united-states"
- ],
- "existing_published_jurisdictions_note": "These 18 jurisdictions are currently published and sit outside this blueprint; the 3 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file. South Africa graduated from candidate to published via the P8C-3 six-gate publication pipeline (P8C-1 intake -> P8C-2 candidate review -> P8C-2a consistency -> P8D-0 evidence -> P8C-2b hardening close -> P8C-3 release), not through this file. United States graduated from candidate to published via the P8B-3 publication pipeline (P8B-1 intake -> P8B-2 declaration + current-account close -> P8B-2b liberalisation hardening -> P8D-0 evidence -> P8B-2c capital-account hardening close -> P8B-3 release), not through this file. Italy graduated from candidate to published via the P8E publication pipeline (P8E-1 intake -> P8E-2 from-scratch governed build -> P8E-2b capital/banking hardening close -> P8E-3 release), not through this file. South Korea graduated from candidate to published via the P8F publication pipeline (P8F-1 intake -> P8F-2 publication-candidate review -> P8F-2b capital-account hardening close -> P8F-3 release), not through this file. Brazil graduated from candidate to published via the BR-PUBLICATION-CLOSURE pipeline (Phase 1 governed review + Phase 2 M1 source intake -> M2 claim extraction -> M2.5 human claim review -> Adoption Gate PASS -> final claim-to-source fidelity review + pinpoint hardening -> Publication Gate), not through this file. Mexico graduated from candidate to published via the Mexico Publication Closure (P8G-1 intake -> P8G-2 CRES content correction -> P8G-2b account-regime and Article 115 cash evidence closure -> Publication Closure), not through this file. Saudi Arabia graduated from candidate to published via the Saudi Publication Closure (P8G-2b evidence closure -> Saudi Pinpoint Hardening of the SAR/USD peg and money-exchange licensing locators -> Publication Closure), not through this file. Indonesia graduated from candidate to published via the Indonesia Publication Closure (P-1 evidence closure -> Pinpoint Hardening of the DHE SDA 2026 chain, physical-Rupiah carriage, account-management/CDD layers and the Flexible-ITF monetary regime -> Publication Closure), not through this file. Turkey graduated from candidate to published via the Turkey Publication Closure (Evidence Closure #90 -> Pinpoint Hardening #91 -> Publication Closure), not through this file.",
- "no_inference_rule": "No rule, threshold, or regulatory posture may ever be inferred for a candidate from its currency code, region, G20 membership, EU/AU membership, or a neighboring country's published rules. Every fact requires its own primary official source before it may be published.",
- "count": 3,
- "candidates": [
-  {
-   "country_name": "China",
-   "country_slug": "china",
-   "iso2": "CN",
-   "iso3": "CHN",
-   "currency_code": "CNY",
-   "currency_name": "Chinese Yuan Renminbi",
-   "region": "East Asia",
-   "expansion_priority": "medium",
-   "complexity_level": "high",
-   "likely_official_source_authorities_needed": {
-    "central_bank_or_monetary_authority": "People's Bank of China (PBOC)",
-    "customs_or_border_authority": "General Administration of Customs (China)",
-    "financial_intelligence_unit_or_aml_authority": "China Anti-Money Laundering Monitoring and Analysis Center (CAMLMAC)",
-    "tax_treasury_ministry_source": null
-   },
-   "expected_difficulty": "High. Central bank and customs sources already on file internally (HTTPS, current as of the Phase 4 source-authority repair), but SAFE's quota-based capital-account system is one of the most complex regimes in scope and Simplified Chinese source translation requires careful, expert-reviewed handling.",
-   "known_risk_areas": [
-    "SAFE capital-account quota system is materially more complex than a simple threshold/declaration model — must not be oversimplified",
-    "Simplified Chinese source translation accuracy"
-   ],
-   "missing_sources": [
-    "financial_intelligence_unit_or_aml_authority"
-   ],
-   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
-   "status": "candidate_only"
-  },
-  {
-   "country_name": "Argentina",
-   "country_slug": "argentina",
-   "iso2": "AR",
-   "iso3": "ARG",
-   "currency_code": "ARS",
-   "currency_name": "Argentine Peso",
-   "region": "Latin America",
-   "expansion_priority": "low",
-   "complexity_level": "high",
-   "likely_official_source_authorities_needed": {
-    "central_bank_or_monetary_authority": "Banco Central de la República Argentina (BCRA)",
-    "customs_or_border_authority": "Argentina customs/tax authority (agency name to reconfirm — AFIP was restructured into ARCA in 2024; current authoritative name and URL must be verified, not assumed)",
-    "financial_intelligence_unit_or_aml_authority": "Unidad de Información Financiera (UIF)",
-    "tax_treasury_ministry_source": null
-   },
-   "expected_difficulty": "High. No internal research file exists yet — from-scratch intake. Argentina has a history of multiple, parallel, and rapidly-changing exchange-rate regimes (official rate, parallel/'blue' rate, various BCRA restriction regimes) that make a single governed threshold statement unusually easy to get wrong or make stale.",
-   "known_risk_areas": [
-    "Multiple/parallel exchange-rate history — must state clearly which rate regime a claim describes, never an unqualified single figure",
-    "Post-2024 agency restructuring (AFIP → ARCA) means the customs/tax authority name and URL must be reconfirmed at time of research, not assumed from older references",
-    "High currency volatility means transcribed figures need an unusually tight review-date discipline",
-    "Spanish-language source translation accuracy"
-   ],
-   "missing_sources": [
-    "central_bank_or_monetary_authority",
-    "customs_or_border_authority",
-    "financial_intelligence_unit_or_aml_authority"
-   ],
-   "prior_research_state": "no prior internal research exists — this is a from-scratch intake candidate",
-   "status": "candidate_only"
-  },
-  {
-   "country_name": "Russia",
-   "country_slug": "russian-federation",
-   "iso2": "RU",
-   "iso3": "RUS",
-   "currency_code": "RUB",
-   "currency_name": "Russian Ruble",
-   "region": "Eastern Europe",
-   "expansion_priority": "low",
-   "complexity_level": "high",
-   "likely_official_source_authorities_needed": {
-    "central_bank_or_monetary_authority": "Central Bank of the Russian Federation (Bank of Russia)",
-    "customs_or_border_authority": "Federal Customs Service of Russia (FCS)",
-    "financial_intelligence_unit_or_aml_authority": "Federal Financial Monitoring Service (Rosfinmonitoring)",
-    "tax_treasury_ministry_source": null
-   },
-   "expected_difficulty": "High. No internal research file exists yet — from-scratch intake. Since 2022, Russia has imposed extensive and frequently-revised capital and currency controls in response to international sanctions; the regulatory environment is unusually fast-moving and politically sensitive, and independent verification of official-source reachability and currency must be confirmed before any research begins.",
-   "known_risk_areas": [
-    "Post-2022 capital-control and sanctions-related measures change frequently — an unusually short safe shelf-life for any transcribed figure",
-    "Official source reachability/verification may itself be difficult and must be confirmed before committing research time",
-    "High political sensitivity — content must stay strictly factual/regulatory and cite only primary official sources, no geopolitical commentary",
-    "Russian-language source translation accuracy"
-   ],
-   "missing_sources": [
-    "central_bank_or_monetary_authority",
-    "customs_or_border_authority",
-    "financial_intelligence_unit_or_aml_authority"
-   ],
-   "prior_research_state": "no prior internal research exists — this is a from-scratch intake candidate",
-   "status": "candidate_only"
-  }
- ]
+  "schema_version": "1.0.0",
+  "generated_at": "2026-07-08T12:00:00+00:00",
+  "asset": "ConvertCCY",
+  "phase": "P8-0",
+  "document_type": "coverage_expansion_candidate_list",
+  "purpose": "G20+ coverage expansion blueprint — a candidate intake list only. This is a public repository governance/intake artifact, not a public coverage or rules-publication surface: it is not sitemap-listed, not included in /api/v1/, and not presented as covered jurisdictions in llms.txt, and it cannot publish a country. No candidate listed here may be rendered into /rules/, /briefs/, Passage Check, the Static Agent Interface (/api/v1/), or the sitemap until it independently passes the existing six-gate publication pipeline and its data/rules/<slug>.json page_status is set to published through that pipeline, not through this file.",
+  "not_a_publication_channel_notice": "This file cannot publish a country. It records research/priority metadata only. Promotion to published happens exclusively via the existing data/rules/<slug>.json six-gate pipeline (see governance.html), never by editing this file.",
+  "candidate_status_model": [
+    "candidate_only",
+    "source_intake",
+    "source_review_ready",
+    "blocked",
+    "publish_ready",
+    "published"
+  ],
+  "candidate_status_model_notes": "Every entry in this P8-0 blueprint is recorded as candidate_only, regardless of how much prior internal research exists (see prior_research_state), because no candidate has yet been re-reviewed under this coverage-intake process. Advancing a status is a future, separate, reviewed action — never a bulk edit of this file.",
+  "existing_published_jurisdictions": [
+    "australia",
+    "brazil",
+    "canada",
+    "china",
+    "france",
+    "germany",
+    "india",
+    "indonesia",
+    "italy",
+    "japan",
+    "mexico",
+    "pakistan",
+    "saudi-arabia",
+    "south-africa",
+    "south-korea",
+    "turkey",
+    "united-arab-emirates",
+    "united-kingdom",
+    "united-states"
+  ],
+  "existing_published_jurisdictions_note": "These 19 jurisdictions are currently published and sit outside this blueprint; the 2 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file. South Africa graduated from candidate to published via the P8C-3 six-gate publication pipeline (P8C-1 intake -> P8C-2 candidate review -> P8C-2a consistency -> P8D-0 evidence -> P8C-2b hardening close -> P8C-3 release), not through this file. United States graduated from candidate to published via the P8B-3 publication pipeline (P8B-1 intake -> P8B-2 declaration + current-account close -> P8B-2b liberalisation hardening -> P8D-0 evidence -> P8B-2c capital-account hardening close -> P8B-3 release), not through this file. Italy graduated from candidate to published via the P8E publication pipeline (P8E-1 intake -> P8E-2 from-scratch governed build -> P8E-2b capital/banking hardening close -> P8E-3 release), not through this file. South Korea graduated from candidate to published via the P8F publication pipeline (P8F-1 intake -> P8F-2 publication-candidate review -> P8F-2b capital-account hardening close -> P8F-3 release), not through this file. Brazil graduated from candidate to published via the BR-PUBLICATION-CLOSURE pipeline (Phase 1 governed review + Phase 2 M1 source intake -> M2 claim extraction -> M2.5 human claim review -> Adoption Gate PASS -> final claim-to-source fidelity review + pinpoint hardening -> Publication Gate), not through this file. Mexico graduated from candidate to published via the Mexico Publication Closure (P8G-1 intake -> P8G-2 CRES content correction -> P8G-2b account-regime and Article 115 cash evidence closure -> Publication Closure), not through this file. Saudi Arabia graduated from candidate to published via the Saudi Publication Closure (P8G-2b evidence closure -> Saudi Pinpoint Hardening of the SAR/USD peg and money-exchange licensing locators -> Publication Closure), not through this file. Indonesia graduated from candidate to published via the Indonesia Publication Closure (P-1 evidence closure -> Pinpoint Hardening of the DHE SDA 2026 chain, physical-Rupiah carriage, account-management/CDD layers and the Flexible-ITF monetary regime -> Publication Closure), not through this file. Turkey graduated from candidate to published via the Turkey Publication Closure (Evidence Closure #90 -> Pinpoint Hardening #91 -> Publication Closure), not through this file. China graduated from candidate to published via: Evidence Closure #94 → Pinpoint Hardening #95 → Publication Closure, not through this file.",
+  "no_inference_rule": "No rule, threshold, or regulatory posture may ever be inferred for a candidate from its currency code, region, G20 membership, EU/AU membership, or a neighboring country's published rules. Every fact requires its own primary official source before it may be published.",
+  "count": 2,
+  "candidates": [
+    {
+      "country_name": "Argentina",
+      "country_slug": "argentina",
+      "iso2": "AR",
+      "iso3": "ARG",
+      "currency_code": "ARS",
+      "currency_name": "Argentine Peso",
+      "region": "Latin America",
+      "expansion_priority": "low",
+      "complexity_level": "high",
+      "likely_official_source_authorities_needed": {
+        "central_bank_or_monetary_authority": "Banco Central de la República Argentina (BCRA)",
+        "customs_or_border_authority": "Argentina customs/tax authority (agency name to reconfirm — AFIP was restructured into ARCA in 2024; current authoritative name and URL must be verified, not assumed)",
+        "financial_intelligence_unit_or_aml_authority": "Unidad de Información Financiera (UIF)",
+        "tax_treasury_ministry_source": null
+      },
+      "expected_difficulty": "High. No internal research file exists yet — from-scratch intake. Argentina has a history of multiple, parallel, and rapidly-changing exchange-rate regimes (official rate, parallel/'blue' rate, various BCRA restriction regimes) that make a single governed threshold statement unusually easy to get wrong or make stale.",
+      "known_risk_areas": [
+        "Multiple/parallel exchange-rate history — must state clearly which rate regime a claim describes, never an unqualified single figure",
+        "Post-2024 agency restructuring (AFIP → ARCA) means the customs/tax authority name and URL must be reconfirmed at time of research, not assumed from older references",
+        "High currency volatility means transcribed figures need an unusually tight review-date discipline",
+        "Spanish-language source translation accuracy"
+      ],
+      "missing_sources": [
+        "central_bank_or_monetary_authority",
+        "customs_or_border_authority",
+        "financial_intelligence_unit_or_aml_authority"
+      ],
+      "prior_research_state": "no prior internal research exists — this is a from-scratch intake candidate",
+      "status": "candidate_only"
+    },
+    {
+      "country_name": "Russia",
+      "country_slug": "russian-federation",
+      "iso2": "RU",
+      "iso3": "RUS",
+      "currency_code": "RUB",
+      "currency_name": "Russian Ruble",
+      "region": "Eastern Europe",
+      "expansion_priority": "low",
+      "complexity_level": "high",
+      "likely_official_source_authorities_needed": {
+        "central_bank_or_monetary_authority": "Central Bank of the Russian Federation (Bank of Russia)",
+        "customs_or_border_authority": "Federal Customs Service of Russia (FCS)",
+        "financial_intelligence_unit_or_aml_authority": "Federal Financial Monitoring Service (Rosfinmonitoring)",
+        "tax_treasury_ministry_source": null
+      },
+      "expected_difficulty": "High. No internal research file exists yet — from-scratch intake. Since 2022, Russia has imposed extensive and frequently-revised capital and currency controls in response to international sanctions; the regulatory environment is unusually fast-moving and politically sensitive, and independent verification of official-source reachability and currency must be confirmed before any research begins.",
+      "known_risk_areas": [
+        "Post-2022 capital-control and sanctions-related measures change frequently — an unusually short safe shelf-life for any transcribed figure",
+        "Official source reachability/verification may itself be difficult and must be confirmed before committing research time",
+        "High political sensitivity — content must stay strictly factual/regulatory and cite only primary official sources, no geopolitical commentary",
+        "Russian-language source translation accuracy"
+      ],
+      "missing_sources": [
+        "central_bank_or_monetary_authority",
+        "customs_or_border_authority",
+        "financial_intelligence_unit_or_aml_authority"
+      ],
+      "prior_research_state": "no prior internal research exists — this is a from-scratch intake candidate",
+      "status": "candidate_only"
+    }
+  ]
 }
