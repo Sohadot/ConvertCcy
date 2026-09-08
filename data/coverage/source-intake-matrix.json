@@ -26,17 +26,8 @@
   "not_applicable": "This source category is not currently believed to be needed for this candidate's currency-passage rules (starting assumption only, may change once research begins)."
  },
  "not_applicable_note": "tax_treasury_ministry_source is marked not_applicable for every candidate below because no candidate in this G20+ intake round has an identified currency-passage rule that depends specifically on a tax/treasury/ministry source distinct from its central bank or customs authority. This may change during actual research; not_applicable is a starting assumption, not a permanent exclusion.",
- "count": 12,
+ "count": 3,
  "matrix": [
-  {
-   "country_slug": "turkey",
-   "sources": {
-    "central_bank_or_monetary_authority": {"status": "verified_on_file", "label": "Central Bank of the Republic of Turkey (CBRT) — Foreign Exchange Regulations", "note": "On file in data/rules/turkey.json; recheck for post-file regulatory change"},
-    "customs_or_border_authority": {"status": "verified_on_file", "label": "Turkish Customs — Currency Declaration Rules", "note": "On file in data/rules/turkey.json"},
-    "financial_intelligence_unit_or_aml_authority": {"status": "not_started", "label": "MASAK (Financial Crimes Investigation Board)", "note": "Not yet sourced; name is public knowledge, no citation on file"},
-    "tax_treasury_ministry_source": {"status": "not_applicable", "label": null, "note": null}
-   }
-  },
   {
    "country_slug": "china",
    "sources": {

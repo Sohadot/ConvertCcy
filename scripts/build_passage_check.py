@@ -217,6 +217,29 @@ DECLARATION = {
                 "(FETA Art. 16/18); foreign exchange banks' reporting of FX sales over USD 10,000 to the "
                 "National Tax Service (FETA Art. 21); and KoFIU anti-money-laundering reporting.",
     },
+    "turkey": {
+        "thresholds": [
+            {"value": 185000, "currency": "TRY",
+             "scope": "Turkish lira cash",
+             "applies": "leaving Türkiye / outbound only",
+             "authority": "Ministry of Trade / Turkish Customs",
+             "mechanism": "mandatory Nakit Beyan Formu declaration (Decree No. 32 Art. 3(d); Communiqué 2008-32/34 Art. 3(5)); triggered only when exceeding (aşan, strictly >)"},
+            {"value": 10000, "currency": "EUR",
+             "scope": "foreign banknotes / efektif, or the equivalent in another foreign currency",
+             "applies": "leaving Türkiye / outbound only",
+             "authority": "Ministry of Trade / Turkish Customs",
+             "mechanism": "mandatory Nakit Beyan Formu declaration (Decree No. 32 Art. 4(f); Communiqué 2008-32/34 Art. 4(2)); triggered only when exceeding (aşan, strictly >)"},
+        ],
+        "note": "Both outbound triggers apply only when exceeded (aşan, strictly '>'), not when merely reached; "
+                "they are outbound declaration triggers on the Nakit Beyan Formu, not export ceilings. "
+                "Ordinary inbound foreign currency has no general mandatory numeric declaration threshold "
+                "under Decree No. 32 Art. 4(a); inbound declaration may be voluntary, and Customs may request "
+                "an explanation of amount, source and purpose under Law No. 5549. Source/purpose cash "
+                "categories that must move through banking channels remain a separate regime. The TRY and "
+                "foreign-banknote (efektif) thresholds are distinct and must not be collapsed into one "
+                "generic traveller figure, and must not be read as creating a symmetric inbound EUR 10,000 "
+                "or 'entry and exit' threshold.",
+    },
     "united-arab-emirates": {
         "thresholds": [
             {"value": 60000, "currency": "AED",
@@ -288,6 +311,8 @@ EXCHANGE_CONTROLS = {
                      "Current account largely liberalised; capital account subject to SARB exchange control administered through Authorised Dealers under the Currency and Exchanges Manual"),
     "south-korea": ("capital_account_regulated",
                     "Current-account payments and receipts substantially liberalised; capital transactions and certain methods of payment or receipt subject to transaction-specific notification, permission or reporting under the Foreign Exchange Transactions Act (via foreign exchange banks, the Bank of Korea Governor, or MOEF as competent authority); the Korean won is not fully internationalised"),
+    "turkey": ("floating_regulated_market",
+               "Türkiye operates a floating exchange-rate regime with no nominal or real exchange-rate target; the reviewed official sources do not establish a single general foreign-exchange authorisation regime, while specific regulated layers remain distinct — resident/non-resident FX account and transfer rules under Decree No. 32, outbound physical-cash declaration triggers, banking-channel-only source/purpose categories, domestic FX-contract restrictions, export-proceeds repatriation/sale requirements, and transaction-specific reporting. Absence of a located restriction is not evidence of absence. The floating regime is a monetary fact, not itself an exchange-control rule."),
     "united-arab-emirates": ("supervisory_peg",
                              "No per-transaction approval controls; supervisory posture around the US-dollar peg, current-account flows largely liberal"),
     "united-kingdom": ("none", "No general exchange controls (fully liberalised for current and capital account)"),

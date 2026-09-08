@@ -30,42 +30,15 @@
   "saudi-arabia",
   "south-africa",
   "south-korea",
+  "turkey",
   "united-arab-emirates",
   "united-kingdom",
   "united-states"
  ],
- "existing_published_jurisdictions_note": "These 17 jurisdictions are currently published and sit outside this blueprint; the 4 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file. South Africa graduated from candidate to published via the P8C-3 six-gate publication pipeline (P8C-1 intake -> P8C-2 candidate review -> P8C-2a consistency -> P8D-0 evidence -> P8C-2b hardening close -> P8C-3 release), not through this file. United States graduated from candidate to published via the P8B-3 publication pipeline (P8B-1 intake -> P8B-2 declaration + current-account close -> P8B-2b liberalisation hardening -> P8D-0 evidence -> P8B-2c capital-account hardening close -> P8B-3 release), not through this file. Italy graduated from candidate to published via the P8E publication pipeline (P8E-1 intake -> P8E-2 from-scratch governed build -> P8E-2b capital/banking hardening close -> P8E-3 release), not through this file. South Korea graduated from candidate to published via the P8F publication pipeline (P8F-1 intake -> P8F-2 publication-candidate review -> P8F-2b capital-account hardening close -> P8F-3 release), not through this file. Brazil graduated from candidate to published via the BR-PUBLICATION-CLOSURE pipeline (Phase 1 governed review + Phase 2 M1 source intake -> M2 claim extraction -> M2.5 human claim review -> Adoption Gate PASS -> final claim-to-source fidelity review + pinpoint hardening -> Publication Gate), not through this file. Mexico graduated from candidate to published via the Mexico Publication Closure (P8G-1 intake -> P8G-2 CRES content correction -> P8G-2b account-regime and Article 115 cash evidence closure -> Publication Closure), not through this file. Saudi Arabia graduated from candidate to published via the Saudi Publication Closure (P8G-2b evidence closure -> Saudi Pinpoint Hardening of the SAR/USD peg and money-exchange licensing locators -> Publication Closure), not through this file. Indonesia graduated from candidate to published via the Indonesia Publication Closure (P-1 evidence closure -> Pinpoint Hardening of the DHE SDA 2026 chain, physical-Rupiah carriage, account-management/CDD layers and the Flexible-ITF monetary regime -> Publication Closure), not through this file.",
+ "existing_published_jurisdictions_note": "These 18 jurisdictions are currently published and sit outside this blueprint; the 3 entries below are coverage-expansion candidates only. The published jurisdictions' data/rules/<slug>.json page_status and public surfaces are not modified by this candidate intake process. United Kingdom graduated from candidate to published via the P8A-3 six-gate publication pipeline, not through this file. South Africa graduated from candidate to published via the P8C-3 six-gate publication pipeline (P8C-1 intake -> P8C-2 candidate review -> P8C-2a consistency -> P8D-0 evidence -> P8C-2b hardening close -> P8C-3 release), not through this file. United States graduated from candidate to published via the P8B-3 publication pipeline (P8B-1 intake -> P8B-2 declaration + current-account close -> P8B-2b liberalisation hardening -> P8D-0 evidence -> P8B-2c capital-account hardening close -> P8B-3 release), not through this file. Italy graduated from candidate to published via the P8E publication pipeline (P8E-1 intake -> P8E-2 from-scratch governed build -> P8E-2b capital/banking hardening close -> P8E-3 release), not through this file. South Korea graduated from candidate to published via the P8F publication pipeline (P8F-1 intake -> P8F-2 publication-candidate review -> P8F-2b capital-account hardening close -> P8F-3 release), not through this file. Brazil graduated from candidate to published via the BR-PUBLICATION-CLOSURE pipeline (Phase 1 governed review + Phase 2 M1 source intake -> M2 claim extraction -> M2.5 human claim review -> Adoption Gate PASS -> final claim-to-source fidelity review + pinpoint hardening -> Publication Gate), not through this file. Mexico graduated from candidate to published via the Mexico Publication Closure (P8G-1 intake -> P8G-2 CRES content correction -> P8G-2b account-regime and Article 115 cash evidence closure -> Publication Closure), not through this file. Saudi Arabia graduated from candidate to published via the Saudi Publication Closure (P8G-2b evidence closure -> Saudi Pinpoint Hardening of the SAR/USD peg and money-exchange licensing locators -> Publication Closure), not through this file. Indonesia graduated from candidate to published via the Indonesia Publication Closure (P-1 evidence closure -> Pinpoint Hardening of the DHE SDA 2026 chain, physical-Rupiah carriage, account-management/CDD layers and the Flexible-ITF monetary regime -> Publication Closure), not through this file. Turkey graduated from candidate to published via the Turkey Publication Closure (Evidence Closure #90 -> Pinpoint Hardening #91 -> Publication Closure), not through this file.",
  "no_inference_rule": "No rule, threshold, or regulatory posture may ever be inferred for a candidate from its currency code, region, G20 membership, EU/AU membership, or a neighboring country's published rules. Every fact requires its own primary official source before it may be published.",
- "count": 4,
+ "count": 3,
  "candidates": [
-  {
-   "country_name": "Turkey",
-   "country_slug": "turkey",
-   "iso2": "TR",
-   "iso3": "TUR",
-   "currency_code": "TRY",
-   "currency_name": "Turkish Lira",
-   "region": "Eastern Europe",
-   "expansion_priority": "medium",
-   "complexity_level": "high",
-   "likely_official_source_authorities_needed": {
-    "central_bank_or_monetary_authority": "Central Bank of the Republic of Turkey (CBRT)",
-    "customs_or_border_authority": "Turkish Customs (Ticaret Bakanlığı / Gümrük)",
-    "financial_intelligence_unit_or_aml_authority": "MASAK (Financial Crimes Investigation Board)",
-    "tax_treasury_ministry_source": null
-   },
-   "expected_difficulty": "High. Central bank and customs sources already on file internally, but Turkey's FX regime has changed materially and repeatedly in recent years (lira volatility, macroprudential FX measures); current-effective-text verification is essential and Turkish-language sources require careful translation review.",
-   "known_risk_areas": [
-    "Rapid, frequent regulatory change — any transcribed figure has a short shelf life and needs a tight review-date discipline",
-    "Turkish-language source translation accuracy",
-    "Historical multiple-exchange-rate practices must not be conflated with the current regime"
-   ],
-   "missing_sources": [
-    "financial_intelligence_unit_or_aml_authority"
-   ],
-   "prior_research_state": "prior internal research exists from an earlier project phase — not published, not relied on for this intake's promotion decisions",
-   "status": "candidate_only"
-  },
   {
    "country_name": "China",
    "country_slug": "china",
