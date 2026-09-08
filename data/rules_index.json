@@ -135,9 +135,9 @@
     "iso2": "MA",
     "currency_code": "MAD",
     "region": "North Africa",
-    "page_status": "needs_hardening",
-    "last_reviewed": "2026-05-02",
-    "url": "/preview/rules/needs_hardening/morocco-foreign-currency-rules.html"
+    "page_status": "published",
+    "last_reviewed": "2026-09-08",
+    "url": "/rules/morocco-foreign-currency-rules.html"
   },
   {
     "country_name": "Nigeria",

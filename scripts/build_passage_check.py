@@ -200,6 +200,31 @@ DECLARATION = {
                 "apply under Article 115 of the Ley de Instituciones de Crédito, from UIF AML reporting, and from "
                 "the LFPIORPI domestic cash-payment limits.",
     },
+    "morocco": {
+        "thresholds": [
+            {"value": 100000, "currency": "MAD",
+             "scope": "effects of commerce, means of payment and bearer-negotiable financial instruments / covered foreign means and instruments",
+             "applies": "entering and leaving Morocco",
+             "authority": "Office des Changes / Moroccan Customs",
+             "mechanism": "mandatory Customs declaration when value is equal to or greater than MAD 100,000 (>=; Art. 37 inbound / Art. 40 outbound)"},
+            {"value": 2000, "currency": "MAD",
+             "scope": "physical Moroccan-dirham banknotes",
+             "applies": "entering and leaving Morocco / traveller carriage",
+             "authority": "Office des Changes / Moroccan Customs",
+             "mechanism": "traveller carriage exception not exceeding MAD 2,000 (<=); import/export of MAD banknotes otherwise prohibited in principle (Art. 42) — NOT a declaration threshold"},
+        ],
+        "note": "Mixed architecture: >= MAD 100,000 is the Customs declaration trigger for covered means/instruments "
+                "(Arts 37/40; exactly MAD 100,000 is inside the trigger); below MAD 100,000 inbound declaration is "
+                "facultative, but presentation of the import declaration may still be required regardless of amount "
+                "to justify origin for eligible FX/convertible-dirham account funding, re-export, or qualifying "
+                "export-proceeds proof. MAD 100,000 is not a carriage ceiling. Separately, <= MAD 2,000 is the "
+                "Art. 42 physical-MAD banknote traveller carriage exception (import/export otherwise prohibited in "
+                "principle). These two numeric regimes must not be collapsed.",
+        "pair_surface_summary": (
+            "foreign means/instruments ≥ MAD 100,000 declaration · "
+            "physical MAD ≤2,000 traveller carriage exception"
+        ),
+    },
     "pakistan": {
         "thresholds": [
             {"value": 10000, "currency": "USD", "scope": "cash or bearer negotiable instruments (or equivalent)",
@@ -370,6 +395,11 @@ EXCHANGE_CONTROLS = {
     "japan": ("none", "No general exchange controls (fully liberalised)"),
     "mexico": ("floating_regulated_market",
                "Free-floating exchange-rate regime set by the Comisión de Cambios (SHCP and Banco de México); the reviewed official sources do not establish a general foreign-exchange authorisation regime, with anti-money-laundering, US-dollar cash-operation, customs-declaration and any sectoral restrictions kept distinct"),
+    "morocco": ("capital_account_regulated",
+                "Regulated, category- and transaction-specific foreign-exchange framework "
+                "under Office des Changes / IGOC 2026; current and capital operations use "
+                "authorised channels, allowances, account rules and transaction-specific "
+                "conditions rather than one universal prior-approval screen"),
     "pakistan": ("capital_account_regulated",
                  "No general exchange controls on the current account; capital account regulated by the SBP"),
     "saudi-arabia": ("supervisory_peg",
