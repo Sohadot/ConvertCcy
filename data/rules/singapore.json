@@ -7,45 +7,93 @@
   "currency_code": "SGD",
   "currency_name": "Singapore Dollar",
   "schema_version": "1.2.1",
-  "page_status": "verified",
-  "last_reviewed": "2026-05-02",
-  "evidence_tier": "official_verified",
+  "page_status": "needs_hardening",
+  "last_reviewed": "2026-09-08",
+  "evidence_tier": "official_verified_partial",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": false,
-  "source_notice": "",
-  "country_overview": "Singapore operates one of the most liberalised and open foreign-exchange regimes in the world. There are no exchange controls or restrictions on current or capital account transactions for residents or non-residents. The framework is administered by the Monetary Authority of Singapore (MAS).",
+  "source_notice": "Singapore / SGD Evidence Rebuild (Batch 2 rehabilitation inventory). Legacy verified / official_verified status is retired as unearned. Material claims are rebuilt from current primary Singapore Statutes Online, ICA, MAS and Singapore High Court sources. Border cash/CBNI is pinned to CDSA 1992 Part 6A / s60 with Regulations 2007 reg 2A prescribed amount S$20,000 and ICA operational NP 727 reporting for movements exceeding S$20,000 (strictly >, not >=); no CBNI quantity ceiling. Exchange-control architecture is pinned as: Exchange Control Act 1953 remains in force (Continuance Notification S 847/2023 through 31 December 2033) while the MAS 1978 blanket liberalisation (MAS Circular / Notice 1103, ID Circular 6/78 dd 25.5.78, effective 1 June 1978), as quoted and applied by Focus Energy Ltd v Aye Aye Soe [2010] SGHC 48 at [9], [11]-[15], suspends ordinary ECA formalities and approvals for payments and capital transfers. Official MAS Notice 754 archive landing page was located but an authoritative PDF body could not be retrieved in this sprint; it is not mapped because Focus Energy directly quotes the circular text. No official current instrument located in the reviewed corpus revoking or narrowing that blanket exemption. Monetary regime is kept separate: MAS exchange-rate-centred S$NEER policy band. Singapore remains unpublished rehabilitation inventory (not added to candidate intake). Pinpoint Hardening and Publication Closure remain separate.",
+  "country_overview": "Singapore's currency is the Singapore dollar (SGD). The Monetary Authority of Singapore (MAS) conducts exchange-rate-centred monetary policy by managing the Singapore dollar nominal effective exchange rate (S$NEER) against a trade-weighted basket of currencies within a policy band; FX intervention is used to keep the S$NEER within that band. That monetary-regime fact is kept analytically separate from exchange-control law. The Exchange Control Act 1953 remains legally in force (extended through 31 December 2033 by Exchange Control (Continuance of Act) Notification 2023), but MAS's blanket 1978 liberalisation exemption — quoted and applied by the Singapore High Court in Focus Energy Ltd v Aye Aye Soe [2010] SGHC 48 — suspends ordinary exchange-control formalities and approvals for payments and capital transfers on the reviewed official corpus. Cross-border physical currency and bearer negotiable instruments (CBNI) movements are separately regulated under the Corruption, Drug Trafficking and Other Serious Crimes (Confiscation of Benefits) Act 1992: travellers must report movements exceeding S$20,000 equivalent via Form NP 727. AML/CBNI reporting, MAS financial-institution licensing and sanctions frameworks remain distinct from the ECA exemption layer.",
   "summary": {
-    "traveler": "Travelers may bring in or take out unlimited amounts of Singapore Dollars and foreign currency. No general currency declaration is required for normal travel amounts.",
-    "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+    "traveler": "Travellers entering or leaving Singapore carrying Physical Currency and Bearer Negotiable Instruments (CBNI) whose total value exceeds S$20,000 (or its foreign-currency equivalent) must submit a full and accurate CBNI declaration (Form NP 727) to the Singapore Police Force, typically online within 72 hours before arrival or departure. This is a reporting trigger under CDSA 1992 / CBNI Regulations 2007, not an import or export ceiling: ICA states there is no restriction on the type or amount of CBNI that may be carried. Exactly S$20,000 is not the statutory trigger.",
+    "business": "On the reviewed official corpus, ordinary Exchange Control Act formalities and approvals for payments and capital transfers are not required because of MAS's blanket 1978 liberalisation exemption recognised by the High Court. That conclusion is not a claim that all business cross-border activity is unrestricted: financial and payment services remain subject to MAS licensing, AML/CFT, sanctions and other transaction-specific regulation."
   },
   "rules": {
-    "bring_foreign_currency_in": "Foreign currency and Singapore Dollars may be freely imported without advance notification. Large amounts are subject to anti-money laundering monitoring and customs may request documentation of the source.",
-    "take_foreign_currency_out": "Residents and non-residents may freely export currency and SGD. Large outflows by residents may trigger MAS reporting under residency or business ownership rules. Non-residents may freely repatriate.",
-    "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Large or suspicious cash movements are subject to anti-money laundering reporting requirements by financial institutions.",
-    "resident_holding_rules": "Singapore residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
-    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
-    "business_invoicing_settlement": "Business transactions may be invoiced and settled in foreign currency or SGD. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
-    "exchange_controls": "Singapore maintains no exchange controls. The regime is fully liberalised for both current and capital account transactions.",
-    "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Singapore."
+    "bring_foreign_currency_in": "Under CDSA 1992 s60 and the CBNI Regulations 2007, a person must not move or attempt to move into Singapore cash (physical currency and bearer negotiable instruments as defined) whose total value exceeds the prescribed amount without making the required report. Regulation 2A sets the prescribed amount at S$20,000 — operator exceeding / strictly greater than S$20,000 (or foreign-currency equivalent), not 'S$20,000 or more'. For ordinary traveller movements, ICA requires Form NP 727 submitted electronically to the Singapore Police Force (e-727 / MyICA / SGAC pathways), generally within 72 hours before immigration clearance on arrival (reg 3). Physical currency means coin and printed money that is legal tender; BNIs include traveller's cheques and negotiable instruments in bearer form, endorsed without restriction, made to a fictitious payee, or otherwise transferring title on delivery (including signed instruments with payee omitted). ICA confirms there is no maximum amount or type restriction on bringing CBNI into Singapore; failure to submit a full and accurate report can attract a fine up to S$50,000, imprisonment up to 3 years, or both, and CBNI may be seized/confiscated. This is an AML/crime-control disclosure regime, not an ECA capital-control ceiling.",
+    "take_foreign_currency_out": "The same CDSA s60 / reg 2A architecture applies outbound: movements or attempted movements of CBNI out of Singapore whose total value exceeds S$20,000 equivalent require the prescribed report. ICA requires Form NP 727 for travellers leaving Singapore, generally within 72 hours before immigration clearance on departure (reg 4). There is no ICA-stated maximum amount or type of CBNI that may be taken out; the S$20,000 figure is a reporting trigger only. Penalties for failure to make a full and accurate report follow the CDSA/ICA framework (fine up to S$50,000 and/or imprisonment up to 3 years; possible seizure/confiscation). Outbound CBNI reporting remains distinct from the ECA exchange-control exemption layer.",
+    "cash_declaration_threshold": "Singapore's traveller cash/CBNI rule is a mandatory reporting trigger, not 'no declaration' and not a carriage ceiling. CDSA 1992 s60 prohibits moving or attempting to move into or out of Singapore cash whose total value exceeds the prescribed amount without the required report; CBNI Regulations 2007 reg 2A prescribe S$20,000. The operative comparison is exceeding S$20,000 (strictly >), inbound and outbound. ICA operational guidance requires Form NP 727 to SPF and states there is no restriction on CBNI type or amount. Do not collapse this CDSA disclosure regime into Exchange Control Act capital controls.",
+    "resident_holding_rules": "On the reviewed official corpus, MAS's blanket 1978 liberalisation exemption — quoted in Focus Energy [2010] SGHC 48 at [9] and held lawful under ECA ss33 and 38 at [11]-[13] — exempts all persons from ordinary ECA provisions/obligations, so that no exchange-control formalities or approvals are required for payments or capital transfers ([9], [13]-[14]). That is an exchange-control eligibility conclusion, not a free-standing entitlement to open any bank or e-money product, hold any account type, or bypass AML/KYC, sanctions, or institutional licensing. No primary official source located in this Evidence Rebuild establishes a universal resident right to open foreign-currency accounts irrespective of bank product rules. Resident treatment is therefore bounded to the absence of ordinary ECA approval formalities for payments and capital transfers under the continuing Act-plus-exemption architecture.",
+    "non_resident_rules": "Focus Energy [2010] SGHC 48 applied the same MAS Circular blanket exemption to payments involving a judgment creditor treated as resident outside the ECA scheduled territories, holding that ordinary MAS permission certificates under the Rules of Court were unnecessary because ECA prohibitions had been effectively suspended for payments since 1 June 1978 until the Circular is revoked or modified ([14]-[16]). This supports the general absence of ordinary ECA approval formalities for payments/capital transfers; it does not establish a universal non-resident right to open Singapore bank accounts, access every financial product, or avoid KYC/AML or sanctions screening. Non-resident claims are therefore bounded to the ECA exemption architecture and kept distinct from account-opening and product-eligibility rules.",
+    "business_invoicing_settlement": "Business payments and capital transfers are, on the reviewed official corpus, free of ordinary Exchange Control Act formalities and approvals by reason of the MAS 1978 blanket exemption recognised in Focus Energy [2010] SGHC 48 ([9], [13]-[14]). That does not mean all cross-border business transactions are unrestricted: invoicing/settlement channels remain subject to MAS licensing of banks and payment-service providers, AML/CFT obligations, sanctions, tax and commercial-bank controls. Exchange-control exemption is not evidence that regulatory compliance disappears.",
+    "exchange_controls": "Singapore's Exchange Control Act 1953 remains legally in force; Exchange Control (Continuance of Act) Notification 2023 (S 847/2023), made under ECA s1(3), extends the period during which the Act remains in force through 31 December 2033. MAS Circular / Notice 1103 (ID Circular 6/78 dd 25.5.78; effective 1 June 1978), as quoted by the High Court in Focus Energy [2010] SGHC 48 at [9], exempts all persons from ECA provisions/obligations so that no exchange-control formalities or approvals are required for payments or capital transfers, and abolishes prior Exchange Control Manual limits. The Court held that MAS lawfully exercised ECA ss33 and 38 exemption/permission powers ([11]-[13]) and that ECA prohibitions have been effectively suspended for payments since 1 June 1978 until the Circular is revoked or modified ([14]). On the reviewed corpus (current ECA text; Continuance S 847/2023; MAS Notice 1103 page with no amendment notes; Focus Energy), no official instrument was located that revokes or narrows that blanket exemption. This architecture is not a statement that the ECA was repealed, nor a claim of active broad capital controls, nor a denial of AML/CBNI reporting, licensing or sanctions layers. Absence of a located revocation is not evidence that no special or future restriction can exist.",
+    "banking_conversion_practicality": "Foreign-exchange conversion for the public is available through MAS-regulated providers. The current MAS Financial Institutions Directory lists a substantial population of Money-changing Licensees under the Payments sector, alongside other payment-institution categories (including Standard Payment Institution and Major Payment Institution licence classes on the directory). Money-changing is therefore a licensed activity, not an unregulated free-for-all and not a bank-only monopoly on the reviewed FID evidence. Availability of a particular currency, rate, channel or transfer product is not guaranteed and remains subject to the provider's licence scope, AML/KYC and commercial terms."
   },
   "source_authorities": [
     {
-      "label": "Monetary Authority of Singapore (MAS) — Foreign Exchange Policy",
+      "label": "Singapore Statutes Online — Exchange Control Act 1953 (current force)",
+      "url": "https://sso.agc.gov.sg/Act/ECA1953",
+      "type": "ministry",
+      "tier": "primary"
+    },
+    {
+      "label": "Singapore Statutes Online — Exchange Control (Continuance of Act) Notification 2023 (S 847/2023; in force through 31 December 2033)",
+      "url": "https://sso.agc.gov.sg/SL/ECA1953-S847-2023?DocDate=20231215",
+      "type": "ministry",
+      "tier": "primary"
+    },
+    {
+      "label": "Singapore Statutes Online — Corruption, Drug Trafficking and Other Serious Crimes (Confiscation of Benefits) Act 1992 (CDSA; Part 6A cash-movement framework)",
+      "url": "https://sso.agc.gov.sg/Act/CDSA1992",
+      "type": "ministry",
+      "tier": "primary"
+    },
+    {
+      "label": "Singapore Statutes Online — CBNI Regulations 2007 (S 595/2007; current version incl. reg 2A prescribed amount S$20,000; regs 3-4 reporting)",
+      "url": "https://sso.agc.gov.sg/SL/S595-2007",
+      "type": "ministry",
+      "tier": "primary"
+    },
+    {
+      "label": "Singapore High Court / eLitigation — Focus Energy Ltd v Aye Aye Soe [2010] SGHC 48 (MAS Circular blanket ECA exemption; paras 9, 11-16)",
+      "url": "https://www.elitigation.sg/gd/s/2010_SGHC_48",
+      "type": "other",
+      "tier": "secondary"
+    },
+    {
+      "label": "MAS — Notice 1103 Exchange Control Liberalisation (25 May 1978; ID Circular 6/78; merchant-bank notice page; no amendment notes)",
+      "url": "https://www.mas.gov.sg/regulation/notices/notice-1103",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "MAS — Singapore's Monetary Policy Framework (exchange-rate-centred S$NEER policy band)",
       "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "MAS — Capital Markets & FX Regulations",
-      "url": "https://www.mas.gov.sg/regulation",
-      "type": "primary_regulator",
+      "label": "MAS — Monetary Policy Statement 27 July 2026 (current S$NEER policy-band management)",
+      "url": "https://www.mas.gov.sg/news/monetary-policy-statements/2026/mas-monetary-policy-statement-27jul26",
+      "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "Singapore Customs — Travel & Currency Rules",
-      "url": "https://www.customs.gov.sg/",
+      "label": "ICA — Taking Cash In and Out of Singapore (NP 727 / CBNI operational guidance)",
+      "url": "https://www.ica.gov.sg/enter-transit-depart/at-our-checkpoints/for-travellers/CBNI",
       "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "MAS Financial Institutions Directory — Money-changing Licensee listings (Payments sector)",
+      "url": "https://eservices.mas.gov.sg/fid/institution?category=Money-changing+Licensee",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "MAS Financial Institutions Directory — home (Payments licence-class overview)",
+      "url": "https://eservices.mas.gov.sg/fid",
+      "type": "central_bank",
       "tier": "primary"
     }
   ],
@@ -54,79 +102,273 @@
       {
         "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework",
         "pages": [],
-        "section": "FX Regime Overview"
+        "section": "Monetary Policy Framework — exchange-rate-centred policy; S$NEER vs trade-weighted basket; policy band; FX intervention",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://sso.agc.gov.sg/Act/ECA1953",
+        "pages": [],
+        "section": "Exchange Control Act 1953 — statute remains current on Singapore Statutes Online",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://sso.agc.gov.sg/SL/ECA1953-S847-2023?DocDate=20231215",
+        "pages": [],
+        "section": "S 847/2023 s2 — Act continuance through 31 December 2033",
+        "source_kind": "html",
+        "article": "s2"
+      },
+      {
+        "url": "https://www.elitigation.sg/gd/s/2010_SGHC_48",
+        "pages": [],
+        "section": "[2010] SGHC 48 [9], [11]-[14] — MAS Circular blanket exemption suspending ordinary ECA formalities for payments/capital transfers",
+        "source_kind": "html",
+        "clause": "[9], [11]-[14]"
+      },
+      {
+        "url": "https://www.ica.gov.sg/enter-transit-depart/at-our-checkpoints/for-travellers/CBNI",
+        "pages": [],
+        "section": "ICA CBNI page — > S$20,000 reporting; no amount ceiling; distinct from ECA",
+        "source_kind": "html"
       }
     ],
     "summary.traveler": [
       {
-        "url": "https://www.customs.gov.sg/",
+        "url": "https://www.ica.gov.sg/enter-transit-depart/at-our-checkpoints/for-travellers/CBNI",
         "pages": [],
-        "section": "Travel & Currency Movement"
+        "section": "Entering or leaving; CBNI exceeding S$20,000; Form NP 727 to SPF; no type/amount restriction",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://sso.agc.gov.sg/SL/S595-2007",
+        "pages": [],
+        "section": "reg 2A — prescribed amount under CDSA s60(1) is $20,000; regs 3-4 traveller Form NP 727 timing",
+        "source_kind": "html",
+        "article": "regs 2A, 3, 4"
+      },
+      {
+        "url": "https://sso.agc.gov.sg/Act/CDSA1992",
+        "pages": [],
+        "section": "CDSA 1992 Part 6A / s60 — report required when cash movement exceeds prescribed amount",
+        "source_kind": "html",
+        "article": "s60"
       }
     ],
     "summary.business": [
       {
-        "url": "https://www.mas.gov.sg/regulation",
+        "url": "https://www.elitigation.sg/gd/s/2010_SGHC_48",
         "pages": [],
-        "section": "Business & Capital Movement"
+        "section": "[9], [13]-[14] — no exchange-control formalities/approvals for payments or capital transfers under MAS Circular",
+        "source_kind": "html",
+        "clause": "[9], [13]-[14]"
+      },
+      {
+        "url": "https://www.mas.gov.sg/regulation/notices/notice-1103",
+        "pages": [],
+        "section": "Notice 1103 landing page — Exchange Control Liberalisation; no amendment notes",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://eservices.mas.gov.sg/fid",
+        "pages": [],
+        "section": "FID — licensed payment/money-changing sector remains regulated",
+        "source_kind": "html"
       }
     ],
     "rules.bring_foreign_currency_in": [
       {
-        "url": "https://www.customs.gov.sg/",
+        "url": "https://sso.agc.gov.sg/Act/CDSA1992",
         "pages": [],
-        "section": "Import of Currency"
+        "section": "s60 — must not move/attempt to move into Singapore cash exceeding prescribed amount without required report",
+        "source_kind": "html",
+        "article": "s60"
+      },
+      {
+        "url": "https://sso.agc.gov.sg/SL/S595-2007",
+        "pages": [],
+        "section": "reg 2A prescribed amount $20,000; reg 3 inbound timing/forms (NP 727 for traveller movements)",
+        "source_kind": "html",
+        "article": "regs 2A, 3"
+      },
+      {
+        "url": "https://www.ica.gov.sg/enter-transit-depart/at-our-checkpoints/for-travellers/CBNI",
+        "pages": [],
+        "section": "ICA operational — exceeding S$20,000; NP 727; definitions of physical currency/BNI; no maximum amount; penalties",
+        "source_kind": "html"
       }
     ],
     "rules.take_foreign_currency_out": [
       {
-        "url": "https://www.customs.gov.sg/",
+        "url": "https://sso.agc.gov.sg/Act/CDSA1992",
         "pages": [],
-        "section": "Export of Currency"
+        "section": "s60 — outbound movements exceeding prescribed amount require report",
+        "source_kind": "html",
+        "article": "s60"
+      },
+      {
+        "url": "https://sso.agc.gov.sg/SL/S595-2007",
+        "pages": [],
+        "section": "reg 2A; reg 4 outbound timing/forms (NP 727 for traveller movements)",
+        "source_kind": "html",
+        "article": "regs 2A, 4"
+      },
+      {
+        "url": "https://www.ica.gov.sg/enter-transit-depart/at-our-checkpoints/for-travellers/CBNI",
+        "pages": [],
+        "section": "ICA — leaving Singapore; exceeding S$20,000; NP 727; no maximum amount; penalties",
+        "source_kind": "html"
       }
     ],
     "rules.cash_declaration_threshold": [
       {
-        "url": "https://www.customs.gov.sg/",
+        "url": "https://sso.agc.gov.sg/Act/CDSA1992",
         "pages": [],
-        "section": "Cash Declaration Rules"
+        "section": "s60 — exceeds prescribed amount (operator: exceeding)",
+        "source_kind": "html",
+        "article": "s60"
+      },
+      {
+        "url": "https://sso.agc.gov.sg/SL/S595-2007",
+        "pages": [],
+        "section": "reg 2A — prescribed amount $20,000",
+        "source_kind": "html",
+        "article": "reg 2A"
+      },
+      {
+        "url": "https://www.ica.gov.sg/enter-transit-depart/at-our-checkpoints/for-travellers/CBNI",
+        "pages": [],
+        "section": "ICA — reporting trigger; inbound and outbound; not a carriage ceiling",
+        "source_kind": "html"
       }
     ],
     "rules.resident_holding_rules": [
       {
-        "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework",
+        "url": "https://www.elitigation.sg/gd/s/2010_SGHC_48",
         "pages": [],
-        "section": "Resident Foreign Currency Accounts"
+        "section": "[9] quotes MAS Circular — all persons exempted; no formalities/approvals for payments or capital transfers",
+        "source_kind": "html",
+        "clause": "[9]"
+      },
+      {
+        "url": "https://www.elitigation.sg/gd/s/2010_SGHC_48",
+        "pages": [],
+        "section": "[11]-[13] — ECA ss33 and 38 empower MAS exemptions; Circular is lawful exercise of those powers",
+        "source_kind": "html",
+        "clause": "[11]-[13]",
+        "article": "ECA ss33, 38"
+      },
+      {
+        "url": "https://sso.agc.gov.sg/Act/ECA1953",
+        "pages": [],
+        "section": "ECA remains the parent statute; exemption architecture does not create a universal bank-account product right",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://sso.agc.gov.sg/SL/ECA1953-S847-2023?DocDate=20231215",
+        "pages": [],
+        "section": "Continuance through 31 December 2033 — Act still in force alongside exemption",
+        "source_kind": "html",
+        "article": "s2"
       }
     ],
     "rules.non_resident_rules": [
       {
-        "url": "https://www.mas.gov.sg/regulation",
+        "url": "https://www.elitigation.sg/gd/s/2010_SGHC_48",
         "pages": [],
-        "section": "Non-Resident Accounts & Transfers"
+        "section": "[14]-[16] — blanket exemption applies to payments involving creditors outside scheduled territories; no MAS certificate needed while Circular unrevoled",
+        "source_kind": "html",
+        "clause": "[14]-[16]"
+      },
+      {
+        "url": "https://www.elitigation.sg/gd/s/2010_SGHC_48",
+        "pages": [],
+        "section": "[9] — Circular text: all persons; payments and capital transfers",
+        "source_kind": "html",
+        "clause": "[9]"
+      },
+      {
+        "url": "https://sso.agc.gov.sg/Act/ECA1953",
+        "pages": [],
+        "section": "ECA definitions/scheduled territories remain part of the statutory framework even while ordinary prohibitions are suspended",
+        "source_kind": "html"
       }
     ],
     "rules.business_invoicing_settlement": [
       {
-        "url": "https://www.mas.gov.sg/regulation",
+        "url": "https://www.elitigation.sg/gd/s/2010_SGHC_48",
         "pages": [],
-        "section": "Business & Cross-Border Payments"
+        "section": "[9], [13]-[14] — no ordinary ECA formalities/approvals for payments or capital transfers",
+        "source_kind": "html",
+        "clause": "[9], [13]-[14]"
+      },
+      {
+        "url": "https://www.mas.gov.sg/regulation/notices/notice-1103",
+        "pages": [],
+        "section": "Notice 1103 — Exchange Control Liberalisation archive page (no amendment notes)",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://eservices.mas.gov.sg/fid",
+        "pages": [],
+        "section": "FID — banking/payment licensing remains a separate compliance layer",
+        "source_kind": "html"
       }
     ],
     "rules.exchange_controls": [
       {
-        "url": "https://www.mas.gov.sg/monetary-policy/singapores-monetary-policy-framework",
+        "url": "https://sso.agc.gov.sg/Act/ECA1953",
         "pages": [],
-        "section": "Absence of Exchange Controls"
+        "section": "Exchange Control Act 1953 — current SSO text; Act not repealed",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://sso.agc.gov.sg/SL/ECA1953-S847-2023?DocDate=20231215",
+        "pages": [],
+        "section": "S 847/2023 s2 — continuance through 31 December 2033 under ECA s1(3)",
+        "source_kind": "html",
+        "article": "s2"
+      },
+      {
+        "url": "https://www.elitigation.sg/gd/s/2010_SGHC_48",
+        "pages": [],
+        "section": "[9] — MAS Circular text (all persons exempted; no formalities for payments/capital transfers; Manual limits abolished)",
+        "source_kind": "html",
+        "clause": "[9]"
+      },
+      {
+        "url": "https://www.elitigation.sg/gd/s/2010_SGHC_48",
+        "pages": [],
+        "section": "[11]-[15] — ss33/38 powers; blanket exemption; effective suspension of ECA prohibitions until Circular revoked/modified",
+        "source_kind": "html",
+        "clause": "[11]-[15]"
+      },
+      {
+        "url": "https://www.mas.gov.sg/regulation/notices/notice-1103",
+        "pages": [],
+        "section": "Notice 1103 page — current MAS notice listing; no amendment notes located",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.ica.gov.sg/enter-transit-depart/at-our-checkpoints/for-travellers/CBNI",
+        "pages": [],
+        "section": "ICA CBNI — distinct AML/crime-control disclosure layer (not ECA capital control)",
+        "source_kind": "html"
       }
     ],
     "rules.banking_conversion_practicality": [
       {
-        "url": "https://www.mas.gov.sg/regulation",
+        "url": "https://eservices.mas.gov.sg/fid/institution?category=Money-changing+Licensee",
         "pages": [],
-        "section": "Authorised Dealers & Exchange Houses"
+        "section": "FID filter Money-changing Licensee — licensed money-changers listed under Payments",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://eservices.mas.gov.sg/fid",
+        "pages": [],
+        "section": "FID home — Money-changing Licensee / Standard Payment Institution / Major Payment Institution class counts",
+        "source_kind": "html"
       }
     ]
   },
-  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Singapore are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Monetary Authority of Singapore / Singapore Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Monetary Authority of Singapore or Singapore Customs before making any financial or travel decisions."
+  "disclaimer": "This page provides general informational reference only. Singapore foreign-exchange, monetary-policy and cross-border cash/CBNI rules are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, licensing and AML/sanctions frameworks. The Exchange Control Act 1953 remains in force alongside MAS liberalisation exemptions; this is not a representation that every banking product is available without conditions. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with MAS, ICA, the Singapore Police Force or an authorised financial institution before making any financial or travel decisions."
 }
