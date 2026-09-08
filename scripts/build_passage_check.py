@@ -116,6 +116,44 @@ DECLARATION = {
             "RMB CNY 20,000 carriage limit"
         ),
     },
+    "egypt": {
+        "thresholds": [
+            {"value": 10000, "currency": "USD", "operator": ">",
+             "scope": "foreign currency and bearer negotiable instruments, individually or combined",
+             "applies": "entering Egypt",
+             "authority": "Egyptian Customs under AML Law 80 Art. 12 / Exec Reg Art. 14(3), with Law 194 Art. 213 overlapping for foreign-currency cash",
+             "mechanism": "mandatory customs disclosure when value exceeds USD 10,000 equivalent (تجاوز / جاوز, strictly >); exactly USD 10,000 is outside this disclosure trigger; no general inbound FX cash ceiling under Law 194 Art. 213"},
+            {"value": 5000, "currency": "USD", "operator": ">",
+             "scope": "foreign currency and bearer negotiable instruments, individually or combined",
+             "applies": "leaving Egypt",
+             "authority": "Egyptian Customs under AML Law 80 Art. 12 / Exec Reg Art. 14(4)",
+             "mechanism": "mandatory customs disclosure when value exceeds USD 5,000 equivalent (تجاوز, strictly >); DISCLOSURE threshold only — NOT the ordinary FX carriage ceiling; exactly USD 5,000 is outside this disclosure trigger"},
+            {"value": 10000, "currency": "USD", "operator": "<=",
+             "scope": "physical foreign-currency cash",
+             "applies": "ordinary departure from Egypt",
+             "authority": "Law 194/2020 Art. 213 / CBE framework",
+             "mechanism": "ordinary FX cash carriage not exceeding USD 10,000 equivalent (ألا يزيد على, <=); CARRIAGE rule, not a declaration threshold; travellers may carry the remainder of foreign currency previously disclosed on arrival even when the remainder exceeds USD 10,000"},
+            {"value": 5000, "currency": "EGP", "operator": "<=",
+             "scope": "physical Egyptian-pound banknotes; AML Executive Regulation also covers bearer negotiable instruments in this EGP-valued limb",
+             "applies": "entering or leaving Egypt",
+             "authority": "CBE Board Decision 2200/2020 for EGP banknotes + AML Exec Reg Art. 14(5) for EGP banknotes/BNI overlay",
+             "mechanism": "carriage within EGP 5,000 (<=); carriage ceiling, not a declaration threshold; Decision 2200 itself regulates EGP banknotes — the BNI extension is from AML Exec Reg Art. 14(5)"},
+        ],
+        "note": "Mixed dual-layer architecture — do not collapse. "
+                "(A) Law 194 Art. 213 is the FX-cash architecture: inbound FX free with no general quantitative ceiling and Art. 213-form disclosure when FX exceeds USD 10,000 (جاوز / strictly >); "
+                "outbound ordinary FX cash carriage not exceeding USD 10,000 (ألا يزيد على / <=), plus a previously-declared inbound FX remainder exception above USD 10,000 for travellers generally. "
+                "(B) AML Law 80 Art. 12 / Exec Reg Art. 14 is the FX+BNI customs-disclosure architecture: inbound disclosure when FX and/or BNI (aggregated) exceeds USD 10,000; "
+                "outbound disclosure when FX and/or BNI (aggregated) exceeds USD 5,000 — a disclosure threshold distinct from and lower than the Art. 213 FX carriage ceiling. "
+                "(C) Decision 2200/2020 sets the physical EGP banknote carriage ceiling at EGP 5,000 entering or leaving; Exec Reg Art. 14(5) also covers EGP banknotes or BNI within EGP 5,000. "
+                "BNI is defined in Exec Reg Art. 1 and must not be assigned Art. 213 FX-only semantics. "
+                "Never publish 'USD 10,000 declaration at entry and exit' or 'USD 5,000 outbound cash limit'. "
+                "Disclosure threshold ≠ carriage ceiling.",
+        "pair_surface_summary": (
+            "FX/BNI disclose >USD10k in / >USD5k out · "
+            "outbound FX cash ≤USD10k (+ declared remainder) · "
+            "EGP notes/BNI ≤EGP5k"
+        ),
+    },
     "france": {
         "thresholds": [
             {"value": 10000, "currency": "EUR", "scope": "cash or bearer negotiable instruments (or equivalent)",
@@ -384,6 +422,11 @@ EXCHANGE_CONTROLS = {
               "capital-account FX is transaction-specific and may involve bank handling, registration, reporting, account/permitted-use controls, "
               "quotas or approval where specifically required; the PBOC managed-floating RMB regime is a separate monetary-regime fact and is not "
               "itself an exchange-control rule; no universal SAFE approval regime is asserted. Absence of a located restriction is not evidence that none exists."),
+    "egypt": ("floating_regulated_market",
+              "Market-determined EGP exchange rate under Law 194/CBE, with FX retention and "
+              "inward/outward transfers permitted through licensed channels; domestic EGP "
+              "settlement rules, licensed-market supervision and separate AML/cross-border "
+              "cash controls remain operative"),
     "france": ("none", "No general exchange controls (liberalised within the Eurozone)"),
     "germany": ("none", "No general exchange controls (liberalised within the Eurozone)"),
     "india": ("capital_account_regulated",
