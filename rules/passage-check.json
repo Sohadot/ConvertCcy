@@ -2,11 +2,11 @@
  "engine": "ConvertCCY Passage Check",
  "version": "1.0",
  "built_from": "rules/dataset.json",
- "source_dataset_generated_at": "2026-09-07T19:59:59+00:00",
+ "source_dataset_generated_at": "2026-09-08T11:36:10+00:00",
  "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
  "attribution": "ConvertCCY (https://convertccy.com/)",
  "notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. Structured thresholds are transcribed from each entry's cash_declaration_threshold field. Currency conversions shown in the tool are indicative only and are not governed figures.",
- "count": 17,
+ "count": 18,
  "countries": [
   {
    "country_name": "Australia",
@@ -1899,6 +1899,141 @@
     }
    ],
    "disclaimer": "This page provides general informational reference only. Foreign-exchange and cash-control rules in South Korea are set by the Foreign Exchange Transactions Act and Korea Customs rules and may change; requirements depend on residency, the transaction type and amount, documentation, and the applicable MOEF, Bank of Korea, and Korea Customs Service framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Korea Customs Service, the Bank of Korea, or a qualified professional before making any financial or travel decisions."
+  },
+  {
+   "country_name": "Turkey",
+   "country_slug": "turkey",
+   "iso2": "TR",
+   "currency_code": "TRY",
+   "currency_name": "Turkish Lira",
+   "region": "Eastern Europe",
+   "last_reviewed": "2026-09-08",
+   "rules_page": "/rules/turkey-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 185000,
+      "currency": "TRY",
+      "scope": "Turkish lira cash",
+      "applies": "leaving Türkiye / outbound only",
+      "authority": "Ministry of Trade / Turkish Customs",
+      "mechanism": "mandatory Nakit Beyan Formu declaration (Decree No. 32 Art. 3(d); Communiqué 2008-32/34 Art. 3(5)); triggered only when exceeding (aşan, strictly >)"
+     },
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "foreign banknotes / efektif, or the equivalent in another foreign currency",
+      "applies": "leaving Türkiye / outbound only",
+      "authority": "Ministry of Trade / Turkish Customs",
+      "mechanism": "mandatory Nakit Beyan Formu declaration (Decree No. 32 Art. 4(f); Communiqué 2008-32/34 Art. 4(2)); triggered only when exceeding (aşan, strictly >)"
+     }
+    ],
+    "note": "Both outbound triggers apply only when exceeded (aşan, strictly '>'), not when merely reached; they are outbound declaration triggers on the Nakit Beyan Formu, not export ceilings. Ordinary inbound foreign currency has no general mandatory numeric declaration threshold under Decree No. 32 Art. 4(a); inbound declaration may be voluntary, and Customs may request an explanation of amount, source and purpose under Law No. 5549. Source/purpose cash categories that must move through banking channels remain a separate regime. The TRY and foreign-banknote (efektif) thresholds are distinct and must not be collapsed into one generic traveller figure, and must not be read as creating a symmetric inbound EUR 10,000 or 'entry and exit' threshold.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "floating_regulated_market",
+    "label": "Türkiye operates a floating exchange-rate regime with no nominal or real exchange-rate target; the reviewed official sources do not establish a single general foreign-exchange authorisation regime, while specific regulated layers remain distinct — resident/non-resident FX account and transfer rules under Decree No. 32, outbound physical-cash declaration triggers, banking-channel-only source/purpose categories, domestic FX-contract restrictions, export-proceeds repatriation/sale requirements, and transaction-specific reporting. Absence of a located restriction is not evidence of absence. The floating regime is a monetary fact, not itself an exchange-control rule.",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "Bringing foreign currency into Türkiye is generally free under Decree No. 32 Art. 4(a) (yurda döviz ithali serbesttir); the reviewed sources establish no general mandatory numeric declaration threshold for ordinary passenger-carried inbound cash. A traveller may make a voluntary declaration, and Turkish Customs may require an explanation and documentation of the amount, its source and its purpose under the anti-money-laundering framework (Law No. 5549) — an onboarding/compliance explanation layer, not the legal source of the import freedom. Separately, certain cash categories are, by reason of source or purpose, not permitted to be carried into Türkiye by passengers and must instead move through the banking system (Ministry of Trade Cash Controls Circular). The reviewed sources do not establish a symmetric inbound EUR 10,000 declaration ceiling.",
+     "source": {
+      "url": "https://ms.hmb.gov.tr/uploads/2025/07/Turk-Parasi-Kiymetini-Koruma-Hakkinda-32-Sayili-Karar-dd7747872eb324d4.pdf",
+      "section": "Decree No. 32 Art. 4(a) — foreign-currency import generally free; no general mandatory inbound declaration threshold"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "Taking cash out of Türkiye is declaration-triggered. Carrying Turkish lira exceeding (aşan) TRY 185,000 out of the country requires a declaration on the Customs Cash Declaration Form (Nakit Beyan Formu) (Decree No. 32 Art. 3(d); Communiqué No. 2008-32/34 Art. 3(5)). Carrying foreign banknotes (efektif) exceeding EUR 10,000 or the equivalent in other foreign currency out of the country likewise requires a Nakit Beyan Formu declaration (Decree No. 32 Art. 4(f); Communiqué No. 2008-32/34 Art. 4(2)). The binding word is 'aşan' (exceeding, strictly '>'). These figures are declaration triggers, not a maximum exportable amount; separately, certain cash categories may not be carried out by passengers by reason of source or purpose and must move through the banking system. The pre-March-2025 TRY 25,000 figure is superseded and is not used.",
+     "source": {
+      "url": "https://ms.hmb.gov.tr/uploads/2025/07/Turk-Parasi-Kiymetini-Koruma-Hakkinda-32-Sayili-Karar-dd7747872eb324d4.pdf",
+      "section": "Decree No. 32 Art. 3(d) (outbound Turkish lira, PDF page 4) and Art. 4(f) (outbound efektif, PDF page 5) — legal basis; 'aşan' = exceeding (>)"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "On exit the cross-border cash-declaration triggers are: Turkish lira exceeding TRY 185,000, and foreign banknotes (efektif) exceeding EUR 10,000 or the equivalent — in each case declared to Turkish Customs on the Cash Declaration Form (Nakit Beyan Formu). The binding operator is 'exceeding' (aşan, strictly '>'). On entry there is no general mandatory numeric declaration threshold: foreign-currency import is generally free under Decree No. 32 Art. 4(a), declaration is voluntary, and Customs may require an explanation of amount, source and purpose under Law No. 5549 as a compliance layer. Legal basis: Decree No. 32 (Art. 3(d), Art. 4(f)) and Communiqué No. 2008-32/34 (Art. 3(5), Art. 4(2)); enforcement by the Ministry of Trade / Turkish Customs (Customs Law No. 4458). This customs declaration is distinct from the banking-channel-only cash categories, from the anti-money-laundering explanation layer, and from any notion of an export ceiling.",
+     "source": {
+      "url": "https://ms.hmb.gov.tr/uploads/2025/07/Turk-Parasi-Kiymetini-Koruma-Hakkinda-32-Sayili-Karara-Iliskin-Teblig-d2e065a8155e81ed.pdf",
+      "section": "Ministry consolidated Communiqué 2008-32/34 (PDF page 1) — outbound TRY aşan/> 185,000 (Art. 3(5)) and efektif aşan/> EUR 10,000 or equivalent (Art. 4(2)); Nakit Beyan Formu; 28 March 2025 amendment"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "Türkiye does not operate a single general exchange-control authorisation regime in the reviewed sources; instead several distinct, layered elements apply and must not be conflated: a floating exchange-rate regime with no target (CBRT), kept separate from controls; generally liberal foreign-exchange holding by residents (Art. 4(b)) and FX deposit-account opening for residents and non-residents (Art. 19(1)); transfers abroad through banks (Art. 4(e)); outbound physical-cash declaration triggers (Turkish lira exceeding TRY 185,000; efektif exceeding EUR 10,000 — Nakit Beyan Formu); source/purpose cash categories that must move through the banking system; a restriction on foreign-currency-denominated domestic contracts (Art. 4(g)); an export-proceeds repatriation/surrender regime under the CBRT Export Circular; and transaction-specific capital-movement and reporting rules. Bank-level macroprudential foreign-exchange measures (reserve requirements, conversion incentives) are prudential rules applied to banks and are not customer currency-passage restrictions. The reviewed sources do not establish that Türkiye is 'fully liberalised' or has 'no controls', and absence of a located restriction is not evidence that none exists.",
+     "source": {
+      "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Core+Functions/Exchange+Rate+Policy",
+      "section": "CBRT — floating regime with no target as a monetary fact, kept separate from controls; no 'no controls'/'fully liberalised' assertion"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "Under Decree No. 32 Art. 4(b), persons resident in Türkiye (Türkiye'de yerleşik kişiler — Decree Art. 2) may generally possess foreign exchange, buy and sell foreign exchange through authorised channels, hold foreign exchange in bank foreign-currency (döviz tevdiat) accounts, hold and use foreign banknotes (efektif), and dispose of foreign exchange through banks domestically and abroad. Separately, Decree No. 32 Art. 19(1) provides that the Central Bank and banks may open foreign-currency deposit accounts (döviz tevdiat hesapları) and precious-metal depot accounts in the name of persons resident in Türkiye; account holders may freely dispose of those accounts; interest is freely agreed between bank and account holder; and principal and interest transfers are met by banks from their own resources. Art. 4(b) is the resident FX possession/use/holding layer; Art. 19(1) is the FX deposit-account opening and disposition framework. Neither provision is a Central Bank approval regime for ordinary holding, and neither establishes an unconditional right to every banking product or service. Customer-due-diligence / KYC obligations are a separate operational/compliance onboarding layer and are not the legal source of this account framework. Transaction-specific rules (for example on foreign-currency-denominated domestic contracts or reporting) may separately apply.",
+     "source": {
+      "url": "https://ms.hmb.gov.tr/uploads/2025/07/Turk-Parasi-Kiymetini-Koruma-Hakkinda-32-Sayili-Karar-dd7747872eb324d4.pdf",
+      "section": "Decree No. 32 Art. 2 — Türkiye'de yerleşik kişiler (persons with legal settlement in Türkiye); residency not equated with nationality"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Under Decree No. 32 Art. 4(d), persons resident abroad (Dışarıda yerleşik kişiler — Decree Art. 2) may buy and sell foreign exchange with banks, authorised institutions (yetkili müesseseler), the PTT, precious-metal intermediary institutions and brokerages. Under Art. 4(e), persons resident in Türkiye and persons resident abroad may freely cause foreign-exchange transfers abroad through banks. Separately, Decree No. 32 Art. 19(1) provides that the Central Bank and banks may open foreign-currency deposit accounts (döviz tevdiat hesapları) and precious-metal depot accounts in the name of persons resident abroad; account holders may freely dispose of those accounts; interest is freely agreed between bank and account holder; and principal and interest transfers are met by banks from their own resources. This is the FX deposit-account opening framework for non-residents — not a claim that non-residents 'transfer more freely', and not an unconditional right to every Turkish-lira or foreign-currency banking product. Customer-due-diligence / KYC obligations remain a separate operational/compliance onboarding layer. Transaction-specific restrictions and reporting may separately apply.",
+     "source": {
+      "url": "https://ms.hmb.gov.tr/uploads/2025/07/Turk-Parasi-Kiymetini-Koruma-Hakkinda-32-Sayili-Karar-dd7747872eb324d4.pdf",
+      "section": "Decree No. 32 Art. 2 — Dışarıda yerleşik kişiler (persons not resident in Türkiye); residency not equated with nationality"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "Foreign-exchange conversion is available through banks and through authorised institutions (yetkili müesseseler) — joint-stock exchange companies licensed by the Ministry of Treasury and Finance under Decree No. 32 and classified by permitted activity — and, where applicable, other specifically authorised channels such as the PTT. Licensing of authorised exchange institutions sits with the Ministry of Treasury and Finance, not the Central Bank. Documentation and underlying-transaction requirements may apply to larger transactions, and the availability of a particular currency, service or rate is not guaranteed by any institution.",
+     "source": {
+      "url": "https://ms.hmb.gov.tr/uploads/2025/07/Turk-Parasi-Kiymetini-Koruma-Hakkinda-32-Sayili-Karar-dd7747872eb324d4.pdf",
+      "section": "Decree No. 32 Art. 2 — yetkili müesseseler defined as Ministry-licensed FX institutions; banks and other authorised channels (e.g. PTT); licensing is Treasury, not CBRT"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Ministry of Treasury and Finance — consolidated Decree No. 32 on the Protection of the Value of Turkish Currency (Türk Parası Kıymetini Koruma Hakkında 32 Sayılı Karar), under Law No. 1567: Art. 2 residency definitions; Art. 3(d) outbound TRY aşan/> 185,000; Art. 4(a) FX import/export generally free; Art. 4(b) resident FX holding/use; Art. 4(d) non-resident FX transactions; Art. 4(e) FX transfers abroad through banks; Art. 4(f) outbound efektif aşan/> EUR 10,000; Art. 4(g) domestic FX-denominated contract restriction; Art. 19(1) resident and non-resident döviz tevdiat account opening",
+     "url": "https://ms.hmb.gov.tr/uploads/2025/07/Turk-Parasi-Kiymetini-Koruma-Hakkinda-32-Sayili-Karar-dd7747872eb324d4.pdf",
+     "type": "ministry",
+     "tier": "primary"
+    },
+    {
+     "label": "Ministry of Treasury and Finance — consolidated Communiqué No. 2008-32/34 (Türk Parası Kıymetini Koruma Hakkında 32 Sayılı Karara İlişkin Tebliğ): current-effective text for cross-border physical-cash movement and the Cash Declaration Form / Nakit Beyan Formu; outbound Turkish-lira trigger Art. 3(5) (aşan / > TRY 185,000); outbound foreign-cash/efektif trigger Art. 4(2) (aşan / > EUR 10,000 or equivalent); PDF page 1; records the 28 March 2025 amendment replacing the prior TRY amount",
+     "url": "https://ms.hmb.gov.tr/uploads/2025/07/Turk-Parasi-Kiymetini-Koruma-Hakkinda-32-Sayili-Karara-Iliskin-Teblig-d2e065a8155e81ed.pdf",
+     "type": "ministry",
+     "tier": "primary"
+    },
+    {
+     "label": "Ministry of Trade / Turkish Customs — Cash Controls Circular (Nakit Kontrolleri Genelgesi, 2024/01) and the Cash Declaration Form (Nakit Beyan Formu); passenger physical-cash enforcement under Customs Law No. 4458 and anti-money-laundering Law No. 5549 (voluntary declaration; Customs-requested explanation as compliance layer; banking-channel-only cash categories)",
+     "url": "https://ticaret.gov.tr/data/65966a8013b876fb4cb76a9d/Nakit%20Kontrolleri%20Genelgesi%20ve%20ekleri.pdf",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "Central Bank of the Republic of Türkiye (CBRT/TCMB) — Exchange Rate Policy: floating exchange-rate regime adopted after the 2001 crisis, rates determined by market supply and demand, no nominal or real exchange-rate target, measures only against excessive volatility for financial stability",
+     "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Core+Functions/Exchange+Rate+Policy",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Central Bank of the Republic of Türkiye (CBRT/TCMB) — current Export Circular (İhracat Genelgesi): export-proceeds repatriation through banks; sale/surrender to the CBRT as a distinct step; EK MADDE 3 base minimum sale 25% (PDF page 20); GEÇİCİ MADDE 4 current temporary minimum sale 35% through 31 January 2027 inclusive (PDF page 21; Ministry of Treasury and Finance instruction dated 30 July 2026)",
+     "url": "https://www.tcmb.gov.tr/wps/wcm/connect/e90670f7-fc2e-453c-acd3-88098334b484/%C4%B0hracat+Genelgesi.pdf",
+     "type": "central_bank",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs, currency and capital-movement rules in Türkiye are set by the Ministry of Treasury and Finance (Decree No. 32 and implementing communiqués), the Ministry of Trade / Turkish Customs, and the Central Bank of the Republic of Türkiye, and change frequently; requirements depend on residency status, the transaction type and amount, the direction of travel, documentation, and the applicable Decree No. 32 / customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Ministry of Treasury and Finance, the Central Bank of the Republic of Türkiye, or Turkish Customs before making any financial or travel decisions."
   },
   {
    "country_name": "United Arab Emirates",
