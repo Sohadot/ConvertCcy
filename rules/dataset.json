@@ -4,8 +4,8 @@
   "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
   "attribution": "ConvertCCY (https://convertccy.com/)",
   "citation": "ConvertCCY. Foreign Currency Rules Dataset. https://convertccy.com/rules/dataset.json",
-  "generated_at": "2026-09-08T18:02:54+00:00",
-  "count": 20,
+  "generated_at": "2026-09-08T19:16:29+00:00",
+  "count": 21,
   "countries": [
     {
       "country_name": "Australia",
@@ -2363,6 +2363,514 @@
         ]
       },
       "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs and anti-money-laundering rules in Mexico are set by the Ley Monetaria, the Ley del Banco de México, the Ley Aduanera, the Ley de Instituciones de Crédito and related regulations, and may change; requirements depend on residency, the transaction type and amount, documentation, and the applicable Banco de México, SHCP, CNBV, ANAM and UIF framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with Banco de México, the customs authority (ANAM), or a qualified professional before making any financial or travel decisions."
+    },
+    {
+      "country_name": "Morocco",
+      "country_slug": "morocco",
+      "iso2": "MA",
+      "iso3": "MAR",
+      "region": "North Africa",
+      "currency_code": "MAD",
+      "currency_name": "Moroccan Dirham",
+      "schema_version": "1.2.1",
+      "page_status": "published",
+      "last_reviewed": "2026-09-08",
+      "evidence_tier": "official_verified",
+      "official_source_available": true,
+      "publication_class": "reference",
+      "indexing_allowed": true,
+      "source_notice": "",
+      "country_overview": "Morocco's currency is the Moroccan dirham (MAD). Bank Al-Maghrib administers a gradual exchange-rate reform in which the dirham fluctuates within a ±5% band around a central rate based on a currency basket composed of the euro (60%) and the US dollar (40%) — a monetary-regime fact kept analytically separate from exchange-control law. Cross-border FX operations remain under the regulated foreign-exchange framework administered by the Office des Changes. The Instruction Générale des Opérations de Change 2026 (IGOC 2026) entered into force on 1 January 2026 and is the current controlling general instruction. Border reporting of foreign means/instruments under Art. 37 (>= MAD 100,000) is distinct from the physical-MAD banknote carriage rule under Art. 42 (<= MAD 2,000). Resident, non-resident, account-eligibility, travel-allowance and business operations are category- and article-specific under IGOC 2026; absence of a located restriction is not evidence that none exists.",
+      "summary": {
+        "traveler": "At entry, under IGOC 2026 Art. 37, effects of commerce, means of payment and financial instruments are subject to Customs declaration when their value is equal to or greater than MAD 100,000 (>=); below that amount declaration is optional. Presentation of the import declaration remains mandatory to justify origin for certain later operations (eligible FX/convertible-dirham account funding, re-export of foreign currency, or qualifying export-proceeds cases), regardless of amount. Separately, under Art. 42, import and export of Moroccan dirham banknotes are prohibited in principle, except travellers may carry banknotes not exceeding MAD 2,000 (<=). These are two distinct regimes.",
+        "business": "IGOC 2026 provides a regulated, category-specific framework. Goods-export proceeds must generally be repatriated within 150 days of Customs-declaration registration (Art. 89), with goods-exporter FX/convertible-dirham accounts under Art. 90. Service-export proceeds must generally be repatriated within 90 days of performance (Art. 97), with service-exporter accounts under Art. 98. Service imports (Arts 69–72) include transaction categories requiring prior Office des Changes agreement. Settlements run through authorised intermediary banks; this is not a claim that all cross-border business is unrestricted."
+      },
+      "rules": {
+        "bring_foreign_currency_in": "IGOC 2026 Art. 36 permits resident and non-resident natural persons to import foreign-currency payment instruments and bearer negotiable instruments without a quantitative import ceiling. Art. 37 then requires Customs declaration at entry when effects of commerce, means of payment and bearer negotiable financial instruments have a value equal to or greater than MAD 100,000 (>=; égale ou supérieure) — not merely '>'. Below MAD 100,000, declaration is facultative. Office des Changes FAQ and Art. 37 further require presentation of the import declaration to justify origin for funding eligible FX/convertible-dirham accounts, re-export of the currencies, or where repatriated banknotes constitute export proceeds of goods/services — regardless of amount. The declaration is valid up to one month for residents and six months for non-residents and must be annotated by the bank for amounts collected. This is a declaration architecture, not an import ceiling, and is not Art. 42's physical-MAD banknote rule.",
+        "take_foreign_currency_out": "Outbound FX is residency- and source-specific under IGOC 2026 Art. 40. Resident natural persons may export payment instruments granted under the exchange regulations; foreign-banknote export must occur within 30 days of grant of the FX allocation, failing which the currency must be surrendered/re-sold, and departure requires the change slip and/or debit advice from an eligible FX/convertible-dirham account. Foreign non-residents and Moroccans residing abroad may export foreign-currency payment instruments previously imported, with foreign banknotes / bearer negotiable instruments requiring the relevant Customs declaration and inbound-import proof. Art. 40 also imposes an exit Customs declaration when covered effects / means of payment / bearer negotiable instruments equal or exceed MAD 100,000 (>=), kept separate from resident allocation rules and non-resident re-export provenance. Separately, Art. 41 provides a special MRE repurchase path: MRE may repurchase from banks/authorised exchange operators and export foreign currency previously repatriated and sold on the FX market during the previous 12 months, subject to the article's annual ceiling and documentation — not to be collapsed into ordinary non-resident re-export. Physical MAD banknotes remain under Art. 42 (<= MAD 2,000).",
+        "cash_declaration_threshold": "Two separate numeric architectures must not be collapsed. (1) Art. 37 / Art. 40: foreign means/instruments — mandatory Customs declaration when value is equal to or greater than MAD 100,000 (>=) at entry and at exit; below MAD 100,000 entry declaration is facultative; documentation may still be required regardless of amount for specified later operations. (2) Art. 42: physical Moroccan dirham banknotes — import/export prohibited in principle, with a traveller exception not exceeding MAD 2,000 (<=). The MAD 100,000 figure is a declaration trigger, not a carriage ceiling and not the MAD 2,000 dirham-banknote rule.",
+        "resident_holding_rules": "Under IGOC 2026 Art. 38, foreign-currency payment instruments imported by residents, regardless of amount, must generally be surrendered to banks, authorised currency-exchange operators or authorised sub-delegates within a period not exceeding 30 days from entry. Within that window, foreign residents and exporters of goods and/or services may credit qualifying foreign banknotes to eligible FX/convertible-dirham accounts (Arts 90, 98 and/or 228 as applicable). Foreign residents may also hold, without that banknote surrender clock, specified non-banknote instruments issued abroad (traveller's cheques, bank/postal cheques, letters of credit, payment cards and similar) where Art. 38 so provides. Separately, Art. 140 defines eligible personal-travel beneficiaries; Art. 141 sets the numeric allowance — base MAD 100,000 plus a supplement equal to 30% of prior-year income tax paid/withheld, total not exceeding MAD 500,000 per person per calendar year; Art. 142 governs payment modalities (banks, exchange operators, cards, agency paths). These rules do not establish a universal resident right to hold any foreign-currency product, nor a blanket prohibition on all resident FX holding.",
+        "non_resident_rules": "Under IGOC 2026 Art. 38, natural-person non-residents may exchange imported foreign currency for MAD or retain it and exchange it progressively according to their needs. For qualifying foreign-investment operations, non-residents may pay in foreign banknotes within six months of entry into eligible Art. 228 FX/convertible-dirham accounts. Do not collapse foreign residents (Art. 38 resident limb / account qualifications) with non-residents. Banks are authorised under Art. 228 to open FX and convertible-dirham accounts for: foreign natural persons (resident or non-resident); Moroccans residing abroad; foreign legal persons and their representations; industrial acceleration-zone companies; offshore financial-centre entities; diplomatic representations; and international organisations and their representations. Credits may include incoming foreign transfers, transfers from eligible FX/convertible-dirham accounts, and qualifying instruments; foreign-banknote deposits require the inbound declaration (generally within six months) or other specified proof. Debits cover qualifying transfers, FX-market sales and withdrawals under the article. Account eligibility is not unrestricted convertibility of every source of funds. Exporter accounts are separate (Arts 90 and 98).",
+        "business_invoicing_settlement": "Business cross-border operations remain under IGOC 2026 via authorised intermediary banks. Goods exports: Art. 89 requires repatriation of the full export proceeds, generally within 150 days from registration of the Customs declaration (subject to article-specific exceptions); Art. 90 authorises goods-exporter FX/convertible-dirham accounts. Service exports: Art. 97 requires repatriation within 90 days from performance of the service; Art. 98 authorises service-exporter FX/convertible-dirham accounts. Service imports: Arts 69–72 define the regime; Art. 71 includes transaction categories requiring prior Office des Changes agreement (including certain parent-company cost allocations, guaranteed franchise entry fees/minimum royalties, and intermediary collection of funds for non-resident services). Do not summarise Morocco as 'all service imports freely payable'. Arts 90/98 exporter accounts are distinct from Art. 228 foreign-person/MRE/listed-entity accounts.",
+        "exchange_controls": "Morocco remains a regulated foreign-exchange jurisdiction administered by the Office des Changes. IGOC 2026 is the current general instruction (in force 1 January 2026) continuing gradual, controlled liberalisation while preserving external balances. Operative architecture is transaction- and category-specific (Arts 36–42 border/cash architecture; travel Arts 140–142; goods/services export Arts 89–90 and 97–98; service-import Arts 69–72; account Arts 90, 98, 228; authorised intermediaries) rather than a single universal prior-approval screen for every payment and rather than full liberalisation. The Bank Al-Maghrib ±5% fluctuation band around the EUR60/USD40 basket is a separate monetary-regime fact.",
+        "banking_conversion_practicality": "Foreign-exchange conversion for the public is available through authorised intermediary banks and through Office des Changes-authorised currency-exchange operators and sub-delegates. The Instruction régissant l'activité de change de devises dated 15 June 2026 defines authorisation, operating, recording, declarative and AML-related requirements for the licensed manual-exchange sector (in force 15 June 2026). FX conversion is therefore a licensed multi-channel activity, not bank-only and not an unregulated free-for-all. That Instruction does not itself establish resident capital-account rights. Availability of a particular currency, rate or product remains subject to licence scope, documentary rules and commercial terms."
+      },
+      "source_authorities": [
+        {
+          "label": "Office des Changes — Publication of IGOC 2026 (in force 1 January 2026)",
+          "url": "https://www.oc.gov.ma/en/actualites/publication-de-l-instruction-generale-des-operations-de-change-2026",
+          "type": "primary_regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "IGOC 2026 — official PDF (193 pages; Arts 36–42, 69–72, 89–90, 97–98, 140–142, 228)",
+          "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+          "type": "primary_regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "Office des Changes — FAQ: Customs declaration at entry (MAD 100,000 / Art. 37)",
+          "url": "https://www.oc.gov.ma/fr/faq/la-declaration-aux-services-douaniers-a-l-entree-des-billets-de-banque-importes-est-elle",
+          "type": "primary_regulator_faq",
+          "tier": "primary"
+        },
+        {
+          "label": "Office des Changes — FAQ: export/import of dirhams (MAD 2,000 / Art. 42)",
+          "url": "https://www.oc.gov.ma/fr/faq/peut-exporter-des-dirhams",
+          "type": "primary_regulator_faq",
+          "tier": "primary"
+        },
+        {
+          "label": "Office des Changes — FAQ: resident imported FX surrender within 30 days (Art. 38)",
+          "url": "https://www.oc.gov.ma/fr/faq/les-instruments-de-paiement-libelles-en-devises-precedemment-importes-doivent-ils-etre-cedes-0",
+          "type": "primary_regulator_faq",
+          "tier": "primary"
+        },
+        {
+          "label": "Office des Changes — FAQ: personal-travel allowance (Art. 141 amounts)",
+          "url": "https://www.oc.gov.ma/fr/faq/quel-est-le-montant-de-la-dotation-pour-voyages-personnels",
+          "type": "primary_regulator_faq",
+          "tier": "primary"
+        },
+        {
+          "label": "Office des Changes — Moroccan residents personal-travel page (Arts 140–142)",
+          "url": "https://www.oc.gov.ma/fr/marocains-residents/voyages-personelles",
+          "type": "primary_regulator_rule_page",
+          "tier": "primary"
+        },
+        {
+          "label": "Office des Changes — Currency account NRF page (Art. 228 complementary narrative)",
+          "url": "https://www.oc.gov.ma/en/non-resident-foreigners/currency-account-nrf",
+          "type": "primary_regulator_rule_page",
+          "tier": "primary"
+        },
+        {
+          "label": "Office des Changes — Instruction régissant l'activité de change de devises (15 June 2026)",
+          "url": "https://www.oc.gov.ma/sites/default/files/2026-06/ICD_15_06_2026%20couv_2.pdf",
+          "type": "primary_regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "Office des Changes — Change manuel / LBC-FT hub",
+          "url": "https://www.oc.gov.ma/fr/change-manuel-et-LBC-FT",
+          "type": "primary_regulator",
+          "tier": "primary"
+        },
+        {
+          "label": "Bank Al-Maghrib — Implementation of the exchange-rate regime reform (±5%; EUR60/USD40)",
+          "url": "https://www.bkam.ma/en/Find-information-about/Reform-of-the-exchange-rate-regime/Implementation-of-the-reform",
+          "type": "central_bank",
+          "tier": "primary"
+        }
+      ],
+      "source_map": {
+        "country_overview": [
+          {
+            "url": "https://www.bkam.ma/en/Find-information-about/Reform-of-the-exchange-rate-regime/Implementation-of-the-reform",
+            "pages": [],
+            "section": "BAM reform implementation — ±5% band; EUR 60% / USD 40% basket (second phase 9 Mar 2020); no later enacted band change located",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.oc.gov.ma/en/actualites/publication-de-l-instruction-generale-des-operations-de-change-2026",
+            "pages": [],
+            "section": "IGOC 2026 enters into force 1 January 2026",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              1,
+              2
+            ],
+            "section": "IGOC 2026 front matter / regulated FX framework",
+            "source_kind": "pdf"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              38,
+              41
+            ],
+            "section": "Arts 37 and 42 — declaration >= MAD 100,000 vs physical MAD <= 2,000",
+            "source_kind": "pdf",
+            "article": "Arts 37, 42"
+          }
+        ],
+        "summary.traveler": [
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              38,
+              39
+            ],
+            "section": "Art. 37 — inbound declaration >= MAD 100,000; facultative below; validity windows",
+            "source_kind": "pdf",
+            "article": "Art. 37"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/faq/la-declaration-aux-services-douaniers-a-l-entree-des-billets-de-banque-importes-est-elle",
+            "pages": [],
+            "section": "FAQ — documentation-regardless-of-amount for account funding / re-export / export proceeds",
+            "source_kind": "faq"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              41
+            ],
+            "section": "Art. 42 — physical MAD banknotes prohibited; traveller exception <= MAD 2,000",
+            "source_kind": "pdf",
+            "article": "Art. 42"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/faq/peut-exporter-des-dirhams",
+            "pages": [],
+            "section": "FAQ — MAD banknote carriage <= 2,000 DH",
+            "source_kind": "faq"
+          }
+        ],
+        "summary.business": [
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              66
+            ],
+            "section": "Art. 89 — goods-export proceeds repatriation within 150 days; Art. 90 goods-exporter accounts",
+            "source_kind": "pdf",
+            "article": "Arts 89, 90"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              70
+            ],
+            "section": "Art. 97 — services-export proceeds repatriation within 90 days; Art. 98 service-exporter accounts",
+            "source_kind": "pdf",
+            "article": "Arts 97, 98"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              56,
+              57
+            ],
+            "section": "Arts 69–72 — service-import definition/conditions including prior OC agreement categories",
+            "source_kind": "pdf",
+            "article": "Arts 69–72"
+          },
+          {
+            "url": "https://www.oc.gov.ma/en/actualites/publication-de-l-instruction-generale-des-operations-de-change-2026",
+            "pages": [],
+            "section": "Official release — investment, exports, service imports, hedging themes",
+            "source_kind": "html"
+          }
+        ],
+        "rules.bring_foreign_currency_in": [
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              38
+            ],
+            "section": "Art. 36 — free importation of FX payment instruments / bearer negotiable instruments (no quantitative ceiling)",
+            "source_kind": "pdf",
+            "article": "Art. 36"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              38,
+              39
+            ],
+            "section": "Art. 37 — mandatory declaration >= MAD 100,000; facultative below; 1-month/6-month validity; bank annotation",
+            "source_kind": "pdf",
+            "article": "Art. 37"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/faq/la-declaration-aux-services-douaniers-a-l-entree-des-billets-de-banque-importes-est-elle",
+            "pages": [],
+            "section": "FAQ — documentation required regardless of amount for account funding / re-export / export proceeds",
+            "source_kind": "faq"
+          }
+        ],
+        "rules.take_foreign_currency_out": [
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              40
+            ],
+            "section": "Art. 40 — resident outbound allocation/30-day export; NR/MRE re-export with inbound proof; exit declaration >= MAD 100,000",
+            "source_kind": "pdf",
+            "article": "Art. 40"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              41
+            ],
+            "section": "Art. 41 — MRE special repurchase of previously repatriated/sold FX (12-month window; annual ceiling)",
+            "source_kind": "pdf",
+            "article": "Art. 41"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              41
+            ],
+            "section": "Art. 42 — physical MAD banknote outbound exception <= MAD 2,000",
+            "source_kind": "pdf",
+            "article": "Art. 42"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/faq/les-instruments-de-paiement-libelles-en-devises-precedemment-importes-doivent-ils-etre-cedes-0",
+            "pages": [],
+            "section": "FAQ — NR/MRE export of previously imported instruments; resident export documentation",
+            "source_kind": "faq"
+          }
+        ],
+        "rules.cash_declaration_threshold": [
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              38,
+              40
+            ],
+            "section": "Arts 37 and 40 — entry/exit declaration >= MAD 100,000 for means/instruments",
+            "source_kind": "pdf",
+            "article": "Arts 37, 40"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/faq/la-declaration-aux-services-douaniers-a-l-entree-des-billets-de-banque-importes-est-elle",
+            "pages": [],
+            "section": "FAQ — MAD 100,000 equal-to-or-greater declaration trigger",
+            "source_kind": "faq"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              41
+            ],
+            "section": "Art. 42 — distinct physical MAD banknote rule <= MAD 2,000",
+            "source_kind": "pdf",
+            "article": "Art. 42"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/faq/peut-exporter-des-dirhams",
+            "pages": [],
+            "section": "FAQ — separate MAD banknote carriage <= MAD 2,000",
+            "source_kind": "faq"
+          }
+        ],
+        "rules.resident_holding_rules": [
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              39
+            ],
+            "section": "Art. 38 — resident 30-day surrender; foreign-resident/exporter account-credit qualification; non-banknote holdings",
+            "source_kind": "pdf",
+            "article": "Art. 38"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/faq/les-instruments-de-paiement-libelles-en-devises-precedemment-importes-doivent-ils-etre-cedes-0",
+            "pages": [],
+            "section": "FAQ — resident imported FX surrender within 30 days; foreign-resident/exporter deposit path",
+            "source_kind": "faq"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              100
+            ],
+            "section": "Art. 140 — personal-travel definition / eligible beneficiaries",
+            "source_kind": "pdf",
+            "article": "Art. 140"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              100
+            ],
+            "section": "Art. 141 — base MAD 100,000 + 30% prior-year IR; max MAD 500,000 / person / year",
+            "source_kind": "pdf",
+            "article": "Art. 141"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              101
+            ],
+            "section": "Art. 142 — personal-travel payment modalities (banks, exchange operators, cards, agencies)",
+            "source_kind": "pdf",
+            "article": "Art. 142"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/faq/quel-est-le-montant-de-la-dotation-pour-voyages-personnels",
+            "pages": [],
+            "section": "FAQ — personal-travel allowance numeric architecture",
+            "source_kind": "faq"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/marocains-residents/voyages-personelles",
+            "pages": [],
+            "section": "OC residents travel page — Art. 140–142 operational restatement",
+            "source_kind": "html"
+          }
+        ],
+        "rules.non_resident_rules": [
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              39
+            ],
+            "section": "Art. 38 — non-resident retention/progressive exchange; six-month foreign-investment banknote deposit into Art. 228 accounts",
+            "source_kind": "pdf",
+            "article": "Art. 38"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/faq/les-instruments-de-paiement-libelles-en-devises-precedemment-importes-doivent-ils-etre-cedes-0",
+            "pages": [],
+            "section": "FAQ — non-resident retain or exchange progressively; six-month investment deposit window",
+            "source_kind": "faq"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              159
+            ],
+            "section": "Art. 228 — authorised account categories and operating conditions (credits/debits/banknote documentary proof)",
+            "source_kind": "pdf",
+            "article": "Art. 228"
+          },
+          {
+            "url": "https://www.oc.gov.ma/en/non-resident-foreigners/currency-account-nrf",
+            "pages": [],
+            "section": "NRF currency-account page — complementary Art. 228 operating narrative",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              66,
+              70
+            ],
+            "section": "Arts 90 and 98 — distinct goods/service exporter account architectures (not Art. 228)",
+            "source_kind": "pdf",
+            "article": "Arts 90, 98"
+          }
+        ],
+        "rules.business_invoicing_settlement": [
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              66
+            ],
+            "section": "Art. 89 — goods-export full-proceeds repatriation; general 150-day deadline from Customs declaration registration",
+            "source_kind": "pdf",
+            "article": "Art. 89"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              66
+            ],
+            "section": "Art. 90 — goods-exporter FX / convertible-dirham accounts",
+            "source_kind": "pdf",
+            "article": "Art. 90"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              70
+            ],
+            "section": "Art. 97 — service-export proceeds repatriation within 90 days of performance",
+            "source_kind": "pdf",
+            "article": "Art. 97"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              70
+            ],
+            "section": "Art. 98 — service-exporter FX / convertible-dirham accounts",
+            "source_kind": "pdf",
+            "article": "Art. 98"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              56,
+              57
+            ],
+            "section": "Arts 69–72 — service-import definition, conditions, prior OC agreement categories, importer responsibility",
+            "source_kind": "pdf",
+            "article": "Arts 69–72"
+          },
+          {
+            "url": "https://www.oc.gov.ma/en/actualites/publication-de-l-instruction-generale-des-operations-de-change-2026",
+            "pages": [],
+            "section": "Official IGOC 2026 release — business modernisation themes",
+            "source_kind": "html"
+          }
+        ],
+        "rules.exchange_controls": [
+          {
+            "url": "https://www.oc.gov.ma/en/actualites/publication-de-l-instruction-generale-des-operations-de-change-2026",
+            "pages": [],
+            "section": "Announcement — IGOC 2026 controlling general instruction",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              1,
+              2
+            ],
+            "section": "IGOC 2026 introduction — regulated FX framework",
+            "source_kind": "pdf"
+          },
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/reglementation/pdf/2026-01/IGOC%202026.pdf",
+            "pages": [
+              38,
+              41
+            ],
+            "section": "Arts 36–42 — border/cash architecture under OC control",
+            "source_kind": "pdf",
+            "article": "Arts 36–42"
+          },
+          {
+            "url": "https://www.bkam.ma/en/Find-information-about/Reform-of-the-exchange-rate-regime/Implementation-of-the-reform",
+            "pages": [],
+            "section": "BAM reform page — monetary ±5% / EUR60–USD40 kept separate; no later enacted band change located through execution date",
+            "source_kind": "html"
+          }
+        ],
+        "rules.banking_conversion_practicality": [
+          {
+            "url": "https://www.oc.gov.ma/sites/default/files/2026-06/ICD_15_06_2026%20couv_2.pdf",
+            "pages": [
+              1,
+              2
+            ],
+            "section": "15 June 2026 Instruction — authorisation/operating framework for currency-exchange activity",
+            "source_kind": "pdf"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/change-manuel-et-LBC-FT",
+            "pages": [],
+            "section": "Change manuel hub — OC licences money-changers, payment institutions and tourism sub-delegates",
+            "source_kind": "html"
+          },
+          {
+            "url": "https://www.oc.gov.ma/fr/faq/les-instruments-de-paiement-libelles-en-devises-precedemment-importes-doivent-ils-etre-cedes-0",
+            "pages": [],
+            "section": "FAQ — banks / authorised exchange operators / sub-delegates as Art. 38 counterparties",
+            "source_kind": "faq"
+          }
+        ]
+      },
+      "disclaimer": "This page provides general informational reference only. Foreign-exchange, monetary-policy and cross-border cash rules in Morocco are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, licensing and the applicable Office des Changes / Bank Al-Maghrib framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Office des Changes, Bank Al-Maghrib and an authorised intermediary bank before making any financial or travel decisions."
     },
     {
       "country_name": "Pakistan",
