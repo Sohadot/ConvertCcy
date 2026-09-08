@@ -36,9 +36,9 @@ class PassageCheckMultiSourceProvenanceTest(unittest.TestCase):
         cls.html = (REPO / "passage-check.html").read_text(encoding="utf-8")
 
     def test_published_count(self):
-        self.assertEqual(len(self.ds_by), 19)
-        self.assertEqual(len(self.pc_by), 19)
-        self.assertEqual(self.pc["count"], 19)
+        self.assertEqual(len(self.ds_by), 20)
+        self.assertEqual(len(self.pc_by), 20)
+        self.assertEqual(self.pc["count"], 20)
 
     def test_all_rule_fields_preserve_source_arrays(self):
         checked = 0

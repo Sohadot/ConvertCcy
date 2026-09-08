@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-08T13:25:48+00:00",
+  "generated_at": "2026-09-08T18:02:54+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 19,
-    "verified": 3,
-    "needs_hardening": 2,
+    "published": 20,
+    "verified": 2,
+    "needs_hardening": 3,
     "secondary_review": 0,
     "skipped": 0,
     "validation_failed": 0
@@ -117,6 +117,14 @@
     },
     {
       "status": "published",
+      "country_slug": "singapore",
+      "country_name": "Singapore",
+      "output_html": "rules/singapore-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/singapore-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
       "country_slug": "south-africa",
       "country_name": "South Africa",
       "output_html": "rules/south-africa-foreign-currency-rules.html",
@@ -174,13 +182,6 @@
     },
     {
       "status": "verified",
-      "country_slug": "singapore",
-      "country_name": "Singapore",
-      "output_html": "preview/rules/verified/singapore-foreign-currency-rules.html",
-      "sitemap_eligible": false
-    },
-    {
-      "status": "verified",
       "country_slug": "switzerland",
       "country_name": "Switzerland",
       "output_html": "preview/rules/verified/switzerland-foreign-currency-rules.html",
@@ -188,6 +189,13 @@
     }
   ],
   "needs_hardening_entries": [
+    {
+      "status": "needs_hardening",
+      "country_slug": "argentina",
+      "country_name": "Argentina",
+      "output_html": "preview/rules/needs_hardening/argentina-foreign-currency-rules.html",
+      "sitemap_eligible": false
+    },
     {
       "status": "needs_hardening",
       "country_slug": "egypt",

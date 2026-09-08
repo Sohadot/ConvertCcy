@@ -226,6 +226,22 @@ DECLARATION = {
                 "ceiling, and is distinct from bank AML/KYC reporting and from SAMA's account-eligibility rules. "
                 "The fixed SAR/USD peg is a separate monetary-regime fact.",
     },
+    "singapore": {
+        "thresholds": [
+            {"value": 20000, "currency": "SGD",
+             "scope": "physical currency and bearer negotiable instruments (CBNI)",
+             "applies": "entering or leaving Singapore",
+             "authority": "Singapore Police Force / Immigration & Checkpoints Authority under CDSA",
+             "mechanism": "mandatory CBNI report (Form NP 727) when total value EXCEEDS S$20,000"},
+        ],
+        "note": "Reporting is triggered only when total CBNI value exceeds S$20,000 (CDSA 1992 s60(1) "
+                "'exceeds the prescribed amount'; CBNI Regulations 2007 reg 2A; strictly '>', never '>='). "
+                "Exactly S$20,000 is outside the trigger. The rule applies inbound and outbound. "
+                "ICA states there is no restriction on CBNI type or amount — this is a reporting trigger, "
+                "not a carriage ceiling. This is CDSA Part 6A cross-border cash/CBNI reporting, not an "
+                "Exchange Control Act capital control.",
+        "pair_surface_summary": "CBNI > S$20,000 report · no carriage ceiling",
+    },
     "south-africa": {
         "thresholds": [
             {"value": 25000, "currency": "ZAR", "scope": "South African bank notes",
@@ -358,6 +374,9 @@ EXCHANGE_CONTROLS = {
                  "No general exchange controls on the current account; capital account regulated by the SBP"),
     "saudi-arabia": ("supervisory_peg",
                      "Saudi riyal maintained at a fixed rate against the US dollar (SAR 3.75) by the Saudi Central Bank (SAMA) as a monetary-regime fact, kept separate from control posture; the reviewed official sources establish a licensed, SAMA-regulated foreign-exchange market (banks and money-exchange businesses) but do not establish a general exchange-control authorisation regime for buying, holding or transferring currency, and absence of a located restriction is not evidence that none exists — the AML border declaration, account-eligibility and any sectoral rules are kept distinct"),
+    "singapore": ("none",
+                  "No operative general exchange-control approval regime under the MAS blanket "
+                  "exemption; Exchange Control Act remains in force through 31 December 2033"),
     "south-africa": ("capital_account_regulated",
                      "Current account largely liberalised; capital account subject to SARB exchange control administered through Authorised Dealers under the Currency and Exchanges Manual"),
     "south-korea": ("capital_account_regulated",
