@@ -6,7 +6,6 @@
   "region": "Latin America",
   "currency_code": "ARS",
   "currency_name": "Argentine Peso",
-
   "schema_version": "1.2.1",
   "page_status": "needs_hardening",
   "last_reviewed": "2026-09-08",
@@ -14,26 +13,22 @@
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": false,
-  "source_notice": "Argentina / ARS Evidence Closure (from-scratch). Material public claims are rebuilt from current primary BCRA, ARCA/Dirección General de Aduanas, UIF and Boletín Oficial / argentina.gob.ar normativa sources. The BCRA monetary regime is pinned to flotación cambiaria dentro de bandas (from 11 April 2025; from 1 January 2026 band-edge drift uses INDEC inflation T-2). Border cash is pinned to ARCA Resolución General 5659/2025 as the controlling legal text (inbound ≥ USD 10,000 declaration; outbound foreign cash/instruments/minted precious metals physical carriage only when total < USD 10,000; ARS outbound ≥ USD 10,000-equivalent via OM 2250-B declaration). Resident FX purchase/holding, outward-transfer overlays and business concept paths incorporate the Exterior y Cambios official summary, Comunicación A 8226, the Texto Ordenado baseline through A 8307 (25 August 2025), and the material post-A 8307 CAMEX effects relevant to the governed fields — A 8332 (initial 3.8.5 insider securities-settlement undertaking), A 8336 (3.8.5 extended en todos los casos), and A 8417 (including point 7 / 3.14.1 outward-transfer registration and securities DJ, plus concept-specific export/services/deadline/debt adjustments). Comunicación A 8441 (SECOEXPO / CNV foreign-currency pagaré application) was reviewed as a current-corpus CAMEX communication and is not mapped to a governed field because argentina.json does not assert a matching claim. Exact final section/page/article pinning and cross-document locator refinement remain for Pinpoint Hardening. Dólar blue / parallel unofficial rates are excluded from the exchange-rate regime claim. Argentina remains unpublished and candidate_only pending separate Pinpoint Hardening and Publication Closure.",
-
+  "source_notice": "Argentina / ARS Pinpoint Hardening (post Evidence Closure #100). Substantive Evidence Closure remains in force. Amendment chains and exact article/point/page locators are hardened from current primary BCRA, ARCA and UIF sources. Material post-A 8307 CAMEX effects relevant to governed fields are incorporated, including the operative 3.8.5 chain A 8332 (18/09/2025; effective 19/09/2025) → A 8336 (26/09/2025) → A 8361 (09/12/2025 current operative text with 3.8.5.1 / 3.8.5.2 exceptions), non-resident A 8230 Points 2–3 as amended by A 8245 Point 2 and A 8257 Points 1–2, and A 8417 Points 1–5 / 7 / 8 for resident outward-transfer and business concept paths. Current CAMEX sweep completed through A 8464 (CAMEX 1-1064, 06/08/2026); monthly BCRA communication indices through August 2026 and individual A-communications through A 8476 (04/09/2026) were checked. A 8359 (TCR methodology), A 8390 (local-debt precancelation architecture), A 8441 (SECOEXPO / CNV FX pagarés), A 8442 (control-group financial-debt precancelation) and A 8464 (RIGI/VPU reinsurance access) were reviewed as current-corpus CAMEX and are not mapped to governed fields because argentina.json does not assert matching claims. No later official source located that repeals A 8230 Point 2 direct-investment 180-day condition. Argentina remains unpublished / candidate_only; Publication Closure remains a separate sprint.",
   "country_overview": "Argentina's currency is the Argentine peso (ARS). The Banco Central de la República Argentina (BCRA) administers monetary and foreign-exchange regulation under the Mercado Libre de Cambios framework (Decree 260/02 as amended) and its Exterior y Cambios texto ordenado plus complementary CAMEX communications. Since 11 April 2025 the BCRA operates a floating exchange-rate regime within administered moving bands (flotación cambiaria dentro de bandas): inside the band the rate is market-determined by supply and demand, with BCRA boundary/intervention mechanics at the edges; from 1 January 2026 the monthly drift of both edges is determined by the latest INDEC monthly inflation figure with a two-month lag (T-2). That monetary-regime fact is kept analytically separate from layered exchange controls and transaction-specific FX-access and surrender rules under Exterior y Cambios. Passenger physical carriage of cash, bearer negotiable instruments and minted precious metals is administered by ARCA / Dirección General de Aduanas under Resolución General 5659/2025, with AML information flows to the Unidad de Información Financiera (UIF). Parallel unofficial market labels such as the dólar blue are not treated here as the official exchange-rate regime.",
-
   "summary": {
     "traveler": "Argentina does not have one symmetric USD 10,000 cash figure. Under ARCA RG 5659/2025, inbound travellers/crew must declare cash, bearer negotiable instruments (foreign or ARS) and/or minted precious metals when the total is equal to or greater than USD 10,000 equivalent (≥) on form OM 2249-A — a declaration trigger, not an import ceiling. Outbound foreign-currency cash, foreign-currency bearer instruments and minted precious metals may leave as baggage/pacotilla only when the total is strictly below USD 10,000; at or above that amount, foreign currency/instruments must exit through entities authorised by the Superintendencia de Entidades Financieras y Cambiarias, not by ordinary traveller declaration alone. Outbound ARS cash and ARS bearer instruments at or above USD 10,000 equivalent follow a separate OM 2250-B customs declaration path. Amounts are per traveller; under-16 non-emancipated minors apply 50% of the stated figures; a transit exception exists where the inbound OM 2249-A was completed.",
     "business": "FX transactions must be conducted through an authorised FX entity at a freely agreed rate, with documentation sufficient to establish genuineness and correct concept classification under the BCRA Exterior y Cambios framework. Export proceeds of goods and services are, as a general rule, subject to surrender/liquidation in the FX market within BCRA-set deadlines, while resident access for imports, services, dividends, financial debt and similar concepts remains concept-specific. Non-resident FX purchases/repatriations may require prior BCRA conformity except for enumerated exceptions. Current-account and capital operations are not described here as simply unrestricted."
   },
-
   "rules": {
-    "bring_foreign_currency_in": "Under ARCA Resolución General 5659/2025 Art. 1, travellers of any category and crew who bring into Argentine territory as baggage or pacotilla cash, bearer negotiable instruments (in foreign currency or legal-tender ARS) and/or minted precious metals must declare them to Customs on form OM 2249-A when the total value is equal to or greater than the equivalent of USD 10,000 (U$S 10.000) — operator igual o superior / ≥, using the Banco de la Nación Argentina buyer rate of the prior business day. This is a declaration trigger, not a quantitative import ceiling: amounts above the threshold may enter if declared. Information registered in the Sistema Ingreso y Egreso de Valores is supplied to the UIF. Transit passengers who declared on entry under Art. 9 may exit under that declaration when presented at the exit customs office.",
-    "take_foreign_currency_out": "Outbound physical carriage is asymmetric with inbound declaration. RG 5659/2025 Art. 2 permits travellers/crew to leave as baggage/pacotilla with foreign-currency cash, foreign-currency bearer negotiable instruments and/or minted precious metals only when the total value is inferior to USD 10,000 (or equivalent) — strictly <, seller rate of the prior business day. Art. 3 provides that when the total is equal to or greater than that Art. 2 amount, foreign currency and foreign-currency bearer instruments may leave Argentine territory only through entities authorised by the Superintendencia de Entidades Financieras y Cambiarias. Separately, Art. 4 allows outbound ARS legal-tender cash and ARS-issued bearer instruments at or above the USD 10,000 equivalent to leave via customs declaration on form OM 2250-B. Arts. 2–4 are per person; under-16 non-emancipated minors use 50% figures (Art. 5). This architecture is not a single symmetric 'declaration at USD 10,000' rule and is not an ordinary outbound foreign-cash declaration mirror of inbound.",
-    "cash_declaration_threshold": "Argentina does not have one simple symmetric cash-declaration figure. Three distinct border regimes under ARCA RG 5659/2025 must not be collapsed: (1) inbound — mandatory OM 2249-A written Customs declaration when cash + bearer instruments (foreign or ARS) + minted precious metals total ≥ USD 10,000 equivalent (declaration trigger, not import ceiling); (2) outbound foreign-currency cash / foreign bearer instruments / minted precious metals — physical baggage carriage only when total < USD 10,000; at ≥ USD 10,000 exit must be through SEFyC-authorised entities (not an ordinary traveller declaration path); (3) outbound ARS cash / ARS bearer instruments — at ≥ USD 10,000 equivalent, OM 2250-B Customs declaration. Per-traveller computation; 50% for under-16 non-emancipated minors; transit exception under Art. 9. ARCA traveller help pages are operational corroboration only; RG 5659 is the controlling legal text where wording differs.",
-    "resident_holding_rules": "Under the current BCRA Exterior y Cambios official summary, resident natural persons (personas humanas residentes) may access the FX market without an amount ceiling to form external assets in foreign-currency bills or deposits when the operation is effected by debit to an account at a local financial entity. Comunicación A 8226 (April 2025 Phase-3 liberalisation package) likewise permits resident natural-person purchases of foreign-currency bills for holding or deposit constitution without prior BCRA conformity when (among other conditions) the operation is debited from a local financial-entity account, or local-currency cash use does not exceed the equivalent of USD 100 in the calendar month across entities/concepts, with registration and income/asset-consistency evidence. Formation of external assets under other modalities, family remittances and certain derivatives remain subject to monthly limits/conditions on the BCRA summary. Purchase/holding access is not unrestricted outward transfer. Distinct post-A 8307 securities overlays apply and must not be collapsed: Comunicación A 8332 first incorporated punto 3.8.5 requiring a client sworn undertaking not to purchase securities with foreign-currency settlement from access and for the following 90 calendar days, initially for specified financial/FX-entity insiders and related persons (significant shareholders, directors, síndicos, senior managers, FX-entity equivalents, and close family). Comunicación A 8336 replaced that 3.8.5 text so the same 90-day undertaking applies in all cases for the relevant resident-natural-person access path. Separately, Comunicación A 8417 point 7 (effective 10 April 2026) requires, for outward transfers under TO punto 3.14.1, online BCRA registration when that system is operative plus a client sworn declaration not to purchase securities with foreign-currency settlement for the following 90 calendar days, subject to the stated exceptions (primary subscriptions of resident debt held ≥15 business days; reinvestment of Tesoro Nacional / BCRA FX coupons within 15 business days).",
-    "non_resident_rules": "The current BCRA Exterior y Cambios official summary states that non-residents generally require prior BCRA conformity to operate in the FX market, with enumerated exceptions (including international organisations, diplomatic/consular representations, pension beneficiaries and other listed cases). Portfolio-investment repatriation of capital and income in CNV-authorised locally quoted instruments, certain mutual funds composed of those instruments, and sight/term deposits at local financial entities are among the exceptions identified on that summary. Tourist non-residents may repurchase up to USD 100 where the intervening entity verifies online that they settled an equal or greater amount in the prior 90 calendar days. Comunicación A 8230 and later amendments (including A 8245 / A 8257) create additional transaction-specific repatriation paths for direct and portfolio investment that must not be collapsed into 'non-residents can repatriate freely'; the exact post-A 8307 article pins remain a Pinpoint Hardening residual. Non-resident treatment is concept-specific.",
-    "business_invoicing_settlement": "BCRA Exterior y Cambios rules require FX operations through an authorised FX entity, at a freely agreed exchange rate between the parties, with a purchase/sale boleto as a sworn declaration and documentation sufficient for the entity to verify genuineness and correct concept coding. As a general rule, proceeds from exports of goods and services (and disposal of certain non-produced non-financial assets) must be surrendered/settled in the FX market within BCRA deadlines; financial indebtedness liquidation is a condition for later market access to pay principal/interest. Resident access to pay imports, non-resident services, profits/dividends and financial debt is available when the concept-specific conditions are met. Intra-resident foreign-currency debt payments via the FX market are generally not permitted except for listed exceptions. 2025–2026 CAMEX liberalisations remain concept-specific, not a general 'current account free' claim: A 8226 includes dividend/import-service timing measures, and Comunicación A 8417 further adjusts human-person goods-export liquidation exceptions aligned with the services path, extends the human-person services liquidation exception across service concepts, lengthens selected export-income deadlines, and eases certain debt-related FX-market access paths (including linked financial-debt principal access under stated conditions).",
-    "exchange_controls": "Argentina's reviewed official sources do not establish a single general foreign-exchange authorisation regime that can be summarised as 'no controls' or as a universal prior-approval system for every transaction. Distinct layers apply and must not be conflated: (i) a BCRA floating-within-bands monetary regime (market determination inside the band; boundary/intervention mechanics) — a monetary fact kept separate from FX-access rules; (ii) Mercado Libre de Cambios operations through authorised entities at freely agreed rates with genuineness/concept documentation; (iii) concept-specific access, surrender/liquidation and reporting rules under the Exterior y Cambios TO through A 8307 plus complementary post-A 8307 CAMEX communications that remain currently operative (including A 8336 securities-settlement undertakings on the resident access path and A 8417 outward-transfer / export-services-debt adjustments); (iv) prior BCRA conformity for categories that still require it (including many non-resident operations and certain resident legal-person external-asset formations), with enumerated exceptions; and (v) Customs-enforced asymmetric physical-cash carriage/declaration rules under ARCA RG 5659/2025. Absence of a located restriction is not evidence that none exists. Provisional exchange-control posture for later Passage Check transcription is capital_account_regulated; exact locator fidelity remains for Pinpoint Hardening.",
-    "banking_conversion_practicality": "Practical FX conversion and transfers are effected through BCRA-authorised financial/FX entities. Resident natural-person bill/deposit formation is operationally tied to local-account debit (or the limited local-cash path). Entities must register relevant operations in BCRA online systems where required and obtain documentation supporting genuineness and concept classification. Passenger cash movements at the border are operationally administered by ARCA Customs (OM 2249-A / OM 2250-B) with data supplied to the UIF under RG 5659/2025. Banking/exchange AML obligations for financial and exchange entities are framed by the UIF normative corpus (including Resolución UIF 199/2024 and complementary rules as listed on the UIF vigentes page) as a separate compliance layer from BCRA FX-access eligibility."
+    "bring_foreign_currency_in": "Under ARCA Resolución General 5659/2025 Art. 1, travellers of any category and crew who bring into Argentine territory as baggage or pacotilla cash, bearer negotiable instruments (in foreign currency or legal-tender ARS) and/or minted precious metals must declare them to Customs on form OM 2249-A when the total value is equal to or greater than the equivalent of USD 10,000 (U$S 10.000) — operator igual o superior / ≥, using the Banco de la Nación Argentina buyer rate of the prior business day. This is a declaration trigger, not a quantitative import ceiling: amounts above the threshold may enter if declared. Art. 6 defines bearer negotiable instruments (traveller's cheques, cheques, promissory notes and similar payment instruments). Information registered in the Sistema Ingreso y Egreso de Valores under Art. 7 is supplied to the UIF. Transit passengers who declared on entry under Art. 9 may exit under that declaration when presented at the exit customs office.",
+    "take_foreign_currency_out": "Outbound physical carriage is asymmetric with inbound declaration. RG 5659/2025 Art. 2 permits travellers/crew to leave as baggage/pacotilla with foreign-currency cash, foreign-currency bearer negotiable instruments and/or minted precious metals only when the total value is inferior to USD 10,000 (or equivalent) — strictly <, BNA seller rate of the prior business day. Art. 3 provides that when the total is equal to or greater than that Art. 2 amount, foreign currency and foreign-currency bearer instruments may leave Argentine territory only through entities authorised by the Superintendencia de Entidades Financieras y Cambiarias. Separately, Art. 4 allows outbound ARS legal-tender cash and ARS-issued bearer instruments at or above the USD 10,000 equivalent to leave via customs declaration on form OM 2250-B (BNA seller rate). Arts. 2–4 are computed per traveller/crew under Art. 5; adults, emancipated persons and minors who have reached age 16 use the full figures; under-16 non-emancipated minors use 50%. This architecture is not a single symmetric 'declaration at USD 10,000' rule.",
+    "cash_declaration_threshold": "Argentina does not have one simple symmetric cash-declaration figure. Three distinct border regimes under ARCA RG 5659/2025 must not be collapsed: (1) inbound Art. 1 — mandatory OM 2249-A written Customs declaration when cash + bearer instruments (foreign or ARS) + minted precious metals total ≥ USD 10,000 equivalent (declaration trigger, not import ceiling; BNA buyer rate); (2) outbound foreign-currency cash / foreign bearer instruments / minted precious metals — Art. 2 physical baggage carriage only when total < USD 10,000 (BNA seller rate); at ≥ that Art. 2 amount Art. 3 requires exit through SEFyC-authorised entities (not an ordinary traveller declaration path); (3) outbound ARS cash / ARS bearer instruments — Art. 4 at ≥ USD 10,000 equivalent, OM 2250-B Customs declaration. Per-traveller computation and age/50% treatment under Art. 5; Art. 6 bearer-instrument definition; Art. 7 Sistema Ingreso y Egreso de Valores → UIF; Art. 9 transit exception. ARCA traveller help pages are operational corroboration only; RG 5659 is the controlling legal text where wording differs.",
+    "resident_holding_rules": "Under the current BCRA Exterior y Cambios official summary (heading Puntos principales de la normativa), resident natural persons (personas humanas residentes) may access the FX market without an amount ceiling to form external assets in foreign-currency bills or deposits when the operation is effected by debit to an account at a local financial entity. Comunicación A 8226 likewise permits resident natural-person purchases of foreign-currency bills for holding or deposit constitution without prior BCRA conformity when (among other conditions) the operation is debited from a local financial-entity account, or local-currency cash use does not exceed the equivalent of USD 100 in the calendar month across entities/concepts, with registration and income/asset-consistency evidence. Formation of external assets under other modalities, family remittances and certain derivatives remain subject to monthly limits/conditions on the BCRA summary. Purchase/holding access is not unrestricted outward transfer. Distinct post-A 8307 securities overlays apply and must not be collapsed. Comunicación A 8332 (18/09/2025; effective 19/09/2025) first inserted TO punto 3.8.5 requiring a client sworn undertaking not to purchase securities with foreign-currency settlement from access and for the following 90 calendar days, initially for specified financial/FX-entity insiders and related persons. Comunicación A 8336 (26/09/2025) replaced that 3.8.5 text so the same 90-day undertaking applied in all cases on the relevant access path. Comunicación A 8361 (09/12/2025) again replaced TO 3.8.5 and is the current operative layer: it preserves the general in-all-cases 90-calendar-day undertaking and adds exceptions 3.8.5.1 (primary subscriptions of resident debt securities held at least 15 business days, with the transitional qualification that the minimum holding period does not apply where the primary subscription occurred on or before 09/12/2025 or the sale of the subscribed securities is settled in foreign currency) and 3.8.5.2 (reinvestment, within 15 business days of collection, of foreign-currency capital and/or interest receipts from securities issued by the Tesoro Nacional or the BCRA). Separately, Comunicación A 8417 Point 7 (effective 10/04/2026) governs outward transfers under TO punto 3.14.1 and must not be merged with 3.8.5: Point 7.1 requires online BCRA registration once BCRA declares the system available; Point 7.2 requires a client sworn declaration not to purchase securities with foreign-currency settlement for the following 90 calendar days; Points 7.2.1 and 7.2.2 state the primary-subscription and Tesoro Nacional/BCRA reinvestment exceptions for that outward-transfer rule.",
+    "non_resident_rules": "The current BCRA Exterior y Cambios official summary (heading Puntos principales de la normativa) states that non-residents generally require prior BCRA conformity to operate in the FX market, with enumerated exceptions (including international organisations, diplomatic/consular representations, pension beneficiaries and other listed cases). Portfolio-investment repatriation of capital and income in CNV-authorised locally quoted instruments, certain mutual funds composed of those instruments, and sight/term deposits at local financial entities are among the exceptions identified on that summary. Tourist non-residents may repurchase up to USD 100 where the intervening entity verifies online that they settled an equal or greater amount in the prior 90 calendar days. Comunicación A 8230 Point 2 establishes a direct-investment repatriation path without prior conformity under TO 3.13.1 for non-resident direct investments in companies that are not controllers of local financial entities, where the capital contribution was entered and liquidated through the Mercado Libre de Cambios from 21/04/2025 and repatriation occurs at least 180 days after that liquidation — a condition that remains in force on the reviewed corpus; no later official communication located in this Pinpoint sweep repeals Point 2's 180-day requirement. Comunicación A 8230 Point 3 separately establishes portfolio-investment repatriation of capital, income and sale proceeds in locally quoted CNV-authorised instruments without prior conformity under TO 3.13.1 when conditions (i) local FI certification of MLC entry/liquidation from 21/04/2025, (ii) documentation that the accessed amount does not exceed collected services and/or sale proceeds, and (iii) originally a 180-day post-liquidation waiting period, are met. Comunicación A 8245 Point 2 applies only to that Point 3 portfolio architecture: condition (i) may also be satisfied by direct FX application from 23/05/2025 to primary subscription of Tesoro Nacional debt, and condition (iii) may be treated as satisfied where that Treasury debt subscribed in FX has average life of at least 180 calendar days. Comunicación A 8257 Point 1 (effective 13/06/2025) repeals only inciso iii) of A 8230 Point 3; Point 2 incorporates those Point 3 non-resident repatriations into TO 3.16.3.5. A 8257 does not repeal A 8230 Point 2's direct-investment 180-day condition. Non-resident treatment remains concept-specific and is not a claim that non-residents repatriate freely.",
+    "business_invoicing_settlement": "BCRA Exterior y Cambios rules require FX operations through an authorised FX entity, at a freely agreed exchange rate between the parties, with a purchase/sale boleto as a sworn declaration and documentation sufficient for the entity to verify genuineness and correct concept coding (official summary heading Puntos principales de la normativa). As a general rule, proceeds from exports of goods and services (and disposal of certain non-produced non-financial assets) must be surrendered/settled in the FX market within BCRA deadlines; financial indebtedness liquidation is a condition for later market access to pay principal/interest. Resident access to pay imports, non-resident services, profits/dividends and financial debt is available when the concept-specific conditions are met. Intra-resident foreign-currency debt payments via the FX market are generally not permitted except for listed exceptions. 2025–2026 CAMEX liberalisations remain concept-specific, not a general 'current account free' claim: A 8226 includes dividend/import-service timing measures; Comunicación A 8417 Point 1 excepts human-person goods-export liquidation where funds enter the FX market within normative deadlines under the same conditions as human-person services in TO 2.2.2.1 (not for exports for account of legal persons); Point 2 extends the human-person services liquidation exception across service concepts; Points 3–4 adjust selected export-income deadlines (including a 365-calendar-day rule for specified NCM chapters/positions); Point 5 allows FX-market access up to three business days before maturity for principal/interest on securities in TO 3.6.1.3–3.6.1.5; Points 8 / 8.1 / 8.2 ease certain linked financial-debt principal access paths under stated refinancing/average-life conditions. Separate later CAMEX precancelation architectures (including A 8390 and A 8442) were reviewed and are not asserted here as governed claims.",
+    "exchange_controls": "Argentina's reviewed official sources do not establish a single general foreign-exchange authorisation regime that can be summarised as 'no controls' or as a universal prior-approval system for every transaction. Distinct layers apply and must not be conflated: (i) a BCRA floating-within-bands monetary regime (market determination inside the band; boundary/intervention mechanics) — a monetary fact kept separate from FX-access rules; (ii) Mercado Libre de Cambios operations through authorised entities at freely agreed rates with genuineness/concept documentation; (iii) concept-specific access, surrender/liquidation and reporting rules under the Exterior y Cambios TO through A 8307 plus complementary post-A 8307 CAMEX communications that remain currently operative for governed fields (including the A 8332 → A 8336 → A 8361 operative 3.8.5 securities-settlement layer on the resident access path, A 8417 outward-transfer Point 7 / 3.14.1 and concept-specific export/services/debt adjustments, and the A 8230 / A 8245 / A 8257 non-resident repatriation architecture); (iv) prior BCRA conformity for categories that still require it (including many non-resident operations and certain resident legal-person external-asset formations), with enumerated exceptions; and (v) Customs-enforced asymmetric physical-cash carriage/declaration rules under ARCA RG 5659/2025. Absence of a located restriction is not evidence that none exists. Pinpoint Hardening confirms capital_account_regulated as the correct Passage Check candidate posture for later Publication Closure transcription; this sprint does not publish or transcribe Passage Check.",
+    "banking_conversion_practicality": "Practical FX conversion and transfers are effected through BCRA-authorised financial/FX entities. Resident natural-person bill/deposit formation is operationally tied to local-account debit (or the limited local-cash path). Entities must register relevant operations in BCRA online systems where required and obtain documentation supporting genuineness and concept classification. Passenger cash movements at the border are operationally administered by ARCA Customs (OM 2249-A / OM 2250-B) with data supplied to the UIF under RG 5659/2025 Arts. 1, 4 and 7. Banking/exchange AML obligations for financial and exchange entities are framed by the UIF normative corpus (including Resolución UIF 199/2024 and complementary rules as listed on the UIF vigentes page) as a separate compliance layer from BCRA FX-access eligibility."
   },
-
   "source_authorities": [
     {
       "label": "BCRA — Régimen de bandas cambiarias (flotación dentro de bandas; from 11 April 2025; T-2 inflation drift from 1 January 2026)",
@@ -66,26 +61,74 @@
       "tier": "primary"
     },
     {
-      "label": "BCRA — Comunicación A 8332 (incorporates TO 3.8.5 securities-settlement 90-day undertaking for specified financial/FX-entity insiders and related persons)",
+      "label": "BCRA — Comunicación A 8230 (Point 2 direct-investment repatriation; Point 3 portfolio repatriation conditions (i)–(iii))",
+      "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8230.pdf",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "BCRA — Comunicación A 8245 (Point 2 — portfolio-only alternatives for A 8230 Point 3(i) and 3(iii) via Treasury FX primary subscription)",
+      "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8245.pdf",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "BCRA — Comunicación A 8257 (Point 1 repeals only A 8230 Point 3(iii); Point 2 incorporates Point 3 repatriations into TO 3.16.3.5)",
+      "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8257.pdf",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "BCRA — Comunicación A 8332 (18/09/2025; effective 19/09/2025 — inserts TO 3.8.5 for specified financial/FX-entity insiders and related persons)",
       "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8332.pdf",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "BCRA — Comunicación A 8336 (replaces 3.8.5 so the 90-day securities-settlement undertaking applies en todos los casos on the relevant access path)",
+      "label": "BCRA — Comunicación A 8336 (26/09/2025 — replaces 3.8.5 so the 90-day undertaking applies in all cases on the relevant access path)",
       "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8336.pdf",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "BCRA — Comunicación A 8417 (human-person export/services liquidation paths; selected export deadlines; debt-related FX access; point 7 / 3.14.1 outward-transfer registration and 90-day securities DJ)",
+      "label": "BCRA — Comunicación A 8361 (09/12/2025 — current operative TO 3.8.5 replacement with 3.8.5.1 / 3.8.5.2 exceptions; chain A 8332 → A 8336 → A 8361)",
+      "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8361.pdf",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "BCRA — Comunicación A 8417 (Points 1–5 / 7 / 8 — human-person export/services paths; deadlines; debt access; Point 7 / 3.14.1 outward-transfer overlays)",
       "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8417.pdf",
       "type": "central_bank",
       "tier": "primary"
     },
     {
-      "label": "BCRA — Comunicación A 8441 (SECOEXPO / CNV FX pagaré application — reviewed as current-corpus CAMEX; not mapped to a governed field in this Evidence Closure)",
+      "label": "BCRA — Comunicación A 8359 (CAMEX 1-1057 — TCR methodology update; corpus-reviewed; not mapped to a governed field)",
+      "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8359.pdf",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "BCRA — Comunicación A 8390 (CAMEX 1-1059 — local title/financing precancelation architecture; corpus-reviewed; not mapped)",
+      "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8390.pdf",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "BCRA — Comunicación A 8441 (SECOEXPO / CNV FX pagaré application — corpus-reviewed; not mapped to a governed field)",
       "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8441.pdf",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "BCRA — Comunicación A 8442 (CAMEX 1-1063 — control-group financial-debt precancelation; corpus-reviewed; not mapped)",
+      "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8442.pdf",
+      "type": "central_bank",
+      "tier": "primary"
+    },
+    {
+      "label": "BCRA — Comunicación A 8464 (CAMEX 1-1064, 06/08/2026 — newest CAMEX checked; RIGI/VPU reinsurance access; corpus-reviewed; not mapped)",
+      "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8464.pdf",
       "type": "central_bank",
       "tier": "primary"
     },
@@ -114,196 +157,421 @@
       "tier": "primary"
     }
   ],
-
   "source_map": {
     "country_overview": [
       {
         "url": "https://www.bcra.gob.ar/regimen-de-bandas-cambiarias/",
         "pages": [],
-        "section": "Floating-within-bands from 11 April 2025; T-2 INDEC inflation edge drift from 1 January 2026"
+        "section": "Régimen de bandas cambiarias — floating within bands from 11 April 2025; market determination inside band; from 1 January 2026 T-2 INDEC edge drift",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/noticias/inicio-de-la-fase-3-del-programa-economico/",
+        "pages": [],
+        "section": "Inicio de la Fase 3 — announcement of floating-within-bands regime start",
+        "source_kind": "html"
       },
       {
         "url": "https://www.bcra.gob.ar/normativa-de-exterior-y-cambios/",
         "pages": [],
-        "section": "MLC / Decree 260/02; TO Exterior y Cambios + complementary norms; authorised-entity architecture"
+        "section": "Heading Puntos principales de la normativa — MLC / authorised entities / complementary CAMEX architecture",
+        "source_kind": "html"
       },
       {
         "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-5659-2025-410456/texto",
         "pages": [],
-        "section": "RG 5659/2025 — ARCA Customs border cash/instruments/metals framework; UIF information flow"
+        "section": "RG 5659/2025 — ARCA Customs border cash/instruments/metals framework; UIF information flow",
+        "source_kind": "html",
+        "article": "Arts. 1–9"
       }
     ],
     "summary.traveler": [
       {
         "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-5659-2025-410456/texto",
         "pages": [],
-        "section": "Arts 1–5, 9 — inbound ≥USD10k OM 2249-A; outbound FX <USD10k physical; ≥ via authorised entities; ARS OM 2250-B; 50% minors; transit"
+        "section": "Arts 1–5, 7, 9 — inbound ≥USD10k OM 2249-A; outbound FX <USD10k physical; ≥ via authorised entities; ARS OM 2250-B; 50% minors; transit",
+        "source_kind": "html",
+        "article": "Arts. 1–5, 7, 9"
       },
       {
         "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/322293/20250310",
         "pages": [],
-        "section": "Boletín Oficial publication of RG 5659/2025"
+        "section": "Boletín Oficial publication of RG 5659/2025",
+        "source_kind": "html"
       }
     ],
     "summary.business": [
       {
         "url": "https://www.bcra.gob.ar/normativa-de-exterior-y-cambios/",
         "pages": [],
-        "section": "Authorised entity; freely agreed rate; genuineness/concept documentation; export surrender; concept-specific access"
+        "section": "Heading Puntos principales de la normativa — authorised entity; freely agreed rate; genuineness/concept documentation; export surrender; concept-specific access",
+        "source_kind": "html"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8226.pdf",
-        "pages": [],
-        "section": "A 8226 — Phase-3 liberalisation package affecting resident and trade-related FX access paths"
+        "pages": [
+          1
+        ],
+        "section": "A 8226 — Phase-3 liberalisation package affecting resident and trade-related FX access paths",
+        "source_kind": "pdf"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8417.pdf",
+        "pages": [
+          1,
+          2
+        ],
+        "section": "A 8417 Points 1–5, 8 — concept-specific human-person export/services/deadline/debt adjustments",
+        "source_kind": "pdf",
+        "clause": "Points 1–5, 8"
       }
     ],
     "rules.bring_foreign_currency_in": [
       {
         "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-5659-2025-410456/texto",
         "pages": [],
-        "section": "Art. 1 — inbound ≥ USD 10,000 equivalent declaration OM 2249-A; BNA buyer rate; declaration not ceiling"
+        "section": "Art. 1 — inbound ≥ USD 10,000 equivalent declaration OM 2249-A; BNA buyer rate; declaration not ceiling",
+        "source_kind": "html",
+        "article": "Art. 1"
       },
       {
         "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-5659-2025-410456/texto",
         "pages": [],
-        "section": "Arts 7, 9 — Sistema Ingreso y Egreso de Valores → UIF; transit exception"
+        "section": "Art. 6 — bearer negotiable instrument definition",
+        "source_kind": "html",
+        "article": "Art. 6"
+      },
+      {
+        "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-5659-2025-410456/texto",
+        "pages": [],
+        "section": "Arts. 7, 9 — Sistema Ingreso y Egreso de Valores → UIF; transit exception",
+        "source_kind": "html",
+        "article": "Arts. 7, 9"
       }
     ],
     "rules.take_foreign_currency_out": [
       {
         "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-5659-2025-410456/texto",
         "pages": [],
-        "section": "Arts 2–3 — outbound FX physical only if < USD 10,000; ≥ through SEFyC-authorised entities"
+        "section": "Arts. 2–3 — outbound FX physical only if < USD 10,000 (BNA seller); ≥ through SEFyC-authorised entities",
+        "source_kind": "html",
+        "article": "Arts. 2–3"
       },
       {
         "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-5659-2025-410456/texto",
         "pages": [],
-        "section": "Arts 4–5 — outbound ARS ≥ USD 10,000-equivalent OM 2250-B; per person; 50% under-16 non-emancipated"
+        "section": "Art. 4 — outbound ARS ≥ USD 10,000-equivalent OM 2250-B; BNA seller rate",
+        "source_kind": "html",
+        "article": "Art. 4"
+      },
+      {
+        "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-5659-2025-410456/texto",
+        "pages": [],
+        "section": "Art. 5 — per traveller/crew; full figures for adults/emancipated/age-16+; 50% under-16 non-emancipated",
+        "source_kind": "html",
+        "article": "Art. 5"
       }
     ],
     "rules.cash_declaration_threshold": [
       {
         "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-5659-2025-410456/texto",
         "pages": [],
-        "section": "Arts 1–5, 9 — asymmetric inbound declaration / outbound FX carriage limit / outbound ARS declaration"
+        "section": "Arts. 1–7, 9 — asymmetric inbound declaration / outbound FX carriage limit / outbound ARS declaration; definitions; UIF; transit",
+        "source_kind": "html",
+        "article": "Arts. 1–7, 9"
       },
       {
         "url": "https://www.arca.gob.ar",
         "pages": [],
-        "section": "ARCA Viajeros microsite — operational OM 2249-A / OM 2250-B corroboration only"
+        "section": "ARCA Viajeros microsite — operational OM 2249-A / OM 2250-B corroboration only",
+        "source_kind": "html"
       }
     ],
     "rules.resident_holding_rules": [
       {
         "url": "https://www.bcra.gob.ar/normativa-de-exterior-y-cambios/",
         "pages": [],
-        "section": "Resident natural persons — no amount ceiling for bills/deposits via local-account debit"
+        "section": "Heading Puntos principales de la normativa — resident natural persons: no amount ceiling for bills/deposits via local-account debit",
+        "source_kind": "html"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8226.pdf",
-        "pages": [],
-        "section": "Point 1 — resident human-person bill/deposit access; local-cash ≤ USD 100/month path"
+        "pages": [
+          1
+        ],
+        "section": "Point 1 — resident human-person bill/deposit access; local-cash ≤ USD 100/month path",
+        "source_kind": "pdf",
+        "clause": "Point 1"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8307.pdf",
-        "pages": [],
-        "section": "TO Exterior y Cambios baseline through A 8307 for resident access architecture (3.8 / related points)"
+        "pages": [
+          1
+        ],
+        "section": "TO Exterior y Cambios baseline cover through A 8307 for resident access architecture (3.8 / related points)",
+        "source_kind": "pdf"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8332.pdf",
-        "pages": [],
-        "section": "Incorporates TO 3.8.5 — initial 90-day securities-settlement undertaking limited to specified financial/FX-entity insiders and related persons"
+        "pages": [
+          1
+        ],
+        "section": "18/09/2025; effective 19/09/2025 — inserts TO 3.8.5 for specified financial/FX-entity insiders and related persons; 90-calendar-day securities undertaking",
+        "source_kind": "pdf",
+        "clause": "Point inserting TO 3.8.5",
+        "article": "TO 3.8.5"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8336.pdf",
-        "pages": [],
-        "section": "Replaces 3.8.5 — same 90-day undertaking applies en todos los casos on the relevant resident-natural-person access path"
+        "pages": [
+          1
+        ],
+        "section": "26/09/2025 — replaces 3.8.5 so the 90-day undertaking applies in all cases on the relevant access path",
+        "source_kind": "pdf",
+        "article": "TO 3.8.5"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8361.pdf",
+        "pages": [
+          1
+        ],
+        "section": "09/12/2025 — current operative 3.8.5 replacement; exceptions 3.8.5.1 (primary resident debt; 15 business-day hold with transitional qualification) and 3.8.5.2 (Tesoro Nacional/BCRA FX coupon reinvestment within 15 business days)",
+        "source_kind": "pdf",
+        "article": "TO 3.8.5 / 3.8.5.1 / 3.8.5.2"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8417.pdf",
-        "pages": [],
-        "section": "Point 7 / TO 3.14.1 — outward transfers: online registration when operative + client 90-day securities DJ with stated exceptions (distinct from 3.8.5 access undertaking)"
+        "pages": [
+          2
+        ],
+        "section": "Point 7 (effective 10/04/2026) / TO 3.14.1 — outward transfers: 7.1 online registration when operative; 7.2 90-day securities DJ; 7.2.1 / 7.2.2 exceptions (distinct from 3.8.5)",
+        "source_kind": "pdf",
+        "clause": "Points 7 / 7.1 / 7.2 / 7.2.1 / 7.2.2",
+        "article": "TO 3.14.1"
       }
     ],
     "rules.non_resident_rules": [
       {
         "url": "https://www.bcra.gob.ar/normativa-de-exterior-y-cambios/",
         "pages": [],
-        "section": "Non-resident prior BCRA conformity with enumerated exceptions; portfolio/deposit exceptions; tourist USD 100 repurchase"
+        "section": "Heading Puntos principales de la normativa — non-resident prior BCRA conformity with enumerated exceptions; portfolio/deposit exceptions; tourist USD 100 repurchase",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8230.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Point 2 — direct-investment repatriation without prior conformity under TO 3.13.1; MLC contribution from 21/04/2025; minimum 180 days after liquidation",
+        "source_kind": "pdf",
+        "clause": "Point 2",
+        "article": "TO 3.13.1"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8230.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Point 3 — portfolio repatriation of capital/income/sale proceeds in CNV-authorised locally quoted instruments; conditions (i), (ii), (iii)",
+        "source_kind": "pdf",
+        "clause": "Point 3",
+        "article": "TO 3.13.1"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8245.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Point 2 only — alternative satisfaction of A 8230 Point 3(i) via direct FX primary subscription of Treasury debt; Point 3(iii) treatment for Treasury FX debt with ≥180-day average life",
+        "source_kind": "pdf",
+        "clause": "Point 2"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8257.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Point 1 — repeals only A 8230 Point 3(iii); Point 2 — incorporates Point 3 repatriations into TO 3.16.3.5; does not repeal Point 2 direct-investment 180-day condition",
+        "source_kind": "pdf",
+        "clause": "Points 1–2",
+        "article": "TO 3.16.3.5"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8307.pdf",
-        "pages": [],
-        "section": "TO baseline for non-resident / repatriation concept paths — A 8230/A 8245/A 8257 pins residual for Pinpoint"
+        "pages": [
+          1
+        ],
+        "section": "TO Exterior y Cambios baseline incorporating A 8230 / A 8245 / A 8257 into the consolidated corpus through A 8307",
+        "source_kind": "pdf"
       }
     ],
     "rules.business_invoicing_settlement": [
       {
         "url": "https://www.bcra.gob.ar/normativa-de-exterior-y-cambios/",
         "pages": [],
-        "section": "Authorised entity; freely agreed rate; boleto; genuineness; export surrender; concept-specific resident payments"
+        "section": "Heading Puntos principales de la normativa — authorised entity; freely agreed rate; boleto; genuineness; export surrender; concept-specific resident payments",
+        "source_kind": "html"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8226.pdf",
-        "pages": [],
-        "section": "A 8226 trade/dividend timing liberalisations within Phase 3 — concept-specific, not unrestricted current account"
+        "pages": [
+          1
+        ],
+        "section": "A 8226 trade/dividend timing liberalisations within Phase 3 — concept-specific, not unrestricted current account",
+        "source_kind": "pdf"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8417.pdf",
-        "pages": [],
-        "section": "A 8417 pts 1–5, 8 — human-person goods/services liquidation paths; selected export deadlines; debt-related FX-market access adjustments (concept-specific)"
+        "pages": [
+          1
+        ],
+        "section": "Points 1–2 — human-person goods-export liquidation exception aligned with TO 2.2.2.1 services path; services exception extended across service concepts",
+        "source_kind": "pdf",
+        "clause": "Points 1–2",
+        "article": "TO 2.2.2.1"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8417.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Points 3–4 — selected export-income deadline adjustments including 365-calendar-day rule for specified NCM goods",
+        "source_kind": "pdf",
+        "clause": "Points 3–4"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8417.pdf",
+        "pages": [
+          1,
+          2
+        ],
+        "section": "Point 5 — FX-market access up to 3 business days before maturity for principal/interest on TO 3.6.1.3–3.6.1.5 securities",
+        "source_kind": "pdf",
+        "clause": "Point 5"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8417.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "section": "Points 8 / 8.1 / 8.2 — linked financial-debt principal access mechanics under stated conditions",
+        "source_kind": "pdf",
+        "clause": "Points 8 / 8.1 / 8.2",
+        "article": "TO 3.5.6"
       }
     ],
     "rules.exchange_controls": [
       {
         "url": "https://www.bcra.gob.ar/regimen-de-bandas-cambiarias/",
         "pages": [],
-        "section": "Monetary regime — floating within bands; separate from FX-access controls"
+        "section": "Régimen de bandas cambiarias — monetary regime floating within bands; separate from FX-access controls",
+        "source_kind": "html"
       },
       {
         "url": "https://www.bcra.gob.ar/normativa-de-exterior-y-cambios/",
         "pages": [],
-        "section": "Layered Exterior y Cambios access / surrender / conformity architecture"
+        "section": "Heading Puntos principales de la normativa — layered Exterior y Cambios access / surrender / conformity architecture",
+        "source_kind": "html"
       },
       {
         "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-5659-2025-410456/texto",
         "pages": [],
-        "section": "Border cash layer distinct from BCRA FX-market access rules"
+        "section": "Border cash layer distinct from BCRA FX-market access rules",
+        "source_kind": "html",
+        "article": "Arts. 1–5"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8307.pdf",
-        "pages": [],
-        "section": "TO through A 8307 — Exterior y Cambios baseline corpus"
+        "pages": [
+          1
+        ],
+        "section": "TO through A 8307 — Exterior y Cambios baseline corpus",
+        "source_kind": "pdf"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8332.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Post-A 8307 chain start — inserts TO 3.8.5",
+        "source_kind": "pdf",
+        "article": "TO 3.8.5"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8336.pdf",
-        "pages": [],
-        "section": "Post-A 8307 CAMEX layer — 3.8.5 securities-settlement undertaking en todos los casos on relevant access path"
+        "pages": [
+          1
+        ],
+        "section": "Post-A 8307 chain — replaces 3.8.5 (in all cases)",
+        "source_kind": "pdf",
+        "article": "TO 3.8.5"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8361.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Current operative post-A 8307 3.8.5 layer with 3.8.5.1 / 3.8.5.2 exceptions",
+        "source_kind": "pdf",
+        "article": "TO 3.8.5"
       },
       {
         "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8417.pdf",
-        "pages": [],
-        "section": "Post-A 8307 CAMEX layer — outward-transfer 3.14.1 overlays and concept-specific export/services/debt adjustments"
+        "pages": [
+          1,
+          2
+        ],
+        "section": "Post-A 8307 CAMEX layer — Point 7 / 3.14.1 outward-transfer overlays and Points 1–5 / 8 concept-specific adjustments",
+        "source_kind": "pdf",
+        "clause": "Points 1–5, 7, 8"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8230.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Non-resident direct (Point 2) and portfolio (Point 3) repatriation architecture under TO 3.13.1",
+        "source_kind": "pdf",
+        "clause": "Points 2–3"
+      },
+      {
+        "url": "https://www.bcra.gob.ar/archivos/Pdfs/comytexord/A8257.pdf",
+        "pages": [
+          1
+        ],
+        "section": "Portfolio Point 3(iii) repeal and TO 3.16.3.5 incorporation — scoped to Point 3 only",
+        "source_kind": "pdf",
+        "clause": "Points 1–2"
       }
     ],
     "rules.banking_conversion_practicality": [
       {
         "url": "https://www.bcra.gob.ar/normativa-de-exterior-y-cambios/",
         "pages": [],
-        "section": "Operations through authorised FX entities; documentation and boleto"
+        "section": "Heading Puntos principales de la normativa — operations through authorised FX entities; documentation and boleto",
+        "source_kind": "html"
       },
       {
         "url": "https://www.argentina.gob.ar/uif/normativa",
         "pages": [],
-        "section": "UIF normativa vigente — AML layer for financial and exchange entities (incl. Res. UIF 199/2024 corpus)"
+        "section": "UIF normativa vigente — AML layer for financial and exchange entities (incl. Res. UIF 199/2024 corpus)",
+        "source_kind": "html"
       },
       {
         "url": "https://www.arca.gob.ar",
         "pages": [],
-        "section": "ARCA operational border declaration channels"
+        "section": "ARCA operational border declaration channels",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-5659-2025-410456/texto",
+        "pages": [],
+        "section": "Arts. 1, 4, 7 — OM 2249-A / OM 2250-B and Sistema Ingreso y Egreso de Valores → UIF",
+        "source_kind": "html",
+        "article": "Arts. 1, 4, 7"
       }
     ]
   },
-
   "disclaimer": "This page provides general informational reference only. Argentine foreign-exchange, monetary-regime and passenger cash rules change frequently through BCRA CAMEX communications and ARCA resolutions, and transaction-specific requirements may depend on residency or entity status, documentation, amount, securities interactions and the applicable concept code. The consolidated Exterior y Cambios texto ordenado is not alone a complete statement of current rules. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the BCRA, ARCA / Dirección General de Aduanas, the UIF or an authorised FX entity before making any financial or travel decisions."
 }
