@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-09-08T13:25:49+00:00",
+ "generated_at": "2026-09-08T14:11:41+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -427,6 +427,7 @@
      }
     ],
     "note": "Inbound FX cash > USD 5,000 (超过等值5000美元, strictly '>', never '>=') is a Customs declaration trigger, not an import ceiling. Art. 89 also imposes a special regardless-of-amount written-declaration rule for same-day / short-interval second-and-subsequent inbound entries; that repeated-entry rule is a bounded qualification, NOT a second ordinary numeric threshold record. Customs may list > USD 5,000 declaration conditions in both directions, but the outbound legal architecture is not symmetric with inbound: outbound FX preserves ≤ USD 5,000 (generally no 携带证) / > USD 5,000–≤ USD 10,000 (bank-issued 携带证 where applicable) / > USD 10,000 (in principle not carried except specified SAFE permit cases), and outbound treatment depends where applicable on the latest inbound declaration record. Physical RMB CNY 20,000 is a separate carriage limit (PBOC Announcement〔2004〕No. 18 / State Council Order No. 108). Negotiable/payment instruments are not silently folded into Huifa〔2003〕102 foreign-cash thresholds. The USD 50,000 individual annual 便利化额度 is NOT a border-cash threshold and must not be read from this declaration block.",
+    "pair_surface_summary": "inbound FX cash > USD 5,000 declaration · outbound FX ≤5k / >5k–≤10k / >10k permit architecture · RMB CNY 20,000 carriage limit",
     "transcribed_from": "rules.cash_declaration_threshold"
    },
    "exchange_controls": {
