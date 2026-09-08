@@ -92,6 +92,8 @@ strong{color:var(--text);font-weight:600}
 .src{font-family:var(--mono);font-size:.72rem;margin-top:.4rem}
 .src a{color:var(--accent);text-decoration:none}
 .src a:hover{text-decoration:underline}
+.src-block{margin-top:.4rem}
+.src-block .src{margin-top:.15rem}
 .threshold-line{margin:.3rem 0;padding-left:.9rem;border-left:2px solid var(--accent-border)}
 .coverage{background:var(--amber-light);border:1px solid var(--amber-border);border-radius:14px;padding:1.2rem 1.4rem}
 .coverage .box-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:.5rem;display:block}
@@ -210,10 +212,28 @@ let DATA=null, BYSLUG={};
 function esc(s){return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function fmt(n){return n.toLocaleString('en-US',{maximumFractionDigits:0});}
 function clsChip(slug){const name=ONTOLOGY[slug]||slug;return `<a class="cls" href="/ontology/${slug}.html">${esc(name)} →</a>`;}
-function srcLine(source){
+function oneSrcLine(source, prefix){
   if(!source||!source.url) return '';
   const sec=source.section?(' — '+esc(source.section)):'';
-  return `<div class="src">Source: <a href="${esc(source.url)}" target="_blank" rel="noopener">${esc(source.url)}</a>${sec}</div>`;
+  return `<div class="src">${prefix}<a href="${esc(source.url)}" target="_blank" rel="noopener">${esc(source.url)}</a>${sec}</div>`;
+}
+/** Prefer rule.sources[]; fall back to singular rule.source for older payloads. */
+function srcLines(rule){
+  if(!rule) return '';
+  let sources=null;
+  if(Array.isArray(rule.sources) && rule.sources.length){
+    sources=rule.sources;
+  } else if(rule.source && rule.source.url){
+    sources=[rule.source];
+  } else {
+    return '';
+  }
+  if(sources.length===1){
+    return oneSrcLine(sources[0], 'Source: ');
+  }
+  const rows=sources.map((s,i)=>oneSrcLine(s, `${i+1}. `)).filter(Boolean).join('');
+  if(!rows) return '';
+  return `<div class="src-block"><div class="src">Sources:</div>${rows}</div>`;
 }
 
 // Evaluate an amount against one threshold. Returns {mode, html}.
@@ -259,7 +279,7 @@ function residencyRow(country, role){
   return `<div class="row">
     <div class="row-label">Residency rule — ${roleLabel} ${clsChip('residency-divergence')}</div>
     <div class="row-body">${esc(r.text)}</div>
-    ${srcLine(r.source)}
+    ${srcLines(r)}
   </div>`;
 }
 
@@ -271,20 +291,20 @@ function directionRow(country, which){
   return `<div class="row">
     <div class="row-label">${esc(r.label)} ${clsChip(r.ontology)}</div>
     <div class="row-body">${esc(r.text)}</div>
-    ${srcLine(r.source)}
+    ${srcLines(r)}
   </div>`;
 }
 
 function declarationRow(country, amount, amountCcy){
   const d=country.declaration;
-  const dsrc=country.rules.cash_declaration_threshold ? country.rules.cash_declaration_threshold.source : null;
+  const dRule=country.rules.cash_declaration_threshold || null;
   let lines=d.thresholds.map(th=>evalThreshold(amount, amountCcy, th).html).join('');
   const note=d.note?`<div class="row-body" style="margin-top:.5rem"><em>${esc(d.note)}</em></div>`:'';
   return `<div class="row">
     <div class="row-label">Declaration threshold ${clsChip('declaration-regimes')}</div>
     ${lines}
     ${note}
-    ${srcLine(dsrc)}
+    ${srcLines(dRule)}
   </div>`;
 }
 
@@ -294,7 +314,7 @@ function exchangeRow(country){
   return `<div class="row">
     <div class="row-label">Exchange controls ${clsChip('exchange-controls')}</div>
     <div class="row-body"><strong>${esc(ec.label)}.</strong> ${r?esc(r.text):''}</div>
-    ${r?srcLine(r.source):''}
+    ${r?srcLines(r):''}
   </div>`;
 }
 

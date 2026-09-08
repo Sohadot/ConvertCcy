@@ -11,7 +11,9 @@ engine-optimised view that
 carries, per published jurisdiction:
 
   - identity (name, slug, iso, currency)
-  - the governed rule prose fields, verbatim, each with its source
+  - the governed rule prose fields, verbatim, each with its complete
+    ordered ``sources`` list copied from ``source_map['rules.<field>']``
+    (plus a singular ``source`` compatibility alias equal to ``sources[0]``)
   - source authorities and last_reviewed date
   - a STRUCTURED declaration-threshold block and an exchange-controls posture
     label, each transcribed by hand from a specific dataset field and tagged
@@ -27,6 +29,7 @@ country's own currency_code).
 Run: python3 scripts/build_passage_check.py
 """
 
+import copy
 import json
 import sys
 from pathlib import Path
@@ -380,13 +383,17 @@ RULE_FIELDS = {
 }
 
 
-def first_source(source_map, field):
-    """Return the first source dict for a rules.<field>, or None."""
+def sources_for_field(source_map, field):
+    """Return the complete ordered source list for rules.<field>.
+
+    Copies upstream ``source_map['rules.<field>']`` entries without legal or
+    content transformation, preserving order and every source property
+    (url, section, pages, status, etc.). Returns [] when no valid list exists.
+    """
     entry = source_map.get(f"rules.{field}")
-    if isinstance(entry, list) and entry:
-        s = entry[0]
-        return {"url": s.get("url", ""), "section": s.get("section", "")}
-    return None
+    if isinstance(entry, list):
+        return copy.deepcopy(entry)
+    return []
 
 
 def main():
@@ -419,11 +426,16 @@ def main():
         rules_out = {}
         for field, meta in RULE_FIELDS.items():
             if field in c["rules"]:
+                sources = sources_for_field(sm, field)
                 rules_out[field] = {
                     "label": meta["label"],
                     "ontology": meta["ontology"],
                     "text": c["rules"][field],
-                    "source": first_source(sm, field),
+                    # Authoritative complete provenance (ordered; may be >1).
+                    "sources": sources,
+                    # Compatibility alias only — equals sources[0] when present.
+                    # Not complete provenance; consumers must prefer sources[].
+                    "source": sources[0] if sources else None,
                 }
 
         decl = dict(DECLARATION[slug])
