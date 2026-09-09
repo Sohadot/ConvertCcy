@@ -1,0 +1,3409 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "nigeria",
+  "generation_mode": "governed_extraction",
+  "notes": "Nigeria candidate ledger. Hardening I–III candidates preserved (CASH/NGN/ACC/BIZ). Hardening IV appends unreviewed CC-NG-REG-* macro/regime candidates for NG-B4. Does not clone Hardening III BIZ channel/EFEMS/DMB propositions; references them as governed constraints. Does not adopt claims or rewrite nigeria.json. Formal floating/managed-float current-rule taxonomy and 'significant exchange controls' remain not established as classificatory claims.",
+  "candidates": [
+    {
+      "candidate_id": "CC-NG-CASH-001",
+      "candidate_text": "Transportation of cash or negotiable instruments in excess of US$10,000 or its equivalent by individuals into Nigeria shall be declared to the Nigeria Customs Service.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cash_declaration_entry",
+        "actor": "individual_traveller",
+        "transaction_context": "border_entry",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-MLPPA-2022-S3-3",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "split_direction_from_in_or_out_phrase",
+          "nigerian_customs_service_to_nigeria_customs_service_name_normalization"
+        ],
+        "omissions": [
+          "out_of_nigeria_limb_reserved_for_separate_atomic_candidate"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:192062fcdd12413970f59aa55f510fb2e77dd2d882dadbffaabf86dde2d69323",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-002",
+      "candidate_text": "Transportation of cash or negotiable instruments in excess of US$10,000 or its equivalent by individuals out of Nigeria shall be declared to the Nigeria Customs Service.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cash_declaration_exit",
+        "actor": "individual_traveller",
+        "transaction_context": "border_exit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-MLPPA-2022-S3-3",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "split_direction_from_in_or_out_phrase",
+          "nigerian_customs_service_to_nigeria_customs_service_name_normalization"
+        ],
+        "omissions": [
+          "into_nigeria_limb_reserved_for_separate_atomic_candidate"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:6a23f5bb209722fd816938be92968dfa51a7ed47e65c1c57d19bb9c54b94ab52",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-003",
+      "candidate_text": "False declaration or failure to make the required declaration to the Nigeria Customs Service is an offence that may lead on conviction to forfeiture of the undeclared funds or negotiable instrument, imprisonment for at least two years, or both.",
+      "reviewed_text": "Any person who falsely declares or fails to make a declaration to the Nigeria Customs Service under section 12 of the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act commits an offence and is liable on conviction to forfeit the undeclared funds or negotiable instrument or to imprisonment for a term of at least two years or both.",
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cash_declaration_consequence",
+        "actor": "individual_traveller",
+        "transaction_context": "border_entry_or_exit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-MLPPA-2022-S3-4-5",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "combine_false_declaration_and_failure_to_declare_penalty_limb"
+        ],
+        "omissions": [
+          "customs_reporting_to_cbn_and_unit_reserved_for_separate administrative claim"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:ab5cd17b7b4429656ce75a781b742940edfd83e6d8ae503504da779e4e252e66",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-004",
+      "candidate_text": "The reviewed official CBN guidance states that the declaration rule for cash or negotiable instruments above US$10,000 does not itself prohibit genuinely owned or obtained funds above that amount from being brought into Nigeria or taken outside the country.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cash_declaration_not_general_ceiling",
+        "actor": "individual_traveller",
+        "transaction_context": "border_entry_or_exit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-2013-CLARIFICATION",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "remove repetitive threshold restatement",
+          "express declaration_vs_prohibition distinction"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:2ce7ee95f4585498c81401675b5951278c6afb3fbe52c4f9e4c06099665df3d2",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-005",
+      "candidate_text": "Where foreign currency in excess of US$10,000 is imported in cash and deposited into a domiciliary account with an authorised dealer, the account may only be withdrawn from in cash and that imported cash is exportable from Nigeria only in cash.",
+      "reviewed_text": "Where a person imports foreign currency in excess of US$10,000 or its equivalent in cash and not by means of a bank draft, mail or telegraphic transfer and deposits the foreign currency in a domiciliary account with an authorised dealer, withdrawals from that account may be made only in cash, and that imported cash is exportable from Nigeria only in cash.",
+      "claim_language": "en",
+      "claim_type": "documentation_requirement",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "imported_cash_domiciliary_account_condition",
+        "actor": "account_holder",
+        "transaction_context": "domiciliary_account_after_cash_import",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S21",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "merge_subsections_1_and_2_into_single_condition_description"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "closed",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-NG-FEMMPA-1995-S21"
+        ]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:bcb07b851173383e58f1b9506e2a5bff697bf4c9cf260009276a2c11582c34ba",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-NGN-001",
+      "candidate_text": "The importation and exportation of the naira remain prohibited except as permitted under guidelines issued from time to time by the Central Bank.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "prohibited_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "physical_naira_import_export",
+        "actor": "traveller_or_holder",
+        "transaction_context": "cross_border_naira_notes",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S14",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "closed",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-NG-FEMMPA-1995-S14"
+        ]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:165c2cb6d5132261f2a369c6a7a9b85479332030df92d9cca1bcb86334223647",
+        "notes": "M2.5 supported as s.14 baseline only; numeric exception remains not established."
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-006",
+      "candidate_text": "Current Customs operational guidance uses a declaration trigger of US$10,000 or more, which conflicts with the statutory phrase in excess of US$10,000.",
+      "reviewed_text": "Current Customs operational guidance on the e-currency declaration form uses a declaration trigger of US$10,000 or more / equal to or greater than US$10,000.",
+      "claim_language": "en",
+      "claim_type": "threshold",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cash_declaration_threshold_operator_conflict",
+        "actor": "individual_traveller",
+        "transaction_context": "border_entry_or_exit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-NCS-ECDF-THRESHOLD",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "condense_repeated_operational_threshold_language"
+        ],
+        "omissions": [
+          "items_of_value_expansion_not accepted as cash-law equivalence"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:1f35bc49455e3c7d3fcfb1dd33691747b4fc36565474e06a59c43004cbd59715",
+        "notes": "M2.5 bounded to Customs operational >= trigger; dual-operator preservation remains an I-B source-layer disposition."
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-007",
+      "candidate_text": "The earlier Foreign Exchange Act wording requiring declaration only when foreign currency exceeds US$5,000 is a legacy threshold retained for temporal audit and should not be used as the current border-cash rule while MLPPA 2022 is operative.",
+      "reviewed_text": "FEMMPA 1995 section 12 states that foreign currency in excess of US$5,000 or its equivalent, whether being imported into or exported out of Nigeria, shall be declared on the prescribed form for reasons of statistics only. That older threshold wording is retained for temporal audit and must not drive the current border-cash declaration threshold while MLPPA 2022 section 3(3) uses in excess of US$10,000.",
+      "claim_language": "en",
+      "claim_type": "definition",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "legacy_threshold_temporal_status",
+        "actor": null,
+        "transaction_context": "temporal_audit",
+        "temporal_scope": "historical"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S12",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "express temporal status of older threshold"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "temporal_audit_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:12725ae59a82f23f97f1e9634f61792af23d42fcb1941c394a58bd67e318b864",
+        "notes": "M2.5 bounded temporal-audit disposition for legacy US\\,000 threshold."
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-001",
+      "candidate_text": "Any person may open, maintain and operate a domiciliary account designated in foreign currency with an Authorised Dealer.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "domiciliary_account_opening",
+        "actor": "any_person",
+        "transaction_context": "foreign_currency_domiciliary_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S17-1",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:c8b1b54aedcc50a17c9e7cd773eaf5467c68508974e3b8474caf7e59bfdd9700",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-002",
+      "candidate_text": "The foreign currency in which a domiciliary account may be opened, maintained and operated shall be any internationally convertible currency.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "domiciliary_account_currency",
+        "actor": "any_person",
+        "transaction_context": "foreign_currency_domiciliary_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S17-2",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:399d83763c0b6c9e6b3f76dd845a38941188e6b65947d56130eac4c9bd9f595d",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-003",
+      "candidate_text": "Except as provided under any other enactment or law, a person making an application to open a domiciliary account under this Act shall not be obliged to disclose the source of the foreign currency sought to be deposited in the account.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "exception",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "domiciliary_account_source_disclosure",
+        "actor": "applicant",
+        "transaction_context": "foreign_currency_domiciliary_account_opening",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S17-3",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "closed",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-NG-FEMMPA-1995-S17-3"
+        ]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:0d9476fd9070b159a27bb90078e709f6980fc6661b988f85cdcd6eb74119ced9",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-004",
+      "candidate_text": "A person may open more than one domiciliary account under this Act designated in the same or different foreign currencies and at the same or in different banks.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "multiple_domiciliary_accounts",
+        "actor": "any_person",
+        "transaction_context": "foreign_currency_domiciliary_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S17-4",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:389bf23f93b6878bd29296c7260e162fbecb9a5ba135a18ea95bcf81bdc79b6d",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-005",
+      "candidate_text": "An exporter of goods, including petroleum products, shall open and maintain a foreign currency domiciliary account into which may be retained foreign currency corresponding to the entire proceeds of the export concerned.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "export_proceeds_domiciliary_account",
+        "actor": "exporter",
+        "transaction_context": "export_proceeds",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S19",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:6fc71368f1f0a19a60619984136fd971e90b268599e0015f25f34ae481c7030e",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-006",
+      "candidate_text": "For external and non-resident non-Nigerian customers, financial institutions shall satisfy themselves that the customer is permanently resident outside Nigeria, and the eligible classes for external accounts are embassies, high commissions, legations or consulates, their career and established members, and other international organisations recognised and accorded diplomatic status and their expatriate officials.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "external_account_eligibility",
+        "actor": "diplomatic_and_international_organisation_customers",
+        "transaction_context": "external_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-CDD-2023-R25-EXTERNAL",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "condense_eligible_list",
+          "fi_expansion_of_abbreviation"
+        ],
+        "omissions": [
+          "documentation_schedule_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "regulatory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:80d3285913e428f147e8683e58660d17b2c5e00d8b0345ee8bb0318c57afbab5",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-007",
+      "candidate_text": "The eligible classes to open non-resident accounts under the CBN Customer Due Diligence Regulations are overseas correspondence and examination bodies, foreign companies executing approved contracts in Nigeria, and foreign professional bodies.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "non_resident_account_eligibility",
+        "actor": "defined_non_resident_categories",
+        "transaction_context": "non_resident_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-CDD-2023-R25-NONRES",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "name_cdd_instrument",
+          "condense_eligible_list"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "regulatory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:372b8cdee0a0ef78593ad129273f111206bd8b66e2cd0fab717cffb4910551da",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-008",
+      "candidate_text": "All accounts of Non-resident stipulated for the external-account and non-resident-account eligible classes shall, on completion of the contract or the applicant’s business in Nigeria, be closed and the balance on the account, if any, transferred to the customer’s account in country of residence, after proper documentation.",
+      "reviewed_text": "All accounts of Non-resident stipulated in subregulations (2) and (4) of regulation 25 of the CBN Customer Due Diligence Regulations, 2023, shall, on completion of the contract or the applicant's business in Nigeria, be closed and the balance on the account, if any, transferred to the customer's account in country of residence, after proper documentation.",
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "non_resident_account_closure",
+        "actor": "financial_institution",
+        "transaction_context": "non_resident_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-CDD-2023-R25-CLOSE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "refer_eligible_classes_without_restating_lists"
+        ],
+        "omissions": [
+          "cbn_clarification_referral_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "regulatory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:05c518a4fd7fba44f37f07a442ad5ed82b7377bdbec41ab00c9a210349250767",
+        "notes": null
+      },
+      "subject": "non_resident_account_closure"
+    },
+    {
+      "candidate_id": "CC-NG-ACC-009",
+      "candidate_text": "Where a customer wishes to open a domiciliary account or make a wholesale deposit by cash or inter-bank transfer, a financial institution shall obtain identification evidence appropriate to individuals, companies, or professional intermediaries, and where funding is by inter-bank transfer the institution shall satisfy itself that the transferring institution is regulated for ML, TF or PF prevention in its country of origin.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "documentation_requirement",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "domiciliary_account_kyc",
+        "actor": "financial_institution",
+        "transaction_context": "domiciliary_account_opening_or_wholesale_deposit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-CDD-2023-R40",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "expand_fi_abbreviation",
+          "merge_opening_and_interbank_limbs"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "regulatory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:7170cdcb1f2c6984be31862c810ed796d907aafa979a620d0b7803bc0453f9e2",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-010",
+      "candidate_text": "Effective 1 January 2025, eligible Non-Resident Nigerians may own a Non-Resident Nigerian Ordinary Account or a Non-Resident Nigerian Investment Account subject to meeting KYC requirements, without prejudice to Memorandum 17 of the CBN Foreign Exchange Manual (2018).",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nrn_account_eligibility",
+        "actor": "non_resident_nigerian",
+        "transaction_context": "nrnoa_or_nrnia",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NRN-2025-INTRO",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "normalize_Ist_to_1",
+          "condense_intro_eligibility"
+        ],
+        "omissions": [
+          "detailed_nrnoa_operating_limbs_reserved",
+          "detailed_nrnia_operating_limbs_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "circular_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "closed",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-NG-CBN-NRN-2025-INTRO"
+        ]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:1955f84ae10631c72a83ae6faf5638a3b7030db406fb0d89cbbc57cb691949a5",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-011",
+      "candidate_text": "A Non-Resident Nigerian Ordinary Account enables Non-Resident Nigerians to remit their foreign earnings to Nigeria and manage funds in both foreign and local currencies; account holders may maintain both a foreign-currency account and/or a Naira account.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nrnoa_operation_and_fcy_repatriation",
+        "actor": "non_resident_nigerian",
+        "transaction_context": "nrnoa",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NRN-2025-NRNOA-OP",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "condense_purpose_and_account_structure"
+        ],
+        "omissions": [
+          "conversion_limb_reserved",
+          "repatriation_limb_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "circular_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:bc57bd6144c3f07fbad1489340403e15e83b8f472854eb4083ddeed03e5bf2b1",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-012",
+      "candidate_text": "A Non-Resident Nigerian Investment Account enables Non-Resident Nigerians to invest in assets in Nigeria in either foreign currency or local currency, and account holders may maintain both a foreign-currency account and/or a Naira account for that purpose.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nrnia_operation",
+        "actor": "non_resident_nigerian",
+        "transaction_context": "nrnia",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NRN-2025-NRNIA",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "condense_investment_purpose_wording"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "circular_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:371e52e4d2ea4a4bfef2f5610c432f471f7993b6b441dd6023aa20f0b58895e1",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-013",
+      "candidate_text": "On 15 May 2026, the Central Bank of Nigeria officially launched the Fourth Edition of its Foreign Exchange Manual.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "fx_manual_fourth_edition_temporal_status",
+        "actor": null,
+        "transaction_context": "temporal_audit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-REFORMS-FXM-2026",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "date_order_normalization"
+        ],
+        "omissions": [
+          "speech_context_omitted"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_audit_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:17d3040396181cd67721ef3139ed6f3fb1a3362489dbdb647d8fc332bea0ff20",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-014",
+      "candidate_text": "In cases that are not classified under the external-account or non-resident-account eligible classes in the CBN Customer Due Diligence Regulations, financial institutions shall refer to the Central Bank of Nigeria for clarification.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "unclassified_non_resident_referral",
+        "actor": "financial_institution",
+        "transaction_context": "non_resident_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-CDD-2023-R25-REFERRAL",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "expand_fi_cbn_names",
+          "refer_eligible_class_cross_ref"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "regulatory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:950ffca18f7c45078f29286e1228b2ea973481269517b6c093e04e240b63c2c9",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-015",
+      "candidate_text": "Balances in the foreign-currency account of a Non-Resident Nigerian Ordinary Account can be fully repatriated out of Nigeria without restriction.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nrnoa_fcy_repatriation",
+        "actor": "non_resident_nigerian",
+        "transaction_context": "nrnoa",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NRN-2025-NRNOA-REPAT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "expand_fcy_abbreviation",
+          "name_nrnoa"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "circular_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:c81067bb6e0446b5f5f323964acfd6047d9625956de1a4f043be7386acf9e6be",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-016",
+      "candidate_text": "Non-Resident Nigerian Ordinary Account holders may maintain a Naira account with funds remitted directly from offshore or convertible from a foreign-currency account at prevailing exchange rates through authorised dealers.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nrnoa_naira_funding_conversion",
+        "actor": "non_resident_nigerian",
+        "transaction_context": "nrnoa",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NRN-2025-NRNOA-CONV",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "expand_fcy_ngn",
+          "authorised_spelling"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "circular_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:396160782e6ba8dfda9a48d1f82486d7424a22df3677c2b91e195a507566ed2e",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-001",
+      "candidate_text": "The Central Bank may appoint, as an Authorised Dealer or Authorised Buyer of foreign currency, any bank or non-banking corporate organisation which shows evidence of adequate resources and capacity to operate under the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, subject to terms and conditions in the letter of appointment.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "institutional_role",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "authorised_dealer_authorised_buyer_appointment",
+        "actor": "central_bank",
+        "transaction_context": "foreign_exchange_market_participants",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S5-AD",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "name_act",
+          "condense_appointment_limbs"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:41616ca3113baf2698d954e7771d2872bd5b486b02a8781ec2748c6b4c27383e",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-002",
+      "candidate_text": "Transactions in the Autonomous Foreign Exchange Market are between the public and Authorised Dealers, among Authorised Dealers, and between Authorised Dealers and Authorised Buyers, and shall be as prescribed from time to time by the Central Bank.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "market_transaction_channels",
+        "actor": "market_participants",
+        "transaction_context": "autonomous_foreign_exchange_market",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S7-TX",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "name_market",
+          "condense_counterparty_list"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:f1d0c53450d9f277b2453b317b978ab2fe22a1f37fe681f380428081cc1ed0f8",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-003",
+      "candidate_text": "The rate at which each transaction in the Autonomous Foreign Exchange Market shall be executed shall be the rate mutually agreed between the applicant purchaser and the Authorised Dealer or Authorised Buyer concerned.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "transaction_execution_rate",
+        "actor": "applicant_purchaser_and_authorised_participant",
+        "transaction_context": "market_fx_transaction",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S9-RATE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "name_market"
+        ],
+        "omissions": [
+          "regime_classification_reserved_for_ng_b4"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:aa2744ad978d0a82e72add37f8a36ae8650cd571ba34be76e38bf0b28bfdebc6",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-004",
+      "candidate_text": "Except where a transaction is prohibited by law and subject to section 11(b), any transaction adequately supported by appropriate documentation shall be an eligible transaction for the purchase of foreign exchange in the Autonomous Foreign Exchange Market.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "documentation_requirement",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "documentation_for_market_fx_purchase_eligibility",
+        "actor": "market_purchaser",
+        "transaction_context": "foreign_exchange_purchase",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S10-DOCS",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "preserve_section_11b_cross_ref",
+          "name_market"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "closed",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-NG-FEMMPA-1995-S10-DOCS"
+        ]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:7be1b2fa81cae5c86a63c07df370a97fc98323b5b4e851b828ef3dd99228d61f",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-005",
+      "candidate_text": "Nothing in the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act shall be construed as permitting any unrestrained or general dealing in foreign currencies on terms inconsistent with that Act, or as permitting Market transactions relating to goods, services or items absolutely prohibited by any enactment or law.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "prohibited_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "market_dealing_and_prohibited_items_boundary",
+        "actor": null,
+        "transaction_context": "autonomous_foreign_exchange_market",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S11-LIMIT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "name_act",
+          "merge_11a_11b_boundary"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:c1fffeed785736b53a8329d1456f67e6ddd4762d691c71406174a0c876b0e6f6",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-006",
+      "candidate_text": "Any foreign currency purchased from the Autonomous Foreign Exchange Market may be repatriated from Nigeria and shall not be subject to any further approval.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "repatriation_of_market_purchased_foreign_currency",
+        "actor": "holder_of_market_purchased_fx",
+        "transaction_context": "market_purchase_repatriation",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S13-REPAT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "name_market",
+          "retain_purchased_from_market_scope"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:6bdc79133f3f8ba6458d800f6718c1a45fdf8cba910aaa9f6c341665e74cf120",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-007",
+      "candidate_text": "Any person may invest in any enterprise or security with foreign currency or capital imported into Nigeria through an Authorised Dealer by telegraphic transfer, cheques or other negotiable instruments and converted into the naira in the Autonomous Foreign Exchange Market in accordance with the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "inward_investment_through_authorised_dealer",
+        "actor": "investor",
+        "transaction_context": "foreign_direct_or_securities_investment",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S15-INVEST",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "name_act_and_market",
+          "split_cci_limb_reserved"
+        ],
+        "omissions": [
+          "cci_issuance_limb_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:7b0edf8d342d9c880d349fd969e443e51b884951139e25bf18421f1bad7f9c6c",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-008",
+      "candidate_text": "The Authorised Dealer through which foreign currency or capital for an investment under section 15(1) is imported shall, within 24 hours of the importation, issue a Certificate of Capital Importation to the investor and shall, within 48 hours thereafter, make returns to the Central Bank.",
+      "reviewed_text": "The Authorised Dealer through which the foreign currency or capital for an investment under section 15(1) is imported shall, within 24 hours of the importation, issue a Certificate of Capital Importation to the investor and shall, within 48 hours thereafter, make returns to the Central Bank giving such information as the Central Bank may, from time to time, require.",
+      "claim_language": "en",
+      "claim_type": "documentation_requirement",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "certificate_of_capital_importation_issuance_and_returns",
+        "actor": "authorised_dealer",
+        "transaction_context": "inward_capital_importation",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S15-INVEST",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "pin_section_15_1_cross_ref",
+          "merge_issuance_and_returns"
+        ],
+        "omissions": [
+          "investment_permission_limb_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:c01ba946531fdecc196975076c021dacc899ffd483ae6f2fe45a78aa2181663a",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-009",
+      "candidate_text": "Foreign currency imported into Nigeria and invested in an enterprise under section 15(1) is guaranteed unconditional transferability, through an Authorised Dealer in freely convertible currency, of dividends or profits (net of taxes) attributable to the investment.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "dividend_profit_remittance_through_authorised_dealer",
+        "actor": "foreign_investor",
+        "transaction_context": "dividend_or_profit_remittance",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S15-TRANSFER",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "isolate_15_4_a",
+          "pin_section_15_1"
+        ],
+        "omissions": [
+          "loan_servicing_limb_reserved",
+          "liquidation_limb_reserved",
+          "reporting_limb_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:ae51e6dba6a104482b6a5cad1fb3e6d5a49884bf49d2f4406db6a904fafa2f07",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-010",
+      "candidate_text": "Foreign currency imported into Nigeria and invested in an enterprise under section 15(1) is guaranteed unconditional transferability, through an Authorised Dealer in freely convertible currency, of payments in respect of loan servicing where a foreign loan has been obtained.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "foreign_loan_servicing_remittance_through_authorised_dealer",
+        "actor": "borrower_or_investor",
+        "transaction_context": "foreign_loan_servicing",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S15-TRANSFER",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "isolate_15_4_b",
+          "pin_section_15_1"
+        ],
+        "omissions": [
+          "dividend_limb_reserved",
+          "liquidation_limb_reserved",
+          "reporting_limb_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:eaa0fcd6f971dd97876b0288b636c6c0d91c91400d843b4600625f39d7b08930",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-011",
+      "candidate_text": "Foreign currency imported into Nigeria and invested in an enterprise under section 15(1) is guaranteed unconditional transferability, through an Authorised Dealer in freely convertible currency, of the remittance of proceeds (net of all taxes) and other obligations in the event of sale or liquidation of the enterprise or any interest attributable to the investment.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "investment_sale_liquidation_proceeds_remittance",
+        "actor": "foreign_investor",
+        "transaction_context": "capital_or_interest_disposal_remittance",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S15-TRANSFER",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "isolate_15_4_c",
+          "pin_section_15_1"
+        ],
+        "omissions": [
+          "dividend_limb_reserved",
+          "loan_servicing_limb_reserved",
+          "reporting_limb_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:da9efecbed2859f2bd83054dd189c8f20dde8c3a4568cd46814eb3e5d1d41c35",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-012",
+      "candidate_text": "An Authorised Dealer shall communicate a section 15(4) repatriation to the Central Bank within fourteen days of the repatriation, and the Central Bank shall furnish the same to the Minister monthly for information and statistical purposes only.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "authorised_dealer_repatriation_reporting",
+        "actor": "authorised_dealer",
+        "transaction_context": "investment_related_repatriation",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S15-TRANSFER",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "isolate_15_5_reporting",
+          "statistical_purpose_retained"
+        ],
+        "omissions": [
+          "transferability_limbs_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:d318780b15c4af3c9d00f7c55558d9dcbef5fbb6b46ef4e174b9bb4b70cfe6f9",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-013",
+      "candidate_text": "An Authorised Dealer and Authorised Buyer appointed under the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act shall submit to the Central Bank, at intervals and in forms the Central Bank may prescribe by circulars and guidelines, returns of activities in the Autonomous Foreign Exchange Market.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "authorised_participant_market_activity_returns",
+        "actor": "authorised_dealer_or_authorised_buyer",
+        "transaction_context": "market_reporting",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S16-RETURNS",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "name_act_and_market"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:b33f2cf477938d294418e3cf554095ae5bb0b9bc512de12217666d72e027f344",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-014",
+      "candidate_text": "A person may export goods or services from Nigeria if the goods or services are not prohibited by law in Nigeria, payment is made by letter of credit or any other internationally acceptable mode of payment, and the payment amount represents a fair return for the goods or services.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "export_of_goods_or_services_conditions",
+        "actor": "exporter",
+        "transaction_context": "export_of_goods_or_services",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S27-EXPORT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "merge_27_conditions"
+        ],
+        "omissions": [
+          "exporter_domiciliary_retention_is_hardening_ii_acc005"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:96f476753f21fab3e3bc8a6a1cfb36e9dd3191accb7195bfdb2dd8a0d9fba218",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-015",
+      "candidate_text": "Eligible transactions at the Nigerian Foreign Exchange Market, including FX applications for medical needs, school fees, business travel allowance/personal travel allowance, and SME transactions, are permissible at the NFEM and processed by Deposit Money Banks.",
+      "reviewed_text": "All eligible transactions such as FX applications for Medical Needs, School Fees, Business Travel Allowance/ Personal Travel Allowance (BTA/PTA), and Small and Medium Enterprises (SMEs) transactions are permissible at the Nigerian Foreign Exchange Market (NFEM) and processed by the Deposit Money Banks.",
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nfem_eligible_transactions_processed_by_dmbs",
+        "actor": "deposit_money_banks",
+        "transaction_context": "nigerian_foreign_exchange_market",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXMGMT-NFEM-DMB",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_listed_examples",
+          "dmb_channel"
+        ],
+        "omissions": [
+          "regime_label_reserved_for_ng_b4"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:2cc8fa53df5ddcd30134fadf90924c5e569f26bf7303b8e676cbc106ccd1b4b0",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-016",
+      "candidate_text": "The Central Bank permitted accessibility of foreign exchange in the Nigerian Foreign Exchange Market for 43 items previously restricted by the 2015 circular TED/FEM/FPC/GEN/01/010 and its addendums.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "restoration_of_nfem_access_for_formerly_restricted_items",
+        "actor": null,
+        "transaction_context": "import_related_fx_access",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXMGMT-NFEM-DMB",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "pin_2015_circular_reference"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_audit_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:5366e602a1d27c6a9a662c4598a75298cbc88d3236a3966aa7326fb15d708a7b",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-017",
+      "candidate_text": "Authorised Dealers use the Electronic Foreign Exchange Matching System to place buy and sell orders for foreign exchange transactions in the Nigerian Foreign Exchange Market, and Authorised Dealer Banks transition to EFEMS for interbank FX transactions.",
+      "reviewed_text": "Authorised Dealers use the Electronic Foreign Exchange Matching System (EFEMS) to place buy and sell orders for foreign exchange transactions in the Nigerian Foreign Exchange Market, and Authorised Dealer Banks use EFEMS for interbank FX transactions.",
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "efems_authorised_dealer_interbank_channel",
+        "actor": "authorised_dealer",
+        "transaction_context": "interbank_fx_trading",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-EFEMS-AD",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "condense_efems_ad_role"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:de5c26b632904b52a8941e14c5626b1afbf870a52e93bf283a59ef85f148bdcd",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-018",
+      "candidate_text": "EFEMS participants include all authorised dealer banks licensed by the Central Bank of Nigeria and other participants who have secured CBN approval to access the EFEMS platform and execute agreements with the platform provider.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "efems_participant_classes",
+        "actor": "efems_participants",
+        "transaction_context": "interbank_fx_matching",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-REFORMS-EFEMS-PARTICIPANTS",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "preserve_ad_and_other_approved_classes"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:99d4104f06f7816ff906efa9a872c674e7840369e922851b7069d36dd78c7eb9",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-019",
+      "candidate_text": "Duly licensed Bureau De Change operators are permitted to access foreign exchange through any Authorised Dealer of their choice at prevailing market rates, and Authorised Dealers must conduct complete KYC and due diligence checks on BDC clients.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "licensed_bdc_fx_access_via_authorised_dealer",
+        "actor": "licensed_bdc_and_authorised_dealer",
+        "transaction_context": "retail_nfem_fx_access",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-REFORMS-BDC-VIA-AD",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "merge_access_and_kyc_limbs"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "circular_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:0132dea1f9ecb5c4441520abf80bb51ba3e3a5e042eb013bde39784b5efacb16",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-020",
+      "candidate_text": "The Central Bank of Nigeria Regulatory and Supervisory Guidelines for Bureau De Change Operations in Nigeria 2024, issued under BOFIA 2020 section 56, supersede the Revised Operational Guidelines for Bureau De Change in Nigeria issued in November 2015 and related circulars and directives, effective 3 June 2024.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "bdc_guidelines_2024_supersession",
+        "actor": "bureau_de_change_operators",
+        "transaction_context": "bdc_regulatory_framework",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-BDC-GUIDE-2024-ISSUE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_effective_date_and_supersession"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "regulatory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:13fe8a378e7409cd9ed480cbe8040a1ae94650d5491b070f0f9333acc4244781",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-001",
+      "candidate_text": "The Foreign Exchange (Monitoring and Miscellaneous Provisions) Act establishes an Autonomous Foreign Exchange Market, and the Central Bank of Nigeria may, with the approval of the Minister, issue guidelines from time to time to regulate the procedures for transactions in the Market and other matters appropriate for the Market’s effective operation.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "institutional_role",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cbn_market_guideline_authority",
+        "actor": "central_bank",
+        "transaction_context": "autonomous_foreign_exchange_market",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S1-GUIDELINES",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "name_act_and_market",
+          "merge_establishment_and_guideline_limbs"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:bcf29e97f0f4368d5a722d5eaaabdb098595bd85e2faad4cb97a99f5a508d088",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-002",
+      "candidate_text": "According to the Central Bank of Nigeria FX Structure and Management page, Nigeria’s foreign exchange market framework has shifted from a tightly regulated, administratively controlled system to a largely market driven regime.",
+      "reviewed_text": "According to the Central Bank of Nigeria FX Structure and Management page, over the years the framework has shifted from a tightly regulated, administratively controlled system to a largely market driven regime.",
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "largely_market_driven_regime_operating_language",
+        "actor": null,
+        "transaction_context": "foreign_exchange_market_framework",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-MARKET-DRIVEN",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_largely_market_driven_wording"
+        ],
+        "omissions": [
+          "free_float_taxonomy_not_inferred",
+          "managed_float_taxonomy_not_inferred"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:666e7287a34f0afa309824e408945010fb58c8edc4fc76ed00b3b89461c2f840",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-003",
+      "candidate_text": "Under the Central Bank of Nigeria FX Structure and Management page’s 2016–2023 period heading, the Central Bank in June 2016 adopted a managed floating exchange rate regime and introduced the Investors’ and Exporters’ Foreign Exchange Window as a market driven platform for eligible FX transactions.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "2016_managed_floating_temporal_adoption",
+        "actor": null,
+        "transaction_context": "foreign_exchange_market_history",
+        "temporal_scope": "historical"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-2016-MANAGED-FLOAT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "pin_2016_2023_period_heading",
+          "retain_managed_floating_wording"
+        ],
+        "omissions": [
+          "not_asserted_as_2023_date_current_regime_label"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_audit_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:92f601dbb535b631b4bf7255653c5b3487bc89776162b34726b1ce7477022eed",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-004",
+      "candidate_text": "On 14 June 2023, the Central Bank of Nigeria introduced a willing buyer, willing seller model for the conduct of transactions in the domestic foreign exchange market.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "2023_willing_buyer_willing_seller_model",
+        "actor": "central_bank",
+        "transaction_context": "nigerian_foreign_exchange_market",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-2023-WBWS-NFEM",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_willing_buyer_willing_seller_exact_phrase",
+          "pin_14_june_2023"
+        ],
+        "omissions": [
+          "free_float_taxonomy_not_inferred",
+          "managed_float_taxonomy_not_inferred"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:d6984b0aa1c8615d8988b854917b26a4eb7126fcaac72a53189749df7b679181",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-005",
+      "candidate_text": "Under the Central Bank of Nigeria’s 14 June 2023 foreign-exchange reform described on the FX Structure and Management page, the multiplicity of foreign exchange windows was eliminated and market segments were consolidated into a single framework now referred to as the Nigerian Foreign Exchange Market.",
+      "reviewed_text": "Under the Central Bank of Nigeria’s 14 June 2023 foreign-exchange reform described on the FX Structure and Management page, the multiplicity of foreign exchange windows was eliminated, and all market segments were consolidated into a single framework now referred to as the Nigerian Foreign Exchange Market (NFEM).",
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nfem_market_consolidation",
+        "actor": null,
+        "transaction_context": "nigerian_foreign_exchange_market",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-2023-WBWS-NFEM",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_multiplicity_eliminated_and_nfem_name"
+        ],
+        "omissions": [
+          "unofficial_parallel_market_not_addressed"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:1a76a10373d1ee6deee4c2190f7b2683ec0de29f1acac872f549ccc73c0b4706",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-006",
+      "candidate_text": "According to the Central Bank of Nigeria FX Structure and Management page, the 14 June 2023 reform strengthened the role of demand and supply in the exchange rate formation process under the willing buyer, willing seller model.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "demand_and_supply_in_exchange_rate_formation",
+        "actor": null,
+        "transaction_context": "exchange_rate_formation",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-2023-WBWS-NFEM",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_demand_and_supply_formation_language"
+        ],
+        "omissions": [
+          "free_float_taxonomy_not_inferred",
+          "not_a_substitute_for_femmpa_s9_transaction_rate_claim"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:6f18e458c882147f787285d492c5532b974f12d808c09804dd7b47be1323fa5c",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-007",
+      "candidate_text": "Central Bank of Nigeria Monetary Policy reforms materials state that foreign-exchange market reforms have been ongoing to drive the unification of multiple FX windows under a transparent willing buyer, willing seller system, and that the Bank introduced the FXCode and the Bloomberg B-Matching platform to improve transparency and price discovery and implemented the Electronic Foreign Exchange Matching System to ensure transparency, fair and efficient FX trading, minimise counterparty risk, and ensure compliance with CBN regulations.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "current_fx_reform_package_wbws_fxcode_efems",
+        "actor": "central_bank",
+        "transaction_context": "nigerian_foreign_exchange_market_reforms",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-MP-REFORMS-FX",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "condense_reform_package_limbs"
+        ],
+        "omissions": [
+          "customer_entitlement_not_inferred_from_efems"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:5e43bb7ac434f005060a5fdaef92680345ade7e357be61e2f2d5a3f37e5f7959",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-008",
+      "candidate_text": "According to the Central Bank of Nigeria Foreign Exchange Market page, adoption of a willing buyer, willing seller model for trade transactions unified the foreign exchange market in 2023, abolished FX market segmentation, and collapsed previously existing segments into the Investors’ and Exporters’ window, now renamed the Nigerian Foreign Exchange Market.",
+      "reviewed_text": "According to the Central Bank of Nigeria Foreign Exchange Market page, the Central Bank of Nigeria adopted a willing buyer, willing seller model for trade transactions, therefore unifying the foreign exchange market in 2023. This led to the abolishment of FX market segmentation, and collapse of the previously existing segments into the Investors’ and Exporters’ (I&E) window, now renamed Nigerian Foreign Exchange Market (NFEM).",
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "2023_unification_and_nfem_rename",
+        "actor": null,
+        "transaction_context": "nigerian_foreign_exchange_market",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXMARKET-2023-NFEM",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_abolishment_segmentation_and_rename"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:2170b302e3cbc3c79f76b2cf17bc963789859f076fe9283f5d125d123c9d661b",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-009",
+      "candidate_text": "On the Central Bank of Nigeria exchange-rates page, the NFEM rate is derived at volume-weighted average and stands as the official exchange rate for the day.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "definition",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nfem_official_rate_volume_weighted_average",
+        "actor": null,
+        "transaction_context": "nfem_published_rates",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NFEM-RATES-OFFICIAL",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_volume_weighted_average_and_official_rate"
+        ],
+        "omissions": [
+          "not_equated_to_every_transaction_rate",
+          "not_equated_to_closing_rate_series_without_pin"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:27c6e50a3ac97820861beba39699ab9d8fc4d46e883d482f8b8c2ad3186e8d87",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-010",
+      "candidate_text": "According to the Central Bank of Nigeria EFEMS FAQs, EFEMS is expected to promote a market-driven exchange rate, meaning rates will reflect actual market conditions.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "efems_market_driven_exchange_rate_expectation",
+        "actor": null,
+        "transaction_context": "efems_rate_formation",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-EFEMS-MARKET-DRIVEN",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_market_driven_exact_term"
+        ],
+        "omissions": [
+          "free_float_taxonomy_not_inferred",
+          "customer_eligibility_not_inferred"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:7d3cb9393bd63ff8c0bf0fd80d6ad43bdc0009fdf4264fc531efaaba5b6aa52a",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-011",
+      "candidate_text": "According to the Central Bank of Nigeria EFEMS FAQs, real-time rates and other key data from EFEMS will be published on the selected platform and CBN official websites, and those rates would serve as a reference rate for USDNGN, with the computation methodology to be communicated to market participants.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "efems_published_usdn_gn_reference_rate",
+        "actor": "central_bank",
+        "transaction_context": "efems_reference_rate_publication",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-EFEMS-REFERENCE-RATE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_reference_rate_and_methodology_to_be_communicated"
+        ],
+        "omissions": [
+          "not_equated_to_every_customer_transaction_rate"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:cb344fb3796c6a33f321923f7ea1ebac4f2afb922d7a83edafbf0fbec6b5fda9",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-012",
+      "candidate_text": "According to the Central Bank of Nigeria EFEMS FAQs, the Central Bank, in collaboration with the Financial Markets Dealers Association, will regulate the EFEMS system and publish guidelines, rules, and real-time data to ensure compliance with the Nigerian FX Code and the revised Market Operating Guidelines for the Nigeria Foreign Exchange Market.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "institutional_role",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cbn_fmda_efems_regulatory_role",
+        "actor": "central_bank",
+        "transaction_context": "efems_supervision",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-EFEMS-REGULATE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_cbn_fmda_collaboration_and_fx_code"
+        ],
+        "omissions": [
+          "regime_taxonomy_not_inferred_from_regulatory_role"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:79ce2d2363ad7ce360d26b99f183c978df9d3dea36e7aa35f4bf37d10d2c13e2",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-013",
+      "candidate_text": "The Central Bank of Nigeria FX Structure and Management page describes the June 2016 adoption of a managed floating exchange rate regime under the heading 2016–2023: Market Deepening, Liquidity Enhancement, and Investor Confidence.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "managed_floating_under_2016_2023_period_heading",
+        "actor": null,
+        "transaction_context": "exchange_rate_regime_temporal_architecture",
+        "temporal_scope": "historical"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-2016-MANAGED-FLOAT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_period_heading_scope"
+        ],
+        "omissions": [
+          "does_not_assert_2023_date_current_managed_float_label"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_audit_description",
+        "authority_preservation_status": "human_confirmed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "closed",
+      "special_review_required": true,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:a3327b12675cd3967e005474331f74f60446af5227b331481343ce64d8ca65ee",
+        "notes": null
+      }
+    }
+  ]
+}

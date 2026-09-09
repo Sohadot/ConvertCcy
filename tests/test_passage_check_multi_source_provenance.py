@@ -36,9 +36,40 @@ class PassageCheckMultiSourceProvenanceTest(unittest.TestCase):
         cls.html = (REPO / "passage-check.html").read_text(encoding="utf-8")
 
     def test_published_count(self):
-        self.assertEqual(len(self.ds_by), 22)
-        self.assertEqual(len(self.pc_by), 22)
-        self.assertEqual(self.pc["count"], 22)
+        self.assertEqual(len(self.ds_by), 23)
+        self.assertEqual(len(self.pc_by), 23)
+        self.assertEqual(self.pc["count"], 23)
+
+    def test_nigeria_semantics(self):
+        self.assertIn("nigeria", self.pc_by)
+        nigeria = self.pc_by["nigeria"]
+        self.assertEqual(nigeria["exchange_controls"]["posture"], "capital_account_regulated")
+        self.assertNotEqual(nigeria["exchange_controls"]["posture"], "floating_regulated_market")
+        label = (nigeria["exchange_controls"].get("label") or "").lower()
+        self.assertNotIn("managed float", label)
+        self.assertNotIn("floating_regulated_market", label)
+        self.assertNotIn("significant exchange controls", label)
+        note = (nigeria["declaration"].get("note") or "").lower()
+        self.assertIn("operator >", note)
+        self.assertIn("operator >=", note)
+        self.assertIn("declaration threshold", note)
+        self.assertIn("not established", note)
+        self.assertNotIn("n10,000", note)
+        self.assertNotIn("n20,000", note)
+        self.assertNotIn("n100,000", note)
+        thresholds = nigeria["declaration"]["thresholds"]
+        self.assertEqual(len(thresholds), 2)
+        ops = {t.get("operator") for t in thresholds}
+        self.assertEqual(ops, {">", ">="})
+        for t in thresholds:
+            self.assertEqual(t["value"], 10000)
+            self.assertEqual(t["currency"], "USD")
+        self.assertEqual(
+            nigeria["declaration"]["pair_surface_summary"],
+            "statutory cash/NI declaration > USD 10,000 · "
+            "Customs e-CDF operational >= USD 10,000 · "
+            "physical NGN prohibited except CBN guidelines (no numeric exception established)",
+        )
 
     def test_all_rule_fields_preserve_source_arrays(self):
         checked = 0

@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-08T21:01:40+00:00",
+  "generated_at": "2026-09-09T19:50:34+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 22,
-    "verified": 2,
+    "published": 23,
+    "verified": 1,
     "needs_hardening": 1,
     "secondary_review": 0,
     "skipped": 0,
@@ -117,6 +117,14 @@
     },
     {
       "status": "published",
+      "country_slug": "nigeria",
+      "country_name": "Nigeria",
+      "output_html": "rules/nigeria-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/nigeria-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
       "country_slug": "pakistan",
       "country_name": "Pakistan",
       "output_html": "rules/pakistan-foreign-currency-rules.html",
@@ -189,13 +197,6 @@
     }
   ],
   "verified_entries": [
-    {
-      "status": "verified",
-      "country_slug": "nigeria",
-      "country_name": "Nigeria",
-      "output_html": "preview/rules/verified/nigeria-foreign-currency-rules.html",
-      "sitemap_eligible": false
-    },
     {
       "status": "verified",
       "country_slug": "switzerland",

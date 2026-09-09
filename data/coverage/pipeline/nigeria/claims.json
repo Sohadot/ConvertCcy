@@ -1,0 +1,2057 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "nigeria",
+  "country_name": "Nigeria",
+  "iso2": "NG",
+  "matrix_date": "2026-09-09",
+  "notes": "Nigeria Hardening I + II + III + IV Adoption Gates. Hardening I border-cash (NG-CUST-* / NG-NGN-01), Hardening II accounts (NG-ACC-01..16), and Hardening III business FX (NG-BIZ-01..20) preserved. Hardening IV adds NG-REG-01..13 from M2.5-reviewed REG candidates. Does not draft data/rules/nigeria.json. Current formal floating / managed-float taxonomy not established; significant exchange controls classification remains retired. Historical managed-float claims (NG-REG-03/13) adopted unbound for temporal audit only.",
+  "claims": [
+    {
+      "claim_id": "NG-CUST-01",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Entry cash / negotiable-instrument declaration (statutory)",
+      "rule": "Transportation of cash or negotiable instruments in excess of US$10,000 or its equivalent by individuals into Nigeria shall be declared to the Nigeria Customs Service",
+      "scope": "border entry; cash or negotiable instruments; individual travellers",
+      "authority": "Money Laundering (Prevention and Prohibition) Act, 2022",
+      "category": "legal_thresholds",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-MLPPA-2022"
+      ],
+      "matching_source_note": "Adopted from CC-NG-CASH-001; reviewed fingerprint sha256:192062fcdd12413970f59aa55f510fb2e77dd2d882dadbffaabf86dde2d69323; MLPPA 2022 s.3(3) entry limb; statutory operator remains 'in excess of' (>), not >=",
+      "allowed_wording": [
+        "in excess of US$10,000",
+        "must be declared",
+        "shall be declared",
+        "Nigeria Customs Service"
+      ],
+      "forbidden_inferences": [
+        "without limit",
+        "unrestricted",
+        "declaration threshold is a carrying ceiling",
+        ">= US$10,000 as the statutory trigger"
+      ]
+    },
+    {
+      "claim_id": "NG-CUST-02",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Exit cash / negotiable-instrument declaration (statutory)",
+      "rule": "Transportation of cash or negotiable instruments in excess of US$10,000 or its equivalent by individuals out of Nigeria shall be declared to the Nigeria Customs Service",
+      "scope": "border exit; cash or negotiable instruments; individual travellers",
+      "authority": "Money Laundering (Prevention and Prohibition) Act, 2022",
+      "category": "legal_thresholds",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-MLPPA-2022"
+      ],
+      "matching_source_note": "Adopted from CC-NG-CASH-002; reviewed fingerprint sha256:6a23f5bb209722fd816938be92968dfa51a7ed47e65c1c57d19bb9c54b94ab52; MLPPA 2022 s.3(3) exit limb; statutory operator remains 'in excess of' (>); does not establish a general outbound carriage ceiling",
+      "allowed_wording": [
+        "in excess of US$10,000",
+        "must be declared",
+        "shall be declared",
+        "out of Nigeria"
+      ],
+      "forbidden_inferences": [
+        "without limit",
+        "unrestricted",
+        "amount declared on entry as universal outbound ceiling",
+        "declaration threshold is a carrying ceiling",
+        ">= US$10,000 as the statutory trigger"
+      ]
+    },
+    {
+      "claim_id": "NG-CUST-03",
+      "status": "verified",
+      "type": "positive",
+      "subject": "False or failed cash declaration offence consequence",
+      "rule": "Any person who falsely declares or fails to make a declaration to the Nigeria Customs Service under section 12 of the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act commits an offence and is liable on conviction to forfeit the undeclared funds or negotiable instrument or to imprisonment for a term of at least two years or both",
+      "scope": "border entry or exit declaration failure / false declaration",
+      "authority": "Money Laundering (Prevention and Prohibition) Act, 2022",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-MLPPA-2022"
+      ],
+      "matching_source_note": "Adopted from CC-NG-CASH-003; reviewed fingerprint sha256:ab5cd17b7b4429656ce75a781b742940edfd83e6d8ae503504da779e4e252e66; uses M2.5 reviewed_text restoring statutory 'liable on conviction' (not softened 'may lead'); MLPPA 2022 s.3(4)-(5) pinpoint; Customs-to-CBN reporting chain not adopted",
+      "allowed_wording": [
+        "liable on conviction",
+        "commits an offence",
+        "forfeit the undeclared funds",
+        "imprisonment for a term of at least two years"
+      ],
+      "forbidden_inferences": [
+        "may lead on conviction",
+        "may lead to forfeiture"
+      ]
+    },
+    {
+      "claim_id": "NG-CUST-04",
+      "status": "bounded",
+      "type": "negative",
+      "subject": "Declaration rule is not itself a prohibition on genuine funds above threshold",
+      "rule": "The reviewed official CBN guidance states that the declaration rule for cash or negotiable instruments above US$10,000 does not itself prohibit genuinely owned or obtained funds above that amount from being brought into Nigeria or taken outside the country",
+      "scope": "border entry or exit; declaration vs prohibition distinction only",
+      "authority": "Central Bank of Nigeria",
+      "category": "negative_scope",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-CIRC-2013-USD10K"
+      ],
+      "matching_source_note": "Adopted from CC-NG-CASH-004; reviewed fingerprint sha256:2ce7ee95f4585498c81401675b5951278c6afb3fbe52c4f9e4c06099665df3d2; CBN 2013 clarification; narrow negative only — does not establish unrestricted carriage or absence of other Nigerian-law limits",
+      "allowed_wording": [
+        "does not itself prohibit",
+        "declaration rule",
+        "genuinely owned or obtained funds"
+      ],
+      "forbidden_inferences": [
+        "without limit",
+        "unrestricted",
+        "unlimited carriage",
+        "no ceiling exists under all Nigerian law",
+        "foreign currency can be taken without limit"
+      ]
+    },
+    {
+      "claim_id": "NG-CUST-05",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "Imported cash domiciliary-account withdrawal / re-export condition (FEMMPA s.21)",
+      "rule": "Where a person imports foreign currency in excess of US$10,000 or its equivalent in cash and not by means of a bank draft, mail or telegraphic transfer and deposits the foreign currency in a domiciliary account with an authorised dealer, withdrawals from that account may be made only in cash, and that imported cash is exportable from Nigeria only in cash",
+      "scope": "imported cash deposited in a domiciliary account with an authorised dealer; cash-not-transfer condition retained",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-CASH-005; reviewed fingerprint sha256:bcb07b851173383e58f1b9506e2a5bff697bf4c9cf260009276a2c11582c34ba; FEMMPA 1995 s.21(1)-(2) with restored cash-not-transfer condition; not a universal outbound traveller rule",
+      "allowed_wording": [
+        "imported in cash",
+        "not by means of a bank draft, mail or telegraphic transfer",
+        "domiciliary account",
+        "authorised dealer",
+        "exportable from Nigeria only in cash"
+      ],
+      "forbidden_inferences": [
+        "outbound foreign currency is limited to amount declared on entry",
+        "every departing traveller requires authorised-dealer documentation",
+        "s.21 establishes a universal outbound carriage ceiling",
+        "universal authorised-dealer documentation rule"
+      ]
+    },
+    {
+      "claim_id": "NG-CUST-06",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "Customs e-CDF operational declaration trigger",
+      "rule": "Current Customs operational guidance on the e-currency declaration form uses a declaration trigger of US$10,000 or more / equal to or greater than US$10,000",
+      "scope": "Nigeria Customs Service e-CDF operational guidance; does not amend statutory MLPPA operator",
+      "authority": "Nigeria Customs Service",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-NCS-ECDF"
+      ],
+      "matching_source_note": "Adopted from CC-NG-CASH-006; reviewed fingerprint sha256:1f35bc49455e3c7d3fcfb1dd33691747b4fc36565474e06a59c43004cbd59715; operational operator >= only; Hardening I-B dual-operator preservation vs MLPPA > remains; Customs >= does not formally amend statutory >",
+      "allowed_wording": [
+        "US$10,000 or more",
+        "equal to or greater than US$10,000",
+        "Customs operational guidance",
+        "e-currency declaration form"
+      ],
+      "forbidden_inferences": [
+        "Customs >= formally amends statutory >",
+        "single reconciled declaration operator",
+        "statutory trigger is >= US$10,000"
+      ]
+    },
+    {
+      "claim_id": "NG-CUST-07",
+      "status": "superseded",
+      "type": "historical",
+      "subject": "Legacy FEMMPA s.12 US$5,000 statistical declaration threshold",
+      "rule": "FEMMPA 1995 section 12 states that foreign currency in excess of US$5,000 or its equivalent, whether being imported into or exported out of Nigeria, shall be declared on the prescribed form for reasons of statistics only. That older threshold wording is retained for temporal audit and must not drive the current border-cash declaration threshold while MLPPA 2022 section 3(3) uses in excess of US$10,000",
+      "scope": "temporal audit only; not a current traveller threshold",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "other",
+      "evidence_target": "E0",
+      "final_evidence_level": null,
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-CASH-007; reviewed fingerprint sha256:12725ae59a82f23f97f1e9634f61792af23d42fcb1941c394a58bd67e318b864; historical/superseded role; must not enter current-rule field bindings",
+      "allowed_wording": [],
+      "forbidden_inferences": [
+        "current declaration threshold is US$5,000",
+        "travellers must declare above US$5,000 under current AML law"
+      ]
+    },
+    {
+      "claim_id": "NG-NGN-01",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Physical naira import/export prohibition baseline",
+      "rule": "The importation and exportation of the naira remain prohibited except as permitted under guidelines issued from time to time by the Central Bank",
+      "scope": "cross-border physical naira notes; prohibition baseline only; current numeric traveller exception not established in this review",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "prohibited_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-NGN-001; reviewed fingerprint sha256:165c2cb6d5132261f2a369c6a7a9b85479332030df92d9cca1bcb86334223647; FEMMPA 1995 s.14; Hardening I-B numeric exception not established — do not invent N10,000 / N20,000 / N100,000",
+      "allowed_wording": [
+        "importation and exportation of the naira remain prohibited",
+        "except as permitted under guidelines",
+        "Central Bank",
+        "current numeric traveller exception not established"
+      ],
+      "forbidden_inferences": [
+        "N10,000",
+        "N20,000",
+        "N100,000",
+        "travellers may carry NGN up to a stated numeric limit"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-01",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Domiciliary account opening with Authorised Dealer",
+      "rule": "Any person may open, maintain and operate a domiciliary account designated in foreign currency with an Authorised Dealer",
+      "scope": "foreign-currency domiciliary account; Authorised Dealer; statutory opening/maintenance/operation only",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-001; reviewed fingerprint sha256:c8b1b54aedcc50a17c9e7cd773eaf5467c68508974e3b8474caf7e59bfdd9700; FEMMPA 1995 s.17(1)",
+      "allowed_wording": [
+        "open, maintain and operate a domiciliary account",
+        "Authorised Dealer",
+        "designated in foreign currency"
+      ],
+      "forbidden_inferences": [
+        "CBN limits and approval requirements",
+        "prior CBN approval required to open domiciliary account",
+        "general unrestricted access",
+        "unrestricted FX access",
+        "without limit",
+        "unrestricted international transfer",
+        "unrestricted physical holding",
+        "unrestricted external transfers",
+        "physical-cash entitlement from account opening"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-02",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Domiciliary account convertible-currency denomination",
+      "rule": "The foreign currency in which a domiciliary account may be opened, maintained and operated shall be any internationally convertible currency",
+      "scope": "domiciliary-account denomination only; not funding, withdrawal, conversion, or transfer rights",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-002; reviewed fingerprint sha256:399d83763c0b6c9e6b3f76dd845a38941188e6b65947d56130eac4c9bd9f595d; FEMMPA 1995 s.17(2)",
+      "allowed_wording": [
+        "internationally convertible currency",
+        "domiciliary account"
+      ],
+      "forbidden_inferences": [
+        "funding entitlement from denomination rule",
+        "withdrawal entitlement from denomination rule",
+        "transfer entitlement from denomination rule"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-03",
+      "status": "bounded",
+      "type": "negative",
+      "subject": "Domiciliary opening source-disclosure obligation (statutory exception)",
+      "rule": "Except as provided under any other enactment or law, a person making an application to open a domiciliary account under this Act shall not be obliged to disclose the source of the foreign currency sought to be deposited in the account",
+      "scope": "application to open domiciliary account under FEMMPA; statutory exception retained; not a no-KYC / no-AML absolute",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "negative_scope",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-003; reviewed fingerprint sha256:0d9476fd9070b159a27bb90078e709f6980fc6661b988f85cdcd6eb74119ced9; FEMMPA 1995 s.17(3); project status bounded under negative-claim discipline despite M2.5 supported",
+      "allowed_wording": [
+        "shall not be obliged to disclose the source",
+        "Except as provided under any other enactment or law"
+      ],
+      "forbidden_inferences": [
+        "anonymous account funding",
+        "no source-of-funds rules",
+        "no AML/KYC obligation",
+        "unrestricted deposits",
+        "no KYC"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-04",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Multiple domiciliary accounts",
+      "rule": "A person may open more than one domiciliary account under this Act designated in the same or different foreign currencies and at the same or in different banks",
+      "scope": "multiple domiciliary-account entitlement only",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-004; reviewed fingerprint sha256:389bf23f93b6878bd29296c7260e162fbecb9a5ba135a18ea95bcf81bdc79b6d; FEMMPA 1995 s.17(4)",
+      "allowed_wording": [
+        "more than one domiciliary account",
+        "same or different foreign currencies"
+      ],
+      "forbidden_inferences": [
+        "unlimited funding",
+        "unrestricted operation from multiple-account rule"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-05",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Exporter foreign-currency domiciliary account for export proceeds",
+      "rule": "An exporter of goods, including petroleum products, shall open and maintain a foreign currency domiciliary account into which may be retained foreign currency corresponding to the entire proceeds of the export concerned",
+      "scope": "exporter of goods including petroleum products; export-proceeds domiciliary account; distinct from ordinary domiciliary",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-005; reviewed fingerprint sha256:6fc71368f1f0a19a60619984136fd971e90b268599e0015f25f34ae481c7030e; FEMMPA 1995 s.19; exporter class only",
+      "allowed_wording": [
+        "exporter of goods",
+        "foreign currency domiciliary account",
+        "proceeds of the export"
+      ],
+      "forbidden_inferences": [
+        "exporter rules apply to ordinary domiciliary accounts",
+        "collapsing exporter and ordinary domiciliary classes",
+        "Form A requirement",
+        "export domiciliary cash-withdrawal restriction from unpinned Manual"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-06",
+      "status": "verified",
+      "type": "positive",
+      "subject": "External-account eligible classes (CDD Reg. 25)",
+      "rule": "For external and non-resident non-Nigerian customers, financial institutions shall satisfy themselves that the customer is permanently resident outside Nigeria, and the eligible classes for external accounts are embassies, high commissions, legations or consulates, their career and established members, and other international organisations recognised and accorded diplomatic status and their expatriate officials",
+      "scope": "external accounts; diplomatic / international-organisation classes only",
+      "authority": "Central Bank of Nigeria — Customer Due Diligence Regulations, 2023",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-CDD-2023"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-006; reviewed fingerprint sha256:80d3285913e428f147e8683e58660d17b2c5e00d8b0345ee8bb0318c57afbab5; CDD Reg. 25(1)-(2)",
+      "allowed_wording": [
+        "external accounts",
+        "embassies",
+        "high commissions",
+        "diplomatic status"
+      ],
+      "forbidden_inferences": [
+        "more freely",
+        "non-residents may open and operate FCY accounts",
+        "all non-residents may open",
+        "all non-resident accounts require CBN approval",
+        "transfer funds more freely",
+        "universal non-resident FCY entitlement"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-07",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Non-resident-account eligible classes (CDD Reg. 25)",
+      "rule": "The eligible classes to open non-resident accounts under the CBN Customer Due Diligence Regulations are overseas correspondence and examination bodies, foreign companies executing approved contracts in Nigeria, and foreign professional bodies",
+      "scope": "enumerated non-resident-account classes only; not all non-residents",
+      "authority": "Central Bank of Nigeria — Customer Due Diligence Regulations, 2023",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-CDD-2023"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-007; reviewed fingerprint sha256:372b8cdee0a0ef78593ad129273f111206bd8b66e2cd0fab717cffb4910551da; CDD Reg. 25(4)",
+      "allowed_wording": [
+        "overseas correspondence and examination bodies",
+        "foreign companies executing approved contracts",
+        "foreign professional bodies"
+      ],
+      "forbidden_inferences": [
+        "more freely",
+        "non-residents may open and operate FCY accounts",
+        "all non-residents may open",
+        "all non-resident accounts require CBN approval",
+        "transfer funds more freely",
+        "all non-residents",
+        "non-residents may open FCY accounts"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-08",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "Closure of CDD Reg. 25(2)/(4) non-resident accounts on completion",
+      "rule": "All accounts of Non-resident stipulated in subregulations (2) and (4) of regulation 25 of the CBN Customer Due Diligence Regulations, 2023, shall, on completion of the contract or the applicant's business in Nigeria, be closed and the balance on the account, if any, transferred to the customer's account in country of residence, after proper documentation",
+      "scope": "only accounts under CDD Reg. 25 subregulations (2) and (4); not all non-resident/external accounts",
+      "authority": "Central Bank of Nigeria — Customer Due Diligence Regulations, 2023",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-CDD-2023"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-008; reviewed fingerprint sha256:05c518a4fd7fba44f37f07a442ad5ed82b7377bdbec41ab00c9a210349250767; uses M2.5 reviewed_text restoring subregulations (2) and (4); project status bounded",
+      "allowed_wording": [
+        "subregulations (2) and (4) of regulation 25",
+        "on completion of the contract",
+        "closed",
+        "transferred to the customer's account in country of residence"
+      ],
+      "forbidden_inferences": [
+        "all non-resident accounts automatically close under the same rule",
+        "universal non-resident closure",
+        "more freely",
+        "non-residents may open and operate FCY accounts",
+        "all non-residents may open",
+        "all non-resident accounts require CBN approval",
+        "transfer funds more freely"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-09",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Domiciliary-account customer identification / KYC (CDD Reg. 40)",
+      "rule": "Where a customer wishes to open a domiciliary account or make a wholesale deposit by cash or inter-bank transfer, a financial institution shall obtain identification evidence appropriate to individuals, companies, or professional intermediaries, and where funding is by inter-bank transfer the institution shall satisfy itself that the transferring institution is regulated for ML, TF or PF prevention in its country of origin",
+      "scope": "bank customer due diligence / identification for domiciliary opening or wholesale deposit; not CBN prior approval",
+      "authority": "Central Bank of Nigeria — Customer Due Diligence Regulations, 2023",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-CDD-2023"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-009; reviewed fingerprint sha256:7170cdcb1f2c6984be31862c810ed796d907aafa979a620d0b7803bc0453f9e2; CDD Reg. 40; bank KYC ≠ CBN prior regulatory approval",
+      "allowed_wording": [
+        "identification evidence",
+        "domiciliary account",
+        "wholesale deposit",
+        "inter-bank transfer"
+      ],
+      "forbidden_inferences": [
+        "CBN limits and approval requirements",
+        "prior CBN approval required to open domiciliary account",
+        "general unrestricted access",
+        "unrestricted FX access",
+        "without limit",
+        "unrestricted international transfer",
+        "unrestricted physical holding",
+        "KYC requirement = prior CBN approval",
+        "CBN authorisation required for every account",
+        "resident FX access prohibited absent CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-10",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Non-Resident Nigerian eligibility for NRNOA / NRNIA",
+      "rule": "Effective 1 January 2025, eligible Non-Resident Nigerians may own a Non-Resident Nigerian Ordinary Account or a Non-Resident Nigerian Investment Account subject to meeting KYC requirements, without prejudice to Memorandum 17 of the CBN Foreign Exchange Manual (2018)",
+      "scope": "Non-Resident Nigerians only; NRNOA or NRNIA; KYC; Memo 17 without-prejudice retained",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-NRN-2025"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-010; reviewed fingerprint sha256:1955f84ae10631c72a83ae6faf5638a3b7030db406fb0d89cbbc57cb691949a5; CBN TED NRNOA/NRNIA circular",
+      "allowed_wording": [
+        "Non-Resident Nigerians",
+        "Non-Resident Nigerian Ordinary Account",
+        "Non-Resident Nigerian Investment Account",
+        "subject to meeting KYC requirements",
+        "without prejudice to Memorandum 17"
+      ],
+      "forbidden_inferences": [
+        "more freely",
+        "non-residents may open and operate FCY accounts",
+        "all non-residents may open",
+        "all non-resident accounts require CBN approval",
+        "transfer funds more freely",
+        "all foreign nationals",
+        "all foreign companies",
+        "temporary visitors",
+        "NRN rights for all non-residents"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-11",
+      "status": "verified",
+      "type": "positive",
+      "subject": "NRNOA purpose and dual-currency structure",
+      "rule": "A Non-Resident Nigerian Ordinary Account enables Non-Resident Nigerians to remit their foreign earnings to Nigeria and manage funds in both foreign and local currencies; account holders may maintain both a foreign-currency account and/or a Naira account",
+      "scope": "NRNOA only; Non-Resident Nigerians; distinct from NRNIA",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-NRN-2025"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-011; reviewed fingerprint sha256:bc57bd6144c3f07fbad1489340403e15e83b8f472854eb4083ddeed03e5bf2b1; NRNOA framework purpose",
+      "allowed_wording": [
+        "Non-Resident Nigerian Ordinary Account",
+        "remit their foreign earnings",
+        "foreign-currency account and/or a Naira account"
+      ],
+      "forbidden_inferences": [
+        "merge NRNOA and NRNIA",
+        "generic diaspora FCY account",
+        "more freely",
+        "non-residents may open and operate FCY accounts",
+        "all non-residents may open",
+        "all non-resident accounts require CBN approval",
+        "transfer funds more freely"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-12",
+      "status": "verified",
+      "type": "positive",
+      "subject": "NRNIA purpose and dual-currency structure",
+      "rule": "A Non-Resident Nigerian Investment Account enables Non-Resident Nigerians to invest in assets in Nigeria in either foreign currency or local currency, and account holders may maintain both a foreign-currency account and/or a Naira account for that purpose",
+      "scope": "NRNIA only; Non-Resident Nigerians; investment purpose; distinct from NRNOA",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-NRN-2025"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-012; reviewed fingerprint sha256:371e52e4d2ea4a4bfef2f5610c432f471f7993b6b441dd6023aa20f0b58895e1; NRNIA framework purpose",
+      "allowed_wording": [
+        "Non-Resident Nigerian Investment Account",
+        "invest in assets in Nigeria",
+        "foreign currency or local currency"
+      ],
+      "forbidden_inferences": [
+        "merge NRNOA and NRNIA",
+        "NRNIA same as NRNOA repatriation",
+        "more freely",
+        "non-residents may open and operate FCY accounts",
+        "all non-residents may open",
+        "all non-resident accounts require CBN approval",
+        "transfer funds more freely"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-13",
+      "status": "verified",
+      "type": "historical",
+      "subject": "Foreign Exchange Manual Fourth Edition launch (temporal)",
+      "rule": "On 15 May 2026, the Central Bank of Nigeria officially launched the Fourth Edition of its Foreign Exchange Manual",
+      "scope": "temporal/framework metadata only; does not establish Manual operational domiciliary rules",
+      "authority": "Central Bank of Nigeria",
+      "category": "other",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-REFORMS"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-013; reviewed fingerprint sha256:17d3040396181cd67721ef3139ed6f3fb1a3362489dbdb647d8fc332bea0ff20; governed but unbound — does not bootstrap FX Manual 2026 operational rules",
+      "allowed_wording": [
+        "Fourth Edition of its Foreign Exchange Manual",
+        "15 May 2026",
+        "launched"
+      ],
+      "forbidden_inferences": [
+        "ordinary vs exporter domiciliary operational restrictions from Manual launch",
+        "Form A requirement from Manual launch",
+        "export domiciliary cash-withdrawal restriction from Manual launch",
+        "local-deposit ban from Manual launch"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-14",
+      "status": "verified",
+      "type": "operational",
+      "subject": "CBN clarification referral for unclassified CDD account cases",
+      "rule": "In cases that are not classified under the external-account or non-resident-account eligible classes in the CBN Customer Due Diligence Regulations, financial institutions shall refer to the Central Bank of Nigeria for clarification",
+      "scope": "unclassified / outside-listed CDD cases only; not universal non-resident CBN approval",
+      "authority": "Central Bank of Nigeria — Customer Due Diligence Regulations, 2023",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-CDD-2023"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-014; reviewed fingerprint sha256:950ffca18f7c45078f29286e1228b2ea973481269517b6c093e04e240b63c2c9; CDD Reg. 25(8)",
+      "allowed_wording": [
+        "not classified under the external-account or non-resident-account eligible classes",
+        "refer to the Central Bank of Nigeria for clarification"
+      ],
+      "forbidden_inferences": [
+        "all non-resident accounts require CBN approval",
+        "universal CBN approval",
+        "more freely",
+        "non-residents may open and operate FCY accounts",
+        "all non-residents may open",
+        "all non-resident accounts require CBN approval",
+        "transfer funds more freely"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-15",
+      "status": "verified",
+      "type": "positive",
+      "subject": "NRNOA foreign-currency balance repatriation",
+      "rule": "Balances in the foreign-currency account of a Non-Resident Nigerian Ordinary Account can be fully repatriated out of Nigeria without restriction",
+      "scope": "NRNOA foreign-currency account balances only; not NRNIA, not all non-resident funds, not resident domiciliary",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-NRN-2025"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-015; reviewed fingerprint sha256:c81067bb6e0446b5f5f323964acfd6047d9625956de1a4f043be7386acf9e6be; NRNOA framework 1.4; literal primary repatriation wording retained with hard anti-expansion forbids",
+      "allowed_wording": [
+        "Non-Resident Nigerian Ordinary Account",
+        "foreign-currency account",
+        "fully repatriated out of Nigeria without restriction"
+      ],
+      "forbidden_inferences": [
+        "all non-resident funds are freely repatriable",
+        "NRNIA automatically has same treatment",
+        "all investor capital is freely repatriable",
+        "resident domiciliary balances are freely transferable",
+        "all FCY accounts freely repatriable",
+        "more freely",
+        "non-residents may open and operate FCY accounts",
+        "all non-residents may open",
+        "all non-resident accounts require CBN approval",
+        "transfer funds more freely"
+      ]
+    },
+    {
+      "claim_id": "NG-ACC-16",
+      "status": "verified",
+      "type": "positive",
+      "subject": "NRNOA Naira account funding / conversion channel",
+      "rule": "Non-Resident Nigerian Ordinary Account holders may maintain a Naira account with funds remitted directly from offshore or convertible from a foreign-currency account at prevailing exchange rates through authorised dealers",
+      "scope": "NRNOA-specific Naira funding/conversion via authorised dealers; not a general local-funding rule",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-NRN-2025"
+      ],
+      "matching_source_note": "Adopted from CC-NG-ACC-016; reviewed fingerprint sha256:396160782e6ba8dfda9a48d1f82486d7424a22df3677c2b91e195a507566ed2e; NRNOA currency/conversion limb",
+      "allowed_wording": [
+        "Non-Resident Nigerian Ordinary Account",
+        "remitted directly from offshore",
+        "convertible from a foreign-currency account",
+        "authorised dealers"
+      ],
+      "forbidden_inferences": [
+        "general local-funding rule",
+        "local-deposit ban from unpinned Manual",
+        "unrestricted local deposits for all account classes",
+        "more freely",
+        "non-residents may open and operate FCY accounts",
+        "all non-residents may open",
+        "all non-resident accounts require CBN approval",
+        "transfer funds more freely"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-01",
+      "status": "verified",
+      "type": "operational",
+      "subject": "CBN appointment of Authorised Dealers and Authorised Buyers",
+      "rule": "The Central Bank may appoint, as an Authorised Dealer or Authorised Buyer of foreign currency, any bank or non-banking corporate organisation which shows evidence of adequate resources and capacity to operate under the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, subject to terms and conditions in the letter of appointment.",
+      "scope": "statutory Market participant appointment; Authorised Dealer and Authorised Buyer remain distinct classes; not a complete inventory of every current NFEM participant",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-001; reviewed fingerprint sha256:41616ca3113baf2698d954e7771d2872bd5b486b02a8781ec2748c6b4c27383e; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Authorised Dealer",
+        "Authorised Buyer",
+        "Central Bank may appoint",
+        "letter of appointment"
+      ],
+      "forbidden_inferences": [
+        "Authorised Dealer Banks as the sole statutory Market class",
+        "collapse Authorised Dealer and Authorised Buyer into one class",
+        "all significant FX transactions must go through authorised dealer banks",
+        "conversion only through authorised dealer banks",
+        "every NFEM participant is an Authorised Dealer or Authorised Buyer",
+        "BDC is an Authorised Dealer",
+        "all significant foreign exchange transactions through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-02",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Autonomous Foreign Exchange Market transaction channels",
+      "rule": "Transactions in the Autonomous Foreign Exchange Market are between the public and Authorised Dealers, among Authorised Dealers, and between Authorised Dealers and Authorised Buyers, and shall be as prescribed from time to time by the Central Bank.",
+      "scope": "statutory Market counterparty channels under FEMMPA s.7; not retail NFEM/DMB, EFEMS, or BDC architecture",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-002; reviewed fingerprint sha256:f1d0c53450d9f277b2453b317b978ab2fe22a1f37fe681f380428081cc1ed0f8; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Autonomous Foreign Exchange Market",
+        "public and Authorised Dealers",
+        "Authorised Dealers and Authorised Buyers",
+        "as prescribed from time to time by the Central Bank"
+      ],
+      "forbidden_inferences": [
+        "all significant FX transactions must go through authorised dealer banks",
+        "conversion only through authorised dealer banks",
+        "every retail NFEM transaction is identical to FEMMPA Market limbs",
+        "BDC is an Authorised Dealer",
+        "invoice currency equals settlement channel",
+        "all significant foreign exchange transactions through authorised dealer banks",
+        "must be settled through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-03",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Market transaction rate mutually agreed with Authorised Dealer or Authorised Buyer",
+      "rule": "The rate at which each transaction in the Autonomous Foreign Exchange Market shall be executed shall be the rate mutually agreed between the applicant purchaser and the Authorised Dealer or Authorised Buyer concerned.",
+      "scope": "transaction-level Market pricing under FEMMPA s.9 only; not an exchange-rate-regime classification",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-003; reviewed fingerprint sha256:aa2744ad978d0a82e72add37f8a36ae8650cd571ba34be76e38bf0b28bfdebc6; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "mutually agreed",
+        "applicant purchaser",
+        "Authorised Dealer or Authorised Buyer",
+        "Autonomous Foreign Exchange Market"
+      ],
+      "forbidden_inferences": [
+        "free-floating exchange-rate regime",
+        "managed float",
+        "market-determined macro exchange-rate regime",
+        "managed floating exchange rate regime",
+        "subject to availability",
+        "conversion is difficult",
+        "poor rates",
+        "FX is scarce",
+        "bank delays",
+        "tightly regulated and often subject to availability",
+        "available only through authorised dealer banks",
+        "Foreign exchange conversion is available only through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-04",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "Documentation-backed eligibility for Market foreign-exchange purchase",
+      "rule": "Except where a transaction is prohibited by law and subject to section 11(b), any transaction adequately supported by appropriate documentation shall be an eligible transaction for the purchase of foreign exchange in the Autonomous Foreign Exchange Market.",
+      "scope": "FEMMPA s.10 Market purchase eligibility with s.11(b) exception; not a Form M/Form A schedule; not CBN prior approval",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-004; reviewed fingerprint sha256:7be1b2fa81cae5c86a63c07df370a97fc98323b5b4e851b828ef3dd99228d61f; M2.5 decision=supported; project status=bounded (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "adequately supported by appropriate documentation",
+        "eligible transaction",
+        "purchase of foreign exchange",
+        "Autonomous Foreign Exchange Market",
+        "subject to section 11(b)"
+      ],
+      "forbidden_inferences": [
+        "Form M required for every goods transaction",
+        "Form A required for every service transaction",
+        "universal Form M requirement",
+        "universal Form A requirement",
+        "CBN prior approval",
+        "certain payments require CBN approval",
+        "one documentation package for every transaction",
+        "documentation equals CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-05",
+      "status": "bounded",
+      "type": "negative",
+      "subject": "FEMMPA construction boundaries on unrestrained dealing and prohibited items",
+      "rule": "Nothing in the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act shall be construed as permitting any unrestrained or general dealing in foreign currencies on terms inconsistent with that Act, or as permitting Market transactions relating to goods, services or items absolutely prohibited by any enactment or law.",
+      "scope": "statutory construction under FEMMPA s.11(a)-(b) only; not a macro tightly-controlled or availability regime claim",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "negative_scope",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-005; reviewed fingerprint sha256:c1fffeed785736b53a8329d1456f67e6ddd4762d691c71406174a0c876b0e6f6; M2.5 decision=supported; project status=bounded (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "unrestrained or general dealing",
+        "terms inconsistent with",
+        "absolutely prohibited",
+        "may be conducted in the Market"
+      ],
+      "forbidden_inferences": [
+        "Nigerian FX is tightly controlled",
+        "tightly regulated",
+        "all transactions are restricted",
+        "availability is regulated",
+        "subject to availability",
+        "conversion is tightly regulated and subject to availability",
+        "managed floating exchange rate regime from s.11"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-06",
+      "status": "bounded",
+      "type": "positive",
+      "subject": "Repatriation of Market-purchased foreign currency without further approval",
+      "rule": "Any foreign currency purchased from the Autonomous Foreign Exchange Market may be repatriated from Nigeria and shall not be subject to any further approval.",
+      "scope": "foreign currency purchased from the Autonomous Foreign Exchange Market only; prerequisite retained; not a general no-approval regime",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "negative_scope",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-006; reviewed fingerprint sha256:6bdc79133f3f8ba6458d800f6718c1a45fdf8cba910aaa9f6c341665e74cf120; M2.5 decision=supported; project status=bounded (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "purchased from the Autonomous Foreign Exchange Market",
+        "may be repatriated from Nigeria",
+        "shall not be subject to any further approval"
+      ],
+      "forbidden_inferences": [
+        "Nigeria business FX requires no approval",
+        "capital transfers require no approval",
+        "outward payments are approval-free",
+        "CBN approval is never required",
+        "all capital repatriation is approval-free",
+        "all outward remittances are approval-free",
+        "capital repatriation requires CBN approval",
+        "certain payments require CBN approval",
+        "universal unrestricted repatriation",
+        "Capital repatriation and certain payments require CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-07",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Inward investment through Authorised Dealer and Market conversion",
+      "rule": "Any person may invest in any enterprise or security with foreign currency or capital imported into Nigeria through an Authorised Dealer by telegraphic transfer, cheques or other negotiable instruments and converted into the naira in the Autonomous Foreign Exchange Market in accordance with the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act.",
+      "scope": "FEMMPA s.15(1) investment-entry channel; not prior CBN permission to invest; not all inward FX",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-007; reviewed fingerprint sha256:7b0edf8d342d9c880d349fd969e443e51b884951139e25bf18421f1bad7f9c6c; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "imported into Nigeria through an Authorised Dealer",
+        "converted into the naira",
+        "Autonomous Foreign Exchange Market",
+        "invest in any enterprise or security"
+      ],
+      "forbidden_inferences": [
+        "prior CBN permission to invest",
+        "CBN investment approval",
+        "CCI is prior permission to invest",
+        "all inward business FX is investment capital",
+        "certain payments require CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-08",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Certificate of Capital Importation issuance and Authorised Dealer returns",
+      "rule": "The Authorised Dealer through which the foreign currency or capital for an investment under section 15(1) is imported shall, within 24 hours of the importation, issue a Certificate of Capital Importation to the investor and shall, within 48 hours thereafter, make returns to the Central Bank giving such information as the Central Bank may, from time to time, require.",
+      "scope": "FEMMPA s.15(2) CCI issuance and AD returns for s.15(1) investment capital; certification/reporting mechanism, not investment permission",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-008; reviewed fingerprint sha256:c01ba946531fdecc196975076c021dacc899ffd483ae6f2fe45a78aa2181663a; M2.5 decision=bounded; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Certificate of Capital Importation",
+        "within 24 hours of the importation",
+        "within 48 hours thereafter",
+        "make returns to the Central Bank",
+        "giving such information as the Central Bank may, from time to time, require"
+      ],
+      "forbidden_inferences": [
+        "CCI is prior permission to invest",
+        "CBN investment approval",
+        "prior CBN permission to invest",
+        "report to CBN means obtain CBN approval",
+        "returns to the Central Bank equal CBN approval",
+        "certain payments require CBN approval",
+        "generic prerequisite for all business FX"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-09",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Unconditional transferability of investment dividends or profits through Authorised Dealer",
+      "rule": "Foreign currency imported into Nigeria and invested in an enterprise under section 15(1) is guaranteed unconditional transferability, through an Authorised Dealer in freely convertible currency, of dividends or profits (net of taxes) attributable to the investment.",
+      "scope": "FEMMPA s.15(4)(a); qualifying s.15(1) investment foreign currency; dividends/profits net of taxes; Authorised Dealer channel",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-009; reviewed fingerprint sha256:ae51e6dba6a104482b6a5cad1fb3e6d5a49884bf49d2f4406db6a904fafa2f07; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "unconditional transferability",
+        "through an Authorised Dealer",
+        "dividends or profits (net of taxes)",
+        "attributable to the investment",
+        "freely convertible currency"
+      ],
+      "forbidden_inferences": [
+        "all business profits freely transferable",
+        "all Nigerian corporate funds freely transferable",
+        "all non-resident funds unrestricted",
+        "universal unrestricted repatriation",
+        "capital repatriation requires CBN approval",
+        "certain payments require CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-10",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Unconditional transferability of foreign-loan servicing payments through Authorised Dealer",
+      "rule": "Foreign currency imported into Nigeria and invested in an enterprise under section 15(1) is guaranteed unconditional transferability, through an Authorised Dealer in freely convertible currency, of payments in respect of loan servicing where a foreign loan has been obtained.",
+      "scope": "FEMMPA s.15(4)(b); qualifying investment context; statutory term loan servicing retained; principal/interest split not established",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-010; reviewed fingerprint sha256:eaa0fcd6f971dd97876b0288b636c6c0d91c91400d843b4600625f39d7b08930; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "loan servicing",
+        "unconditional transferability",
+        "through an Authorised Dealer",
+        "where a foreign loan has been obtained"
+      ],
+      "forbidden_inferences": [
+        "principal and interest are independently and universally transferable",
+        "universal loan principal transferability",
+        "universal loan interest transferability",
+        "certain payments require CBN approval",
+        "capital repatriation requires CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-11",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Unconditional transferability of investment sale or liquidation proceeds through Authorised Dealer",
+      "rule": "Foreign currency imported into Nigeria and invested in an enterprise under section 15(1) is guaranteed unconditional transferability, through an Authorised Dealer in freely convertible currency, of the remittance of proceeds (net of all taxes) and other obligations in the event of sale or liquidation of the enterprise or any interest attributable to the investment.",
+      "scope": "FEMMPA s.15(4)(c); qualifying s.15(1) investment; sale/liquidation proceeds net of taxes; not generic unrestricted capital repatriation",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-011; reviewed fingerprint sha256:da9efecbed2859f2bd83054dd189c8f20dde8c3a4568cd46814eb3e5d1d41c35; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "unconditional transferability",
+        "through an Authorised Dealer",
+        "sale or liquidation",
+        "proceeds (net of all taxes)",
+        "interest attributable to the investment"
+      ],
+      "forbidden_inferences": [
+        "generic unrestricted capital repatriation from Nigeria",
+        "universal unrestricted repatriation",
+        "capital repatriation requires CBN approval",
+        "certain payments require CBN approval",
+        "all Nigerian corporate funds freely transferable",
+        "Capital repatriation and certain payments require CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-12",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Authorised Dealer reporting of section 15(4) repatriation to CBN",
+      "rule": "An Authorised Dealer shall communicate a section 15(4) repatriation to the Central Bank within fourteen days of the repatriation, and the Central Bank shall furnish the same to the Minister monthly for information and statistical purposes only.",
+      "scope": "FEMMPA s.15(5) post-repatriation reporting for information/statistical purposes; reporting ≠ approval",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-012; reviewed fingerprint sha256:d318780b15c4af3c9d00f7c55558d9dcbef5fbb6b46ef4e174b9bb4b70cfe6f9; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "communicate a section 15(4) repatriation",
+        "within fourteen days",
+        "for information and statistical purposes only"
+      ],
+      "forbidden_inferences": [
+        "report to CBN means obtain CBN approval",
+        "reporting equals prior CBN approval",
+        "certain payments require CBN approval",
+        "capital repatriation requires CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-13",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Authorised Dealer and Authorised Buyer Market activity returns to CBN",
+      "rule": "An Authorised Dealer and Authorised Buyer appointed under the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act shall submit to the Central Bank, at intervals and in forms the Central Bank may prescribe by circulars and guidelines, returns of activities in the Autonomous Foreign Exchange Market.",
+      "scope": "FEMMPA s.16(1) institutional Market returns; not customer prior approval",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-013; reviewed fingerprint sha256:b33f2cf477938d294418e3cf554095ae5bb0b9bc512de12217666d72e027f344; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Authorised Dealer and Authorised Buyer",
+        "returns of activities",
+        "Autonomous Foreign Exchange Market",
+        "circulars and guidelines"
+      ],
+      "forbidden_inferences": [
+        "report to CBN means obtain CBN approval",
+        "customer transaction requires individual CBN permission",
+        "certain payments require CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-14",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Export of goods or services payment-mode conditions",
+      "rule": "A person may export goods or services from Nigeria if the goods or services are not prohibited by law in Nigeria, payment is made by letter of credit or any other internationally acceptable mode of payment, and the payment amount represents a fair return for the goods or services.",
+      "scope": "FEMMPA s.27 export permission conditions; payment-mode mechanics only; not exporter domiciliary retention (NG-ACC-05); not full export-doc schedule",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-014; reviewed fingerprint sha256:96f476753f21fab3e3bc8a6a1cfb36e9dd3191accb7195bfdb2dd8a0d9fba218; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "export goods or services",
+        "letter of credit",
+        "internationally acceptable mode",
+        "fair return for the goods or services",
+        "not prohibited by law"
+      ],
+      "forbidden_inferences": [
+        "full export documentary schedule from s.27",
+        "duplicate of exporter domiciliary retention",
+        "Form M required for every goods transaction",
+        "Form A required for every service transaction",
+        "conflating export account with ordinary business settlement"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-15",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "Eligible NFEM transactions processed by Deposit Money Banks",
+      "rule": "All eligible transactions such as FX applications for Medical Needs, School Fees, Business Travel Allowance/ Personal Travel Allowance (BTA/PTA), and Small and Medium Enterprises (SMEs) transactions are permissible at the Nigerian Foreign Exchange Market (NFEM) and processed by the Deposit Money Banks.",
+      "scope": "CBN FX Management description of eligible NFEM classes processed by DMBs; non-exhaustive 'such as' framing retained",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-FX-MGMT"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-015; reviewed fingerprint sha256:2cc8fa53df5ddcd30134fadf90924c5e569f26bf7303b8e676cbc106ccd1b4b0; M2.5 decision=bounded; project status=bounded (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "eligible transactions such as",
+        "Nigerian Foreign Exchange Market",
+        "NFEM",
+        "processed by the Deposit Money Banks",
+        "Business Travel Allowance/ Personal Travel Allowance",
+        "Small and Medium Enterprises"
+      ],
+      "forbidden_inferences": [
+        "all business FX must be processed by DMBs",
+        "every listed transaction automatically qualifies for FX",
+        "all imports are automatically eligible",
+        "all significant FX transactions must go through authorised dealer banks",
+        "conversion only through authorised dealer banks",
+        "documentation disappeared",
+        "subject to availability",
+        "all significant foreign exchange transactions through authorised dealer banks",
+        "available only through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-16",
+      "status": "verified",
+      "type": "historical",
+      "subject": "Restoration of NFEM FX access for previously restricted 43 items",
+      "rule": "The Central Bank permitted accessibility of foreign exchange in the Nigerian Foreign Exchange Market for 43 items previously restricted by the 2015 circular TED/FEM/FPC/GEN/01/010 and its addendums.",
+      "scope": "temporal/current-policy restoration for the 43 items previously restricted by TED/FEM/FPC/GEN/01/010 (2015); not universal import eligibility",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-FX-MGMT"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-016; reviewed fingerprint sha256:5366e602a1d27c6a9a662c4598a75298cbc88d3236a3966aa7326fb15d708a7b; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "43 items previously restricted",
+        "TED/FEM/FPC/GEN/01/010",
+        "Nigerian Foreign Exchange Market",
+        "permitted the accessibility of foreign exchange"
+      ],
+      "forbidden_inferences": [
+        "all imports unrestricted",
+        "all imports have unrestricted NFEM access",
+        "no documentation",
+        "universal NFEM eligibility",
+        "documentation disappeared"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-17",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "EFEMS Authorised Dealer interbank order-placement role",
+      "rule": "Authorised Dealers use the Electronic Foreign Exchange Matching System (EFEMS) to place buy and sell orders for foreign exchange transactions in the Nigerian Foreign Exchange Market, and Authorised Dealer Banks use EFEMS for interbank FX transactions.",
+      "scope": "interbank/electronic Market infrastructure; not customer FX entitlement",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-EFEMS-FAQ-2024"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-017; reviewed fingerprint sha256:de5c26b632904b52a8941e14c5626b1afbf870a52e93bf283a59ef85f148bdcd; M2.5 decision=bounded; project status=bounded (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Electronic Foreign Exchange Matching System",
+        "EFEMS",
+        "Authorised Dealers",
+        "Authorised Dealer Banks",
+        "interbank FX transactions"
+      ],
+      "forbidden_inferences": [
+        "participant eligible for EFEMS means customer transaction eligible for FX",
+        "EFEMS matching proves customer FX entitlement",
+        "all business FX must be processed by DMBs",
+        "conversion only through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-18",
+      "status": "verified",
+      "type": "operational",
+      "subject": "EFEMS participant classes",
+      "rule": "EFEMS participants include all authorised dealer banks licensed by the Central Bank of Nigeria and other participants who have secured CBN approval to access the EFEMS platform and execute agreements with the platform provider.",
+      "scope": "EFEMS access classes: authorised dealer banks and other CBN-approved participants; not retail transaction entitlement",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-REFORMS"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-018; reviewed fingerprint sha256:99d4104f06f7816ff906efa9a872c674e7840369e922851b7069d36dd78c7eb9; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "authorised dealer banks licensed by the Central Bank",
+        "other participants who have secured CBN approval",
+        "EFEMS platform"
+      ],
+      "forbidden_inferences": [
+        "participant eligible for EFEMS means customer transaction eligible for FX",
+        "every CBN-approved EFEMS participant may perform every retail FX transaction",
+        "all significant FX transactions must go through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-19",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Licensed BDC foreign-exchange access through Authorised Dealers",
+      "rule": "Duly licensed Bureau De Change operators are permitted to access foreign exchange through any Authorised Dealer of their choice at prevailing market rates, and Authorised Dealers must conduct complete KYC and due diligence checks on BDC clients.",
+      "scope": "duly licensed BDC FX access via any Authorised Dealer at prevailing market rates with AD KYC; BDC remains distinct licensed class",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-REFORMS"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-019; reviewed fingerprint sha256:0132dea1f9ecb5c4441520abf80bb51ba3e3a5e042eb013bde39784b5efacb16; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "licensed Bureau De Change",
+        "access foreign exchange through any Authorised Dealer",
+        "prevailing market rates",
+        "Know-Your-Customer",
+        "due diligence"
+      ],
+      "forbidden_inferences": [
+        "BDC is an Authorised Dealer",
+        "BDC processes every business FX transaction",
+        "BDC access proves corporate or import transaction eligibility",
+        "all conversion is bank-only",
+        "conversion only through authorised dealer banks",
+        "all significant FX transactions must go through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-20",
+      "status": "verified",
+      "type": "historical",
+      "subject": "BDC Guidelines 2024 supersession of 2015 operational guidelines",
+      "rule": "The Central Bank of Nigeria Regulatory and Supervisory Guidelines for Bureau De Change Operations in Nigeria 2024, issued under BOFIA 2020 section 56, supersede the Revised Operational Guidelines for Bureau De Change in Nigeria issued in November 2015 and related circulars and directives, effective 3 June 2024.",
+      "scope": "current-vs-superseded BDC regulatory framework; does not project BDC retail permissions into corporate/import/investment classes",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-BDC-GUIDE-2024"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-020; reviewed fingerprint sha256:13fe8a378e7409cd9ed480cbe8040a1ae94650d5491b070f0f9333acc4244781; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Regulatory and Supervisory Guidelines for Bureau De Change Operations in Nigeria 2024",
+        "supersede",
+        "Revised Operational Guidelines for Bureau De Change in Nigeria issued in November 2015",
+        "June 3, 2024",
+        "BOFIA 2020 section 56"
+      ],
+      "forbidden_inferences": [
+        "resurrect 2015 BDC operational guidelines as current rules",
+        "BDC is an Authorised Dealer",
+        "BDC processes every business FX transaction",
+        "project BDC retail permissions into corporate import investment classes"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-01",
+      "status": "verified",
+      "type": "operational",
+      "subject": "CBN guideline authority for the Autonomous Foreign Exchange Market",
+      "rule": "The Foreign Exchange (Monitoring and Miscellaneous Provisions) Act establishes an Autonomous Foreign Exchange Market, and the Central Bank of Nigeria may, with the approval of the Minister, issue guidelines from time to time to regulate the procedures for transactions in the Market and other matters appropriate for the Market’s effective operation.",
+      "scope": "statutory Market guideline/regulatory authority under FEMMPA; not administrative setting of every transaction rate; not a macro regime taxonomy",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "regime",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-001; reviewed fingerprint sha256:bcf29e97f0f4368d5a722d5eaaabdb098595bd85e2faad4cb97a99f5a508d088; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Autonomous Foreign Exchange Market",
+        "Central Bank of Nigeria may",
+        "with the approval of the Minister",
+        "issue guidelines",
+        "regulate the procedures for transactions in the Market"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "CBN regulation proves managed float",
+        "CBN regulation means rates are administratively fixed",
+        "guideline authority equals rate-setting for every trade",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-02",
+      "status": "bounded",
+      "type": "positive",
+      "subject": "CBN Structure-page ‘largely market driven regime’ operating language",
+      "rule": "According to the Central Bank of Nigeria FX Structure and Management page, over the years the framework has shifted from a tightly regulated, administratively controlled system to a largely market driven regime.",
+      "scope": "CBN Structure-page operating language with ‘over the years’ temporal framing retained; not a formal current floating / free-float / managed-float taxonomy",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-FX-STRUCT"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-002; reviewed fingerprint sha256:666e7287a34f0afa309824e408945010fb58c8edc4fc76ed00b3b89461c2f840; M2.5 decision=bounded (reviewed_text restored ‘over the years’); project status=bounded (fresh Adoption Gate judgment — operating language ≠ formal taxonomy)",
+      "allowed_wording": [
+        "over the years",
+        "largely market driven regime",
+        "tightly regulated, administratively controlled system",
+        "FX Structure and Management"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "largely market driven equals free-floating",
+        "largely market driven equals fully market determined",
+        "absence of CBN regulation",
+        "absence of retained regulatory mechanisms",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-03",
+      "status": "verified",
+      "type": "historical",
+      "subject": "June 2016 managed floating regime and I&E window (2016–2023 historical)",
+      "rule": "Under the Central Bank of Nigeria FX Structure and Management page’s 2016–2023 period heading, the Central Bank in June 2016 adopted a managed floating exchange rate regime and introduced the Investors’ and Exporters’ Foreign Exchange Window as a market driven platform for eligible FX transactions.",
+      "scope": "historical/temporal claim limited to the CBN Structure page’s 2016–2023 period; must not enter current-rule public fields as current regime",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-FX-STRUCT"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-003; reviewed fingerprint sha256:92f601dbb535b631b4bf7255653c5b3487bc89776162b34726b1ce7477022eed; M2.5 decision=supported; project status=verified historical/temporal; intentionally unbound from current public fields",
+      "allowed_wording": [
+        "2016–2023",
+        "June 2016",
+        "managed floating exchange rate regime",
+        "Investors’ and Exporters’ Foreign Exchange Window",
+        "market driven platform"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "Nigeria currently operates a managed floating regime",
+        "2016 managed floating remains the current regime under 2023-Date architecture",
+        "historical managed floating proves current intervention modality",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-04",
+      "status": "verified",
+      "type": "operational",
+      "subject": "14 June 2023 willing buyer, willing seller model",
+      "rule": "On 14 June 2023, the Central Bank of Nigeria introduced a willing buyer, willing seller model for the conduct of transactions in the domestic foreign exchange market.",
+      "scope": "current operating formulation for domestic FX market transactions from 14 June 2023; not a formal floating / free-float / managed-float taxonomy; not proof of no regulation or no intervention",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-FX-STRUCT"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-004; reviewed fingerprint sha256:d6984b0aa1c8615d8988b854917b26a4eb7126fcaac72a53189749df7b679181; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment)",
+      "allowed_wording": [
+        "14 June 2023",
+        "willing buyer, willing seller",
+        "domestic foreign exchange market"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "WBWS equals free float",
+        "WBWS equals no regulation",
+        "WBWS equals no intervention",
+        "WBWS equals fully liberalised market",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-05",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "2023 consolidation of FX market segments into NFEM",
+      "rule": "Under the Central Bank of Nigeria’s 14 June 2023 foreign-exchange reform described on the FX Structure and Management page, the multiplicity of foreign exchange windows was eliminated, and all market segments were consolidated into a single framework now referred to as the Nigerian Foreign Exchange Market (NFEM).",
+      "scope": "institutional window/segment consolidation into NFEM as stated by CBN Structure page; not abolition of all parallel/unofficial markets; not proof that every Nigerian FX transaction shares one identical price; not proof that no regulatory distinctions remain",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-FX-STRUCT"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-005; reviewed fingerprint sha256:1a76a10373d1ee6deee4c2190f7b2683ec0de29f1acac872f549ccc73c0b4706; M2.5 decision=bounded (reviewed_text restored ‘all market segments’ / NFEM); project status=bounded (fresh Adoption Gate judgment — consolidation scope limited)",
+      "allowed_wording": [
+        "14 June 2023",
+        "multiplicity of foreign exchange windows was eliminated",
+        "all market segments were consolidated",
+        "Nigerian Foreign Exchange Market (NFEM)"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "parallel or unofficial market abolished",
+        "every exchange rate in Nigeria is identical",
+        "no segmentation of any kind remains",
+        "no regulatory control remains",
+        "unified market means unrestricted FX access",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-06",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Demand and supply role in 2023 WBWS exchange-rate formation",
+      "rule": "According to the Central Bank of Nigeria FX Structure and Management page, the 14 June 2023 reform strengthened the role of demand and supply in the exchange rate formation process under the willing buyer, willing seller model.",
+      "scope": "macro rate-formation operating language under WBWS; distinct from FEMMPA s.9 mutually agreed transaction-rate rule (NG-BIZ-03); not free-float taxonomy; not proof CBN never intervenes",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-FX-STRUCT"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-006; reviewed fingerprint sha256:6f18e458c882147f787285d492c5532b974f12d808c09804dd7b47be1323fa5c; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment; not a clone of NG-BIZ-03)",
+      "allowed_wording": [
+        "demand and supply",
+        "exchange rate formation process",
+        "willing buyer, willing seller model",
+        "14 June 2023 reform"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "demand and supply equals free float",
+        "demand and supply equals CBN does not intervene",
+        "demand/supply collapses into FEMMPA s.9 transaction-rate rule alone",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-07",
+      "status": "verified",
+      "type": "operational",
+      "subject": "MP reforms: WBWS unification, FXCode, B-Matching, and EFEMS infrastructure",
+      "rule": "Central Bank of Nigeria Monetary Policy reforms materials state that foreign-exchange market reforms have been ongoing to drive the unification of multiple FX windows under a transparent willing buyer, willing seller system, and that the Bank introduced the FXCode and the Bloomberg B-Matching platform to improve transparency and price discovery and implemented the Electronic Foreign Exchange Matching System to ensure transparency, fair and efficient FX trading, minimise counterparty risk, and ensure compliance with CBN regulations.",
+      "scope": "governed MP-reforms infrastructure/compliance narrative; intentionally unbound from public macro fields to avoid compound surface and H3 EFEMS duplication noise",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-MP-REFORMS"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-007; reviewed fingerprint sha256:5e43bb7ac434f005060a5fdaef92680345ade7e357be61e2f2d5a3f37e5f7959; M2.5 decision=supported; project status=verified; adopt_unbound (compound infrastructure)",
+      "allowed_wording": [
+        "willing buyer, willing seller system",
+        "FXCode",
+        "Bloomberg B-Matching",
+        "Electronic Foreign Exchange Matching System",
+        "transparency",
+        "price discovery",
+        "compliance with CBN regulations"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "EFEMS infrastructure equals customer FX entitlement",
+        "EFEMS proves free float",
+        "EFEMS proves CBN never intervenes",
+        "unification equals absence of retained regulatory mechanisms",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-08",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "2023 trade-transaction WBWS unification and I&E rename to NFEM",
+      "rule": "According to the Central Bank of Nigeria Foreign Exchange Market page, the Central Bank of Nigeria adopted a willing buyer, willing seller model for trade transactions, therefore unifying the foreign exchange market in 2023. This led to the abolishment of FX market segmentation, and collapse of the previously existing segments into the Investors’ and Exporters’ (I&E) window, now renamed Nigerian Foreign Exchange Market (NFEM).",
+      "scope": "FX Market page proposition for trade-transaction WBWS unification and I&E→NFEM rename; complementary to NG-REG-05 Structure-page consolidation; not proof parallel markets vanished or all prices identical",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-FX-MARKET"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-008; reviewed fingerprint sha256:2170b302e3cbc3c79f76b2cf17bc963789859f076fe9283f5d125d123c9d661b; M2.5 decision=bounded (reviewed_text restored trade-transaction / therefore unifying wording); project status=bounded (fresh Adoption Gate judgment)",
+      "allowed_wording": [
+        "willing buyer, willing seller model for trade transactions",
+        "therefore unifying the foreign exchange market in 2023",
+        "abolishment of FX market segmentation",
+        "Investors’ and Exporters’ (I&E) window",
+        "renamed Nigerian Foreign Exchange Market (NFEM)"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "parallel or unofficial market abolished",
+        "every exchange rate in Nigeria is identical",
+        "no regulatory distinction remains",
+        "trade-transaction unification equals free float",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-09",
+      "status": "verified",
+      "type": "operational",
+      "subject": "NFEM volume-weighted-average official daily exchange rate",
+      "rule": "On the Central Bank of Nigeria exchange-rates page, the NFEM rate is derived at volume-weighted average and stands as the official exchange rate for the day.",
+      "scope": "official daily NFEM rate methodology (VWA); not a fixed exchange-rate regime; not a mandate that every transaction execute at the official daily rate",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-NFEM-RATES"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-009; reviewed fingerprint sha256:27c6e50a3ac97820861beba39699ab9d8fc4d46e883d482f8b8c2ad3186e8d87; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment)",
+      "allowed_wording": [
+        "NFEM rate",
+        "volume-weighted average",
+        "official exchange rate for the day"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "every transaction must occur at the official daily rate",
+        "official rate equals fixed exchange rate",
+        "VWA equals central-bank administered transaction rate",
+        "collapse official daily rate into FEMMPA s.9 mutually agreed transaction rate",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-10",
+      "status": "verified",
+      "type": "positive",
+      "subject": "EFEMS expected to promote a market-driven exchange rate",
+      "rule": "According to the Central Bank of Nigeria EFEMS FAQs, EFEMS is expected to promote a market-driven exchange rate, meaning rates will reflect actual market conditions.",
+      "scope": "EFEMS infrastructure expectation only; intentionally unbound; not free-float taxonomy; not proof of no intervention or customer entitlement",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-EFEMS-FAQ-2024"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-010; reviewed fingerprint sha256:7d3cb9393bd63ff8c0bf0fd80d6ad43bdc0009fdf4264fc531efaaba5b6aa52a; M2.5 decision=supported; project status=verified; adopt_unbound (EFEMS infrastructure expectation)",
+      "allowed_wording": [
+        "EFEMS",
+        "expected to promote a market-driven exchange rate",
+        "rates will reflect actual market conditions"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "EFEMS equals free float",
+        "EFEMS equals customer transaction entitlement",
+        "market-driven expectation equals absence of CBN regulation",
+        "market-driven expectation equals no intervention",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-11",
+      "status": "verified",
+      "type": "operational",
+      "subject": "EFEMS published rates as USDNGN reference rate",
+      "rule": "According to the Central Bank of Nigeria EFEMS FAQs, real-time rates and other key data from EFEMS will be published on the selected platform and CBN official websites, and those rates would serve as a reference rate for USDNGN, with the computation methodology to be communicated to market participants.",
+      "scope": "reference-rate publication architecture; reference/official rate ≠ mandatory rate for every transaction; distinct from FEMMPA s.9 mutually agreed transaction rates",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-EFEMS-FAQ-2024"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-011; reviewed fingerprint sha256:cb344fb3796c6a33f321923f7ea1ebac4f2afb922d7a83edafbf0fbec6b5fda9; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment — fidelity guardrail)",
+      "allowed_wording": [
+        "reference rate for USDNGN",
+        "real-time rates",
+        "EFEMS",
+        "computation methodology",
+        "market participants"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "reference rate equals mandatory transaction rate",
+        "reference rate equals fixed exchange rate",
+        "published EFEMS rate collapses into every customer transaction rate",
+        "EFEMS reference publication equals free float",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-12",
+      "status": "verified",
+      "type": "operational",
+      "subject": "CBN and FMDA regulation of EFEMS",
+      "rule": "According to the Central Bank of Nigeria EFEMS FAQs, the Central Bank, in collaboration with the Financial Markets Dealers Association, will regulate the EFEMS system and publish guidelines, rules, and real-time data to ensure compliance with the Nigerian FX Code and the revised Market Operating Guidelines for the Nigeria Foreign Exchange Market.",
+      "scope": "EFEMS system regulation / guideline publication / compliance architecture; not proof CBN sets every transaction rate; not regime taxonomy",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-EFEMS-FAQ-2024"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-012; reviewed fingerprint sha256:79ce2d2363ad7ce360d26b99f183c978df9d3dea36e7aa35f4bf37d10d2c13e2; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment)",
+      "allowed_wording": [
+        "Central Bank",
+        "Financial Markets Dealers Association",
+        "regulate the EFEMS system",
+        "publish guidelines, rules, and real-time data",
+        "Nigerian FX Code",
+        "Market Operating Guidelines"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "EFEMS regulation equals CBN sets every transaction rate",
+        "EFEMS regulation proves managed float",
+        "EFEMS regulation equals customer FX entitlement",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    },
+    {
+      "claim_id": "NG-REG-13",
+      "status": "verified",
+      "type": "historical",
+      "subject": "Managed floating described under 2016–2023 Structure-page heading",
+      "rule": "The Central Bank of Nigeria FX Structure and Management page describes the June 2016 adoption of a managed floating exchange rate regime under the heading 2016–2023: Market Deepening, Liquidity Enhancement, and Investor Confidence.",
+      "scope": "historical/temporal placement of managed floating under the Structure page’s 2016–2023 heading; audit evidence that legacy current-rule managed-float wording must be rejected; unbound from current public fields",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-FX-STRUCT"
+      ],
+      "matching_source_note": "Adopted from CC-NG-REG-013; reviewed fingerprint sha256:a3327b12675cd3967e005474331f74f60446af5227b331481343ce64d8ca65ee; M2.5 decision=supported; project status=verified historical/temporal; intentionally unbound",
+      "allowed_wording": [
+        "2016–2023: Market Deepening, Liquidity Enhancement, and Investor Confidence",
+        "June 2016",
+        "managed floating exchange rate regime"
+      ],
+      "forbidden_inferences": [
+        "Nigeria operates a managed floating exchange-rate regime",
+        "current managed float",
+        "managed floating exchange rate regime as current rule",
+        "free-floating exchange-rate regime",
+        "free float",
+        "fully liberalised FX market",
+        "no exchange controls",
+        "no CBN intervention",
+        "CBN does not intervene",
+        "CBN routinely intervenes",
+        "CBN targets an exchange-rate band",
+        "CBN sets every transaction rate",
+        "CBN administratively sets every transaction rate",
+        "significant exchange controls",
+        "highly restricted FX regime",
+        "official daily rate equals every transaction rate",
+        "official rate is the mandatory rate for every transaction",
+        "Nigeria currently operates a managed floating regime",
+        "heading placement proves current managed float under 2023-Date architecture",
+        "managed floating exchange rate regime",
+        "Nigeria operates a managed floating exchange rate regime",
+        "managed floating regime",
+        "managed exchange regime with significant controls",
+        "significant controls on capital account",
+        "Nigeria maintains a managed exchange regime",
+        "free-floating unrestricted FX market",
+        "Nigeria is a free-floating unrestricted FX market"
+      ]
+    }
+  ]
+}

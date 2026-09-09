@@ -1,0 +1,1004 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "nigeria",
+  "gate": "nigeria_hardening_i_ii_iii_iv_adoption",
+  "baseline_head": "98678ae9a2fc14b1aee14bee092c47ee5c364080",
+  "decided_at": "2026-09-09",
+  "decided_by": "operator",
+  "decision": "PASS",
+  "m2_5_frozen": true,
+  "frozen_artifacts": [
+    "candidate_claims.json",
+    "human_claim_review.json",
+    "claim_review_report.json"
+  ],
+  "notes": "Hardening I–III adoption rows preserved unchanged. Hardening IV / NG-B4 Adoption Gate adopts CC-NG-REG-001..013 into NG-REG-01..13. M2.5 ledger frozen (adoption_eligible remains false; claims_adopted remains 0 in M2.5 vocabulary). Bindings added only for country_overview and rules.exchange_controls. Historical managed-float claims adopted unbound. Compound MP-reforms and EFEMS expectation claims adopted unbound. Does not draft nigeria.json. Current formal floating/managed-float taxonomy not established; significant exchange controls classification remains retired.",
+  "stats": {
+    "hardening_i_candidates": 8,
+    "hardening_ii_candidates": 16,
+    "hardening_iii_candidates": 20,
+    "hardening_iv_candidates": 13,
+    "candidates_in_scope_total": 57,
+    "new_project_claims_hardening_iv": 13,
+    "drafting_bound_hardening_iv": 9,
+    "unbound_hardening_iv": 4,
+    "not_adopted": 0,
+    "field_bindings_total": 11,
+    "publication_changes": 0
+  },
+  "adoptions": [
+    {
+      "candidate_id": "CC-NG-CASH-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-CUST-01"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:192062fcdd12413970f59aa55f510fb2e77dd2d882dadbffaabf86dde2d69323",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: primary MLPPA 2022 s.3(3) entry limb with statutory operator > is drafting-allowed as verified. Not a mechanical map from M2.5 supported."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-002",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-CUST-02"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6a23f5bb209722fd816938be92968dfa51a7ed47e65c1c57d19bb9c54b94ab52",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: primary MLPPA 2022 s.3(3) exit limb with statutory operator > is verified. Exit declaration only; no general outbound ceiling."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-003",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-CUST-03"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:ab5cd17b7b4429656ce75a781b742940edfd83e6d8ae503504da779e4e252e66",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: M2.5 bounded restored 'liable on conviction'. Project claim uses that restored statutory formulation and is verified — not a map from M2.5 bounded→project bounded."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-CUST-04"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:2ce7ee95f4585498c81401675b5951278c6afb3fbe52c4f9e4c06099665df3d2",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: CBN guidance negative is bounded (narrow declaration-vs-prohibition distinction). Forbidden inferences block unrestricted / without-limit overclaims. Not a map from M2.5 supported→verified."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-005",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-CUST-05"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:bcb07b851173383e58f1b9506e2a5bff697bf4c9cf260009276a2c11582c34ba",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: FEMMPA s.21 with restored cash-not-transfer condition is bounded to the domiciliary-account cash-import context. Not generalised to universal outbound traveller rules."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-006",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-CUST-06"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:1f35bc49455e3c7d3fcfb1dd33691747b4fc36565474e06a59c43004cbd59715",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Customs e-CDF operational >= is a separate bounded operational claim. Does not reconcile or amend statutory >."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-007",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_as_superseded",
+      "project_claim_ids": [
+        "NG-CUST-07"
+      ],
+      "project_status": "superseded",
+      "reviewed_candidate_fingerprint": "sha256:12725ae59a82f23f97f1e9634f61792af23d42fcb1941c394a58bd67e318b864",
+      "relationship": "new_project_claim_historical",
+      "rationale": "Fresh project judgment: FEMMPA s.12 US$5,000 retained as superseded temporal-audit claim. Explicitly excluded from current-rule field bindings."
+    },
+    {
+      "candidate_id": "CC-NG-NGN-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-NGN-01"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:165c2cb6d5132261f2a369c6a7a9b85479332030df92d9cca1bcb86334223647",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: FEMMPA s.14 prohibition baseline is verified from primary law, with explicit boundary that current numeric traveller exception is not established. No numeric NGN figure adopted."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-001",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-01"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.resident_holding_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:c8b1b54aedcc50a17c9e7cd773eaf5467c68508974e3b8474caf7e59bfdd9700",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: FEMMPA s.17(1) verified. Not mechanical supported→verified."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-002",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-02"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.resident_holding_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:399d83763c0b6c9e6b3f76dd845a38941188e6b65947d56130eac4c9bd9f595d",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: denomination-only verified."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-003",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-03"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.resident_holding_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:0d9476fd9070b159a27bb90078e709f6980fc6661b988f85cdcd6eb74119ced9",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: negative/exception proposition adopted as bounded under CRES negative-claim discipline; exception limb retained. Not a map from M2.5 supported→verified."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-004",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-04"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.resident_holding_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:389bf23f93b6878bd29296c7260e162fbecb9a5ba135a18ea95bcf81bdc79b6d",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: multiple-account entitlement verified."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-005",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-05"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.resident_holding_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:6fc71368f1f0a19a60619984136fd971e90b268599e0015f25f34ae481c7030e",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: exporter proceeds domiciliary verified as separate class."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-006",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-06"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.non_resident_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:80d3285913e428f147e8683e58660d17b2c5e00d8b0345ee8bb0318c57afbab5",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: external-account classes verified; not universal non-resident."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-007",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-07"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.non_resident_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:372b8cdee0a0ef78593ad129273f111206bd8b66e2cd0fab717cffb4910551da",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: enumerated non-resident classes verified."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-008",
+      "m2_5_decision": "bounded",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-08"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.non_resident_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:05c518a4fd7fba44f37f07a442ad5ed82b7377bdbec41ab00c9a210349250767",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: uses M2.5 narrowed reviewed_text; project bounded for subreg (2)/(4) scope. Not mechanical M2.5 bounded→project bounded."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-009",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-09"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.resident_holding_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:7170cdcb1f2c6984be31862c810ed796d907aafa979a620d0b7803bc0453f9e2",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: KYC verified; forbids equating KYC with prior CBN approval."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-010",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-10"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.non_resident_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:1955f84ae10631c72a83ae6faf5638a3b7030db406fb0d89cbbc57cb691949a5",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: NRN eligibility verified with Memo 17 exception retained."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-011",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-11"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.non_resident_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:bc57bd6144c3f07fbad1489340403e15e83b8f472854eb4083ddeed03e5bf2b1",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: NRNOA purpose verified; kept distinct from NRNIA."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-012",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-12"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.non_resident_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:371e52e4d2ea4a4bfef2f5610c432f471f7993b6b441dd6023aa20f0b58895e1",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: NRNIA purpose verified; kept distinct from NRNOA."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-013",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-ACC-13"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:17d3040396181cd67721ef3139ed6f3fb1a3362489dbdb647d8fc332bea0ff20",
+      "relationship": "new_project_claim_temporal_unbound",
+      "rationale": "Fresh judgment: Manual Fourth Edition launch verified as temporal metadata only; intentionally unbound from resident/non-resident fields; does not bootstrap unresolved Manual operational rules."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-014",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-14"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.non_resident_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:950ffca18f7c45078f29286e1228b2ea973481269517b6c093e04e240b63c2c9",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: unclassified referral verified; forbids universal CBN approval recreation."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-015",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-15"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.non_resident_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:c81067bb6e0446b5f5f323964acfd6047d9625956de1a4f043be7386acf9e6be",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: NRNOA FCY repatriation verified from literal primary text with hard anti-expansion forbids. Not expanded beyond NRNOA FCY."
+    },
+    {
+      "candidate_id": "CC-NG-ACC-016",
+      "m2_5_decision": "supported",
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-ACC-16"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.non_resident_rules"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:396160782e6ba8dfda9a48d1f82486d7424a22df3677c2b91e195a507566ed2e",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: NRNOA Naira funding/conversion verified; not a general local-funding rule."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-01"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "summary.business",
+        "rules.banking_conversion_practicality"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:41616ca3113baf2698d954e7771d2872bd5b486b02a8781ec2748c6b4c27383e",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: FEMMPA s.5 AD/AB appointment is verified E0. Distinct statutory classes preserved. Bound as architecture context for business/conversion fields."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-002",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-02"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "summary.business",
+        "rules.business_invoicing_settlement",
+        "rules.banking_conversion_practicality"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:f1d0c53450d9f277b2453b317b978ab2fe22a1f37fe681f380428081cc1ed0f8",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: FEMMPA s.7 Market channels verified E0. Settlement-channel architecture, not invoice-currency rule."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-003",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-03"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.banking_conversion_practicality"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:aa2744ad978d0a82e72add37f8a36ae8650cd571ba34be76e38bf0b28bfdebc6",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: s.9 mutually agreed transaction rate verified E0. Bound only to conversion practicality. Hard forbid NG-B4 regime labels and availability commentary."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-04"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "summary.business",
+        "rules.business_invoicing_settlement"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:7be1b2fa81cae5c86a63c07df370a97fc98323b5b4e851b828ef3dd99228d61f",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: project bounded (negative-claim/doc discipline) despite M2.5 supported. Documentation eligibility only; Form M/A schedules remain unresolved."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-005",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-05"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.banking_conversion_practicality"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:c1fffeed785736b53a8329d1456f67e6ddd4762d691c71406174a0c876b0e6f6",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: project bounded. Statutory construction boundary only; forbids macro tightly-controlled / availability readings."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-006",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-06"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "summary.business",
+        "rules.business_invoicing_settlement"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:6bdc79133f3f8ba6458d800f6718c1a45fdf8cba910aaa9f6c341665e74cf120",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: project bounded despite M2.5 supported (heightened negative-claim discipline). Prerequisite purchased-from-Market retained. Forbids both universal no-approval and legacy CBN-approval generalisations."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-007",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-07"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "summary.business",
+        "rules.business_invoicing_settlement"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:7b0edf8d342d9c880d349fd969e443e51b884951139e25bf18421f1bad7f9c6c",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: s.15(1) inward investment channel verified E0."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-008",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-08"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.business_invoicing_settlement"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:c01ba946531fdecc196975076c021dacc899ffd483ae6f2fe45a78aa2181663a",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: uses M2.5 reviewed_text with restored returns limb; project verified (not mechanical map from M2.5 bounded). CCI certification/reporting ≠ investment approval."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-009",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-09"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "summary.business",
+        "rules.business_invoicing_settlement"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:ae51e6dba6a104482b6a5cad1fb3e6d5a49884bf49d2f4406db6a904fafa2f07",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: s.15(4)(a) verified with statutory unconditional wording retained inside investment/AD scope."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-010",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-10"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.business_invoicing_settlement"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:eaa0fcd6f971dd97876b0288b636c6c0d91c91400d843b4600625f39d7b08930",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: loan servicing term preserved; principal/interest decomposition not adopted."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-011",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-11"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "summary.business",
+        "rules.business_invoicing_settlement"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:da9efecbed2859f2bd83054dd189c8f20dde8c3a4568cd46814eb3e5d1d41c35",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: investment sale/liquidation transferability verified; forbids legacy CBN-approval and unrestricted-repatriation generalisations."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-012",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-BIZ-12"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:d318780b15c4af3c9d00f7c55558d9dcbef5fbb6b46ef4e174b9bb4b70cfe6f9",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh judgment: adopt_unbound. Governed reporting claim retained; not forced onto public business fields to avoid approval conflation."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-013",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-BIZ-13"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:b33f2cf477938d294418e3cf554095ae5bb0b9bc512de12217666d72e027f344",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh judgment: adopt_unbound institutional reporting claim."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-014",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-14"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.business_invoicing_settlement"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:96f476753f21fab3e3bc8a6a1cfb36e9dd3191accb7195bfdb2dd8a0d9fba218",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: s.27 payment-mode mechanics verified; distinct from NG-ACC-05."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-015",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-BIZ-15"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "summary.business",
+        "rules.banking_conversion_practicality"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:2cc8fa53df5ddcd30134fadf90924c5e569f26bf7303b8e676cbc106ccd1b4b0",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh judgment: project bounded using M2.5 reviewed 'such as' text. DMB/NFEM eligible-class processing only."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-016",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-BIZ-16"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:5366e602a1d27c6a9a662c4598a75298cbc88d3236a3966aa7326fb15d708a7b",
+      "relationship": "new_project_claim_temporal_unbound",
+      "rationale": "Fresh judgment: adopt_unbound temporal claim to avoid surface temporal noise while retaining governed history."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-017",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-BIZ-17"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:de5c26b632904b52a8941e14c5626b1afbf870a52e93bf283a59ef85f148bdcd",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh judgment: adopt_unbound infrastructure claim using M2.5 reviewed_text; forbids EFEMS→customer entitlement inference."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-018",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-BIZ-18"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:99d4104f06f7816ff906efa9a872c674e7840369e922851b7069d36dd78c7eb9",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh judgment: adopt_unbound EFEMS participant architecture."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-019",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-BIZ-19"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:0132dea1f9ecb5c4441520abf80bb51ba3e3a5e042eb013bde39784b5efacb16",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh judgment: adopt_unbound market-architecture context; BDC≠AD preserved."
+    },
+    {
+      "candidate_id": "CC-NG-BIZ-020",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-BIZ-20"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:13fe8a378e7409cd9ed480cbe8040a1ae94650d5491b070f0f9333acc4244781",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh judgment: adopt_unbound current/superseded framework claim."
+    },
+    {
+      "candidate_id": "CC-NG-REG-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-01"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview",
+        "rules.exchange_controls"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:bcf29e97f0f4368d5a722d5eaaabdb098595bd85e2faad4cb97a99f5a508d088",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: FEMMPA Market guideline authority verified E0. Bound to overview and exchange_controls as regulatory authority. Forbids rate-setting/managed-float inferences."
+    },
+    {
+      "candidate_id": "CC-NG-REG-002",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-02"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:666e7287a34f0afa309824e408945010fb58c8edc4fc76ed00b3b89461c2f840",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current_operating_language",
+      "rationale": "Fresh judgment: Structure-page ‘over the years … largely market driven regime’ adopted as bounded operating language (not formal taxonomy). Bound to country_overview only."
+    },
+    {
+      "candidate_id": "CC-NG-REG-003",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-REG-03"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:92f601dbb535b631b4bf7255653c5b3487bc89776162b34726b1ce7477022eed",
+      "relationship": "new_project_claim_temporal_unbound",
+      "current_vs_historical": "historical_2016_2023",
+      "rationale": "Fresh judgment: adopt_unbound historical 2016–2023 managed floating + I&E introduction. Retained for temporal audit; must not enter current overview/controls bindings."
+    },
+    {
+      "candidate_id": "CC-NG-REG-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-04"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:d6984b0aa1c8615d8988b854917b26a4eb7126fcaac72a53189749df7b679181",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: WBWS operating model verified. Core current-regime operating claim for country_overview. Forbids free-float / no-regulation / no-intervention inferences."
+    },
+    {
+      "candidate_id": "CC-NG-REG-005",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-05"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:1a76a10373d1ee6deee4c2190f7b2683ec0de29f1acac872f549ccc73c0b4706",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: NFEM consolidation bounded to Structure-page window/segment consolidation wording. Bound to country_overview. Forbids parallel-market abolition / identical-price inferences."
+    },
+    {
+      "candidate_id": "CC-NG-REG-006",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-06"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:6f18e458c882147f787285d492c5532b974f12d808c09804dd7b47be1323fa5c",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: demand/supply rate-formation under WBWS verified. Distinct from NG-BIZ-03. Bound to country_overview. Forbids free-float and no-intervention inferences."
+    },
+    {
+      "candidate_id": "CC-NG-REG-007",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-REG-07"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:5e43bb7ac434f005060a5fdaef92680345ade7e357be61e2f2d5a3f37e5f7959",
+      "relationship": "new_project_claim_unbound",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: adopt_unbound compound MP-reforms / FXCode / B-Matching / EFEMS infrastructure narrative to avoid overview clutter and H3 EFEMS duplication."
+    },
+    {
+      "candidate_id": "CC-NG-REG-008",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-08"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:2170b302e3cbc3c79f76b2cf17bc963789859f076fe9283f5d125d123c9d661b",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: FX Market page trade-transaction unification / I&E→NFEM rename adopted bounded. Complementary to NG-REG-05; both retained for non-duplicate propositions."
+    },
+    {
+      "candidate_id": "CC-NG-REG-009",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-09"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:27c6e50a3ac97820861beba39699ab9d8fc4d46e883d482f8b8c2ad3186e8d87",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: NFEM VWA official daily rate verified. Bound to country_overview with NG-REG-11 to preserve reference/official vs transaction-rate distinction."
+    },
+    {
+      "candidate_id": "CC-NG-REG-010",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-REG-10"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:7d3cb9393bd63ff8c0bf0fd80d6ad43bdc0009fdf4264fc531efaaba5b6aa52a",
+      "relationship": "new_project_claim_unbound",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: adopt_unbound EFEMS market-driven expectation. Infrastructure expectation must not become public taxonomy or entitlement."
+    },
+    {
+      "candidate_id": "CC-NG-REG-011",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-11"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:cb344fb3796c6a33f321923f7ea1ebac4f2afb922d7a83edafbf0fbec6b5fda9",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: EFEMS USDNGN reference-rate publication verified. High-value fidelity guardrail bound to country_overview."
+    },
+    {
+      "candidate_id": "CC-NG-REG-012",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-12"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.exchange_controls"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:79ce2d2363ad7ce360d26b99f183c978df9d3dea36e7aa35f4bf37d10d2c13e2",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: CBN/FMDA EFEMS regulation verified. Bound to exchange_controls as infrastructure regulatory mechanism, not taxonomy."
+    },
+    {
+      "candidate_id": "CC-NG-REG-013",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-REG-13"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:a3327b12675cd3967e005474331f74f60446af5227b331481343ce64d8ca65ee",
+      "relationship": "new_project_claim_temporal_unbound",
+      "current_vs_historical": "historical_2016_2023",
+      "rationale": "Fresh judgment: adopt_unbound historical heading-scoped managed floating. Supports rejection of legacy current-rule managed-float wording; unbound from current fields."
+    }
+  ],
+  "hardening_ii_baseline_head": "76c9c5ee20b19404eafa1469ff7c449ae6279666",
+  "hardening_i_baseline_head": "cd81cf657277edf4e186a0b3126edbd8d55466a9",
+  "hardening_iii_baseline_head": "b2d323765db3c460e16924a91a8b14728d180795",
+  "hardening_iv_m2_5_baseline_head": "98678ae9a2fc14b1aee14bee092c47ee5c364080"
+}
