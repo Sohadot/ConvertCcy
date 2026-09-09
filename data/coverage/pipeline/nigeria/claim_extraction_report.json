@@ -46,6 +46,97 @@
       "reason": "Candidate text may be compound (heuristic)",
       "required_action": "Split into atomic candidates if multiple propositions",
       "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-BIZ-002",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-BIZ-003",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-BIZ-004",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-BIZ-005",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-BIZ-006",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "evidence",
+      "field": "CC-NG-BIZ-008",
+      "reason": "Excerpt 'EX-NG-FEMMPA-1995-S15-INVEST' also used by CC-NG-BIZ-007",
+      "required_action": "Prefer one candidate per excerpt in M2.0 pilot",
+      "blocking": false
+    },
+    {
+      "layer": "evidence",
+      "field": "CC-NG-BIZ-010",
+      "reason": "Excerpt 'EX-NG-FEMMPA-1995-S15-TRANSFER' also used by CC-NG-BIZ-009",
+      "required_action": "Prefer one candidate per excerpt in M2.0 pilot",
+      "blocking": false
+    },
+    {
+      "layer": "evidence",
+      "field": "CC-NG-BIZ-011",
+      "reason": "Excerpt 'EX-NG-FEMMPA-1995-S15-TRANSFER' also used by CC-NG-BIZ-010",
+      "required_action": "Prefer one candidate per excerpt in M2.0 pilot",
+      "blocking": false
+    },
+    {
+      "layer": "evidence",
+      "field": "CC-NG-BIZ-012",
+      "reason": "Excerpt 'EX-NG-FEMMPA-1995-S15-TRANSFER' also used by CC-NG-BIZ-011",
+      "required_action": "Prefer one candidate per excerpt in M2.0 pilot",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-BIZ-012",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-BIZ-013",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "evidence",
+      "field": "CC-NG-BIZ-016",
+      "reason": "Excerpt 'EX-NG-CBN-FXMGMT-NFEM-DMB' also used by CC-NG-BIZ-015",
+      "required_action": "Prefer one candidate per excerpt in M2.0 pilot",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-BIZ-019",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
     }
   ],
   "needs_human_review": [
@@ -61,16 +152,55 @@
     "CC-NG-ACC-012:special_review",
     "CC-NG-ACC-013:special_review",
     "CC-NG-ACC-014:special_review",
-    "CC-NG-ACC-015:special_review"
+    "CC-NG-ACC-015:special_review",
+    "CC-NG-BIZ-001:semantic_review_pending",
+    "CC-NG-BIZ-001:special_review",
+    "CC-NG-BIZ-002:semantic_review_pending",
+    "CC-NG-BIZ-002:special_review",
+    "CC-NG-BIZ-003:semantic_review_pending",
+    "CC-NG-BIZ-003:special_review",
+    "CC-NG-BIZ-004:semantic_review_pending",
+    "CC-NG-BIZ-004:special_review",
+    "CC-NG-BIZ-005:semantic_review_pending",
+    "CC-NG-BIZ-005:special_review",
+    "CC-NG-BIZ-006:semantic_review_pending",
+    "CC-NG-BIZ-006:special_review",
+    "CC-NG-BIZ-007:semantic_review_pending",
+    "CC-NG-BIZ-007:special_review",
+    "CC-NG-BIZ-008:semantic_review_pending",
+    "CC-NG-BIZ-008:special_review",
+    "CC-NG-BIZ-009:semantic_review_pending",
+    "CC-NG-BIZ-009:special_review",
+    "CC-NG-BIZ-010:semantic_review_pending",
+    "CC-NG-BIZ-010:special_review",
+    "CC-NG-BIZ-011:semantic_review_pending",
+    "CC-NG-BIZ-011:special_review",
+    "CC-NG-BIZ-012:semantic_review_pending",
+    "CC-NG-BIZ-012:special_review",
+    "CC-NG-BIZ-013:semantic_review_pending",
+    "CC-NG-BIZ-014:semantic_review_pending",
+    "CC-NG-BIZ-014:special_review",
+    "CC-NG-BIZ-015:semantic_review_pending",
+    "CC-NG-BIZ-015:special_review",
+    "CC-NG-BIZ-016:semantic_review_pending",
+    "CC-NG-BIZ-016:special_review",
+    "CC-NG-BIZ-017:semantic_review_pending",
+    "CC-NG-BIZ-017:special_review",
+    "CC-NG-BIZ-018:semantic_review_pending",
+    "CC-NG-BIZ-018:special_review",
+    "CC-NG-BIZ-019:semantic_review_pending",
+    "CC-NG-BIZ-019:special_review",
+    "CC-NG-BIZ-020:semantic_review_pending",
+    "CC-NG-BIZ-020:special_review"
   ],
   "stats": {
-    "candidate_claims_total": 24,
+    "candidate_claims_total": 44,
     "direct_restating": 6,
     "translation_based": 0,
-    "bounded_normalization": 18,
-    "semantic_review_pending": 0,
+    "bounded_normalization": 38,
+    "semantic_review_pending": 20,
     "downstream_eligible": 24,
-    "human_review_required": 13
+    "human_review_required": 32
   },
   "summary": "CLAIM EXTRACTION PASS (structural only)",
   "capability_note": "M2 validator checks extraction contract structure, evidence eligibility, language/mode consistency, and review/fingerprint gates. It does not establish legal or semantic approval of candidate claims."

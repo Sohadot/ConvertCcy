@@ -39,14 +39,29 @@
     "EX-NG-CBN-CDD-2023-R25-REFERRAL": true,
     "EX-NG-CBN-NRN-2025-NRNOA-OP": true,
     "EX-NG-CBN-NRN-2025-NRNOA-REPAT": true,
-    "EX-NG-CBN-NRN-2025-NRNOA-CONV": true
+    "EX-NG-CBN-NRN-2025-NRNOA-CONV": true,
+    "EX-NG-FEMMPA-1995-S5-AD": true,
+    "EX-NG-FEMMPA-1995-S7-TX": true,
+    "EX-NG-FEMMPA-1995-S9-RATE": true,
+    "EX-NG-FEMMPA-1995-S10-DOCS": true,
+    "EX-NG-FEMMPA-1995-S11-LIMIT": true,
+    "EX-NG-FEMMPA-1995-S13-REPAT": true,
+    "EX-NG-FEMMPA-1995-S15-INVEST": true,
+    "EX-NG-FEMMPA-1995-S15-TRANSFER": true,
+    "EX-NG-FEMMPA-1995-S16-RETURNS": true,
+    "EX-NG-FEMMPA-1995-S27-EXPORT": true,
+    "EX-NG-CBN-FXMGMT-NFEM-DMB": true,
+    "EX-NG-CBN-EFEMS-AD": true,
+    "EX-NG-CBN-REFORMS-EFEMS-PARTICIPANTS": true,
+    "EX-NG-CBN-REFORMS-BDC-VIA-AD": true,
+    "EX-NG-CBN-BDC-GUIDE-2024-ISSUE": true
   },
   "stats": {
-    "sources_total": 7,
-    "sources_current": 7,
+    "sources_total": 10,
+    "sources_current": 10,
     "sources_superseded": 0,
-    "excerpts_total": 23,
-    "excerpts_downstream_eligible": 23
+    "excerpts_total": 38,
+    "excerpts_downstream_eligible": 38
   },
   "summary": "INTAKE PASS (not downstream-eligible)",
   "capability_note": "M1 validator validates declared provenance and structural evidence controls; it does not independently establish textual fidelity unless a locally preserved source capture is available."

@@ -3,7 +3,7 @@
   "country_slug": "nigeria",
   "country_name": "Nigeria",
   "iso2": "NG",
-  "notes": "Phase 2 M1 source pack for Nigeria. Hardening I (NG-B1/B6/B7) preserved. Hardening II (2026-09-09) adds NG-B2/NG-B3 resident and non-resident FCY-account evidence. Primary account-law substrate: FEMMPA 1995 Part II; CBN CDD Regulations 2023 category eligibility; CBN 2025 NRNOA/NRNIA circular. CBN Foreign Exchange Manual Fourth Edition (announced on the CBN Reforms page as launched 2026-05-15) was not pinned as a downloadable CBN-hosted PDF in this review — detailed ordinary-vs-export domiciliary operational access rules from that Manual are missing-authority and are not adopted from press/law-firm summaries.",
+  "notes": "Phase 2 M1 source pack for Nigeria. Hardening I (border/cash) and Hardening II (accounts) preserved. Hardening III (2026-09-09) NG-B5 business FX: FEMMPA Market/Authorised Dealer/investment/repatriation sections; CBN FX Management page on NFEM/DMB processing and 43-item access restoration; CBN EFEMS FAQ on Authorised Dealer interbank matching; CBN Reforms page for NFEM unification / BDC-via-AD / EFEMS participant classes; CBN BDC Guidelines 2024 for BDC licensing architecture. FX Manual Fourth Edition memorandum-level Form M/A and detailed trade-documentation schedules remain not pinned as downloadable CBN PDF — recorded as missing-authority, not inferred from secondary summaries.",
   "sources": [
     {
       "source_id": "SRC-NG-MLPPA-2022",
@@ -54,7 +54,7 @@
       "published_date": "1995-01-01",
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
-      "notes": "Hardening I: s.14 naira import/export; s.21 cash domiciliary mechanics; s.12 US$5,000 temporal audit. Hardening II: Part II s.17–s.19 domiciliary-account opening and exporter-account rules."
+      "notes": "Hardening I: s.12/s.14/s.21. Hardening II: s.17–s.19. Hardening III: Part I Market architecture (s.5, s.7, s.9–s.11, s.13, s.15–s.16) and Part IV export of goods/services (s.27)."
     },
     {
       "source_id": "SRC-NG-NCS-ECDF",
@@ -121,7 +121,58 @@
       "accessed_at": "2026-09-09",
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
-      "notes": "Hardening II temporal meta only: records 2025-01-10 NRNOA/NRNIA introduction and 2026-05-15 launch of Foreign Exchange Manual Fourth Edition. Does not itself contain memorandum-level domiciliary operating rules."
+      "notes": "Hardening II temporal meta only: records 2025-01-10 NRNOA/NRNIA introduction and 2026-05-15 launch of Foreign Exchange Manual Fourth Edition. Does not itself contain memorandum-level domiciliary operating rules. Hardening III: NFEM unification; lifting of 43-item FX-access restriction; EFEMS authorised dealer bank participants; licensed BDC FX access through Authorised Dealers (circular summarised on this page — dedicated circular PDF not separately pinned)."
+    },
+    {
+      "source_id": "SRC-NG-CBN-FX-MGMT",
+      "label": "CBN — History of Foreign Exchange Management (official FX operations page)",
+      "url": "https://www.cbn.gov.ng/intops/FXManagement.html",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Central Bank of Nigeria",
+      "authority_kind": "central_bank",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Hardening III: current NFEM description — eligible transactions processed by Deposit Money Banks; restoration of NFEM access for items previously restricted by TED/FEM/FPC/GEN/01/010 (2015)."
+    },
+    {
+      "source_id": "SRC-NG-CBN-EFEMS-FAQ-2024",
+      "label": "CBN FAQs on the Electronic Foreign Exchange Matching System (EFEMS)",
+      "url": "https://www.cbn.gov.ng/Out/2024/FMD/FREQUENTLY%20ASKED%20QUESTIONS%20(FAQS)%20ON%20THE%20ELECTRONIC%20FOREIGN%20EXCHANGE%20MATCHING%20SYSTEM%20(EFEMS)%20.pdf",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Central Bank of Nigeria",
+      "authority_kind": "central_bank",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "published_date": "2024-01-01",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Hardening III: Authorised Dealers place/match NFEM interbank FX orders on EFEMS. Cloudflare blocked full PDF binary download in this session; FAQ answer text confirmed via official PDF search-snippet capture against the pinned URL."
+    },
+    {
+      "source_id": "SRC-NG-CBN-BDC-GUIDE-2024",
+      "label": "CBN Regulatory and Supervisory Guidelines for Bureau De Change Operations in Nigeria, 2024",
+      "url": "https://www.cbn.gov.ng/Out/2024/FPRD/APPROVED%20BDC%20GUIDELINES%20May%2022%202024.pdf",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Central Bank of Nigeria",
+      "authority_kind": "central_bank",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "published_date": "2024-05-22",
+      "effective_date": "2024-06-03",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Hardening III: establishes current BDC licensing/guidelines architecture under BOFIA; supersedes 2015 BDC operational guidelines. Participant-class distinction vs Authorised Dealers. Cloudflare blocked full PDF binary download in this session; circular supersession limbs confirmed via official PDF search-snippet capture against the pinned URL."
     }
   ],
   "source_conflicts": [
@@ -159,6 +210,16 @@
       "closure_phase": "hardening_ii",
       "closed_at": "2026-09-09",
       "wording_boundary": "Do not adopt ordinary-vs-export domiciliary operational access, unrestricted-access, Form A, or export-proceeds cash-withdrawal propositions from secondary summaries. Prefer FEMMPA statutory opening rules, CDD category eligibility, and the pinned NRN circular until the Manual PDF is pinned."
+    },
+    {
+      "authority": "Central Bank of Nigeria",
+      "topic": "FX Manual Fourth Edition / current TED circulars — Form M, Form A, and detailed goods vs services import documentary schedules; comprehensive eCCI portal operating procedures beyond FEMMPA s.15 Certificate of Capital Importation text",
+      "reason": "Hardening III bounded search pinned FEMMPA statutory Market/AD/investment/repatriation rules and CBN NFEM/EFEMS/BDC architecture pages/PDFs, but did not pin a downloadable CBN-hosted Fourth Edition FX Manual PDF or a current TED circular setting the full live Form M/Form A schedule for goods and services imports. Secondary summaries were discovery-only. Conclusion: detailed current import form schedules = not established from pinned primary text.",
+      "search_status": "bounded_search_complete",
+      "conclusion": "fx_manual_2026_trade_docs_not_pinned",
+      "closure_phase": "hardening_iii",
+      "closed_at": "2026-09-09",
+      "wording_boundary": "Do not adopt Form M/Form A content, goods-vs-services documentary lists, or unpinned Manual operational trade rules from press/law-firm summaries. Prefer FEMMPA documentation/channel distinctions and CBN NFEM/EFEMS/BDC participant architecture until Manual/TED PDFs are pinned."
     }
   ]
 }
