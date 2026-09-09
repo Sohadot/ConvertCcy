@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "nigeria",
+  "gate": "nigeria_hardening_i_adoption",
+  "baseline_head": "cd81cf657277edf4e186a0b3126edbd8d55466a9",
+  "decided_at": "2026-09-09",
+  "decided_by": "operator",
+  "decision": "PASS",
+  "m2_5_frozen": true,
+  "frozen_artifacts": [
+    "candidate_claims.json",
+    "human_claim_review.json",
+    "claim_review_report.json"
+  ],
+  "notes": "Human Adoption Gate for eight Hardening I reviewed candidates. Creates new Nigeria project claims (NG-*) and Hardening I field bindings only. Does not draft data/rules/nigeria.json. Does not flip M2.5 adoption_eligible flags (M2.5 remains historically PASS / claims_adopted=0). Dual operators preserved. Numeric NGN exception not established. Legacy US$5,000 adopted as superseded and unbound.",
+  "stats": {
+    "candidates_in_scope": 8,
+    "nominated_for_adoption": 8,
+    "new_project_claims": 8,
+    "drafting_allowed_claims": 7,
+    "superseded_claims": 1,
+    "not_adopted": 0,
+    "field_bindings": 4,
+    "publication_changes": 0
+  },
+  "adoptions": [
+    {
+      "candidate_id": "CC-NG-CASH-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["NG-CUST-01"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:192062fcdd12413970f59aa55f510fb2e77dd2d882dadbffaabf86dde2d69323",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: primary MLPPA 2022 s.3(3) entry limb with statutory operator > is drafting-allowed as verified. Not a mechanical map from M2.5 supported."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-002",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["NG-CUST-02"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6a23f5bb209722fd816938be92968dfa51a7ed47e65c1c57d19bb9c54b94ab52",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: primary MLPPA 2022 s.3(3) exit limb with statutory operator > is verified. Exit declaration only; no general outbound ceiling."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-003",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["NG-CUST-03"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:ab5cd17b7b4429656ce75a781b742940edfd83e6d8ae503504da779e4e252e66",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: M2.5 bounded restored 'liable on conviction'. Project claim uses that restored statutory formulation and is verified — not a map from M2.5 bounded→project bounded."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["NG-CUST-04"],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:2ce7ee95f4585498c81401675b5951278c6afb3fbe52c4f9e4c06099665df3d2",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: CBN guidance negative is bounded (narrow declaration-vs-prohibition distinction). Forbidden inferences block unrestricted / without-limit overclaims. Not a map from M2.5 supported→verified."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-005",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["NG-CUST-05"],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:bcb07b851173383e58f1b9506e2a5bff697bf4c9cf260009276a2c11582c34ba",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: FEMMPA s.21 with restored cash-not-transfer condition is bounded to the domiciliary-account cash-import context. Not generalised to universal outbound traveller rules."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-006",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["NG-CUST-06"],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:1f35bc49455e3c7d3fcfb1dd33691747b4fc36565474e06a59c43004cbd59715",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Customs e-CDF operational >= is a separate bounded operational claim. Does not reconcile or amend statutory >."
+    },
+    {
+      "candidate_id": "CC-NG-CASH-007",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_as_superseded",
+      "project_claim_ids": ["NG-CUST-07"],
+      "project_status": "superseded",
+      "reviewed_candidate_fingerprint": "sha256:12725ae59a82f23f97f1e9634f61792af23d42fcb1941c394a58bd67e318b864",
+      "relationship": "new_project_claim_historical",
+      "rationale": "Fresh project judgment: FEMMPA s.12 US$5,000 retained as superseded temporal-audit claim. Explicitly excluded from current-rule field bindings."
+    },
+    {
+      "candidate_id": "CC-NG-NGN-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["NG-NGN-01"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:165c2cb6d5132261f2a369c6a7a9b85479332030df92d9cca1bcb86334223647",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: FEMMPA s.14 prohibition baseline is verified from primary law, with explicit boundary that current numeric traveller exception is not established. No numeric NGN figure adopted."
+    }
+  ]
+}

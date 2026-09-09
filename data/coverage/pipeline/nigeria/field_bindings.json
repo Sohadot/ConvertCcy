@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "nigeria",
+  "notes": "Nigeria Hardening I Adoption Gate bindings only. Bind drafting-allowed verified/bounded border-cash claims. NG-CUST-07 (superseded legacy US$5,000) is intentionally unbound. Remaining required Phase-1 fields (resident/business/regime) are intentionally unbound pending NG-B2/NG-B3 and later blockers — do not invent placeholder claims. Physical-naira baseline (NG-NGN-01) appears only in summary.traveler because no dedicated local-currency field exists.",
+  "bindings": [
+    {
+      "field": "summary.traveler",
+      "claim_ids": ["NG-CUST-01", "NG-CUST-02", "NG-CUST-04", "NG-NGN-01"],
+      "wording_boundary": "May summarize: statutory entry/exit declaration in excess of US$10,000 (operator >); that the declaration rule itself does not prohibit genuinely owned funds above that amount; and the FEMMPA s.14 physical-naira prohibition baseline with numeric traveller exception not established. Must not imply: declaration threshold is a carrying ceiling; unrestricted / without-limit foreign-currency carriage; any current numeric NGN exception (N10,000 / N20,000 / N100,000)."
+    },
+    {
+      "field": "rules.bring_foreign_currency_in",
+      "claim_ids": ["NG-CUST-01", "NG-CUST-04"],
+      "wording_boundary": "Declaration framing only for entry: cash/negotiable instruments in excess of US$10,000 must be declared. May note the CBN clarification that the declaration rule itself is not a prohibition on genuinely owned funds above that amount. Forbid: without limit; unrestricted; inferred carrying entitlement; declaration-as-ceiling."
+    },
+    {
+      "field": "rules.take_foreign_currency_out",
+      "claim_ids": ["NG-CUST-02", "NG-CUST-03", "NG-CUST-05"],
+      "wording_boundary": "May contain: statutory exit declaration in excess of US$10,000; statutory liable-on-conviction consequence for false/failed declaration; and the narrowly applicable FEMMPA s.21 cash domiciliary-account condition (cash-not-transfer retained). Forbid: amount declared on entry as universal ceiling; universal authorised-dealer documentation for every departing traveller; generic resident limits; declaration threshold equals carriage ceiling; softening 'liable on conviction' into 'may lead'."
+    },
+    {
+      "field": "rules.cash_declaration_threshold",
+      "claim_ids": ["NG-CUST-01", "NG-CUST-02", "NG-CUST-06"],
+      "wording_boundary": "Preserve dual-source roles explicitly: statutory MLPPA trigger remains in excess of US$10,000 (operator >) for entry and exit; Customs e-CDF operational trigger remains US$10,000 or more / >=. Do not flatten into one operator. Do not treat Customs >= as a formal amendment or interpretation of statutory >. Bind statutory rule as the legal threshold and keep Customs operational posture as a distinct companion claim."
+    }
+  ]
+}
