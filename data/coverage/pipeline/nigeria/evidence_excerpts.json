@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "nigeria",
-  "notes": "Phase 2 M1 authored excerpts for Nigeria Evidence Hardening I / I-B. Scope limited to border-cash semantics and physical naira carriage. Hardening I-B preserves the statute/Customs operator conflict as dual operators and records that no primary excerpt establishing a live numeric NGN traveller exception was pinned.",
+  "notes": "Phase 2 M1 authored excerpts for Nigeria. Hardening I border-cash / physical-naira excerpts preserved. Hardening II adds FEMMPA Part II domiciliary opening, CBN CDD 2023 category eligibility, and CBN 2025 NRNOA/NRNIA framework excerpts. FX Manual 2026 memorandum text was not pinned.",
   "excerpts": [
     {
       "excerpt_id": "EX-NG-MLPPA-2022-S3-3",
@@ -29,7 +29,13 @@
       "source_accessed_at": "2026-09-09",
       "claim_neutrality_status": "reviewed",
       "operator_interpretation": null,
-      "topics": ["cash_declaration", "entry", "exit", "threshold", "negotiable_instruments"]
+      "topics": [
+        "cash_declaration",
+        "entry",
+        "exit",
+        "threshold",
+        "negotiable_instruments"
+      ]
     },
     {
       "excerpt_id": "EX-NG-MLPPA-2022-S3-4-5",
@@ -57,7 +63,11 @@
       "source_accessed_at": "2026-09-09",
       "claim_neutrality_status": "reviewed",
       "operator_interpretation": null,
-      "topics": ["cash_declaration", "penalty", "competent_authority"]
+      "topics": [
+        "cash_declaration",
+        "penalty",
+        "competent_authority"
+      ]
     },
     {
       "excerpt_id": "EX-NG-CBN-2013-CLARIFICATION",
@@ -85,7 +95,11 @@
       "source_accessed_at": "2026-09-09",
       "claim_neutrality_status": "reviewed",
       "operator_interpretation": null,
-      "topics": ["cash_declaration", "no_general_carriage_ban", "threshold"]
+      "topics": [
+        "cash_declaration",
+        "no_general_carriage_ban",
+        "threshold"
+      ]
     },
     {
       "excerpt_id": "EX-NG-FEMMPA-1995-S14",
@@ -113,7 +127,10 @@
       "source_accessed_at": "2026-09-09",
       "claim_neutrality_status": "reviewed",
       "operator_interpretation": null,
-      "topics": ["naira_import_export", "prohibition"]
+      "topics": [
+        "naira_import_export",
+        "prohibition"
+      ]
     },
     {
       "excerpt_id": "EX-NG-FEMMPA-1995-S21",
@@ -141,7 +158,11 @@
       "source_accessed_at": "2026-09-09",
       "claim_neutrality_status": "reviewed",
       "operator_interpretation": null,
-      "topics": ["domiciliary_account", "cash_export", "documentary_condition"]
+      "topics": [
+        "domiciliary_account",
+        "cash_export",
+        "documentary_condition"
+      ]
     },
     {
       "excerpt_id": "EX-NG-FEMMPA-1995-S12",
@@ -169,7 +190,12 @@
       "source_accessed_at": "2026-09-09",
       "claim_neutrality_status": "reviewed",
       "operator_interpretation": null,
-      "topics": ["legacy_threshold", "temporal_audit", "entry", "exit"]
+      "topics": [
+        "legacy_threshold",
+        "temporal_audit",
+        "entry",
+        "exit"
+      ]
     },
     {
       "excerpt_id": "EX-NG-NCS-ECDF-THRESHOLD",
@@ -197,7 +223,522 @@
       "source_accessed_at": "2026-09-09",
       "claim_neutrality_status": "reviewed",
       "operator_interpretation": null,
-      "topics": ["cash_declaration", "operational_guidance", "threshold"]
+      "topics": [
+        "cash_declaration",
+        "operational_guidance",
+        "threshold"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_text_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-FEMMPA-1995-S19",
+      "source_id": "SRC-NG-FEMMPA-1995",
+      "source_text": "An exporter of goods, including petroleum products, shall open and maintain a foreign currency domiciliary account into which may be retained foreign currency corresponding to the entire proceeds of the export concerned.",
+      "pinpoint": {
+        "article": "Section 19",
+        "section": "Part II — Operation of Foreign Currency Domiciliary Accounts",
+        "heading": "Exporters to open account",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Statutory exporter domiciliary-account obligation for export proceeds"
+      },
+      "topics": [
+        "export_domiciliary_account",
+        "funding",
+        "exporter"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_text_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-CDD-2023-R25-EXTERNAL",
+      "source_id": "SRC-NG-CBN-CDD-2023",
+      "source_text": "In line with Memorandum 17 of the CBN Foreign Exchange Manual, FI shall satisfy itself that a customer is permanently resident outside Nigeria when establishing a banking relationship for external and non-resident non-Nigerian customers. the following are eligible to open external accounts — (a) Embassies ; (b) High Commissions ; (c) Legations or consulates ; (d) career and established members of Embassies, High Commissions, and Legation or Consulates ; and (e) other international organisations recognized and accorded diplomatic status and their expatriate officials, such as African Union, United Nations or Commonwealth of Nations.",
+      "pinpoint": {
+        "article": "Regulation 25(1)-(2)",
+        "section": "PART III — ADDITIONAL MEASURES",
+        "heading": "External and non-resident non-Nigerian accounts",
+        "page": "B 498",
+        "url_fragment": null,
+        "locator_note": "CDD eligibility classes for external accounts"
+      },
+      "topics": [
+        "external_account",
+        "non_resident",
+        "eligibility",
+        "diplomatic"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_text_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-CDD-2023-R25-NONRES",
+      "source_id": "SRC-NG-CBN-CDD-2023",
+      "source_text": "the following are eligible to open non-resident accounts — (a) overseas correspondence and examination bodies; (b) foreign companies executing approved contracts in Nigeria; and (c) foreign professional bodies.",
+      "pinpoint": {
+        "article": "Regulation 25(4)",
+        "section": "PART III — ADDITIONAL MEASURES",
+        "heading": "External and non-resident non-Nigerian accounts",
+        "page": "B 498",
+        "url_fragment": null,
+        "locator_note": "CDD eligibility classes for non-resident accounts (category-specific)"
+      },
+      "topics": [
+        "non_resident_account",
+        "eligibility",
+        "foreign_company",
+        "professional_body"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_text_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-CDD-2023-R40",
+      "source_id": "SRC-NG-CBN-CDD-2023",
+      "source_text": "Where a customer wishes to open a Domiciliary Account or make a wholesale deposit by cash or inter-bank transfer, a FI shall obtain identification evidence in accordance with the requirements for individuals, companies or professional intermediaries operating on behalf of third parties as appropriate. Where the funds to a domiciliary account are by inter-bank transfer, FI shall satisfy itself that the transferring institution is regulated for ML, TF or PF prevention in its country of origin.",
+      "pinpoint": {
+        "article": "Regulation 40(1)-(2)",
+        "section": "PART III — ADDITIONAL MEASURES",
+        "heading": "Domiciliary account",
+        "page": "B 504",
+        "url_fragment": null,
+        "locator_note": "Bank KYC / identification for domiciliary opening and inter-bank funding"
+      },
+      "topics": [
+        "domiciliary_account",
+        "kyc",
+        "documentation",
+        "funding"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_search_snippet_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-NRN-2025-INTRO",
+      "source_id": "SRC-NG-CBN-NRN-2025",
+      "source_text": "The Central Bank of Nigeria is pleased to inform the general public of the introduction of the Non-Resident Nigerian Ordinary Account (NRNOA) and Non-Resident Nigerian Investment Account (NRNIA) targeted at Nigerians in diaspora. The NRNOA enables Non-Resident Nigerians (NRNs) to remit their foreign earnings to Nigeria and manage funds in both foreign and local currencies, while the (NRNIA) enables Non-Resident Nigerians (NRNs) to invest in assets in Nigeria in either foreign currency (FCY) or local currency (Naira). Account holders may maintain both a foreign currency (FCY) account and/or a local currency (Naira) account to facilitate transactions and participate in diverse investment opportunities. Effective Ist January 2025, eligible NRNs shall have the opportunity to own any of the Non-resident Nigerian accounts, subject to meeting KYC requirements which will be made available in FAQs to be released soon. This policy is without prejudice to Memorandum 17 of the CBN Foreign Exchange Manual (2018).",
+      "pinpoint": {
+        "article": null,
+        "section": "Introduction / public circular",
+        "heading": "INTRODUCTION OF NON-RESIDENT NIGERIAN ORDINARY ACCOUNT AND NON-RESIDENT NIGERIAN INVESTMENT ACCOUNT",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "CBN TED circular introducing NRNOA/NRNIA effective 1 January 2025"
+      },
+      "topics": [
+        "nrnoa",
+        "nrnia",
+        "non_resident_nigerian",
+        "eligibility",
+        "kyc"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_search_snippet_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-NRN-2025-NRNIA",
+      "source_id": "SRC-NG-CBN-NRN-2025",
+      "source_text": "This account enables Non-Resident Nigerians (NRNs) to invest in assets in Nigeria in either foreign currency (FCY) or local currency (Naira). Account holders may maintain both a foreign currency (FCY) account and/or a local currency (Naira) account to facilitate transactions and participate in diverse investment opportunities.",
+      "pinpoint": {
+        "article": "Framework 2.0",
+        "section": "FRAMEWORK FOR THE OPERATION OF NON-RESIDENT NIGERIAN ORDINARY ACCOUNT AND NON-RESIDENT NIGERIAN INVESTMENT ACCOUNT",
+        "heading": "Non-Resident Nigerian Investment Account (NRNIA)",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "NRNIA investment-purpose account class for Non-Resident Nigerians"
+      },
+      "topics": [
+        "nrnia",
+        "investment",
+        "non_resident_nigerian"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_webpage_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-REFORMS-FXM-2026",
+      "source_id": "SRC-NG-CBN-REFORMS",
+      "source_text": "On May 15, 2026, the Central Bank of Nigeria (CBN) officially launched the Fourth Edition of its Foreign Exchange Manual, marking a significant milestone in the country's ongoing financial sector reforms aimed at strengthening the naira, enhancing transparency, and improving efficiency in the foreign exchange market.",
+      "pinpoint": {
+        "article": null,
+        "section": "CBN Updates Foreign Exchange Manual",
+        "heading": "CBN Updates Foreign Exchange Manual",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Temporal announcement of FX Manual Fourth Edition launch; not memorandum text"
+      },
+      "topics": [
+        "fx_manual",
+        "temporal",
+        "regime"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_text_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-FEMMPA-1995-S17-1",
+      "source_id": "SRC-NG-FEMMPA-1995",
+      "source_text": "Any person may open, maintain and operate a domiciliary account designated in foreign currency with an Authorised Dealer.",
+      "pinpoint": {
+        "article": "Section 17(1)",
+        "section": "Part II — Operation of Foreign Currency Domiciliary Accounts",
+        "heading": "Domiciliary accounts",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Statutory opening permission"
+      },
+      "topics": [
+        "domiciliary_account",
+        "eligibility",
+        "opening"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_text_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-FEMMPA-1995-S17-2",
+      "source_id": "SRC-NG-FEMMPA-1995",
+      "source_text": "The foreign currency in which a domiciliary account may be opened, maintained and operated shall be any internationally convertible currency.",
+      "pinpoint": {
+        "article": "Section 17(2)",
+        "section": "Part II — Operation of Foreign Currency Domiciliary Accounts",
+        "heading": "Domiciliary accounts",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Convertible-currency rule"
+      },
+      "topics": [
+        "domiciliary_account",
+        "currency"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_text_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-FEMMPA-1995-S17-3",
+      "source_id": "SRC-NG-FEMMPA-1995",
+      "source_text": "Except as provided under any other enactment or law, a person making an application to open a domiciliary account under this Act shall not be obliged to disclose the source of the foreign currency sought to be deposited in the account.",
+      "pinpoint": {
+        "article": "Section 17(3)",
+        "section": "Part II — Operation of Foreign Currency Domiciliary Accounts",
+        "heading": "Domiciliary accounts",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Source-disclosure exception limb"
+      },
+      "topics": [
+        "domiciliary_account",
+        "source_disclosure",
+        "exception"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_text_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-FEMMPA-1995-S17-4",
+      "source_id": "SRC-NG-FEMMPA-1995",
+      "source_text": "A person may open more than one domiciliary account under this Act designated in the same or different foreign currencies and at the same or in different banks.",
+      "pinpoint": {
+        "article": "Section 17(4)",
+        "section": "Part II — Operation of Foreign Currency Domiciliary Accounts",
+        "heading": "Domiciliary accounts",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Multiple domiciliary accounts"
+      },
+      "topics": [
+        "domiciliary_account",
+        "multiple_accounts"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_text_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-CDD-2023-R25-CLOSE",
+      "source_id": "SRC-NG-CBN-CDD-2023",
+      "source_text": "All accounts of Non-resident stipulated in subregulations (2) and (4) of this regulation, shall, on completion of the contract or the applicant’s business in Nigeria, be closed and the balance on the account, if any, transferred to the customer’s account in country of residence, after proper documentation.",
+      "pinpoint": {
+        "article": "Regulation 25(7)",
+        "section": "PART III — ADDITIONAL MEASURES",
+        "heading": "External and non-resident non-Nigerian accounts",
+        "page": "B 498",
+        "url_fragment": null,
+        "locator_note": "Closure on completion of contract/business"
+      },
+      "topics": [
+        "non_resident_account",
+        "closure"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_text_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-CDD-2023-R25-REFERRAL",
+      "source_id": "SRC-NG-CBN-CDD-2023",
+      "source_text": "In cases that are not classified under subregulations (2) and (4) of this regulation, FIs shall refer to the CBN for clarification.",
+      "pinpoint": {
+        "article": "Regulation 25(8)",
+        "section": "PART III — ADDITIONAL MEASURES",
+        "heading": "External and non-resident non-Nigerian accounts",
+        "page": "B 499",
+        "url_fragment": null,
+        "locator_note": "CBN clarification referral for unclassified cases"
+      },
+      "topics": [
+        "non_resident_account",
+        "cbn_clarification"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_search_snippet_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-NRN-2025-NRNOA-OP",
+      "source_id": "SRC-NG-CBN-NRN-2025",
+      "source_text": "This account enables Non-Resident Nigerians (NRNs) to remit their foreign earnings to Nigeria and manage funds in both foreign and local currencies. Account holders may maintain both a foreign currency (FCY) account and/or a local currency (Naira) account.",
+      "pinpoint": {
+        "article": "Framework 1.0",
+        "section": "FRAMEWORK FOR THE OPERATION OF NON-RESIDENT NIGERIAN ORDINARY ACCOUNT AND NON-RESIDENT NIGERIAN INVESTMENT ACCOUNT",
+        "heading": "Non-Resident Nigerian Ordinary Account (NRNOA)",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "NRNOA purpose and dual-currency structure"
+      },
+      "topics": [
+        "nrnoa",
+        "non_resident_nigerian"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_search_snippet_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-NRN-2025-NRNOA-REPAT",
+      "source_id": "SRC-NG-CBN-NRN-2025",
+      "source_text": "Balances in the FCY account, can be fully repatriated out of Nigeria without restriction.",
+      "pinpoint": {
+        "article": "Framework 1.4",
+        "section": "FRAMEWORK FOR THE OPERATION OF NON-RESIDENT NIGERIAN ORDINARY ACCOUNT AND NON-RESIDENT NIGERIAN INVESTMENT ACCOUNT",
+        "heading": "Repatriation",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "NRNOA FCY repatriation"
+      },
+      "topics": [
+        "nrnoa",
+        "repatriation"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_search_snippet_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-NRN-2025-NRNOA-CONV",
+      "source_id": "SRC-NG-CBN-NRN-2025",
+      "source_text": "Account holders may also maintain a Naira (NGN) account, with funds remitted directly from offshore or convertible from a FCY account at prevailing exchange rates through Authorized Dealers.",
+      "pinpoint": {
+        "article": "Framework 1.1",
+        "section": "FRAMEWORK FOR THE OPERATION OF NON-RESIDENT NIGERIAN ORDINARY ACCOUNT AND NON-RESIDENT NIGERIAN INVESTMENT ACCOUNT",
+        "heading": "Currency",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "NRNOA Naira account funding/conversion"
+      },
+      "topics": [
+        "nrnoa",
+        "conversion",
+        "naira_account"
+      ]
     }
   ]
 }

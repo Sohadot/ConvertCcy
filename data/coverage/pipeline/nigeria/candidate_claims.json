@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "country_slug": "nigeria",
   "generation_mode": "governed_extraction",
-  "notes": "Nigeria Evidence Hardening I / I-B atomic candidate ledger. Scope limited to NG-B1, NG-B6, and NG-B7. Candidates are recorded for controlled review; this file does not itself adopt claims into rules or bindings. Hardening I-B disposition: (1) CC-NG-CASH-006 operator conflict is preserved as dual-operator rather than force-reconciled; (2) no candidate invents a numeric NGN exception because primary CBN guideline/FX Manual text was not pinned — numeric exception remains not established pending a later primary-source pin.",
+  "notes": "Nigeria candidate ledger. Hardening I (CC-NG-CASH-* / CC-NG-NGN-001) preserved with closed M2.5 reviews. Hardening II appends unreviewed NG-B2/NG-B3 account candidates (CC-NG-ACC-*). Hardening I-B dual-operator and numeric-NGN-exception boundaries remain. FX Manual 2026 operational domiciliary access propositions are intentionally not candidate-encoded because the Manual PDF was not pinned.",
   "candidates": [
     {
       "candidate_id": "CC-NG-CASH-001",
@@ -479,6 +479,948 @@
         "decision": "bounded",
         "reviewed_candidate_fingerprint": "sha256:12725ae59a82f23f97f1e9634f61792af23d42fcb1941c394a58bd67e318b864",
         "notes": "M2.5 bounded temporal-audit disposition for legacy US\\,000 threshold."
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-001",
+      "candidate_text": "Any person may open, maintain and operate a domiciliary account designated in foreign currency with an Authorised Dealer.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "domiciliary_account_opening",
+        "actor": "any_person",
+        "transaction_context": "foreign_currency_domiciliary_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S17-1",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-002",
+      "candidate_text": "The foreign currency in which a domiciliary account may be opened, maintained and operated shall be any internationally convertible currency.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "domiciliary_account_currency",
+        "actor": "any_person",
+        "transaction_context": "foreign_currency_domiciliary_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S17-2",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-003",
+      "candidate_text": "Except as provided under any other enactment or law, a person making an application to open a domiciliary account under this Act shall not be obliged to disclose the source of the foreign currency sought to be deposited in the account.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "exception",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "domiciliary_account_source_disclosure",
+        "actor": "applicant",
+        "transaction_context": "foreign_currency_domiciliary_account_opening",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S17-3",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "pending",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-NG-FEMMPA-1995-S17-3"
+        ]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-004",
+      "candidate_text": "A person may open more than one domiciliary account under this Act designated in the same or different foreign currencies and at the same or in different banks.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "multiple_domiciliary_accounts",
+        "actor": "any_person",
+        "transaction_context": "foreign_currency_domiciliary_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S17-4",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-005",
+      "candidate_text": "An exporter of goods, including petroleum products, shall open and maintain a foreign currency domiciliary account into which may be retained foreign currency corresponding to the entire proceeds of the export concerned.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "export_proceeds_domiciliary_account",
+        "actor": "exporter",
+        "transaction_context": "export_proceeds",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S19",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-006",
+      "candidate_text": "For external and non-resident non-Nigerian customers, financial institutions shall satisfy themselves that the customer is permanently resident outside Nigeria, and the eligible classes for external accounts are embassies, high commissions, legations or consulates, their career and established members, and other international organisations recognised and accorded diplomatic status and their expatriate officials.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "external_account_eligibility",
+        "actor": "diplomatic_and_international_organisation_customers",
+        "transaction_context": "external_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-CDD-2023-R25-EXTERNAL",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "condense_eligible_list",
+          "fi_expansion_of_abbreviation"
+        ],
+        "omissions": [
+          "documentation_schedule_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "regulatory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-007",
+      "candidate_text": "The eligible classes to open non-resident accounts under the CBN Customer Due Diligence Regulations are overseas correspondence and examination bodies, foreign companies executing approved contracts in Nigeria, and foreign professional bodies.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "non_resident_account_eligibility",
+        "actor": "defined_non_resident_categories",
+        "transaction_context": "non_resident_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-CDD-2023-R25-NONRES",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "name_cdd_instrument",
+          "condense_eligible_list"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "regulatory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-008",
+      "candidate_text": "All accounts of Non-resident stipulated for the external-account and non-resident-account eligible classes shall, on completion of the contract or the applicant’s business in Nigeria, be closed and the balance on the account, if any, transferred to the customer’s account in country of residence, after proper documentation.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "non_resident_account_closure",
+        "actor": "financial_institution",
+        "transaction_context": "non_resident_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-CDD-2023-R25-CLOSE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "refer_eligible_classes_without_restating_lists"
+        ],
+        "omissions": [
+          "cbn_clarification_referral_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "regulatory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      },
+      "subject": "non_resident_account_closure"
+    },
+    {
+      "candidate_id": "CC-NG-ACC-009",
+      "candidate_text": "Where a customer wishes to open a domiciliary account or make a wholesale deposit by cash or inter-bank transfer, a financial institution shall obtain identification evidence appropriate to individuals, companies, or professional intermediaries, and where funding is by inter-bank transfer the institution shall satisfy itself that the transferring institution is regulated for ML, TF or PF prevention in its country of origin.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "documentation_requirement",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "domiciliary_account_kyc",
+        "actor": "financial_institution",
+        "transaction_context": "domiciliary_account_opening_or_wholesale_deposit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-CDD-2023-R40",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "expand_fi_abbreviation",
+          "merge_opening_and_interbank_limbs"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "regulatory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-010",
+      "candidate_text": "Effective 1 January 2025, eligible Non-Resident Nigerians may own a Non-Resident Nigerian Ordinary Account or a Non-Resident Nigerian Investment Account subject to meeting KYC requirements, without prejudice to Memorandum 17 of the CBN Foreign Exchange Manual (2018).",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nrn_account_eligibility",
+        "actor": "non_resident_nigerian",
+        "transaction_context": "nrnoa_or_nrnia",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NRN-2025-INTRO",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "normalize_Ist_to_1",
+          "condense_intro_eligibility"
+        ],
+        "omissions": [
+          "detailed_nrnoa_operating_limbs_reserved",
+          "detailed_nrnia_operating_limbs_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "circular_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "pending",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-NG-CBN-NRN-2025-INTRO"
+        ]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-011",
+      "candidate_text": "A Non-Resident Nigerian Ordinary Account enables Non-Resident Nigerians to remit their foreign earnings to Nigeria and manage funds in both foreign and local currencies; account holders may maintain both a foreign-currency account and/or a Naira account.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nrnoa_operation_and_fcy_repatriation",
+        "actor": "non_resident_nigerian",
+        "transaction_context": "nrnoa",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NRN-2025-NRNOA-OP",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "condense_purpose_and_account_structure"
+        ],
+        "omissions": [
+          "conversion_limb_reserved",
+          "repatriation_limb_reserved"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "circular_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-012",
+      "candidate_text": "A Non-Resident Nigerian Investment Account enables Non-Resident Nigerians to invest in assets in Nigeria in either foreign currency or local currency, and account holders may maintain both a foreign-currency account and/or a Naira account for that purpose.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nrnia_operation",
+        "actor": "non_resident_nigerian",
+        "transaction_context": "nrnia",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NRN-2025-NRNIA",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "condense_investment_purpose_wording"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "circular_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-013",
+      "candidate_text": "On 15 May 2026, the Central Bank of Nigeria officially launched the Fourth Edition of its Foreign Exchange Manual.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "fx_manual_fourth_edition_temporal_status",
+        "actor": null,
+        "transaction_context": "temporal_audit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-REFORMS-FXM-2026",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "date_order_normalization"
+        ],
+        "omissions": [
+          "speech_context_omitted"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_audit_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-014",
+      "candidate_text": "In cases that are not classified under the external-account or non-resident-account eligible classes in the CBN Customer Due Diligence Regulations, financial institutions shall refer to the Central Bank of Nigeria for clarification.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "unclassified_non_resident_referral",
+        "actor": "financial_institution",
+        "transaction_context": "non_resident_account",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-CDD-2023-R25-REFERRAL",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "expand_fi_cbn_names",
+          "refer_eligible_class_cross_ref"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "regulatory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-015",
+      "candidate_text": "Balances in the foreign-currency account of a Non-Resident Nigerian Ordinary Account can be fully repatriated out of Nigeria without restriction.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nrnoa_fcy_repatriation",
+        "actor": "non_resident_nigerian",
+        "transaction_context": "nrnoa",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NRN-2025-NRNOA-REPAT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "expand_fcy_abbreviation",
+          "name_nrnoa"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "circular_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-ACC-016",
+      "candidate_text": "Non-Resident Nigerian Ordinary Account holders may maintain a Naira account with funds remitted directly from offshore or convertible from a foreign-currency account at prevailing exchange rates through authorised dealers.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nrnoa_naira_funding_conversion",
+        "actor": "non_resident_nigerian",
+        "transaction_context": "nrnoa",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NRN-2025-NRNOA-CONV",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "expand_fcy_ngn",
+          "authorised_spelling"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "circular_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
       }
     }
   ]

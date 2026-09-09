@@ -3,7 +3,7 @@
   "country_slug": "nigeria",
   "country_name": "Nigeria",
   "iso2": "NG",
-  "notes": "Phase 2 M1 source pack for Nigeria Evidence Hardening I / I-B. Scope limited to NG-B1 outbound foreign-currency cash mechanics, NG-B6 declaration threshold, and NG-B7 physical naira import/export rule. Hardening I-B (2026-09-09): (1) no later primary instrument was found reconciling MLPPA 2022 'in excess of' with NCS e-CDF 'or more'/'equal to or greater than', so dual operators are preserved rather than force-reconciled; (2) bounded primary search did not pin a current CBN-hosted guideline/FX Manual PDF establishing a live numeric traveller exception under FEMMPA s.14, so numeric exception = not established. Secondary press/law-firm references to N100,000 remain discovery-only and are not adopted.",
+  "notes": "Phase 2 M1 source pack for Nigeria. Hardening I (NG-B1/B6/B7) preserved. Hardening II (2026-09-09) adds NG-B2/NG-B3 resident and non-resident FCY-account evidence. Primary account-law substrate: FEMMPA 1995 Part II; CBN CDD Regulations 2023 category eligibility; CBN 2025 NRNOA/NRNIA circular. CBN Foreign Exchange Manual Fourth Edition (announced on the CBN Reforms page as launched 2026-05-15) was not pinned as a downloadable CBN-hosted PDF in this review — detailed ordinary-vs-export domiciliary operational access rules from that Manual are missing-authority and are not adopted from press/law-firm summaries.",
   "sources": [
     {
       "source_id": "SRC-NG-MLPPA-2022",
@@ -54,7 +54,7 @@
       "published_date": "1995-01-01",
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
-      "notes": "Used here for section 14 naira import/export prohibition and section 21 domiciliary-account cash mechanics. Section 12's US$5,000 declaration wording is retained only for temporal audit because later AML legislation uses US$10,000."
+      "notes": "Hardening I: s.14 naira import/export; s.21 cash domiciliary mechanics; s.12 US$5,000 temporal audit. Hardening II: Part II s.17–s.19 domiciliary-account opening and exporter-account rules."
     },
     {
       "source_id": "SRC-NG-NCS-ECDF",
@@ -71,6 +71,57 @@
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
       "notes": "Operational current guidance and e-form. Uses '$10,000 or more' / 'equal to or greater than' wording. Hardening I-B preserves this as the operational operator (>=) alongside the statutory MLPPA operator (>); no reconciling primary instrument was pinned."
+    },
+    {
+      "source_id": "SRC-NG-CBN-CDD-2023",
+      "label": "Central Bank of Nigeria (Customer Due Diligence) Regulations, 2023",
+      "url": "https://www.cbn.gov.ng/Out/2023/CCD/CBN%20Customer%20Due%20diligence%20Reg.%202023-combined.pdf",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Central Bank of Nigeria",
+      "authority_kind": "central_bank",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "published_date": "2023-01-01",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Hardening II: regulations 25 (external and non-resident non-Nigerian accounts), 26 (non-resident Nigerians CDD), and 40 (domiciliary-account identification). These are FI due-diligence / eligibility-documentation rules, not a general CBN prior-approval regime for resident domiciliary accounts under FEMMPA s.17."
+    },
+    {
+      "source_id": "SRC-NG-CBN-NRN-2025",
+      "label": "CBN circular — Introduction of Non-Resident Nigerian Ordinary Account (NRNOA) and Non-Resident Nigerian Investment Account (NRNIA)",
+      "url": "https://www.cbn.gov.ng/Out/2025/TED/TEDFEMPUBFPC001002.pdf",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Central Bank of Nigeria",
+      "authority_kind": "central_bank",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "published_date": "2025-01-10",
+      "effective_date": "2025-01-01",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Hardening II: diaspora Non-Resident Nigerian account classes. Policy is without prejudice to Memorandum 17 of the CBN Foreign Exchange Manual (2018). Does not establish a comparative proposition that non-residents generally operate more freely than residents."
+    },
+    {
+      "source_id": "SRC-NG-CBN-REFORMS",
+      "label": "CBN Reforms and Initiatives — official reforms chronology page",
+      "url": "https://www.cbn.gov.ng/AboutCBN/Reforms.html",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Central Bank of Nigeria",
+      "authority_kind": "central_bank",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Hardening II temporal meta only: records 2025-01-10 NRNOA/NRNIA introduction and 2026-05-15 launch of Foreign Exchange Manual Fourth Edition. Does not itself contain memorandum-level domiciliary operating rules."
     }
   ],
   "source_conflicts": [
@@ -98,6 +149,16 @@
       "closure_phase": "hardening_i_b",
       "closed_at": "2026-09-09",
       "wording_boundary": "Publish only the FEMMPA s.14 prohibition baseline plus the fact that any numeric traveller exception remains not established. Do not invent N10,000, N20,000, N100,000, or any other numeric NGN carriage/exception figure from secondary sources."
+    },
+    {
+      "authority": "Central Bank of Nigeria",
+      "topic": "Foreign Exchange Manual Fourth Edition (2026) — ordinary vs export domiciliary operational access, Form A / remittance documentation, and cash-withdrawal rules for export-proceeds accounts",
+      "reason": "Hardening II bounded primary search located the CBN Reforms announcement of the Fourth Edition launch (2026-05-15) but did not pin a currently downloadable CBN-hosted PDF of the Manual text for memorandum-level ordinary-domiciliary, export-proceeds-domiciliary, or Form A rules. Press and law-firm summaries describing unfettered ordinary-domiciliary access, Form A removal, export-proceeds cash-withdrawal bans, and related operational detail were treated as discovery aids only and were not adopted. Conclusion: FX Manual 2026 operational domiciliary access rules = not established from pinned primary text in this review.",
+      "search_status": "bounded_search_complete",
+      "conclusion": "fx_manual_2026_pdf_not_pinned",
+      "closure_phase": "hardening_ii",
+      "closed_at": "2026-09-09",
+      "wording_boundary": "Do not adopt ordinary-vs-export domiciliary operational access, unrestricted-access, Form A, or export-proceeds cash-withdrawal propositions from secondary summaries. Prefer FEMMPA statutory opening rules, CDD category eligibility, and the pinned NRN circular until the Manual PDF is pinned."
     }
   ]
 }

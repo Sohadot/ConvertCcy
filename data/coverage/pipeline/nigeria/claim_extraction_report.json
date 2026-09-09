@@ -11,20 +11,82 @@
       "reason": "Excerpt 'EX-NG-MLPPA-2022-S3-3' also used by CC-NG-CASH-001",
       "required_action": "Prefer one candidate per excerpt in M2.0 pilot",
       "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-ACC-002",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-ACC-005",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-ACC-006",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-ACC-009",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-NG-ACC-011",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
     }
   ],
   "needs_human_review": [
     "CC-NG-CASH-006:special_review",
-    "CC-NG-CASH-007:special_review"
+    "CC-NG-CASH-007:special_review",
+    "CC-NG-ACC-001:semantic_review_pending",
+    "CC-NG-ACC-002:semantic_review_pending",
+    "CC-NG-ACC-003:semantic_review_pending",
+    "CC-NG-ACC-003:special_review",
+    "CC-NG-ACC-004:semantic_review_pending",
+    "CC-NG-ACC-005:semantic_review_pending",
+    "CC-NG-ACC-006:semantic_review_pending",
+    "CC-NG-ACC-006:special_review",
+    "CC-NG-ACC-007:semantic_review_pending",
+    "CC-NG-ACC-007:special_review",
+    "CC-NG-ACC-008:semantic_review_pending",
+    "CC-NG-ACC-008:special_review",
+    "CC-NG-ACC-009:semantic_review_pending",
+    "CC-NG-ACC-009:special_review",
+    "CC-NG-ACC-010:semantic_review_pending",
+    "CC-NG-ACC-010:special_review",
+    "CC-NG-ACC-011:semantic_review_pending",
+    "CC-NG-ACC-011:special_review",
+    "CC-NG-ACC-012:semantic_review_pending",
+    "CC-NG-ACC-012:special_review",
+    "CC-NG-ACC-013:semantic_review_pending",
+    "CC-NG-ACC-013:special_review",
+    "CC-NG-ACC-014:semantic_review_pending",
+    "CC-NG-ACC-014:special_review",
+    "CC-NG-ACC-015:semantic_review_pending",
+    "CC-NG-ACC-015:special_review",
+    "CC-NG-ACC-016:semantic_review_pending"
   ],
   "stats": {
-    "candidate_claims_total": 8,
-    "direct_restating": 1,
+    "candidate_claims_total": 24,
+    "direct_restating": 6,
     "translation_based": 0,
-    "bounded_normalization": 7,
-    "semantic_review_pending": 0,
+    "bounded_normalization": 18,
+    "semantic_review_pending": 16,
     "downstream_eligible": 8,
-    "human_review_required": 2
+    "human_review_required": 13
   },
   "summary": "CLAIM EXTRACTION PASS (structural only)",
   "capability_note": "M2 validator checks extraction contract structure, evidence eligibility, language/mode consistency, and review/fingerprint gates. It does not establish legal or semantic approval of candidate claims."
