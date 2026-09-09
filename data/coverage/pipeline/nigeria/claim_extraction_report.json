@@ -137,6 +137,27 @@
       "reason": "Candidate text may be compound (heuristic)",
       "required_action": "Split into atomic candidates if multiple propositions",
       "blocking": false
+    },
+    {
+      "layer": "evidence",
+      "field": "CC-NG-REG-005",
+      "reason": "Excerpt 'EX-NG-CBN-FXSTRUCT-2023-WBWS-NFEM' also used by CC-NG-REG-004",
+      "required_action": "Prefer one candidate per excerpt in M2.0 pilot",
+      "blocking": false
+    },
+    {
+      "layer": "evidence",
+      "field": "CC-NG-REG-006",
+      "reason": "Excerpt 'EX-NG-CBN-FXSTRUCT-2023-WBWS-NFEM' also used by CC-NG-REG-005",
+      "required_action": "Prefer one candidate per excerpt in M2.0 pilot",
+      "blocking": false
+    },
+    {
+      "layer": "evidence",
+      "field": "CC-NG-REG-013",
+      "reason": "Excerpt 'EX-NG-CBN-FXSTRUCT-2016-MANAGED-FLOAT' also used by CC-NG-REG-003",
+      "required_action": "Prefer one candidate per excerpt in M2.0 pilot",
+      "blocking": false
     }
   ],
   "needs_human_review": [
@@ -171,16 +192,42 @@
     "CC-NG-BIZ-017:special_review",
     "CC-NG-BIZ-018:special_review",
     "CC-NG-BIZ-019:special_review",
-    "CC-NG-BIZ-020:special_review"
+    "CC-NG-BIZ-020:special_review",
+    "CC-NG-REG-001:semantic_review_pending",
+    "CC-NG-REG-001:special_review",
+    "CC-NG-REG-002:semantic_review_pending",
+    "CC-NG-REG-002:special_review",
+    "CC-NG-REG-003:semantic_review_pending",
+    "CC-NG-REG-003:special_review",
+    "CC-NG-REG-004:semantic_review_pending",
+    "CC-NG-REG-004:special_review",
+    "CC-NG-REG-005:semantic_review_pending",
+    "CC-NG-REG-005:special_review",
+    "CC-NG-REG-006:semantic_review_pending",
+    "CC-NG-REG-006:special_review",
+    "CC-NG-REG-007:semantic_review_pending",
+    "CC-NG-REG-007:special_review",
+    "CC-NG-REG-008:semantic_review_pending",
+    "CC-NG-REG-008:special_review",
+    "CC-NG-REG-009:semantic_review_pending",
+    "CC-NG-REG-009:special_review",
+    "CC-NG-REG-010:semantic_review_pending",
+    "CC-NG-REG-010:special_review",
+    "CC-NG-REG-011:semantic_review_pending",
+    "CC-NG-REG-011:special_review",
+    "CC-NG-REG-012:semantic_review_pending",
+    "CC-NG-REG-012:special_review",
+    "CC-NG-REG-013:semantic_review_pending",
+    "CC-NG-REG-013:special_review"
   ],
   "stats": {
-    "candidate_claims_total": 44,
+    "candidate_claims_total": 57,
     "direct_restating": 6,
     "translation_based": 0,
-    "bounded_normalization": 38,
-    "semantic_review_pending": 0,
+    "bounded_normalization": 51,
+    "semantic_review_pending": 13,
     "downstream_eligible": 44,
-    "human_review_required": 32
+    "human_review_required": 45
   },
   "summary": "CLAIM EXTRACTION PASS (structural only)",
   "capability_note": "M2 validator checks extraction contract structure, evidence eligibility, language/mode consistency, and review/fingerprint gates. It does not establish legal or semantic approval of candidate claims."

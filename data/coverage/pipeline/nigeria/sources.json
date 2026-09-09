@@ -3,7 +3,7 @@
   "country_slug": "nigeria",
   "country_name": "Nigeria",
   "iso2": "NG",
-  "notes": "Phase 2 M1 source pack for Nigeria. Hardening I (border/cash) and Hardening II (accounts) preserved. Hardening III (2026-09-09) NG-B5 business FX: FEMMPA Market/Authorised Dealer/investment/repatriation sections; CBN FX Management page on NFEM/DMB processing and 43-item access restoration; CBN EFEMS FAQ on Authorised Dealer interbank matching; CBN Reforms page for NFEM unification / BDC-via-AD / EFEMS participant classes; CBN BDC Guidelines 2024 for BDC licensing architecture. FX Manual Fourth Edition memorandum-level Form M/A and detailed trade-documentation schedules remain not pinned as downloadable CBN PDF — recorded as missing-authority, not inferred from secondary summaries.",
+  "notes": "Phase 2 M1 source pack for Nigeria. Hardening I–III preserved. Hardening IV (2026-09-09) NG-B4: CBN FX Structure and Management page (2016 managed-float temporal vs 2023-Date willing-buyer/willing-seller NFEM unification); CBN Monetary Policy reforms page; CBN FX Market page; CBN NFEM rates page (volume-weighted official rate); FEMMPA s.1 CBN guideline authority; reused EFEMS FAQ market-driven / reference-rate limbs. Formal current-rule taxonomy labels 'floating' / 'managed float' and the classification phrase 'significant exchange controls' are recorded as missing-authority / not established from the pinned current primary corpus where not expressly supported.",
   "sources": [
     {
       "source_id": "SRC-NG-MLPPA-2022",
@@ -54,7 +54,7 @@
       "published_date": "1995-01-01",
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
-      "notes": "Hardening I: s.12/s.14/s.21. Hardening II: s.17–s.19. Hardening III: Part I Market architecture (s.5, s.7, s.9–s.11, s.13, s.15–s.16) and Part IV export of goods/services (s.27)."
+      "notes": "Hardening I: s.12/s.14/s.21. Hardening II: s.17–s.19. Hardening III: Part I Market architecture (s.5, s.7, s.9–s.11, s.13, s.15–s.16) and Part IV export of goods/services (s.27). Hardening IV: Part I s.1 Market establishment and CBN guideline-issuing authority."
     },
     {
       "source_id": "SRC-NG-NCS-ECDF",
@@ -137,7 +137,7 @@
       "accessed_at": "2026-09-09",
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
-      "notes": "Hardening III: current NFEM description — eligible transactions processed by Deposit Money Banks; restoration of NFEM access for items previously restricted by TED/FEM/FPC/GEN/01/010 (2015)."
+      "notes": "Hardening III: current NFEM description — eligible transactions processed by Deposit Money Banks; restoration of NFEM access for items previously restricted by TED/FEM/FPC/GEN/01/010 (2015). Hardening IV: cross-layer NFEM unification corroboration; not used to invent macro taxonomy."
     },
     {
       "source_id": "SRC-NG-CBN-EFEMS-FAQ-2024",
@@ -154,7 +154,7 @@
       "published_date": "2024-01-01",
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
-      "notes": "Hardening III: Authorised Dealers place/match NFEM interbank FX orders on EFEMS. Cloudflare blocked full PDF binary download in this session; FAQ answer text confirmed via official PDF search-snippet capture against the pinned URL."
+      "notes": "Hardening III: Authorised Dealers place/match NFEM interbank FX orders on EFEMS. Cloudflare blocked full PDF binary download in this session; FAQ answer text confirmed via official PDF search-snippet capture against the pinned URL. Hardening IV: market-driven exchange-rate expectation and reference-rate publication limbs."
     },
     {
       "source_id": "SRC-NG-CBN-BDC-GUIDE-2024",
@@ -173,6 +173,70 @@
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
       "notes": "Hardening III: establishes current BDC licensing/guidelines architecture under BOFIA; supersedes 2015 BDC operational guidelines. Participant-class distinction vs Authorised Dealers. Cloudflare blocked full PDF binary download in this session; circular supersession limbs confirmed via official PDF search-snippet capture against the pinned URL."
+    },
+    {
+      "source_id": "SRC-NG-CBN-FX-STRUCT",
+      "label": "CBN — FX Structure and Management (official FX operations page)",
+      "url": "https://www.cbn.gov.ng/intops/FXStructureAndManagement.html",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Central Bank of Nigeria",
+      "authority_kind": "central_bank",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Hardening IV primary temporal architecture page: 2016–2023 managed floating under period heading; 2023-Date willing buyer/willing seller model and consolidation into NFEM; introductory 'largely market driven regime' operating language."
+    },
+    {
+      "source_id": "SRC-NG-CBN-MP-REFORMS",
+      "label": "CBN — Current Reforms to the Monetary Policy Framework",
+      "url": "https://www.cbn.gov.ng/MonetaryPolicy/MP_Reforms.html",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Central Bank of Nigeria",
+      "authority_kind": "central_bank",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Hardening IV: Foreign Exchange Market Reforms paragraph — willing buyer/willing seller unification, FXCode, Bloomberg B-Matching, EFEMS, related reform package."
+    },
+    {
+      "source_id": "SRC-NG-CBN-FX-MARKET",
+      "label": "CBN — Foreign Exchange Market (official FX market overview page)",
+      "url": "https://www.cbn.gov.ng/intops/FXMarket.html",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Central Bank of Nigeria",
+      "authority_kind": "central_bank",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Hardening IV: historical taxonomy definitions (controlled/float/managed float) and 2023 unification into NFEM. Definitional managed-float text is not treated as a current-rule regime assignment for 2023-Date architecture."
+    },
+    {
+      "source_id": "SRC-NG-CBN-NFEM-RATES",
+      "label": "CBN — Exchange Rates (NFEM rates table and official-rate footnote)",
+      "url": "https://www.cbn.gov.ng/rates/ExchRateByCurrency.html",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Central Bank of Nigeria",
+      "authority_kind": "central_bank",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Hardening IV: NFEM rate derived as volume-weighted average and stated as the official exchange rate for the day; table also lists Closing Rate and other series — keep series distinct from transaction rates."
     }
   ],
   "source_conflicts": [
@@ -220,6 +284,16 @@
       "closure_phase": "hardening_iii",
       "closed_at": "2026-09-09",
       "wording_boundary": "Do not adopt Form M/Form A content, goods-vs-services documentary lists, or unpinned Manual operational trade rules from press/law-firm summaries. Prefer FEMMPA documentation/channel distinctions and CBN NFEM/EFEMS/BDC participant architecture until Manual/TED PDFs are pinned."
+    },
+    {
+      "authority": "Central Bank of Nigeria / FEMMPA corpus",
+      "topic": "Formal current-rule macro taxonomy labels ('floating', 'free float', 'managed float' as the 2023-Date regime name) and the classification phrase 'significant exchange controls'; also current CBN intervention modality as a distinct operating claim",
+      "reason": "Hardening IV pinned CBN Structure/MP/FX Market/rates pages and FEMMPA s.1. The Structure page places 'managed floating' under the 2016–2023 heading and describes 2023-Date architecture as a willing buyer/willing seller model with consolidation into NFEM. Official operating language includes 'largely market driven', 'willing buyer, willing seller', 'market-driven', and demand-and-supply formation — but does not establish a formal current-rule taxonomy label 'floating' or restate 'managed floating' as the 2023-Date regime name. The phrase 'significant exchange controls' was not found as a supported current official classification in the pinned primary corpus. Current intervention modality (liquidity vs target-rate vs volatility management) is not established as a distinct current-rule claim from the 2023-Date Structure section.",
+      "search_status": "bounded_search_complete",
+      "conclusion": "current_macro_taxonomy_and_significant_controls_not_established",
+      "closure_phase": "hardening_iv",
+      "closed_at": "2026-09-09",
+      "wording_boundary": "Prefer official operating formulations (willing buyer/willing seller; NFEM consolidation; market-driven / demand-and-supply formation language) over invented IMF-style taxonomy. Do not adopt 'significant exchange controls' as a country score. Do not map CBN regulatory authority or intervention capacity alone into managed float."
     }
   ]
 }

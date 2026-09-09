@@ -54,14 +54,24 @@
     "EX-NG-CBN-EFEMS-AD": true,
     "EX-NG-CBN-REFORMS-EFEMS-PARTICIPANTS": true,
     "EX-NG-CBN-REFORMS-BDC-VIA-AD": true,
-    "EX-NG-CBN-BDC-GUIDE-2024-ISSUE": true
+    "EX-NG-CBN-BDC-GUIDE-2024-ISSUE": true,
+    "EX-NG-FEMMPA-1995-S1-GUIDELINES": true,
+    "EX-NG-CBN-FXSTRUCT-MARKET-DRIVEN": true,
+    "EX-NG-CBN-FXSTRUCT-2016-MANAGED-FLOAT": true,
+    "EX-NG-CBN-FXSTRUCT-2023-WBWS-NFEM": true,
+    "EX-NG-CBN-MP-REFORMS-FX": true,
+    "EX-NG-CBN-FXMARKET-2023-NFEM": true,
+    "EX-NG-CBN-NFEM-RATES-OFFICIAL": true,
+    "EX-NG-CBN-EFEMS-MARKET-DRIVEN": true,
+    "EX-NG-CBN-EFEMS-REFERENCE-RATE": true,
+    "EX-NG-CBN-EFEMS-REGULATE": true
   },
   "stats": {
-    "sources_total": 10,
-    "sources_current": 10,
+    "sources_total": 14,
+    "sources_current": 14,
     "sources_superseded": 0,
-    "excerpts_total": 38,
-    "excerpts_downstream_eligible": 38
+    "excerpts_total": 48,
+    "excerpts_downstream_eligible": 48
   },
   "summary": "INTAKE PASS (not downstream-eligible)",
   "capability_note": "M1 validator validates declared provenance and structural evidence controls; it does not independently establish textual fidelity unless a locally preserved source capture is available."

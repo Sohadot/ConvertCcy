@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "country_slug": "nigeria",
   "generation_mode": "governed_extraction",
-  "notes": "Nigeria candidate ledger. Hardening I (CC-NG-CASH-*/CC-NG-NGN-001) and Hardening II (CC-NG-ACC-*) preserved. Hardening III appends unreviewed CC-NG-BIZ-* business FX candidates for NG-B5. Does not adopt claims or rewrite nigeria.json. FX Manual 2026 Form M/A schedules remain not pinned. Exporter domiciliary retention remains Hardening II ACC-005 — not rewritten here.",
+  "notes": "Nigeria candidate ledger. Hardening I–III candidates preserved (CASH/NGN/ACC/BIZ). Hardening IV appends unreviewed CC-NG-REG-* macro/regime candidates for NG-B4. Does not clone Hardening III BIZ channel/EFEMS/DMB propositions; references them as governed constraints. Does not adopt claims or rewrite nigeria.json. Formal floating/managed-float current-rule taxonomy and 'significant exchange controls' remain not established as classificatory claims.",
   "candidates": [
     {
       "candidate_id": "CC-NG-CASH-001",
@@ -2618,6 +2618,790 @@
         "reviewed_at": "2026-09-09",
         "decision": "supported",
         "reviewed_candidate_fingerprint": "sha256:13fe8a378e7409cd9ed480cbe8040a1ae94650d5491b070f0f9333acc4244781",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-001",
+      "candidate_text": "The Foreign Exchange (Monitoring and Miscellaneous Provisions) Act establishes an Autonomous Foreign Exchange Market, and the Central Bank of Nigeria may, with the approval of the Minister, issue guidelines from time to time to regulate the procedures for transactions in the Market and other matters appropriate for the Market’s effective operation.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "institutional_role",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cbn_market_guideline_authority",
+        "actor": "central_bank",
+        "transaction_context": "autonomous_foreign_exchange_market",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S1-GUIDELINES",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "name_act_and_market",
+          "merge_establishment_and_guideline_limbs"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-002",
+      "candidate_text": "According to the Central Bank of Nigeria FX Structure and Management page, Nigeria’s foreign exchange market framework has shifted from a tightly regulated, administratively controlled system to a largely market driven regime.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "largely_market_driven_regime_operating_language",
+        "actor": null,
+        "transaction_context": "foreign_exchange_market_framework",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-MARKET-DRIVEN",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_largely_market_driven_wording"
+        ],
+        "omissions": [
+          "free_float_taxonomy_not_inferred",
+          "managed_float_taxonomy_not_inferred"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-003",
+      "candidate_text": "Under the Central Bank of Nigeria FX Structure and Management page’s 2016–2023 period heading, the Central Bank in June 2016 adopted a managed floating exchange rate regime and introduced the Investors’ and Exporters’ Foreign Exchange Window as a market driven platform for eligible FX transactions.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "2016_managed_floating_temporal_adoption",
+        "actor": null,
+        "transaction_context": "foreign_exchange_market_history",
+        "temporal_scope": "historical"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-2016-MANAGED-FLOAT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "pin_2016_2023_period_heading",
+          "retain_managed_floating_wording"
+        ],
+        "omissions": [
+          "not_asserted_as_2023_date_current_regime_label"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_audit_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-004",
+      "candidate_text": "On 14 June 2023, the Central Bank of Nigeria introduced a willing buyer, willing seller model for the conduct of transactions in the domestic foreign exchange market.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "2023_willing_buyer_willing_seller_model",
+        "actor": "central_bank",
+        "transaction_context": "nigerian_foreign_exchange_market",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-2023-WBWS-NFEM",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_willing_buyer_willing_seller_exact_phrase",
+          "pin_14_june_2023"
+        ],
+        "omissions": [
+          "free_float_taxonomy_not_inferred",
+          "managed_float_taxonomy_not_inferred"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-005",
+      "candidate_text": "Under the Central Bank of Nigeria’s 14 June 2023 foreign-exchange reform described on the FX Structure and Management page, the multiplicity of foreign exchange windows was eliminated and market segments were consolidated into a single framework now referred to as the Nigerian Foreign Exchange Market.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nfem_market_consolidation",
+        "actor": null,
+        "transaction_context": "nigerian_foreign_exchange_market",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-2023-WBWS-NFEM",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_multiplicity_eliminated_and_nfem_name"
+        ],
+        "omissions": [
+          "unofficial_parallel_market_not_addressed"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-006",
+      "candidate_text": "According to the Central Bank of Nigeria FX Structure and Management page, the 14 June 2023 reform strengthened the role of demand and supply in the exchange rate formation process under the willing buyer, willing seller model.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "demand_and_supply_in_exchange_rate_formation",
+        "actor": null,
+        "transaction_context": "exchange_rate_formation",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-2023-WBWS-NFEM",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_demand_and_supply_formation_language"
+        ],
+        "omissions": [
+          "free_float_taxonomy_not_inferred",
+          "not_a_substitute_for_femmpa_s9_transaction_rate_claim"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-007",
+      "candidate_text": "Central Bank of Nigeria Monetary Policy reforms materials state that foreign-exchange market reforms have been ongoing to drive the unification of multiple FX windows under a transparent willing buyer, willing seller system, and that the Bank introduced the FXCode and the Bloomberg B-Matching platform to improve transparency and price discovery and implemented the Electronic Foreign Exchange Matching System to ensure transparency, fair and efficient FX trading, minimise counterparty risk, and ensure compliance with CBN regulations.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "current_fx_reform_package_wbws_fxcode_efems",
+        "actor": "central_bank",
+        "transaction_context": "nigerian_foreign_exchange_market_reforms",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-MP-REFORMS-FX",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "condense_reform_package_limbs"
+        ],
+        "omissions": [
+          "customer_entitlement_not_inferred_from_efems"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-008",
+      "candidate_text": "According to the Central Bank of Nigeria Foreign Exchange Market page, adoption of a willing buyer, willing seller model for trade transactions unified the foreign exchange market in 2023, abolished FX market segmentation, and collapsed previously existing segments into the Investors’ and Exporters’ window, now renamed the Nigerian Foreign Exchange Market.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "2023_unification_and_nfem_rename",
+        "actor": null,
+        "transaction_context": "nigerian_foreign_exchange_market",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXMARKET-2023-NFEM",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_abolishment_segmentation_and_rename"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-009",
+      "candidate_text": "On the Central Bank of Nigeria exchange-rates page, the NFEM rate is derived at volume-weighted average and stands as the official exchange rate for the day.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "definition",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "nfem_official_rate_volume_weighted_average",
+        "actor": null,
+        "transaction_context": "nfem_published_rates",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-NFEM-RATES-OFFICIAL",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_volume_weighted_average_and_official_rate"
+        ],
+        "omissions": [
+          "not_equated_to_every_transaction_rate",
+          "not_equated_to_closing_rate_series_without_pin"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-010",
+      "candidate_text": "According to the Central Bank of Nigeria EFEMS FAQs, EFEMS is expected to promote a market-driven exchange rate, meaning rates will reflect actual market conditions.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "efems_market_driven_exchange_rate_expectation",
+        "actor": null,
+        "transaction_context": "efems_rate_formation",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-EFEMS-MARKET-DRIVEN",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_market_driven_exact_term"
+        ],
+        "omissions": [
+          "free_float_taxonomy_not_inferred",
+          "customer_eligibility_not_inferred"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-011",
+      "candidate_text": "According to the Central Bank of Nigeria EFEMS FAQs, real-time rates and other key data from EFEMS will be published on the selected platform and CBN official websites, and those rates would serve as a reference rate for USDNGN, with the computation methodology to be communicated to market participants.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "efems_published_usdn_gn_reference_rate",
+        "actor": "central_bank",
+        "transaction_context": "efems_reference_rate_publication",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-EFEMS-REFERENCE-RATE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_reference_rate_and_methodology_to_be_communicated"
+        ],
+        "omissions": [
+          "not_equated_to_every_customer_transaction_rate"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-012",
+      "candidate_text": "According to the Central Bank of Nigeria EFEMS FAQs, the Central Bank, in collaboration with the Financial Markets Dealers Association, will regulate the EFEMS system and publish guidelines, rules, and real-time data to ensure compliance with the Nigerian FX Code and the revised Market Operating Guidelines for the Nigeria Foreign Exchange Market.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "institutional_role",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cbn_fmda_efems_regulatory_role",
+        "actor": "central_bank",
+        "transaction_context": "efems_supervision",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-EFEMS-REGULATE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_cbn_fmda_collaboration_and_fx_code"
+        ],
+        "omissions": [
+          "regime_taxonomy_not_inferred_from_regulatory_role"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-REG-013",
+      "candidate_text": "The Central Bank of Nigeria FX Structure and Management page describes the June 2016 adoption of a managed floating exchange rate regime under the heading 2016–2023: Market Deepening, Liquidity Enhancement, and Investor Confidence.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "managed_floating_under_2016_2023_period_heading",
+        "actor": null,
+        "transaction_context": "exchange_rate_regime_temporal_architecture",
+        "temporal_scope": "historical"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-FXSTRUCT-2016-MANAGED-FLOAT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "retain_period_heading_scope"
+        ],
+        "omissions": [
+          "does_not_assert_2023_date_current_managed_float_label"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_audit_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
         "notes": null
       }
     }

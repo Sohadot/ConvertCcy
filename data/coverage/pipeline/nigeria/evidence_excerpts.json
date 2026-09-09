@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "nigeria",
-  "notes": "Hardening I/II excerpts preserved. Hardening III adds FEMMPA Market/AD/investment/repatriation/export payment excerpts and CBN NFEM/EFEMS/BDC architecture excerpts for NG-B5 business FX candidates.",
+  "notes": "Hardening I–III excerpts preserved. Hardening IV adds FEMMPA s.1 regulatory-authority, CBN FX Structure temporal/regime-architecture, MP Reforms FX package, FX Market unification, NFEM official-rate, and EFEMS market-driven/reference-rate excerpts for NG-B4 candidates.",
   "excerpts": [
     {
       "excerpt_id": "EX-NG-MLPPA-2022-S3-3",
@@ -1225,6 +1225,330 @@
         "bdc",
         "licensing",
         "supersession"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_text_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-FEMMPA-1995-S1-GUIDELINES",
+      "source_id": "SRC-NG-FEMMPA-1995",
+      "source_text": "There is hereby established an Autonomous Foreign Exchange Market (in this Act referred to as “the Market”) where transactions in foreign exchange shall be conducted in accordance with the provisions of this Act. Subject to this Act, the Central Bank of Nigeria may, with the approval of the Minister, issue, from time to time, guidelines to regulate the procedures for transactions in the Market and for such other matters as may be deemed appropriate for the effective operation of the Market.",
+      "pinpoint": {
+        "article": "Section 1(1)-(2)",
+        "section": "Part I — Autonomous Foreign Exchange Market",
+        "heading": "Establishment of the Market",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Statutory Market establishment + CBN guideline authority"
+      },
+      "topics": [
+        "regulatory_authority",
+        "market_establishment",
+        "cbn_guidelines"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_webpage_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-FXSTRUCT-MARKET-DRIVEN",
+      "source_id": "SRC-NG-CBN-FX-STRUCT",
+      "source_text": "The structure of Nigeria’s foreign exchange market mirrors the Central Bank of Nigeria’s (CBN) evolving approach to foreign exchange management, market development, and the pursuit of macroeconomic stability. Over the years, the framework has shifted from a tightly regulated, administratively controlled system to a largely market driven regime.",
+      "pinpoint": {
+        "article": null,
+        "section": "FX Structure and Management",
+        "heading": "Introduction",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Official operating language: largely market driven regime"
+      },
+      "topics": [
+        "market_driven",
+        "regime_operating_language",
+        "reform_narrative"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_webpage_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-FXSTRUCT-2016-MANAGED-FLOAT",
+      "source_id": "SRC-NG-CBN-FX-STRUCT",
+      "source_text": "In June 2016, the CBN adopted a managed floating exchange rate regime to improve market efficiency, address FX illiquidity, and enhance transparency in the foreign exchange market. As part of this reform, the Investors’ and Exporters’ (I&E) Foreign Exchange Window was introduced to provide a transparent, market driven platform for eligible FX transactions.",
+      "pinpoint": {
+        "article": null,
+        "section": "2016–2023: Market Deepening, Liquidity Enhancement, and Investor Confidence",
+        "heading": "FX Structure and Management",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Temporal: managed floating under 2016–2023 period heading"
+      },
+      "topics": [
+        "managed_floating",
+        "temporal",
+        "ie_window",
+        "historical"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_webpage_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-FXSTRUCT-2023-WBWS-NFEM",
+      "source_id": "SRC-NG-CBN-FX-STRUCT",
+      "source_text": "On 14 June 2023, the CBN introduced a “willing buyer, willing seller” model for the conduct of transactions in the domestic foreign exchange market. This reform marked a decisive step toward market unification, reinforcing transparency and strengthening the role of demand and supply in exchange rate formation process. Under this arrangement, the multiplicity of foreign exchange windows was eliminated, and all market segments were consolidated into a single framework now referred to as the Nigerian Foreign Exchange Market (NFEM). The reform aimed to eliminate fragmentations in exchange rate, improve price discovery, enhance investor confidence, and establish a more coherent and efficient FX market structure.",
+      "pinpoint": {
+        "article": null,
+        "section": "2023-Date: Market Unification and Price Discovery",
+        "heading": "FX Structure and Management",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Current-period willing buyer/willing seller + NFEM consolidation"
+      },
+      "topics": [
+        "willing_buyer_willing_seller",
+        "nfem",
+        "market_unification",
+        "rate_formation"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_webpage_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-MP-REFORMS-FX",
+      "source_id": "SRC-NG-CBN-MP-REFORMS",
+      "source_text": "Foreign Exchange Market Reforms: Reforms have been ongoing to drive the unification of multiple FX windows under a transparent willing buyer, willing seller system. To this end, the Bank introduced the FXCode and the Bloomberg B-Matching platform to improve transparency and price discovery. In addition, the Electronic Foreign Exchange Matching System (EFEMS) was implemented to ensure transparency, fair and efficient FX trading, to minimise counterparty risk and ensure compliance with CBN regulations.",
+      "pinpoint": {
+        "article": null,
+        "section": "Current Reforms to the Monetary Policy Framework",
+        "heading": "Foreign Exchange Market Reforms",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Current MP reform package: WBWS unification + FXCode + EFEMS"
+      },
+      "topics": [
+        "willing_buyer_willing_seller",
+        "efems",
+        "fxcode",
+        "price_discovery"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_webpage_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-FXMARKET-2023-NFEM",
+      "source_id": "SRC-NG-CBN-FX-MARKET",
+      "source_text": "The Central Bank of Nigeria (CBN) adopted a ‘willing buyer, willing seller’ model for trade transactions, therefore, unifying the foreign exchange market in 2023. This led to the abolishment of FX market segmentation, and collapse of the previously existing segments into the Investors’ and Exporters’ (I&E) window, now renamed Nigerian Foreign Exchange Market (NFEM).",
+      "pinpoint": {
+        "article": null,
+        "section": "Foreign Exchange Market",
+        "heading": "Current market unification",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Corroborating NFEM rename / segmentation abolishment"
+      },
+      "topics": [
+        "willing_buyer_willing_seller",
+        "nfem",
+        "market_unification"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_webpage_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-NFEM-RATES-OFFICIAL",
+      "source_id": "SRC-NG-CBN-NFEM-RATES",
+      "source_text": "NFEM rate is derived at Volume Weighted Average and stands as the official exchange rate for the day.",
+      "pinpoint": {
+        "article": null,
+        "section": "NIGERIAN FOREIGN EXCHANGE MARKET (NFEM) RATES",
+        "heading": "Exchange Rates footnote",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Official NFEM rate = volume-weighted average; distinct from transaction rates"
+      },
+      "topics": [
+        "nfem_rate",
+        "official_rate",
+        "volume_weighted_average",
+        "reference_rate"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_search_snippet_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-EFEMS-MARKET-DRIVEN",
+      "source_id": "SRC-NG-CBN-EFEMS-FAQ-2024",
+      "source_text": "EFEMS is expected to promote a market-driven exchange rate. This means rates will reflect actual market conditions, leading to a more efficient and stable pricing mechanism in the Nigerian FX market.",
+      "pinpoint": {
+        "article": null,
+        "section": "EFEMS FAQs",
+        "heading": "market-driven exchange rate",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Preserve official term market-driven; not normalized to free float"
+      },
+      "topics": [
+        "efems",
+        "market_driven",
+        "rate_formation"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_search_snippet_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-EFEMS-REFERENCE-RATE",
+      "source_id": "SRC-NG-CBN-EFEMS-FAQ-2024",
+      "source_text": "Real-time rate and other key data from EFEMS will be published on the selected platform as well as the CBN official websites and other financial information services. The rates would serve as reference rate for USDNGN and the methodology for computing and updating these rates will be communicated to market participants.",
+      "pinpoint": {
+        "article": null,
+        "section": "EFEMS FAQs",
+        "heading": "reference rate publication",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "EFEMS-published rates as USDNGN reference; methodology to be communicated"
+      },
+      "topics": [
+        "efems",
+        "reference_rate",
+        "usdn_gn"
+      ]
+    },
+    {
+      "representation": "verbatim_quote",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "capture_status": "machine_assisted",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_search_snippet_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "operator_interpretation": null,
+      "excerpt_id": "EX-NG-CBN-EFEMS-REGULATE",
+      "source_id": "SRC-NG-CBN-EFEMS-FAQ-2024",
+      "source_text": "The CBN, in collaboration with the Financial Markets Dealers Association (FMDA), will regulate the system. They will publish guidelines, rules, and real-time data to ensure compliance with the Nigerian FX Code and the revised Market Operating Guidelines for the Nigeria Foreign Exchange Market.",
+      "pinpoint": {
+        "article": null,
+        "section": "EFEMS FAQs",
+        "heading": "regulation of EFEMS",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "CBN(+FMDA) regulatory role over EFEMS — not a regime taxonomy claim"
+      },
+      "topics": [
+        "efems",
+        "regulatory_authority",
+        "fx_code"
       ]
     }
   ]
