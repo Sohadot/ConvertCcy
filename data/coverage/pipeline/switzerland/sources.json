@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "switzerland",
+  "country_name": "Switzerland",
+  "iso2": "CH",
+  "notes": "Switzerland Hardening I (border cash) M1 source pack. Primary authorities: FOCBS/BAZG current cash guidance and Fedlex SR 631.052 Ordinance on the control of cross-border cash movements. FINMA homepage and SNB monetary-policy pages are deliberately excluded from this pack as non-authorities for border cash mechanics. Legacy switzerland.json traveler prose is treated as untrusted and is not used as evidence.",
+  "source_conflicts": [
+    {
+      "conflict_id": "CH-SRC-CONFLICT-10K-OPERATOR-01",
+      "sources": [
+        "SRC-CH-FOCBS-CASH",
+        "SRC-CH-ORD-631-052"
+      ],
+      "topic": "CHF 10,000 operator wording on FOCBS page vs ordinance",
+      "detail": "FOCBS English page body uses 'CHF 10,000 or more' / 'equals or exceeds CHF 10,000' for inquiry and information-system registration. Ordinance Art. 3 uses 'mindestens 10 000 Franken' (at least CHF 10,000 / >=). A FOCBS page lead sentence also uses 'over 10,000 francs' shorthand. Disposition: prefer the body inquiry/registration clauses and Art. 3 'mindestens' (>=) for Hardening I candidates; do not promote a strict-exceeding (>) operator for the threshold mechanics.",
+      "status": "preserved_prefer_ge",
+      "closure_phase": "hardening_i",
+      "closed_at": "2026-09-09",
+      "wording_boundary": "Use >= / CHF 10,000 or more / equals or exceeds / mindestens 10 000 Franken. Do not flatten to > CHF 10,000 for the inquiry or registration mechanics."
+    },
+    {
+      "conflict_id": "CH-SRC-CONFLICT-REGISTRATION-SCOPE-01",
+      "sources": [
+        "SRC-CH-FOCBS-CASH",
+        "SRC-CH-ORD-631-052"
+      ],
+      "topic": "public >=CHF10k registration narrative vs Art. 6 reporting independence",
+      "detail": "FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.",
+      "status": "preserved_dual_surface",
+      "closure_phase": "hardening_i",
+      "closed_at": "2026-09-09",
+      "wording_boundary": "FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount."
+    }
+  ],
+  "missing_authorities": [],
+  "sources": [
+    {
+      "source_id": "SRC-CH-FOCBS-CASH",
+      "label": "Federal Office for Customs and Border Security (FOCBS) — Cash, foreign currency and securities",
+      "url": "https://www.bazg.admin.ch/en/cash-foreign-currency-securities",
+      "type": "customs",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Federal Office for Customs and Border Security (FOCBS / BAZG)",
+      "authority_kind": "customs",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Current FOCBS English traveller guidance for notes/coins, foreign currencies and bearer negotiable instruments. Establishes unrestricted carriage into/through/out of Switzerland, no spontaneous FOCBS declaration duty, information-on-request during checks, >= CHF 10,000 inquiry and registration mechanics, refusal/false-information consequences, and temporary seizure on ML/TF suspicion."
+    },
+    {
+      "source_id": "SRC-CH-ORD-631-052",
+      "label": "SR 631.052 — Verordnung über die Kontrolle des grenzüberschreitenden Barmittelverkehrs (11 February 2009; Stand 1 January 2022)",
+      "url": "https://www.fedlex.admin.ch/eli/cc/2009/118/de",
+      "type": "ministry",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Schweizerischer Bundesrat / Fedlex",
+      "authority_kind": "legislature_publication",
+      "jurisdiction": "CH",
+      "language": "de",
+      "accessed_at": "2026-09-09",
+      "published_date": "2009-02-11",
+      "effective_date": "2009-03-01",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Official Fedlex consolidated German text of the Ordinance on the control of cross-border cash movements. FOCBS identifies this instrument as the legal basis for cross-border cash controls. English ELI path does not supply a separate authoritative English text; excerpts use faithful translation from German. Stand am 1. Januar 2022."
+    }
+  ]
+}

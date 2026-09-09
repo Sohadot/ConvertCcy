@@ -1,0 +1,756 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "switzerland",
+  "generation_mode": "governed_extraction",
+  "notes": "Switzerland Hardening I border-cash M2 candidates. Unreviewed pending M2.5. FOCBS English candidates use direct_restating. Ordinance German candidates use German direct_restating from Fedlex verbatim substrate (no closed English translation review claimed). Architecture: carriage unrestricted ≠ no controls; no spontaneous FOCBS declaration ≠ no information-on-request; >= CHF 10,000 is inquiry/registration threshold, not a carriage ceiling or declaration threshold. Does not adopt claims, create bindings, or modify data/rules/switzerland.json.",
+  "candidates": [
+    {
+      "candidate_id": "CC-CH-CASH-001",
+      "candidate_text": "Unrestricted amounts of cash, i.e. notes and coins, foreign currencies and bearer negotiable instruments (shares, bonds and cheques) may be carried into, through and out of Switzerland.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_carriage_quantity",
+        "actor": "traveller",
+        "transaction_context": "border_entry_transit_exit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FOCBS-UNRESTRICTED",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Hardening I extraction only; M2.5 not opened. Carriage-quantity proposition only — does not assert absence of information duties, AML/TF suspicion controls, or sanctions."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-002",
+      "candidate_text": "Cash carried into, through or out of Switzerland is not obliged to be declared to the Federal Office for Customs and Border Security (FOCBS).",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_declaration_absence",
+        "actor": "traveller",
+        "transaction_context": "border_cash_control",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FOCBS-NO-DECLARATION",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "resolve_this_anaphor_to_cash_carriage_into_through_out_from_prior_sentence"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Negative proposition limited to no spontaneous FOCBS declaration obligation. Does not assert no controls, no information-on-request, no seizure, or no AML/TF rules. Anaphor resolution from 'this' flagged for M2.5."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-003",
+      "candidate_text": "If a person is questioned about cash by FOCBS staff during a check, the person is obliged to report truthful information.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_information_on_request",
+        "actor": "traveller",
+        "transaction_context": "focbs_check",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FOCBS-TRUTHFUL",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "you_to_person_actor_normalization"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Information-on-request layer; not a spontaneous declaration duty."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-004",
+      "candidate_text": "If a person is, or is suspected of, carrying CHF 10,000 or more, FOCBS asks the person to disclose identity, the source of the cash, the intended use of the cash, and the beneficial owner.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "threshold",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_inquiry_ge_chf_10000",
+        "actor": "traveller",
+        "transaction_context": "focbs_check",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FOCBS-10K-INQUIRY",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "you_to_person_actor_normalization",
+          "you_will_be_asked_to_focbs_asks_voice_normalization"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Operator >= / CHF 10,000 or more. Not a declaration threshold and not a carriage ceiling."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-005",
+      "candidate_text": "If the amount of cash equals or exceeds CHF 10,000, a respective entry is registered in the FOCBS information system.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "threshold",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_information_system_registration_ge_chf_10000",
+        "actor": "focbs",
+        "transaction_context": "border_cash_control",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FOCBS-10K-REGISTER",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "FOCBS public >= CHF 10,000 registration surface. Keep distinct from ordinance Art. 6 amount-independent Meldung permission (CC-CH-CASH-013)."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-006",
+      "candidate_text": "Refusal to provide information or giving false information constitutes a customs offence and may result in a penalty.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "prohibited_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_false_or_refused_information",
+        "actor": "traveller",
+        "transaction_context": "focbs_check",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FOCBS-REFUSAL",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "FOCBS public consequence surface; statutory Art. 5 Ordnungswidrigkeit limb is separate candidate CC-CH-CASH-012."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-007",
+      "candidate_text": "If there is any suspicion of money laundering or terrorist financing, the cash may be seized temporarily and handed over to the police.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_temporary_seizure_aml_tf",
+        "actor": "focbs",
+        "transaction_context": "border_cash_control",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FOCBS-SEIZURE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Temporary seizure + police referral on ML/TF suspicion. Not permanent confiscation and not automatic at CHF 10,000."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-008",
+      "candidate_text": "Im Sinne dieser Verordnung bedeuten Barmittel: Bargeld (schweizerische und ausländische Banknoten und Münzen, die als Zahlungsmittel im Umlauf sind) sowie übertragbare Inhaberpapiere, Aktien, Obligationen, Schecks und ähnliche Wertpapiere.",
+      "reviewed_text": null,
+      "claim_language": "de",
+      "claim_type": "definition",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "barmittel_definition",
+        "actor": "ordinance",
+        "transaction_context": "border_cash_control",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-ORD-ART2-DEF",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "omit_auskunftspflichtige_person_definition_limb_as_separate_non_cash_definition",
+          "compress_art2_b_numbering_into_single_barmittel_definition_sentence"
+        ],
+        "omissions": [
+          "art2_lit_a_auskunftspflichtige_person_definition"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Preserve ordinance 'ähnliche Wertpapiere' limb; do not silently collapse to FOCBS public shorthand only. English gloss deferred to M2.5 translation review."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-009",
+      "candidate_text": "Die auskunftspflichtige Person muss im grenzüberschreitenden Verkehr auf ausdrückliche Befragung hin der Zollstelle Auskunft erteilen: a. zu ihrer Person; b. über die Ein-, Aus- und Durchfuhr von Barmitteln im Betrag von mindestens 10 000 Franken oder entsprechendem Gegenwert bei ausländischen Währungen; c. über die Herkunft und den vorgesehenen Verwendungszweck der Barmittel; d. über die wirtschaftlich berechtigte Person.",
+      "reviewed_text": null,
+      "claim_language": "de",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_information_duty_express_questioning",
+        "actor": "auskunftspflichtige_person",
+        "transaction_context": "border_entry_transit_exit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-ORD-ART3-1",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Statutory express-questioning package. Operator mindestens 10 000 Franken (>=). Not a spontaneous declaration duty."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-010",
+      "candidate_text": "Bei Verdacht auf Geldwäscherei oder Terrorismusfinanzierung kann die Zollstelle auch Auskünfte verlangen, wenn der Betrag der Barmittel den Schwellenwert von 10 000 Franken oder den entsprechenden Gegenwert bei ausländischen Währungen nicht erreicht.",
+      "reviewed_text": null,
+      "claim_language": "de",
+      "claim_type": "exception",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_information_below_threshold_on_suspicion",
+        "actor": "zollstelle",
+        "transaction_context": "border_cash_control",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-ORD-ART3-2",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": [
+          "EX-CH-ORD-ART3-2"
+        ]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Below-threshold suspicion information limb only; does not by itself assert seizure or police referral."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-011",
+      "candidate_text": "Die Zollstelle kann nach Artikel 104 ZG Barmittel vorläufig beschlagnahmen; die vorläufige Beschlagnahme ist unabhängig vom Betrag der Barmittel zulässig.",
+      "reviewed_text": null,
+      "claim_language": "de",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_provisional_seizure",
+        "actor": "zollstelle",
+        "transaction_context": "border_cash_control",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-ORD-ART4",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "join_art4_abs1_and_abs2_into_one_provisional_seizure_permission_sentence"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Amount-independent provisional seizure authority. Not automatic confiscation at CHF 10,000."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-012",
+      "candidate_text": "Die verweigerte oder falsche Erteilung einer Auskunft nach Artikel 3 Absatz 1 Buchstaben a und b gilt als Ordnungswidrigkeit im Sinne von Artikel 127 Absatz 1 ZG.",
+      "reviewed_text": null,
+      "claim_language": "de",
+      "claim_type": "prohibited_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_false_or_refused_information_statutory",
+        "actor": "auskunftspflichtige_person",
+        "transaction_context": "border_cash_control",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-ORD-ART5",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Art. 5 covers Art. 3 Abs. 1 lit. a–b only; does not by itself criminalise lit. c–d under this article."
+      }
+    },
+    {
+      "candidate_id": "CC-CH-CASH-013",
+      "candidate_text": "Die Meldung der Zollstellen an die Oberzolldirektion nach Artikel 6 ist unabhängig vom Betrag der Barmittel zulässig.",
+      "reviewed_text": null,
+      "claim_language": "de",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "cash_customs_reporting_amount_independent",
+        "actor": "zollstelle",
+        "transaction_context": "border_cash_control",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-ORD-ART6-2",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "explicit_art6_oberzolldirektion_reporting_context_from_article_heading"
+        ],
+        "omissions": [
+          "art6_abs1_enumerated_data_fields_reserved_for_separate_candidate_if_needed"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "unreviewed"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Amount-independent statutory Meldung permission. Keep distinct from FOCBS public >= CHF 10,000 information-system entry (CC-CH-CASH-005). Context gloss from Art. 6 heading flagged for M2.5."
+      }
+    }
+  ]
+}
