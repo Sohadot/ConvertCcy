@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "nigeria",
+  "decision": "PASS",
+  "semantic_approval": "not_established",
+  "blocking_findings": [],
+  "improvement_findings": [
+    {
+      "layer": "evidence",
+      "field": "CC-NG-CASH-002",
+      "reason": "Excerpt 'EX-NG-MLPPA-2022-S3-3' also used by CC-NG-CASH-001",
+      "required_action": "Prefer one candidate per excerpt in M2.0 pilot",
+      "blocking": false
+    }
+  ],
+  "needs_human_review": [
+    "CC-NG-CASH-001:semantic_review_pending",
+    "CC-NG-CASH-002:semantic_review_pending",
+    "CC-NG-CASH-003:semantic_review_pending",
+    "CC-NG-CASH-004:semantic_review_pending",
+    "CC-NG-CASH-005:semantic_review_pending",
+    "CC-NG-NGN-001:semantic_review_pending",
+    "CC-NG-CASH-006:semantic_review_pending",
+    "CC-NG-CASH-006:special_review",
+    "CC-NG-CASH-007:semantic_review_pending",
+    "CC-NG-CASH-007:special_review"
+  ],
+  "stats": {
+    "candidate_claims_total": 8,
+    "direct_restating": 1,
+    "translation_based": 0,
+    "bounded_normalization": 7,
+    "semantic_review_pending": 8,
+    "downstream_eligible": 0,
+    "human_review_required": 2
+  },
+  "summary": "CLAIM EXTRACTION PASS (structural only)",
+  "capability_note": "M2 validator checks extraction contract structure, evidence eligibility, language/mode consistency, and review/fingerprint gates. It does not establish legal or semantic approval of candidate claims."
+}

@@ -1,0 +1,485 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "nigeria",
+  "generation_mode": "governed_extraction",
+  "notes": "Nigeria Evidence Hardening I atomic candidate ledger. Scope limited to NG-B1, NG-B6, and NG-B7. Candidates are recorded for controlled review; this file does not itself adopt claims into rules or bindings.",
+  "candidates": [
+    {
+      "candidate_id": "CC-NG-CASH-001",
+      "candidate_text": "Transportation of cash or negotiable instruments in excess of US$10,000 or its equivalent by individuals into Nigeria shall be declared to the Nigeria Customs Service.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cash_declaration_entry",
+        "actor": "individual_traveller",
+        "transaction_context": "border_entry",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-MLPPA-2022-S3-3",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "split_direction_from_in_or_out_phrase",
+          "nigerian_customs_service_to_nigeria_customs_service_name_normalization"
+        ],
+        "omissions": [
+          "out_of_nigeria_limb_reserved_for_separate_atomic_candidate"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-002",
+      "candidate_text": "Transportation of cash or negotiable instruments in excess of US$10,000 or its equivalent by individuals out of Nigeria shall be declared to the Nigeria Customs Service.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cash_declaration_exit",
+        "actor": "individual_traveller",
+        "transaction_context": "border_exit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-MLPPA-2022-S3-3",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "split_direction_from_in_or_out_phrase",
+          "nigerian_customs_service_to_nigeria_customs_service_name_normalization"
+        ],
+        "omissions": [
+          "into_nigeria_limb_reserved_for_separate_atomic_candidate"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-003",
+      "candidate_text": "False declaration or failure to make the required declaration to the Nigeria Customs Service is an offence that may lead on conviction to forfeiture of the undeclared funds or negotiable instrument, imprisonment for at least two years, or both.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cash_declaration_consequence",
+        "actor": "individual_traveller",
+        "transaction_context": "border_entry_or_exit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-MLPPA-2022-S3-4-5",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "combine_false_declaration_and_failure_to_declare_penalty_limb"
+        ],
+        "omissions": [
+          "customs_reporting_to_cbn_and_unit_reserved_for_separate administrative claim"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-004",
+      "candidate_text": "The reviewed official CBN guidance states that the declaration rule for cash or negotiable instruments above US$10,000 does not itself prohibit genuinely owned or obtained funds above that amount from being brought into Nigeria or taken outside the country.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cash_declaration_not_general_ceiling",
+        "actor": "individual_traveller",
+        "transaction_context": "border_entry_or_exit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-CBN-2013-CLARIFICATION",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "remove repetitive threshold restatement",
+          "express declaration_vs_prohibition distinction"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-005",
+      "candidate_text": "Where foreign currency in excess of US$10,000 is imported in cash and deposited into a domiciliary account with an authorised dealer, the account may only be withdrawn from in cash and that imported cash is exportable from Nigeria only in cash.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "documentation_requirement",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "imported_cash_domiciliary_account_condition",
+        "actor": "account_holder",
+        "transaction_context": "domiciliary_account_after_cash_import",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S21",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "merge_subsections_1_and_2_into_single_condition_description"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "pending",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-NG-FEMMPA-1995-S21"
+        ]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-NGN-001",
+      "candidate_text": "The importation and exportation of the naira remain prohibited except as permitted under guidelines issued from time to time by the Central Bank.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "prohibited_action",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "physical_naira_import_export",
+        "actor": "traveller_or_holder",
+        "transaction_context": "cross_border_naira_notes",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S14",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "pending",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-NG-FEMMPA-1995-S14"
+        ]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-006",
+      "candidate_text": "Current Customs operational guidance uses a declaration trigger of US$10,000 or more, which conflicts with the statutory phrase in excess of US$10,000.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "threshold",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "cash_declaration_threshold_operator_conflict",
+        "actor": "individual_traveller",
+        "transaction_context": "border_entry_or_exit",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-NCS-ECDF-THRESHOLD",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "condense_repeated_operational_threshold_language"
+        ],
+        "omissions": [
+          "items_of_value_expansion_not accepted as cash-law equivalence"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "needs_human_review",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Requires reconciliation against MLPPA 2022 section 3(3) before downstream use."
+      }
+    },
+    {
+      "candidate_id": "CC-NG-CASH-007",
+      "candidate_text": "The earlier Foreign Exchange Act wording requiring declaration only when foreign currency exceeds US$5,000 is a legacy threshold retained for temporal audit and should not be used as the current border-cash rule while MLPPA 2022 is operative.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "definition",
+      "scope": {
+        "jurisdiction": "NG",
+        "subject": "legacy_threshold_temporal_status",
+        "actor": null,
+        "transaction_context": "temporal_audit",
+        "temporal_scope": "historical"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-NG-FEMMPA-1995-S12",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "express temporal status of older threshold"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "temporal_audit_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "pending",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "needs_human_review",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": "Temporal supersession conclusion should be closed in a later human review step."
+      }
+    }
+  ]
+}

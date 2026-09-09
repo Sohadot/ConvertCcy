@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "nigeria",
+  "country_name": "Nigeria",
+  "iso2": "NG",
+  "notes": "Phase 2 M1 source pack for Nigeria Evidence Hardening I. Scope limited to NG-B1 outbound foreign-currency cash mechanics, NG-B6 declaration threshold, and NG-B7 physical naira import/export rule.",
+  "sources": [
+    {
+      "source_id": "SRC-NG-MLPPA-2022",
+      "label": "Money Laundering (Prevention and Prohibition) Act, 2022 — official gazette text",
+      "url": "https://www.nfiu.gov.ng/images/Downloads/downloads/mlpaamend.pdf",
+      "type": "fiu",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Federal Republic of Nigeria / NFIU",
+      "authority_kind": "fiu",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "published_date": "2022-05-13",
+      "effective_date": "2022-05-12",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual"
+    },
+    {
+      "source_id": "SRC-NG-CBN-CIRC-2013-USD10K",
+      "label": "CBN circular to banks on transportation of cash or negotiable instruments above US$10,000",
+      "url": "https://www.cbn.gov.ng/out/2013/fprd/circular%20to%20all%20banks%20and%20other%20financial%20institutions-us$10,000.pdf",
+      "type": "central_bank",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Central Bank of Nigeria",
+      "authority_kind": "central_bank",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "published_date": "2013-09-23",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Current official interpretive guidance clarifying that the declaration rule is not a prohibition on carrying genuinely owned funds above the threshold."
+    },
+    {
+      "source_id": "SRC-NG-FEMMPA-1995",
+      "label": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995 — Nigeria Trade Portal text",
+      "url": "https://nigeriatradeportal.fmiti.gov.ng/media/Nigeria%20Foreign%20Exchange%20(Monitoring%20and%20Miscellaneous%20Provisions)%20Act%201995.pdf",
+      "type": "ministry",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Federal Ministry of Industry, Trade and Investment",
+      "authority_kind": "ministry",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "published_date": "1995-01-01",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Used here for section 14 naira import/export prohibition and section 21 domiciliary-account cash mechanics. Section 12's US$5,000 declaration wording is retained only for temporal audit because later AML legislation uses US$10,000."
+    },
+    {
+      "source_id": "SRC-NG-NCS-ECDF",
+      "label": "Nigeria Customs Service — Electronic Currency Declaration",
+      "url": "https://cdf.nigeriatradehub.gov.ng/new/cdf.php",
+      "type": "customs",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Nigeria Customs Service",
+      "authority_kind": "customs",
+      "jurisdiction": "NG",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Operational current guidance and e-form. Uses '$10,000 or more' / 'equal to or greater than' wording, which is narrower than the statutory 'in excess of' phrase and therefore tracked as an operator conflict rather than silently normalized."
+    }
+  ],
+  "source_conflicts": [
+    {
+      "conflict_id": "NG-SRC-CONFLICT-DECL-OPERATOR-01",
+      "sources": [
+        "SRC-NG-MLPPA-2022",
+        "SRC-NG-NCS-ECDF"
+      ],
+      "topic": "border cash declaration trigger operator",
+      "detail": "Money Laundering Act section 3(3) uses 'in excess of US$10,000' while the current Nigeria Customs e-declaration form uses '$10,000 or more' / 'equal to or greater than $10,000'.",
+      "status": "open"
+    }
+  ],
+  "missing_authorities": [
+    {
+      "authority": "Central Bank of Nigeria",
+      "topic": "current guideline exception under section 14 of the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act for physical naira import/export",
+      "reason": "A current official CBN guideline setting any live traveller exception threshold for naira notes was not pinned in this hardening pass."
+    }
+  ]
+}
