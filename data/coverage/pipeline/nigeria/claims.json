@@ -4,7 +4,7 @@
   "country_name": "Nigeria",
   "iso2": "NG",
   "matrix_date": "2026-09-09",
-  "notes": "Nigeria Hardening I + II Adoption Gates. Hardening I border-cash claims (NG-CUST-* / NG-NGN-01) preserved. Hardening II adds NG-ACC-01..16 from M2.5-reviewed ACC candidates. Does not draft data/rules/nigeria.json. Legacy resident-approval and non-resident 'more freely' formulations are excluded via forbidden inferences. FX Manual 2026 operational domiciliary rules remain unresolved (NG-ACC-13 temporal only, unbound).",
+  "notes": "Nigeria Hardening I + II + III Adoption Gates. Hardening I border-cash (NG-CUST-* / NG-NGN-01) and Hardening II accounts (NG-ACC-01..16) preserved. Hardening III adds NG-BIZ-01..20 from M2.5-reviewed BIZ candidates. Does not draft data/rules/nigeria.json. NG-B4 fields remain unbound. Legacy general CBN-approval / bank-only / FX-availability business formulations are excluded via forbidden inferences. Form M/A schedules and related unresolved ops remain open.",
   "claims": [
     {
       "claim_id": "NG-CUST-01",
@@ -719,6 +719,636 @@
         "all non-residents may open",
         "all non-resident accounts require CBN approval",
         "transfer funds more freely"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-01",
+      "status": "verified",
+      "type": "operational",
+      "subject": "CBN appointment of Authorised Dealers and Authorised Buyers",
+      "rule": "The Central Bank may appoint, as an Authorised Dealer or Authorised Buyer of foreign currency, any bank or non-banking corporate organisation which shows evidence of adequate resources and capacity to operate under the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, subject to terms and conditions in the letter of appointment.",
+      "scope": "statutory Market participant appointment; Authorised Dealer and Authorised Buyer remain distinct classes; not a complete inventory of every current NFEM participant",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-001; reviewed fingerprint sha256:41616ca3113baf2698d954e7771d2872bd5b486b02a8781ec2748c6b4c27383e; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Authorised Dealer",
+        "Authorised Buyer",
+        "Central Bank may appoint",
+        "letter of appointment"
+      ],
+      "forbidden_inferences": [
+        "Authorised Dealer Banks as the sole statutory Market class",
+        "collapse Authorised Dealer and Authorised Buyer into one class",
+        "all significant FX transactions must go through authorised dealer banks",
+        "conversion only through authorised dealer banks",
+        "every NFEM participant is an Authorised Dealer or Authorised Buyer",
+        "BDC is an Authorised Dealer",
+        "all significant foreign exchange transactions through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-02",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Autonomous Foreign Exchange Market transaction channels",
+      "rule": "Transactions in the Autonomous Foreign Exchange Market are between the public and Authorised Dealers, among Authorised Dealers, and between Authorised Dealers and Authorised Buyers, and shall be as prescribed from time to time by the Central Bank.",
+      "scope": "statutory Market counterparty channels under FEMMPA s.7; not retail NFEM/DMB, EFEMS, or BDC architecture",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-002; reviewed fingerprint sha256:f1d0c53450d9f277b2453b317b978ab2fe22a1f37fe681f380428081cc1ed0f8; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Autonomous Foreign Exchange Market",
+        "public and Authorised Dealers",
+        "Authorised Dealers and Authorised Buyers",
+        "as prescribed from time to time by the Central Bank"
+      ],
+      "forbidden_inferences": [
+        "all significant FX transactions must go through authorised dealer banks",
+        "conversion only through authorised dealer banks",
+        "every retail NFEM transaction is identical to FEMMPA Market limbs",
+        "BDC is an Authorised Dealer",
+        "invoice currency equals settlement channel",
+        "all significant foreign exchange transactions through authorised dealer banks",
+        "must be settled through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-03",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Market transaction rate mutually agreed with Authorised Dealer or Authorised Buyer",
+      "rule": "The rate at which each transaction in the Autonomous Foreign Exchange Market shall be executed shall be the rate mutually agreed between the applicant purchaser and the Authorised Dealer or Authorised Buyer concerned.",
+      "scope": "transaction-level Market pricing under FEMMPA s.9 only; not an exchange-rate-regime classification",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-003; reviewed fingerprint sha256:aa2744ad978d0a82e72add37f8a36ae8650cd571ba34be76e38bf0b28bfdebc6; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "mutually agreed",
+        "applicant purchaser",
+        "Authorised Dealer or Authorised Buyer",
+        "Autonomous Foreign Exchange Market"
+      ],
+      "forbidden_inferences": [
+        "free-floating exchange-rate regime",
+        "managed float",
+        "market-determined macro exchange-rate regime",
+        "managed floating exchange rate regime",
+        "subject to availability",
+        "conversion is difficult",
+        "poor rates",
+        "FX is scarce",
+        "bank delays",
+        "tightly regulated and often subject to availability",
+        "available only through authorised dealer banks",
+        "Foreign exchange conversion is available only through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-04",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "Documentation-backed eligibility for Market foreign-exchange purchase",
+      "rule": "Except where a transaction is prohibited by law and subject to section 11(b), any transaction adequately supported by appropriate documentation shall be an eligible transaction for the purchase of foreign exchange in the Autonomous Foreign Exchange Market.",
+      "scope": "FEMMPA s.10 Market purchase eligibility with s.11(b) exception; not a Form M/Form A schedule; not CBN prior approval",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-004; reviewed fingerprint sha256:7be1b2fa81cae5c86a63c07df370a97fc98323b5b4e851b828ef3dd99228d61f; M2.5 decision=supported; project status=bounded (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "adequately supported by appropriate documentation",
+        "eligible transaction",
+        "purchase of foreign exchange",
+        "Autonomous Foreign Exchange Market",
+        "subject to section 11(b)"
+      ],
+      "forbidden_inferences": [
+        "Form M required for every goods transaction",
+        "Form A required for every service transaction",
+        "universal Form M requirement",
+        "universal Form A requirement",
+        "CBN prior approval",
+        "certain payments require CBN approval",
+        "one documentation package for every transaction",
+        "documentation equals CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-05",
+      "status": "bounded",
+      "type": "negative",
+      "subject": "FEMMPA construction boundaries on unrestrained dealing and prohibited items",
+      "rule": "Nothing in the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act shall be construed as permitting any unrestrained or general dealing in foreign currencies on terms inconsistent with that Act, or as permitting Market transactions relating to goods, services or items absolutely prohibited by any enactment or law.",
+      "scope": "statutory construction under FEMMPA s.11(a)-(b) only; not a macro tightly-controlled or availability regime claim",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "negative_scope",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-005; reviewed fingerprint sha256:c1fffeed785736b53a8329d1456f67e6ddd4762d691c71406174a0c876b0e6f6; M2.5 decision=supported; project status=bounded (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "unrestrained or general dealing",
+        "terms inconsistent with",
+        "absolutely prohibited",
+        "may be conducted in the Market"
+      ],
+      "forbidden_inferences": [
+        "Nigerian FX is tightly controlled",
+        "tightly regulated",
+        "all transactions are restricted",
+        "availability is regulated",
+        "subject to availability",
+        "conversion is tightly regulated and subject to availability",
+        "managed floating exchange rate regime from s.11"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-06",
+      "status": "bounded",
+      "type": "positive",
+      "subject": "Repatriation of Market-purchased foreign currency without further approval",
+      "rule": "Any foreign currency purchased from the Autonomous Foreign Exchange Market may be repatriated from Nigeria and shall not be subject to any further approval.",
+      "scope": "foreign currency purchased from the Autonomous Foreign Exchange Market only; prerequisite retained; not a general no-approval regime",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "negative_scope",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-006; reviewed fingerprint sha256:6bdc79133f3f8ba6458d800f6718c1a45fdf8cba910aaa9f6c341665e74cf120; M2.5 decision=supported; project status=bounded (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "purchased from the Autonomous Foreign Exchange Market",
+        "may be repatriated from Nigeria",
+        "shall not be subject to any further approval"
+      ],
+      "forbidden_inferences": [
+        "Nigeria business FX requires no approval",
+        "capital transfers require no approval",
+        "outward payments are approval-free",
+        "CBN approval is never required",
+        "all capital repatriation is approval-free",
+        "all outward remittances are approval-free",
+        "capital repatriation requires CBN approval",
+        "certain payments require CBN approval",
+        "universal unrestricted repatriation",
+        "Capital repatriation and certain payments require CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-07",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Inward investment through Authorised Dealer and Market conversion",
+      "rule": "Any person may invest in any enterprise or security with foreign currency or capital imported into Nigeria through an Authorised Dealer by telegraphic transfer, cheques or other negotiable instruments and converted into the naira in the Autonomous Foreign Exchange Market in accordance with the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act.",
+      "scope": "FEMMPA s.15(1) investment-entry channel; not prior CBN permission to invest; not all inward FX",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-007; reviewed fingerprint sha256:7b0edf8d342d9c880d349fd969e443e51b884951139e25bf18421f1bad7f9c6c; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "imported into Nigeria through an Authorised Dealer",
+        "converted into the naira",
+        "Autonomous Foreign Exchange Market",
+        "invest in any enterprise or security"
+      ],
+      "forbidden_inferences": [
+        "prior CBN permission to invest",
+        "CBN investment approval",
+        "CCI is prior permission to invest",
+        "all inward business FX is investment capital",
+        "certain payments require CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-08",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Certificate of Capital Importation issuance and Authorised Dealer returns",
+      "rule": "The Authorised Dealer through which the foreign currency or capital for an investment under section 15(1) is imported shall, within 24 hours of the importation, issue a Certificate of Capital Importation to the investor and shall, within 48 hours thereafter, make returns to the Central Bank giving such information as the Central Bank may, from time to time, require.",
+      "scope": "FEMMPA s.15(2) CCI issuance and AD returns for s.15(1) investment capital; certification/reporting mechanism, not investment permission",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-008; reviewed fingerprint sha256:c01ba946531fdecc196975076c021dacc899ffd483ae6f2fe45a78aa2181663a; M2.5 decision=bounded; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Certificate of Capital Importation",
+        "within 24 hours of the importation",
+        "within 48 hours thereafter",
+        "make returns to the Central Bank",
+        "giving such information as the Central Bank may, from time to time, require"
+      ],
+      "forbidden_inferences": [
+        "CCI is prior permission to invest",
+        "CBN investment approval",
+        "prior CBN permission to invest",
+        "report to CBN means obtain CBN approval",
+        "returns to the Central Bank equal CBN approval",
+        "certain payments require CBN approval",
+        "generic prerequisite for all business FX"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-09",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Unconditional transferability of investment dividends or profits through Authorised Dealer",
+      "rule": "Foreign currency imported into Nigeria and invested in an enterprise under section 15(1) is guaranteed unconditional transferability, through an Authorised Dealer in freely convertible currency, of dividends or profits (net of taxes) attributable to the investment.",
+      "scope": "FEMMPA s.15(4)(a); qualifying s.15(1) investment foreign currency; dividends/profits net of taxes; Authorised Dealer channel",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-009; reviewed fingerprint sha256:ae51e6dba6a104482b6a5cad1fb3e6d5a49884bf49d2f4406db6a904fafa2f07; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "unconditional transferability",
+        "through an Authorised Dealer",
+        "dividends or profits (net of taxes)",
+        "attributable to the investment",
+        "freely convertible currency"
+      ],
+      "forbidden_inferences": [
+        "all business profits freely transferable",
+        "all Nigerian corporate funds freely transferable",
+        "all non-resident funds unrestricted",
+        "universal unrestricted repatriation",
+        "capital repatriation requires CBN approval",
+        "certain payments require CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-10",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Unconditional transferability of foreign-loan servicing payments through Authorised Dealer",
+      "rule": "Foreign currency imported into Nigeria and invested in an enterprise under section 15(1) is guaranteed unconditional transferability, through an Authorised Dealer in freely convertible currency, of payments in respect of loan servicing where a foreign loan has been obtained.",
+      "scope": "FEMMPA s.15(4)(b); qualifying investment context; statutory term loan servicing retained; principal/interest split not established",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-010; reviewed fingerprint sha256:eaa0fcd6f971dd97876b0288b636c6c0d91c91400d843b4600625f39d7b08930; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "loan servicing",
+        "unconditional transferability",
+        "through an Authorised Dealer",
+        "where a foreign loan has been obtained"
+      ],
+      "forbidden_inferences": [
+        "principal and interest are independently and universally transferable",
+        "universal loan principal transferability",
+        "universal loan interest transferability",
+        "certain payments require CBN approval",
+        "capital repatriation requires CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-11",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Unconditional transferability of investment sale or liquidation proceeds through Authorised Dealer",
+      "rule": "Foreign currency imported into Nigeria and invested in an enterprise under section 15(1) is guaranteed unconditional transferability, through an Authorised Dealer in freely convertible currency, of the remittance of proceeds (net of all taxes) and other obligations in the event of sale or liquidation of the enterprise or any interest attributable to the investment.",
+      "scope": "FEMMPA s.15(4)(c); qualifying s.15(1) investment; sale/liquidation proceeds net of taxes; not generic unrestricted capital repatriation",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-011; reviewed fingerprint sha256:da9efecbed2859f2bd83054dd189c8f20dde8c3a4568cd46814eb3e5d1d41c35; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "unconditional transferability",
+        "through an Authorised Dealer",
+        "sale or liquidation",
+        "proceeds (net of all taxes)",
+        "interest attributable to the investment"
+      ],
+      "forbidden_inferences": [
+        "generic unrestricted capital repatriation from Nigeria",
+        "universal unrestricted repatriation",
+        "capital repatriation requires CBN approval",
+        "certain payments require CBN approval",
+        "all Nigerian corporate funds freely transferable",
+        "Capital repatriation and certain payments require CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-12",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Authorised Dealer reporting of section 15(4) repatriation to CBN",
+      "rule": "An Authorised Dealer shall communicate a section 15(4) repatriation to the Central Bank within fourteen days of the repatriation, and the Central Bank shall furnish the same to the Minister monthly for information and statistical purposes only.",
+      "scope": "FEMMPA s.15(5) post-repatriation reporting for information/statistical purposes; reporting ≠ approval",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-012; reviewed fingerprint sha256:d318780b15c4af3c9d00f7c55558d9dcbef5fbb6b46ef4e174b9bb4b70cfe6f9; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "communicate a section 15(4) repatriation",
+        "within fourteen days",
+        "for information and statistical purposes only"
+      ],
+      "forbidden_inferences": [
+        "report to CBN means obtain CBN approval",
+        "reporting equals prior CBN approval",
+        "certain payments require CBN approval",
+        "capital repatriation requires CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-13",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Authorised Dealer and Authorised Buyer Market activity returns to CBN",
+      "rule": "An Authorised Dealer and Authorised Buyer appointed under the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act shall submit to the Central Bank, at intervals and in forms the Central Bank may prescribe by circulars and guidelines, returns of activities in the Autonomous Foreign Exchange Market.",
+      "scope": "FEMMPA s.16(1) institutional Market returns; not customer prior approval",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-013; reviewed fingerprint sha256:b33f2cf477938d294418e3cf554095ae5bb0b9bc512de12217666d72e027f344; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Authorised Dealer and Authorised Buyer",
+        "returns of activities",
+        "Autonomous Foreign Exchange Market",
+        "circulars and guidelines"
+      ],
+      "forbidden_inferences": [
+        "report to CBN means obtain CBN approval",
+        "customer transaction requires individual CBN permission",
+        "certain payments require CBN approval"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-14",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Export of goods or services payment-mode conditions",
+      "rule": "A person may export goods or services from Nigeria if the goods or services are not prohibited by law in Nigeria, payment is made by letter of credit or any other internationally acceptable mode of payment, and the payment amount represents a fair return for the goods or services.",
+      "scope": "FEMMPA s.27 export permission conditions; payment-mode mechanics only; not exporter domiciliary retention (NG-ACC-05); not full export-doc schedule",
+      "authority": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-FEMMPA-1995"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-014; reviewed fingerprint sha256:96f476753f21fab3e3bc8a6a1cfb36e9dd3191accb7195bfdb2dd8a0d9fba218; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "export goods or services",
+        "letter of credit",
+        "internationally acceptable mode",
+        "fair return for the goods or services",
+        "not prohibited by law"
+      ],
+      "forbidden_inferences": [
+        "full export documentary schedule from s.27",
+        "duplicate of exporter domiciliary retention",
+        "Form M required for every goods transaction",
+        "Form A required for every service transaction",
+        "conflating export account with ordinary business settlement"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-15",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "Eligible NFEM transactions processed by Deposit Money Banks",
+      "rule": "All eligible transactions such as FX applications for Medical Needs, School Fees, Business Travel Allowance/ Personal Travel Allowance (BTA/PTA), and Small and Medium Enterprises (SMEs) transactions are permissible at the Nigerian Foreign Exchange Market (NFEM) and processed by the Deposit Money Banks.",
+      "scope": "CBN FX Management description of eligible NFEM classes processed by DMBs; non-exhaustive 'such as' framing retained",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-FX-MGMT"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-015; reviewed fingerprint sha256:2cc8fa53df5ddcd30134fadf90924c5e569f26bf7303b8e676cbc106ccd1b4b0; M2.5 decision=bounded; project status=bounded (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "eligible transactions such as",
+        "Nigerian Foreign Exchange Market",
+        "NFEM",
+        "processed by the Deposit Money Banks",
+        "Business Travel Allowance/ Personal Travel Allowance",
+        "Small and Medium Enterprises"
+      ],
+      "forbidden_inferences": [
+        "all business FX must be processed by DMBs",
+        "every listed transaction automatically qualifies for FX",
+        "all imports are automatically eligible",
+        "all significant FX transactions must go through authorised dealer banks",
+        "conversion only through authorised dealer banks",
+        "documentation disappeared",
+        "subject to availability",
+        "all significant foreign exchange transactions through authorised dealer banks",
+        "available only through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-16",
+      "status": "verified",
+      "type": "historical",
+      "subject": "Restoration of NFEM FX access for previously restricted 43 items",
+      "rule": "The Central Bank permitted accessibility of foreign exchange in the Nigerian Foreign Exchange Market for 43 items previously restricted by the 2015 circular TED/FEM/FPC/GEN/01/010 and its addendums.",
+      "scope": "temporal/current-policy restoration for the 43 items previously restricted by TED/FEM/FPC/GEN/01/010 (2015); not universal import eligibility",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-FX-MGMT"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-016; reviewed fingerprint sha256:5366e602a1d27c6a9a662c4598a75298cbc88d3236a3966aa7326fb15d708a7b; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "43 items previously restricted",
+        "TED/FEM/FPC/GEN/01/010",
+        "Nigerian Foreign Exchange Market",
+        "permitted the accessibility of foreign exchange"
+      ],
+      "forbidden_inferences": [
+        "all imports unrestricted",
+        "all imports have unrestricted NFEM access",
+        "no documentation",
+        "universal NFEM eligibility",
+        "documentation disappeared"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-17",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "EFEMS Authorised Dealer interbank order-placement role",
+      "rule": "Authorised Dealers use the Electronic Foreign Exchange Matching System (EFEMS) to place buy and sell orders for foreign exchange transactions in the Nigerian Foreign Exchange Market, and Authorised Dealer Banks use EFEMS for interbank FX transactions.",
+      "scope": "interbank/electronic Market infrastructure; not customer FX entitlement",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-EFEMS-FAQ-2024"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-017; reviewed fingerprint sha256:de5c26b632904b52a8941e14c5626b1afbf870a52e93bf283a59ef85f148bdcd; M2.5 decision=bounded; project status=bounded (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Electronic Foreign Exchange Matching System",
+        "EFEMS",
+        "Authorised Dealers",
+        "Authorised Dealer Banks",
+        "interbank FX transactions"
+      ],
+      "forbidden_inferences": [
+        "participant eligible for EFEMS means customer transaction eligible for FX",
+        "EFEMS matching proves customer FX entitlement",
+        "all business FX must be processed by DMBs",
+        "conversion only through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-18",
+      "status": "verified",
+      "type": "operational",
+      "subject": "EFEMS participant classes",
+      "rule": "EFEMS participants include all authorised dealer banks licensed by the Central Bank of Nigeria and other participants who have secured CBN approval to access the EFEMS platform and execute agreements with the platform provider.",
+      "scope": "EFEMS access classes: authorised dealer banks and other CBN-approved participants; not retail transaction entitlement",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-REFORMS"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-018; reviewed fingerprint sha256:99d4104f06f7816ff906efa9a872c674e7840369e922851b7069d36dd78c7eb9; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "authorised dealer banks licensed by the Central Bank",
+        "other participants who have secured CBN approval",
+        "EFEMS platform"
+      ],
+      "forbidden_inferences": [
+        "participant eligible for EFEMS means customer transaction eligible for FX",
+        "every CBN-approved EFEMS participant may perform every retail FX transaction",
+        "all significant FX transactions must go through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-19",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Licensed BDC foreign-exchange access through Authorised Dealers",
+      "rule": "Duly licensed Bureau De Change operators are permitted to access foreign exchange through any Authorised Dealer of their choice at prevailing market rates, and Authorised Dealers must conduct complete KYC and due diligence checks on BDC clients.",
+      "scope": "duly licensed BDC FX access via any Authorised Dealer at prevailing market rates with AD KYC; BDC remains distinct licensed class",
+      "authority": "Central Bank of Nigeria",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-REFORMS"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-019; reviewed fingerprint sha256:0132dea1f9ecb5c4441520abf80bb51ba3e3a5e042eb013bde39784b5efacb16; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "licensed Bureau De Change",
+        "access foreign exchange through any Authorised Dealer",
+        "prevailing market rates",
+        "Know-Your-Customer",
+        "due diligence"
+      ],
+      "forbidden_inferences": [
+        "BDC is an Authorised Dealer",
+        "BDC processes every business FX transaction",
+        "BDC access proves corporate or import transaction eligibility",
+        "all conversion is bank-only",
+        "conversion only through authorised dealer banks",
+        "all significant FX transactions must go through authorised dealer banks"
+      ]
+    },
+    {
+      "claim_id": "NG-BIZ-20",
+      "status": "verified",
+      "type": "historical",
+      "subject": "BDC Guidelines 2024 supersession of 2015 operational guidelines",
+      "rule": "The Central Bank of Nigeria Regulatory and Supervisory Guidelines for Bureau De Change Operations in Nigeria 2024, issued under BOFIA 2020 section 56, supersede the Revised Operational Guidelines for Bureau De Change in Nigeria issued in November 2015 and related circulars and directives, effective 3 June 2024.",
+      "scope": "current-vs-superseded BDC regulatory framework; does not project BDC retail permissions into corporate/import/investment classes",
+      "authority": "Central Bank of Nigeria",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-NG-CBN-BDC-GUIDE-2024"
+      ],
+      "matching_source_note": "Adopted from CC-NG-BIZ-020; reviewed fingerprint sha256:13fe8a378e7409cd9ed480cbe8040a1ae94650d5491b070f0f9333acc4244781; M2.5 decision=supported; project status=verified (fresh Adoption Gate judgment, not mechanical M2.5 map)",
+      "allowed_wording": [
+        "Regulatory and Supervisory Guidelines for Bureau De Change Operations in Nigeria 2024",
+        "supersede",
+        "Revised Operational Guidelines for Bureau De Change in Nigeria issued in November 2015",
+        "June 3, 2024",
+        "BOFIA 2020 section 56"
+      ],
+      "forbidden_inferences": [
+        "resurrect 2015 BDC operational guidelines as current rules",
+        "BDC is an Authorised Dealer",
+        "BDC processes every business FX transaction",
+        "project BDC retail permissions into corporate import investment classes"
       ]
     }
   ]

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "nigeria",
-  "notes": "Hardening I traveler/cash bindings preserved. Hardening II adds rules.resident_holding_rules and rules.non_resident_rules only. NG-ACC-13 (FX Manual launch) remains unbound. Later NG-B5/NG-B4 fields remain unbound. Legacy approval / more-freely formulations are forbidden by bound claim inferences.",
+  "notes": "Hardening I traveler/cash bindings and Hardening II resident/non-resident bindings preserved. Hardening III adds summary.business, rules.business_invoicing_settlement, and rules.banking_conversion_practicality only. NG-B4 fields (country_overview, rules.exchange_controls) remain unbound. EFEMS/BDC/43-item temporal claims adopted but unbound. Legacy general CBN-approval / bank-only / availability formulations are forbidden by bound claim inferences.",
   "bindings": [
     {
       "field": "summary.traveler",
@@ -65,6 +65,46 @@
         "NG-ACC-16"
       ],
       "wording_boundary": "Must remain category-specific. May state: CDD external-account classes (diplomatic/IO); enumerated non-resident-account classes (correspondence/exam bodies; foreign companies on approved contracts; foreign professional bodies); closure on completion limited to CDD Reg. 25 subregulations (2) and (4); unclassified cases referred to CBN for clarification; Non-Resident Nigerians may own NRNOA/NRNIA subject to KYC (without prejudice to Memo 17); NRNOA remittance/dual-currency purpose; NRNIA investment purpose; NRNOA FCY balances fully repatriable without restriction; NRNOA Naira funding via offshore remittance or FCY conversion through authorised dealers. Forbid: all non-residents; more freely; transfer funds more freely; universal non-resident FCY entitlement; projecting NRN rights onto all foreign persons/entities; universal CBN approval; merging NRNOA and NRNIA; expanding NRNOA repatriation to NRNIA/all non-resident/investor/resident funds."
+    },
+    {
+      "field": "summary.business",
+      "claim_ids": [
+        "NG-BIZ-01",
+        "NG-BIZ-02",
+        "NG-BIZ-04",
+        "NG-BIZ-06",
+        "NG-BIZ-07",
+        "NG-BIZ-09",
+        "NG-BIZ-11",
+        "NG-BIZ-15"
+      ],
+      "wording_boundary": "May summarize governed business FX architecture: statutory Market channels (Authorised Dealers and Authorised Buyers as distinct classes); documentation-backed Market purchase eligibility (not Form M/A schedules); inward investment via Authorised Dealer and Market conversion; investment-related dividend/profit and sale/liquidation transferability through Authorised Dealers; Market-purchased FX repatriation without further approval only within that prerequisite; and eligible NFEM classes processed by Deposit Money Banks under a non-exhaustive 'such as' framing. Must not imply: all significant FX transactions through authorised dealer banks; conversion only through authorised dealer banks; generic CBN approval for capital repatriation or certain payments; universal unrestricted repatriation; bank-only architecture; FX availability / scarcity / difficulty / poor rates / bank delays; free-floating or managed-float regime labels (NG-B4). Do not make the summary an exhaustive procedural manual."
+    },
+    {
+      "field": "rules.business_invoicing_settlement",
+      "claim_ids": [
+        "NG-BIZ-02",
+        "NG-BIZ-04",
+        "NG-BIZ-06",
+        "NG-BIZ-07",
+        "NG-BIZ-08",
+        "NG-BIZ-09",
+        "NG-BIZ-10",
+        "NG-BIZ-11",
+        "NG-BIZ-14"
+      ],
+      "wording_boundary": "Bind settlement/transaction mechanics only — not domestic invoicing currency rules unless separately established. May state: FEMMPA Market counterparty channels; documentation-backed Market FX purchase eligibility; inward investment via Authorised Dealer + Market conversion; CCI issuance and AD returns (including information required by CBN); unconditional transferability through Authorised Dealer of investment dividends/profits, loan servicing, and sale/liquidation proceeds within s.15 scope; Market-purchased FX repatriation without further approval (prerequisite retained); and s.27 export payment-mode conditions. Distinguish settlement channel from invoice currency. Forbid: generic Form M/Form A claims; generic CBN prior approval; capital repatriation requires CBN approval; certain payments require CBN approval; report-to-CBN as approval; conflating export domiciliary account (NG-ACC-05) with ordinary business settlement; universal unrestricted repatriation; principal/interest universal split beyond loan servicing."
+    },
+    {
+      "field": "rules.banking_conversion_practicality",
+      "claim_ids": [
+        "NG-BIZ-01",
+        "NG-BIZ-02",
+        "NG-BIZ-03",
+        "NG-BIZ-05",
+        "NG-BIZ-15"
+      ],
+      "wording_boundary": "Evidence-grounded operational conversion field only. May state: CBN may appoint Authorised Dealers and Authorised Buyers; Market transaction channels among those classes; transaction rate mutually agreed between purchaser and AD/AB; s.11 construction boundaries (not a macro tightly-controlled claim); and eligible NFEM transactions such as the CBN-listed classes processed by Deposit Money Banks. Forbid: subject to availability; conversion is difficult; FX is scarce; poor rates; bank delays; tightly regulated and often subject to availability; conversion only through authorised dealer banks; all significant FX through authorised dealer banks; free-floating / managed float / market-determined macro regime labels (NG-B4). Do not bind EFEMS interbank infrastructure or BDC architecture into this customer-facing conversion field."
     }
   ]
 }

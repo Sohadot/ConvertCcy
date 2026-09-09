@@ -3,8 +3,50 @@
   "country_slug": "nigeria",
   "decision": "BLOCK",
   "layers": {
+    "structural": {
+      "blocking_count": 0,
+      "findings": []
+    },
+    "governance": {
+      "blocking_count": 1,
+      "findings": [
+        {
+          "layer": "governance",
+          "field": "publication",
+          "reason": "indexing_allowed must be true for publication",
+          "required_action": "Do not flip publication flags until all publication gates pass",
+          "blocking": true
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'NG-SRC-CONFLICT-DECL-OPERATOR-01', 'sources': ['SRC-NG-MLPPA-2022', 'SRC-NG-NCS-ECDF'], 'topic': 'border cash declaration trigger operator', 'detail': \"Money Laundering Act section 3(3) uses 'in excess of US$10,000' (operator >) while the current Nigeria Customs e-declaration form uses '$10,000 or more' / 'equal to or greater than $10,000' (operator >=). Hardening I-B bounded search found no later primary amending or interpretive instrument that formally reconciles the operators. Customs press language often restates 'exceeding', but the live e-form remains inclusive. Disposition: preserve dual operators; do not flatten > into >= or vice versa.\", 'status': 'preserved_dual_operator', 'closure_phase': 'hardening_i_b', 'closed_at': '2026-09-09', 'wording_boundary': \"Statutory declaration trigger remains 'in excess of US$10,000'. Operational Customs e-form trigger remains 'US$10,000 or more'. Future wording must keep both roles distinct and must not invent a single reconciled operator.\"}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        }
+      ]
+    },
+    "evidence": {
+      "blocking_count": 2,
+      "findings": [
+        {
+          "layer": "evidence",
+          "field": "country_overview",
+          "reason": "Required field has no claim binding",
+          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
+          "blocking": true
+        },
+        {
+          "layer": "evidence",
+          "field": "rules.exchange_controls",
+          "reason": "Required field has no claim binding",
+          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
+          "blocking": true
+        }
+      ]
+    },
     "fidelity": {
-      "blocking_count": 27,
+      "blocking_count": 46,
       "findings": [
         {
           "layer": "fidelity",
@@ -194,69 +236,139 @@
           "reason": "Draft contains forbidden inference from 'NG-ACC-16': 'transfer funds more freely'",
           "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
           "blocking": true
-        }
-      ]
-    },
-    "structural": {
-      "blocking_count": 0,
-      "findings": []
-    },
-    "evidence": {
-      "blocking_count": 5,
-      "findings": [
-        {
-          "layer": "evidence",
-          "field": "country_overview",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
         },
         {
-          "layer": "evidence",
+          "layer": "fidelity",
           "field": "summary.business",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-01': 'all significant foreign exchange transactions through authorised dealer banks'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
           "blocking": true
         },
         {
-          "layer": "evidence",
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-02': 'all significant foreign exchange transactions through authorised dealer banks'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-04': 'certain payments require CBN approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-06': 'certain payments require CBN approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-06': 'Capital repatriation and certain payments require CBN approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-07': 'certain payments require CBN approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-09': 'certain payments require CBN approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-11': 'certain payments require CBN approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-11': 'Capital repatriation and certain payments require CBN approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-15': 'all significant foreign exchange transactions through authorised dealer banks'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
           "field": "rules.business_invoicing_settlement",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-02': 'must be settled through authorised dealer banks'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
           "blocking": true
         },
         {
-          "layer": "evidence",
-          "field": "rules.exchange_controls",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
+          "layer": "fidelity",
           "field": "rules.banking_conversion_practicality",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        }
-      ]
-    },
-    "governance": {
-      "blocking_count": 1,
-      "findings": [
-        {
-          "layer": "governance",
-          "field": "publication",
-          "reason": "indexing_allowed must be true for publication",
-          "required_action": "Do not flip publication flags until all publication gates pass",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-03': 'subject to availability'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
           "blocking": true
         },
         {
-          "layer": "governance",
-          "field": "sources.source_conflicts",
-          "reason": "Source conflict recorded: {'conflict_id': 'NG-SRC-CONFLICT-DECL-OPERATOR-01', 'sources': ['SRC-NG-MLPPA-2022', 'SRC-NG-NCS-ECDF'], 'topic': 'border cash declaration trigger operator', 'detail': \"Money Laundering Act section 3(3) uses 'in excess of US$10,000' (operator >) while the current Nigeria Customs e-declaration form uses '$10,000 or more' / 'equal to or greater than $10,000' (operator >=). Hardening I-B bounded search found no later primary amending or interpretive instrument that formally reconciles the operators. Customs press language often restates 'exceeding', but the live e-form remains inclusive. Disposition: preserve dual operators; do not flatten > into >= or vice versa.\", 'status': 'preserved_dual_operator', 'closure_phase': 'hardening_i_b', 'closed_at': '2026-09-09', 'wording_boundary': \"Statutory declaration trigger remains 'in excess of US$10,000'. Operational Customs e-form trigger remains 'US$10,000 or more'. Future wording must keep both roles distinct and must not invent a single reconciled operator.\"}",
-          "required_action": "Resolve via human exception review",
-          "blocking": false
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-03': 'tightly regulated and often subject to availability'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-03': 'available only through authorised dealer banks'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-03': 'Foreign exchange conversion is available only through authorised dealer banks'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-05': 'tightly regulated'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-05': 'subject to availability'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-15': 'subject to availability'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'NG-BIZ-15': 'available only through authorised dealer banks'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
         }
       ]
     }
@@ -271,28 +383,7 @@
     },
     {
       "layer": "evidence",
-      "field": "summary.business",
-      "reason": "Required field has no claim binding",
-      "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-      "blocking": true
-    },
-    {
-      "layer": "evidence",
-      "field": "rules.business_invoicing_settlement",
-      "reason": "Required field has no claim binding",
-      "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-      "blocking": true
-    },
-    {
-      "layer": "evidence",
       "field": "rules.exchange_controls",
-      "reason": "Required field has no claim binding",
-      "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-      "blocking": true
-    },
-    {
-      "layer": "evidence",
-      "field": "rules.banking_conversion_practicality",
       "reason": "Required field has no claim binding",
       "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
       "blocking": true
@@ -487,6 +578,139 @@
       "blocking": true
     },
     {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-01': 'all significant foreign exchange transactions through authorised dealer banks'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-02': 'all significant foreign exchange transactions through authorised dealer banks'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-04': 'certain payments require CBN approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-06': 'certain payments require CBN approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-06': 'Capital repatriation and certain payments require CBN approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-07': 'certain payments require CBN approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-09': 'certain payments require CBN approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-11': 'certain payments require CBN approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-11': 'Capital repatriation and certain payments require CBN approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-15': 'all significant foreign exchange transactions through authorised dealer banks'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-02': 'must be settled through authorised dealer banks'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-03': 'subject to availability'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-03': 'tightly regulated and often subject to availability'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-03': 'available only through authorised dealer banks'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-03': 'Foreign exchange conversion is available only through authorised dealer banks'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-05': 'tightly regulated'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-05': 'subject to availability'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-15': 'subject to availability'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'NG-BIZ-15': 'available only through authorised dealer banks'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
       "layer": "governance",
       "field": "publication",
       "reason": "indexing_allowed must be true for publication",
@@ -506,5 +730,5 @@
   "needs_human_review": [
     "{'conflict_id': 'NG-SRC-CONFLICT-DECL-OPERATOR-01', 'sources': ['SRC-NG-MLPPA-2022', 'SRC-NG-NCS-ECDF'], 'topic': 'border cash declaration trigger operator', 'detail': \"Money Laundering Act section 3(3) uses 'in excess of US$10,000' (operator >) while the current Nigeria Customs e-declaration form uses '$10,000 or more' / 'equal to or greater than $10,000' (operator >=). Hardening I-B bounded search found no later primary amending or interpretive instrument that formally reconciles the operators. Customs press language often restates 'exceeding', but the live e-form remains inclusive. Disposition: preserve dual operators; do not flatten > into >= or vice versa.\", 'status': 'preserved_dual_operator', 'closure_phase': 'hardening_i_b', 'closed_at': '2026-09-09', 'wording_boundary': \"Statutory declaration trigger remains 'in excess of US$10,000'. Operational Customs e-form trigger remains 'US$10,000 or more'. Future wording must keep both roles distinct and must not invent a single reconciled operator.\"}"
   ],
-  "summary": "BLOCKED BY 33 SPECIFIC FINDING(S)"
+  "summary": "BLOCKED BY 49 SPECIFIC FINDING(S)"
 }
