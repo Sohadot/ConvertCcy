@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "nigeria",
-  "notes": "Phase 2 M1 authored excerpts for Nigeria Evidence Hardening I. Scope limited to border-cash semantics and physical naira carriage. Current operator conflict between statute and Customs operational form is preserved explicitly.",
+  "notes": "Phase 2 M1 authored excerpts for Nigeria Evidence Hardening I / I-B. Scope limited to border-cash semantics and physical naira carriage. Hardening I-B preserves the statute/Customs operator conflict as dual operators and records that no primary excerpt establishing a live numeric NGN traveller exception was pinned.",
   "excerpts": [
     {
       "excerpt_id": "EX-NG-MLPPA-2022-S3-3",

@@ -3,7 +3,7 @@
   "country_slug": "nigeria",
   "country_name": "Nigeria",
   "iso2": "NG",
-  "notes": "Phase 2 M1 source pack for Nigeria Evidence Hardening I. Scope limited to NG-B1 outbound foreign-currency cash mechanics, NG-B6 declaration threshold, and NG-B7 physical naira import/export rule.",
+  "notes": "Phase 2 M1 source pack for Nigeria Evidence Hardening I / I-B. Scope limited to NG-B1 outbound foreign-currency cash mechanics, NG-B6 declaration threshold, and NG-B7 physical naira import/export rule. Hardening I-B (2026-09-09): (1) no later primary instrument was found reconciling MLPPA 2022 'in excess of' with NCS e-CDF 'or more'/'equal to or greater than', so dual operators are preserved rather than force-reconciled; (2) bounded primary search did not pin a current CBN-hosted guideline/FX Manual PDF establishing a live numeric traveller exception under FEMMPA s.14, so numeric exception = not established. Secondary press/law-firm references to N100,000 remain discovery-only and are not adopted.",
   "sources": [
     {
       "source_id": "SRC-NG-MLPPA-2022",
@@ -70,7 +70,7 @@
       "accessed_at": "2026-09-09",
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
-      "notes": "Operational current guidance and e-form. Uses '$10,000 or more' / 'equal to or greater than' wording, which is narrower than the statutory 'in excess of' phrase and therefore tracked as an operator conflict rather than silently normalized."
+      "notes": "Operational current guidance and e-form. Uses '$10,000 or more' / 'equal to or greater than' wording. Hardening I-B preserves this as the operational operator (>=) alongside the statutory MLPPA operator (>); no reconciling primary instrument was pinned."
     }
   ],
   "source_conflicts": [
@@ -81,15 +81,23 @@
         "SRC-NG-NCS-ECDF"
       ],
       "topic": "border cash declaration trigger operator",
-      "detail": "Money Laundering Act section 3(3) uses 'in excess of US$10,000' while the current Nigeria Customs e-declaration form uses '$10,000 or more' / 'equal to or greater than $10,000'.",
-      "status": "open"
+      "detail": "Money Laundering Act section 3(3) uses 'in excess of US$10,000' (operator >) while the current Nigeria Customs e-declaration form uses '$10,000 or more' / 'equal to or greater than $10,000' (operator >=). Hardening I-B bounded search found no later primary amending or interpretive instrument that formally reconciles the operators. Customs press language often restates 'exceeding', but the live e-form remains inclusive. Disposition: preserve dual operators; do not flatten > into >= or vice versa.",
+      "status": "preserved_dual_operator",
+      "closure_phase": "hardening_i_b",
+      "closed_at": "2026-09-09",
+      "wording_boundary": "Statutory declaration trigger remains 'in excess of US$10,000'. Operational Customs e-form trigger remains 'US$10,000 or more'. Future wording must keep both roles distinct and must not invent a single reconciled operator."
     }
   ],
   "missing_authorities": [
     {
       "authority": "Central Bank of Nigeria",
       "topic": "current guideline exception under section 14 of the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act for physical naira import/export",
-      "reason": "A current official CBN guideline setting any live traveller exception threshold for naira notes was not pinned in this hardening pass."
+      "reason": "Hardening I-B bounded primary search (CBN-hosted FX Manual PDF; current Monetary/Credit/Foreign Trade guidelines PDF; CBN circulars expressly implementing FEMMPA s.14 traveller exceptions) did not pin a currently operative official instrument establishing a live numeric traveller exception threshold for physical naira notes. Historical CBN guideline language (for example older N10,000 declaration wording) and secondary press/law-firm summaries referring to N100,000 were treated as discovery aids only and were not adopted. Conclusion: numeric exception = not established.",
+      "search_status": "bounded_search_complete",
+      "conclusion": "numeric_exception_not_established",
+      "closure_phase": "hardening_i_b",
+      "closed_at": "2026-09-09",
+      "wording_boundary": "Publish only the FEMMPA s.14 prohibition baseline plus the fact that any numeric traveller exception remains not established. Do not invent N10,000, N20,000, N100,000, or any other numeric NGN carriage/exception figure from secondary sources."
     }
   ]
 }

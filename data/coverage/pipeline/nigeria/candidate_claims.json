@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "country_slug": "nigeria",
   "generation_mode": "governed_extraction",
-  "notes": "Nigeria Evidence Hardening I atomic candidate ledger. Scope limited to NG-B1, NG-B6, and NG-B7. Candidates are recorded for controlled review; this file does not itself adopt claims into rules or bindings.",
+  "notes": "Nigeria Evidence Hardening I / I-B atomic candidate ledger. Scope limited to NG-B1, NG-B6, and NG-B7. Candidates are recorded for controlled review; this file does not itself adopt claims into rules or bindings. Hardening I-B disposition: (1) CC-NG-CASH-006 operator conflict is preserved as dual-operator rather than force-reconciled; (2) no candidate invents a numeric NGN exception because primary CBN guideline/FX Manual text was not pinned — numeric exception remains not established pending a later primary-source pin.",
   "candidates": [
     {
       "candidate_id": "CC-NG-CASH-001",
@@ -360,7 +360,7 @@
         "reviewed_at": null,
         "decision": null,
         "reviewed_candidate_fingerprint": null,
-        "notes": null
+        "notes": "Hardening I-B: s.14 baseline remains pin-supported. Any numeric traveller exception under CBN guidelines remains not established after bounded primary search; do not invent a figure."
       }
     },
     {
@@ -420,7 +420,7 @@
         "reviewed_at": null,
         "decision": null,
         "reviewed_candidate_fingerprint": null,
-        "notes": "Requires reconciliation against MLPPA 2022 section 3(3) before downstream use."
+        "notes": "Hardening I-B: no reconciling primary instrument found. Disposition is preserve dual operators (statute > vs Customs e-form >=), not forced reconciliation. Downstream wording must keep both roles distinct."
       }
     },
     {
