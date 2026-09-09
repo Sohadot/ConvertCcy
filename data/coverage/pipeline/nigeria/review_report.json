@@ -4,7 +4,7 @@
   "decision": "BLOCK",
   "layers": {
     "fidelity": {
-      "blocking_count": 5,
+      "blocking_count": 27,
       "findings": [
         {
           "layer": "fidelity",
@@ -40,6 +40,160 @@
           "reason": "Draft contains forbidden inference from 'NG-CUST-04': 'without limit'",
           "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
           "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-01': 'CBN limits and approval requirements'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-01': 'general unrestricted access'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-09': 'CBN limits and approval requirements'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-09': 'general unrestricted access'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-06': 'more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-06': 'transfer funds more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-07': 'more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-07': 'transfer funds more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-08': 'more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-08': 'transfer funds more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-10': 'more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-10': 'transfer funds more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-11': 'more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-11': 'transfer funds more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-12': 'more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-12': 'transfer funds more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-14': 'more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-14': 'transfer funds more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-15': 'more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-15': 'transfer funds more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-16': 'more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'NG-ACC-16': 'transfer funds more freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
         }
       ]
     },
@@ -48,7 +202,7 @@
       "findings": []
     },
     "evidence": {
-      "blocking_count": 7,
+      "blocking_count": 5,
       "findings": [
         {
           "layer": "evidence",
@@ -60,20 +214,6 @@
         {
           "layer": "evidence",
           "field": "summary.business",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "rules.resident_holding_rules",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "rules.non_resident_rules",
           "reason": "Required field has no claim binding",
           "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
           "blocking": true
@@ -138,20 +278,6 @@
     },
     {
       "layer": "evidence",
-      "field": "rules.resident_holding_rules",
-      "reason": "Required field has no claim binding",
-      "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-      "blocking": true
-    },
-    {
-      "layer": "evidence",
-      "field": "rules.non_resident_rules",
-      "reason": "Required field has no claim binding",
-      "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-      "blocking": true
-    },
-    {
-      "layer": "evidence",
       "field": "rules.business_invoicing_settlement",
       "reason": "Required field has no claim binding",
       "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
@@ -207,6 +333,160 @@
       "blocking": true
     },
     {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-01': 'CBN limits and approval requirements'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-01': 'general unrestricted access'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-09': 'CBN limits and approval requirements'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-09': 'general unrestricted access'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-06': 'more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-06': 'transfer funds more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-07': 'more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-07': 'transfer funds more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-08': 'more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-08': 'transfer funds more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-10': 'more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-10': 'transfer funds more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-11': 'more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-11': 'transfer funds more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-12': 'more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-12': 'transfer funds more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-14': 'more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-14': 'transfer funds more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-15': 'more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-15': 'transfer funds more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-16': 'more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'NG-ACC-16': 'transfer funds more freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
       "layer": "governance",
       "field": "publication",
       "reason": "indexing_allowed must be true for publication",
@@ -226,5 +506,5 @@
   "needs_human_review": [
     "{'conflict_id': 'NG-SRC-CONFLICT-DECL-OPERATOR-01', 'sources': ['SRC-NG-MLPPA-2022', 'SRC-NG-NCS-ECDF'], 'topic': 'border cash declaration trigger operator', 'detail': \"Money Laundering Act section 3(3) uses 'in excess of US$10,000' (operator >) while the current Nigeria Customs e-declaration form uses '$10,000 or more' / 'equal to or greater than $10,000' (operator >=). Hardening I-B bounded search found no later primary amending or interpretive instrument that formally reconciles the operators. Customs press language often restates 'exceeding', but the live e-form remains inclusive. Disposition: preserve dual operators; do not flatten > into >= or vice versa.\", 'status': 'preserved_dual_operator', 'closure_phase': 'hardening_i_b', 'closed_at': '2026-09-09', 'wording_boundary': \"Statutory declaration trigger remains 'in excess of US$10,000'. Operational Customs e-form trigger remains 'US$10,000 or more'. Future wording must keep both roles distinct and must not invent a single reconciled operator.\"}"
   ],
-  "summary": "BLOCKED BY 13 SPECIFIC FINDING(S)"
+  "summary": "BLOCKED BY 33 SPECIFIC FINDING(S)"
 }
