@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
   "generation_mode": "governed_extraction",
-  "notes": "Switzerland Hardening I border-cash M2 candidates. Unreviewed pending M2.5. FOCBS English candidates use direct_restating. Ordinance German candidates use German direct_restating from Fedlex verbatim substrate (no closed English translation review claimed). Architecture: carriage unrestricted ≠ no controls; no spontaneous FOCBS declaration ≠ no information-on-request; >= CHF 10,000 is inquiry/registration threshold, not a carriage ceiling or declaration threshold. Does not adopt claims, create bindings, or modify data/rules/switzerland.json.",
+  "notes": "Switzerland Hardening I border-cash candidates preserved (CC-CH-CASH-001..013, M2.5 closed). Hardening II appends pending CC-CH-ACC-* account/AML/residency evidence candidates. No M2.5, adoption, bindings, or switzerland.json changes in this gate. General AML duties are not duplicated into separate resident/non-resident entitlement claims. No statutory account-entitlement or 'freely / without prior approval' candidates were minted.",
   "candidates": [
     {
       "candidate_id": "CC-CH-CASH-001",
@@ -749,6 +749,867 @@
         "reviewed_at": "2026-09-09",
         "decision": "bounded",
         "reviewed_candidate_fingerprint": "sha256:05356f7b613c0d703e4aa2365f914fb073efcda1ee3e16dec566ac5d918d31e3",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-001",
+      "candidate_text": "When establishing a business relationship, the financial intermediary must verify the identity of the customer on the basis of a document of evidentiary value.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "contracting_party_identity_verification",
+        "actor": "financial_intermediary",
+        "transaction_context": "swiss_financial_intermediary_aml",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-AMLA-ART3-1",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [],
+        "omissions": [
+          "legal_entity_power_to_bind_sentence_retained_in_excerpt_for_scope"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-002",
+      "candidate_text": "The financial intermediary must identify the beneficial owner with the due diligence required in the circumstances and verify its identity in order to ensure that it knows who the beneficial owner is.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "beneficial_owner_identification_verification",
+        "actor": "financial_intermediary",
+        "transaction_context": "swiss_financial_intermediary_aml",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-AMLA-ART4-1",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [],
+        "omissions": [
+          "listed_company_majority_control_exception_preserved_in_excerpt"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-003",
+      "candidate_text": "If doubt arises in the course of the business relationship as to the identity of the customer or of the beneficial owner, the verification of identity or establishment of identity in terms of Articles 3 and 4 respectively must be repeated.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "repeated_identity_or_beneficial_owner_verification_on_doubt",
+        "actor": "financial_intermediary",
+        "transaction_context": "swiss_financial_intermediary_aml",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-AMLA-ART5-1",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-004",
+      "candidate_text": "The financial intermediary must clarify the economic background and the purpose of a transaction or of a business relationship if the transaction or business relationship appears unusual (unless its legality is clear), if there are relevant crime or terrorist-financing indications, if it carries a higher risk, or if customer/beneficial-owner/authorised-signatory data match or closely match data passed under Article 22a AMLA.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "special_due_diligence_clarification",
+        "actor": "financial_intermediary",
+        "transaction_context": "swiss_financial_intermediary_aml",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-AMLA-ART6-2",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "compressed_lit_a_to_d_triggers_without_expanding_scope"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-005",
+      "candidate_text": "The financial intermediary must periodically check the required records to ensure that they are up to date, and update them if need be; the periodicity, scope and type of checking and updating are based on the risk posed by the customer.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "risk_based_periodic_record_update",
+        "actor": "financial_intermediary",
+        "transaction_context": "swiss_financial_intermediary_aml",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-AMLA-ART7-1BIS",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-006",
+      "candidate_text": "Banks must verify the identity of the contracting partner when establishing business relationships, including when opening accounts or passbooks and when opening securities accounts.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "bank_identity_verification_on_account_opening",
+        "actor": "bank",
+        "transaction_context": "swiss_bank_cdb20",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-CDB-ART4",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "actor_bank_from_cdb_scope",
+          "account_and_securities_account_limbs_emphasized"
+        ],
+        "omissions": [
+          "fiduciary_safe_deposit_trading_cash_limbs_not_expanded_into_separate_candidates"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "self_regulatory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-007",
+      "candidate_text": "If an operating legal entity or partnership has one or more controlling persons with voting rights or capital shares of 25% or more, these are to be identified in writing; a controlling person must generally be a natural person.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "controlling_person_identification",
+        "actor": "bank",
+        "transaction_context": "swiss_bank_cdb20",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-CDB-ART20",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "self_regulatory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-008",
+      "candidate_text": "For natural persons, banks must appropriately document name, first name, date of birth, nationality and the actual domicile address as well as the means used to prove identity.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "documentation_requirement",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "natural_person_domicile_documentation",
+        "actor": "bank",
+        "transaction_context": "swiss_bank_cdb20",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-CDB-ART7",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "actor_bank_from_cdb_scope"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "self_regulatory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-009",
+      "candidate_text": "Business relationships and transactions with heightened risk, such as business relationships with clients in high-risk countries or with politically exposed persons (PEPs), must be recorded and clarified in greater detail.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "heightened_risk_relationship_clarification",
+        "actor": "financial_intermediary",
+        "transaction_context": "swiss_financial_intermediary_aml",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FINMA-AML-HIGH-RISK",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "supervisory_expectation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-010",
+      "candidate_text": "Boards of directors of financial intermediaries must establish a clearly defined money-laundering risk tolerance, including clear communications regarding particularly high-risk clients, high-risk countries and services that are deemed outside the risk tolerance limits.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "institutional_risk_tolerance_boundary",
+        "actor": "financial_intermediary_board",
+        "transaction_context": "swiss_financial_intermediary_aml",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FINMA-RISK-TOLERANCE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "money_laundering_risk_tolerance_label_from_context"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "supervisory_expectation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-011",
+      "candidate_text": "For high-risk client relationships of the kind addressed by FINMA, the origin of the client's assets must be clarified in detail and verified as originating from legal sources, and higher-risk transactions must be monitored very carefully.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "high_risk_source_of_assets_and_transaction_monitoring",
+        "actor": "financial_intermediary",
+        "transaction_context": "swiss_financial_intermediary_aml",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FINMA-HIGH-RISK-SOW",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "scoped_to_high_risk_client_context_from_source_page"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "supervisory_expectation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-012",
+      "candidate_text": "The bank requires from its contracting partner a statement concerning the beneficial ownership of the assets when opening accounts or passbooks and when opening securities accounts.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "bank_beneficial_ownership_statement_on_account_opening",
+        "actor": "bank",
+        "transaction_context": "swiss_bank_cdb20",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-CDB-ART27",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [],
+        "omissions": [
+          "other_art27_limbs_and_exceptions_not_expanded"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "self_regulatory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-013",
+      "candidate_text": "The revised Anti-Money Laundering Act and the new Act on the Transparency of Legal Persons and the Identification of Beneficial Owners will enter into force on 1 October 2026.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "revised_amla_transparency_act_entry_into_force",
+        "actor": "federal_legislature_executive",
+        "transaction_context": "swiss_financial_intermediary_aml",
+        "temporal_scope": "effective_from"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FC-AMLA-OCT2026",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_announcement",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-014",
+      "candidate_text": "On 12 May 2026, FINMA launched the consultation on the partially revised AMLO-FINMA; the consultation ran until 9 June 2026 and is not itself the current operative ordinance.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "amlo_finma_partial_revision_consultation",
+        "actor": "finma",
+        "transaction_context": "swiss_financial_intermediary_aml",
+        "temporal_scope": "effective_from"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FINMA-AMLO-CONSULT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "explicit_not_current_operative_ordinance_boundary"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_announcement",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-ACC-015",
+      "candidate_text": "If a business relationship or transaction appears unusual or if there are indications that the funds stem from criminal activity or serve to finance terrorism, the financial intermediary must clarify the financial background and purpose of the business relationship or transaction.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "finma_conditional_background_purpose_clarification",
+        "actor": "financial_intermediary",
+        "transaction_context": "swiss_financial_intermediary_aml",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FINMA-AML-EDD",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "supervisory_expectation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
         "notes": null
       }
     }

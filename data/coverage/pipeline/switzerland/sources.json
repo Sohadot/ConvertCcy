@@ -3,7 +3,7 @@
   "country_slug": "switzerland",
   "country_name": "Switzerland",
   "iso2": "CH",
-  "notes": "Switzerland Hardening I (border cash) M1 source pack. Primary authorities: FOCBS/BAZG current cash guidance and Fedlex SR 631.052 Ordinance on the control of cross-border cash movements. FINMA homepage and SNB monetary-policy pages are deliberately excluded from this pack as non-authorities for border cash mechanics. Legacy switzerland.json traveler prose is treated as untrusted and is not used as evidence.",
+  "notes": "Switzerland Hardening I (border cash) + Hardening II (accounts/AML/residency evidence). H1 authorities FOCBS + SR 631.052 preserved unchanged. H2 appends AMLA SR 955.0, AMLO-FINMA SR 955.033, FINMA AML supervision, CDB 20, FINMA high-risk-client dossier, and temporal 2026/2027 sources. As of 2026-09-09: current AMLA consolidation Status as of 1 March 2024 remains in force; revised AMLA/LETA enter into force 1 October 2026 (future). AMLO-FINMA Stand 1 January 2023 is current; FINMA launched AMLO-FINMA partial-revision consultation on 12 May 2026 with industry expectation of 1 January 2027 effectiveness (future). CDB 20 (13 June 2018 / in force 1 January 2020) remains the current bank due-diligence framework on 2026-09-09. No general resident/non-resident statutory account entitlement or prior-approval rule is established in this pack. Does not modify claims.json, bindings, adoption, M2.5, or data/rules/switzerland.json.",
   "source_conflicts": [
     {
       "conflict_id": "CH-SRC-CONFLICT-10K-OPERATOR-01",
@@ -30,9 +30,60 @@
       "closure_phase": "hardening_i",
       "closed_at": "2026-09-09",
       "wording_boundary": "FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount."
+    },
+    {
+      "conflict_id": "CH-SRC-CONFLICT-AMLA-TEMPORAL-2026",
+      "sources": [
+        "SRC-CH-AMLA-955-0",
+        "SRC-CH-FC-AMLA-EIF-2026"
+      ],
+      "topic": "current AMLA consolidation vs revised AMLA effective 1 October 2026",
+      "detail": "On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.",
+      "status": "preserved_current_vs_future",
+      "closure_phase": "hardening_ii_evidence",
+      "closed_at": "2026-09-09",
+      "wording_boundary": "Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date."
+    },
+    {
+      "conflict_id": "CH-SRC-CONFLICT-AMLO-TEMPORAL-2027",
+      "sources": [
+        "SRC-CH-AMLO-FINMA",
+        "SRC-CH-FINMA-AMLO-CONSULT-2026"
+      ],
+      "topic": "current AMLO-FINMA vs 2026 consultation / expected 2027 revision",
+      "detail": "Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.",
+      "status": "preserved_current_vs_future",
+      "closure_phase": "hardening_ii_evidence",
+      "closed_at": "2026-09-09",
+      "wording_boundary": "Do not apply consulted/future AMLO-FINMA or successor CDB as current rules."
     }
   ],
-  "missing_authorities": [],
+  "missing_authorities": [
+    {
+      "authority_id": "CH-H2-MISSING-ACCOUNT-ENTITLEMENT",
+      "topic": "general statutory right of residents/non-residents to open Swiss bank or FCY accounts",
+      "status": "not_established",
+      "search_record": "Bounded search 2026-09-09 across Fedlex AMLA SR 955.0 (Arts. 1–11 operative due-diligence/reporting), FINMA Combating money laundering page, CDB 20 Arts. 1–28 account-opening due diligence, FINMA high-risk-client dossier. Result: AML/onboarding duties and institutional risk-tolerance expectations found; no federal provision establishing a general legal entitlement for residents or non-residents to open or maintain bank or foreign-currency accounts. Market practice of Swiss banks offering accounts is not treated as entitlement evidence.",
+      "closure_phase": "hardening_ii_evidence",
+      "wording_boundary": "Do not draft 'Swiss residents/non-residents may open accounts' or 'freely' as a statutory entitlement from H2 evidence."
+    },
+    {
+      "authority_id": "CH-H2-MISSING-PRIOR-GOVT-APPROVAL",
+      "topic": "general SNB/FINMA/federal prior approval for ordinary account opening",
+      "status": "not_established_as_positive_requirement",
+      "search_record": "Bounded search 2026-09-09 of AMLA Arts. 1–11, FINMA AML supervision page, CDB 20 account-opening articles, Federal Council AML communications for H2. No general prior approval by SNB, FINMA, or another federal authority for ordinary resident/non-resident account opening was located. Absence of an established general prior-approval requirement is recorded as not_established for a broad negative claim; bank acceptance and AML onboarding are not government approval. Do not candidate-extract 'without prior approval' or 'no approval is ever required'.",
+      "closure_phase": "hardening_ii_evidence",
+      "wording_boundary": "If later bounded, phrase only as 'general prior approval by [named authority] not established for ordinary account opening' — never 'unrestricted account access'."
+    },
+    {
+      "authority_id": "CH-H2-MISSING-RESIDENCE-ACCOUNT-CLASS",
+      "topic": "AMLA/CDB residence-based account entitlement or prohibition class",
+      "status": "not_established",
+      "search_record": "Bounded search of AMLA due-diligence articles and CDB 20 identification/controlling-person/beneficial-owner rules for explicit resident vs non-resident account-opening categories, general prohibitions, or general approval requirements keyed to residence. No such general residence-based entitlement/prohibition/approval class located in the reviewed federal AML / bank due-diligence corpus. Residence may appear as domicile/address data or within risk assessment; that does not create a statutory resident/non-resident account class. Do not infer identical treatment in every regime.",
+      "closure_phase": "hardening_ii_evidence",
+      "wording_boundary": "Do not equate non-resident with high-risk client; do not invent residence-based account rights or bans from silence."
+    }
+  ],
   "sources": [
     {
       "source_id": "SRC-CH-FOCBS-CASH",
@@ -67,6 +118,126 @@
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
       "notes": "Official Fedlex consolidated German text of the Ordinance on the control of cross-border cash movements. FOCBS identifies this instrument as the legal basis for cross-border cash controls. English ELI path does not supply a separate authoritative English text; excerpts use faithful translation from German. Stand am 1. Januar 2022."
+    },
+    {
+      "source_id": "SRC-CH-AMLA-955-0",
+      "label": "SR 955.0 — Federal Act on Combating Money Laundering and Terrorist Financing in the Financial Sector (Anti-Money Laundering Act, AMLA / GwG)",
+      "url": "https://www.fedlex.admin.ch/eli/cc/1998/892_892_892/en",
+      "type": "ministry",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss Confederation / Fedlex",
+      "authority_kind": "legislature_publication",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "published_date": "1997-10-10",
+      "effective_date": "1998-04-01",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Official Fedlex English consolidation; page declares text in force; Status as of 1 March 2024. Operative on 2026-09-09. Revised AMLA package enters into force 1 October 2026 (see SRC-CH-FC-AMLA-EIF-2026) and must not be applied as current. Primary legal spine for financial-intermediary due diligence: Arts. 3–8 identity, beneficial owner, repetition, special due diligence, records/update, organisational measures; Art. 9 reporting. Does not establish account-opening entitlement."
+    },
+    {
+      "source_id": "SRC-CH-AMLO-FINMA",
+      "label": "SR 955.033 — FINMA Anti-Money Laundering Ordinance (AMLO-FINMA / GwV-FINMA)",
+      "url": "https://www.fedlex.admin.ch/eli/cc/2015/390/de",
+      "type": "regulator",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss Financial Market Supervisory Authority FINMA / Fedlex",
+      "authority_kind": "regulator",
+      "jurisdiction": "CH",
+      "language": "de",
+      "accessed_at": "2026-09-09",
+      "published_date": "2015-06-03",
+      "effective_date": "2016-01-01",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Current Fedlex consolidation Stand am 1. Januar 2023. Implements AMLA for FINMA-supervised intermediaries. H2 uses this primarily for temporal/current-status pinning; detailed article candidates prefer AMLA statutory text and FINMA supervisory summaries where sufficient. Partial revision consultation launched 12 May 2026; expected future effectiveness 1 January 2027 (see SRC-CH-FINMA-AMLO-CONSULT-2026) — do not apply as current."
+    },
+    {
+      "source_id": "SRC-CH-FINMA-AML",
+      "label": "FINMA — Combating money laundering in the context of financial market supervision",
+      "url": "https://www.finma.ch/en/supervision/cross-sector-issues/combating-money-laundering/",
+      "type": "regulator",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss Financial Market Supervisory Authority FINMA",
+      "authority_kind": "regulator",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Current FINMA supervisory overview of AMLA due-diligence/disclosure requirements and CDB 20 recognition for banks/securities firms. Supervisory corroboration — does not replace AMLA statutory wording for legal scope."
+    },
+    {
+      "source_id": "SRC-CH-CDB-20",
+      "label": "Agreement on the Swiss banks’ code of conduct with regard to the exercise of due diligence (CDB 20)",
+      "url": "https://www.gkb.ch/content/dam/gkb/dokumente/ueber-uns/regulatorische-unterlagen/VSB-EN.pdf",
+      "type": "regulator",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss Bankers Association (SBA) — FINMA-recognised self-regulation",
+      "authority_kind": "regulator",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "published_date": "2018-06-13",
+      "effective_date": "2020-01-01",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "English CDB 20 text (SBA agreement of 13 June 2018; in force 1 January 2020). FINMA AML page confirms FINMA approval and bank/securities-firm application for contracting-partner identity and beneficial-owner identification; also applies to certain CISA institutions for those duties. Scope limited to banks/securities dealers (and specified CISA subjects) — not all financial intermediaries. Remains current bank due-diligence framework on 2026-09-09 pending future CDB revision timed with AMLO-FINMA 2027 package. Does not prove statutory account entitlement, unrestricted transfers, or absence of exchange controls. URL is a published English PDF copy of the SBA instrument used for verbatim capture."
+    },
+    {
+      "source_id": "SRC-CH-FINMA-HIGH-RISK-2024",
+      "label": "FINMA — Focus on high-risk clients in the context of combating money laundering (2024)",
+      "url": "https://www.finma.ch/en/documentation/dossier/dossier-geldwaeschereibekaempfung/augenmerk-auf-hochrisikokundinnen-und--kunden-in-der-geldwaeschereibekaempfung/",
+      "type": "regulator",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss Financial Market Supervisory Authority FINMA",
+      "authority_kind": "regulator",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "FINMA dossier extract from Annual Report 2024 on risk tolerance, high-risk clients/countries/services outside tolerance, source-of-assets clarification for high-risk relationships, and careful monitoring of higher-risk transactions. Institutional risk-acceptance evidence — not a residence-based legal class and not a universal entitlement negation beyond risk-tolerance boundary."
+    },
+    {
+      "source_id": "SRC-CH-FC-AMLA-EIF-2026",
+      "label": "Federal Council — New anti-money laundering rules entry into force (12 June 2026)",
+      "url": "https://www.edoeb.admin.ch/en/newnsb/x3sKLxCJ6S3dQJtfvy0Tb",
+      "type": "ministry",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss Federal Council / State Secretariat for International Finance",
+      "authority_kind": "ministry",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "published_date": "2026-06-12",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Temporal authority: revised AMLA and Act on Transparency of Legal Persons / beneficial owners enter into force 1 October 2026. On 2026-09-09 these reforms are enacted-but-not-yet-effective — future relative to H2 current drafting. Do not apply as current account/AML rules."
+    },
+    {
+      "source_id": "SRC-CH-FINMA-AMLO-CONSULT-2026",
+      "label": "FINMA — Consultation on partial revision of AMLO-FINMA (12 May 2026)",
+      "url": "https://www.finma.ch/en/news/2026/05/20260512-mm-anh-gwv-finma/",
+      "type": "regulator",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss Financial Market Supervisory Authority FINMA",
+      "authority_kind": "regulator",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-09",
+      "published_date": "2026-05-12",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Temporal: FINMA launched AMLO-FINMA partial-revision consultation 12 May 2026 (to 9 June 2026). Industry/official commentary expects effectiveness around 1 January 2027 with revised CDB. Consultation text is not current law. Keep current vs future explicit."
     }
   ]
 }
