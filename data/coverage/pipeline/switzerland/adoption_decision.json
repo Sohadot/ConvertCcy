@@ -1,0 +1,176 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "switzerland",
+  "gate": "switzerland_hardening_i_adoption",
+  "baseline_head": "af2f6cf078cc4858bf8b1acb4f5a630e25c8ecd7",
+  "decided_at": "2026-09-09",
+  "decided_by": "operator",
+  "decision": "PASS",
+  "m2_5_frozen": true,
+  "frozen_artifacts": [
+    "candidate_claims.json",
+    "human_claim_review.json",
+    "claim_review_report.json"
+  ],
+  "notes": "Switzerland Hardening I Adoption Gate. Fresh project judgment mints ten distinct project claims (CH-CASH-01..10) from thirteen M2.5-closed candidates. Three FOCBS public-guidance candidates are reconciled into Ordinance-spine claims (004→04 with 009; 006→08 with 012; 007→07 with 011) using repository-native reconciled / equivalent_existing_claim semantics — no duplicate project claims. CH-CASH-09 (Art. 2 definition) and CH-CASH-10 (Art. 6 Abs. 2 amount-independent Meldung) adopted unbound. Bindings only for Hardening I fields: summary.traveler, rules.bring_foreign_currency_in, rules.take_foreign_currency_out, rules.cash_declaration_threshold. Does not draft or modify data/rules/switzerland.json. M2.5 adoption_eligible remains false. No publication. No Hardening II.",
+  "stats": {
+    "candidates_in_scope": 13,
+    "distinct_project_claims_created": 10,
+    "adopted_bound": 8,
+    "adopted_unbound": 2,
+    "reconciled_into_canonical": 3,
+    "not_adopted": 0,
+    "duplicate_project_claims_created": 0,
+    "field_bindings_total": 4,
+    "publication_changes": 0,
+    "switzerland_rules_changes": 0
+  },
+  "adoptions": [
+    {
+      "candidate_id": "CC-CH-CASH-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["CH-CASH-01"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:0c8529702aa3d8fe6a3272f606b98dae38021019abcabde574ae93fecdb3faca",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: FOCBS unrestricted quantitative carriage into/through/out is a standalone verified/E1 proposition. Scope limited to absence of quantitative carriage ceiling under the FOCBS border-cash framework. Forbidden inferences block no-controls / no-AML / no-seizure overreads. Bound to traveler summary and entry/exit carriage fields. Not a mechanical map from M2.5 supported→verified."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-002",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["CH-CASH-02"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:01b17759baf75ddb56af885d696ac998be0e153ca1879be7e2c4a3551ecafcaf",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: M2.5 reviewed_text is the semantic source for the negative no-spontaneous-FOCBS-declaration claim. Project status verified (not mapped from M2.5 bounded) because the primary FOCBS statement directly supports the negative and forbidden inferences are strong. Bound into traveler summary, entry/exit, and cash_declaration_threshold. No-declaration ≠ no-control."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-003",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["CH-CASH-03"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:219025c530bcd3ea46fa6799e6b4f25e9220bf388db49765d060f4ffd9390628",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: truthful-information-when-questioned remains independently useful after reconciliation. Trigger 'during a check' preserved; not transformed into proactive declaration. Bound to traveler summary and threshold architecture fields."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "adoption_decision": "reconciled",
+      "project_claim_ids": ["CH-CASH-04"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6b161e141f7ce37a94bd062aad20d7f79f87abbe71d245e8016e7e9b1baf3fa2",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-CASH-04. FOCBS public >=CHF10k inquiry package establishes the same material proposition as Ordinance Art. 3 Abs. 1 (CC-CH-CASH-009). Legal text is the semantic spine; FOCBS guidance is supporting public/current corroboration cited on the same project claim. No second project claim minted. Fingerprint retained for Adoption history."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-005",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["CH-CASH-05"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:0d44e061695995626b60b700acb25dd26d49414bf2d8aa76b7e49f5f10298ecd",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: >=CHF10k FOCBS information-system entry is materially distinct from inquiry (CH-CASH-04) and from Art. 6 Meldung (CH-CASH-10). Kept as standalone verified/E1 operational claim. Not called statistical recording, AML report, or declaration."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-006",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "adoption_decision": "reconciled",
+      "project_claim_ids": ["CH-CASH-08"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:a0e3130d0b208ea386efce9f962149171d79b482fa22e668f83a42c12a39f0f2",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-CASH-08. FOCBS refusal/false-information customs-offence guidance overlaps Art. 5 lit. a–b (CC-CH-CASH-012). Ordinance lit. a–b controls operative scope; FOCBS wording is supporting representation only and must not broaden beyond lit. a–b. No duplicate offence claim."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-007",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "adoption_decision": "reconciled",
+      "project_claim_ids": ["CH-CASH-07"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:a555cf296ea5747b05a242fbbe01fece080d1582ed9316b072621ccdfe643895",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-CASH-07. FOCBS temporary seizure / police handover is the same provisional-seizure mechanism as Ordinance Art. 4 (CC-CH-CASH-011). One canonical claim; temporary and provisional are not separate claims. Suspicion trigger and amount-independence preserved; not threshold-driven."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-008",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": ["CH-CASH-09"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:929b860bbd566b2baf564f2b2f2ebba1ed3f0ac31cef1d4bc7701d8006fae4c2",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: Art. 2 Barmittel definition adopted verified/E0 for category fidelity but left unbound so traveler fields are not turned into a statutory-definition recital. German legal basis preserved; English rule is project rendering only, not unofficial English authority."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-009",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["CH-CASH-04"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:aae2efa32c3a0ec07104053736f4b373d338cba7fb9427f8b2e2314153029675",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Art. 3 Abs. 1 is the legal spine for the canonical >=CHF10k inquiry/information package (CH-CASH-04, verified/E0). Preserves mindestens CHF 10,000, identity, origin/source, intended use, beneficial owner, express-questioning trigger. CC-CH-CASH-004 reconciled into this claim. Forbidden: declaration threshold, carriage ceiling, permit, automatic suspicion."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-010",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["CH-CASH-06"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:7ce5808c0f6fff952d16d2636cde8d1e366bcd056cec68a784eef11c383ba59d",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Art. 3 Abs. 2 below-threshold suspicion inquiry is strategically distinct — prevents 'below CHF 10,000 = outside customs control'. Exact ML/TF suspicion condition preserved. Bound into traveler summary and cash_declaration_threshold wording architecture."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-011",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["CH-CASH-07"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:e299b32dee366f3cf52463517b90904d88e4083c0a712a3e789efeb9c37200b3",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Art. 4 provisional seizure is the legal spine for CH-CASH-07 (verified/E0). Amount-independent; ML/TF suspicion context; provisional only. CC-CH-CASH-007 FOCBS temporary-seizure guidance reconciled into this claim. Bound carefully so cash_declaration_threshold does not read as seizure-on-threshold."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-012",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": ["CH-CASH-08"],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:09b56a64ccf199c3ec1bb6c076f38e7313e57b54b87cad98a398fdc6b598adf3",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Art. 5 lit. a–b refusal/false-information offence is the legal spine for CH-CASH-08 (verified/E0). Scope limited exactly to lit. a–b. CC-CH-CASH-006 FOCBS guidance reconciled as supporting representation. Bound to cash_declaration_threshold; traveler summary not overloaded with penalty detail."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-013",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": ["CH-CASH-10"],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:05356f7b613c0d703e4aa2365f914fb073efcda1ee3e16dec566ac5d918d31e3",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: Art. 6 Abs. 2 amount-independent Meldung adopted as bounded/E1 and unbound. M2.5 reviewed_text retained as German operative rule. Actor/recipient/trigger semantics are insufficient for safe traveler drafting. Binding into cash_declaration_threshold would risk false inference of amount-independent traveler declaration. Distinct from CH-CASH-05 FOCBS information-system entry. Forbidden: Meldung = traveller declaration; traveler must declare regardless of amount."
+    }
+  ]
+}

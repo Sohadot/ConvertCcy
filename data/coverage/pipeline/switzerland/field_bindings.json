@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "switzerland",
+  "notes": "Switzerland Hardening I field bindings only: summary.traveler, rules.bring_foreign_currency_in, rules.take_foreign_currency_out, rules.cash_declaration_threshold. CH-CASH-09 (Art. 2 definition) and CH-CASH-10 (Art. 6 Meldung) remain unbound. Future Hardening II–IV fields intentionally unmapped in this gate.",
+  "bindings": [
+    {
+      "field": "summary.traveler",
+      "claim_ids": [
+        "CH-CASH-01",
+        "CH-CASH-02",
+        "CH-CASH-03",
+        "CH-CASH-04",
+        "CH-CASH-05",
+        "CH-CASH-06",
+        "CH-CASH-07"
+      ],
+      "wording_boundary": "May summarize, concisely: (1) unrestricted quantitative carriage of covered cash/instruments into/through/out of Switzerland under the FOCBS border-cash framework; (2) no spontaneous FOCBS declaration obligation for those covered instruments; (3) when questioned during a FOCBS check, truthful information is required; (4) a separate >= CHF 10,000 inquiry and FOCBS information-system registration layer; (5) below-threshold ML/TF suspicion may still trigger information powers; (6) provisional/temporary seizure on ML/TF suspicion remains possible and is not threshold-driven. Must NOT imply: Switzerland has no cash controls; nothing must be reported; CHF 10,000 declaration threshold; cash above CHF 10,000 is prohibited; CHF 10,000 carriage ceiling; permission required above CHF 10,000; unlimited and unregulated; no AML controls; below CHF 10,000 no controls; Meldung/Art. 6 as traveller declaration; FINMA capital-export monitoring; free import means no customs authority."
+    },
+    {
+      "field": "rules.bring_foreign_currency_in",
+      "claim_ids": [
+        "CH-CASH-01",
+        "CH-CASH-02",
+        "CH-CASH-03",
+        "CH-CASH-04"
+      ],
+      "wording_boundary": "Inbound physical carriage framing: no quantitative inbound carriage ceiling for covered notes/coins/foreign currencies/bearer instruments under the reviewed FOCBS framework; no spontaneous FOCBS declaration obligation; inquiry/information-on-request and >= CHF 10,000 express-questioning package remain. Forbid: free import means no customs authority; no AML/TF control; >= CHF 10,000 requires permission; >= CHF 10,000 must be spontaneously declared; CHF 10,000 declaration threshold; CHF 10,000 carriage ceiling; statistical recording as the inbound rule; FINMA/SNB as inbound cash authorities; capital-account repatriation language in this border field."
+    },
+    {
+      "field": "rules.take_foreign_currency_out",
+      "claim_ids": [
+        "CH-CASH-01",
+        "CH-CASH-02",
+        "CH-CASH-03",
+        "CH-CASH-04"
+      ],
+      "wording_boundary": "Outbound physical carriage framing only (same architecture as inbound): unrestricted quantitative outbound carriage of covered instruments; no spontaneous FOCBS declaration; questioning/information and >= CHF 10,000 inquiry package remain. This field concerns physical border carriage, not capital-account repatriation. Forbid and treat as fidelity-invalid: earned from business or salary; Non-residents may freely repatriate; monitored under FINMA; Large capital exports by residents are monitored under FINMA; CHF 10,000 declaration threshold; CHF 10,000 carriage ceiling; permission required above CHF 10,000; spontaneous declaration at exit; free export means no customs controls."
+    },
+    {
+      "field": "rules.cash_declaration_threshold",
+      "claim_ids": [
+        "CH-CASH-02",
+        "CH-CASH-03",
+        "CH-CASH-04",
+        "CH-CASH-05",
+        "CH-CASH-06",
+        "CH-CASH-07",
+        "CH-CASH-08"
+      ],
+      "wording_boundary": "Encode four architecture layers explicitly and keep them atomic: (A) no spontaneous FOCBS declaration threshold / no obligation to declare covered cash to FOCBS merely for crossing the border; (B) separate >= CHF 10,000 (mindestens / or more / equals or exceeds) inquiry package on express questioning (identity, origin/source, intended use, beneficial owner) plus FOCBS information-system registration at equals-or-exceeds CHF 10,000 — inquiry ≠ recording and neither is spontaneous declaration; (C) below-threshold ML/TF suspicion may still permit information powers under Art. 3 Abs. 2; (D) provisional/temporary seizure and Art. 5 lit. a–b refusal/false-information offence are suspicion/conduct mechanisms, not numeric carriage restrictions. Hard forbid: CHF 10,000 declaration threshold; declaration required at CHF 10,000; cash above CHF 10,000 must be declared; CHF 10,000 carriage ceiling; permission required above CHF 10,000; below CHF 10,000 no controls; no declaration for normal amounts; large amounts recorded for statistical and AML purposes (unsupported statistical purpose); large or suspicious cash movements subject to AML reporting by financial institutions as the border rule; Meldung/Art. 6 as traveller declaration; automatic confiscation; permanent seizure as the threshold consequence."
+    }
+  ]
+}

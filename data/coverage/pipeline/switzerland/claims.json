@@ -1,0 +1,353 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "switzerland",
+  "country_name": "Switzerland",
+  "iso2": "CH",
+  "matrix_date": "2026-09-09",
+  "notes": "Switzerland Hardening I Adoption Gate — border-cash project claims only. Ten distinct claims from thirteen M2.5-reviewed candidates (three public-guidance candidates reconciled into Ordinance-spine claims). Does not draft data/rules/switzerland.json. Art. 6 amount-independent Meldung and Art. 2 definition adopted unbound. No CHF 10,000 declaration threshold or carriage ceiling. No-declaration does not mean no-control.",
+  "claims": [
+    {
+      "claim_id": "CH-CASH-01",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Unrestricted quantitative carriage of covered cash instruments",
+      "rule": "Unrestricted amounts of cash — notes and coins, foreign currencies and bearer negotiable instruments (shares, bonds and cheques) — may be carried into, through and out of Switzerland under the FOCBS cross-border cash framework; no quantitative carriage ceiling is established by that framework",
+      "scope": "FOCBS border-cash framework; inbound, transit and outbound physical carriage of covered instruments; quantitative amount only",
+      "authority": "Federal Office for Customs and Border Security (FOCBS / BAZG)",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-FOCBS-CASH"
+      ],
+      "matching_source_note": "Adopted from CC-CH-CASH-001; fingerprint sha256:0c8529702aa3d8fe6a3272f606b98dae38021019abcabde574ae93fecdb3faca; FOCBS unrestricted-carriage sentence. Quantitative carriage only.",
+      "allowed_wording": [
+        "unrestricted amounts",
+        "into, through and out of Switzerland",
+        "notes and coins",
+        "foreign currencies",
+        "bearer negotiable instruments",
+        "no quantitative carriage ceiling"
+      ],
+      "forbidden_inferences": [
+        "no customs controls",
+        "no AML controls",
+        "no terrorist-financing controls",
+        "no information duties",
+        "no seizure powers",
+        "no sanctions",
+        "no bank or capital-account restrictions",
+        "unlimited and unregulated",
+        "unrestricted movement beyond quantitative carriage",
+        "earned from business or salary",
+        "Non-residents may freely repatriate",
+        "monitored under FINMA",
+        "Large capital exports by residents are monitored under FINMA"
+      ]
+    },
+    {
+      "claim_id": "CH-CASH-02",
+      "status": "verified",
+      "type": "negative",
+      "subject": "No spontaneous FOCBS cash declaration obligation",
+      "rule": "Notes and coins, foreign currencies and bearer negotiable instruments (shares, bonds and cheques) carried into, through or out of Switzerland are not obliged to be declared to the Federal Office for Customs and Border Security (FOCBS)",
+      "scope": "FOCBS cross-border cash framework; spontaneous traveller declaration to FOCBS; covered instrument categories",
+      "authority": "Federal Office for Customs and Border Security (FOCBS / BAZG)",
+      "category": "negative_scope",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-FOCBS-CASH"
+      ],
+      "matching_source_note": "Adopted from CC-CH-CASH-002 M2.5 reviewed_text; fingerprint sha256:01b17759baf75ddb56af885d696ac998be0e153ca1879be7e2c4a3551ecafcaf. Fresh project judgment: verified (not mechanical map from M2.5 bounded). Stronger than 'no declaration for normal amounts'.",
+      "allowed_wording": [
+        "not obliged to declare",
+        "no spontaneous FOCBS declaration",
+        "no obligation to declare this to FOCBS",
+        "notes and coins, foreign currencies and bearer negotiable instruments"
+      ],
+      "forbidden_inferences": [
+        "no border controls",
+        "no customs questioning",
+        "no information obligations",
+        "no AML controls",
+        "no reporting mechanisms",
+        "no seizure",
+        "no sanctions",
+        "no exchange controls generally",
+        "for normal travel amounts",
+        "No general currency declaration is required for normal travel amounts",
+        "No mandatory currency declaration threshold applies for ordinary travelers",
+        "nothing must be reported",
+        "Switzerland has no cash controls"
+      ]
+    },
+    {
+      "claim_id": "CH-CASH-03",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Truthful information duty when questioned during a FOCBS check",
+      "rule": "If a person is questioned about cash by FOCBS staff during a check, the person is obliged to report truthful information",
+      "scope": "FOCBS border check; information-on-request; not spontaneous declaration",
+      "authority": "Federal Office for Customs and Border Security (FOCBS / BAZG)",
+      "category": "mandatory_actions",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-FOCBS-CASH"
+      ],
+      "matching_source_note": "Adopted from CC-CH-CASH-003; fingerprint sha256:219025c530bcd3ea46fa6799e6b4f25e9220bf388db49765d060f4ffd9390628. Trigger 'during a check' preserved.",
+      "allowed_wording": [
+        "questioned about cash by FOCBS staff during a check",
+        "obliged to report truthful information",
+        "information on request"
+      ],
+      "forbidden_inferences": [
+        "travellers must always proactively provide information",
+        "spontaneous declaration duty",
+        "CHF 10,000 declaration threshold",
+        "proactive disclosure at the border without questioning",
+        "for normal travel amounts",
+        "No mandatory currency declaration threshold applies for ordinary travelers"
+      ]
+    },
+    {
+      "claim_id": "CH-CASH-04",
+      "status": "verified",
+      "type": "positive",
+      "subject": ">= CHF 10,000 inquiry / information package on express questioning",
+      "rule": "In cross-border traffic, the person required to provide information must, upon express questioning by the customs office, provide information as to their person; concerning the import, export and transit of cash amounting to at least CHF 10,000 or the corresponding equivalent in foreign currencies; concerning the origin and the intended use of the cash; and concerning the beneficial owner. FOCBS current public guidance correspondingly states that a person carrying, or suspected of carrying, CHF 10,000 or more will be asked to disclose identity, source, intended use and beneficial owner",
+      "scope": "Ordinance Art. 3 Abs. 1 express-questioning package; FOCBS operational corroboration; operator >= / mindestens CHF 10,000; Ein-/Aus-/Durchfuhr",
+      "authority": "SR 631.052 Art. 3 Abs. 1; FOCBS current cash guidance",
+      "category": "legal_thresholds",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 2,
+      "source_refs": [
+        "SRC-CH-ORD-631-052",
+        "SRC-CH-FOCBS-CASH"
+      ],
+      "matching_source_note": "Canonical claim from CC-CH-CASH-009 (Art. 3 Abs. 1 German legal spine; fingerprint sha256:aae2efa32c3a0ec07104053736f4b373d338cba7fb9427f8b2e2314153029675) with CC-CH-CASH-004 reconciled as supporting FOCBS guidance (fingerprint sha256:6b161e141f7ce37a94bd062aad20d7f79f87abbe71d245e8016e7e9b1baf3fa2). Operator remains mindestens / CHF 10,000 or more / >=. Not a declaration threshold or carriage ceiling.",
+      "allowed_wording": [
+        "at least CHF 10,000",
+        "mindestens 10 000 Franken",
+        "CHF 10,000 or more",
+        "equals or exceeds CHF 10,000",
+        "upon express questioning",
+        "identity",
+        "source",
+        "origin",
+        "intended use",
+        "beneficial owner",
+        "import, export and transit"
+      ],
+      "forbidden_inferences": [
+        "CHF 10,000 declaration threshold",
+        "cash above CHF 10,000 must be declared",
+        "declaration required at CHF 10,000",
+        "CHF 10,000 carriage ceiling",
+        "permission required above CHF 10,000",
+        "permit requirement",
+        "automatic suspicion at CHF 10,000",
+        "authorisation required above CHF 10,000",
+        "statistical and AML purposes",
+        "anti-money laundering reporting requirements by financial institutions"
+      ]
+    },
+    {
+      "claim_id": "CH-CASH-05",
+      "status": "verified",
+      "type": "operational",
+      "subject": ">= CHF 10,000 FOCBS information-system entry",
+      "rule": "If the amount of cash equals or exceeds CHF 10,000, a respective entry is registered in the FOCBS information system",
+      "scope": "FOCBS public operational registration mechanic; distinct from inquiry package and from Ordinance Art. 6 Meldung",
+      "authority": "Federal Office for Customs and Border Security (FOCBS / BAZG)",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-FOCBS-CASH"
+      ],
+      "matching_source_note": "Adopted from CC-CH-CASH-005; fingerprint sha256:0d44e061695995626b60b700acb25dd26d49414bf2d8aa76b7e49f5f10298ecd. Inquiry ≠ recording. Not statistical recording unless separately established. Distinct from CH-CASH-10 Art. 6 amount-independent Meldung.",
+      "allowed_wording": [
+        "equals or exceeds CHF 10,000",
+        "registered in the FOCBS information system",
+        "information-system entry"
+      ],
+      "forbidden_inferences": [
+        "statistical recording",
+        "statistical and AML purposes",
+        "recorded by customs for statistical",
+        "AML report by the traveller",
+        "traveller declaration",
+        "registration means suspicious",
+        "registration means prohibited",
+        "CHF 10,000 declaration threshold",
+        "CHF 10,000 carriage ceiling",
+        "anti-money laundering reporting requirements by financial institutions"
+      ]
+    },
+    {
+      "claim_id": "CH-CASH-06",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Below-threshold suspicion information power (Art. 3 Abs. 2)",
+      "rule": "Where there is suspicion of money laundering or terrorist financing, the customs office may also require information if the amount of cash does not reach the threshold of CHF 10,000 or the corresponding equivalent in foreign currencies",
+      "scope": "Ordinance Art. 3 Abs. 2; below CHF 10,000; ML/TF suspicion condition required",
+      "authority": "SR 631.052 Art. 3 Abs. 2",
+      "category": "legal_thresholds",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-ORD-631-052"
+      ],
+      "matching_source_note": "Adopted from CC-CH-CASH-010; fingerprint sha256:7ce5808c0f6fff952d16d2636cde8d1e366bcd056cec68a784eef11c383ba59d. Prevents 'below CHF 10,000 = outside FOCBS information controls'.",
+      "allowed_wording": [
+        "suspicion of money laundering or terrorist financing",
+        "below the threshold of CHF 10,000",
+        "may also require information",
+        "Art. 3 Abs. 2"
+      ],
+      "forbidden_inferences": [
+        "below CHF 10,000 no controls",
+        "FOCBS can question anyone for any reason",
+        "below-threshold declaration requirement",
+        "below-threshold seizure automatically",
+        "all amounts automatically recorded"
+      ]
+    },
+    {
+      "claim_id": "CH-CASH-07",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Provisional / temporary seizure on ML/TF suspicion",
+      "rule": "The customs office may provisionally seize cash pursuant to Article 104 of the Customs Act (ZG); provisional seizure is permissible independent of the amount of cash. FOCBS current guidance states that if there is suspicion of money laundering or terrorist financing, the cash may be seized temporarily and handed over to the police",
+      "scope": "Ordinance Art. 4 provisional seizure (amount-independent) with FOCBS temporary-seizure and police-handover operational corroboration; ML/TF suspicion context",
+      "authority": "SR 631.052 Art. 4; FOCBS current cash guidance",
+      "category": "operational",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 2,
+      "source_refs": [
+        "SRC-CH-ORD-631-052",
+        "SRC-CH-FOCBS-CASH"
+      ],
+      "matching_source_note": "Canonical claim from CC-CH-CASH-011 (Art. 4; fingerprint sha256:e299b32dee366f3cf52463517b90904d88e4083c0a712a3e789efeb9c37200b3) with CC-CH-CASH-007 reconciled as FOCBS guidance (fingerprint sha256:a555cf296ea5747b05a242fbbe01fece080d1582ed9316b072621ccdfe643895). Temporary/provisional only; not threshold-triggered.",
+      "allowed_wording": [
+        "provisionally seize",
+        "temporarily seized",
+        "independent of the amount",
+        "suspicion of money laundering or terrorist financing",
+        "handed over to the police",
+        "Article 104 ZG"
+      ],
+      "forbidden_inferences": [
+        "CHF 10,000 automatically triggers seizure",
+        "permanent confiscation",
+        "forfeiture",
+        "conviction automatically follows",
+        "all CHF 10,000+ cash is seized",
+        "all suspicious amounts permanently retained"
+      ]
+    },
+    {
+      "claim_id": "CH-CASH-08",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Refusal / false information offence (Art. 5 lit. a–b)",
+      "rule": "Refused or false provision of information under Article 3 paragraph 1 letters a and b constitutes an administrative offence (Ordnungswidrigkeit) within the meaning of Article 127 paragraph 1 of the Customs Act (ZG). FOCBS public guidance correspondingly states that refusal to provide information or giving false information constitutes a customs offence and may result in a penalty",
+      "scope": "Ordinance Art. 5 limited to Art. 3 Abs. 1 lit. a–b (person; Ein-/Aus-/Durchfuhr of Barmittel at/above threshold); FOCBS public corroboration",
+      "authority": "SR 631.052 Art. 5; FOCBS current cash guidance",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 2,
+      "source_refs": [
+        "SRC-CH-ORD-631-052",
+        "SRC-CH-FOCBS-CASH"
+      ],
+      "matching_source_note": "Canonical claim from CC-CH-CASH-012 (Art. 5 lit. a–b; fingerprint sha256:09b56a64ccf199c3ec1bb6c076f38e7313e57b54b87cad98a398fdc6b598adf3) with CC-CH-CASH-006 reconciled as FOCBS guidance (fingerprint sha256:a0e3130d0b208ea386efce9f962149171d79b482fa22e668f83a42c12a39f0f2). Does not broaden beyond lit. a–b.",
+      "allowed_wording": [
+        "refused or false provision of information",
+        "Article 3 paragraph 1 letters a and b",
+        "Ordnungswidrigkeit",
+        "Article 127 paragraph 1 ZG",
+        "customs offence",
+        "may result in a penalty"
+      ],
+      "forbidden_inferences": [
+        "all failure to comply with Swiss cash controls is an offence",
+        "automatic confiscation",
+        "permanent seizure",
+        "conviction automatically follows",
+        "Art. 5 covers lit. c and d",
+        "generic border-cash non-compliance offence"
+      ]
+    },
+    {
+      "claim_id": "CH-CASH-09",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Legal definition of Barmittel (Art. 2)",
+      "rule": "For the purposes of SR 631.052, Barmittel means cash money (Swiss and foreign banknotes and coins that are in circulation as means of payment) and transferable bearer instruments, shares, bonds, cheques and similar securities",
+      "scope": "Ordinance Art. 2 lit. b definition; category fidelity guardrail; not a public traveler recital requirement",
+      "authority": "SR 631.052 Art. 2",
+      "category": "other",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-ORD-631-052"
+      ],
+      "matching_source_note": "Adopted unbound from CC-CH-CASH-008; fingerprint sha256:929b860bbd566b2baf564f2b2f2ebba1ed3f0ac31cef1d4bc7701d8006fae4c2. German legal definition controls; English rule is faithful rendering for project matrix only, not an official English instrument. Preserves 'ähnliche Wertpapiere' / similar securities.",
+      "allowed_wording": [
+        "Barmittel",
+        "banknotes and coins",
+        "transferable bearer instruments",
+        "shares, bonds, cheques",
+        "similar securities",
+        "ähnliche Wertpapiere"
+      ],
+      "forbidden_inferences": [
+        "every negotiable instrument equals ordinary cash without distinction",
+        "unofficial English Fedlex text is authoritative",
+        "collapse ordinance definition into FOCBS shorthand only"
+      ]
+    },
+    {
+      "claim_id": "CH-CASH-10",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "Amount-independent customs Meldung permission (Art. 6 Abs. 2)",
+      "rule": "Die Meldung ist unabhängig vom Betrag der Barmittel zulässig",
+      "scope": "Ordinance Art. 6 Abs. 2; authority-to-authority reporting permission; amount-independent; not traveller spontaneous declaration",
+      "authority": "SR 631.052 Art. 6 Abs. 2",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-ORD-631-052"
+      ],
+      "matching_source_note": "Adopted unbound from CC-CH-CASH-013 M2.5 reviewed_text; fingerprint sha256:05356f7b613c0d703e4aa2365f914fb073efcda1ee3e16dec566ac5d918d31e3. Fresh project judgment: bounded + unbound. German operative wording retained. Distinct from FOCBS public >=CHF10k information-system entry (CH-CASH-05). Must not be drafted as traveller declaration.",
+      "allowed_wording": [
+        "Die Meldung ist unabhängig vom Betrag der Barmittel zulässig",
+        "amount-independent Meldung",
+        "Art. 6 Abs. 2"
+      ],
+      "forbidden_inferences": [
+        "traveller must declare regardless of amount",
+        "Meldung equals traveller declaration",
+        "CHF 10,000 declaration threshold",
+        "reporting is threshold-triggered",
+        "Meldung is made by the traveller",
+        "amount-independent traveller reporting obligation"
+      ]
+    }
+  ]
+}
