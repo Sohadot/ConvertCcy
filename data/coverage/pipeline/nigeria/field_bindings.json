@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "nigeria",
-  "notes": "Hardening I traveler/cash bindings and Hardening II resident/non-resident bindings preserved. Hardening III adds summary.business, rules.business_invoicing_settlement, and rules.banking_conversion_practicality only. NG-B4 fields (country_overview, rules.exchange_controls) remain unbound. EFEMS/BDC/43-item temporal claims adopted but unbound. Legacy general CBN-approval / bank-only / availability formulations are forbidden by bound claim inferences.",
+  "notes": "Hardening I–III bindings preserved byte-identically. Hardening IV / NG-B4 adds country_overview and rules.exchange_controls only. Historical managed-float claims (NG-REG-03/13) and compound/EFEMS expectation claims (NG-REG-07/10) remain unbound. Legacy ‘managed floating’ current-rule wording and ‘significant exchange controls’ severity classification are forbidden by bound claim inferences and wording boundaries.",
   "bindings": [
     {
       "field": "summary.traveler",
@@ -105,6 +105,37 @@
         "NG-BIZ-15"
       ],
       "wording_boundary": "Evidence-grounded operational conversion field only. May state: CBN may appoint Authorised Dealers and Authorised Buyers; Market transaction channels among those classes; transaction rate mutually agreed between purchaser and AD/AB; s.11 construction boundaries (not a macro tightly-controlled claim); and eligible NFEM transactions such as the CBN-listed classes processed by Deposit Money Banks. Forbid: subject to availability; conversion is difficult; FX is scarce; poor rates; bank delays; tightly regulated and often subject to availability; conversion only through authorised dealer banks; all significant FX through authorised dealer banks; free-floating / managed float / market-determined macro regime labels (NG-B4). Do not bind EFEMS interbank infrastructure or BDC architecture into this customer-facing conversion field."
+    },
+    {
+      "field": "country_overview",
+      "claim_ids": [
+        "NG-REG-01",
+        "NG-REG-02",
+        "NG-REG-04",
+        "NG-REG-05",
+        "NG-REG-06",
+        "NG-REG-08",
+        "NG-REG-09",
+        "NG-REG-11"
+      ],
+      "wording_boundary": "Current Nigeria macro overview constraints only — not final public prose. May state: CBN may issue Market guidelines (FEMMPA); CBN Structure-page ‘over the years … largely market driven regime’ operating language; 14 June 2023 willing buyer, willing seller model for domestic FX transactions; 2023 consolidation of official FX windows/segments into NFEM (including I&E rename); strengthened demand-and-supply role in exchange-rate formation under WBWS; NFEM VWA official daily rate; and EFEMS-published USDNGN reference-rate architecture distinct from individual transaction rates. Must distinguish reference/official daily rate from FEMMPA s.9 mutually agreed transaction rates. Must NOT state or imply: Nigeria currently operates a managed floating regime; free-floating / free float; fully liberalised FX; no controls; no intervention / routine intervention / target-band intervention; CBN sets every transaction rate; significant exchange controls; official daily rate equals every transaction rate; parallel market abolished; every Nigerian FX price is identical. Do not bind historical 2016–2023 managed-float claims into this current field."
+    },
+    {
+      "field": "rules.exchange_controls",
+      "claim_ids": [
+        "NG-REG-01",
+        "NG-REG-12",
+        "NG-BIZ-01",
+        "NG-BIZ-02",
+        "NG-BIZ-04",
+        "NG-BIZ-08",
+        "NG-ACC-01",
+        "NG-ACC-09",
+        "NG-CUST-01",
+        "NG-CUST-02",
+        "NG-NGN-01"
+      ],
+      "wording_boundary": "Mechanism-based exchange-controls field — answers what regulatory mechanisms remain, not how severe Nigeria’s control regime is. May state: CBN Market guideline authority; CBN/FMDA EFEMS system regulation; Authorised Dealer/Authorised Buyer appointment and Market channels; documentation-backed Market purchase eligibility; CCI issuance/returns; domiciliary-account opening with Authorised Dealers and related KYC; statutory cash/negotiable-instrument entry/exit declaration in excess of US$10,000; and FEMMPA s.14 physical-naira import/export prohibition baseline. May acknowledge that regulated mechanisms remain without assigning a severity score. Forbid: significant exchange controls; highly restricted FX regime; current managed float; free float; fully liberalised / unrestricted FX market; no controls; no intervention; CBN sets every transaction rate; collapsing multiple mechanisms into a single severity label. Do not invent intervention modality. Do not draft final public prose here."
     }
   ]
 }

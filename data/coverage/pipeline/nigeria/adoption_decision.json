@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "nigeria",
-  "gate": "nigeria_hardening_i_ii_iii_adoption",
-  "baseline_head": "b2d323765db3c460e16924a91a8b14728d180795",
+  "gate": "nigeria_hardening_i_ii_iii_iv_adoption",
+  "baseline_head": "98678ae9a2fc14b1aee14bee092c47ee5c364080",
   "decided_at": "2026-09-09",
   "decided_by": "operator",
   "decision": "PASS",
@@ -12,17 +12,18 @@
     "human_claim_review.json",
     "claim_review_report.json"
   ],
-  "notes": "Hardening I and II adoption rows preserved. Hardening III Adoption Gate adopts CC-NG-BIZ-001..020 into NG-BIZ-01..20. M2.5 ledger frozen (adoption_eligible remains false; claims_adopted remains 0 in M2.5 vocabulary). Business field bindings added for summary.business, rules.business_invoicing_settlement, and rules.banking_conversion_practicality only. EFEMS/BDC/43-item/reporting claims adopted but unbound where they would temporal-noise or inflate customer-facing surfaces. Does not draft nigeria.json. NG-B4 remains unopened.",
+  "notes": "Hardening I–III adoption rows preserved unchanged. Hardening IV / NG-B4 Adoption Gate adopts CC-NG-REG-001..013 into NG-REG-01..13. M2.5 ledger frozen (adoption_eligible remains false; claims_adopted remains 0 in M2.5 vocabulary). Bindings added only for country_overview and rules.exchange_controls. Historical managed-float claims adopted unbound. Compound MP-reforms and EFEMS expectation claims adopted unbound. Does not draft nigeria.json. Current formal floating/managed-float taxonomy not established; significant exchange controls classification remains retired.",
   "stats": {
     "hardening_i_candidates": 8,
     "hardening_ii_candidates": 16,
     "hardening_iii_candidates": 20,
-    "candidates_in_scope_total": 44,
-    "new_project_claims_hardening_iii": 20,
-    "drafting_bound_hardening_iii": 13,
-    "unbound_hardening_iii": 7,
+    "hardening_iv_candidates": 13,
+    "candidates_in_scope_total": 57,
+    "new_project_claims_hardening_iv": 13,
+    "drafting_bound_hardening_iv": 9,
+    "unbound_hardening_iv": 4,
     "not_adopted": 0,
-    "field_bindings_total": 9,
+    "field_bindings_total": 11,
     "publication_changes": 0
   },
   "adoptions": [
@@ -754,8 +755,250 @@
       "reviewed_candidate_fingerprint": "sha256:13fe8a378e7409cd9ed480cbe8040a1ae94650d5491b070f0f9333acc4244781",
       "relationship": "new_project_claim_unbound",
       "rationale": "Fresh judgment: adopt_unbound current/superseded framework claim."
+    },
+    {
+      "candidate_id": "CC-NG-REG-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-01"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E0",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview",
+        "rules.exchange_controls"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:bcf29e97f0f4368d5a722d5eaaabdb098595bd85e2faad4cb97a99f5a508d088",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: FEMMPA Market guideline authority verified E0. Bound to overview and exchange_controls as regulatory authority. Forbids rate-setting/managed-float inferences."
+    },
+    {
+      "candidate_id": "CC-NG-REG-002",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-02"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:666e7287a34f0afa309824e408945010fb58c8edc4fc76ed00b3b89461c2f840",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current_operating_language",
+      "rationale": "Fresh judgment: Structure-page ‘over the years … largely market driven regime’ adopted as bounded operating language (not formal taxonomy). Bound to country_overview only."
+    },
+    {
+      "candidate_id": "CC-NG-REG-003",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-REG-03"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:92f601dbb535b631b4bf7255653c5b3487bc89776162b34726b1ce7477022eed",
+      "relationship": "new_project_claim_temporal_unbound",
+      "current_vs_historical": "historical_2016_2023",
+      "rationale": "Fresh judgment: adopt_unbound historical 2016–2023 managed floating + I&E introduction. Retained for temporal audit; must not enter current overview/controls bindings."
+    },
+    {
+      "candidate_id": "CC-NG-REG-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-04"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:d6984b0aa1c8615d8988b854917b26a4eb7126fcaac72a53189749df7b679181",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: WBWS operating model verified. Core current-regime operating claim for country_overview. Forbids free-float / no-regulation / no-intervention inferences."
+    },
+    {
+      "candidate_id": "CC-NG-REG-005",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-05"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:1a76a10373d1ee6deee4c2190f7b2683ec0de29f1acac872f549ccc73c0b4706",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: NFEM consolidation bounded to Structure-page window/segment consolidation wording. Bound to country_overview. Forbids parallel-market abolition / identical-price inferences."
+    },
+    {
+      "candidate_id": "CC-NG-REG-006",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-06"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:6f18e458c882147f787285d492c5532b974f12d808c09804dd7b47be1323fa5c",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: demand/supply rate-formation under WBWS verified. Distinct from NG-BIZ-03. Bound to country_overview. Forbids free-float and no-intervention inferences."
+    },
+    {
+      "candidate_id": "CC-NG-REG-007",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-REG-07"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:5e43bb7ac434f005060a5fdaef92680345ade7e357be61e2f2d5a3f37e5f7959",
+      "relationship": "new_project_claim_unbound",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: adopt_unbound compound MP-reforms / FXCode / B-Matching / EFEMS infrastructure narrative to avoid overview clutter and H3 EFEMS duplication."
+    },
+    {
+      "candidate_id": "CC-NG-REG-008",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-08"
+      ],
+      "project_status": "bounded",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:2170b302e3cbc3c79f76b2cf17bc963789859f076fe9283f5d125d123c9d661b",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: FX Market page trade-transaction unification / I&E→NFEM rename adopted bounded. Complementary to NG-REG-05; both retained for non-duplicate propositions."
+    },
+    {
+      "candidate_id": "CC-NG-REG-009",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-09"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:27c6e50a3ac97820861beba39699ab9d8fc4d46e883d482f8b8c2ad3186e8d87",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: NFEM VWA official daily rate verified. Bound to country_overview with NG-REG-11 to preserve reference/official vs transaction-rate distinction."
+    },
+    {
+      "candidate_id": "CC-NG-REG-010",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-REG-10"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:7d3cb9393bd63ff8c0bf0fd80d6ad43bdc0009fdf4264fc531efaaba5b6aa52a",
+      "relationship": "new_project_claim_unbound",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: adopt_unbound EFEMS market-driven expectation. Infrastructure expectation must not become public taxonomy or entitlement."
+    },
+    {
+      "candidate_id": "CC-NG-REG-011",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-11"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "country_overview"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:cb344fb3796c6a33f321923f7ea1ebac4f2afb922d7a83edafbf0fbec6b5fda9",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: EFEMS USDNGN reference-rate publication verified. High-value fidelity guardrail bound to country_overview."
+    },
+    {
+      "candidate_id": "CC-NG-REG-012",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "NG-REG-12"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": true,
+      "binding_fields": [
+        "rules.exchange_controls"
+      ],
+      "reviewed_candidate_fingerprint": "sha256:79ce2d2363ad7ce360d26b99f183c978df9d3dea36e7aa35f4bf37d10d2c13e2",
+      "relationship": "new_project_claim",
+      "current_vs_historical": "current",
+      "rationale": "Fresh judgment: CBN/FMDA EFEMS regulation verified. Bound to exchange_controls as infrastructure regulatory mechanism, not taxonomy."
+    },
+    {
+      "candidate_id": "CC-NG-REG-013",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "NG-REG-13"
+      ],
+      "project_status": "verified",
+      "final_evidence_level": "E1",
+      "binding_eligible": false,
+      "binding_fields": [],
+      "reviewed_candidate_fingerprint": "sha256:a3327b12675cd3967e005474331f74f60446af5227b331481343ce64d8ca65ee",
+      "relationship": "new_project_claim_temporal_unbound",
+      "current_vs_historical": "historical_2016_2023",
+      "rationale": "Fresh judgment: adopt_unbound historical heading-scoped managed floating. Supports rejection of legacy current-rule managed-float wording; unbound from current fields."
     }
   ],
   "hardening_ii_baseline_head": "76c9c5ee20b19404eafa1469ff7c449ae6279666",
-  "hardening_i_baseline_head": "cd81cf657277edf4e186a0b3126edbd8d55466a9"
+  "hardening_i_baseline_head": "cd81cf657277edf4e186a0b3126edbd8d55466a9",
+  "hardening_iii_baseline_head": "b2d323765db3c460e16924a91a8b14728d180795",
+  "hardening_iv_m2_5_baseline_head": "98678ae9a2fc14b1aee14bee092c47ee5c364080"
 }
