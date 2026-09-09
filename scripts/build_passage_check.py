@@ -263,6 +263,36 @@ DECLARATION = {
             "physical MAD ≤2,000 traveller carriage exception"
         ),
     },
+    "nigeria": {
+        "thresholds": [
+            {"value": 10000, "currency": "USD", "operator": ">",
+             "scope": "cash or negotiable instruments (or equivalent)",
+             "applies": "entering or leaving Nigeria",
+             "authority": "Money Laundering (Prevention and Prohibition) Act, 2022 / Nigeria Customs Service",
+             "mechanism": "statutory MLPPA s.3(3) declaration trigger when transporting cash or negotiable instruments in excess of US$10,000 or its equivalent (operator >; exactly USD 10,000 is outside this statutory trigger); declaration obligation, NOT a foreign-currency carriage ceiling"},
+            {"value": 10000, "currency": "USD", "operator": ">=",
+             "scope": "cash or negotiable instruments as captured on the Customs electronic currency declaration form",
+             "applies": "Customs e-CDF operational interface for Nigeria border declaration",
+             "authority": "Nigeria Customs Service — Electronic Currency Declaration",
+             "mechanism": "Customs operational e-CDF trigger of US$10,000 or more / equal to or greater than US$10,000 (operator >=); OPERATIONAL interface posture only — does not formally amend or interpret the statutory MLPPA > trigger into a single reconciled operator"},
+        ],
+        "note": "Keep statutory and operational triggers distinct — do not flatten. "
+                "(A) Statutory MLPPA 2022: transportation of cash or negotiable instruments in excess of US$10,000 "
+                "or its equivalent into or out of Nigeria shall be declared to the Nigeria Customs Service "
+                "(operator >; exactly USD 10,000 is outside the statutory trigger). "
+                "(B) Separately, current Customs e-CDF operational guidance uses US$10,000 or more / >= "
+                "(operator >=). The Customs operational interface does not formally amend the statute. "
+                "Declaration threshold ≠ foreign-currency carriage ceiling; do not publish "
+                "'USD 10,000 cash limit', 'maximum USD 10,000', or 'outbound limited to amount declared on entry'. "
+                "Separately, FEMMPA s.14 prohibits importation and exportation of the naira except as permitted "
+                "under guidelines issued from time to time by the Central Bank; a current numeric traveller "
+                "NGN exception is not established in the published Nigeria rules and must not be invented.",
+        "pair_surface_summary": (
+            "statutory cash/NI declaration > USD 10,000 · "
+            "Customs e-CDF operational >= USD 10,000 · "
+            "physical NGN prohibited except CBN guidelines (no numeric exception established)"
+        ),
+    },
     "pakistan": {
         "thresholds": [
             {"value": 10000, "currency": "USD", "scope": "cash or bearer negotiable instruments (or equivalent)",
@@ -443,6 +473,18 @@ EXCHANGE_CONTROLS = {
                 "under Office des Changes / IGOC 2026; current and capital operations use "
                 "authorised channels, allowances, account rules and transaction-specific "
                 "conditions rather than one universal prior-approval screen"),
+    "nigeria": ("capital_account_regulated",
+                "CBN-regulated foreign-exchange Market architecture under FEMMPA: Authorised Dealer/"
+                "Authorised Buyer appointment and Market channels; documentation-backed Market FX "
+                "purchase eligibility; Certificate of Capital Importation issuance and related CBN "
+                "returns for qualifying inward investment; foreign-currency domiciliary accounts with "
+                "Authorised Dealers subject to financial-institution identification evidence; statutory "
+                "cash/negotiable-instrument border declaration in excess of US$10,000; physical-naira "
+                "import/export prohibition except as permitted under Central Bank guidelines; and CBN/"
+                "FMDA regulation of EFEMS with published guidelines for FX Code / Market Operating "
+                "Guidelines compliance — discrete regulated mechanisms rather than one universal "
+                "prior-approval screen, without asserting a formal floating/managed-float taxonomy "
+                "or a severity classification of exchange controls"),
     "pakistan": ("capital_account_regulated",
                  "No general exchange controls on the current account; capital account regulated by the SBP"),
     "saudi-arabia": ("supervisory_peg",

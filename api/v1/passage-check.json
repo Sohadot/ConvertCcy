@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-09-08T21:01:41+00:00",
+ "generated_at": "2026-09-09T19:51:05+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -15,9 +15,9 @@
  "engine": "ConvertCCY Passage Check",
  "engine_version": "1.0",
  "built_from": "rules/dataset.json",
- "source_dataset_generated_at": "2026-09-08T21:01:40+00:00",
+ "source_dataset_generated_at": "2026-09-09T19:50:34+00:00",
  "engine_notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. Structured thresholds are transcribed from each entry's cash_declaration_threshold field. Currency conversions shown in the tool are indicative only and are not governed figures.",
- "count": 22,
+ "count": 23,
  "countries": [
   {
    "country_name": "Australia",
@@ -3539,6 +3539,358 @@
     }
    ],
    "disclaimer": "This page provides general informational reference only. Foreign-exchange, monetary-policy and cross-border cash rules in Morocco are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, licensing and the applicable Office des Changes / Bank Al-Maghrib framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Office des Changes, Bank Al-Maghrib and an authorised intermediary bank before making any financial or travel decisions."
+  },
+  {
+   "country_name": "Nigeria",
+   "country_slug": "nigeria",
+   "iso2": "NG",
+   "currency_code": "NGN",
+   "currency_name": "Nigerian Naira",
+   "region": "Sub-Saharan Africa",
+   "last_reviewed": "2026-09-09",
+   "rules_page": "/rules/nigeria-foreign-currency-rules.html",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "USD",
+      "operator": ">",
+      "scope": "cash or negotiable instruments (or equivalent)",
+      "applies": "entering or leaving Nigeria",
+      "authority": "Money Laundering (Prevention and Prohibition) Act, 2022 / Nigeria Customs Service",
+      "mechanism": "statutory MLPPA s.3(3) declaration trigger when transporting cash or negotiable instruments in excess of US$10,000 or its equivalent (operator >; exactly USD 10,000 is outside this statutory trigger); declaration obligation, NOT a foreign-currency carriage ceiling"
+     },
+     {
+      "value": 10000,
+      "currency": "USD",
+      "operator": ">=",
+      "scope": "cash or negotiable instruments as captured on the Customs electronic currency declaration form",
+      "applies": "Customs e-CDF operational interface for Nigeria border declaration",
+      "authority": "Nigeria Customs Service — Electronic Currency Declaration",
+      "mechanism": "Customs operational e-CDF trigger of US$10,000 or more / equal to or greater than US$10,000 (operator >=); OPERATIONAL interface posture only — does not formally amend or interpret the statutory MLPPA > trigger into a single reconciled operator"
+     }
+    ],
+    "note": "Keep statutory and operational triggers distinct — do not flatten. (A) Statutory MLPPA 2022: transportation of cash or negotiable instruments in excess of US$10,000 or its equivalent into or out of Nigeria shall be declared to the Nigeria Customs Service (operator >; exactly USD 10,000 is outside the statutory trigger). (B) Separately, current Customs e-CDF operational guidance uses US$10,000 or more / >= (operator >=). The Customs operational interface does not formally amend the statute. Declaration threshold ≠ foreign-currency carriage ceiling; do not publish 'USD 10,000 cash limit', 'maximum USD 10,000', or 'outbound limited to amount declared on entry'. Separately, FEMMPA s.14 prohibits importation and exportation of the naira except as permitted under guidelines issued from time to time by the Central Bank; a current numeric traveller NGN exception is not established in the published Nigeria rules and must not be invented.",
+    "pair_surface_summary": "statutory cash/NI declaration > USD 10,000 · Customs e-CDF operational >= USD 10,000 · physical NGN prohibited except CBN guidelines (no numeric exception established)",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "CBN-regulated foreign-exchange Market architecture under FEMMPA: Authorised Dealer/Authorised Buyer appointment and Market channels; documentation-backed Market FX purchase eligibility; Certificate of Capital Importation issuance and related CBN returns for qualifying inward investment; foreign-currency domiciliary accounts with Authorised Dealers subject to financial-institution identification evidence; statutory cash/negotiable-instrument border declaration in excess of US$10,000; physical-naira import/export prohibition except as permitted under Central Bank guidelines; and CBN/FMDA regulation of EFEMS with published guidelines for FX Code / Market Operating Guidelines compliance — discrete regulated mechanisms rather than one universal prior-approval screen, without asserting a formal floating/managed-float taxonomy or a severity classification of exchange controls",
+    "transcribed_from": "rules.exchange_controls"
+   },
+   "rules": {
+    "bring_foreign_currency_in": {
+     "label": "Bringing currency in",
+     "ontology": "declaration-regimes",
+     "text": "On entry, individuals transporting cash or negotiable instruments in excess of US$10,000 or its equivalent shall declare them to the Nigeria Customs Service (Money Laundering (Prevention and Prohibition) Act, 2022 — operator >). Reviewed CBN guidance states that this declaration rule does not itself prohibit genuinely owned or obtained funds above that amount from being brought into Nigeria. This field is declaration framing only: it does not convert the threshold into a carrying entitlement or a carriage ceiling.",
+     "sources": [
+      {
+       "url": "https://www.nfiu.gov.ng/images/Downloads/downloads/mlpaamend.pdf",
+       "pages": [
+        1
+       ],
+       "section": "MLPPA s.3(3) — inbound declaration in excess of US$10,000",
+       "article": "Section 3(3)",
+       "source_kind": "pdf"
+      },
+      {
+       "url": "https://www.cbn.gov.ng/out/2013/fprd/circular%20to%20all%20banks%20and%20other%20financial%20institutions-us$10,000.pdf",
+       "pages": [
+        1
+       ],
+       "section": "CBN circular — declaration versus prohibition distinction",
+       "source_kind": "pdf"
+      }
+     ],
+     "source": {
+      "url": "https://www.nfiu.gov.ng/images/Downloads/downloads/mlpaamend.pdf",
+      "pages": [
+       1
+      ],
+      "section": "MLPPA s.3(3) — inbound declaration in excess of US$10,000",
+      "article": "Section 3(3)",
+      "source_kind": "pdf"
+     }
+    },
+    "take_foreign_currency_out": {
+     "label": "Taking currency out",
+     "ontology": "import-export-ceilings",
+     "text": "On exit, individuals transporting cash or negotiable instruments in excess of US$10,000 or its equivalent shall declare them to the Nigeria Customs Service (statutory operator >). A person who falsely declares or fails to declare as required commits an offence and is liable on conviction to forfeiture of the undeclared funds or negotiable instrument, or to imprisonment for a term of at least two years, or both. Separately and narrowly, where foreign currency in excess of US$10,000 is imported in cash (not by bank draft, mail, or telegraphic transfer) and deposited in a domiciliary account with an authorised dealer, withdrawals from that account may be made only in cash and that imported cash is exportable from Nigeria only in cash (FEMMPA s.21). This field does not treat the amount declared on entry as a universal outbound ceiling, and it does not impose a general authorised-dealer-document requirement on every departing traveller.",
+     "sources": [
+      {
+       "url": "https://www.nfiu.gov.ng/images/Downloads/downloads/mlpaamend.pdf",
+       "pages": [
+        1
+       ],
+       "section": "MLPPA s.3(3)–(5) — outbound declaration; liable on conviction",
+       "article": "Section 3(3)-(5)",
+       "source_kind": "pdf"
+      },
+      {
+       "url": "https://nigeriatradeportal.fmiti.gov.ng/media/Nigeria%20Foreign%20Exchange%20(Monitoring%20and%20Miscellaneous%20Provisions)%20Act%201995.pdf",
+       "pages": [
+        1
+       ],
+       "section": "FEMMPA s.21 — imported-cash domiciliary withdrawal/re-export condition",
+       "article": "Section 21",
+       "source_kind": "pdf"
+      }
+     ],
+     "source": {
+      "url": "https://www.nfiu.gov.ng/images/Downloads/downloads/mlpaamend.pdf",
+      "pages": [
+       1
+      ],
+      "section": "MLPPA s.3(3)–(5) — outbound declaration; liable on conviction",
+      "article": "Section 3(3)-(5)",
+      "source_kind": "pdf"
+     }
+    },
+    "cash_declaration_threshold": {
+     "label": "Declaration threshold",
+     "ontology": "declaration-regimes",
+     "text": "Keep the legal and operational triggers distinct. Statutory Money Laundering (Prevention and Prohibition) Act, 2022: transportation of cash or negotiable instruments in excess of US$10,000 or its equivalent into or out of Nigeria shall be declared to the Nigeria Customs Service (operator >). Separately, current Customs operational guidance on the electronic currency declaration form uses a declaration trigger of US$10,000 or more / equal to or greater than US$10,000 (operator >=). The Customs operational interface does not formally amend or interpret the statutory > trigger into a single reconciled operator. Do not publish one flattened ‘USD 10,000 at entry and exit’ figure that erases the > versus >= distinction.",
+     "sources": [
+      {
+       "url": "https://www.nfiu.gov.ng/images/Downloads/downloads/mlpaamend.pdf",
+       "pages": [
+        1
+       ],
+       "section": "MLPPA s.3(3) — statutory trigger in excess of US$10,000 (operator >)",
+       "article": "Section 3(3)",
+       "source_kind": "pdf"
+      },
+      {
+       "url": "https://cdf.nigeriatradehub.gov.ng/new/cdf.php",
+       "pages": [],
+       "section": "Customs e-CDF — operational trigger US$10,000 or more / >=",
+       "source_kind": "html"
+      }
+     ],
+     "source": {
+      "url": "https://www.nfiu.gov.ng/images/Downloads/downloads/mlpaamend.pdf",
+      "pages": [
+       1
+      ],
+      "section": "MLPPA s.3(3) — statutory trigger in excess of US$10,000 (operator >)",
+      "article": "Section 3(3)",
+      "source_kind": "pdf"
+     }
+    },
+    "exchange_controls": {
+     "label": "Exchange controls",
+     "ontology": "exchange-controls",
+     "text": "Describe remaining regulatory mechanisms, not a severity score. Under FEMMPA, CBN may issue Market guidelines (with Ministerial approval) governing transaction procedures. CBN may appoint Authorised Dealers and Authorised Buyers; Market transactions run through the statutory public/AD/AB channels. Market foreign-exchange purchases require appropriate documentation except where a transaction is prohibited by law and subject to section 11(b). Authorised Dealers issue Certificates of Capital Importation and make related returns to CBN for qualifying inward investment. Any person may open and maintain a foreign-currency domiciliary account with an Authorised Dealer, subject to financial-institution identification evidence for opening or wholesale cash/inter-bank funding. Individuals must declare cash or negotiable instruments in excess of US$10,000 on entry and exit. Physical naira import and export remain prohibited except as permitted under Central Bank guidelines. Separately, CBN, with the Financial Markets Dealers Association, regulates the EFEMS system and publishes guidelines, rules, and real-time data for FX Code and Market Operating Guidelines compliance. These are discrete regulated mechanisms; this field does not classify Nigeria as fully liberalised or invent a current intervention modality.",
+     "sources": [
+      {
+       "url": "https://nigeriatradeportal.fmiti.gov.ng/media/Nigeria%20Foreign%20Exchange%20(Monitoring%20and%20Miscellaneous%20Provisions)%20Act%201995.pdf",
+       "pages": [
+        1
+       ],
+       "section": "FEMMPA — guideline authority; AD/AB; Market channels; documentation; CCI; domiciliary; cash declaration cross-refs; naira prohibition",
+       "source_kind": "pdf"
+      },
+      {
+       "url": "https://www.nfiu.gov.ng/images/Downloads/downloads/mlpaamend.pdf",
+       "pages": [
+        1
+       ],
+       "section": "MLPPA s.3(3) — border cash/NI declaration mechanism",
+       "article": "Section 3(3)",
+       "source_kind": "pdf"
+      },
+      {
+       "url": "https://www.cbn.gov.ng/Out/2023/CCD/CBN%20Customer%20Due%20diligence%20Reg.%202023-combined.pdf",
+       "pages": [
+        1
+       ],
+       "section": "CDD Reg. 40 — domiciliary KYC / identification mechanism",
+       "article": "Regulation 40",
+       "source_kind": "pdf"
+      },
+      {
+       "url": "https://www.cbn.gov.ng/Out/2024/FMD/FREQUENTLY%20ASKED%20QUESTIONS%20(FAQS)%20ON%20THE%20ELECTRONIC%20FOREIGN%20EXCHANGE%20MATCHING%20SYSTEM%20(EFEMS)%20.pdf",
+       "pages": [
+        1
+       ],
+       "section": "EFEMS FAQs — CBN/FMDA regulation of EFEMS",
+       "source_kind": "pdf"
+      }
+     ],
+     "source": {
+      "url": "https://nigeriatradeportal.fmiti.gov.ng/media/Nigeria%20Foreign%20Exchange%20(Monitoring%20and%20Miscellaneous%20Provisions)%20Act%201995.pdf",
+      "pages": [
+       1
+      ],
+      "section": "FEMMPA — guideline authority; AD/AB; Market channels; documentation; CCI; domiciliary; cash declaration cross-refs; naira prohibition",
+      "source_kind": "pdf"
+     }
+    },
+    "resident_holding_rules": {
+     "label": "Resident rules",
+     "ontology": "residency-divergence",
+     "text": "Any person may open, maintain and operate a foreign-currency domiciliary account with an Authorised Dealer. The account may be denominated in any internationally convertible currency, and a person may open more than one domiciliary account in the same or different currencies and at the same or different banks. Except as provided under any other enactment or law, an applicant to open a domiciliary account under FEMMPA is not obliged to disclose the source of the foreign currency sought to be deposited. Exporters of goods, including petroleum products, must open and maintain a separate foreign-currency domiciliary account for export proceeds — a class distinct from ordinary domiciliary accounts. Where a customer opens a domiciliary account or makes a wholesale cash or inter-bank deposit, the financial institution must obtain appropriate identification evidence (and, for inter-bank funding, satisfy itself that the transferring institution is regulated for ML/TF/PF prevention). Identification / KYC requirements are not treated here as a general prior CBN approval rule for resident foreign-currency accounts.",
+     "sources": [
+      {
+       "url": "https://nigeriatradeportal.fmiti.gov.ng/media/Nigeria%20Foreign%20Exchange%20(Monitoring%20and%20Miscellaneous%20Provisions)%20Act%201995.pdf",
+       "pages": [
+        1
+       ],
+       "section": "FEMMPA domiciliary opening, denomination, source-disclosure limb, multiple accounts, exporter account",
+       "source_kind": "pdf"
+      },
+      {
+       "url": "https://www.cbn.gov.ng/Out/2023/CCD/CBN%20Customer%20Due%20diligence%20Reg.%202023-combined.pdf",
+       "pages": [
+        1
+       ],
+       "section": "CDD Reg. 40 — identification evidence for domiciliary opening / wholesale deposits",
+       "article": "Regulation 40",
+       "source_kind": "pdf"
+      }
+     ],
+     "source": {
+      "url": "https://nigeriatradeportal.fmiti.gov.ng/media/Nigeria%20Foreign%20Exchange%20(Monitoring%20and%20Miscellaneous%20Provisions)%20Act%201995.pdf",
+      "pages": [
+       1
+      ],
+      "section": "FEMMPA domiciliary opening, denomination, source-disclosure limb, multiple accounts, exporter account",
+      "source_kind": "pdf"
+     }
+    },
+    "non_resident_rules": {
+     "label": "Non-resident rules",
+     "ontology": "residency-divergence",
+     "text": "Non-resident treatment is category-specific. For external and non-resident non-Nigerian customers, financial institutions must confirm permanent residence outside Nigeria; eligible external-account classes include embassies, high commissions, legations or consulates and their career/established members, and other internationally recognised organisations accorded diplomatic status and their expatriate officials. Separate eligible non-resident-account classes include overseas correspondence and examination bodies, foreign companies executing approved contracts in Nigeria, and foreign professional bodies. Accounts under CDD Regulation 25 subregulations (2) and (4) shall, on completion of the contract or the applicant’s business in Nigeria, be closed and any balance transferred to the customer’s account in the country of residence after proper documentation. Cases not classified under those eligible classes are referred to the Central Bank for clarification — a referral rule, not a universal non-resident CBN-approval requirement. Separately, from 1 January 2025 eligible Non-Resident Nigerians may own a Non-Resident Nigerian Ordinary Account (NRNOA) or Non-Resident Nigerian Investment Account (NRNIA) subject to KYC, without prejudice to Memorandum 17 of the CBN Foreign Exchange Manual (2018). NRNOA supports remittance of foreign earnings and dual-currency management; NRNIA supports investment in Nigerian assets. NRNOA foreign-currency balances may be fully repatriated out of Nigeria without restriction under the NRNOA-specific rule; NRNOA Naira accounts may be funded by offshore remittance or conversion from a foreign-currency account through authorised dealers. Do not project NRNOA/NRNIA rights onto all foreign persons or entities, and do not merge the two account classes.",
+     "sources": [
+      {
+       "url": "https://www.cbn.gov.ng/Out/2023/CCD/CBN%20Customer%20Due%20diligence%20Reg.%202023-combined.pdf",
+       "pages": [
+        1
+       ],
+       "section": "CDD Reg. 25 — external/non-resident classes, closure, CBN referral",
+       "article": "Regulation 25",
+       "source_kind": "pdf"
+      },
+      {
+       "url": "https://www.cbn.gov.ng/Out/2025/TED/TEDFEMPUBFPC001002.pdf",
+       "pages": [
+        1
+       ],
+       "section": "NRNOA / NRNIA introduction, purpose, repatriation, and Naira funding",
+       "source_kind": "pdf"
+      }
+     ],
+     "source": {
+      "url": "https://www.cbn.gov.ng/Out/2023/CCD/CBN%20Customer%20Due%20diligence%20Reg.%202023-combined.pdf",
+      "pages": [
+       1
+      ],
+      "section": "CDD Reg. 25 — external/non-resident classes, closure, CBN referral",
+      "article": "Regulation 25",
+      "source_kind": "pdf"
+     }
+    },
+    "banking_conversion_practicality": {
+     "label": "Banking & channels",
+     "ontology": "channel-restrictions",
+     "text": "The Central Bank may appoint Authorised Dealers and Authorised Buyers of foreign currency subject to appointment terms. Market transactions occur between the public and Authorised Dealers, among Authorised Dealers, and between Authorised Dealers and Authorised Buyers. Each Market transaction rate is the rate mutually agreed between the applicant purchaser and the Authorised Dealer or Authorised Buyer concerned. FEMMPA section 11 provides that nothing in the Act permits unrestrained or general dealing in foreign currencies on terms inconsistent with the Act, or Market transactions relating to goods, services, or items absolutely prohibited by law — a statutory construction boundary, not commentary on scarcity or delay. Eligible NFEM transactions such as medical needs, school fees, BTA/PTA, and SME transactions are processed by Deposit Money Banks under CBN’s non-exhaustive ‘such as’ framing. This field does not assert bank-only conversion for every FX need and does not add availability, scarcity, or rate-quality commentary.",
+     "sources": [
+      {
+       "url": "https://nigeriatradeportal.fmiti.gov.ng/media/Nigeria%20Foreign%20Exchange%20(Monitoring%20and%20Miscellaneous%20Provisions)%20Act%201995.pdf",
+       "pages": [
+        1
+       ],
+       "section": "FEMMPA — AD/AB appointment; Market channels; mutually agreed transaction rate; s.11 construction boundary",
+       "source_kind": "pdf"
+      },
+      {
+       "url": "https://www.cbn.gov.ng/intops/FXManagement.html",
+       "pages": [],
+       "section": "Eligible NFEM transactions processed by Deposit Money Banks",
+       "source_kind": "html"
+      }
+     ],
+     "source": {
+      "url": "https://nigeriatradeportal.fmiti.gov.ng/media/Nigeria%20Foreign%20Exchange%20(Monitoring%20and%20Miscellaneous%20Provisions)%20Act%201995.pdf",
+      "pages": [
+       1
+      ],
+      "section": "FEMMPA — AD/AB appointment; Market channels; mutually agreed transaction rate; s.11 construction boundary",
+      "source_kind": "pdf"
+     }
+    }
+   },
+   "source_authorities": [
+    {
+     "label": "Foreign Exchange (Monitoring and Miscellaneous Provisions) Act, 1995 — Nigeria Trade Portal text",
+     "url": "https://nigeriatradeportal.fmiti.gov.ng/media/Nigeria%20Foreign%20Exchange%20(Monitoring%20and%20Miscellaneous%20Provisions)%20Act%201995.pdf",
+     "type": "ministry",
+     "tier": "primary"
+    },
+    {
+     "label": "Money Laundering (Prevention and Prohibition) Act, 2022 — official gazette text",
+     "url": "https://www.nfiu.gov.ng/images/Downloads/downloads/mlpaamend.pdf",
+     "type": "fiu",
+     "tier": "primary"
+    },
+    {
+     "label": "Nigeria Customs Service — Electronic Currency Declaration",
+     "url": "https://cdf.nigeriatradehub.gov.ng/new/cdf.php",
+     "type": "customs",
+     "tier": "primary"
+    },
+    {
+     "label": "CBN circular — transportation of cash or negotiable instruments above US$10,000 (declaration vs prohibition)",
+     "url": "https://www.cbn.gov.ng/out/2013/fprd/circular%20to%20all%20banks%20and%20other%20financial%20institutions-us$10,000.pdf",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "Central Bank of Nigeria (Customer Due Diligence) Regulations, 2023",
+     "url": "https://www.cbn.gov.ng/Out/2023/CCD/CBN%20Customer%20Due%20diligence%20Reg.%202023-combined.pdf",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "CBN circular — Non-Resident Nigerian Ordinary Account (NRNOA) and Investment Account (NRNIA)",
+     "url": "https://www.cbn.gov.ng/Out/2025/TED/TEDFEMPUBFPC001002.pdf",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "CBN — FX Structure and Management",
+     "url": "https://www.cbn.gov.ng/intops/FXStructureAndManagement.html",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "CBN — Foreign Exchange Market",
+     "url": "https://www.cbn.gov.ng/intops/FXMarket.html",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "CBN — Exchange Rates (NFEM official daily rate footnote)",
+     "url": "https://www.cbn.gov.ng/rates/ExchRateByCurrency.html",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "CBN FAQs on the Electronic Foreign Exchange Matching System (EFEMS)",
+     "url": "https://www.cbn.gov.ng/Out/2024/FMD/FREQUENTLY%20ASKED%20QUESTIONS%20(FAQS)%20ON%20THE%20ELECTRONIC%20FOREIGN%20EXCHANGE%20MATCHING%20SYSTEM%20(EFEMS)%20.pdf",
+     "type": "central_bank",
+     "tier": "primary"
+    },
+    {
+     "label": "CBN — History of Foreign Exchange Management (eligible NFEM / DMB processing)",
+     "url": "https://www.cbn.gov.ng/intops/FXManagement.html",
+     "type": "central_bank",
+     "tier": "primary"
+    }
+   ],
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Nigeria are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Central Bank of Nigeria / Nigerian Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Nigeria or Nigerian Customs before making any financial or travel decisions."
   },
   {
    "country_name": "Pakistan",

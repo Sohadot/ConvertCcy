@@ -1,12 +1,8 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "nigeria",
-  "decision": "BLOCK",
+  "decision": "PASS",
   "layers": {
-    "structural": {
-      "blocking_count": 0,
-      "findings": []
-    },
     "evidence": {
       "blocking_count": 0,
       "findings": []
@@ -15,16 +11,13 @@
       "blocking_count": 0,
       "findings": []
     },
+    "structural": {
+      "blocking_count": 0,
+      "findings": []
+    },
     "governance": {
-      "blocking_count": 1,
+      "blocking_count": 0,
       "findings": [
-        {
-          "layer": "governance",
-          "field": "publication",
-          "reason": "indexing_allowed must be true for publication",
-          "required_action": "Do not flip publication flags until all publication gates pass",
-          "blocking": true
-        },
         {
           "layer": "governance",
           "field": "sources.source_conflicts",
@@ -35,15 +28,7 @@
       ]
     }
   },
-  "blocking_findings": [
-    {
-      "layer": "governance",
-      "field": "publication",
-      "reason": "indexing_allowed must be true for publication",
-      "required_action": "Do not flip publication flags until all publication gates pass",
-      "blocking": true
-    }
-  ],
+  "blocking_findings": [],
   "improvement_findings": [
     {
       "layer": "governance",
@@ -56,5 +41,5 @@
   "needs_human_review": [
     "{'conflict_id': 'NG-SRC-CONFLICT-DECL-OPERATOR-01', 'sources': ['SRC-NG-MLPPA-2022', 'SRC-NG-NCS-ECDF'], 'topic': 'border cash declaration trigger operator', 'detail': \"Money Laundering Act section 3(3) uses 'in excess of US$10,000' (operator >) while the current Nigeria Customs e-declaration form uses '$10,000 or more' / 'equal to or greater than $10,000' (operator >=). Hardening I-B bounded search found no later primary amending or interpretive instrument that formally reconciles the operators. Customs press language often restates 'exceeding', but the live e-form remains inclusive. Disposition: preserve dual operators; do not flatten > into >= or vice versa.\", 'status': 'preserved_dual_operator', 'closure_phase': 'hardening_i_b', 'closed_at': '2026-09-09', 'wording_boundary': \"Statutory declaration trigger remains 'in excess of US$10,000'. Operational Customs e-form trigger remains 'US$10,000 or more'. Future wording must keep both roles distinct and must not invent a single reconciled operator.\"}"
   ],
-  "summary": "BLOCKED BY 1 SPECIFIC FINDING(S)"
+  "summary": "READY TO PUBLISH"
 }
