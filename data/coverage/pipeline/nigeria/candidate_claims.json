@@ -2653,7 +2653,7 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2665,25 +2665,25 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:bcf29e97f0f4368d5a722d5eaaabdb098595bd85e2faad4cb97a99f5a508d088",
         "notes": null
       }
     },
     {
       "candidate_id": "CC-NG-REG-002",
       "candidate_text": "According to the Central Bank of Nigeria FX Structure and Management page, Nigeria’s foreign exchange market framework has shifted from a tightly regulated, administratively controlled system to a largely market driven regime.",
-      "reviewed_text": null,
+      "reviewed_text": "According to the Central Bank of Nigeria FX Structure and Management page, over the years the framework has shifted from a tightly regulated, administratively controlled system to a largely market driven regime.",
       "claim_language": "en",
       "claim_type": "regime_description",
       "scope": {
@@ -2714,7 +2714,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2726,18 +2726,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:666e7287a34f0afa309824e408945010fb58c8edc4fc76ed00b3b89461c2f840",
         "notes": null
       }
     },
@@ -2775,7 +2775,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "temporal_audit_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2787,18 +2787,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:92f601dbb535b631b4bf7255653c5b3487bc89776162b34726b1ce7477022eed",
         "notes": null
       }
     },
@@ -2837,7 +2837,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2849,25 +2849,25 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:d6984b0aa1c8615d8988b854917b26a4eb7126fcaac72a53189749df7b679181",
         "notes": null
       }
     },
     {
       "candidate_id": "CC-NG-REG-005",
       "candidate_text": "Under the Central Bank of Nigeria’s 14 June 2023 foreign-exchange reform described on the FX Structure and Management page, the multiplicity of foreign exchange windows was eliminated and market segments were consolidated into a single framework now referred to as the Nigerian Foreign Exchange Market.",
-      "reviewed_text": null,
+      "reviewed_text": "Under the Central Bank of Nigeria’s 14 June 2023 foreign-exchange reform described on the FX Structure and Management page, the multiplicity of foreign exchange windows was eliminated, and all market segments were consolidated into a single framework now referred to as the Nigerian Foreign Exchange Market (NFEM).",
       "claim_language": "en",
       "claim_type": "regime_description",
       "scope": {
@@ -2897,7 +2897,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2909,18 +2909,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:1a76a10373d1ee6deee4c2190f7b2683ec0de29f1acac872f549ccc73c0b4706",
         "notes": null
       }
     },
@@ -2958,7 +2958,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2970,18 +2970,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:6f18e458c882147f787285d492c5532b974f12d808c09804dd7b47be1323fa5c",
         "notes": null
       }
     },
@@ -3018,7 +3018,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -3030,25 +3030,25 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:5e43bb7ac434f005060a5fdaef92680345ade7e357be61e2f2d5a3f37e5f7959",
         "notes": null
       }
     },
     {
       "candidate_id": "CC-NG-REG-008",
       "candidate_text": "According to the Central Bank of Nigeria Foreign Exchange Market page, adoption of a willing buyer, willing seller model for trade transactions unified the foreign exchange market in 2023, abolished FX market segmentation, and collapsed previously existing segments into the Investors’ and Exporters’ window, now renamed the Nigerian Foreign Exchange Market.",
-      "reviewed_text": null,
+      "reviewed_text": "According to the Central Bank of Nigeria Foreign Exchange Market page, the Central Bank of Nigeria adopted a willing buyer, willing seller model for trade transactions, therefore unifying the foreign exchange market in 2023. This led to the abolishment of FX market segmentation, and collapse of the previously existing segments into the Investors’ and Exporters’ (I&E) window, now renamed Nigerian Foreign Exchange Market (NFEM).",
       "claim_language": "en",
       "claim_type": "regime_description",
       "scope": {
@@ -3076,7 +3076,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -3088,18 +3088,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:2170b302e3cbc3c79f76b2cf17bc963789859f076fe9283f5d125d123c9d661b",
         "notes": null
       }
     },
@@ -3137,7 +3137,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -3149,18 +3149,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:27c6e50a3ac97820861beba39699ab9d8fc4d46e883d482f8b8c2ad3186e8d87",
         "notes": null
       }
     },
@@ -3198,7 +3198,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -3210,18 +3210,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:7d3cb9393bd63ff8c0bf0fd80d6ad43bdc0009fdf4264fc531efaaba5b6aa52a",
         "notes": null
       }
     },
@@ -3258,7 +3258,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -3270,18 +3270,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:cb344fb3796c6a33f321923f7ea1ebac4f2afb922d7a83edafbf0fbec6b5fda9",
         "notes": null
       }
     },
@@ -3318,7 +3318,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -3330,18 +3330,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:79ce2d2363ad7ce360d26b99f183c978df9d3dea36e7aa35f4bf37d10d2c13e2",
         "notes": null
       }
     },
@@ -3378,7 +3378,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "temporal_audit_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -3390,18 +3390,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:a3327b12675cd3967e005474331f74f60446af5227b331481343ce64d8ca65ee",
         "notes": null
       }
     }
