@@ -14,15 +14,7 @@
     }
   ],
   "needs_human_review": [
-    "CC-NG-CASH-001:semantic_review_pending",
-    "CC-NG-CASH-002:semantic_review_pending",
-    "CC-NG-CASH-003:semantic_review_pending",
-    "CC-NG-CASH-004:semantic_review_pending",
-    "CC-NG-CASH-005:semantic_review_pending",
-    "CC-NG-NGN-001:semantic_review_pending",
-    "CC-NG-CASH-006:semantic_review_pending",
     "CC-NG-CASH-006:special_review",
-    "CC-NG-CASH-007:semantic_review_pending",
     "CC-NG-CASH-007:special_review"
   ],
   "stats": {
@@ -30,8 +22,8 @@
     "direct_restating": 1,
     "translation_based": 0,
     "bounded_normalization": 7,
-    "semantic_review_pending": 8,
-    "downstream_eligible": 0,
+    "semantic_review_pending": 0,
+    "downstream_eligible": 8,
     "human_review_required": 2
   },
   "summary": "CLAIM EXTRACTION PASS (structural only)",

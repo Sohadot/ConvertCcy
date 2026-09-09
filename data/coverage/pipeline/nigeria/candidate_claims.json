@@ -38,11 +38,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -50,18 +50,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:192062fcdd12413970f59aa55f510fb2e77dd2d882dadbffaabf86dde2d69323",
         "notes": null
       }
     },
@@ -99,11 +99,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -111,25 +111,25 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:6a23f5bb209722fd816938be92968dfa51a7ed47e65c1c57d19bb9c54b94ab52",
         "notes": null
       }
     },
     {
       "candidate_id": "CC-NG-CASH-003",
       "candidate_text": "False declaration or failure to make the required declaration to the Nigeria Customs Service is an offence that may lead on conviction to forfeiture of the undeclared funds or negotiable instrument, imprisonment for at least two years, or both.",
-      "reviewed_text": null,
+      "reviewed_text": "Any person who falsely declares or fails to make a declaration to the Nigeria Customs Service under section 12 of the Foreign Exchange (Monitoring and Miscellaneous Provisions) Act commits an offence and is liable on conviction to forfeit the undeclared funds or negotiable instrument or to imprisonment for a term of at least two years or both.",
       "claim_language": "en",
       "claim_type": "required_action",
       "scope": {
@@ -159,11 +159,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -171,18 +171,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:ab5cd17b7b4429656ce75a781b742940edfd83e6d8ae503504da779e4e252e66",
         "notes": null
       }
     },
@@ -218,11 +218,11 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -230,25 +230,25 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:2ce7ee95f4585498c81401675b5951278c6afb3fbe52c4f9e4c06099665df3d2",
         "notes": null
       }
     },
     {
       "candidate_id": "CC-NG-CASH-005",
       "candidate_text": "Where foreign currency in excess of US$10,000 is imported in cash and deposited into a domiciliary account with an authorised dealer, the account may only be withdrawn from in cash and that imported cash is exportable from Nigeria only in cash.",
-      "reviewed_text": null,
+      "reviewed_text": "Where a person imports foreign currency in excess of US$10,000 or its equivalent in cash and not by means of a bank draft, mail or telegraphic transfer and deposits the foreign currency in a domiciliary account with an authorised dealer, withdrawals from that account may be made only in cash, and that imported cash is exportable from Nigeria only in cash.",
       "claim_language": "en",
       "claim_type": "documentation_requirement",
       "scope": {
@@ -276,11 +276,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "present",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": true,
         "exception_excerpt_ids": [
           "EX-NG-FEMMPA-1995-S21"
@@ -290,18 +290,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:bcb07b851173383e58f1b9506e2a5bff697bf4c9cf260009276a2c11582c34ba",
         "notes": null
       }
     },
@@ -334,11 +334,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "present",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": true,
         "exception_excerpt_ids": [
           "EX-NG-FEMMPA-1995-S14"
@@ -348,25 +348,25 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Hardening I-B: s.14 baseline remains pin-supported. Any numeric traveller exception under CBN guidelines remains not established after bounded primary search; do not invent a figure."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:165c2cb6d5132261f2a369c6a7a9b85479332030df92d9cca1bcb86334223647",
+        "notes": "M2.5 supported as s.14 baseline only; numeric exception remains not established."
       }
     },
     {
       "candidate_id": "CC-NG-CASH-006",
       "candidate_text": "Current Customs operational guidance uses a declaration trigger of US$10,000 or more, which conflicts with the statutory phrase in excess of US$10,000.",
-      "reviewed_text": null,
+      "reviewed_text": "Current Customs operational guidance on the e-currency declaration form uses a declaration trigger of US$10,000 or more / equal to or greater than US$10,000.",
       "claim_language": "en",
       "claim_type": "threshold",
       "scope": {
@@ -396,11 +396,11 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -408,25 +408,25 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "needs_human_review",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Hardening I-B: no reconciling primary instrument found. Disposition is preserve dual operators (statute > vs Customs e-form >=), not forced reconciliation. Downstream wording must keep both roles distinct."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:1f35bc49455e3c7d3fcfb1dd33691747b4fc36565474e06a59c43004cbd59715",
+        "notes": "M2.5 bounded to Customs operational >= trigger; dual-operator preservation remains an I-B source-layer disposition."
       }
     },
     {
       "candidate_id": "CC-NG-CASH-007",
       "candidate_text": "The earlier Foreign Exchange Act wording requiring declaration only when foreign currency exceeds US$5,000 is a legacy threshold retained for temporal audit and should not be used as the current border-cash rule while MLPPA 2022 is operative.",
-      "reviewed_text": null,
+      "reviewed_text": "FEMMPA 1995 section 12 states that foreign currency in excess of US$5,000 or its equivalent, whether being imported into or exported out of Nigeria, shall be declared on the prescribed form for reasons of statistics only. That older threshold wording is retained for temporal audit and must not drive the current border-cash declaration threshold while MLPPA 2022 section 3(3) uses in excess of US$10,000.",
       "claim_language": "en",
       "claim_type": "definition",
       "scope": {
@@ -454,11 +454,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "temporal_audit_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -466,19 +466,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "needs_human_review",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Temporal supersession conclusion should be closed in a later human review step."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:12725ae59a82f23f97f1e9634f61792af23d42fcb1941c394a58bd67e318b864",
+        "notes": "M2.5 bounded temporal-audit disposition for legacy US\\,000 threshold."
       }
     }
   ]
