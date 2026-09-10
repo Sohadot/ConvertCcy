@@ -158,6 +158,34 @@
       "reason": "Candidate text may be compound (heuristic)",
       "required_action": "Split into atomic candidates if multiple propositions",
       "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-REG-006",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-REG-011",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-REG-014",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-REG-015",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
     }
   ],
   "needs_human_review": [
@@ -180,16 +208,50 @@
     "CC-CH-BIZ-011:special_review",
     "CC-CH-BIZ-012:special_review",
     "CC-CH-BIZ-013:special_review",
-    "CC-CH-BIZ-014:special_review"
+    "CC-CH-BIZ-014:special_review",
+    "CC-CH-REG-001:semantic_review_pending",
+    "CC-CH-REG-001:special_review",
+    "CC-CH-REG-002:semantic_review_pending",
+    "CC-CH-REG-002:special_review",
+    "CC-CH-REG-003:semantic_review_pending",
+    "CC-CH-REG-003:special_review",
+    "CC-CH-REG-004:semantic_review_pending",
+    "CC-CH-REG-004:special_review",
+    "CC-CH-REG-005:semantic_review_pending",
+    "CC-CH-REG-005:special_review",
+    "CC-CH-REG-006:semantic_review_pending",
+    "CC-CH-REG-006:special_review",
+    "CC-CH-REG-007:semantic_review_pending",
+    "CC-CH-REG-007:special_review",
+    "CC-CH-REG-008:semantic_review_pending",
+    "CC-CH-REG-008:special_review",
+    "CC-CH-REG-009:semantic_review_pending",
+    "CC-CH-REG-009:special_review",
+    "CC-CH-REG-010:semantic_review_pending",
+    "CC-CH-REG-010:special_review",
+    "CC-CH-REG-011:semantic_review_pending",
+    "CC-CH-REG-011:special_review",
+    "CC-CH-REG-012:semantic_review_pending",
+    "CC-CH-REG-012:special_review",
+    "CC-CH-REG-013:semantic_review_pending",
+    "CC-CH-REG-013:special_review",
+    "CC-CH-REG-014:semantic_review_pending",
+    "CC-CH-REG-014:special_review",
+    "CC-CH-REG-015:semantic_review_pending",
+    "CC-CH-REG-015:special_review",
+    "CC-CH-REG-016:semantic_review_pending",
+    "CC-CH-REG-016:special_review",
+    "CC-CH-REG-017:semantic_review_pending",
+    "CC-CH-REG-017:special_review"
   ],
   "stats": {
-    "candidate_claims_total": 42,
-    "direct_restating": 18,
+    "candidate_claims_total": 59,
+    "direct_restating": 33,
     "translation_based": 0,
-    "bounded_normalization": 24,
-    "semantic_review_pending": 0,
+    "bounded_normalization": 26,
+    "semantic_review_pending": 17,
     "downstream_eligible": 42,
-    "human_review_required": 20
+    "human_review_required": 37
   },
   "summary": "CLAIM EXTRACTION PASS (structural only)",
   "capability_note": "M2 validator checks extraction contract structure, evidence eligibility, language/mode consistency, and review/fingerprint gates. It does not establish legal or semantic approval of candidate claims."

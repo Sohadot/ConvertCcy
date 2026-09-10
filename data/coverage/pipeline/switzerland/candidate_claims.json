@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
   "generation_mode": "governed_extraction",
-  "notes": "Switzerland Hardening I–III candidate claims. H3 appends CC-CH-BIZ-001..014 (business/payments/capital atomic candidates). All H3 candidates remain unreviewed / not downstream-eligible / not adoption-eligible. H1 CASH and H2 ACC candidates preserved byte-identically. No M2.5 in this gate.",
+  "notes": "Switzerland Hardening I–IV candidate claims. H4 appends CC-CH-REG-001..017 (monetary / FX regime / exchange-control evidence candidates). All H4 candidates remain unreviewed / not downstream-eligible / not adoption-eligible. H1 CASH, H2 ACC, and H3 BIZ candidates preserved byte-identically. No M2.5 / adoption in this gate.",
   "candidates": [
     {
       "candidate_id": "CC-CH-CASH-001",
@@ -2412,6 +2412,988 @@
         "reviewed_at": "2026-09-10",
         "decision": "supported",
         "reviewed_candidate_fingerprint": "sha256:96af7396c6c329760b291570c98490fc4d394af2092bf16cbc2328f4e35039aa",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-001",
+      "candidate_text": "The de jure exchange-rate arrangement for Switzerland is free floating.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "de_jure_exchange_rate_arrangement_free_floating",
+        "actor": "imf_classification",
+        "transaction_context": "exchange_rate_arrangement",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-IMF-2026-DEJURE-FREE-FLOATING",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [
+          "hyphenated_exchange-rate_for_house_style"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-002",
+      "candidate_text": "The exchange rate of the Swiss franc is determined by market forces in the foreign exchange market, and all settlements are made at free-market rates.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "chf_market_determination_and_free_market_settlement_rates",
+        "actor": "foreign_exchange_market",
+        "transaction_context": "exchange_rate_formation_and_settlement",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-IMF-2026-MARKET-FORCES",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [
+          "free_market_rates_hyphenated_as_free-market_rates"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-003",
+      "candidate_text": "The Swiss National Bank reserves the right to intervene in the foreign exchange market.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "institutional_role",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "snb_right_to_intervene_in_fx_market",
+        "actor": "swiss_national_bank",
+        "transaction_context": "foreign_exchange_intervention",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-IMF-2026-SNB-INTERVENE-RIGHT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-004",
+      "candidate_text": "The de facto exchange-rate arrangement is classified as crawl-like from 25 April 2025, as bilateral volatility of the exchange rate against the euro has been below the 2-percent threshold.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "de_facto_exchange_rate_arrangement_crawl_like",
+        "actor": "imf_classification",
+        "transaction_context": "exchange_rate_arrangement",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-IMF-2026-DEFACTO-CRAWL-LIKE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [
+          "date_normalised_to_25_April_2025",
+          "hyphenated_exchange-rate"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-005",
+      "candidate_text": "Switzerland has accepted the obligations of Article VIII, Sections 2, 3, and 4 of the IMF’s Articles of Agreement.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "imf_article_viii_sections_2_3_4_acceptance",
+        "actor": "switzerland",
+        "transaction_context": "imf_exchange_system_obligations",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-IMF-2026-ART8-ACCEPTANCE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-006",
+      "candidate_text": "Switzerland maintains an exchange system that is free of multiple currency practices and of restrictions on the making of payments and transfers for current international transactions, except for restrictions in place for security reasons notified to the IMF pursuant to Executive Board Decision No. 144–(52/51).",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "current_international_payments_exchange_system_with_security_exception",
+        "actor": "switzerland",
+        "transaction_context": "current_international_transactions_payments_and_transfers",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-IMF-2026-CURRENT-PAYMENTS-SECURITY-EXCEPTION",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [
+          "leading_and_clause_joined_to_switzerland_subject",
+          "Fund_expanded_to_IMF_for_clarity_in_notification_clause"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "present",
+        "exception_review_status": "closed",
+        "exception_preserved": true,
+        "exception_excerpt_ids": [
+          "EX-CH-IMF-2026-CURRENT-PAYMENTS-SECURITY-EXCEPTION"
+        ]
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-007",
+      "candidate_text": "In order to fulfil its monetary-policy mandate, the SNB may purchase and sell foreign currency against Swiss francs on the financial markets.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "snb_purchase_sale_of_foreign_currency_against_chf",
+        "actor": "swiss_national_bank",
+        "transaction_context": "monetary_policy_fx_transactions",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-SNB-FX-BUY-SELL",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [
+          "monetary_policy_hyphenated"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-008",
+      "candidate_text": "Foreign-exchange transactions conducted by the SNB are usually spot or swap transactions.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "snb_fx_transactions_usually_spot_or_swap",
+        "actor": "swiss_national_bank",
+        "transaction_context": "monetary_policy_fx_transactions",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-SNB-FX-SPOT-SWAP",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [
+          "foreign_exchange_hyphenated"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-009",
+      "candidate_text": "The SNB can conclude foreign-exchange transactions with a wide range of domestic and foreign counterparties.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "snb_fx_counterparties_domestic_and_foreign",
+        "actor": "swiss_national_bank",
+        "transaction_context": "monetary_policy_fx_transactions",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-SNB-FX-COUNTERPARTIES",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [
+          "foreign_exchange_hyphenated"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-010",
+      "candidate_text": "As of the SNB monetary-policy assessment of 18 June 2026, if necessary the SNB has an increased willingness to intervene in the foreign-exchange market to counter a rapid and excessive appreciation of the Swiss franc that would jeopardise price stability in Switzerland.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "snb_june_2026_increased_willingness_to_intervene",
+        "actor": "swiss_national_bank",
+        "transaction_context": "foreign_exchange_intervention_policy_posture",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-SNB-MPA-20260618-INTERVENE",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [
+          "temporal_pin_to_18_June_2026_assessment",
+          "foreign_exchange_hyphenated",
+          "monetary_policy_hyphenated"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_announcement",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-011",
+      "candidate_text": "Since 1 January 2003, the Federal Act on the Implementation of International Sanctions (Embargo Act / Embargogesetz, EmbG) has been the legal basis for Switzerland’s implementation of sanctions measures; the Embargo Act is a framework law, and the concrete sanctions measures are contained in separate ordinances based on that Act.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "embargo_act_framework_law_for_sanctions",
+        "actor": "swiss_confederation_seco",
+        "transaction_context": "international_sanctions_implementation",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-SECO-EMBG-FRAMEWORK",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "german_seco_legal_basis_restated_in_english"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-012",
+      "candidate_text": "Under the Embargo Act, the Federal Council is empowered to enact coercive measures such as financial sanctions, trade restrictions, travel bans, or the freezing of assets.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "institutional_role",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "federal_council_coercive_sanctions_measure_types_under_embg",
+        "actor": "federal_council",
+        "transaction_context": "sanctions_coercive_measures",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-SECO-SANCTIONS-MEASURE-TYPES",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "german_seco_general_sanctions_restated_in_english"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-013",
+      "candidate_text": "Under the OECD Code of Liberalisation of Capital Movements, Switzerland maintains a List A I/A reservation on inward direct investment by non-residents limited to specified sectors and situations, including film distribution/exhibition companies, certain real-estate acquisitions requiring cantonal authorisation when not used for a permanent establishment, Rhine/maritime ship registration, aircraft registration and majority-Swiss-controlled airline investment (subject to international agreements), hydroelectricity / oil and gas pipelines / nuclear energy, and broadcasting foreign ownership above 49 percent.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "oecd_annex_b_inward_direct_investment_reservation",
+        "actor": "non_resident_direct_investors",
+        "transaction_context": "inward_direct_investment",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-OECD-FDI-IA",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [
+          "reservation_limbs_compressed_without_adding_sectors"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-014",
+      "candidate_text": "Under the OECD Code Annex B, Switzerland maintains a List B III reservation under which acquisition of real estate in Switzerland by non-residents is subject to cantonal authorisation when the acquirer does not use the property to operate a permanent establishment; holiday-home authorisations are subject to quotas; and real-estate investments of a purely financial nature are not permitted, with some exceptions.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "oecd_annex_b_non_resident_real_estate_reservation",
+        "actor": "non_resident_real_estate_acquirers",
+        "transaction_context": "real_estate_acquisition_in_switzerland",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-OECD-REAL-ESTATE-NR",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-015",
+      "candidate_text": "Under the OECD Code Annex B List A IV/D1 reservation, purchases abroad by residents of specified non-resident-issued securities are reserved where those assets would exceed stated percentage limits of private pension-fund liability-representative assets or insurance technical-reserve cover, and pension funds must also operate within an overall 30 percent limit of total foreign assets allowed as part of mandatory reserves.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "oecd_annex_b_pension_insurance_foreign_securities_reservation",
+        "actor": "private_pension_funds_and_insurance_companies",
+        "transaction_context": "purchase_abroad_of_non_resident_securities",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-OECD-SECURITIES-IV-D1",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [
+          "percentage_limbs_restated_without_changing_thresholds"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-016",
+      "candidate_text": "Under the OECD Code Annex B List B V/D1 reservation, purchases of money-market securities abroad by residents are reserved where non-resident-issued debt instruments would exceed 30 percent of private pension-fund liability-representative assets (subject also to the overall 30 percent foreign-asset limit) or, for insurance technical-reserve cover, where such instruments are not securitised/quoted/regularly traded on an active market.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "oecd_annex_b_pension_insurance_money_market_reservation",
+        "actor": "private_pension_funds_and_insurance_companies",
+        "transaction_context": "purchase_abroad_of_money_market_securities",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-OECD-MONEY-MARKET-V-D1",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-REG-017",
+      "candidate_text": "Under the OECD Code Annex B List B XI/B1 and B2 reservation, operation of deposit accounts by residents with non-resident institutions in domestic or foreign currency is reserved where such deposits would exceed 30 percent of private pension-fund liability-representative assets (subject also to the overall 30 percent foreign-asset limit) or would cover insurance technical reserves where the priority privilege of those assets under Swiss regulation cannot be granted.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "oecd_annex_b_pension_insurance_nonresident_deposit_reservation",
+        "actor": "private_pension_funds_and_insurance_companies",
+        "transaction_context": "deposits_with_non_resident_institutions",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-OECD-DEPOSITS-XI",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
         "notes": null
       }
     }
