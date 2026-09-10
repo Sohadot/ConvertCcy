@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "switzerland",
+  "decision": "PASS",
+  "semantic_approval": "not_established",
+  "blocking_findings": [],
+  "improvement_findings": [
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-CASH-001",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-CASH-009",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-CASH-011",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    }
+  ],
+  "needs_human_review": [
+    "CC-CH-CASH-001:semantic_review_pending",
+    "CC-CH-CASH-002:semantic_review_pending",
+    "CC-CH-CASH-002:special_review",
+    "CC-CH-CASH-003:semantic_review_pending",
+    "CC-CH-CASH-004:semantic_review_pending",
+    "CC-CH-CASH-005:semantic_review_pending",
+    "CC-CH-CASH-006:semantic_review_pending",
+    "CC-CH-CASH-007:semantic_review_pending",
+    "CC-CH-CASH-008:semantic_review_pending",
+    "CC-CH-CASH-008:special_review",
+    "CC-CH-CASH-009:semantic_review_pending",
+    "CC-CH-CASH-010:semantic_review_pending",
+    "CC-CH-CASH-011:semantic_review_pending",
+    "CC-CH-CASH-012:semantic_review_pending",
+    "CC-CH-CASH-013:semantic_review_pending",
+    "CC-CH-CASH-013:special_review"
+  ],
+  "stats": {
+    "candidate_claims_total": 13,
+    "direct_restating": 7,
+    "translation_based": 0,
+    "bounded_normalization": 6,
+    "semantic_review_pending": 13,
+    "downstream_eligible": 0,
+    "human_review_required": 3
+  },
+  "summary": "CLAIM EXTRACTION PASS (structural only)",
+  "capability_note": "M2 validator checks extraction contract structure, evidence eligibility, language/mode consistency, and review/fingerprint gates. It does not establish legal or semantic approval of candidate claims."
+}
