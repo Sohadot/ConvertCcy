@@ -46,6 +46,27 @@
       "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-IP-DOMESTIC-VS-EXPLORATION', 'sources': ['SRC-CH-SNB-IP-ECB-2025'], 'topic': 'domestic SIC instant payments vs SNB/ECB TIPS interlinking exploration', 'detail': 'The same SNB 29 September 2025 press release describes current domestic instant payments and an exploration of SIC IP–TIPS interlinking continuing throughout 2026. Disposition: keep domestic IP capability distinct from prospective cross-currency interlinking; exploration is not production capability.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not draft cross-currency SIC/TIPS interlinking as currently operational.'}",
       "required_action": "Resolve via human review before downstream use",
       "blocking": false
+    },
+    {
+      "layer": "eligibility",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-DEJURE-DEFACTO-2026', 'sources': ['SRC-CH-IMF-AIV-2026'], 'topic': 'de jure free floating vs de facto crawl-like (2026 Annex)', 'detail': \"IMF Country Report No. 2026/233 Informational Annex states the de jure exchange-rate arrangement is free floating while the de facto arrangement is classified as crawl-like from 25 April 2025 (bilateral EUR volatility below the 2-percent threshold). Disposition: preserve both classifications separately; do not collapse into a single 'floating' label; do not invent managed-float / dirty-float taxonomy; do not treat de facto crawl-like as an exchange-control regime or peg.\", 'status': 'preserved_dual_classification', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': \"Use IMF exact terms: de jure free floating; de facto crawl-like from April 25, 2025. Do not backfill 2025 'de facto floating' wording as current.\"}",
+      "required_action": "Resolve via human review before downstream use",
+      "blocking": false
+    },
+    {
+      "layer": "eligibility",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-INTERVENTION-VS-ARRANGEMENT', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-SNB-MP-IMPL', 'SRC-CH-SNB-MPA-20260618'], 'topic': 'SNB FX intervention capability/posture vs IMF exchange-rate classification', 'detail': 'IMF annex states SNB reserves the right to intervene while classifying de jure free floating / de facto crawl-like. SNB implementation page states SNB may buy/sell FX against CHF (usually spot/swap) with domestic and foreign counterparties. SNB 18 June 2026 MPA states increased willingness to intervene if necessary against rapid/excessive CHF appreciation threatening price stability. Disposition: keep intervention capability and 2026 posture distinct from IMF regime labels; intervention ≠ peg ≠ exchange-control regime.', 'status': 'preserved_separate_layers', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not transform increased willingness to intervene into continuous intervention, exchange-rate target, managed-float label, or capital control.'}",
+      "required_action": "Resolve via human review before downstream use",
+      "blocking": false
+    },
+    {
+      "layer": "eligibility",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-CURRENT-VS-CAPITAL-LIBERALISATION', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-OECD-CLCM'], 'topic': 'IMF Article VIII current-transaction posture vs OECD capital reservations', 'detail': \"IMF 2026 annex supports an exchange system free of multiple currency practices and of restrictions on payments/transfers for CURRENT international transactions except notified security restrictions. OECD Annex B records current Swiss capital-movement reservations (inward FDI sectors, non-resident real estate, pension/insurance foreign-asset and related holdings). Disposition: never let Article VIII stand for capital-account full liberalisation; never summarise OECD reservations as 'Switzerland has capital controls' without actor/transaction scope.\", 'status': 'preserved_dual_architecture', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Current international transactions ≠ capital transactions. Preserve IMF and OECD scopes separately.'}",
+      "required_action": "Resolve via human review before downstream use",
+      "blocking": false
     }
   ],
   "needs_human_review": [
@@ -54,7 +75,10 @@
     "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
     "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}",
     "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-ISA-TEMPORAL-2027', 'sources': ['SRC-CH-SECO-ISA'], 'topic': 'Investment Screening Act adopted 2025 vs expected 2027 entry into force', 'detail': 'On 2026-09-10 SECO states Parliament adopted the ISA on 19 December 2025 and entry into force is expected in 2027; applications cannot currently be submitted or reviewed. Disposition: treat ISA prior-approval architecture as future/temporal only; do not draft it as current Swiss law governing ordinary bank transfers, dividends, FX conversion, or general capital movements.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not state ISA approval is currently required for capital transfers; do not deny the future critical-sector acquisition-screening framework when discussing post-EIF rules.'}",
-    "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-IP-DOMESTIC-VS-EXPLORATION', 'sources': ['SRC-CH-SNB-IP-ECB-2025'], 'topic': 'domestic SIC instant payments vs SNB/ECB TIPS interlinking exploration', 'detail': 'The same SNB 29 September 2025 press release describes current domestic instant payments and an exploration of SIC IP–TIPS interlinking continuing throughout 2026. Disposition: keep domestic IP capability distinct from prospective cross-currency interlinking; exploration is not production capability.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not draft cross-currency SIC/TIPS interlinking as currently operational.'}"
+    "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-IP-DOMESTIC-VS-EXPLORATION', 'sources': ['SRC-CH-SNB-IP-ECB-2025'], 'topic': 'domestic SIC instant payments vs SNB/ECB TIPS interlinking exploration', 'detail': 'The same SNB 29 September 2025 press release describes current domestic instant payments and an exploration of SIC IP–TIPS interlinking continuing throughout 2026. Disposition: keep domestic IP capability distinct from prospective cross-currency interlinking; exploration is not production capability.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not draft cross-currency SIC/TIPS interlinking as currently operational.'}",
+    "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-DEJURE-DEFACTO-2026', 'sources': ['SRC-CH-IMF-AIV-2026'], 'topic': 'de jure free floating vs de facto crawl-like (2026 Annex)', 'detail': \"IMF Country Report No. 2026/233 Informational Annex states the de jure exchange-rate arrangement is free floating while the de facto arrangement is classified as crawl-like from 25 April 2025 (bilateral EUR volatility below the 2-percent threshold). Disposition: preserve both classifications separately; do not collapse into a single 'floating' label; do not invent managed-float / dirty-float taxonomy; do not treat de facto crawl-like as an exchange-control regime or peg.\", 'status': 'preserved_dual_classification', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': \"Use IMF exact terms: de jure free floating; de facto crawl-like from April 25, 2025. Do not backfill 2025 'de facto floating' wording as current.\"}",
+    "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-INTERVENTION-VS-ARRANGEMENT', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-SNB-MP-IMPL', 'SRC-CH-SNB-MPA-20260618'], 'topic': 'SNB FX intervention capability/posture vs IMF exchange-rate classification', 'detail': 'IMF annex states SNB reserves the right to intervene while classifying de jure free floating / de facto crawl-like. SNB implementation page states SNB may buy/sell FX against CHF (usually spot/swap) with domestic and foreign counterparties. SNB 18 June 2026 MPA states increased willingness to intervene if necessary against rapid/excessive CHF appreciation threatening price stability. Disposition: keep intervention capability and 2026 posture distinct from IMF regime labels; intervention ≠ peg ≠ exchange-control regime.', 'status': 'preserved_separate_layers', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not transform increased willingness to intervene into continuous intervention, exchange-rate target, managed-float label, or capital control.'}",
+    "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-CURRENT-VS-CAPITAL-LIBERALISATION', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-OECD-CLCM'], 'topic': 'IMF Article VIII current-transaction posture vs OECD capital reservations', 'detail': \"IMF 2026 annex supports an exchange system free of multiple currency practices and of restrictions on payments/transfers for CURRENT international transactions except notified security restrictions. OECD Annex B records current Swiss capital-movement reservations (inward FDI sectors, non-resident real estate, pension/insurance foreign-asset and related holdings). Disposition: never let Article VIII stand for capital-account full liberalisation; never summarise OECD reservations as 'Switzerland has capital controls' without actor/transaction scope.\", 'status': 'preserved_dual_architecture', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Current international transactions ≠ capital transactions. Preserve IMF and OECD scopes separately.'}"
   ],
   "excerpt_eligibility": {
     "EX-CH-FOCBS-UNRESTRICTED": true,
@@ -99,14 +123,31 @@
     "EX-CH-SNB-IP-EXPLORATION": true,
     "EX-CH-SECO-ISA-ADOPT-EIF": true,
     "EX-CH-SECO-ISA-NO-APPS": true,
-    "EX-CH-FINMA-SANCTIONS-FI-DUTIES": true
+    "EX-CH-FINMA-SANCTIONS-FI-DUTIES": true,
+    "EX-CH-IMF-2026-DEJURE-FREE-FLOATING": true,
+    "EX-CH-IMF-2026-MARKET-FORCES": true,
+    "EX-CH-IMF-2026-SNB-INTERVENE-RIGHT": true,
+    "EX-CH-IMF-2026-DEFACTO-CRAWL-LIKE": true,
+    "EX-CH-IMF-2026-ART8-ACCEPTANCE": true,
+    "EX-CH-IMF-2026-CURRENT-PAYMENTS-SECURITY-EXCEPTION": true,
+    "EX-CH-SNB-FX-BUY-SELL": true,
+    "EX-CH-SNB-FX-SPOT-SWAP": true,
+    "EX-CH-SNB-FX-COUNTERPARTIES": true,
+    "EX-CH-SNB-MPA-20260618-INTERVENE": true,
+    "EX-CH-SECO-EMBG-FRAMEWORK": true,
+    "EX-CH-SECO-SANCTIONS-MEASURE-TYPES": true,
+    "EX-CH-OECD-FDI-IA": true,
+    "EX-CH-OECD-REAL-ESTATE-NR": true,
+    "EX-CH-OECD-SECURITIES-IV-D1": true,
+    "EX-CH-OECD-MONEY-MARKET-V-D1": true,
+    "EX-CH-OECD-DEPOSITS-XI": true
   },
   "stats": {
-    "sources_total": 16,
-    "sources_current": 16,
+    "sources_total": 23,
+    "sources_current": 23,
     "sources_superseded": 0,
-    "excerpts_total": 43,
-    "excerpts_downstream_eligible": 43
+    "excerpts_total": 60,
+    "excerpts_downstream_eligible": 60
   },
   "summary": "INTAKE PASS (not downstream-eligible)",
   "capability_note": "M1 validator validates declared provenance and structural evidence controls; it does not independently establish textual fidelity unless a locally preserved source capture is available."
