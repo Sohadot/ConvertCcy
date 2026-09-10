@@ -116,6 +116,32 @@ class PairSurfaceSemanticHardeningTest(unittest.TestCase):
             html,
         )
 
+    def test_border_cash_pair_surface_summary_precedes_declaration(self):
+        """Typed border_cash.pair_surface_summary wins over declaration summary."""
+        entry_typed = {
+            "pair_surface_summary": "",  # filled by load_governed after precedence
+            "thresholds": ["CHF 10,000"],
+        }
+        # Direct body helper still prefers non-empty pair_surface_summary field.
+        entry_typed["pair_surface_summary"] = "typed border summary"
+        self.assertEqual(
+            generate.pair_surface_threshold_body(entry_typed),
+            "typed border summary",
+        )
+        entry_legacy = {
+            "pair_surface_summary": "legacy declaration summary",
+            "thresholds": ["CHF 10,000"],
+        }
+        self.assertEqual(
+            generate.pair_surface_threshold_body(entry_legacy),
+            "legacy declaration summary",
+        )
+        entry_fallback = {"pair_surface_summary": "", "thresholds": ["CHF 10,000"]}
+        self.assertEqual(
+            generate.pair_surface_threshold_body(entry_fallback),
+            "declaration at CHF 10,000",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

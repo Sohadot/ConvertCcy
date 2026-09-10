@@ -476,6 +476,12 @@ def load_governed_currency_map() -> Dict[str, List[Dict[str, Any]]]:
         if not code:
             continue
         decl = c.get("declaration", {}) or {}
+        border = c.get("border_cash") or {}
+        # Precedence: typed border_cash.pair_surface_summary >
+        # legacy declaration.pair_surface_summary > numeric fallback.
+        pair_summary = str(border.get("pair_surface_summary") or "").strip()
+        if not pair_summary:
+            pair_summary = str(decl.get("pair_surface_summary") or "").strip()
         thresholds = decl.get("thresholds", [])
         gov.setdefault(code, []).append({
             "country_name": c.get("country_name", ""),
@@ -484,7 +490,7 @@ def load_governed_currency_map() -> Dict[str, List[Dict[str, Any]]]:
             "last_reviewed": c.get("last_reviewed", ""),
             "exch_label": c.get("exchange_controls", {}).get("label", ""),
             "exch_posture": c.get("exchange_controls", {}).get("posture", ""),
-            "pair_surface_summary": str(decl.get("pair_surface_summary") or "").strip(),
+            "pair_surface_summary": pair_summary,
             "thresholds": [
                 f'{t.get("currency","")} {int(t.get("value",0)):,}'.strip()
                 for t in thresholds if t.get("value")

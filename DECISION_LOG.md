@@ -4,6 +4,33 @@ This file records architectural and editorial decisions that are not obvious fro
 
 ---
 
+## Passage Check Taxonomy v1.1 — Border-cash typing and layered exchange profiles
+**Status:** Implementation on branch `claude/passage-check-taxonomy-v1-1` (independent of Switzerland publication)
+
+### Decision
+
+The Passage Check engine must follow governed rule prose:
+
+**prose truth → reviewed transcription → typed engine structure**
+
+It must never force country truth into a false machine enum or a false universal “declaration threshold.”
+
+### What changed
+
+- Schema version **1.0 → 1.1** (backward-compatible minor evolution).
+- Opt-in `BORDER_CASH_CONTROLS` table for typed border-cash mechanisms (`declaration`, `reporting`, `inquiry`, `registration`, `carriage_limit`, `permit`, `enforcement`) with amount/condition/always triggers.
+- Compatibility `declaration.thresholds` for typed jurisdictions lists **declaration-kind numeric mechanisms only** (may be `[]`).
+- Opt-in `EXCHANGE_CONTROL_PROFILES` with machine posture **`layered`**: a compositional routing value meaning no single legacy scalar posture is faithful; consumers must inspect label/components. Not a severity, liberalisation, floating, crawl, peg, or capital-account conclusion.
+- Builder rejects neither/both authorship between legacy and typed tables for border-cash and for exchange-control sources.
+- Existing **23** published jurisdictions remain grandfathered v1.0-style records in `DECLARATION` + `EXCHANGE_CONTROLS` until individually migrated. This sprint does **not** certify semantic perfection of those legacy transcriptions and does **not** opportunistically reclassify them.
+- Switzerland is **not** published and is **not** authored into the new tables on this branch (branch starts from main before Switzerland hardening).
+
+### Architectural acceptance (capability)
+
+The v1.1 model can represent (1) no spontaneous declaration + numeric inquiry/registration + conditional suspicion powers + enforcement without calling the numeric amount a declaration threshold, and (2) current-international / sanctions / actor-specific capital layers via `layered` without assigning `none`, `floating_regulated_market`, or `capital_account_regulated`.
+
+---
+
 ## Phase 1 — Initial Security Hardening
 **Status:** Merged to main
 

@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-09-09T19:51:05+00:00",
+ "generated_at": "2026-09-10T15:38:48+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -13,10 +13,14 @@
  "documentation": "https://convertccy.com/api.html",
  "title": "ConvertCCY Passage Check — Static Agent Interface view",
  "engine": "ConvertCCY Passage Check",
- "engine_version": "1.0",
+ "engine_version": "1.1",
+ "schema": {
+  "border_cash": "Optional canonical typed border-cash profile. When present, declaration is a compatibility projection of declaration-kind numeric mechanisms only.",
+  "exchange_controls.layered": "posture 'layered' is a compositional routing value: no single legacy scalar posture faithfully captures the governed architecture; consumers must inspect label/components. It is not a severity, liberalisation, floating, crawl, peg, or capital-account conclusion."
+ },
  "built_from": "rules/dataset.json",
  "source_dataset_generated_at": "2026-09-09T19:50:34+00:00",
- "engine_notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. Structured thresholds are transcribed from each entry's cash_declaration_threshold field. Currency conversions shown in the tool are indicative only and are not governed figures.",
+ "engine_notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. It contains governed border-cash mechanisms and exchange-control profiles transcribed from published country rules. Not every structured amount is a declaration threshold — inquiry, registration, carriage, permit, and enforcement mechanisms are typed separately in v1.1. Currency conversions shown in the tool are indicative only and are not governed figures. Existing v1.0-style records remain grandfathered until individually migrated.",
  "count": 23,
  "countries": [
   {
@@ -28,25 +32,6 @@
    "region": "Oceania",
    "last_reviewed": "2026-05-02",
    "rules_page": "/rules/australia-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "AUD",
-      "scope": "cash or bearer negotiable instruments",
-      "applies": "inbound and outbound",
-      "authority": "AUSTRAC",
-      "mechanism": "AML reporting trigger"
-     }
-    ],
-    "note": "No mandatory customs declaration threshold for ordinary travellers; the figure is an anti-money-laundering reporting trigger reported to AUSTRAC.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "none",
-    "label": "No general exchange controls (fully liberalised)",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -188,7 +173,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Australia are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBA / AUSTRAC / Australian Border Force framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of Australia, AUSTRAC, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Australia are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBA / AUSTRAC / Australian Border Force framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of Australia, AUSTRAC, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "AUD",
+      "scope": "cash or bearer negotiable instruments",
+      "applies": "inbound and outbound",
+      "authority": "AUSTRAC",
+      "mechanism": "AML reporting trigger"
+     }
+    ],
+    "note": "No mandatory customs declaration threshold for ordinary travellers; the figure is an anti-money-laundering reporting trigger reported to AUSTRAC.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (fully liberalised)",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Brazil",
@@ -199,25 +203,6 @@
    "region": "Latin America",
    "last_reviewed": "2026-09-05",
    "rules_page": "/rules/brazil-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "USD",
-      "scope": "paper money in cash (national or foreign), excluding credit instruments, cheques and traveller's cheques; or the equivalent in another currency",
-      "applies": "entry and exit",
-      "authority": "Receita Federal (Brazilian Federal Revenue / Customs)",
-      "mechanism": "mandatory declaration via the Declaração Eletrônica de Bens de Viajantes (e-DBV)"
-     }
-    ],
-    "note": "Declaration is triggered ABOVE USD 10,000 (or the equivalent in another currency), applied to paper money in cash and excluding credit instruments, cheques and traveller's cheques. On departure the traveller must also present the declared cash and the applicable supporting evidence identified by Receita Federal. This Receita Federal customs border-declaration regime is distinct from the Banco Central do Brasil FX-market framework under Law 14.286/2021.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "floating_regulated_market",
-    "label": "Floating exchange-rate regime regulated by the Banco Central do Brasil; FX transaction rates freely agreed between authorised institutions and their clients",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -422,7 +407,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Brazil are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Banco Central do Brasil / Receita Federal framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Brazil or Brazilian Customs before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Brazil are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Banco Central do Brasil / Receita Federal framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Brazil or Brazilian Customs before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "paper money in cash (national or foreign), excluding credit instruments, cheques and traveller's cheques; or the equivalent in another currency",
+      "applies": "entry and exit",
+      "authority": "Receita Federal (Brazilian Federal Revenue / Customs)",
+      "mechanism": "mandatory declaration via the Declaração Eletrônica de Bens de Viajantes (e-DBV)"
+     }
+    ],
+    "note": "Declaration is triggered ABOVE USD 10,000 (or the equivalent in another currency), applied to paper money in cash and excluding credit instruments, cheques and traveller's cheques. On departure the traveller must also present the declared cash and the applicable supporting evidence identified by Receita Federal. This Receita Federal customs border-declaration regime is distinct from the Banco Central do Brasil FX-market framework under Law 14.286/2021.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "floating_regulated_market",
+    "label": "Floating exchange-rate regime regulated by the Banco Central do Brasil; FX transaction rates freely agreed between authorised institutions and their clients",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Canada",
@@ -433,25 +437,6 @@
    "region": "North America",
    "last_reviewed": "2026-05-02",
    "rules_page": "/rules/canada-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "CAD",
-      "scope": "cash or bearer negotiable instruments (or equivalent)",
-      "applies": "entry and exit",
-      "authority": "Canada Border Services Agency (CBSA)",
-      "mechanism": "mandatory customs report"
-     }
-    ],
-    "note": null,
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "none",
-    "label": "No general exchange controls (fully liberalised)",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -593,7 +578,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Canada are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Bank of Canada / CBSA / FINTRAC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Canada Border Services Agency, Bank of Canada, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Canada are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Bank of Canada / CBSA / FINTRAC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Canada Border Services Agency, Bank of Canada, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "CAD",
+      "scope": "cash or bearer negotiable instruments (or equivalent)",
+      "applies": "entry and exit",
+      "authority": "Canada Border Services Agency (CBSA)",
+      "mechanism": "mandatory customs report"
+     }
+    ],
+    "note": null,
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (fully liberalised)",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "China",
@@ -604,50 +608,6 @@
    "region": "East Asia",
    "last_reviewed": "2026-09-08",
    "rules_page": "/rules/china-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 5000,
-      "currency": "USD",
-      "scope": "foreign-currency physical cash or equivalent",
-      "applies": "entering China / ordinary inbound passenger rule",
-      "authority": "Chinese Customs / SAFE",
-      "mechanism": "mandatory written Customs declaration when exceeding (超过等值5000美元, strictly >); declaration trigger, NOT an import ceiling"
-     },
-     {
-      "value": 5000,
-      "currency": "USD",
-      "scope": "foreign-currency physical cash",
-      "applies": "leaving China",
-      "authority": "Chinese Customs / SAFE",
-      "mechanism": "Customs declaration/red-channel condition when exceeding; outbound legal treatment is NOT symmetric with inbound; where there is no/insufficient latest inbound declaration, > USD 5,000 through ≤ USD 10,000 enters the bank-issued 携带证 pathway"
-     },
-     {
-      "value": 10000,
-      "currency": "USD",
-      "scope": "foreign-currency physical cash",
-      "applies": "leaving China",
-      "authority": "SAFE / Chinese Customs",
-      "mechanism": "amounts exceeding USD 10,000 are in principle not carried, subject to specifically provided exceptional SAFE permit cases; NOT a universal ordinary export allowance of USD 10,000"
-     },
-     {
-      "value": 20000,
-      "currency": "CNY",
-      "scope": "physical Renminbi cash",
-      "applies": "entering or leaving China",
-      "authority": "PBOC / Chinese Customs",
-      "mechanism": "CNY 20,000 per-person, per-entry/exit carriage limit under PBOC Announcement〔2004〕No. 18 / State Council Order No. 108; Customs uses 人民币现钞超过20000元 as the strict-exceeding declaration/red-channel condition; the exceeding part is prohibited as a carriage-limit matter"
-     }
-    ],
-    "note": "Inbound FX cash > USD 5,000 (超过等值5000美元, strictly '>', never '>=') is a Customs declaration trigger, not an import ceiling. Art. 89 also imposes a special regardless-of-amount written-declaration rule for same-day / short-interval second-and-subsequent inbound entries; that repeated-entry rule is a bounded qualification, NOT a second ordinary numeric threshold record. Customs may list > USD 5,000 declaration conditions in both directions, but the outbound legal architecture is not symmetric with inbound: outbound FX preserves ≤ USD 5,000 (generally no 携带证) / > USD 5,000–≤ USD 10,000 (bank-issued 携带证 where applicable) / > USD 10,000 (in principle not carried except specified SAFE permit cases), and outbound treatment depends where applicable on the latest inbound declaration record. Physical RMB CNY 20,000 is a separate carriage limit (PBOC Announcement〔2004〕No. 18 / State Council Order No. 108). Negotiable/payment instruments are not silently folded into Huifa〔2003〕102 foreign-cash thresholds. The USD 50,000 individual annual 便利化额度 is NOT a border-cash threshold and must not be read from this declaration block.",
-    "pair_surface_summary": "inbound FX cash > USD 5,000 declaration · outbound FX ≤5k / >5k–≤10k / >10k permit architecture · RMB CNY 20,000 carriage limit",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "capital_account_regulated",
-    "label": "Current international payments and transfers are not generally restricted under State Council Decree No. 532 Art. 5; current-account FX remains subject to genuine/lawful transaction basis and bank authenticity/consistency review under Art. 12; capital-account FX is transaction-specific and may involve bank handling, registration, reporting, account/permitted-use controls, quotas or approval where specifically required; the PBOC managed-floating RMB regime is a separate monetary-regime fact and is not itself an exchange-control rule; no universal SAFE approval regime is asserted. Absence of a located restriction is not evidence that none exists.",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -977,7 +937,51 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange and passenger cash rules in China are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, account type and the applicable SAFE / PBOC / Chinese Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the State Administration of Foreign Exchange, the People's Bank of China, Chinese Customs or an authorised FX institution before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange and passenger cash rules in China are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, account type and the applicable SAFE / PBOC / Chinese Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the State Administration of Foreign Exchange, the People's Bank of China, Chinese Customs or an authorised FX institution before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 5000,
+      "currency": "USD",
+      "scope": "foreign-currency physical cash or equivalent",
+      "applies": "entering China / ordinary inbound passenger rule",
+      "authority": "Chinese Customs / SAFE",
+      "mechanism": "mandatory written Customs declaration when exceeding (超过等值5000美元, strictly >); declaration trigger, NOT an import ceiling"
+     },
+     {
+      "value": 5000,
+      "currency": "USD",
+      "scope": "foreign-currency physical cash",
+      "applies": "leaving China",
+      "authority": "Chinese Customs / SAFE",
+      "mechanism": "Customs declaration/red-channel condition when exceeding; outbound legal treatment is NOT symmetric with inbound; where there is no/insufficient latest inbound declaration, > USD 5,000 through ≤ USD 10,000 enters the bank-issued 携带证 pathway"
+     },
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "foreign-currency physical cash",
+      "applies": "leaving China",
+      "authority": "SAFE / Chinese Customs",
+      "mechanism": "amounts exceeding USD 10,000 are in principle not carried, subject to specifically provided exceptional SAFE permit cases; NOT a universal ordinary export allowance of USD 10,000"
+     },
+     {
+      "value": 20000,
+      "currency": "CNY",
+      "scope": "physical Renminbi cash",
+      "applies": "entering or leaving China",
+      "authority": "PBOC / Chinese Customs",
+      "mechanism": "CNY 20,000 per-person, per-entry/exit carriage limit under PBOC Announcement〔2004〕No. 18 / State Council Order No. 108; Customs uses 人民币现钞超过20000元 as the strict-exceeding declaration/red-channel condition; the exceeding part is prohibited as a carriage-limit matter"
+     }
+    ],
+    "note": "Inbound FX cash > USD 5,000 (超过等值5000美元, strictly '>', never '>=') is a Customs declaration trigger, not an import ceiling. Art. 89 also imposes a special regardless-of-amount written-declaration rule for same-day / short-interval second-and-subsequent inbound entries; that repeated-entry rule is a bounded qualification, NOT a second ordinary numeric threshold record. Customs may list > USD 5,000 declaration conditions in both directions, but the outbound legal architecture is not symmetric with inbound: outbound FX preserves ≤ USD 5,000 (generally no 携带证) / > USD 5,000–≤ USD 10,000 (bank-issued 携带证 where applicable) / > USD 10,000 (in principle not carried except specified SAFE permit cases), and outbound treatment depends where applicable on the latest inbound declaration record. Physical RMB CNY 20,000 is a separate carriage limit (PBOC Announcement〔2004〕No. 18 / State Council Order No. 108). Negotiable/payment instruments are not silently folded into Huifa〔2003〕102 foreign-cash thresholds. The USD 50,000 individual annual 便利化额度 is NOT a border-cash threshold and must not be read from this declaration block.",
+    "pair_surface_summary": "inbound FX cash > USD 5,000 declaration · outbound FX ≤5k / >5k–≤10k / >10k permit architecture · RMB CNY 20,000 carriage limit",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "Current international payments and transfers are not generally restricted under State Council Decree No. 532 Art. 5; current-account FX remains subject to genuine/lawful transaction basis and bank authenticity/consistency review under Art. 12; capital-account FX is transaction-specific and may involve bank handling, registration, reporting, account/permitted-use controls, quotas or approval where specifically required; the PBOC managed-floating RMB regime is a separate monetary-regime fact and is not itself an exchange-control rule; no universal SAFE approval regime is asserted. Absence of a located restriction is not evidence that none exists.",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Egypt",
@@ -988,54 +992,6 @@
    "region": "North Africa",
    "last_reviewed": "2026-09-08",
    "rules_page": "/rules/egypt-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "USD",
-      "operator": ">",
-      "scope": "foreign currency and bearer negotiable instruments, individually or combined",
-      "applies": "entering Egypt",
-      "authority": "Egyptian Customs under AML Law 80 Art. 12 / Exec Reg Art. 14(3), with Law 194 Art. 213 overlapping for foreign-currency cash",
-      "mechanism": "mandatory customs disclosure when value exceeds USD 10,000 equivalent (تجاوز / جاوز, strictly >); exactly USD 10,000 is outside this disclosure trigger; no general inbound FX cash ceiling under Law 194 Art. 213"
-     },
-     {
-      "value": 5000,
-      "currency": "USD",
-      "operator": ">",
-      "scope": "foreign currency and bearer negotiable instruments, individually or combined",
-      "applies": "leaving Egypt",
-      "authority": "Egyptian Customs under AML Law 80 Art. 12 / Exec Reg Art. 14(4)",
-      "mechanism": "mandatory customs disclosure when value exceeds USD 5,000 equivalent (تجاوز, strictly >); DISCLOSURE threshold only — NOT the ordinary FX carriage ceiling; exactly USD 5,000 is outside this disclosure trigger"
-     },
-     {
-      "value": 10000,
-      "currency": "USD",
-      "operator": "<=",
-      "scope": "physical foreign-currency cash",
-      "applies": "ordinary departure from Egypt",
-      "authority": "Law 194/2020 Art. 213 / CBE framework",
-      "mechanism": "ordinary FX cash carriage not exceeding USD 10,000 equivalent (ألا يزيد على, <=); CARRIAGE rule, not a declaration threshold; travellers may carry the remainder of foreign currency previously disclosed on arrival even when the remainder exceeds USD 10,000"
-     },
-     {
-      "value": 5000,
-      "currency": "EGP",
-      "operator": "<=",
-      "scope": "physical Egyptian-pound banknotes; AML Executive Regulation also covers bearer negotiable instruments in this EGP-valued limb",
-      "applies": "entering or leaving Egypt",
-      "authority": "CBE Board Decision 2200/2020 for EGP banknotes + AML Exec Reg Art. 14(5) for EGP banknotes/BNI overlay",
-      "mechanism": "carriage within EGP 5,000 (<=); carriage ceiling, not a declaration threshold; Decision 2200 itself regulates EGP banknotes — the BNI extension is from AML Exec Reg Art. 14(5)"
-     }
-    ],
-    "note": "Mixed dual-layer architecture — do not collapse. (A) Law 194 Art. 213 is the FX-cash architecture: inbound FX free with no general quantitative ceiling and Art. 213-form disclosure when FX exceeds USD 10,000 (جاوز / strictly >); outbound ordinary FX cash carriage not exceeding USD 10,000 (ألا يزيد على / <=), plus a previously-declared inbound FX remainder exception above USD 10,000 for travellers generally. (B) AML Law 80 Art. 12 / Exec Reg Art. 14 is the FX+BNI customs-disclosure architecture: inbound disclosure when FX and/or BNI (aggregated) exceeds USD 10,000; outbound disclosure when FX and/or BNI (aggregated) exceeds USD 5,000 — a disclosure threshold distinct from and lower than the Art. 213 FX carriage ceiling. (C) Decision 2200/2020 sets the physical EGP banknote carriage ceiling at EGP 5,000 entering or leaving; Exec Reg Art. 14(5) also covers EGP banknotes or BNI within EGP 5,000. BNI is defined in Exec Reg Art. 1 and must not be assigned Art. 213 FX-only semantics. Never publish 'USD 10,000 declaration at entry and exit' or 'USD 5,000 outbound cash limit'. Disclosure threshold ≠ carriage ceiling.",
-    "pair_surface_summary": "FX/BNI disclose >USD10k in / >USD5k out · outbound FX cash ≤USD10k (+ declared remainder) · EGP notes/BNI ≤EGP5k",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "floating_regulated_market",
-    "label": "Market-determined EGP exchange rate under Law 194/CBE, with FX retention and inward/outward transfers permitted through licensed channels; domestic EGP settlement rules, licensed-market supervision and separate AML/cross-border cash controls remain operative",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -1417,7 +1373,55 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange, monetary-policy and cross-border cash rules in Egypt are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, licensing and the applicable Central Bank of Egypt / Customs / AML framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Egypt, Egyptian Customs and a licensed intermediary before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange, monetary-policy and cross-border cash rules in Egypt are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, licensing and the applicable Central Bank of Egypt / Customs / AML framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Egypt, Egyptian Customs and a licensed intermediary before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "USD",
+      "operator": ">",
+      "scope": "foreign currency and bearer negotiable instruments, individually or combined",
+      "applies": "entering Egypt",
+      "authority": "Egyptian Customs under AML Law 80 Art. 12 / Exec Reg Art. 14(3), with Law 194 Art. 213 overlapping for foreign-currency cash",
+      "mechanism": "mandatory customs disclosure when value exceeds USD 10,000 equivalent (تجاوز / جاوز, strictly >); exactly USD 10,000 is outside this disclosure trigger; no general inbound FX cash ceiling under Law 194 Art. 213"
+     },
+     {
+      "value": 5000,
+      "currency": "USD",
+      "operator": ">",
+      "scope": "foreign currency and bearer negotiable instruments, individually or combined",
+      "applies": "leaving Egypt",
+      "authority": "Egyptian Customs under AML Law 80 Art. 12 / Exec Reg Art. 14(4)",
+      "mechanism": "mandatory customs disclosure when value exceeds USD 5,000 equivalent (تجاوز, strictly >); DISCLOSURE threshold only — NOT the ordinary FX carriage ceiling; exactly USD 5,000 is outside this disclosure trigger"
+     },
+     {
+      "value": 10000,
+      "currency": "USD",
+      "operator": "<=",
+      "scope": "physical foreign-currency cash",
+      "applies": "ordinary departure from Egypt",
+      "authority": "Law 194/2020 Art. 213 / CBE framework",
+      "mechanism": "ordinary FX cash carriage not exceeding USD 10,000 equivalent (ألا يزيد على, <=); CARRIAGE rule, not a declaration threshold; travellers may carry the remainder of foreign currency previously disclosed on arrival even when the remainder exceeds USD 10,000"
+     },
+     {
+      "value": 5000,
+      "currency": "EGP",
+      "operator": "<=",
+      "scope": "physical Egyptian-pound banknotes; AML Executive Regulation also covers bearer negotiable instruments in this EGP-valued limb",
+      "applies": "entering or leaving Egypt",
+      "authority": "CBE Board Decision 2200/2020 for EGP banknotes + AML Exec Reg Art. 14(5) for EGP banknotes/BNI overlay",
+      "mechanism": "carriage within EGP 5,000 (<=); carriage ceiling, not a declaration threshold; Decision 2200 itself regulates EGP banknotes — the BNI extension is from AML Exec Reg Art. 14(5)"
+     }
+    ],
+    "note": "Mixed dual-layer architecture — do not collapse. (A) Law 194 Art. 213 is the FX-cash architecture: inbound FX free with no general quantitative ceiling and Art. 213-form disclosure when FX exceeds USD 10,000 (جاوز / strictly >); outbound ordinary FX cash carriage not exceeding USD 10,000 (ألا يزيد على / <=), plus a previously-declared inbound FX remainder exception above USD 10,000 for travellers generally. (B) AML Law 80 Art. 12 / Exec Reg Art. 14 is the FX+BNI customs-disclosure architecture: inbound disclosure when FX and/or BNI (aggregated) exceeds USD 10,000; outbound disclosure when FX and/or BNI (aggregated) exceeds USD 5,000 — a disclosure threshold distinct from and lower than the Art. 213 FX carriage ceiling. (C) Decision 2200/2020 sets the physical EGP banknote carriage ceiling at EGP 5,000 entering or leaving; Exec Reg Art. 14(5) also covers EGP banknotes or BNI within EGP 5,000. BNI is defined in Exec Reg Art. 1 and must not be assigned Art. 213 FX-only semantics. Never publish 'USD 10,000 declaration at entry and exit' or 'USD 5,000 outbound cash limit'. Disclosure threshold ≠ carriage ceiling.",
+    "pair_surface_summary": "FX/BNI disclose >USD10k in / >USD5k out · outbound FX cash ≤USD10k (+ declared remainder) · EGP notes/BNI ≤EGP5k",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "floating_regulated_market",
+    "label": "Market-determined EGP exchange rate under Law 194/CBE, with FX retention and inward/outward transfers permitted through licensed channels; domestic EGP settlement rules, licensed-market supervision and separate AML/cross-border cash controls remain operative",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "France",
@@ -1428,25 +1432,6 @@
    "region": "Western Europe",
    "last_reviewed": "2026-05-02",
    "rules_page": "/rules/france-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "EUR",
-      "scope": "cash or bearer negotiable instruments (or equivalent)",
-      "applies": "entry and exit",
-      "authority": "French Customs (Douane)",
-      "mechanism": "mandatory declaration (DALIA online or paper)"
-     }
-    ],
-    "note": null,
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "none",
-    "label": "No general exchange controls (liberalised within the Eurozone)",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -1588,7 +1573,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in France are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Banque de France / French Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with French Customs (Douane), Banque de France, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in France are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Banque de France / French Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with French Customs (Douane), Banque de France, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "cash or bearer negotiable instruments (or equivalent)",
+      "applies": "entry and exit",
+      "authority": "French Customs (Douane)",
+      "mechanism": "mandatory declaration (DALIA online or paper)"
+     }
+    ],
+    "note": null,
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (liberalised within the Eurozone)",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Germany",
@@ -1599,25 +1603,6 @@
    "region": "Western Europe",
    "last_reviewed": "2026-05-02",
    "rules_page": "/rules/germany-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "EUR",
-      "scope": "cash or bearer negotiable instruments (or equivalent)",
-      "applies": "entry and exit",
-      "authority": "German Customs",
-      "mechanism": "mandatory declaration"
-     }
-    ],
-    "note": null,
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "none",
-    "label": "No general exchange controls (liberalised within the Eurozone)",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -1765,7 +1750,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Germany are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Deutsche Bundesbank / German Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with German Customs (Zoll), Deutsche Bundesbank, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Germany are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Deutsche Bundesbank / German Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with German Customs (Zoll), Deutsche Bundesbank, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "cash or bearer negotiable instruments (or equivalent)",
+      "applies": "entry and exit",
+      "authority": "German Customs",
+      "mechanism": "mandatory declaration"
+     }
+    ],
+    "note": null,
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (liberalised within the Eurozone)",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "India",
@@ -1776,33 +1780,6 @@
    "region": "South Asia",
    "last_reviewed": "2026-05-02",
    "rules_page": "/rules/india-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 5000,
-      "currency": "USD",
-      "scope": "foreign currency notes",
-      "applies": "arrival-side framing",
-      "authority": "CBIC Indian Customs",
-      "mechanism": "Currency Declaration Form (CDF) pathway"
-     },
-     {
-      "value": 10000,
-      "currency": "USD",
-      "scope": "aggregate foreign exchange (notes + in-scope traveller instruments)",
-      "applies": "arrival-side framing",
-      "authority": "CBIC Indian Customs",
-      "mechanism": "Currency Declaration Form (CDF) pathway"
-     }
-    ],
-    "note": "Two-tier threshold: the lower figure applies to foreign-currency notes, the higher to aggregate foreign exchange. Endorsed CDF documentation anchors later authorised-dealer conversions and outbound movement.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "capital_account_regulated",
-    "label": "Current account largely liberalised; capital account regulated under FEMA",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -1972,7 +1949,34 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in India are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBI/CBIC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of India, CBIC, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in India are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable RBI/CBIC framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Reserve Bank of India, CBIC, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 5000,
+      "currency": "USD",
+      "scope": "foreign currency notes",
+      "applies": "arrival-side framing",
+      "authority": "CBIC Indian Customs",
+      "mechanism": "Currency Declaration Form (CDF) pathway"
+     },
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "aggregate foreign exchange (notes + in-scope traveller instruments)",
+      "applies": "arrival-side framing",
+      "authority": "CBIC Indian Customs",
+      "mechanism": "Currency Declaration Form (CDF) pathway"
+     }
+    ],
+    "note": "Two-tier threshold: the lower figure applies to foreign-currency notes, the higher to aggregate foreign exchange. Endorsed CDF documentation anchors later authorised-dealer conversions and outbound movement.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "Current account largely liberalised; capital account regulated under FEMA",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Indonesia",
@@ -1983,25 +1987,6 @@
    "region": "Southeast Asia",
    "last_reviewed": "2026-09-07",
    "rules_page": "/rules/indonesia-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 100000000,
-      "currency": "IDR",
-      "scope": "cash and/or bearer payment instruments (cheques, traveller's cheques, promissory notes, bills of exchange), in Rupiah or foreign currency, reaching or exceeding this amount in total",
-      "applies": "entering or leaving Indonesia",
-      "authority": "Indonesian Customs (Directorate General of Customs and Excise / Bea Cukai)",
-      "mechanism": "mandatory Customs Declaration via the applicable channel (All Indonesia integrated declaration for air/sea arrivals; Bea Cukai e-CD for land-border arrivals and outbound cash declarations); Government Regulation 99/2016"
-     }
-    ],
-    "note": "The declaration is triggered when the total value REACHES OR EXCEEDS IDR 100,000,000 (>=; 'IDR 100,000,000 or more'), or the equivalent in another currency, aggregating cash and bearer payment instruments in Rupiah or foreign currency, symmetric on entry and exit; failure to declare carries an administrative fine of 10% of the amount carried, up to a maximum of IDR 300,000,000. This is a customs / anti-money-laundering border-transparency declaration, NOT a currency import/export ceiling or a currency-control cap. It is distinct from three separate regimes that must not be conflated with it: the physical-Rupiah carriage rules (outbound Rupiah of IDR 100,000,000 or more requires prior Bank Indonesia permission; inbound is subject to a Customs authenticity examination), the foreign-banknote (UKA) carriage rules (IDR 1,000,000,000 or more restricted to Bank Indonesia-authorised entities), and the DHE SDA export-proceeds retention/placement regime.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "capital_account_regulated",
-    "label": "Free-foreign-exchange framework (Law 24/1999) with a floating Rupiah under a Flexible Inflation Targeting Framework, stated as a monetary-regime fact kept separate from controls; the reviewed official sources do not establish a single general exchange-control authorisation regime, but specific layered rules apply and are kept distinct — DHE SDA sector-specific export-proceeds retention/placement, non-resident Rupiah/foreign-exchange-market restrictions, the domestic Rupiah-use obligation, and the cross-border cash-declaration and Rupiah/UKA carriage regimes; absence of a located restriction is not evidence that none exists",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -2308,7 +2293,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs, currency-use and export-proceeds rules in Indonesia are set by Bank Indonesia (BI), the Directorate General of Customs and Excise (Bea Cukai), and the Government of Indonesia through statutes and Government Regulations, and may change; requirements depend on residency status (Penduduk / Bukan Penduduk), the transaction type and amount, the export sector, documentation, and the applicable Bank Indonesia / customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with Bank Indonesia or Indonesian Customs (Bea Cukai) before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs, currency-use and export-proceeds rules in Indonesia are set by Bank Indonesia (BI), the Directorate General of Customs and Excise (Bea Cukai), and the Government of Indonesia through statutes and Government Regulations, and may change; requirements depend on residency status (Penduduk / Bukan Penduduk), the transaction type and amount, the export sector, documentation, and the applicable Bank Indonesia / customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with Bank Indonesia or Indonesian Customs (Bea Cukai) before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 100000000,
+      "currency": "IDR",
+      "scope": "cash and/or bearer payment instruments (cheques, traveller's cheques, promissory notes, bills of exchange), in Rupiah or foreign currency, reaching or exceeding this amount in total",
+      "applies": "entering or leaving Indonesia",
+      "authority": "Indonesian Customs (Directorate General of Customs and Excise / Bea Cukai)",
+      "mechanism": "mandatory Customs Declaration via the applicable channel (All Indonesia integrated declaration for air/sea arrivals; Bea Cukai e-CD for land-border arrivals and outbound cash declarations); Government Regulation 99/2016"
+     }
+    ],
+    "note": "The declaration is triggered when the total value REACHES OR EXCEEDS IDR 100,000,000 (>=; 'IDR 100,000,000 or more'), or the equivalent in another currency, aggregating cash and bearer payment instruments in Rupiah or foreign currency, symmetric on entry and exit; failure to declare carries an administrative fine of 10% of the amount carried, up to a maximum of IDR 300,000,000. This is a customs / anti-money-laundering border-transparency declaration, NOT a currency import/export ceiling or a currency-control cap. It is distinct from three separate regimes that must not be conflated with it: the physical-Rupiah carriage rules (outbound Rupiah of IDR 100,000,000 or more requires prior Bank Indonesia permission; inbound is subject to a Customs authenticity examination), the foreign-banknote (UKA) carriage rules (IDR 1,000,000,000 or more restricted to Bank Indonesia-authorised entities), and the DHE SDA export-proceeds retention/placement regime.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "Free-foreign-exchange framework (Law 24/1999) with a floating Rupiah under a Flexible Inflation Targeting Framework, stated as a monetary-regime fact kept separate from controls; the reviewed official sources do not establish a single general exchange-control authorisation regime, but specific layered rules apply and are kept distinct — DHE SDA sector-specific export-proceeds retention/placement, non-resident Rupiah/foreign-exchange-market restrictions, the domestic Rupiah-use obligation, and the cross-border cash-declaration and Rupiah/UKA carriage regimes; absence of a located restriction is not evidence that none exists",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Italy",
@@ -2319,33 +2323,6 @@
    "region": "Southern Europe",
    "last_reviewed": "2026-07-24",
    "rules_page": "/rules/italy-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "EUR",
-      "scope": "cash — currency (banknotes and coins), bearer-negotiable instruments, and gold used as a highly liquid store of value",
-      "applies": "entering or leaving the European Union through Italy",
-      "authority": "Agenzia delle Dogane e dei Monopoli (ADM), Italian Customs",
-      "mechanism": "mandatory declaration under Article 3, Regulation (EU) 2018/1672"
-     },
-     {
-      "value": 10000,
-      "currency": "EUR",
-      "scope": "same cash categories (currency, bearer-negotiable instruments, gold)",
-      "applies": "entering or leaving Italian national territory, including to or from other EU Member States",
-      "authority": "Agenzia delle Dogane e dei Monopoli (ADM), Italian Customs",
-      "mechanism": "mandatory declaration under Article 3, Legislative Decree 195/2008"
-     }
-    ],
-    "note": "Two parallel EUR 10,000 regimes administered through a single ADM declaration form: the EU external-border regime (Art. 3 Reg (EU) 2018/1672) and the Italian national-territory regime, which also covers intra-EU movements to or from other Member States (Art. 3 D.Lgs 195/2008). Unaccompanied cash sent by post, freight or courier is covered separately by Art. 4 of Regulation (EU) 2018/1672 (disclosure on customs request). This border cash-declaration regime is distinct from the general capital-movement framework under Article 63 TFEU.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "none",
-    "label": "No national exchange controls; free movement of capital and payments under Article 63 TFEU, subject to Treaty exceptions (taxation, prudential supervision, public policy/security, certain third-country measures) and to EU sanctions",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -2598,7 +2575,34 @@
      "tier": "secondary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange and cash-control rules in Italy are set by EU and Italian law and may change; requirements depend on residency, the movement concerned (entering/leaving the EU versus Italian national territory), amount, documentation, and the applicable ADM, Banca d'Italia, and EU framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Agenzia delle Dogane e dei Monopoli, Banca d'Italia, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange and cash-control rules in Italy are set by EU and Italian law and may change; requirements depend on residency, the movement concerned (entering/leaving the EU versus Italian national territory), amount, documentation, and the applicable ADM, Banca d'Italia, and EU framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Agenzia delle Dogane e dei Monopoli, Banca d'Italia, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "cash — currency (banknotes and coins), bearer-negotiable instruments, and gold used as a highly liquid store of value",
+      "applies": "entering or leaving the European Union through Italy",
+      "authority": "Agenzia delle Dogane e dei Monopoli (ADM), Italian Customs",
+      "mechanism": "mandatory declaration under Article 3, Regulation (EU) 2018/1672"
+     },
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "same cash categories (currency, bearer-negotiable instruments, gold)",
+      "applies": "entering or leaving Italian national territory, including to or from other EU Member States",
+      "authority": "Agenzia delle Dogane e dei Monopoli (ADM), Italian Customs",
+      "mechanism": "mandatory declaration under Article 3, Legislative Decree 195/2008"
+     }
+    ],
+    "note": "Two parallel EUR 10,000 regimes administered through a single ADM declaration form: the EU external-border regime (Art. 3 Reg (EU) 2018/1672) and the Italian national-territory regime, which also covers intra-EU movements to or from other Member States (Art. 3 D.Lgs 195/2008). Unaccompanied cash sent by post, freight or courier is covered separately by Art. 4 of Regulation (EU) 2018/1672 (disclosure on customs request). This border cash-declaration regime is distinct from the general capital-movement framework under Article 63 TFEU.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No national exchange controls; free movement of capital and payments under Article 63 TFEU, subject to Treaty exceptions (taxation, prudential supervision, public policy/security, certain third-country measures) and to EU sanctions",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Japan",
@@ -2609,25 +2613,6 @@
    "region": "East Asia",
    "last_reviewed": "2026-05-02",
    "rules_page": "/rules/japan-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 1000000,
-      "currency": "JPY",
-      "scope": "cash or equivalent",
-      "applies": "inbound and outbound",
-      "authority": "Ministry of Finance / Bank of Japan",
-      "mechanism": "may trigger AML reporting"
-     }
-    ],
-    "note": "No mandatory declaration threshold for ordinary travellers; movements at or above this figure may trigger reporting under AML regulations.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "none",
-    "label": "No general exchange controls (fully liberalised)",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -2769,7 +2754,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Japan are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Ministry of Finance / Bank of Japan / Japan Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Ministry of Finance, Bank of Japan, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Japan are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Ministry of Finance / Bank of Japan / Japan Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Ministry of Finance, Bank of Japan, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 1000000,
+      "currency": "JPY",
+      "scope": "cash or equivalent",
+      "applies": "inbound and outbound",
+      "authority": "Ministry of Finance / Bank of Japan",
+      "mechanism": "may trigger AML reporting"
+     }
+    ],
+    "note": "No mandatory declaration threshold for ordinary travellers; movements at or above this figure may trigger reporting under AML regulations.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (fully liberalised)",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Mexico",
@@ -2780,25 +2784,6 @@
    "region": "Latin America",
    "last_reviewed": "2026-09-06",
    "rules_page": "/rules/mexico-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "USD",
-      "scope": "means of payment — cash, national or foreign checks, payment orders or any other collectible document, or a combination — exceeding this amount in total",
-      "applies": "entering or leaving Mexico",
-      "authority": "Agencia Nacional de Aduanas de México (ANAM); SAT-approved form",
-      "mechanism": "mandatory customs declaration (Ley Aduanera Art. 9)"
-     }
-    ],
-    "note": "The declaration is triggered only ABOVE USD 10,000 (exceeding, not 'USD 10,000 or more'), aggregating cash, national or foreign checks, payment orders and other collectible documents; failure to declare carries a fine of 20%–40% of the excess (Ley Aduanera Art. 185 fr. VII). This is a customs currency-transparency declaration, not a currency-control cap, and is distinct from the anti-money-laundering controls and quantitative US-dollar cash-operation limits banks apply under Article 115 of the Ley de Instituciones de Crédito, from UIF AML reporting, and from the LFPIORPI domestic cash-payment limits.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "floating_regulated_market",
-    "label": "Free-floating exchange-rate regime set by the Comisión de Cambios (SHCP and Banco de México); the reviewed official sources do not establish a general foreign-exchange authorisation regime, with anti-money-laundering, US-dollar cash-operation, customs-declaration and any sectoral restrictions kept distinct",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -3084,7 +3069,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs and anti-money-laundering rules in Mexico are set by the Ley Monetaria, the Ley del Banco de México, the Ley Aduanera, the Ley de Instituciones de Crédito and related regulations, and may change; requirements depend on residency, the transaction type and amount, documentation, and the applicable Banco de México, SHCP, CNBV, ANAM and UIF framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with Banco de México, the customs authority (ANAM), or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs and anti-money-laundering rules in Mexico are set by the Ley Monetaria, the Ley del Banco de México, the Ley Aduanera, the Ley de Instituciones de Crédito and related regulations, and may change; requirements depend on residency, the transaction type and amount, documentation, and the applicable Banco de México, SHCP, CNBV, ANAM and UIF framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with Banco de México, the customs authority (ANAM), or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "means of payment — cash, national or foreign checks, payment orders or any other collectible document, or a combination — exceeding this amount in total",
+      "applies": "entering or leaving Mexico",
+      "authority": "Agencia Nacional de Aduanas de México (ANAM); SAT-approved form",
+      "mechanism": "mandatory customs declaration (Ley Aduanera Art. 9)"
+     }
+    ],
+    "note": "The declaration is triggered only ABOVE USD 10,000 (exceeding, not 'USD 10,000 or more'), aggregating cash, national or foreign checks, payment orders and other collectible documents; failure to declare carries a fine of 20%–40% of the excess (Ley Aduanera Art. 185 fr. VII). This is a customs currency-transparency declaration, not a currency-control cap, and is distinct from the anti-money-laundering controls and quantitative US-dollar cash-operation limits banks apply under Article 115 of the Ley de Instituciones de Crédito, from UIF AML reporting, and from the LFPIORPI domestic cash-payment limits.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "floating_regulated_market",
+    "label": "Free-floating exchange-rate regime set by the Comisión de Cambios (SHCP and Banco de México); the reviewed official sources do not establish a general foreign-exchange authorisation regime, with anti-money-laundering, US-dollar cash-operation, customs-declaration and any sectoral restrictions kept distinct",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Morocco",
@@ -3095,34 +3099,6 @@
    "region": "North Africa",
    "last_reviewed": "2026-09-08",
    "rules_page": "/rules/morocco-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 100000,
-      "currency": "MAD",
-      "scope": "effects of commerce, means of payment and bearer-negotiable financial instruments / covered foreign means and instruments",
-      "applies": "entering and leaving Morocco",
-      "authority": "Office des Changes / Moroccan Customs",
-      "mechanism": "mandatory Customs declaration when value is equal to or greater than MAD 100,000 (>=; Art. 37 inbound / Art. 40 outbound)"
-     },
-     {
-      "value": 2000,
-      "currency": "MAD",
-      "scope": "physical Moroccan-dirham banknotes",
-      "applies": "entering and leaving Morocco / traveller carriage",
-      "authority": "Office des Changes / Moroccan Customs",
-      "mechanism": "traveller carriage exception not exceeding MAD 2,000 (<=); import/export of MAD banknotes otherwise prohibited in principle (Art. 42) — NOT a declaration threshold"
-     }
-    ],
-    "note": "Mixed architecture: >= MAD 100,000 is the Customs declaration trigger for covered means/instruments (Arts 37/40; exactly MAD 100,000 is inside the trigger); below MAD 100,000 inbound declaration is facultative, but presentation of the import declaration may still be required regardless of amount to justify origin for eligible FX/convertible-dirham account funding, re-export, or qualifying export-proceeds proof. MAD 100,000 is not a carriage ceiling. Separately, <= MAD 2,000 is the Art. 42 physical-MAD banknote traveller carriage exception (import/export otherwise prohibited in principle). These two numeric regimes must not be collapsed.",
-    "pair_surface_summary": "foreign means/instruments ≥ MAD 100,000 declaration · physical MAD ≤2,000 traveller carriage exception",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "capital_account_regulated",
-    "label": "Regulated, category- and transaction-specific foreign-exchange framework under Office des Changes / IGOC 2026; current and capital operations use authorised channels, allowances, account rules and transaction-specific conditions rather than one universal prior-approval screen",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -3538,7 +3514,35 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange, monetary-policy and cross-border cash rules in Morocco are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, licensing and the applicable Office des Changes / Bank Al-Maghrib framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Office des Changes, Bank Al-Maghrib and an authorised intermediary bank before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange, monetary-policy and cross-border cash rules in Morocco are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, licensing and the applicable Office des Changes / Bank Al-Maghrib framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Office des Changes, Bank Al-Maghrib and an authorised intermediary bank before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 100000,
+      "currency": "MAD",
+      "scope": "effects of commerce, means of payment and bearer-negotiable financial instruments / covered foreign means and instruments",
+      "applies": "entering and leaving Morocco",
+      "authority": "Office des Changes / Moroccan Customs",
+      "mechanism": "mandatory Customs declaration when value is equal to or greater than MAD 100,000 (>=; Art. 37 inbound / Art. 40 outbound)"
+     },
+     {
+      "value": 2000,
+      "currency": "MAD",
+      "scope": "physical Moroccan-dirham banknotes",
+      "applies": "entering and leaving Morocco / traveller carriage",
+      "authority": "Office des Changes / Moroccan Customs",
+      "mechanism": "traveller carriage exception not exceeding MAD 2,000 (<=); import/export of MAD banknotes otherwise prohibited in principle (Art. 42) — NOT a declaration threshold"
+     }
+    ],
+    "note": "Mixed architecture: >= MAD 100,000 is the Customs declaration trigger for covered means/instruments (Arts 37/40; exactly MAD 100,000 is inside the trigger); below MAD 100,000 inbound declaration is facultative, but presentation of the import declaration may still be required regardless of amount to justify origin for eligible FX/convertible-dirham account funding, re-export, or qualifying export-proceeds proof. MAD 100,000 is not a carriage ceiling. Separately, <= MAD 2,000 is the Art. 42 physical-MAD banknote traveller carriage exception (import/export otherwise prohibited in principle). These two numeric regimes must not be collapsed.",
+    "pair_surface_summary": "foreign means/instruments ≥ MAD 100,000 declaration · physical MAD ≤2,000 traveller carriage exception",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "Regulated, category- and transaction-specific foreign-exchange framework under Office des Changes / IGOC 2026; current and capital operations use authorised channels, allowances, account rules and transaction-specific conditions rather than one universal prior-approval screen",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Nigeria",
@@ -3549,36 +3553,6 @@
    "region": "Sub-Saharan Africa",
    "last_reviewed": "2026-09-09",
    "rules_page": "/rules/nigeria-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "USD",
-      "operator": ">",
-      "scope": "cash or negotiable instruments (or equivalent)",
-      "applies": "entering or leaving Nigeria",
-      "authority": "Money Laundering (Prevention and Prohibition) Act, 2022 / Nigeria Customs Service",
-      "mechanism": "statutory MLPPA s.3(3) declaration trigger when transporting cash or negotiable instruments in excess of US$10,000 or its equivalent (operator >; exactly USD 10,000 is outside this statutory trigger); declaration obligation, NOT a foreign-currency carriage ceiling"
-     },
-     {
-      "value": 10000,
-      "currency": "USD",
-      "operator": ">=",
-      "scope": "cash or negotiable instruments as captured on the Customs electronic currency declaration form",
-      "applies": "Customs e-CDF operational interface for Nigeria border declaration",
-      "authority": "Nigeria Customs Service — Electronic Currency Declaration",
-      "mechanism": "Customs operational e-CDF trigger of US$10,000 or more / equal to or greater than US$10,000 (operator >=); OPERATIONAL interface posture only — does not formally amend or interpret the statutory MLPPA > trigger into a single reconciled operator"
-     }
-    ],
-    "note": "Keep statutory and operational triggers distinct — do not flatten. (A) Statutory MLPPA 2022: transportation of cash or negotiable instruments in excess of US$10,000 or its equivalent into or out of Nigeria shall be declared to the Nigeria Customs Service (operator >; exactly USD 10,000 is outside the statutory trigger). (B) Separately, current Customs e-CDF operational guidance uses US$10,000 or more / >= (operator >=). The Customs operational interface does not formally amend the statute. Declaration threshold ≠ foreign-currency carriage ceiling; do not publish 'USD 10,000 cash limit', 'maximum USD 10,000', or 'outbound limited to amount declared on entry'. Separately, FEMMPA s.14 prohibits importation and exportation of the naira except as permitted under guidelines issued from time to time by the Central Bank; a current numeric traveller NGN exception is not established in the published Nigeria rules and must not be invented.",
-    "pair_surface_summary": "statutory cash/NI declaration > USD 10,000 · Customs e-CDF operational >= USD 10,000 · physical NGN prohibited except CBN guidelines (no numeric exception established)",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "capital_account_regulated",
-    "label": "CBN-regulated foreign-exchange Market architecture under FEMMPA: Authorised Dealer/Authorised Buyer appointment and Market channels; documentation-backed Market FX purchase eligibility; Certificate of Capital Importation issuance and related CBN returns for qualifying inward investment; foreign-currency domiciliary accounts with Authorised Dealers subject to financial-institution identification evidence; statutory cash/negotiable-instrument border declaration in excess of US$10,000; physical-naira import/export prohibition except as permitted under Central Bank guidelines; and CBN/FMDA regulation of EFEMS with published guidelines for FX Code / Market Operating Guidelines compliance — discrete regulated mechanisms rather than one universal prior-approval screen, without asserting a formal floating/managed-float taxonomy or a severity classification of exchange controls",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -3890,7 +3864,37 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Nigeria are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Central Bank of Nigeria / Nigerian Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Nigeria or Nigerian Customs before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Nigeria are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Central Bank of Nigeria / Nigerian Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Central Bank of Nigeria or Nigerian Customs before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "USD",
+      "operator": ">",
+      "scope": "cash or negotiable instruments (or equivalent)",
+      "applies": "entering or leaving Nigeria",
+      "authority": "Money Laundering (Prevention and Prohibition) Act, 2022 / Nigeria Customs Service",
+      "mechanism": "statutory MLPPA s.3(3) declaration trigger when transporting cash or negotiable instruments in excess of US$10,000 or its equivalent (operator >; exactly USD 10,000 is outside this statutory trigger); declaration obligation, NOT a foreign-currency carriage ceiling"
+     },
+     {
+      "value": 10000,
+      "currency": "USD",
+      "operator": ">=",
+      "scope": "cash or negotiable instruments as captured on the Customs electronic currency declaration form",
+      "applies": "Customs e-CDF operational interface for Nigeria border declaration",
+      "authority": "Nigeria Customs Service — Electronic Currency Declaration",
+      "mechanism": "Customs operational e-CDF trigger of US$10,000 or more / equal to or greater than US$10,000 (operator >=); OPERATIONAL interface posture only — does not formally amend or interpret the statutory MLPPA > trigger into a single reconciled operator"
+     }
+    ],
+    "note": "Keep statutory and operational triggers distinct — do not flatten. (A) Statutory MLPPA 2022: transportation of cash or negotiable instruments in excess of US$10,000 or its equivalent into or out of Nigeria shall be declared to the Nigeria Customs Service (operator >; exactly USD 10,000 is outside the statutory trigger). (B) Separately, current Customs e-CDF operational guidance uses US$10,000 or more / >= (operator >=). The Customs operational interface does not formally amend the statute. Declaration threshold ≠ foreign-currency carriage ceiling; do not publish 'USD 10,000 cash limit', 'maximum USD 10,000', or 'outbound limited to amount declared on entry'. Separately, FEMMPA s.14 prohibits importation and exportation of the naira except as permitted under guidelines issued from time to time by the Central Bank; a current numeric traveller NGN exception is not established in the published Nigeria rules and must not be invented.",
+    "pair_surface_summary": "statutory cash/NI declaration > USD 10,000 · Customs e-CDF operational >= USD 10,000 · physical NGN prohibited except CBN guidelines (no numeric exception established)",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "CBN-regulated foreign-exchange Market architecture under FEMMPA: Authorised Dealer/Authorised Buyer appointment and Market channels; documentation-backed Market FX purchase eligibility; Certificate of Capital Importation issuance and related CBN returns for qualifying inward investment; foreign-currency domiciliary accounts with Authorised Dealers subject to financial-institution identification evidence; statutory cash/negotiable-instrument border declaration in excess of US$10,000; physical-naira import/export prohibition except as permitted under Central Bank guidelines; and CBN/FMDA regulation of EFEMS with published guidelines for FX Code / Market Operating Guidelines compliance — discrete regulated mechanisms rather than one universal prior-approval screen, without asserting a formal floating/managed-float taxonomy or a severity classification of exchange controls",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Pakistan",
@@ -3901,25 +3905,6 @@
    "region": "South Asia",
    "last_reviewed": "2026-05-02",
    "rules_page": "/rules/pakistan-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "USD",
-      "scope": "cash or bearer negotiable instruments (or equivalent)",
-      "applies": "entry and exit",
-      "authority": "Pakistan Customs",
-      "mechanism": "mandatory declaration"
-     }
-    ],
-    "note": null,
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "capital_account_regulated",
-    "label": "No general exchange controls on the current account; capital account regulated by the SBP",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -4061,7 +4046,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Pakistan are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable State Bank of Pakistan / Pakistan Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the State Bank of Pakistan, Pakistan Customs, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Pakistan are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable State Bank of Pakistan / Pakistan Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the State Bank of Pakistan, Pakistan Customs, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "cash or bearer negotiable instruments (or equivalent)",
+      "applies": "entry and exit",
+      "authority": "Pakistan Customs",
+      "mechanism": "mandatory declaration"
+     }
+    ],
+    "note": null,
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "No general exchange controls on the current account; capital account regulated by the SBP",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Saudi Arabia",
@@ -4072,25 +4076,6 @@
    "region": "Middle East",
    "last_reviewed": "2026-09-06",
    "rules_page": "/rules/saudi-arabia-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 40000,
-      "currency": "SAR",
-      "scope": "currency (Saudi or foreign), bearer negotiable instruments, gold bullion, precious metals, gemstones and worked jewellery — combined total value reaching or exceeding this amount, or the equivalent in another currency",
-      "applies": "entering or leaving the Kingdom",
-      "authority": "Zakat, Tax and Customs Authority (ZATCA); Article 23/1 of the Implementing Regulation to the Anti-Money Laundering Law (Umm Al-Qura)",
-      "mechanism": "mandatory written declaration under the prescribed form"
-     }
-    ],
-    "note": "The declaration is triggered when the combined total value REACHES OR EXCEEDS SAR 40,000 (>=; 'SAR 40,000 or more', not merely 'exceeding'), or the equivalent in another currency, aggregating currency, bearer negotiable instruments, gold bullion, precious metals, gemstones and worked jewellery, symmetric on entry and exit. This is a border anti-money-laundering / customs transparency declaration under Article 23/1 of the Implementing Regulation to the Anti-Money Laundering Law (primary legal locator in the Umm Al-Qura official gazette; operationally corroborated by the ZATCA traveller-declaration page), NOT a currency-control cap or an export ceiling, and is distinct from bank AML/KYC reporting and from SAMA's account-eligibility rules. The fixed SAR/USD peg is a separate monetary-regime fact.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "supervisory_peg",
-    "label": "Saudi riyal maintained at a fixed rate against the US dollar (SAR 3.75) by the Saudi Central Bank (SAMA) as a monetary-regime fact, kept separate from control posture; the reviewed official sources establish a licensed, SAMA-regulated foreign-exchange market (banks and money-exchange businesses) but do not establish a general exchange-control authorisation regime for buying, holding or transferring currency, and absence of a located restriction is not evidence that none exists — the AML border declaration, account-eligibility and any sectoral rules are kept distinct",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -4290,7 +4275,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs and anti-money-laundering rules in Saudi Arabia are set by the Saudi Central Bank (SAMA), the Zakat, Tax and Customs Authority (ZATCA), and the Anti-Money Laundering Law and its Implementing Regulation, and may change; requirements depend on residency and nationality, customer category, the transaction type and amount, documentation, and the applicable SAMA/ZATCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Saudi Central Bank (SAMA), ZATCA, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs and anti-money-laundering rules in Saudi Arabia are set by the Saudi Central Bank (SAMA), the Zakat, Tax and Customs Authority (ZATCA), and the Anti-Money Laundering Law and its Implementing Regulation, and may change; requirements depend on residency and nationality, customer category, the transaction type and amount, documentation, and the applicable SAMA/ZATCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Saudi Central Bank (SAMA), ZATCA, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 40000,
+      "currency": "SAR",
+      "scope": "currency (Saudi or foreign), bearer negotiable instruments, gold bullion, precious metals, gemstones and worked jewellery — combined total value reaching or exceeding this amount, or the equivalent in another currency",
+      "applies": "entering or leaving the Kingdom",
+      "authority": "Zakat, Tax and Customs Authority (ZATCA); Article 23/1 of the Implementing Regulation to the Anti-Money Laundering Law (Umm Al-Qura)",
+      "mechanism": "mandatory written declaration under the prescribed form"
+     }
+    ],
+    "note": "The declaration is triggered when the combined total value REACHES OR EXCEEDS SAR 40,000 (>=; 'SAR 40,000 or more', not merely 'exceeding'), or the equivalent in another currency, aggregating currency, bearer negotiable instruments, gold bullion, precious metals, gemstones and worked jewellery, symmetric on entry and exit. This is a border anti-money-laundering / customs transparency declaration under Article 23/1 of the Implementing Regulation to the Anti-Money Laundering Law (primary legal locator in the Umm Al-Qura official gazette; operationally corroborated by the ZATCA traveller-declaration page), NOT a currency-control cap or an export ceiling, and is distinct from bank AML/KYC reporting and from SAMA's account-eligibility rules. The fixed SAR/USD peg is a separate monetary-regime fact.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "supervisory_peg",
+    "label": "Saudi riyal maintained at a fixed rate against the US dollar (SAR 3.75) by the Saudi Central Bank (SAMA) as a monetary-regime fact, kept separate from control posture; the reviewed official sources establish a licensed, SAMA-regulated foreign-exchange market (banks and money-exchange businesses) but do not establish a general exchange-control authorisation regime for buying, holding or transferring currency, and absence of a located restriction is not evidence that none exists — the AML border declaration, account-eligibility and any sectoral rules are kept distinct",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Singapore",
@@ -4301,26 +4305,6 @@
    "region": "Southeast Asia",
    "last_reviewed": "2026-09-08",
    "rules_page": "/rules/singapore-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 20000,
-      "currency": "SGD",
-      "scope": "physical currency and bearer negotiable instruments (CBNI)",
-      "applies": "entering or leaving Singapore",
-      "authority": "Singapore Police Force / Immigration & Checkpoints Authority under CDSA",
-      "mechanism": "mandatory CBNI report (Form NP 727) when total value EXCEEDS S$20,000"
-     }
-    ],
-    "note": "Reporting is triggered only when total CBNI value exceeds S$20,000 (CDSA 1992 s60(1) 'exceeds the prescribed amount'; CBNI Regulations 2007 reg 2A; strictly '>', never '>='). Exactly S$20,000 is outside the trigger. The rule applies inbound and outbound. ICA states there is no restriction on CBNI type or amount — this is a reporting trigger, not a carriage ceiling. This is CDSA Part 6A cross-border cash/CBNI reporting, not an Exchange Control Act capital control.",
-    "pair_surface_summary": "CBNI > S$20,000 report · no carriage ceiling",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "none",
-    "label": "No operative general exchange-control approval regime under the MAS blanket exemption; Exchange Control Act remains in force through 31 December 2033",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -4724,7 +4708,27 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Singapore foreign-exchange, monetary-policy and cross-border cash/CBNI rules are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, licensing and AML/sanctions frameworks. The Exchange Control Act 1953 remains in force alongside MAS liberalisation exemptions; this is not a representation that every banking product is available without conditions. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with MAS, ICA, the Singapore Police Force or an authorised financial institution before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Singapore foreign-exchange, monetary-policy and cross-border cash/CBNI rules are subject to change, and transaction-specific requirements may depend on residency or entity status, documentation, amount, licensing and AML/sanctions frameworks. The Exchange Control Act 1953 remains in force alongside MAS liberalisation exemptions; this is not a representation that every banking product is available without conditions. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with MAS, ICA, the Singapore Police Force or an authorised financial institution before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 20000,
+      "currency": "SGD",
+      "scope": "physical currency and bearer negotiable instruments (CBNI)",
+      "applies": "entering or leaving Singapore",
+      "authority": "Singapore Police Force / Immigration & Checkpoints Authority under CDSA",
+      "mechanism": "mandatory CBNI report (Form NP 727) when total value EXCEEDS S$20,000"
+     }
+    ],
+    "note": "Reporting is triggered only when total CBNI value exceeds S$20,000 (CDSA 1992 s60(1) 'exceeds the prescribed amount'; CBNI Regulations 2007 reg 2A; strictly '>', never '>='). Exactly S$20,000 is outside the trigger. The rule applies inbound and outbound. ICA states there is no restriction on CBNI type or amount — this is a reporting trigger, not a carriage ceiling. This is CDSA Part 6A cross-border cash/CBNI reporting, not an Exchange Control Act capital control.",
+    "pair_surface_summary": "CBNI > S$20,000 report · no carriage ceiling",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No operative general exchange-control approval regime under the MAS blanket exemption; Exchange Control Act remains in force through 31 December 2033",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "South Africa",
@@ -4735,33 +4739,6 @@
    "region": "Sub-Saharan Africa",
    "last_reviewed": "2026-07-23",
    "rules_page": "/rules/south-africa-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 25000,
-      "currency": "ZAR",
-      "scope": "South African bank notes",
-      "applies": "taking out; unlimited within the Common Monetary Area",
-      "authority": "South African Reserve Bank (SARB); declared to SARS Customs",
-      "mechanism": "prior SARB authorisation required above this amount"
-     },
-     {
-      "value": 100000,
-      "currency": "ZAR",
-      "scope": "'excess currency' — any amount in rand, or foreign currency convertible to rand",
-      "applies": "entering or leaving",
-      "authority": "South African Reserve Bank (SARB); declared to SARS Customs",
-      "mechanism": "written SARB permission required"
-     }
-    ],
-    "note": "Two distinct SARB exchange-control thresholds: the R25,000 rand-carrying limit on South African bank notes (unlimited within the Common Monetary Area, sourced to the SARS Departure page) and the R100,000 excess-currency rule covering rand or foreign currency convertible to rand (sourced to the SARS Travellers page). Separately, the traveller declaration — bank notes, foreign currency, securities and gold — is administered by SARS via an online form or the manual Traveller Declaration (TD-01). This R25,000 rand-carrying limit is a SARB exchange-control figure and is NOT the Currency and Exchanges Manual's R25,000 ADLA money-transfer cap.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "capital_account_regulated",
-    "label": "Current account largely liberalised; capital account subject to SARB exchange control administered through Authorised Dealers under the Currency and Exchanges Manual",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -4982,7 +4959,34 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in South Africa are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable South African Reserve Bank / SARS framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the South African Reserve Bank or SARS before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in South Africa are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable South African Reserve Bank / SARS framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the South African Reserve Bank or SARS before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 25000,
+      "currency": "ZAR",
+      "scope": "South African bank notes",
+      "applies": "taking out; unlimited within the Common Monetary Area",
+      "authority": "South African Reserve Bank (SARB); declared to SARS Customs",
+      "mechanism": "prior SARB authorisation required above this amount"
+     },
+     {
+      "value": 100000,
+      "currency": "ZAR",
+      "scope": "'excess currency' — any amount in rand, or foreign currency convertible to rand",
+      "applies": "entering or leaving",
+      "authority": "South African Reserve Bank (SARB); declared to SARS Customs",
+      "mechanism": "written SARB permission required"
+     }
+    ],
+    "note": "Two distinct SARB exchange-control thresholds: the R25,000 rand-carrying limit on South African bank notes (unlimited within the Common Monetary Area, sourced to the SARS Departure page) and the R100,000 excess-currency rule covering rand or foreign currency convertible to rand (sourced to the SARS Travellers page). Separately, the traveller declaration — bank notes, foreign currency, securities and gold — is administered by SARS via an online form or the manual Traveller Declaration (TD-01). This R25,000 rand-carrying limit is a SARB exchange-control figure and is NOT the Currency and Exchanges Manual's R25,000 ADLA money-transfer cap.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "Current account largely liberalised; capital account subject to SARB exchange control administered through Authorised Dealers under the Currency and Exchanges Manual",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "South Korea",
@@ -4993,25 +4997,6 @@
    "region": "East Asia",
    "last_reviewed": "2026-07-25",
    "rules_page": "/rules/south-korea-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "USD",
-      "scope": "means of payment — foreign currency, Korean-won notes and checks — combined, exceeding this amount in total",
-      "applies": "entering or leaving South Korea",
-      "authority": "Korea Customs Service",
-      "mechanism": "mandatory declaration (Traveler Declaration Form item no. 3; Certificate of Foreign Currency Declaration)"
-     }
-    ],
-    "note": "The declaration is triggered only ABOVE USD 10,000 (exceeding, not 'USD 10,000 or more'), aggregating foreign currency, Korean-won notes and checks; at or below USD 10,000 none is required. This Korea Customs border declaration is distinct from three separate regimes: Foreign Exchange Transactions Act capital-transaction and method-of-payment reporting (FETA Art. 16/18); foreign exchange banks' reporting of FX sales over USD 10,000 to the National Tax Service (FETA Art. 21); and KoFIU anti-money-laundering reporting.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "capital_account_regulated",
-    "label": "Current-account payments and receipts substantially liberalised; capital transactions and certain methods of payment or receipt subject to transaction-specific notification, permission or reporting under the Foreign Exchange Transactions Act (via foreign exchange banks, the Bank of Korea Governor, or MOEF as competent authority); the Korean won is not fully internationalised",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -5257,7 +5242,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange and cash-control rules in South Korea are set by the Foreign Exchange Transactions Act and Korea Customs rules and may change; requirements depend on residency, the transaction type and amount, documentation, and the applicable MOEF, Bank of Korea, and Korea Customs Service framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Korea Customs Service, the Bank of Korea, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange and cash-control rules in South Korea are set by the Foreign Exchange Transactions Act and Korea Customs rules and may change; requirements depend on residency, the transaction type and amount, documentation, and the applicable MOEF, Bank of Korea, and Korea Customs Service framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Korea Customs Service, the Bank of Korea, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "means of payment — foreign currency, Korean-won notes and checks — combined, exceeding this amount in total",
+      "applies": "entering or leaving South Korea",
+      "authority": "Korea Customs Service",
+      "mechanism": "mandatory declaration (Traveler Declaration Form item no. 3; Certificate of Foreign Currency Declaration)"
+     }
+    ],
+    "note": "The declaration is triggered only ABOVE USD 10,000 (exceeding, not 'USD 10,000 or more'), aggregating foreign currency, Korean-won notes and checks; at or below USD 10,000 none is required. This Korea Customs border declaration is distinct from three separate regimes: Foreign Exchange Transactions Act capital-transaction and method-of-payment reporting (FETA Art. 16/18); foreign exchange banks' reporting of FX sales over USD 10,000 to the National Tax Service (FETA Art. 21); and KoFIU anti-money-laundering reporting.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "capital_account_regulated",
+    "label": "Current-account payments and receipts substantially liberalised; capital transactions and certain methods of payment or receipt subject to transaction-specific notification, permission or reporting under the Foreign Exchange Transactions Act (via foreign exchange banks, the Bank of Korea Governor, or MOEF as competent authority); the Korean won is not fully internationalised",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "Turkey",
@@ -5268,33 +5272,6 @@
    "region": "Eastern Europe",
    "last_reviewed": "2026-09-08",
    "rules_page": "/rules/turkey-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 185000,
-      "currency": "TRY",
-      "scope": "Turkish lira cash",
-      "applies": "leaving Türkiye / outbound only",
-      "authority": "Ministry of Trade / Turkish Customs",
-      "mechanism": "mandatory Nakit Beyan Formu declaration (Decree No. 32 Art. 3(d); Communiqué 2008-32/34 Art. 3(5)); triggered only when exceeding (aşan, strictly >)"
-     },
-     {
-      "value": 10000,
-      "currency": "EUR",
-      "scope": "foreign banknotes / efektif, or the equivalent in another foreign currency",
-      "applies": "leaving Türkiye / outbound only",
-      "authority": "Ministry of Trade / Turkish Customs",
-      "mechanism": "mandatory Nakit Beyan Formu declaration (Decree No. 32 Art. 4(f); Communiqué 2008-32/34 Art. 4(2)); triggered only when exceeding (aşan, strictly >)"
-     }
-    ],
-    "note": "Both outbound triggers apply only when exceeded (aşan, strictly '>'), not when merely reached; they are outbound declaration triggers on the Nakit Beyan Formu, not export ceilings. Ordinary inbound foreign currency has no general mandatory numeric declaration threshold under Decree No. 32 Art. 4(a); inbound declaration may be voluntary, and Customs may request an explanation of amount, source and purpose under Law No. 5549. Source/purpose cash categories that must move through banking channels remain a separate regime. The TRY and foreign-banknote (efektif) thresholds are distinct and must not be collapsed into one generic traveller figure, and must not be read as creating a symmetric inbound EUR 10,000 or 'entry and exit' threshold.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "floating_regulated_market",
-    "label": "Türkiye operates a floating exchange-rate regime with no nominal or real exchange-rate target; the reviewed official sources do not establish a single general foreign-exchange authorisation regime, while specific regulated layers remain distinct — resident/non-resident FX account and transfer rules under Decree No. 32, outbound physical-cash declaration triggers, banking-channel-only source/purpose categories, domestic FX-contract restrictions, export-proceeds repatriation/sale requirements, and transaction-specific reporting. Absence of a located restriction is not evidence of absence. The floating regime is a monetary fact, not itself an exchange-control rule.",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -5557,7 +5534,34 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs, currency and capital-movement rules in Türkiye are set by the Ministry of Treasury and Finance (Decree No. 32 and implementing communiqués), the Ministry of Trade / Turkish Customs, and the Central Bank of the Republic of Türkiye, and change frequently; requirements depend on residency status, the transaction type and amount, the direction of travel, documentation, and the applicable Decree No. 32 / customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Ministry of Treasury and Finance, the Central Bank of the Republic of Türkiye, or Turkish Customs before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange, customs, currency and capital-movement rules in Türkiye are set by the Ministry of Treasury and Finance (Decree No. 32 and implementing communiqués), the Ministry of Trade / Turkish Customs, and the Central Bank of the Republic of Türkiye, and change frequently; requirements depend on residency status, the transaction type and amount, the direction of travel, documentation, and the applicable Decree No. 32 / customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Ministry of Treasury and Finance, the Central Bank of the Republic of Türkiye, or Turkish Customs before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 185000,
+      "currency": "TRY",
+      "scope": "Turkish lira cash",
+      "applies": "leaving Türkiye / outbound only",
+      "authority": "Ministry of Trade / Turkish Customs",
+      "mechanism": "mandatory Nakit Beyan Formu declaration (Decree No. 32 Art. 3(d); Communiqué 2008-32/34 Art. 3(5)); triggered only when exceeding (aşan, strictly >)"
+     },
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "foreign banknotes / efektif, or the equivalent in another foreign currency",
+      "applies": "leaving Türkiye / outbound only",
+      "authority": "Ministry of Trade / Turkish Customs",
+      "mechanism": "mandatory Nakit Beyan Formu declaration (Decree No. 32 Art. 4(f); Communiqué 2008-32/34 Art. 4(2)); triggered only when exceeding (aşan, strictly >)"
+     }
+    ],
+    "note": "Both outbound triggers apply only when exceeded (aşan, strictly '>'), not when merely reached; they are outbound declaration triggers on the Nakit Beyan Formu, not export ceilings. Ordinary inbound foreign currency has no general mandatory numeric declaration threshold under Decree No. 32 Art. 4(a); inbound declaration may be voluntary, and Customs may request an explanation of amount, source and purpose under Law No. 5549. Source/purpose cash categories that must move through banking channels remain a separate regime. The TRY and foreign-banknote (efektif) thresholds are distinct and must not be collapsed into one generic traveller figure, and must not be read as creating a symmetric inbound EUR 10,000 or 'entry and exit' threshold.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "floating_regulated_market",
+    "label": "Türkiye operates a floating exchange-rate regime with no nominal or real exchange-rate target; the reviewed official sources do not establish a single general foreign-exchange authorisation regime, while specific regulated layers remain distinct — resident/non-resident FX account and transfer rules under Decree No. 32, outbound physical-cash declaration triggers, banking-channel-only source/purpose categories, domestic FX-contract restrictions, export-proceeds repatriation/sale requirements, and transaction-specific reporting. Absence of a located restriction is not evidence of absence. The floating regime is a monetary fact, not itself an exchange-control rule.",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "United Arab Emirates",
@@ -5568,25 +5572,6 @@
    "region": "Middle East",
    "last_reviewed": "2026-05-01",
    "rules_page": "/rules/united-arab-emirates-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 60000,
-      "currency": "AED",
-      "scope": "combined value of cash, negotiable instruments without a named payee, jewellery, and precious metals",
-      "applies": "travellers aged 18 and above, inbound and outbound",
-      "authority": "UAE Customs / Central Bank of the UAE",
-      "mechanism": "AML transparency declaration"
-     }
-    ],
-    "note": "The trigger is a COMBINED declarable value across several asset categories, not cash alone, and applies to passengers aged eighteen and above.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "supervisory_peg",
-    "label": "No per-transaction approval controls; supervisory posture around the US-dollar peg, current-account flows largely liberal",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -5758,7 +5743,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Customs declaration thresholds and Central Bank supervisory requirements in the UAE can change without notice appearing here. This is not legal, regulatory, tax, financial, or compliance advice. Confirm current obligations with UAE Customs, the Central Bank of the UAE (CBUAE), licensed financial intermediaries, or qualified counsel before committing to travel or treasury decisions."
+   "disclaimer": "This page provides general informational reference only. Customs declaration thresholds and Central Bank supervisory requirements in the UAE can change without notice appearing here. This is not legal, regulatory, tax, financial, or compliance advice. Confirm current obligations with UAE Customs, the Central Bank of the UAE (CBUAE), licensed financial intermediaries, or qualified counsel before committing to travel or treasury decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 60000,
+      "currency": "AED",
+      "scope": "combined value of cash, negotiable instruments without a named payee, jewellery, and precious metals",
+      "applies": "travellers aged 18 and above, inbound and outbound",
+      "authority": "UAE Customs / Central Bank of the UAE",
+      "mechanism": "AML transparency declaration"
+     }
+    ],
+    "note": "The trigger is a COMBINED declarable value across several asset categories, not cash alone, and applies to passengers aged eighteen and above.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "supervisory_peg",
+    "label": "No per-transaction approval controls; supervisory posture around the US-dollar peg, current-account flows largely liberal",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "United Kingdom",
@@ -5769,33 +5773,6 @@
    "region": "Western Europe",
    "last_reviewed": "2026-07-08",
    "rules_page": "/rules/united-kingdom-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "GBP",
-      "scope": "cash and specified monetary instruments (notes and coins, bearer bonds, signed travellers' cheques), or equivalent in foreign currency",
-      "applies": "Great Britain (England, Scotland, Wales), entering or leaving the UK",
-      "authority": "HM Revenue & Customs (HMRC) via Border Force",
-      "mechanism": "mandatory declaration"
-     },
-     {
-      "value": 10000,
-      "currency": "EUR",
-      "scope": "cash and specified monetary instruments (also money orders, gold coins, bullion, prepaid cards), or equivalent",
-      "applies": "Northern Ireland, travelling to or from a non-EU country outside the UK",
-      "authority": "HM Revenue & Customs (HMRC) via Border Force",
-      "mechanism": "mandatory declaration"
-     }
-    ],
-    "note": "Two thresholds by jurisdiction: Great Britain applies GBP 10,000 (or equivalent) on entering or leaving the UK; Northern Ireland applies EUR 10,000 (or equivalent) when travelling between NI and a non-EU country outside the UK. Both derive from UK anti-money-laundering legislation and are administered by HMRC through Border Force.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "none",
-    "label": "No general exchange controls (fully liberalised for current and capital account)",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -5948,7 +5925,34 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in the United Kingdom are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable HMRC / Bank of England / FCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with HM Revenue & Customs, the Bank of England, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in the United Kingdom are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable HMRC / Bank of England / FCA framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with HM Revenue & Customs, the Bank of England, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "GBP",
+      "scope": "cash and specified monetary instruments (notes and coins, bearer bonds, signed travellers' cheques), or equivalent in foreign currency",
+      "applies": "Great Britain (England, Scotland, Wales), entering or leaving the UK",
+      "authority": "HM Revenue & Customs (HMRC) via Border Force",
+      "mechanism": "mandatory declaration"
+     },
+     {
+      "value": 10000,
+      "currency": "EUR",
+      "scope": "cash and specified monetary instruments (also money orders, gold coins, bullion, prepaid cards), or equivalent",
+      "applies": "Northern Ireland, travelling to or from a non-EU country outside the UK",
+      "authority": "HM Revenue & Customs (HMRC) via Border Force",
+      "mechanism": "mandatory declaration"
+     }
+    ],
+    "note": "Two thresholds by jurisdiction: Great Britain applies GBP 10,000 (or equivalent) on entering or leaving the UK; Northern Ireland applies EUR 10,000 (or equivalent) when travelling between NI and a non-EU country outside the UK. Both derive from UK anti-money-laundering legislation and are administered by HMRC through Border Force.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls (fully liberalised for current and capital account)",
+    "transcribed_from": "rules.exchange_controls"
+   }
   },
   {
    "country_name": "United States",
@@ -5959,25 +5963,6 @@
    "region": "North America",
    "last_reviewed": "2026-05-02",
    "rules_page": "/rules/united-states-foreign-currency-rules.html",
-   "declaration": {
-    "thresholds": [
-     {
-      "value": 10000,
-      "currency": "USD",
-      "scope": "aggregate cash or covered monetary instruments",
-      "applies": "into or out of the United States",
-      "authority": "U.S. Customs and Border Protection (CBP) / FinCEN",
-      "mechanism": "mandatory Currency and Monetary Instrument Report (FinCEN Form 105 / CMIR)"
-     }
-    ],
-    "note": "Transporting an aggregate exceeding USD 10,000 across the US border triggers a mandatory FinCEN Form 105 (CMIR) to CBP under 31 U.S.C. 5316 and 31 CFR 1010.340. This traveller border report is distinct from Bank Secrecy Act filings by financial institutions — Currency Transaction Reports (CTR) and Suspicious Activity Reports (SAR) — and from Foreign Bank Account Reports (FBAR); none of those is a traveller declaration.",
-    "transcribed_from": "rules.cash_declaration_threshold"
-   },
-   "exchange_controls": {
-    "posture": "none",
-    "label": "No general exchange controls; free-floating rate accepted under IMF Article VIII for current international transactions; capital-account reservations limited to enumerated sectoral inward direct investment under the OECD Code of Liberalisation of Capital Movements",
-    "transcribed_from": "rules.exchange_controls"
-   },
    "rules": {
     "bring_foreign_currency_in": {
      "label": "Bringing currency in",
@@ -6197,7 +6182,26 @@
      "tier": "primary"
     }
    ],
-   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in the United States are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Federal Reserve / CBP / FinCEN framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with US Customs and Border Protection, the Federal Reserve, or a qualified professional before making any financial or travel decisions."
+   "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in the United States are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Federal Reserve / CBP / FinCEN framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with US Customs and Border Protection, the Federal Reserve, or a qualified professional before making any financial or travel decisions.",
+   "declaration": {
+    "thresholds": [
+     {
+      "value": 10000,
+      "currency": "USD",
+      "scope": "aggregate cash or covered monetary instruments",
+      "applies": "into or out of the United States",
+      "authority": "U.S. Customs and Border Protection (CBP) / FinCEN",
+      "mechanism": "mandatory Currency and Monetary Instrument Report (FinCEN Form 105 / CMIR)"
+     }
+    ],
+    "note": "Transporting an aggregate exceeding USD 10,000 across the US border triggers a mandatory FinCEN Form 105 (CMIR) to CBP under 31 U.S.C. 5316 and 31 CFR 1010.340. This traveller border report is distinct from Bank Secrecy Act filings by financial institutions — Currency Transaction Reports (CTR) and Suspicious Activity Reports (SAR) — and from Foreign Bank Account Reports (FBAR); none of those is a traveller declaration.",
+    "transcribed_from": "rules.cash_declaration_threshold"
+   },
+   "exchange_controls": {
+    "posture": "none",
+    "label": "No general exchange controls; free-floating rate accepted under IMF Article VIII for current international transactions; capital-account reservations limited to enumerated sectoral inward direct investment under the OECD Code of Liberalisation of Capital Movements",
+    "transcribed_from": "rules.exchange_controls"
+   }
   }
  ]
 }

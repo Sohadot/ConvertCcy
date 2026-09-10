@@ -16,7 +16,7 @@ ConvertCCY publishes a static, read-only, agent-readable JSON interface generate
 - [Static Agent Interface — machine entry point](https://convertccy.com/api/v1/index.json): endpoint map and published-jurisdiction count — fetch this first
 - [Static Agent Interface — human documentation](https://convertccy.com/api.html): explains the boundary, the machine contract, and the coverage rules
 - [Published jurisdictions index](https://convertccy.com/api/v1/rules-index.json): list of published jurisdictions with links to each per-country file
-- [Passage Check dataset](https://convertccy.com/api/v1/passage-check.json): transcribed declaration thresholds and exchange-control posture per published jurisdiction
+- [Passage Check dataset](https://convertccy.com/api/v1/passage-check.json): transcribed border-cash controls and exchange-control profiles per published jurisdiction
 
 Rules for agents consuming this data:
 

@@ -138,6 +138,46 @@ def brief_jsonld(name: str, url: str, desc: str) -> str:
     return json.dumps(data, ensure_ascii=False)
 
 
+def border_cash_glance_html(pc: dict) -> tuple[str, str]:
+    """Return (heading, body_html) for typed border-cash at-a-glance card."""
+    bc = pc.get("border_cash") or {}
+    lines: list[str] = []
+    mode = (bc.get("declaration") or {}).get("mode")
+    if mode == "none_spontaneous":
+        lines.append("No spontaneous declaration obligation")
+    elif mode == "not_established":
+        lines.append("Declaration mode not established")
+    elif mode == "always":
+        lines.append("Declaration without numeric amount trigger")
+    elif mode == "mixed":
+        lines.append("Mixed declaration architecture")
+    for mech in bc.get("mechanisms") or []:
+        kind = mech.get("kind")
+        trig = mech.get("trigger") or {}
+        label = {
+            "declaration": "Declaration",
+            "reporting": "Reporting",
+            "inquiry": "Inquiry",
+            "registration": "Registration",
+            "carriage_limit": "Carriage limit",
+            "permit": "Permit / authorisation",
+            "enforcement": "Enforcement",
+        }.get(kind, kind or "Mechanism")
+        if trig.get("type") == "amount":
+            lines.append(
+                f'{label}: {trig.get("currency")} {int(trig.get("value", 0)):,} '
+                f'({trig.get("operator")})'
+            )
+        elif trig.get("type") == "condition":
+            lines.append(f'{label}: conditional — {trig.get("condition")}')
+        else:
+            lines.append(label)
+    if not lines:
+        lines.append("See bordered cash mechanisms in full rules")
+    body = "<br>".join(esc(x) for x in lines)
+    return "Border cash controls", body
+
+
 def render_brief(pc: dict, rules: dict) -> str:
     name = pc["country_name"]
     slug = pc["country_slug"]
@@ -147,13 +187,29 @@ def render_brief(pc: dict, rules: dict) -> str:
     url = f'{BASE_URL}/briefs/{slug}-passage-brief.html'
     rules_page = f'/rules/{slug}-foreign-currency-rules.html'
 
-    # At-a-glance threshold lines (governed, transcribed).
-    th = pc["declaration"]["thresholds"]
-    th_html = "<br>".join(
-        f'{esc(t["currency"])} {int(t["value"]):,} <span style="color:var(--muted)">({esc(t["scope"])})</span>'
-        for t in th
-    )
+    # At-a-glance: typed border_cash vs legacy declaration thresholds.
+    if pc.get("border_cash"):
+        glance_k, th_html = border_cash_glance_html(pc)
+    else:
+        glance_k = "Declaration threshold"
+        th = pc["declaration"]["thresholds"]
+        th_html = "<br>".join(
+            f'{esc(t["currency"])} {int(t["value"]):,} <span style="color:var(--muted)">({esc(t["scope"])})</span>'
+            for t in th
+        ) or "<em>No numeric declaration threshold transcribed</em>"
+
     exch = pc["exchange_controls"]["label"]
+    if pc["exchange_controls"].get("posture") == "layered":
+        comps = pc["exchange_controls"].get("components") or []
+        if comps:
+            exch = esc(exch) + "<br>" + "<br>".join(
+                f'<span style="color:var(--muted)">{esc(c.get("scope",""))}:</span> {esc(c.get("summary",""))}'
+                for c in comps
+            )
+        else:
+            exch = esc(exch)
+    else:
+        exch = esc(exch)
 
     r = rules.get("rules", {})
     summ = rules.get("summary", {})
@@ -173,7 +229,7 @@ def render_brief(pc: dict, rules: dict) -> str:
         if u:
             src_items += f'<li><a href="{u}" target="_blank" rel="noopener">{lbl}</a>{f" · {tier}" if tier else ""}</li>'
 
-    desc = (f'Governed Country Passage Brief for {name}: declaration threshold, exchange-control posture, '
+    desc = (f'Governed Country Passage Brief for {name}: border-cash controls, exchange-control profile, '
             f'traveler and business checklists, and official sources — free to read, print-to-PDF ready.')
     title = f'{name} Currency Passage Brief | ConvertCCY'
 
@@ -213,8 +269,8 @@ def render_brief(pc: dict, rules: dict) -> str:
   </div>
 
   <div class="glance">
-    <div class="gcard"><div class="k">Declaration threshold</div><div class="v">{th_html}</div></div>
-    <div class="gcard"><div class="k">Exchange controls</div><div class="v">{esc(exch)}</div></div>
+    <div class="gcard"><div class="k">{esc(glance_k)}</div><div class="v">{th_html}</div></div>
+    <div class="gcard"><div class="k">Exchange controls</div><div class="v">{exch}</div></div>
   </div>
 
   <div class="actions">
@@ -336,13 +392,35 @@ def main() -> None:
             continue
         (OUT_DIR / f"{slug}-passage-brief.html").write_text(render_brief(pc, rules))
         th = pc["declaration"]["thresholds"]
-        briefs_meta.append({
-            "slug": slug,
-            "name": pc["country_name"],
-            "ccy": pc["currency_code"],
-            "reviewed": pc.get("last_reviewed", ""),
-            "threshold_summary": " / ".join(f'{t["currency"]} {int(t["value"]):,}' for t in th),
-        })
+        if pc.get("border_cash"):
+            summary = str((pc.get("border_cash") or {}).get("pair_surface_summary") or "").strip()
+            if not summary:
+                mechs = (pc.get("border_cash") or {}).get("mechanisms") or []
+                bits = []
+                for m in mechs:
+                    trig = m.get("trigger") or {}
+                    if trig.get("type") == "amount":
+                        bits.append(
+                            f'{m.get("kind")}:{trig.get("currency")} {int(trig.get("value",0)):,} {trig.get("operator")}'
+                        )
+                    else:
+                        bits.append(str(m.get("kind")))
+                summary = " · ".join(bits) if bits else "typed border-cash controls"
+            briefs_meta.append({
+                "slug": slug,
+                "name": pc["country_name"],
+                "ccy": pc["currency_code"],
+                "reviewed": pc.get("last_reviewed", ""),
+                "threshold_summary": summary,
+            })
+        else:
+            briefs_meta.append({
+                "slug": slug,
+                "name": pc["country_name"],
+                "ccy": pc["currency_code"],
+                "reviewed": pc.get("last_reviewed", ""),
+                "threshold_summary": " / ".join(f'{t["currency"]} {int(t["value"]):,}' for t in th),
+            })
 
     (OUT_DIR / "index.html").write_text(render_index(briefs_meta))
     print(f"Wrote briefs/index.html + {len(briefs_meta)} briefs:")

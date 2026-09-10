@@ -5,38 +5,82 @@ build_passage_check.py — assemble the Passage Check engine dataset.
 The Passage Check engine is deterministic and evidence-bound. It may only
 surface what the published, source-mapped country entries already state.
 
-This script reads rules/dataset.json (the published CC BY 4.0
-governed-jurisdiction dataset) and emits rules/passage-check.json, an
-engine-optimised view that
-carries, per published jurisdiction:
+Schema version 1.1 (backward-compatible minor evolution):
 
-  - identity (name, slug, iso, currency)
-  - the governed rule prose fields, verbatim, each with its complete
-    ordered ``sources`` list copied from ``source_map['rules.<field>']``
-    (plus a singular ``source`` compatibility alias equal to ``sources[0]``)
-  - source authorities and last_reviewed date
-  - a STRUCTURED declaration-threshold block and an exchange-controls posture
-    label, each transcribed by hand from a specific dataset field and tagged
-    with `transcribed_from` so the derivation is auditable.
+  - Legacy jurisdictions remain authored in DECLARATION + EXCHANGE_CONTROLS
+    (v1.0-style grandfathered records).
+  - Opt-in typed jurisdictions are authored in BORDER_CASH_CONTROLS and/or
+    EXCHANGE_CONTROL_PROFILES (exactly one border source and exactly one
+    exchange-control source per published jurisdiction).
+  - Typed border-cash emits canonical ``border_cash`` plus a compatibility
+    ``declaration`` projection that contains declaration-kind numeric
+    thresholds only.
+  - Layered exchange profiles emit ``posture: "layered"`` as a routing key;
+    the legal answer is the hand-reviewed label/components.
 
-The numeric thresholds below are transcribed from each entry's
-`rules.cash_declaration_threshold` prose. They are NOT parsed automatically —
-prose parsing is error-prone — so this table is the single reviewed point of
-transcription. The script refuses to emit if the table drifts from the
-dataset (missing country, unpublished status, or currency mismatch on the
-country's own currency_code).
+Principle: prose truth → reviewed transcription → typed engine structure.
+The taxonomy must never force country truth into a false declaration
+threshold or a false scalar exchange-control posture.
 
 Run: python3 scripts/build_passage_check.py
 """
+
+from __future__ import annotations
 
 import copy
 import json
 import sys
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
 
 REPO = Path(__file__).resolve().parent.parent
 DATASET = REPO / "rules" / "dataset.json"
 OUT = REPO / "rules" / "passage-check.json"
+
+ENGINE_VERSION = "1.1"
+
+DECLARATION_MODES = frozenset({
+    "numeric_threshold",
+    "always",
+    "none_spontaneous",
+    "mixed",
+    "not_established",
+})
+
+MECHANISM_KINDS = frozenset({
+    "declaration",
+    "reporting",
+    "inquiry",
+    "registration",
+    "carriage_limit",
+    "permit",
+    "enforcement",
+})
+
+AMOUNT_OPERATORS = frozenset({">", ">=", "<", "<="})
+
+TRIGGER_TYPES = frozenset({"amount", "condition", "always"})
+
+# Ontology mapping for typed mechanisms. None = explicit unmapped (do not invent).
+MECHANISM_ONTOLOGY: Dict[str, Optional[str]] = {
+    "declaration": "declaration-regimes",
+    "reporting": "reporting-obligations",
+    "inquiry": "reporting-obligations",
+    "registration": "reporting-obligations",
+    "carriage_limit": "import-export-ceilings",
+    "permit": "channel-restrictions",
+    "enforcement": "penalty-regimes",
+}
+
+KIND_UI_LABEL = {
+    "declaration": "Declaration threshold",
+    "reporting": "Reporting threshold",
+    "inquiry": "Inquiry threshold",
+    "registration": "Registration threshold",
+    "carriage_limit": "Carriage limit",
+    "permit": "Permit / authorisation threshold",
+    "enforcement": "Enforcement trigger",
+}
 
 # Hand-verified transcription of the declaration thresholds.
 # Every value here is read off the entry's rules.cash_declaration_threshold
@@ -505,6 +549,17 @@ EXCHANGE_CONTROLS = {
                       "No general exchange controls; free-floating rate accepted under IMF Article VIII for current international transactions; capital-account reservations limited to enumerated sectoral inward direct investment under the OECD Code of Liberalisation of Capital Movements"),
 }
 
+# Opt-in typed border-cash transcription (Passage Check v1.1).
+# Empty in this architecture sprint — first real consumer is a later jurisdiction
+# hardening/publication sprint. Exactly one of DECLARATION or BORDER_CASH_CONTROLS
+# may author a published slug.
+BORDER_CASH_CONTROLS: Dict[str, dict] = {}
+
+# Opt-in layered exchange-control profiles (Passage Check v1.1).
+# Empty in this architecture sprint. Exactly one of EXCHANGE_CONTROLS or
+# EXCHANGE_CONTROL_PROFILES may author a published slug.
+EXCHANGE_CONTROL_PROFILES: Dict[str, dict] = {}
+
 # Which rule fields the engine surfaces, and the ontology class each maps into.
 RULE_FIELDS = {
     "bring_foreign_currency_in": {"label": "Bringing currency in", "ontology": "declaration-regimes"},
@@ -530,93 +585,433 @@ def sources_for_field(source_map, field):
     return []
 
 
-def main():
-    if not DATASET.exists():
-        sys.exit(f"ERROR: {DATASET} not found. Run the rules generator first.")
+def validate_trigger(trigger: dict, ctx: str) -> List[str]:
+    errors: List[str] = []
+    if not isinstance(trigger, dict):
+        return [f"{ctx}: trigger must be an object"]
+    ttype = trigger.get("type")
+    if ttype not in TRIGGER_TYPES:
+        errors.append(f"{ctx}: trigger.type must be one of {sorted(TRIGGER_TYPES)}")
+        return errors
+    if ttype == "amount":
+        if "value" not in trigger or not isinstance(trigger["value"], (int, float)):
+            errors.append(f"{ctx}: amount trigger requires numeric value")
+        if not trigger.get("currency"):
+            errors.append(f"{ctx}: amount trigger requires currency")
+        op = trigger.get("operator")
+        if op not in AMOUNT_OPERATORS:
+            errors.append(
+                f"{ctx}: amount trigger requires operator in {sorted(AMOUNT_OPERATORS)} "
+                "(no default; do not invent >=)"
+            )
+    elif ttype == "condition":
+        if not str(trigger.get("condition") or "").strip():
+            errors.append(f"{ctx}: condition trigger requires condition text")
+        if "value" in trigger and trigger["value"] is not None:
+            errors.append(f"{ctx}: condition trigger must not carry a numeric value")
+    elif ttype == "always":
+        if "value" in trigger and trigger["value"] is not None:
+            errors.append(f"{ctx}: always trigger must not carry a numeric value")
+    return errors
 
-    data = json.loads(DATASET.read_text())
-    countries = {c["country_slug"]: c for c in data["countries"]}
 
-    # Guard: the transcription tables must match the published dataset exactly.
-    errors = []
-    for slug in DECLARATION:
-        if slug not in countries:
-            errors.append(f"{slug}: in transcription table but not in dataset")
+def validate_mechanism(mech: dict, idx: int) -> List[str]:
+    errors: List[str] = []
+    ctx = f"mechanisms[{idx}]"
+    if not isinstance(mech, dict):
+        return [f"{ctx}: must be an object"]
+    kind = mech.get("kind")
+    if kind not in MECHANISM_KINDS:
+        errors.append(f"{ctx}: kind must be one of {sorted(MECHANISM_KINDS)}")
+    errors.extend(validate_trigger(mech.get("trigger") or {}, f"{ctx}.trigger"))
+    if not str(mech.get("mechanism") or "").strip():
+        errors.append(f"{ctx}: mechanism text is required")
+    if "ontology" in mech and mech["ontology"] is not None:
+        # Allow explicit override; otherwise builder fills from MECHANISM_ONTOLOGY.
+        if not isinstance(mech["ontology"], str):
+            errors.append(f"{ctx}: ontology must be a string or null")
+    return errors
+
+
+def validate_border_cash_profile(slug: str, profile: dict) -> List[str]:
+    errors: List[str] = []
+    if not isinstance(profile, dict):
+        return [f"{slug}: BORDER_CASH_CONTROLS entry must be an object"]
+    decl = profile.get("declaration")
+    if not isinstance(decl, dict):
+        errors.append(f"{slug}: declaration object is required")
+    else:
+        mode = decl.get("mode")
+        if mode not in DECLARATION_MODES:
+            errors.append(f"{slug}: declaration.mode must be one of {sorted(DECLARATION_MODES)}")
+        th = decl.get("thresholds", [])
+        if th is None:
+            th = []
+        if not isinstance(th, list):
+            errors.append(f"{slug}: declaration.thresholds must be a list")
+        else:
+            for i, item in enumerate(th):
+                if not isinstance(item, dict):
+                    errors.append(f"{slug}: declaration.thresholds[{i}] must be an object")
+                    continue
+                # Authored declaration.thresholds in the typed table are optional
+                # pre-projections; if present they must be declaration-kind only.
+                if item.get("kind") and item.get("kind") != "declaration":
+                    errors.append(
+                        f"{slug}: declaration.thresholds[{i}] may only carry kind=declaration"
+                    )
+    mechs = profile.get("mechanisms")
+    if not isinstance(mechs, list):
+        errors.append(f"{slug}: mechanisms must be a list")
+    else:
+        for i, mech in enumerate(mechs):
+            errors.extend(validate_mechanism(mech, i))
+            # Semantic guard: inquiry/registration amounts must never be authored
+            # as declaration thresholds in the compatibility projection source.
+            if isinstance(mech, dict) and mech.get("kind") in {"inquiry", "registration"}:
+                trig = mech.get("trigger") or {}
+                if trig.get("type") == "amount" and any(
+                    isinstance(t, dict)
+                    and t.get("value") == trig.get("value")
+                    and t.get("currency") == trig.get("currency")
+                    for t in (decl.get("thresholds") or [])
+                ) if isinstance(decl, dict) else False:
+                    errors.append(
+                        f"{slug}: amount for {mech.get('kind')} must not appear in "
+                        "declaration.thresholds (inquiry/registration ≠ declaration)"
+                    )
+    return errors
+
+
+def validate_exchange_profile(slug: str, profile: dict) -> List[str]:
+    errors: List[str] = []
+    if not isinstance(profile, dict):
+        return [f"{slug}: EXCHANGE_CONTROL_PROFILES entry must be an object"]
+    if profile.get("classification_mode") != "layered":
+        errors.append(f"{slug}: classification_mode must be 'layered'")
+    if profile.get("posture") != "layered":
+        errors.append(f"{slug}: posture must be 'layered'")
+    label = str(profile.get("label") or "").strip()
+    if not label:
+        errors.append(f"{slug}: layered profile requires a non-empty label")
+    lowered = label.lower()
+    for banned in (
+        "fully liberalised",
+        "fully liberalized",
+        "no exchange controls",
+        "no general exchange controls",
+    ):
+        if banned in lowered:
+            errors.append(f"{slug}: layered label must not contain '{banned}'")
+    comps = profile.get("components")
+    if not isinstance(comps, list) or not comps:
+        errors.append(f"{slug}: layered profile requires non-empty components")
+    else:
+        for i, comp in enumerate(comps):
+            if not isinstance(comp, dict):
+                errors.append(f"{slug}: components[{i}] must be an object")
+                continue
+            if not str(comp.get("scope") or "").strip():
+                errors.append(f"{slug}: components[{i}].scope is required")
+            if not str(comp.get("summary") or "").strip():
+                errors.append(f"{slug}: components[{i}].summary is required")
+    # Monetary-regime tokens must not be smuggled as the posture answer.
+    for bad in ("floating_regulated_market", "capital_account_regulated", "supervisory_peg"):
+        if profile.get("posture") == bad:
+            errors.append(f"{slug}: layered profile must not use posture '{bad}'")
+    return errors
+
+
+def validate_transcription_tables(
+    countries: Dict[str, dict],
+    declaration: Dict[str, dict],
+    border_cash: Dict[str, dict],
+    exchange_controls: Dict[str, tuple],
+    exchange_profiles: Dict[str, dict],
+) -> List[str]:
+    """Reject neither/both authorship for border-cash and exchange-control sources."""
+    errors: List[str] = []
+    published = set(countries)
+
+    for slug in declaration:
+        if slug not in published:
+            errors.append(f"{slug}: in DECLARATION but not in published dataset")
+        elif countries[slug].get("page_status") != "published":
+            errors.append(f"{slug}: DECLARATION page_status is not published")
+        if slug in border_cash:
+            errors.append(
+                f"{slug}: authored in both DECLARATION and BORDER_CASH_CONTROLS"
+            )
+
+    for slug in border_cash:
+        if slug not in published:
+            errors.append(f"{slug}: in BORDER_CASH_CONTROLS but not in published dataset")
+        elif countries[slug].get("page_status") != "published":
+            errors.append(f"{slug}: BORDER_CASH_CONTROLS page_status is not published")
+        errors.extend(validate_border_cash_profile(slug, border_cash[slug]))
+
+    for slug in published:
+        in_legacy = slug in declaration
+        in_typed = slug in border_cash
+        if not in_legacy and not in_typed:
+            errors.append(
+                f"{slug}: published but missing from both DECLARATION and "
+                "BORDER_CASH_CONTROLS"
+            )
+
+    for slug in exchange_controls:
+        if slug not in published:
+            errors.append(f"{slug}: in EXCHANGE_CONTROLS but not in published dataset")
+        if slug in exchange_profiles:
+            errors.append(
+                f"{slug}: authored in both EXCHANGE_CONTROLS and "
+                "EXCHANGE_CONTROL_PROFILES"
+            )
+
+    for slug in exchange_profiles:
+        if slug not in published:
+            errors.append(
+                f"{slug}: in EXCHANGE_CONTROL_PROFILES but not in published dataset"
+            )
+        errors.extend(validate_exchange_profile(slug, exchange_profiles[slug]))
+
+    for slug in published:
+        in_legacy = slug in exchange_controls
+        in_layered = slug in exchange_profiles
+        if not in_legacy and not in_layered:
+            errors.append(
+                f"{slug}: published but missing from both EXCHANGE_CONTROLS and "
+                "EXCHANGE_CONTROL_PROFILES"
+            )
+
+    return errors
+
+
+def build_border_cash_record(profile: dict) -> dict:
+    """Emit canonical border_cash from a validated typed profile."""
+    mechs_out = []
+    for mech in profile.get("mechanisms") or []:
+        item = copy.deepcopy(mech)
+        kind = item.get("kind")
+        if "ontology" not in item:
+            item["ontology"] = MECHANISM_ONTOLOGY.get(kind)
+        if "ui_label" not in item:
+            item["ui_label"] = KIND_UI_LABEL.get(kind, kind)
+        mechs_out.append(item)
+
+    decl_in = profile.get("declaration") or {}
+    # Compatibility projection: declaration thresholds = declaration-kind amount
+    # mechanisms only (never inquiry/registration/carriage/permit/enforcement).
+    compat_thresholds: List[dict] = []
+    for mech in mechs_out:
+        if mech.get("kind") != "declaration":
             continue
-        c = countries[slug]
-        if c.get("page_status") != "published":
-            errors.append(f"{slug}: page_status is {c.get('page_status')}, not published")
-    for slug in countries:
-        if slug not in DECLARATION:
-            errors.append(f"{slug}: published but missing from DECLARATION table")
-        if slug not in EXCHANGE_CONTROLS:
-            errors.append(f"{slug}: published but missing from EXCHANGE_CONTROLS table")
+        trig = mech.get("trigger") or {}
+        if trig.get("type") != "amount":
+            continue
+        compat_thresholds.append({
+            "value": trig["value"],
+            "currency": trig["currency"],
+            "operator": trig["operator"],
+            "scope": mech.get("scope", ""),
+            "applies": mech.get("applies", ""),
+            "authority": mech.get("authority", ""),
+            "mechanism": mech.get("mechanism", ""),
+        })
+
+    # If the authored profile already listed declaration.thresholds, they must
+    # already have been validated as declaration-only; prefer mechanism-derived
+    # projection for consistency unless empty and authored list was empty.
+    record = {
+        "declaration": {
+            "mode": decl_in.get("mode"),
+            "thresholds": compat_thresholds,
+        },
+        "mechanisms": mechs_out,
+        "note": profile.get("note"),
+        "transcribed_from": "rules.cash_declaration_threshold",
+    }
+    if profile.get("pair_surface_summary") is not None:
+        record["pair_surface_summary"] = profile.get("pair_surface_summary")
+    return record
+
+
+def compatibility_declaration_from_border_cash(border_cash: dict) -> dict:
+    """Legacy ``declaration`` view for typed jurisdictions."""
+    decl = border_cash.get("declaration") or {}
+    out: Dict[str, Any] = {
+        "thresholds": copy.deepcopy(decl.get("thresholds") or []),
+        "note": border_cash.get("note"),
+        "transcribed_from": "rules.cash_declaration_threshold",
+        "compatibility_view": True,
+        "compatibility_note": (
+            "declaration.thresholds lists declaration-kind numeric mechanisms only. "
+            "Inspect border_cash for the complete typed border-cash architecture."
+        ),
+    }
+    if border_cash.get("pair_surface_summary") is not None:
+        out["pair_surface_summary"] = border_cash.get("pair_surface_summary")
+    # Preserve mode for consumers that understand v1.1.
+    if decl.get("mode") is not None:
+        out["mode"] = decl.get("mode")
+    return out
+
+
+def build_exchange_controls_record(
+    slug: str,
+    exchange_controls: Dict[str, tuple],
+    exchange_profiles: Dict[str, dict],
+) -> dict:
+    if slug in exchange_profiles:
+        profile = exchange_profiles[slug]
+        return {
+            "classification_mode": "layered",
+            "posture": "layered",
+            "label": profile["label"],
+            "components": copy.deepcopy(profile.get("components") or []),
+            "transcribed_from": "rules.exchange_controls",
+        }
+    posture, label = exchange_controls[slug]
+    return {
+        "posture": posture,
+        "label": label,
+        "transcribed_from": "rules.exchange_controls",
+    }
+
+
+def assemble_country(
+    slug: str,
+    c: dict,
+    declaration: Dict[str, dict],
+    border_cash_table: Dict[str, dict],
+    exchange_controls: Dict[str, tuple],
+    exchange_profiles: Dict[str, dict],
+) -> dict:
+    sm = c.get("source_map", {})
+    rules_out = {}
+    for field, meta in RULE_FIELDS.items():
+        if field in c["rules"]:
+            sources = sources_for_field(sm, field)
+            rules_out[field] = {
+                "label": meta["label"],
+                "ontology": meta["ontology"],
+                "text": c["rules"][field],
+                "sources": sources,
+                "source": sources[0] if sources else None,
+            }
+
+    out: Dict[str, Any] = {
+        "country_name": c["country_name"],
+        "country_slug": slug,
+        "iso2": c.get("iso2", ""),
+        "currency_code": c.get("currency_code", ""),
+        "currency_name": c.get("currency_name", ""),
+        "region": c.get("region", ""),
+        "last_reviewed": c.get("last_reviewed", ""),
+        "rules_page": f"/rules/{slug}-foreign-currency-rules.html",
+        "rules": rules_out,
+        "source_authorities": c.get("source_authorities", []),
+        "disclaimer": c.get("disclaimer", ""),
+    }
+
+    if slug in border_cash_table:
+        border = build_border_cash_record(border_cash_table[slug])
+        out["border_cash"] = border
+        out["declaration"] = compatibility_declaration_from_border_cash(border)
+    else:
+        decl = dict(declaration[slug])
+        decl["transcribed_from"] = "rules.cash_declaration_threshold"
+        out["declaration"] = decl
+
+    out["exchange_controls"] = build_exchange_controls_record(
+        slug, exchange_controls, exchange_profiles
+    )
+    return out
+
+
+def build_payload(
+    dataset: dict,
+    declaration: Optional[Dict[str, dict]] = None,
+    border_cash: Optional[Dict[str, dict]] = None,
+    exchange_controls: Optional[Dict[str, tuple]] = None,
+    exchange_profiles: Optional[Dict[str, dict]] = None,
+) -> dict:
+    declaration = DECLARATION if declaration is None else declaration
+    border_cash = BORDER_CASH_CONTROLS if border_cash is None else border_cash
+    exchange_controls = EXCHANGE_CONTROLS if exchange_controls is None else exchange_controls
+    exchange_profiles = (
+        EXCHANGE_CONTROL_PROFILES if exchange_profiles is None else exchange_profiles
+    )
+
+    countries = {c["country_slug"]: c for c in dataset["countries"]}
+    errors = validate_transcription_tables(
+        countries, declaration, border_cash, exchange_controls, exchange_profiles
+    )
     if errors:
-        sys.exit("Transcription/dataset drift:\n  " + "\n  ".join(errors))
+        raise ValueError("Transcription/dataset drift:\n  " + "\n  ".join(errors))
 
     out_countries = []
     for slug, c in sorted(countries.items(), key=lambda kv: kv[1]["country_name"]):
-        sm = c.get("source_map", {})
-        rules_out = {}
-        for field, meta in RULE_FIELDS.items():
-            if field in c["rules"]:
-                sources = sources_for_field(sm, field)
-                rules_out[field] = {
-                    "label": meta["label"],
-                    "ontology": meta["ontology"],
-                    "text": c["rules"][field],
-                    # Authoritative complete provenance (ordered; may be >1).
-                    "sources": sources,
-                    # Compatibility alias only — equals sources[0] when present.
-                    # Not complete provenance; consumers must prefer sources[].
-                    "source": sources[0] if sources else None,
-                }
+        out_countries.append(
+            assemble_country(
+                slug, c, declaration, border_cash, exchange_controls, exchange_profiles
+            )
+        )
 
-        decl = dict(DECLARATION[slug])
-        decl["transcribed_from"] = "rules.cash_declaration_threshold"
-        posture, posture_label = EXCHANGE_CONTROLS[slug]
-
-        out_countries.append({
-            "country_name": c["country_name"],
-            "country_slug": slug,
-            "iso2": c.get("iso2", ""),
-            "currency_code": c.get("currency_code", ""),
-            "currency_name": c.get("currency_name", ""),
-            "region": c.get("region", ""),
-            "last_reviewed": c.get("last_reviewed", ""),
-            "rules_page": f"/rules/{slug}-foreign-currency-rules.html",
-            "declaration": decl,
-            "exchange_controls": {
-                "posture": posture,
-                "label": posture_label,
-                "transcribed_from": "rules.exchange_controls",
-            },
-            "rules": rules_out,
-            "source_authorities": c.get("source_authorities", []),
-            "disclaimer": c.get("disclaimer", ""),
-        })
-
-    payload = {
+    return {
         "engine": "ConvertCCY Passage Check",
-        "version": "1.0",
+        "version": ENGINE_VERSION,
         "built_from": "rules/dataset.json",
-        "source_dataset_generated_at": data.get("generated_at", ""),
-        "license": data.get("license", ""),
-        "attribution": data.get("attribution", ""),
-        "notice": ("Passage Check is deterministic and evidence-bound. It reports only what the "
-                   "published, source-mapped ConvertCCY country entries state. Structured "
-                   "thresholds are transcribed from each entry's cash_declaration_threshold field. "
-                   "Currency conversions shown in the tool are indicative only and are not governed figures."),
+        "source_dataset_generated_at": dataset.get("generated_at", ""),
+        "license": dataset.get("license", ""),
+        "attribution": dataset.get("attribution", ""),
+        "schema": {
+            "border_cash": (
+                "Optional canonical typed border-cash profile. When present, "
+                "declaration is a compatibility projection of declaration-kind "
+                "numeric mechanisms only."
+            ),
+            "exchange_controls.layered": (
+                "posture 'layered' is a compositional routing value: no single "
+                "legacy scalar posture faithfully captures the governed architecture; "
+                "consumers must inspect label/components. It is not a severity, "
+                "liberalisation, floating, crawl, peg, or capital-account conclusion."
+            ),
+        },
+        "notice": (
+            "Passage Check is deterministic and evidence-bound. It reports only what "
+            "the published, source-mapped ConvertCCY country entries state. It contains "
+            "governed border-cash mechanisms and exchange-control profiles transcribed "
+            "from published country rules. Not every structured amount is a declaration "
+            "threshold — inquiry, registration, carriage, permit, and enforcement "
+            "mechanisms are typed separately in v1.1. Currency conversions shown in the "
+            "tool are indicative only and are not governed figures. Existing v1.0-style "
+            "records remain grandfathered until individually migrated."
+        ),
         "count": len(out_countries),
         "countries": out_countries,
     }
 
-    OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=1))
-    print(f"Wrote {OUT.relative_to(REPO)} — {len(out_countries)} published jurisdictions")
-    for c in out_countries:
+
+def main():
+    if not DATASET.exists():
+        sys.exit(f"ERROR: {DATASET} not found. Run the rules generator first.")
+
+    data = json.loads(DATASET.read_text(encoding="utf-8"))
+    try:
+        payload = build_payload(data)
+    except ValueError as exc:
+        sys.exit(str(exc))
+
+    OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"Wrote {OUT.relative_to(REPO)} — {len(payload['countries'])} published jurisdictions (v{ENGINE_VERSION})")
+    for c in payload["countries"]:
         n = len(c["declaration"]["thresholds"])
-        print(f"  {c['country_name']:24s} {c['currency_code']}  "
-              f"{n} threshold(s)  exch:{c['exchange_controls']['posture']}")
+        typed = "typed" if "border_cash" in c else "legacy"
+        print(
+            f"  {c['country_name']:24s} {c['currency_code']}  "
+            f"{n} decl-threshold(s)  exch:{c['exchange_controls']['posture']}  [{typed}]"
+        )
 
 
 if __name__ == "__main__":
