@@ -307,65 +307,252 @@ class PassageCheckV11TaxonomyTest(unittest.TestCase):
             "trigger": {"type": "amount", "value": 1000, "currency": "USD", "operator": ">="},
             "mechanism": "mandatory declaration",
         }
+        decl_amount_2 = {
+            "kind": "declaration",
+            "trigger": {"type": "amount", "value": 5000, "currency": "EUR", "operator": ">"},
+            "mechanism": "second declaration band",
+        }
         decl_always = {
             "kind": "declaration",
             "trigger": {"type": "always"},
             "mechanism": "always declare",
         }
+        decl_condition = {
+            "kind": "declaration",
+            "trigger": {
+                "type": "condition",
+                "condition": "on customs request",
+            },
+            "mechanism": "declare when requested",
+        }
+        inquiry_amount = {
+            "kind": "inquiry",
+            "trigger": {"type": "amount", "value": 10000, "currency": "CHF", "operator": ">="},
+            "mechanism": "inquiry package",
+        }
 
+        # Required trigger missing
         errs = bpc.validate_border_cash_profile(
             "x", base(declaration={"mode": "numeric_threshold"}, mechanisms=[])
         )
         self.assertTrue(any("numeric_threshold requires" in e for e in errs))
 
-        errs2 = bpc.validate_border_cash_profile(
+        # numeric_threshold exclusivity
+        errs_nt_always = bpc.validate_border_cash_profile(
+            "x",
+            base(
+                declaration={"mode": "numeric_threshold"},
+                mechanisms=[decl_amount, decl_always],
+            ),
+        )
+        self.assertTrue(any("numeric_threshold must not contain a declaration-kind always" in e for e in errs_nt_always))
+
+        errs_nt_cond = bpc.validate_border_cash_profile(
+            "x",
+            base(
+                declaration={"mode": "numeric_threshold"},
+                mechanisms=[decl_amount, decl_condition],
+            ),
+        )
+        self.assertTrue(any("numeric_threshold must not contain a declaration-kind condition" in e for e in errs_nt_cond))
+
+        self.assertEqual(
+            bpc.validate_border_cash_profile(
+                "x",
+                base(
+                    declaration={"mode": "numeric_threshold"},
+                    mechanisms=[decl_amount, decl_amount_2],
+                ),
+            ),
+            [],
+        )
+
+        # always exclusivity
+        errs_al_amt = bpc.validate_border_cash_profile(
+            "x",
+            base(
+                declaration={"mode": "always"},
+                mechanisms=[decl_always, decl_amount],
+            ),
+        )
+        self.assertTrue(any("mode=always must not contain a declaration-kind amount" in e for e in errs_al_amt))
+
+        errs_al_cond = bpc.validate_border_cash_profile(
+            "x",
+            base(
+                declaration={"mode": "always"},
+                mechanisms=[decl_always, decl_condition],
+            ),
+        )
+        self.assertTrue(any("mode=always must not contain a declaration-kind condition" in e for e in errs_al_cond))
+
+        self.assertEqual(
+            bpc.validate_border_cash_profile(
+                "x",
+                base(declaration={"mode": "always"}, mechanisms=[decl_always]),
+            ),
+            [],
+        )
+
+        # none_spontaneous: amount/always fail; condition MAY pass; inquiry independent
+        errs_ns_amt = bpc.validate_border_cash_profile(
             "x",
             base(
                 declaration={"mode": "none_spontaneous"},
                 mechanisms=[decl_amount],
             ),
         )
-        self.assertTrue(any("none_spontaneous must not contain" in e for e in errs2))
+        self.assertTrue(any("none_spontaneous must not contain" in e for e in errs_ns_amt))
 
-        errs3 = bpc.validate_border_cash_profile(
-            "x", base(declaration={"mode": "always"}, mechanisms=[decl_amount])
+        errs_ns_always = bpc.validate_border_cash_profile(
+            "x",
+            base(
+                declaration={"mode": "none_spontaneous"},
+                mechanisms=[decl_always],
+            ),
         )
-        self.assertTrue(any("mode=always requires" in e for e in errs3))
+        self.assertTrue(any("none_spontaneous must not contain" in e for e in errs_ns_always))
 
-        errs4 = bpc.validate_border_cash_profile(
+        self.assertEqual(
+            bpc.validate_border_cash_profile(
+                "x",
+                base(
+                    declaration={"mode": "none_spontaneous"},
+                    mechanisms=[decl_condition, inquiry_amount],
+                ),
+            ),
+            [],
+        )
+
+        # not_established: zero declaration-kind of any trigger type
+        errs_ne_cond = bpc.validate_border_cash_profile(
+            "x",
+            base(
+                declaration={"mode": "not_established"},
+                mechanisms=[decl_condition],
+            ),
+        )
+        self.assertTrue(any("not_established requires zero" in e for e in errs_ne_cond))
+
+        errs_ne_amt = bpc.validate_border_cash_profile(
             "x",
             base(
                 declaration={"mode": "not_established"},
                 mechanisms=[decl_amount],
             ),
         )
-        self.assertTrue(any("not_established must not contain" in e for e in errs4))
+        self.assertTrue(any("not_established requires zero" in e for e in errs_ne_amt))
 
-        errs5 = bpc.validate_border_cash_profile(
-            "x",
-            base(
-                declaration={"mode": "mixed"},
-                mechanisms=[decl_amount],
+        self.assertEqual(
+            bpc.validate_border_cash_profile(
+                "x",
+                base(
+                    declaration={"mode": "not_established"},
+                    mechanisms=[inquiry_amount],
+                ),
             ),
+            [],
         )
-        self.assertTrue(any("mode=mixed requires heterogeneous" in e for e in errs5))
 
-        ok_mixed = base(
-            declaration={"mode": "mixed"},
-            mechanisms=[decl_amount, decl_always],
+        # mixed
+        errs_mixed = bpc.validate_border_cash_profile(
+            "x",
+            base(declaration={"mode": "mixed"}, mechanisms=[decl_amount]),
         )
-        self.assertEqual(bpc.validate_border_cash_profile("x", ok_mixed), [])
+        self.assertTrue(any("mode=mixed requires heterogeneous" in e for e in errs_mixed))
 
-        ok_numeric = base(
-            declaration={"mode": "numeric_threshold"},
-            mechanisms=[decl_amount],
+        self.assertEqual(
+            bpc.validate_border_cash_profile(
+                "x",
+                base(
+                    declaration={"mode": "mixed"},
+                    mechanisms=[decl_amount, decl_always],
+                ),
+            ),
+            [],
         )
-        self.assertEqual(bpc.validate_border_cash_profile("x", ok_numeric), [])
+        self.assertEqual(
+            bpc.validate_border_cash_profile(
+                "x",
+                base(
+                    declaration={"mode": "mixed"},
+                    mechanisms=[decl_amount, decl_condition],
+                ),
+            ),
+            [],
+        )
 
         # Switzerland-like fixture continues to pass.
         self.assertEqual(
             bpc.validate_border_cash_profile("fixture", _synthetic_border_cash_profile()),
             [],
+        )
+
+    def test_typed_rule_label_and_full_builder_payload(self):
+        """Full build_payload path: typed label + layered EC + empty derived thresholds."""
+        slug = "fixture-ch-like"
+        country = {
+            "country_name": "Fixtureland",
+            "country_slug": slug,
+            "page_status": "published",
+            "iso2": "XX",
+            "currency_code": "CHF",
+            "currency_name": "Fixture Franc",
+            "region": "Test",
+            "last_reviewed": "2026-09-10",
+            "rules": {
+                "cash_declaration_threshold": (
+                    "No spontaneous declaration; inquiry/registration at CHF 10,000."
+                ),
+                "exchange_controls": "Layered current-international / sanctions / capital profile.",
+            },
+            "source_map": {},
+            "source_authorities": [],
+            "disclaimer": "fixture disclaimer",
+        }
+        dataset = {
+            "generated_at": "2026-09-10T00:00:00+00:00",
+            "license": "CC BY 4.0",
+            "attribution": "ConvertCCY",
+            "count": 1,
+            "countries": [country],
+        }
+        payload = bpc.build_payload(
+            dataset,
+            declaration={},
+            border_cash={slug: _synthetic_border_cash_profile()},
+            exchange_controls={},
+            exchange_profiles={slug: _synthetic_layered_profile()},
+        )
+        self.assertEqual(payload["count"], 1)
+        rec = payload["countries"][0]
+        self.assertIn("border_cash", rec)
+        self.assertTrue(rec["declaration"].get("compatibility_view"))
+        self.assertEqual(rec["declaration"]["thresholds"], [])
+        self.assertEqual(rec["border_cash"]["declaration"]["thresholds"], [])
+        self.assertEqual(rec["exchange_controls"]["posture"], "layered")
+        self.assertEqual(
+            rec["rules"]["cash_declaration_threshold"]["label"],
+            "Border cash controls",
+        )
+        # Field name unchanged; only the presentation label is typed-aware.
+        self.assertIn("cash_declaration_threshold", rec["rules"])
+
+        # Static Agent Interface mirror preserves the typed-aware label.
+        import build_static_agent_interface as sai
+
+        view = sai.build_passage_check_view(payload, dataset)
+        self.assertEqual(
+            view["countries"][0]["rules"]["cash_declaration_threshold"]["label"],
+            "Border cash controls",
+        )
+
+        # Legacy live jurisdiction retains Declaration threshold label.
+        live = bpc.build_payload(self.dataset)
+        au = next(c for c in live["countries"] if c["country_slug"] == "australia")
+        self.assertEqual(
+            au["rules"]["cash_declaration_threshold"]["label"],
+            "Declaration threshold",
         )
 
     def test_numeric_amount_contract_preserves_decimal_rejects_bool(self):
@@ -469,6 +656,12 @@ class PassageCheckV11TaxonomyTest(unittest.TestCase):
             self.assertEqual(new["exchange_controls"]["posture"], posture)
             self.assertEqual(new["exchange_controls"]["label"], label)
             self.assertNotIn("classification_mode", new["exchange_controls"])
+            cash_rule = new["rules"].get("cash_declaration_threshold")
+            self.assertIsNotNone(cash_rule)
+            self.assertEqual(cash_rule["label"], "Declaration threshold")
+            # Governed prose unchanged vs dataset.
+            ds = next(c for c in self.dataset["countries"] if c["country_slug"] == slug)
+            self.assertEqual(cash_rule["text"], ds["rules"]["cash_declaration_threshold"])
 
     def test_ui_feature_detection_and_labels(self):
         self.assertIn("if(country.border_cash)", self.html)
@@ -492,6 +685,9 @@ class PassageCheckV11TaxonomyTest(unittest.TestCase):
         self.assertIn("border-cash controls at a glance", self.briefs_py)
         self.assertIn('cash_checklist_label', self.briefs_py)
         self.assertIn('"Border cash controls" if pc.get("border_cash") else "Declaration"', self.briefs_py)
+
+        self.assertIn("See border-cash controls in the full rules", self.briefs_py)
+        self.assertNotIn("See bordered cash mechanisms in full rules", self.briefs_py)
 
         import build_passage_briefs as briefs
 

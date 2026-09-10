@@ -677,7 +677,16 @@ def _declaration_mechanisms(mechs: List[dict]) -> List[dict]:
 def validate_declaration_mode_consistency(
     slug: str, mode: Optional[str], mechs: List[dict]
 ) -> List[str]:
-    """Fail-closed consistency between declaration.mode and declaration mechanisms."""
+    """Fail-closed consistency between declaration.mode and declaration mechanisms.
+
+    Exclusivity (declaration-kind only; inquiry/registration/etc. are independent):
+
+    - numeric_threshold: ≥1 amount; no always; no condition
+    - always: ≥1 always; no amount; no condition
+    - none_spontaneous: no amount; no always; condition MAY exist
+    - not_established: zero declaration-kind mechanisms of any trigger type
+    - mixed: ≥2 declaration mechanisms with ≥2 distinct trigger types
+    """
     errors: List[str] = []
     if mode not in DECLARATION_MODES:
         return errors
@@ -689,6 +698,10 @@ def validate_declaration_mode_consistency(
     always_decls = [
         m for m in decl_mechs
         if (m.get("trigger") or {}).get("type") == "always"
+    ]
+    condition_decls = [
+        m for m in decl_mechs
+        if (m.get("trigger") or {}).get("type") == "condition"
     ]
     trigger_types = {
         (m.get("trigger") or {}).get("type")
@@ -702,11 +715,31 @@ def validate_declaration_mode_consistency(
                 f"{slug}: declaration.mode=numeric_threshold requires at least one "
                 "declaration-kind amount-trigger mechanism"
             )
+        if always_decls:
+            errors.append(
+                f"{slug}: declaration.mode=numeric_threshold must not contain a "
+                "declaration-kind always trigger"
+            )
+        if condition_decls:
+            errors.append(
+                f"{slug}: declaration.mode=numeric_threshold must not contain a "
+                "declaration-kind condition trigger"
+            )
     elif mode == "always":
         if not always_decls:
             errors.append(
                 f"{slug}: declaration.mode=always requires at least one "
                 "declaration-kind always-trigger mechanism"
+            )
+        if amount_decls:
+            errors.append(
+                f"{slug}: declaration.mode=always must not contain a "
+                "declaration-kind amount trigger"
+            )
+        if condition_decls:
+            errors.append(
+                f"{slug}: declaration.mode=always must not contain a "
+                "declaration-kind condition trigger"
             )
     elif mode == "none_spontaneous":
         if amount_decls or always_decls:
@@ -715,15 +748,14 @@ def validate_declaration_mode_consistency(
                 "declaration-kind amount or always trigger (no spontaneous "
                 "declaration obligation)"
             )
+        # Conditional declaration-kind mechanisms MAY exist (request/condition-bound).
     elif mode == "not_established":
-        if amount_decls or always_decls:
+        if decl_mechs:
             errors.append(
-                f"{slug}: declaration.mode=not_established must not contain a "
-                "positive declaration amount or always mechanism"
+                f"{slug}: declaration.mode=not_established requires zero "
+                "declaration-kind mechanisms of any trigger type"
             )
     elif mode == "mixed":
-        # Mixed is not an unconstrained escape hatch: require heterogeneous
-        # declaration-kind trigger architecture (at least two trigger types).
         if len(decl_mechs) < 2 or len(trigger_types) < 2:
             errors.append(
                 f"{slug}: declaration.mode=mixed requires heterogeneous declaration "
@@ -980,8 +1012,13 @@ def assemble_country(
     for field, meta in RULE_FIELDS.items():
         if field in c["rules"]:
             sources = sources_for_field(sm, field)
+            # Typed border-cash jurisdictions: taxonomy-neutral label for the
+            # upstream cash_declaration_threshold prose (field name unchanged).
+            label = meta["label"]
+            if field == "cash_declaration_threshold" and slug in border_cash_table:
+                label = "Border cash controls"
             rules_out[field] = {
-                "label": meta["label"],
+                "label": label,
                 "ontology": meta["ontology"],
                 "text": c["rules"][field],
                 "sources": sources,

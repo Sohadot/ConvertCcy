@@ -177,7 +177,7 @@ def border_cash_glance_html(pc: dict) -> tuple[str, str]:
         else:
             lines.append(label)
     if not lines:
-        lines.append("See bordered cash mechanisms in full rules")
+        lines.append("See border-cash controls in the full rules")
     body = "<br>".join(esc(x) for x in lines)
     return "Border cash controls", body
 
