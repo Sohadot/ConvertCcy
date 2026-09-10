@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-09-09T19:51:05+00:00",
+ "generated_at": "2026-09-10T16:08:08+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -51,7 +51,7 @@
   },
   "passage_check": {
    "path": "/api/v1/passage-check.json",
-   "description": "Passage Check engine dataset: declaration thresholds and exchange-control posture, transcribed from governed data."
+   "description": "Passage Check engine dataset: border-cash controls / typed mechanisms and exchange-control profiles, transcribed from governed data."
   }
  },
  "human_documentation": "/api.html",

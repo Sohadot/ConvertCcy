@@ -476,6 +476,12 @@ def load_governed_currency_map() -> Dict[str, List[Dict[str, Any]]]:
         if not code:
             continue
         decl = c.get("declaration", {}) or {}
+        border = c.get("border_cash") or {}
+        # Precedence: typed border_cash.pair_surface_summary >
+        # legacy declaration.pair_surface_summary > numeric fallback.
+        pair_summary = str(border.get("pair_surface_summary") or "").strip()
+        if not pair_summary:
+            pair_summary = str(decl.get("pair_surface_summary") or "").strip()
         thresholds = decl.get("thresholds", [])
         gov.setdefault(code, []).append({
             "country_name": c.get("country_name", ""),
@@ -484,7 +490,7 @@ def load_governed_currency_map() -> Dict[str, List[Dict[str, Any]]]:
             "last_reviewed": c.get("last_reviewed", ""),
             "exch_label": c.get("exchange_controls", {}).get("label", ""),
             "exch_posture": c.get("exchange_controls", {}).get("posture", ""),
-            "pair_surface_summary": str(decl.get("pair_surface_summary") or "").strip(),
+            "pair_surface_summary": pair_summary,
             "thresholds": [
                 f'{t.get("currency","")} {int(t.get("value",0)):,}'.strip()
                 for t in thresholds if t.get("value")
@@ -498,8 +504,8 @@ def build_currency_passage_section(profile: Dict[str, Any],
                                    tokens: Dict[str, str],
                                    gov_map: Dict[str, List[Dict[str, Any]]]) -> str:
     """Per-pair, evidence-bound enrichment. For each of the two currencies it shows
-    either a governed jurisdiction block (declaration threshold, exchange-control
-    posture, links to the source-mapped rules page + ontology + Passage Check) when
+    either a governed jurisdiction block (border-cash controls, exchange-control
+    profile, links to the source-mapped rules page + ontology + Passage Check) when
     the currency's country is published in the sovereign layer, or an honest factual
     identity block otherwise. This is the R1 mitigation: unique, governed, internally
     linked intelligence that no template clone carries — never fabricated.
@@ -512,7 +518,7 @@ def build_currency_passage_section(profile: Dict[str, Any],
         name = cur.get("name", code)
         govs = gov_map.get(code, [])
         if govs:
-            # Governed: render transcribed thresholds + posture + source links.
+            # Governed: render transcribed border-cash / exchange profile + source links.
             links = " · ".join(
                 f'<a href="{esc(g["rules_page"])}">{esc(g["country_name"])} rules →</a>'
                 for g in govs if g.get("rules_page")
@@ -585,7 +591,7 @@ def build_currency_passage_section(profile: Dict[str, Any],
   <section class="section pj-section">
     <div class="sec-title">Currency Passage &amp; Jurisdiction Rules</div>
     <div class="sec-h2">Moving {esc(tokens["FROM_CODE"])} and {esc(tokens["TO_CODE"])} across borders</div>
-    <p>A conversion is a jurisdictional event, not only an arithmetic one. Where ConvertCCY has a published jurisdiction entry associated with a currency, the governed declaration threshold and exchange-control posture are shown below with links to the source-mapped rules entry. Figures are reference-grade; verify against the linked official sources before you travel.</p>
+    <p>A conversion is a jurisdictional event, not only an arithmetic one. Where ConvertCCY has a published jurisdiction entry associated with a currency, the governed border-cash controls and exchange-control profile are shown below with links to the source-mapped rules entry. Figures are reference-grade; verify against the linked official sources before you travel.</p>
     {macro_html}
     <div class="pj-grid">
       {from_html}

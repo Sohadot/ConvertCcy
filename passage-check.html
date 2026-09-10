@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Passage Check — Governed Currency-Passage Diagnostic | ConvertCCY</title>
-<meta name="description" content="A deterministic, evidence-bound diagnostic: enter an origin, destination, amount, and residency, and Passage Check assembles the governed declaration thresholds, exchange controls, and residency rules from ConvertCCY's published, source-mapped country entries.">
+<meta name="description" content="A deterministic, evidence-bound diagnostic: enter an origin, destination, amount, and residency, and Passage Check assembles governed border-cash controls and exchange-control profiles from ConvertCCY's published, source-mapped country entries.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://convertccy.com/passage-check.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -131,14 +131,14 @@ footer a:hover{color:var(--text)}
   </div>
 
   <div class="hero">
-    <span class="hero-tag">Governed Diagnostic · Engine v1.0</span>
+    <span class="hero-tag">Governed Diagnostic · Engine v1.1</span>
     <h1>Passage <em>Check</em></h1>
-    <p class="hero-lead">A conversion is a jurisdictional event, not an arithmetic one. Enter an origin, a destination, an amount, and your residency, and Passage Check assembles the governed declaration thresholds, exchange-control posture, and residency rules that apply — drawn only from ConvertCCY's published, source-mapped country entries.</p>
+    <p class="hero-lead">A conversion is a jurisdictional event, not an arithmetic one. Enter an origin, a destination, an amount, and your residency, and Passage Check assembles the governed border-cash controls and exchange-control profile that apply — drawn only from ConvertCCY's published, source-mapped country entries.</p>
   </div>
 
   <div class="box-accent">
     <span class="box-label">How this engine behaves</span>
-    <p>Passage Check is deterministic and evidence-bound. It performs no AI inference and invents nothing: every line it returns is transcribed from a published rules entry and links to its official source and ontology class. It covers only jurisdictions already in the public sovereign layer. Currency conversions shown are indicative only — the governed figure is always the threshold in its stated currency.</p>
+    <p>Passage Check is deterministic and evidence-bound. It performs no AI inference and invents nothing: every line it returns is transcribed from a published rules entry and links to its official source and ontology class. It covers only jurisdictions already in the public sovereign layer. Not every structured amount is a declaration threshold — inquiry, registration, carriage, permit, and enforcement mechanisms are typed separately when a jurisdiction uses the v1.1 model. Currency conversions shown are indicative only — the governed figure is always the amount in its stated currency.</p>
   </div>
 
   <div class="engine-card">
@@ -176,8 +176,8 @@ footer a:hover{color:var(--text)}
 
   <section>
     <h2>What Passage Check is — and is not</h2>
-    <p><strong>It is</strong> a governed assembly tool. Given two published jurisdictions, it retrieves the exact rules that apply to your movement, evaluates your amount against the stated declaration thresholds, and points you to the official source and the ontology class behind every claim. It turns a page you would have to read into an answer scoped to your scenario.</p>
-    <p><strong>It is not</strong> legal or tax advice, a customs clearance, or a live-rate calculator. It does not cover jurisdictions outside the published sovereign layer, and it does not assert a figure that no published entry supports. When your amount is in a different currency from a threshold, the comparison is shown as indicative; the binding figure is the threshold as officially stated.</p>
+    <p><strong>It is</strong> a governed assembly tool. Given two published jurisdictions, it retrieves the exact rules that apply to your movement, evaluates your amount against amount-triggered border-cash mechanisms where they exist, and points you to the official source and the ontology class behind every claim. It turns a page you would have to read into an answer scoped to your scenario.</p>
+    <p><strong>It is not</strong> legal or tax advice, a customs clearance, or a live-rate calculator. It does not cover jurisdictions outside the published sovereign layer, and it does not assert a figure that no published entry supports. When your amount is in a different currency from a governed amount trigger, the comparison is shown as indicative; the binding figure is the amount as officially stated.</p>
   </section>
 
   <footer>
@@ -210,7 +210,11 @@ const ONTOLOGY = {
 let DATA=null, BYSLUG={};
 
 function esc(s){return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-function fmt(n){return n.toLocaleString('en-US',{maximumFractionDigits:0});}
+function fmt(n){
+  if(typeof n!=='number'||!Number.isFinite(n)) return String(n);
+  // Preserve meaningful decimals; integers render without trailing .0 / truncation.
+  return n.toLocaleString('en-US',{maximumFractionDigits:20,minimumFractionDigits:0});
+}
 function clsChip(slug){const name=ONTOLOGY[slug]||slug;return `<a class="cls" href="/ontology/${slug}.html">${esc(name)} →</a>`;}
 function oneSrcLine(source, prefix){
   if(!source||!source.url) return '';
@@ -236,31 +240,72 @@ function srcLines(rule){
   return `<div class="src-block"><div class="src">Sources:</div>${rows}</div>`;
 }
 
-// Evaluate an amount against one threshold. Returns {mode, html}.
+// Evaluate an amount against one numeric trigger. operator must be explicit.
+function amountApplies(amount, tval, op){
+  if(op==='>') return amount>tval;
+  if(op==='>=') return amount>=tval;
+  if(op==='<') return amount<tval;
+  if(op==='<=') return amount<=tval;
+  // Legacy thresholds without operator: preserve historic >= comparison.
+  return amount>=tval;
+}
+
+function evalAmountTrigger(amount, amountCcy, value, currency, operator, descHtml){
+  if(!(amount>0)){
+    return {html:`<div class="threshold-line">${descHtml}</div>`};
+  }
+  if(amountCcy===currency){
+    const over=amountApplies(amount, value, operator);
+    const v=over
+      ? `<span class="verdict over">Your ${esc(currency)} ${fmt(amount)} meets this amount trigger — it applies.</span>`
+      : `<span class="verdict under">Your ${esc(currency)} ${fmt(amount)} does not meet this amount trigger.</span>`;
+    return {html:`<div class="threshold-line">${descHtml}<br>${v}</div>`};
+  }
+  let indic='';
+  if(IND_RATES[amountCcy] && IND_RATES[currency]){
+    const conv=amount*(IND_RATES[currency]/IND_RATES[amountCcy]);
+    const over=amountApplies(conv, value, operator||'>=');
+    indic=`<div class="indicative">Indicative only. This uses a static illustrative table (as of ${esc(IND_RATES_ASOF)}), not live FX data. Your ${esc(amountCcy)} ${fmt(amount)} ≈ ${esc(currency)} ${fmt(conv)}, which would ${over?'meet':'not meet'} this amount trigger — but the governed figure remains the amount as officially stated. Do not rely on this conversion for a financial decision.</div>`;
+  } else {
+    indic=`<div class="indicative">Your amount is in ${esc(amountCcy)}; compare it once converted to ${esc(currency)}. The governed figure remains the amount as officially stated.</div>`;
+  }
+  return {html:`<div class="threshold-line">${descHtml}${indic}</div>`};
+}
+
+// Evaluate an amount against one legacy declaration threshold. Returns {mode, html}.
 function evalThreshold(amount, amountCcy, th){
   const tval=th.value, tccy=th.currency;
-  const nativeTh=`${esc(tccy)} ${fmt(tval)}`;
+  const op=th.operator||null;
+  const nativeTh=`${esc(tccy)} ${fmt(tval)}${op?` (${esc(op)})`:''}`;
   const desc=`${nativeTh} <span style="color:var(--muted)">(${esc(th.scope)}; ${esc(th.applies)}; ${esc(th.mechanism)}, ${esc(th.authority)})</span>`;
-  if(!(amount>0)){
-    return {html:`<div class="threshold-line">${desc}</div>`};
+  return evalAmountTrigger(amount, amountCcy, tval, tccy, op, desc);
+}
+
+function evalTypedMechanism(amount, amountCcy, mech){
+  const kind=mech.kind||'';
+  const label=mech.ui_label||kind;
+  const onto=mech.ontology;
+  const chip=onto?(' '+clsChip(onto)):'';
+  const trig=mech.trigger||{};
+  const head=`<div class="row-label">${esc(label)}${chip}</div>`;
+  const bodyBits=[];
+  if(mech.scope) bodyBits.push(esc(mech.scope));
+  if(mech.applies) bodyBits.push(esc(mech.applies));
+  if(mech.authority) bodyBits.push(esc(mech.authority));
+  const meta=bodyBits.length?`<span style="color:var(--muted)">(${bodyBits.join('; ')})</span>`:'';
+  const mechText=esc(mech.mechanism||'');
+
+  if(trig.type==='amount'){
+    const nativeTh=`${esc(trig.currency)} ${fmt(trig.value)} (${esc(trig.operator)})`;
+    const desc=`${nativeTh} ${meta}<br>${mechText}`;
+    const evaluated=evalAmountTrigger(amount, amountCcy, trig.value, trig.currency, trig.operator, desc);
+    return `<div class="row">${head}${evaluated.html}</div>`;
   }
-  if(amountCcy===tccy){
-    const over=amount>=tval;
-    const v=over
-      ? `<span class="verdict over">Your ${esc(tccy)} ${fmt(amount)} is at or above this threshold — it applies.</span>`
-      : `<span class="verdict under">Your ${esc(tccy)} ${fmt(amount)} is below this threshold.</span>`;
-    return {html:`<div class="threshold-line">${desc}<br>${v}</div>`};
+  if(trig.type==='condition'){
+    return `<div class="row">${head}<div class="threshold-line"><em>Conditional control</em> — ${esc(trig.condition)} ${meta}<br>${mechText}</div></div>`;
   }
-  // Different currency -> indicative only
-  let indic='';
-  if(IND_RATES[amountCcy] && IND_RATES[tccy]){
-    const conv=amount*(IND_RATES[tccy]/IND_RATES[amountCcy]);
-    const over=conv>=tval;
-    indic=`<div class="indicative">Indicative only. This uses a static illustrative table (as of ${esc(IND_RATES_ASOF)}), not live FX data. Your ${esc(amountCcy)} ${fmt(amount)} ≈ ${esc(tccy)} ${fmt(conv)}, which would be ${over?'at or above':'below'} the threshold — but the governed figure remains the threshold as officially stated. Do not rely on this conversion for a financial decision.</div>`;
-  } else {
-    indic=`<div class="indicative">Your amount is in ${esc(amountCcy)}; compare it once converted to ${esc(tccy)}. The governed figure remains the threshold as officially stated.</div>`;
-  }
-  return {html:`<div class="threshold-line">${desc}${indic}</div>`};
+  // always / other non-numeric
+  return `<div class="row">${head}<div class="threshold-line">${meta}<br>${mechText}</div></div>`;
 }
 
 function roleFor(which, residency){
@@ -295,7 +340,42 @@ function directionRow(country, which){
   </div>`;
 }
 
+function declarationModeLine(mode){
+  if(mode==='none_spontaneous'){
+    return `<div class="row-body" style="margin-bottom:.5rem"><em>No spontaneous declaration obligation is represented by the governed rule (this does not mean no customs controls).</em></div>`;
+  }
+  if(mode==='not_established'){
+    return `<div class="row-body" style="margin-bottom:.5rem"><em>No declaration mode is established in the governed transcription.</em></div>`;
+  }
+  if(mode==='always'){
+    return `<div class="row-body" style="margin-bottom:.5rem"><em>Declaration applies without a numeric amount trigger in the governed transcription.</em></div>`;
+  }
+  if(mode==='mixed'){
+    return `<div class="row-body" style="margin-bottom:.5rem"><em>Mixed declaration architecture — see mechanisms below.</em></div>`;
+  }
+  return '';
+}
+
+function borderCashRow(country, amount, amountCcy){
+  const bc=country.border_cash;
+  const dRule=country.rules.cash_declaration_threshold || null;
+  const modeLine=declarationModeLine(bc.declaration && bc.declaration.mode);
+  const mechRows=(bc.mechanisms||[]).map(m=>evalTypedMechanism(amount, amountCcy, m)).join('');
+  const note=bc.note?`<div class="row-body" style="margin-top:.5rem"><em>${esc(bc.note)}</em></div>`:'';
+  return `<div class="row">
+    <div class="row-label">Border cash controls</div>
+    ${modeLine}
+    ${mechRows||'<div class="row-body"><em>No typed border-cash mechanisms recorded.</em></div>'}
+    ${note}
+    ${srcLines(dRule)}
+  </div>`;
+}
+
 function declarationRow(country, amount, amountCcy){
+  // Explicit feature detection — do not infer typed structure from legacy prose.
+  if(country.border_cash){
+    return borderCashRow(country, amount, amountCcy);
+  }
   const d=country.declaration;
   const dRule=country.rules.cash_declaration_threshold || null;
   let lines=d.thresholds.map(th=>evalThreshold(amount, amountCcy, th).html).join('');
@@ -311,6 +391,18 @@ function declarationRow(country, amount, amountCcy){
 function exchangeRow(country){
   const ec=country.exchange_controls;
   const r=country.rules.exchange_controls;
+  if(ec && ec.posture==='layered'){
+    const comps=(ec.components||[]).map(c=>
+      `<div class="threshold-line"><strong>${esc(c.scope)}</strong> — ${esc(c.summary)}</div>`
+    ).join('');
+    return `<div class="row">
+      <div class="row-label">Exchange controls ${clsChip('exchange-controls')}</div>
+      <div class="row-body"><strong>${esc(ec.label)}</strong></div>
+      ${comps}
+      ${r?`<div class="row-body" style="margin-top:.5rem">${esc(r.text)}</div>`:''}
+      ${r?srcLines(r):''}
+    </div>`;
+  }
   return `<div class="row">
     <div class="row-label">Exchange controls ${clsChip('exchange-controls')}</div>
     <div class="row-body"><strong>${esc(ec.label)}.</strong> ${r?esc(r.text):''}</div>
@@ -375,7 +467,7 @@ function run(e){
   html+=legCard(origin,'origin',amount,amountCcy,residency);
   html+=legCard(dest,'destination',amount,amountCcy,residency);
   html+=`<div class="disc">${esc(origin.disclaimer||'')}</div>`;
-  html+=`<div class="disc">Data: ConvertCCY Passage Check v1.0, built from the published Foreign Currency Rules Dataset (${esc(DATA.license)}). Structured thresholds transcribed from each entry's declaration field.</div>`;
+  html+=`<div class="disc">Data: ConvertCCY Passage Check v${esc(DATA.version||'1.1')}, built from the published Foreign Currency Rules Dataset (${esc(DATA.license)}). Governed border-cash mechanisms and exchange-control profiles are transcribed from published country rules.</div>`;
   html+=`<div class="disc"><strong>On currency conversion:</strong> ${esc(IND_RATES_NOTICE)} The governed figure is always the threshold in its officially stated currency.</div>`;
   out.innerHTML=html;
   out.scrollIntoView({behavior:'smooth',block:'start'});
