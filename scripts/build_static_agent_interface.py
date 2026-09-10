@@ -210,6 +210,7 @@ def build_passage_check_view(passage: dict, dataset: dict) -> dict:
             "title": "ConvertCCY Passage Check — Static Agent Interface view",
             "engine": passage.get("engine", ""),
             "engine_version": passage.get("version", ""),
+            "schema": passage.get("schema"),
             "built_from": passage.get("built_from", ""),
             "source_dataset_generated_at": passage.get("source_dataset_generated_at", ""),
             "engine_notice": passage.get("notice", ""),
@@ -252,7 +253,7 @@ def build_index(dataset: dict, rules_index: dict, passage_view: dict) -> dict:
                 },
                 "passage_check": {
                     "path": "/api/v1/passage-check.json",
-                    "description": "Passage Check engine dataset: declaration thresholds and exchange-control posture, transcribed from governed data.",
+                    "description": "Passage Check engine dataset: border-cash controls / typed mechanisms and exchange-control profiles, transcribed from governed data.",
                 },
             },
             "human_documentation": "/api.html",
@@ -365,7 +366,7 @@ def render_api_index_html(rules_index: dict) -> str:
       <div class="ep"><div class="path">/api/v1/index.json</div><div class="desc">Entry point: endpoint map, published-jurisdiction count, links to documentation.</div></div>
       <div class="ep"><div class="path">/api/v1/rules-index.json</div><div class="desc">Index of all published jurisdictions with links to each per-country file.</div></div>
       <div class="ep"><div class="path">/api/v1/rules/&lt;country-slug&gt;.json</div><div class="desc">Full governed rules entry for one published jurisdiction (see list below).</div></div>
-      <div class="ep"><div class="path">/api/v1/passage-check.json</div><div class="desc">Passage Check engine dataset: transcribed declaration thresholds and exchange-control posture.</div></div>
+      <div class="ep"><div class="path">/api/v1/passage-check.json</div><div class="desc">Passage Check engine dataset: border-cash controls / typed mechanisms and exchange-control profiles, transcribed from governed data.</div></div>
     </div>
   </section>
 
