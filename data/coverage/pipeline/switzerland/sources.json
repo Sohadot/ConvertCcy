@@ -3,7 +3,7 @@
   "country_slug": "switzerland",
   "country_name": "Switzerland",
   "iso2": "CH",
-  "notes": "Switzerland Hardening I (border cash) + Hardening II (accounts/AML) + Hardening III (business/payments/capital evidence). H3 appends Code of Obligations Art. 84 / accounting-currency provisions (SR 220), VAT Ordinance Art. 45 (SR 641.201), SNB SIC / instant-payment exploration, SECO Investment Screening Act temporal status, and FINMA sanctions-implementation notices. Evidence cutoff 2026-09-10. Does not characterise overall exchange-control regime (Hardening IV). Does not modify claims.json, field_bindings.json, adoption_decision.json, M2.5 artefacts, or data/rules/switzerland.json.",
+  "notes": "Switzerland Hardening I–IV evidence pack. H4 appends IMF 2026 Article IV Informational Annex exchange-rate arrangement / Article VIII exchange-system classification, SNB monetary-policy implementation and 18 June 2026 policy assessment intervention posture, OECD Code of Liberalisation of Capital Movements (2024 edition / Annex B Switzerland reservations), and SECO Embargo Act / general sanctions architecture. Evidence cutoff 2026-09-10. Does NOT adopt, bind country_overview / rules.exchange_controls, modify claims.json / field_bindings.json / adoption_decision.json / M2.5 artefacts, or rewrite data/rules/switzerland.json. Does not characterise CHF pair pages.",
   "source_conflicts": [
     {
       "conflict_id": "CH-SRC-CONFLICT-10K-OPERATOR-01",
@@ -80,6 +80,45 @@
       "closure_phase": "hardening_iii_evidence",
       "closed_at": "2026-09-10",
       "wording_boundary": "Do not draft cross-currency SIC/TIPS interlinking as currently operational."
+    },
+    {
+      "conflict_id": "CH-SRC-CONFLICT-DEJURE-DEFACTO-2026",
+      "sources": [
+        "SRC-CH-IMF-AIV-2026"
+      ],
+      "topic": "de jure free floating vs de facto crawl-like (2026 Annex)",
+      "detail": "IMF Country Report No. 2026/233 Informational Annex states the de jure exchange-rate arrangement is free floating while the de facto arrangement is classified as crawl-like from 25 April 2025 (bilateral EUR volatility below the 2-percent threshold). Disposition: preserve both classifications separately; do not collapse into a single 'floating' label; do not invent managed-float / dirty-float taxonomy; do not treat de facto crawl-like as an exchange-control regime or peg.",
+      "status": "preserved_dual_classification",
+      "closure_phase": "hardening_iv_evidence",
+      "closed_at": "2026-09-10",
+      "wording_boundary": "Use IMF exact terms: de jure free floating; de facto crawl-like from April 25, 2025. Do not backfill 2025 'de facto floating' wording as current."
+    },
+    {
+      "conflict_id": "CH-SRC-CONFLICT-INTERVENTION-VS-ARRANGEMENT",
+      "sources": [
+        "SRC-CH-IMF-AIV-2026",
+        "SRC-CH-SNB-MP-IMPL",
+        "SRC-CH-SNB-MPA-20260618"
+      ],
+      "topic": "SNB FX intervention capability/posture vs IMF exchange-rate classification",
+      "detail": "IMF annex states SNB reserves the right to intervene while classifying de jure free floating / de facto crawl-like. SNB implementation page states SNB may buy/sell FX against CHF (usually spot/swap) with domestic and foreign counterparties. SNB 18 June 2026 MPA states increased willingness to intervene if necessary against rapid/excessive CHF appreciation threatening price stability. Disposition: keep intervention capability and 2026 posture distinct from IMF regime labels; intervention ≠ peg ≠ exchange-control regime.",
+      "status": "preserved_separate_layers",
+      "closure_phase": "hardening_iv_evidence",
+      "closed_at": "2026-09-10",
+      "wording_boundary": "Do not transform increased willingness to intervene into continuous intervention, exchange-rate target, managed-float label, or capital control."
+    },
+    {
+      "conflict_id": "CH-SRC-CONFLICT-CURRENT-VS-CAPITAL-LIBERALISATION",
+      "sources": [
+        "SRC-CH-IMF-AIV-2026",
+        "SRC-CH-OECD-CLCM"
+      ],
+      "topic": "IMF Article VIII current-transaction posture vs OECD capital reservations",
+      "detail": "IMF 2026 annex supports an exchange system free of multiple currency practices and of restrictions on payments/transfers for CURRENT international transactions except notified security restrictions. OECD Annex B records current Swiss capital-movement reservations (inward FDI sectors, non-resident real estate, pension/insurance foreign-asset and related holdings). Disposition: never let Article VIII stand for capital-account full liberalisation; never summarise OECD reservations as 'Switzerland has capital controls' without actor/transaction scope.",
+      "status": "preserved_dual_architecture",
+      "closure_phase": "hardening_iv_evidence",
+      "closed_at": "2026-09-10",
+      "wording_boundary": "Current international transactions ≠ capital transactions. Preserve IMF and OECD scopes separately."
     }
   ],
   "missing_authorities": [
@@ -154,6 +193,46 @@
       "search_record": "Bounded search 2026-09-10 of SNB SIC participation wording and FINMA/SECO materials for a legal category 'authorised banks and financial institutions' governing routine FX conversion/payment. SNB refers to banks and other financial market participants / SIC participants; H2 uses financial intermediary / banks under CDB. Legacy phrase not preserved as a Swiss legal category for H3 candidates.",
       "closure_phase": "hardening_iii_evidence",
       "wording_boundary": "Prefer bank / financial intermediary / SIC participant — not 'authorised banks and financial institutions' unless a source uses that exact category."
+    },
+    {
+      "authority_id": "CH-H4-MISSING-GENERAL-NO-EXCHANGE-CONTROLS",
+      "topic": "unqualified 'Switzerland maintains no exchange controls'",
+      "status": "not_established",
+      "search_record": "Bounded H4 search 2026-09-10 of IMF 2026/233 Informational Annex, SNB monetary-policy implementation / 18 June 2026 MPA, OECD Code Annex B Switzerland, SECO Embargo Act / general sanctions pages. IMF positively supports no restrictions on CURRENT international payments/transfers except security notifications; OECD records capital reservations; SECO records sanctions overlays. No primary authority located establishing an unqualified general 'no exchange controls' proposition covering capital, sanctions, and investment reservations.",
+      "closure_phase": "hardening_iv_evidence",
+      "wording_boundary": "Do not candidate-extract unqualified 'no exchange controls' or 'no controls of any kind'."
+    },
+    {
+      "authority_id": "CH-H4-MISSING-FULLY-LIBERALISED",
+      "topic": "unqualified 'fully liberalised' for current and capital accounts",
+      "status": "not_established",
+      "search_record": "IMF Article VIII posture is scoped to current international transactions with security exceptions. OECD Annex B reservations prevent an unqualified capital-account 'fully liberalised' claim. No primary authority located for legacy 'fully liberalised for both current and capital account transactions'.",
+      "closure_phase": "hardening_iv_evidence",
+      "wording_boundary": "Do not candidate-extract 'fully liberalised' without scope qualifiers supported by authority."
+    },
+    {
+      "authority_id": "CH-H4-MISSING-FREELY-CONVERTIBLE",
+      "topic": "'Swiss franc is freely convertible' shorthand",
+      "status": "not_established",
+      "search_record": "Bounded search of IMF 2026 annex, SNB implementation/MPA pages, OECD Code for an authoritative current definition/statement that 'CHF is freely convertible'. Not located. Prefer stating Article VIII / market-rate formation propositions directly.",
+      "closure_phase": "hardening_iv_evidence",
+      "wording_boundary": "Do not candidate-extract 'freely convertible'."
+    },
+    {
+      "authority_id": "CH-H4-MISSING-IMF-SECURITY-NOTIFICATION-DETAIL",
+      "topic": "IMF annex detail on security-restriction notification date/country/entity",
+      "status": "not_detailed_in_2026_annex",
+      "search_record": "2026 Informational Annex states restrictions for security reasons notified to the Fund pursuant to Executive Board Decision No. 144-(52/51), but does not in the captured Exchange Rate Arrangement section specify notification date, country, or entity list. Do not invent those particulars from SECO ordinances unless IMF itself links them.",
+      "closure_phase": "hardening_iv_evidence",
+      "wording_boundary": "Preserve IMF security-exception language; do not equate every SECO sanctions ordinance with an IMF 'exchange restriction' without IMF support."
+    },
+    {
+      "authority_id": "CH-H4-MISSING-NO-GENERAL-CAPITAL-CONTROLS",
+      "topic": "'no general capital controls' negative claim",
+      "status": "not_established_by_positive_authority",
+      "search_record": "OECD Code records liberalisation commitments AND Annex B reservations. Absence of a single universal capital-control screen is not treated as positive authority for 'no general capital controls'. ISA remains future (CH-BIZ-13). Do not extract the negative from silence.",
+      "closure_phase": "hardening_iv_evidence",
+      "wording_boundary": "Characterise capital architecture via OECD commitments + reservations, not via absence search."
     }
   ],
   "sources": [
@@ -427,6 +506,121 @@
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
       "notes": "Current FINMA sanctions-update notice for the Ukraine ordinance. System-level illustration that, under applicable sanctions ordinances, financial intermediaries are called to implement prohibitions, freeze assets of sanctioned persons, and report affected business relationships to SECO; SECO report does not displace AMLA Art. 6/9 duties. Regime/person-specific overlay — not a general capital-transfer approval requirement. Does not reclone H2 AML claims."
+    },
+    {
+      "source_id": "SRC-CH-IMF-AIV-2026",
+      "label": "IMF — Switzerland: 2026 Article IV Consultation — Staff Report (Country Report No. 2026/233)",
+      "url": "https://www.imf.org/-/media/files/publications/cr/2026/english/1cheea2026001.pdf",
+      "type": "multilateral",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "International Monetary Fund (IMF)",
+      "authority_kind": "regulator",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-10",
+      "published_date": "2026-09-01",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "IMF Country Report No. 2026/233 (also cited as 26/233). Staff report completed 4 August 2026; publication ~1 September 2026. H4 uses Informational Annex — Fund Relations — Exchange Rate Arrangement section as first authority for de jure/de facto arrangement, market/free-market rate language, SNB intervention right, Article VIII Sections 2–4, MCP, current-transaction restrictions, and security-restriction exception. Do NOT silently backfill from 2025 annex. De facto classification is crawl-like (not 2025 floating). type=multilateral; authority_kind=regulator is intake nearest-fit enum for IMF staff report (no dedicated multilateral authority_kind in policy)."
+    },
+    {
+      "source_id": "SRC-CH-IMF-AA-ART8",
+      "label": "IMF Articles of Agreement — Article VIII (General Obligations of Members)",
+      "url": "https://www.imf.org/external/pubs/ft/aa/index.htm#art8",
+      "type": "multilateral",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "International Monetary Fund (IMF)",
+      "authority_kind": "regulator",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-10",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Interpretive legal background for Article VIII obligations (Sections 2, 3, 4). Switzerland-specific operative statement for H4 candidates is the 2026 Informational Annex. Article VIII concerns current international transactions; it does not establish capital-account full liberalisation. type=multilateral; authority_kind=regulator nearest-fit for intake enum."
+    },
+    {
+      "source_id": "SRC-CH-SNB-MP-IMPL",
+      "label": "Swiss National Bank — Implementation of monetary policy",
+      "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy/implementation",
+      "type": "regulator",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss National Bank (SNB)",
+      "authority_kind": "central_bank",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-10",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Current SNB official instruments page. Pins FX transactions as open-market instruments: purchase/sale of foreign currency against CHF; usually spot or swap; domestic and foreign counterparties; monetary-policy / liquidity implementation. Not customer FX-rate setting, conversion approvals, or exchange-control authorisations."
+    },
+    {
+      "source_id": "SRC-CH-SNB-MPA-20260618",
+      "label": "SNB — Monetary policy assessment of 18 June 2026",
+      "url": "https://www.snb.ch/en/publications/communication/press-releases-restricted/pre_20260618",
+      "type": "regulator",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss National Bank (SNB)",
+      "authority_kind": "central_bank",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-10",
+      "published_date": "2026-06-18",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Latest SNB Monetary Policy Assessment before evidence cutoff 2026-09-10 (next scheduled MPA 24 September 2026 is after cutoff). Pins current 'increased willingness to intervene' posture conditioned on rapid/excessive CHF appreciation jeopardising price stability. Temporal/current-policy posture only — not continuous intervention, peg, or managed-float classification."
+    },
+    {
+      "source_id": "SRC-CH-OECD-CLCM",
+      "label": "OECD — Code of Liberalisation of Capital Movements (2024 edition; Annex B Switzerland)",
+      "url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-issues/investment/Code-capital-movements-EN.pdf",
+      "type": "multilateral",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Organisation for Economic Co-operation and Development (OECD)",
+      "authority_kind": "regulator",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-10",
+      "published_date": "2024-01-01",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Official OECD Code PDF (© OECD 2024). Appendix lists Council/Investment Committee acts through DAF/INV/ICC(2026)1 (15 June 2026). H4 uses Annex B Switzerland reservations (List A I/A; List B III; List A IV/D1; List B V/D1; List B VI/D1; List A VII; List B IX/B; List B XI/B1–B2). International commitment ≠ domestic private-law payment entitlement. Do not use promotional summaries. type=multilateral; authority_kind=regulator nearest-fit for intake enum."
+    },
+    {
+      "source_id": "SRC-CH-SECO-EMBG-LEGAL",
+      "label": "SECO — Rechtliche Grundlagen Sanktionen (Embargogesetz / EmbG, SR 946.231)",
+      "url": "https://www.seco.admin.ch/de/rechtliche-grundlagen-sanktionen",
+      "type": "ministry",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "State Secretariat for Economic Affairs (SECO)",
+      "authority_kind": "ministry",
+      "jurisdiction": "CH",
+      "language": "de",
+      "accessed_at": "2026-09-10",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Current SECO legal-basis page for Swiss sanctions. Embargo Act (EmbG, SR 946.231) is the framework law since 1 January 2003; concrete coercive measures are in separate ordinances. Fedlex statutory text is linked as SR 946.231. General sanctions architecture — not a general exchange-control regime; distinct from H3 CH-BIZ-12 Ukraine-specific FINMA notice."
+    },
+    {
+      "source_id": "SRC-CH-SECO-SANCTIONS-GEN",
+      "label": "SECO — Allgemeine Informationen Sanktionen",
+      "url": "https://www.seco.admin.ch/de/allgemeine-informationen-sanktionen",
+      "type": "ministry",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "State Secretariat for Economic Affairs (SECO)",
+      "authority_kind": "ministry",
+      "jurisdiction": "CH",
+      "language": "de",
+      "accessed_at": "2026-09-10",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Current SECO general sanctions information. States Embargo Act empowers the Federal Council to enact coercive measures such as financial sanctions, trade restrictions, travel bans, or asset freezes; UN measures obligatory; EU measures case-by-case. Multiple active ordinances indicated without hardcoding a count. Security/sanctions overlay ≠ general exchange controls."
     }
   ]
 }
