@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
   "generation_mode": "governed_extraction",
-  "notes": "Switzerland Hardening I border-cash candidates preserved (CC-CH-CASH-001..013, M2.5 closed). Hardening II ACC candidates CC-CH-ACC-001..015 M2.5 closed (pending→closed). No adoption, bindings, or switzerland.json changes. General AML duties are not duplicated into resident/non-resident entitlement claims.",
+  "notes": "Switzerland Hardening I border-cash candidates preserved (CC-CH-CASH-001..013, M2.5 closed). Hardening II appends pending CC-CH-ACC-* account/AML/residency evidence candidates. No M2.5, adoption, bindings, or switzerland.json changes in this gate. General AML duties are not duplicated into separate resident/non-resident entitlement claims. No statutory account-entitlement or 'freely / without prior approval' candidates were minted.",
   "candidates": [
     {
       "candidate_id": "CC-CH-CASH-001",
