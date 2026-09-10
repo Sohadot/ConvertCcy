@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-09-10T15:38:48+00:00",
+ "generated_at": "2026-09-10T15:57:58+00:00",
  "asset": "ConvertCCY",
  "interface_type": "static_agent_interface",
  "dynamic_api": false,
@@ -15,7 +15,7 @@
  "engine": "ConvertCCY Passage Check",
  "engine_version": "1.1",
  "schema": {
-  "border_cash": "Optional canonical typed border-cash profile. When present, declaration is a compatibility projection of declaration-kind numeric mechanisms only.",
+  "border_cash": "Optional canonical typed border-cash profile. Authored via BORDER_CASH_CONTROLS with declaration.mode + mechanisms[] only; emitted declaration.thresholds are derived from declaration-kind amount mechanisms. When present, country.declaration is a compatibility projection of those derived thresholds only.",
   "exchange_controls.layered": "posture 'layered' is a compositional routing value: no single legacy scalar posture faithfully captures the governed architecture; consumers must inspect label/components. It is not a severity, liberalisation, floating, crawl, peg, or capital-account conclusion."
  },
  "built_from": "rules/dataset.json",

@@ -14,7 +14,9 @@ Schema version 1.1 (backward-compatible minor evolution):
     exchange-control source per published jurisdiction).
   - Typed border-cash emits canonical ``border_cash`` plus a compatibility
     ``declaration`` projection that contains declaration-kind numeric
-    thresholds only.
+    thresholds only. Authored ``BORDER_CASH_CONTROLS`` profiles declare
+    ``declaration.mode`` only; ``mechanisms[]`` is the sole authored source
+    for declaration mechanisms — emitted thresholds are derived.
   - Layered exchange profiles emit ``posture: "layered"`` as a routing key;
     the legal answer is the hand-reviewed label/components.
 
@@ -585,6 +587,38 @@ def sources_for_field(source_map, field):
     return []
 
 
+def is_numeric_amount(value: Any) -> bool:
+    """True for int/float amounts; False for bool (bool is a Python int subclass)."""
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def format_amount_value(value: Any) -> str:
+    """Format a threshold amount without truncating decimals or forcing ``.0``.
+
+    Integers render as ``10,000``. Meaningful decimals are preserved
+    (``10000.5`` → ``10,000.5``). Bool is rejected.
+    """
+    if not is_numeric_amount(value):
+        raise TypeError(
+            f"amount value must be int or float, not {type(value).__name__}"
+        )
+    if isinstance(value, int):
+        return f"{value:,}"
+    # Float path: use Decimal(str(...)) to avoid binary float artifacts and
+    # preserve authored decimal literals faithfully.
+    from decimal import Decimal
+
+    d = Decimal(str(value))
+    sign = "-" if d < 0 else ""
+    d = abs(d)
+    if d == d.to_integral_value():
+        return f"{sign}{int(d):,}"
+    fixed = format(d, "f")
+    whole, frac = fixed.split(".", 1)
+    frac = frac.rstrip("0")
+    return f"{sign}{int(whole):,}.{frac}" if frac else f"{sign}{int(whole):,}"
+
+
 def validate_trigger(trigger: dict, ctx: str) -> List[str]:
     errors: List[str] = []
     if not isinstance(trigger, dict):
@@ -594,8 +628,11 @@ def validate_trigger(trigger: dict, ctx: str) -> List[str]:
         errors.append(f"{ctx}: trigger.type must be one of {sorted(TRIGGER_TYPES)}")
         return errors
     if ttype == "amount":
-        if "value" not in trigger or not isinstance(trigger["value"], (int, float)):
-            errors.append(f"{ctx}: amount trigger requires numeric value")
+        if "value" not in trigger or not is_numeric_amount(trigger["value"]):
+            errors.append(
+                f"{ctx}: amount trigger requires numeric value "
+                "(int or float; bool not allowed)"
+            )
         if not trigger.get("currency"):
             errors.append(f"{ctx}: amount trigger requires currency")
         op = trigger.get("operator")
@@ -633,54 +670,110 @@ def validate_mechanism(mech: dict, idx: int) -> List[str]:
     return errors
 
 
+def _declaration_mechanisms(mechs: List[dict]) -> List[dict]:
+    return [m for m in mechs if isinstance(m, dict) and m.get("kind") == "declaration"]
+
+
+def validate_declaration_mode_consistency(
+    slug: str, mode: Optional[str], mechs: List[dict]
+) -> List[str]:
+    """Fail-closed consistency between declaration.mode and declaration mechanisms."""
+    errors: List[str] = []
+    if mode not in DECLARATION_MODES:
+        return errors
+    decl_mechs = _declaration_mechanisms(mechs)
+    amount_decls = [
+        m for m in decl_mechs
+        if (m.get("trigger") or {}).get("type") == "amount"
+    ]
+    always_decls = [
+        m for m in decl_mechs
+        if (m.get("trigger") or {}).get("type") == "always"
+    ]
+    trigger_types = {
+        (m.get("trigger") or {}).get("type")
+        for m in decl_mechs
+        if (m.get("trigger") or {}).get("type") in TRIGGER_TYPES
+    }
+
+    if mode == "numeric_threshold":
+        if not amount_decls:
+            errors.append(
+                f"{slug}: declaration.mode=numeric_threshold requires at least one "
+                "declaration-kind amount-trigger mechanism"
+            )
+    elif mode == "always":
+        if not always_decls:
+            errors.append(
+                f"{slug}: declaration.mode=always requires at least one "
+                "declaration-kind always-trigger mechanism"
+            )
+    elif mode == "none_spontaneous":
+        if amount_decls or always_decls:
+            errors.append(
+                f"{slug}: declaration.mode=none_spontaneous must not contain a "
+                "declaration-kind amount or always trigger (no spontaneous "
+                "declaration obligation)"
+            )
+    elif mode == "not_established":
+        if amount_decls or always_decls:
+            errors.append(
+                f"{slug}: declaration.mode=not_established must not contain a "
+                "positive declaration amount or always mechanism"
+            )
+    elif mode == "mixed":
+        # Mixed is not an unconstrained escape hatch: require heterogeneous
+        # declaration-kind trigger architecture (at least two trigger types).
+        if len(decl_mechs) < 2 or len(trigger_types) < 2:
+            errors.append(
+                f"{slug}: declaration.mode=mixed requires heterogeneous declaration "
+                "architecture (at least two declaration-kind mechanisms with "
+                "distinct trigger types)"
+            )
+    return errors
+
+
 def validate_border_cash_profile(slug: str, profile: dict) -> List[str]:
     errors: List[str] = []
     if not isinstance(profile, dict):
         return [f"{slug}: BORDER_CASH_CONTROLS entry must be an object"]
     decl = profile.get("declaration")
+    mode: Optional[str] = None
     if not isinstance(decl, dict):
         errors.append(f"{slug}: declaration object is required")
     else:
         mode = decl.get("mode")
         if mode not in DECLARATION_MODES:
             errors.append(f"{slug}: declaration.mode must be one of {sorted(DECLARATION_MODES)}")
-        th = decl.get("thresholds", [])
-        if th is None:
-            th = []
-        if not isinstance(th, list):
-            errors.append(f"{slug}: declaration.thresholds must be a list")
-        else:
-            for i, item in enumerate(th):
-                if not isinstance(item, dict):
-                    errors.append(f"{slug}: declaration.thresholds[{i}] must be an object")
-                    continue
-                # Authored declaration.thresholds in the typed table are optional
-                # pre-projections; if present they must be declaration-kind only.
-                if item.get("kind") and item.get("kind") != "declaration":
-                    errors.append(
-                        f"{slug}: declaration.thresholds[{i}] may only carry kind=declaration"
-                    )
+        # Single authored source: mechanisms[] only. Never author thresholds here.
+        if "thresholds" in decl:
+            errors.append(
+                f"{slug}: declaration.thresholds must not be authored in "
+                "BORDER_CASH_CONTROLS; mechanisms[] is the sole authored source and "
+                "emitted thresholds are derived from declaration-kind amount mechanisms"
+            )
     mechs = profile.get("mechanisms")
     if not isinstance(mechs, list):
         errors.append(f"{slug}: mechanisms must be a list")
-    else:
-        for i, mech in enumerate(mechs):
-            errors.extend(validate_mechanism(mech, i))
-            # Semantic guard: inquiry/registration amounts must never be authored
-            # as declaration thresholds in the compatibility projection source.
-            if isinstance(mech, dict) and mech.get("kind") in {"inquiry", "registration"}:
-                trig = mech.get("trigger") or {}
-                if trig.get("type") == "amount" and any(
-                    isinstance(t, dict)
-                    and t.get("value") == trig.get("value")
-                    and t.get("currency") == trig.get("currency")
-                    for t in (decl.get("thresholds") or [])
-                ) if isinstance(decl, dict) else False:
-                    errors.append(
-                        f"{slug}: amount for {mech.get('kind')} must not appear in "
-                        "declaration.thresholds (inquiry/registration ≠ declaration)"
-                    )
+        return errors
+    for i, mech in enumerate(mechs):
+        errors.extend(validate_mechanism(mech, i))
+    if isinstance(decl, dict) and mode in DECLARATION_MODES:
+        errors.extend(validate_declaration_mode_consistency(slug, mode, mechs))
     return errors
+
+
+LAYERED_BANNED_SHORTHAND = (
+    "fully liberalised",
+    "fully liberalized",
+    "no exchange controls",
+    "no general exchange controls",
+)
+
+
+def _layered_banned_hits(text: str) -> List[str]:
+    lowered = text.lower()
+    return [banned for banned in LAYERED_BANNED_SHORTHAND if banned in lowered]
 
 
 def validate_exchange_profile(slug: str, profile: dict) -> List[str]:
@@ -694,15 +787,8 @@ def validate_exchange_profile(slug: str, profile: dict) -> List[str]:
     label = str(profile.get("label") or "").strip()
     if not label:
         errors.append(f"{slug}: layered profile requires a non-empty label")
-    lowered = label.lower()
-    for banned in (
-        "fully liberalised",
-        "fully liberalized",
-        "no exchange controls",
-        "no general exchange controls",
-    ):
-        if banned in lowered:
-            errors.append(f"{slug}: layered label must not contain '{banned}'")
+    for banned in _layered_banned_hits(label):
+        errors.append(f"{slug}: layered label must not contain '{banned}'")
     comps = profile.get("components")
     if not isinstance(comps, list) or not comps:
         errors.append(f"{slug}: layered profile requires non-empty components")
@@ -713,8 +799,14 @@ def validate_exchange_profile(slug: str, profile: dict) -> List[str]:
                 continue
             if not str(comp.get("scope") or "").strip():
                 errors.append(f"{slug}: components[{i}].scope is required")
-            if not str(comp.get("summary") or "").strip():
+            summary = str(comp.get("summary") or "").strip()
+            if not summary:
                 errors.append(f"{slug}: components[{i}].summary is required")
+            else:
+                for banned in _layered_banned_hits(summary):
+                    errors.append(
+                        f"{slug}: components[{i}].summary must not contain '{banned}'"
+                    )
     # Monetary-regime tokens must not be smuggled as the posture answer.
     for bad in ("floating_regulated_market", "capital_account_regulated", "supervisory_peg"):
         if profile.get("posture") == bad:
@@ -800,8 +892,7 @@ def build_border_cash_record(profile: dict) -> dict:
         mechs_out.append(item)
 
     decl_in = profile.get("declaration") or {}
-    # Compatibility projection: declaration thresholds = declaration-kind amount
-    # mechanisms only (never inquiry/registration/carriage/permit/enforcement).
+    # Derived exclusively from declaration-kind amount mechanisms (never authored).
     compat_thresholds: List[dict] = []
     for mech in mechs_out:
         if mech.get("kind") != "declaration":
@@ -819,9 +910,6 @@ def build_border_cash_record(profile: dict) -> dict:
             "mechanism": mech.get("mechanism", ""),
         })
 
-    # If the authored profile already listed declaration.thresholds, they must
-    # already have been validated as declaration-only; prefer mechanism-derived
-    # projection for consistency unless empty and authored list was empty.
     record = {
         "declaration": {
             "mode": decl_in.get("mode"),
@@ -967,9 +1055,11 @@ def build_payload(
         "attribution": dataset.get("attribution", ""),
         "schema": {
             "border_cash": (
-                "Optional canonical typed border-cash profile. When present, "
-                "declaration is a compatibility projection of declaration-kind "
-                "numeric mechanisms only."
+                "Optional canonical typed border-cash profile. Authored via "
+                "BORDER_CASH_CONTROLS with declaration.mode + mechanisms[] only; "
+                "emitted declaration.thresholds are derived from declaration-kind "
+                "amount mechanisms. When present, country.declaration is a "
+                "compatibility projection of those derived thresholds only."
             ),
             "exchange_controls.layered": (
                 "posture 'layered' is a compositional routing value: no single "

@@ -6,7 +6,7 @@
  "license": "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/",
  "attribution": "ConvertCCY (https://convertccy.com/)",
  "schema": {
-  "border_cash": "Optional canonical typed border-cash profile. When present, declaration is a compatibility projection of declaration-kind numeric mechanisms only.",
+  "border_cash": "Optional canonical typed border-cash profile. Authored via BORDER_CASH_CONTROLS with declaration.mode + mechanisms[] only; emitted declaration.thresholds are derived from declaration-kind amount mechanisms. When present, country.declaration is a compatibility projection of those derived thresholds only.",
   "exchange_controls.layered": "posture 'layered' is a compositional routing value: no single legacy scalar posture faithfully captures the governed architecture; consumers must inspect label/components. It is not a severity, liberalisation, floating, crawl, peg, or capital-account conclusion."
  },
  "notice": "Passage Check is deterministic and evidence-bound. It reports only what the published, source-mapped ConvertCCY country entries state. It contains governed border-cash mechanisms and exchange-control profiles transcribed from published country rules. Not every structured amount is a declaration threshold — inquiry, registration, carriage, permit, and enforcement mechanisms are typed separately in v1.1. Currency conversions shown in the tool are indicative only and are not governed figures. Existing v1.0-style records remain grandfathered until individually migrated.",

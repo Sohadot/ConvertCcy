@@ -19,8 +19,11 @@ It must never force country truth into a false machine enum or a false universal
 
 - Schema version **1.0 → 1.1** (backward-compatible minor evolution).
 - Opt-in `BORDER_CASH_CONTROLS` table for typed border-cash mechanisms (`declaration`, `reporting`, `inquiry`, `registration`, `carriage_limit`, `permit`, `enforcement`) with amount/condition/always triggers.
+- Authored typed profiles declare `declaration.mode` only; `mechanisms[]` is the **sole** authored source for declaration mechanisms. Emitted `border_cash.declaration.thresholds` / compatibility `declaration.thresholds` are derived exclusively from `kind=declaration` + `trigger.type=amount`. Dual authoring of an independent threshold list is rejected.
+- Fail-closed consistency between `declaration.mode` and declaration mechanisms (`numeric_threshold` / `always` / `none_spontaneous` / `not_established` / `mixed`).
 - Compatibility `declaration.thresholds` for typed jurisdictions lists **declaration-kind numeric mechanisms only** (may be `[]`).
-- Opt-in `EXCHANGE_CONTROL_PROFILES` with machine posture **`layered`**: a compositional routing value meaning no single legacy scalar posture is faithful; consumers must inspect label/components. Not a severity, liberalisation, floating, crawl, peg, or capital-account conclusion.
+- Opt-in `EXCHANGE_CONTROL_PROFILES` with machine posture **`layered`**: a compositional routing value meaning no single legacy scalar posture is faithful; consumers must inspect label/components. Not a severity, liberalisation, floating, crawl, peg, or capital-account conclusion. Banned global shorthand is enforced on both label and `components[].summary`.
+- Amount triggers accept int or float (bool rejected); rendering preserves decimals without truncation.
 - Builder rejects neither/both authorship between legacy and typed tables for border-cash and for exchange-control sources.
 - Existing **23** published jurisdictions remain grandfathered v1.0-style records in `DECLARATION` + `EXCHANGE_CONTROLS` until individually migrated. This sprint does **not** certify semantic perfection of those legacy transcriptions and does **not** opportunistically reclassify them.
 - Switzerland is **not** published and is **not** authored into the new tables on this branch (branch starts from main before Switzerland hardening).

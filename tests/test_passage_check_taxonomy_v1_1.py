@@ -27,7 +27,6 @@ def _synthetic_border_cash_profile() -> dict:
     return {
         "declaration": {
             "mode": "none_spontaneous",
-            "thresholds": [],
         },
         "mechanisms": [
             {
@@ -273,6 +272,180 @@ class PassageCheckV11TaxonomyTest(unittest.TestCase):
         errs4 = bpc.validate_exchange_profile("x", bad4)
         self.assertTrue(any("non-empty components" in e for e in errs4))
 
+    def test_rejects_authored_declaration_thresholds(self):
+        """mechanisms[] is the sole authored source — no dual threshold list."""
+        profile = _synthetic_border_cash_profile()
+        profile["declaration"]["thresholds"] = []
+        errs = bpc.validate_border_cash_profile("x", profile)
+        self.assertTrue(any("must not be authored" in e for e in errs))
+
+        profile2 = _synthetic_border_cash_profile()
+        profile2["declaration"]["thresholds"] = [
+            {"value": 10000, "currency": "CHF", "operator": ">="}
+        ]
+        errs2 = bpc.validate_border_cash_profile("x", profile2)
+        self.assertTrue(any("must not be authored" in e for e in errs2))
+
+        # Emitted thresholds remain mechanism-derived only.
+        ok = _synthetic_border_cash_profile()
+        record = bpc.build_border_cash_record(ok)
+        self.assertEqual(record["declaration"]["thresholds"], [])
+        self.assertNotIn("thresholds", ok["declaration"])
+
+    def test_declaration_mode_consistency_contradictions(self):
+        def base(**overrides):
+            p = {
+                "declaration": {"mode": "numeric_threshold"},
+                "mechanisms": [],
+                "note": "t",
+            }
+            p.update(overrides)
+            return p
+
+        decl_amount = {
+            "kind": "declaration",
+            "trigger": {"type": "amount", "value": 1000, "currency": "USD", "operator": ">="},
+            "mechanism": "mandatory declaration",
+        }
+        decl_always = {
+            "kind": "declaration",
+            "trigger": {"type": "always"},
+            "mechanism": "always declare",
+        }
+
+        errs = bpc.validate_border_cash_profile(
+            "x", base(declaration={"mode": "numeric_threshold"}, mechanisms=[])
+        )
+        self.assertTrue(any("numeric_threshold requires" in e for e in errs))
+
+        errs2 = bpc.validate_border_cash_profile(
+            "x",
+            base(
+                declaration={"mode": "none_spontaneous"},
+                mechanisms=[decl_amount],
+            ),
+        )
+        self.assertTrue(any("none_spontaneous must not contain" in e for e in errs2))
+
+        errs3 = bpc.validate_border_cash_profile(
+            "x", base(declaration={"mode": "always"}, mechanisms=[decl_amount])
+        )
+        self.assertTrue(any("mode=always requires" in e for e in errs3))
+
+        errs4 = bpc.validate_border_cash_profile(
+            "x",
+            base(
+                declaration={"mode": "not_established"},
+                mechanisms=[decl_amount],
+            ),
+        )
+        self.assertTrue(any("not_established must not contain" in e for e in errs4))
+
+        errs5 = bpc.validate_border_cash_profile(
+            "x",
+            base(
+                declaration={"mode": "mixed"},
+                mechanisms=[decl_amount],
+            ),
+        )
+        self.assertTrue(any("mode=mixed requires heterogeneous" in e for e in errs5))
+
+        ok_mixed = base(
+            declaration={"mode": "mixed"},
+            mechanisms=[decl_amount, decl_always],
+        )
+        self.assertEqual(bpc.validate_border_cash_profile("x", ok_mixed), [])
+
+        ok_numeric = base(
+            declaration={"mode": "numeric_threshold"},
+            mechanisms=[decl_amount],
+        )
+        self.assertEqual(bpc.validate_border_cash_profile("x", ok_numeric), [])
+
+        # Switzerland-like fixture continues to pass.
+        self.assertEqual(
+            bpc.validate_border_cash_profile("fixture", _synthetic_border_cash_profile()),
+            [],
+        )
+
+    def test_numeric_amount_contract_preserves_decimal_rejects_bool(self):
+        self.assertEqual(bpc.format_amount_value(10000), "10,000")
+        self.assertEqual(bpc.format_amount_value(10000.5), "10,000.5")
+        self.assertEqual(bpc.format_amount_value(10000.0), "10,000")
+        with self.assertRaises(TypeError):
+            bpc.format_amount_value(True)
+
+        bad = {
+            "declaration": {"mode": "numeric_threshold"},
+            "mechanisms": [
+                {
+                    "kind": "declaration",
+                    "trigger": {
+                        "type": "amount",
+                        "value": True,
+                        "currency": "USD",
+                        "operator": ">=",
+                    },
+                    "mechanism": "declare",
+                }
+            ],
+        }
+        errs = bpc.validate_border_cash_profile("x", bad)
+        self.assertTrue(any("bool not allowed" in e for e in errs))
+
+        decimal_ok = {
+            "declaration": {"mode": "numeric_threshold"},
+            "mechanisms": [
+                {
+                    "kind": "declaration",
+                    "trigger": {
+                        "type": "amount",
+                        "value": 10000.5,
+                        "currency": "USD",
+                        "operator": ">=",
+                    },
+                    "mechanism": "declare",
+                    "scope": "cash",
+                    "applies": "in/out",
+                    "authority": "X",
+                }
+            ],
+        }
+        self.assertEqual(bpc.validate_border_cash_profile("x", decimal_ok), [])
+        record = bpc.build_border_cash_record(decimal_ok)
+        self.assertEqual(record["declaration"]["thresholds"][0]["value"], 10000.5)
+        # Typed brief path must not truncate decimals.
+        import build_passage_briefs as briefs
+
+        heading, body = briefs.border_cash_glance_html(
+            {
+                "border_cash": {
+                    "declaration": {"mode": "numeric_threshold"},
+                    "mechanisms": decimal_ok["mechanisms"],
+                }
+            }
+        )
+        self.assertEqual(heading, "Border cash controls")
+        self.assertIn("10,000.5", body)
+        self.assertIn("USD 10,000.5 (&gt;=)", body)
+
+    def test_layered_component_banned_shorthand(self):
+        profile = _synthetic_layered_profile()
+        profile["components"][0]["summary"] = "No general exchange controls apply here"
+        errs = bpc.validate_exchange_profile("x", profile)
+        self.assertTrue(any("components[0].summary must not contain" in e for e in errs))
+
+        profile2 = _synthetic_layered_profile()
+        profile2["components"][1]["summary"] = "Market is fully liberalised for all accounts"
+        errs2 = bpc.validate_exchange_profile("x", profile2)
+        self.assertTrue(any("fully liberalised" in e for e in errs2))
+
+        # Scope-sensitive IMF current-transactions language remains allowed.
+        self.assertEqual(
+            bpc.validate_exchange_profile("ok", _synthetic_layered_profile()),
+            [],
+        )
+
     def test_legacy_23_semantic_regression(self):
         payload = bpc.build_payload(self.dataset)
         self.assertEqual(payload["count"], 23)
@@ -316,6 +489,63 @@ class PassageCheckV11TaxonomyTest(unittest.TestCase):
         self.assertIn('glance_k = "Declaration threshold"', self.briefs_py)
         self.assertIn("Border cash controls", self.briefs_py)
         self.assertIn('if pc.get("border_cash")', self.briefs_py)
+        self.assertIn("border-cash controls at a glance", self.briefs_py)
+        self.assertIn('cash_checklist_label', self.briefs_py)
+        self.assertIn('"Border cash controls" if pc.get("border_cash") else "Declaration"', self.briefs_py)
+
+        import build_passage_briefs as briefs
+
+        fake_pc = {
+            "country_name": "Fixture",
+            "country_slug": "fixture-ch-like",
+            "currency_code": "CHF",
+            "currency_name": "Swiss Franc",
+            "region": "Test",
+            "last_reviewed": "2026-09-10",
+            "border_cash": bpc.build_border_cash_record(_synthetic_border_cash_profile()),
+            "declaration": {
+                "thresholds": [],
+                "mode": "none_spontaneous",
+                "compatibility_view": True,
+            },
+            "exchange_controls": {
+                "posture": "layered",
+                "label": "layered label",
+                "components": [],
+            },
+        }
+        rules = {
+            "rules": {
+                "bring_foreign_currency_in": "in",
+                "take_foreign_currency_out": "out",
+                "cash_declaration_threshold": "inquiry/registration prose",
+                "resident_holding_rules": "r",
+                "non_resident_rules": "nr",
+                "business_invoicing_settlement": "b",
+                "exchange_controls": "e",
+                "banking_conversion_practicality": "bank",
+            },
+            "summary": {"traveler": "t", "business": "biz"},
+            "source_authorities": [],
+            "evidence_tier": "official_verified",
+        }
+        html = briefs.render_brief(fake_pc, rules)
+        self.assertIn("<strong>Border cash controls:</strong>", html)
+        self.assertNotIn("<strong>Declaration:</strong>", html)
+        self.assertIn("No spontaneous declaration obligation", html)
+        self.assertIn("Inquiry:", html)
+        self.assertIn("Registration:", html)
+
+    def test_pair_surface_taxonomy_neutral_copy(self):
+        gen_src = (REPO / "generate.py").read_text(encoding="utf-8")
+        self.assertIn(
+            "the governed border-cash controls and exchange-control profile are shown below",
+            gen_src,
+        )
+        self.assertNotIn(
+            "the governed declaration threshold and exchange-control posture are shown below",
+            gen_src,
+        )
 
     def test_pair_surface_precedence(self):
         fake_pc = {

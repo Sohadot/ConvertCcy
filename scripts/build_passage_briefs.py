@@ -27,10 +27,14 @@ from __future__ import annotations
 
 import html
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO / "scripts"))
+from build_passage_check import format_amount_value  # noqa: E402
+
 PASSAGE = REPO / "rules" / "passage-check.json"
 RULES_DIR = REPO / "data" / "rules"
 OUT_DIR = REPO / "briefs"
@@ -165,7 +169,7 @@ def border_cash_glance_html(pc: dict) -> tuple[str, str]:
         }.get(kind, kind or "Mechanism")
         if trig.get("type") == "amount":
             lines.append(
-                f'{label}: {trig.get("currency")} {int(trig.get("value", 0)):,} '
+                f'{label}: {trig.get("currency")} {format_amount_value(trig.get("value"))} '
                 f'({trig.get("operator")})'
             )
         elif trig.get("type") == "condition":
@@ -194,7 +198,8 @@ def render_brief(pc: dict, rules: dict) -> str:
         glance_k = "Declaration threshold"
         th = pc["declaration"]["thresholds"]
         th_html = "<br>".join(
-            f'{esc(t["currency"])} {int(t["value"]):,} <span style="color:var(--muted)">({esc(t["scope"])})</span>'
+            f'{esc(t["currency"])} {esc(format_amount_value(t["value"]))} '
+            f'<span style="color:var(--muted)">({esc(t["scope"])})</span>'
             for t in th
         ) or "<em>No numeric declaration threshold transcribed</em>"
 
@@ -219,6 +224,9 @@ def render_brief(pc: dict, rules: dict) -> str:
 
     traveler = esc(summ.get("traveler", "")).strip()
     business = esc(summ.get("business", "")).strip()
+    cash_checklist_label = (
+        "Border cash controls" if pc.get("border_cash") else "Declaration"
+    )
 
     # Source authorities (official links).
     src_items = ""
@@ -285,7 +293,7 @@ def render_brief(pc: dict, rules: dict) -> str:
   <ul class="check">
     <li><strong>Bringing currency in:</strong> {rule("bring_foreign_currency_in")}</li>
     <li><strong>Taking currency out:</strong> {rule("take_foreign_currency_out")}</li>
-    <li><strong>Declaration:</strong> {rule("cash_declaration_threshold")}</li>
+    <li><strong>{cash_checklist_label}:</strong> {rule("cash_declaration_threshold")}</li>
   </ul>
 
   <div class="sec-kicker">Residency</div>
@@ -359,7 +367,7 @@ def render_index(briefs: list[dict]) -> str:
   <div class="breadcrumb"><a href="/">Home</a> / <span>Passage Briefs</span></div>
   <span class="brief-tag">Governed · Free to read</span>
   <h1>Country Passage Briefs</h1>
-  <p>Each brief is the published, source-mapped currency-passage rules for one jurisdiction in a portable, print-ready one-page format: declaration threshold at a glance, traveler and business checklists, and links to the official sources. Same governed facts as the <a href="/rules/">rules layer</a> — in a form you can carry.</p>
+  <p>Each brief is the published, source-mapped currency-passage rules for one jurisdiction in a portable, print-ready one-page format: border-cash controls at a glance, traveler and business checklists, and links to the official sources. Same governed facts as the <a href="/rules/">rules layer</a> — in a form you can carry.</p>
   <div class="glance">
     {cards}
   </div>
