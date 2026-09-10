@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "switzerland",
+  "infrastructure_decision": "PASS",
+  "review_completion": "COMPLETE",
+  "milestone_decision": "PASS",
+  "adoption_status": "not_adopted",
+  "semantic_approval": "human_review_closed",
+  "review_coverage": {
+    "required": 13,
+    "recorded": 13,
+    "closed": 13,
+    "missing_candidate_ids": [],
+    "historical_reviews": 0
+  },
+  "blocking_findings": [],
+  "improvement_findings": [],
+  "needs_human_review": [],
+  "stats": {
+    "candidates_in_scope": 13,
+    "reviews_recorded": 13,
+    "reviews_closed": 13,
+    "reviews_historical": 0,
+    "supported": 11,
+    "bounded": 2,
+    "rejected": 0,
+    "needs_evidence": 0,
+    "downstream_eligible": 13,
+    "adoption_gate_conditions_met": 13,
+    "adoption_eligible": 0,
+    "claims_adopted": 0
+  },
+  "summary": "CLAIM REVIEW PASS (classification only; not adopted)",
+  "capability_note": "M2.5 separates infrastructure validation from human review completion. Milestone PASS requires full closed coverage. It does not write claims.json, does not map supported to verified, and does not prove publishability.",
+  "vocabulary_boundary": {
+    "supported_is_not_verified": true,
+    "needs_evidence_is_not_verification_target": true,
+    "bounded_is_candidate_wording_narrowing": true,
+    "no_projection_into_claims_json": true
+  },
+  "claims_adopted": 0,
+  "forbids_claims_adoption": true
+}

@@ -33,11 +33,11 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -45,25 +45,25 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Hardening I extraction only; M2.5 not opened. Carriage-quantity proposition only — does not assert absence of information duties, AML/TF suspicion controls, or sanctions."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:0c8529702aa3d8fe6a3272f606b98dae38021019abcabde574ae93fecdb3faca",
+        "notes": null
       }
     },
     {
       "candidate_id": "CC-CH-CASH-002",
       "candidate_text": "Cash carried into, through or out of Switzerland is not obliged to be declared to the Federal Office for Customs and Border Security (FOCBS).",
-      "reviewed_text": null,
+      "reviewed_text": "Notes and coins, foreign currencies and bearer negotiable instruments (shares, bonds and cheques) carried into, through or out of Switzerland are not obliged to be declared to the Federal Office for Customs and Border Security (FOCBS).",
       "claim_language": "en",
       "claim_type": "descriptive_rule",
       "scope": {
@@ -91,11 +91,11 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -103,19 +103,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Negative proposition limited to no spontaneous FOCBS declaration obligation. Does not assert no controls, no information-on-request, no seizure, or no AML/TF rules. Anaphor resolution from 'this' flagged for M2.5."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:01b17759baf75ddb56af885d696ac998be0e153ca1879be7e2c4a3551ecafcaf",
+        "notes": null
       }
     },
     {
@@ -149,11 +149,11 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -161,19 +161,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Information-on-request layer; not a spontaneous declaration duty."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:219025c530bcd3ea46fa6799e6b4f25e9220bf388db49765d060f4ffd9390628",
+        "notes": null
       }
     },
     {
@@ -208,11 +208,11 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -220,19 +220,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Operator >= / CHF 10,000 or more. Not a declaration threshold and not a carriage ceiling."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:6b161e141f7ce37a94bd062aad20d7f79f87abbe71d245e8016e7e9b1baf3fa2",
+        "notes": null
       }
     },
     {
@@ -264,11 +264,11 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -276,19 +276,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "FOCBS public >= CHF 10,000 registration surface. Keep distinct from ordinance Art. 6 amount-independent Meldung permission (CC-CH-CASH-013)."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:0d44e061695995626b60b700acb25dd26d49414bf2d8aa76b7e49f5f10298ecd",
+        "notes": null
       }
     },
     {
@@ -320,11 +320,11 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -332,19 +332,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "FOCBS public consequence surface; statutory Art. 5 Ordnungswidrigkeit limb is separate candidate CC-CH-CASH-012."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:a0e3130d0b208ea386efce9f962149171d79b482fa22e668f83a42c12a39f0f2",
+        "notes": null
       }
     },
     {
@@ -376,11 +376,11 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -388,19 +388,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Temporary seizure + police referral on ML/TF suspicion. Not permanent confiscation and not automatic at CHF 10,000."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:a555cf296ea5747b05a242fbbe01fece080d1582ed9316b072621ccdfe643895",
+        "notes": null
       }
     },
     {
@@ -437,11 +437,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -449,19 +449,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Preserve ordinance 'ähnliche Wertpapiere' limb; do not silently collapse to FOCBS public shorthand only. English gloss deferred to M2.5 translation review."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:929b860bbd566b2baf564f2b2f2ebba1ed3f0ac31cef1d4bc7701d8006fae4c2",
+        "notes": null
       }
     },
     {
@@ -493,11 +493,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -505,19 +505,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Statutory express-questioning package. Operator mindestens 10 000 Franken (>=). Not a spontaneous declaration duty."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:aae2efa32c3a0ec07104053736f4b373d338cba7fb9427f8b2e2314153029675",
+        "notes": null
       }
     },
     {
@@ -549,12 +549,12 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "present",
-        "exception_review_status": "pending",
-        "exception_preserved": null,
+        "exception_review_status": "closed",
+        "exception_preserved": true,
         "exception_excerpt_ids": [
           "EX-CH-ORD-ART3-2"
         ]
@@ -563,19 +563,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Below-threshold suspicion information limb only; does not by itself assert seizure or police referral."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:7ce5808c0f6fff952d16d2636cde8d1e366bcd056cec68a784eef11c383ba59d",
+        "notes": null
       }
     },
     {
@@ -609,11 +609,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -621,19 +621,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Amount-independent provisional seizure authority. Not automatic confiscation at CHF 10,000."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:e299b32dee366f3cf52463517b90904d88e4083c0a712a3e789efeb9c37200b3",
+        "notes": null
       }
     },
     {
@@ -665,11 +665,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -677,25 +677,25 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Art. 5 covers Art. 3 Abs. 1 lit. a–b only; does not by itself criminalise lit. c–d under this article."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:09b56a64ccf199c3ec1bb6c076f38e7313e57b54b87cad98a398fdc6b598adf3",
+        "notes": null
       }
     },
     {
       "candidate_id": "CC-CH-CASH-013",
       "candidate_text": "Die Meldung der Zollstellen an die Oberzolldirektion nach Artikel 6 ist unabhängig vom Betrag der Barmittel zulässig.",
-      "reviewed_text": null,
+      "reviewed_text": "Die Meldung ist unabhängig vom Betrag der Barmittel zulässig.",
       "claim_language": "de",
       "claim_type": "permitted_action",
       "scope": {
@@ -725,11 +725,11 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "unreviewed"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
-        "exception_review_status": "pending",
+        "exception_review_status": "closed",
         "exception_preserved": null,
         "exception_excerpt_ids": []
       },
@@ -737,19 +737,19 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
-        "notes": "Amount-independent statutory Meldung permission. Keep distinct from FOCBS public >= CHF 10,000 information-system entry (CC-CH-CASH-005). Context gloss from Art. 6 heading flagged for M2.5."
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-09",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:05356f7b613c0d703e4aa2365f914fb073efcda1ee3e16dec566ac5d918d31e3",
+        "notes": null
       }
     }
   ]
