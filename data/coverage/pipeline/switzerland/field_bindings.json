@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
-  "notes": "Switzerland Hardening I–III bindings. H1 four traveler/cash + H2 two resident/non-resident bindings preserved. Hardening III adds summary.business, rules.business_invoicing_settlement, and rules.banking_conversion_practicality only (total 9). CH-BIZ-07/08/11/12/13 unbound. country_overview and rules.exchange_controls remain for Hardening IV. No invoice/transfer/repatriation freedom; banking_conversion_practicality remains agnostic on general FX availability.",
+  "notes": "Switzerland Hardening I–IV bindings. Prior nine H1–H3 bindings preserved. Hardening IV adds country_overview and rules.exchange_controls only (total 11). Remaining required unbound fields: 0. Passage Check posture not bound here — deferred to Semantic/Fidelity Closure after rules prose exists.",
   "bindings": [
     {
       "field": "summary.traveler",
@@ -114,6 +114,36 @@
         "CH-BIZ-10"
       ],
       "wording_boundary": "Evidence-grounded infrastructure only: SIC is central Swiss payment infrastructure within its evidenced participant/large-value/retail scope; domestic account-to-account instant payments operate within the evidenced domestic scope. This field remains agnostic on general customer FX-conversion availability — H3 did not establish it. Hard forbid: Foreign exchange conversion and transfers are widely available; easy conversion; unrestricted conversion; competitive rates; low friction; licensed money exchange houses throughout Switzerland; ATMs provide general FX conversion; all banks provide conversion; cross-border payments are free/unrestricted; SIC performs general customer FX conversion; domestic instant payments are cross-currency; no approval required; freely; full freedom. Do not force Art. 84 / VAT / FTA tax-conversion claims into this banking field."
+    },
+    {
+      "field": "country_overview",
+      "claim_ids": [
+        "CH-REG-01",
+        "CH-REG-02",
+        "CH-REG-03",
+        "CH-REG-04",
+        "CH-REG-06",
+        "CH-REG-13",
+        "CH-REG-14",
+        "CH-REG-15",
+        "CH-REG-16",
+        "CH-REG-17"
+      ],
+      "wording_boundary": "Layered overview only within bound H4 claims. Must be able to convey: (A) IMF dual taxonomy — de jure free floating AND de facto crawl-like from 25 April 2025 — without homemade harmonisation; (B) CHF market-forces / free-market settlement wording only within the IMF 2026 Informational Annex exchange-rate arrangement context (CH-REG-02); (C) SNB retains intervention capability (CH-REG-03) as monetary-policy action, not customer exchange control; (D) CURRENT international transactions — IMF exchange system free of MCP and of restrictions on current payments/transfers EXCEPT security restrictions notified under Decision 144–(52/51) (CH-REG-06); (E) CAPITAL/INVESTMENT — separate OECD Annex B reservations exist in specified actor/transaction categories (bounded inward FDI; non-resident real estate; institutional pension/insurance foreign securities, money-market, and non-resident-deposit reservations). Hard forbid: fully liberalised; no exchange controls; no restrictions on current or capital account; CHF freely convertible; completely free; unrestricted capital movement; capital account regulated as an unsupported global claim; crawl-like = crawling peg / managed float; intervention = managed float / peg / exchange control; no sanctions; all current payments always executable by every customer; all residents subject to OECD institutional limits / 30% household foreign-asset limit; Swiss residents generally cannot hold foreign accounts. Do not force CH-REG-05/07/08/09/10 or EmbG detail (CH-REG-11/12) into the overview — REG-006 already supplies the security-exception architecture at summary level. H1 cash / H2 AML / H3 Art.84-VAT-SIC / future ISA remain adjacent frameworks, not exchange-control substitutes."
+    },
+    {
+      "field": "rules.exchange_controls",
+      "claim_ids": [
+        "CH-REG-06",
+        "CH-REG-11",
+        "CH-REG-12",
+        "CH-REG-13",
+        "CH-REG-14",
+        "CH-REG-15",
+        "CH-REG-16",
+        "CH-REG-17"
+      ],
+      "wording_boundary": "Mechanism-based field answering what specific restrictions/overlays exist — not a binary controls/no-controls answer. Required architecture: (A) CURRENT INTERNATIONAL TRANSACTIONS — IMF exchange system free of multiple currency practices and of restrictions on payments/transfers for current international transactions, except security restrictions notified to the IMF under Decision No. 144–(52/51) (CH-REG-06); (B) SECURITY/SANCTIONS — Embargo Act is the framework law since 1 January 2003; concrete coercive measures reside in separate ordinances; Federal Council may enact measures such as financial sanctions, trade restrictions, travel bans, and asset freezes (CH-REG-11/12). Do not claim every sanctions measure is an IMF exchange restriction; (C) CAPITAL/INVESTMENT RESERVATIONS — OECD Annex B actor/transaction-specific reservations including bounded inward FDI sectors/situations, non-resident real-estate authorisation/quotas, and pension/insurance foreign securities, money-market, and non-resident-deposit limits (CH-REG-13..17). These do NOT establish a universal capital-control regime; (D) ADJACENT BUT NOT EXCHANGE CONTROLS — do not treat as exchange controls: SNB monetary-policy FX intervention; H1 border-cash mechanics; H2 AML/KYC; H3 VAT conversion; H3 SIC infrastructure. Future ISA remains CH-BIZ-13 and must not be restated as current FX control. Hard forbid: no exchange controls; fully liberalised; all capital transfers unrestricted; all capital transfers controlled; current and capital transactions unrestricted; sanctions = general payment approval; OECD reservation = FX conversion restriction; real-estate approval = currency-transfer approval; 30% limit applies to all residents; SNB intervention = capital control; CHF freely convertible; no capital controls; capital account regulated as an unsupported global claim."
     }
   ]
 }

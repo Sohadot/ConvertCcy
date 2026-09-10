@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
-  "gate": "switzerland_hardening_i_ii_iii_adoption",
-  "baseline_head": "eba96ae957ec2454096a78e1a540c2590c9b8cfa",
+  "gate": "switzerland_hardening_i_ii_iii_iv_adoption",
+  "baseline_head": "a1eca8ba0488ddf4a2987d0bd672bcb4a8babb75",
   "decided_at": "2026-09-10",
   "decided_by": "operator",
   "decision": "PASS",
@@ -11,34 +11,45 @@
     "candidate_claims.json",
     "human_claim_review.json",
     "claim_review_report.json",
-    "claim_extraction_report.json"
+    "claim_extraction_report.json",
+    "sources.json",
+    "evidence_excerpts.json",
+    "intake_report.json"
   ],
-  "notes": "Hardening I–II adoption rows preserved. Hardening III Adoption Gate adopts CC-CH-BIZ-001..014 into CH-BIZ-01..13 (BIZ-014 reconciled into CH-BIZ-13). Bound claims: CH-BIZ-01..06,09,10. Unbound: CH-BIZ-07,08,11,12,13. Bindings added for summary.business, rules.business_invoicing_settlement, rules.banking_conversion_practicality (total bindings 9). Remaining unbound required fields: country_overview, rules.exchange_controls (H4). Zero invoice-freedom / transfer-freedom / repatriation / prior-approval-negative / capital-liberalisation claims. M2.5 adoption_eligible remains false. Does not draft switzerland.json. No Hardening IV.",
+  "notes": "Hardening I–III adoption rows preserved. Hardening IV Adoption Gate adopts CC-CH-REG-001..017 into CH-REG-01..17 (17 distinct; zero reconciliation). Bound: CH-REG-01..04,06,11..17. Unbound: CH-REG-05,07..10. Bindings added for country_overview and rules.exchange_controls (total bindings 11; remaining required unbound fields 0). Dual IMF taxonomy preserved. REG-006 retains CURRENT-international-transactions scope + security exception. Zero no-exchange-controls / no-capital-controls / fully-liberalised / freely-convertible / synthetic capital-account claims. passage_check_posture_status = deferred_to_semantic_closure (do not modify build_passage_check.py; posture is hand-verified transcription from final rules prose). M2.5 adoption_eligible remains false. Does not draft switzerland.json. Hardening I–IV CLOSED; next = Semantic/Fidelity Closure.",
   "stats": {
     "hardening_i_candidates": 13,
     "hardening_ii_candidates": 15,
     "hardening_iii_candidates": 14,
-    "candidates_in_scope_total": 42,
+    "hardening_iv_candidates": 17,
+    "candidates_in_scope_total": 59,
     "hardening_i_project_claims": 10,
     "hardening_ii_project_claims_created": 13,
     "hardening_iii_project_claims_created": 13,
-    "distinct_project_claims_total": 36,
-    "hardening_iii_adopted_bound": 8,
-    "hardening_iii_adopted_unbound": 5,
-    "hardening_iii_reconciled_into_canonical": 1,
+    "hardening_iv_project_claims_created": 17,
+    "distinct_project_claims_total": 53,
+    "hardening_iv_adopted_bound": 12,
+    "hardening_iv_adopted_unbound": 5,
+    "hardening_iv_reconciled_into_canonical": 0,
     "not_adopted": 0,
     "duplicate_project_claims_created": 0,
-    "field_bindings_total": 9,
-    "remaining_required_unbound_fields": 2,
+    "field_bindings_total": 11,
+    "remaining_required_unbound_fields": 0,
     "publication_changes": 0,
     "switzerland_rules_changes": 0,
+    "no_exchange_controls_claims_created": 0,
+    "no_capital_controls_claims_created": 0,
+    "fully_liberalised_claims_created": 0,
+    "freely_convertible_claims_created": 0,
+    "general_capital_account_claims_created": 0,
     "invoice_freedom_claims_created": 0,
     "transfer_freedom_claims_created": 0,
     "repatriation_right_claims_created": 0,
     "prior_approval_negative_claims_created": 0,
     "general_capital_liberalisation_claims_created": 0,
     "resident_entitlement_claims_created": 0,
-    "non_resident_entitlement_claims_created": 0
+    "non_resident_entitlement_claims_created": 0,
+    "passage_check_posture_status": "deferred_to_semantic_closure"
   },
   "adoptions": [
     {
@@ -592,6 +603,227 @@
       "relationship": "equivalent_existing_claim",
       "rationale": "Reconciled into CH-BIZ-13. Current non-operability (no applications can be submitted/reviewed) is the complementary temporal limb of the same ISA architecture. No duplicate claim.",
       "adoption_decision": "reconciled"
+    },
+    {
+      "candidate_id": "CC-CH-REG-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-01"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:cb00d350d92c59a9887f1762707781e643f37234c338d38d4be6383619ccec1d",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: IMF de jure free floating verified/E1. Bound to country_overview. Distinct from CH-REG-04. Not mechanical supported→verified map."
+    },
+    {
+      "candidate_id": "CC-CH-REG-002",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-02"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:3162ab0ab8b702c7bdd4586bd817ca0ad93c259968a4547eae8190fbcc860bda",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: use M2.5 reviewed_text. Bounded/E1 for IMF-annex context sensitivity. Bound to country_overview. Not retail mid-market."
+    },
+    {
+      "candidate_id": "CC-CH-REG-003",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-03"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:7199f9e97e97f175efb384db38b27dae763f85aae14f14747331e5856cb68db6",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: SNB intervention right verified/E1. Bound to country_overview as structural counterweight to overreading free floating/market forces."
+    },
+    {
+      "candidate_id": "CC-CH-REG-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-04"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:412e355bc035be7507efb08313cd8864d0f9efd7c71cd3663fc177cfc91e5ab9",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: IMF de facto crawl-like verified/E1. Bound to country_overview. Must coexist with CH-REG-01; not rewritten as managed float/peg."
+    },
+    {
+      "candidate_id": "CC-CH-REG-005",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-REG-05"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:f8feae95bd5bc1b7b303c0a582f6dd332295747ffadb59b06d799aaf9af35e4b",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: Article VIII §§2–4 acceptance verified/E1 adopt_unbound. Provenance/audit; CH-REG-06 carries drafting consequence."
+    },
+    {
+      "candidate_id": "CC-CH-REG-006",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-06"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6ea1b4fdc58a9d6affad48eeeaff12a30e9deb8d10136e127c0870691e9b93c5",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: canonical current-international-payments architecture verified/E1. Bound to country_overview and rules.exchange_controls. Security exception mandatory."
+    },
+    {
+      "candidate_id": "CC-CH-REG-007",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-REG-07"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:7bc25be08d03145afc9fd3d0fbcb92254788ed9a6492a28aa22ea06b205adec2",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: SNB buy/sell FX mechanism verified/E1 adopt_unbound. Operational depth; CH-REG-03 covers structural overview."
+    },
+    {
+      "candidate_id": "CC-CH-REG-008",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-REG-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:8641ad5307c404094068cae6102e0ba27d7ff3f99dcb1bd93182fb7fd7ebce78",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: SNB spot/swap mechanics verified/E1 adopt_unbound."
+    },
+    {
+      "candidate_id": "CC-CH-REG-009",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-REG-09"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:9cb503cdff00a5ddb6d3a5e8874bb8f46d032130c16930a771cf857a16d27940",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: SNB counterparties verified/E1 adopt_unbound."
+    },
+    {
+      "candidate_id": "CC-CH-REG-010",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-REG-10"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:165c3fee9cc00101d160bbb267bd553d393b5dab58d329e79b2b72bbd6f4d84f",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: 18 June 2026 intervention posture verified/E1 temporal adopt_unbound. Not structural overview layer."
+    },
+    {
+      "candidate_id": "CC-CH-REG-011",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-11"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:c716a3ec480296cd2546efb3fc80f44d6dafe507be820f4096d010edd759480c",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: EmbG framework verified/E1. Bound to rules.exchange_controls (security/sanctions layer). Overview covered by CH-REG-06 exception."
+    },
+    {
+      "candidate_id": "CC-CH-REG-012",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-12"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:199f065675cc9768e6d46e2cdc790f9ca4506d16c8e7b7874c3ec91eb5c5840a",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Federal Council coercive-measure powers verified/E1. Bound to rules.exchange_controls."
+    },
+    {
+      "candidate_id": "CC-CH-REG-013",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-13"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:06fcf195032235d65bd398e4871ba43dfb179684f26353a47074db200e35f290",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: OECD List A I/A FDI reservation verified/E1. Bound to country_overview and rules.exchange_controls."
+    },
+    {
+      "candidate_id": "CC-CH-REG-014",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-14"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:c8ab9059fc0a941fcd93f86eb53683e81b62b4805a1cdc147b7aacb2adb122b8",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: OECD non-resident real-estate reservation verified/E1. Bound to country_overview and rules.exchange_controls."
+    },
+    {
+      "candidate_id": "CC-CH-REG-015",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-15"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:cd797af40e80c243b89fa29942de375f05c95019017071b796ba93c66a15f544",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: OECD pension/insurance foreign-securities reservation verified/E1. Bound to both final fields; overview must not numeric-overcompress to households."
+    },
+    {
+      "candidate_id": "CC-CH-REG-016",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-16"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:9ca06234599351b5f5d18e4af0e271373065b1c97a2fe6b9b275cfafbd59998d",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: OECD pension/insurance money-market reservation verified/E1. Bound to both final fields."
+    },
+    {
+      "candidate_id": "CC-CH-REG-017",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-17"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:2a940e7e21485d8c9615cd44369d581562098ad2c896a7ae1210db2de6a32f34",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: use M2.5 reviewed_text with institutional actors front-loaded. Bounded/E1. Bound to country_overview and rules.exchange_controls."
     }
   ]
 }
