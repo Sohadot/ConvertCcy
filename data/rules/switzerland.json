@@ -8,125 +8,358 @@
   "currency_name": "Swiss Franc",
   "schema_version": "1.2.1",
   "page_status": "verified",
-  "last_reviewed": "2026-05-02",
+  "last_reviewed": "2026-09-10",
   "evidence_tier": "official_verified",
   "official_source_available": true,
   "publication_class": "reference",
   "indexing_allowed": false,
   "source_notice": "",
-  "country_overview": "Switzerland operates one of the most liberalised and stable foreign-exchange regimes in the world. There are no exchange controls or restrictions on current or capital account transactions for residents or non-residents. The framework is administered by the Swiss National Bank (SNB).",
+  "country_overview": "Under the IMF 2026 Article IV Informational Annex, Switzerland's de jure exchange-rate arrangement is free floating, while the de facto arrangement is classified as crawl-like from 25 April 2025. In that same exchange-rate-arrangement description, the Swiss franc is determined by market forces in the foreign-exchange market and settlements are made at free-market rates; the Swiss National Bank (SNB), Switzerland's central bank, reserves the right to intervene in the foreign-exchange market as a monetary-policy capability. Switzerland's IMF-described exchange system is free of multiple currency practices and of restrictions on payments and transfers for current international transactions, except for security-related restrictions notified to the IMF pursuant to Executive Board Decision No. 144–(52/51). Separately, OECD Code Annex B records specific Swiss reservations at actor and transaction level, including enumerated inward direct-investment sectors and situations, non-resident real-estate acquisition controls, and private pension-fund and insurance limits on foreign securities, money-market instruments, and deposits with non-resident financial institutions.",
   "summary": {
-    "traveler": "Travelers may bring in or take out unlimited amounts of Swiss Francs and foreign currency. No general currency declaration is required for normal travel amounts.",
-    "business": "Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency through authorised banks and financial institutions."
+    "traveler": "Covered notes and coins, foreign currencies and bearer negotiable instruments (shares, bonds and cheques) may be carried into, through or out of Switzerland with no quantitative carriage ceiling under the FOCBS border-cash framework, and there is no spontaneous FOCBS declaration obligation merely for crossing the border. If questioned in a customs check, truthful information must be given; at CHF 10,000 or more, express questioning covers identity, origin, intended use and beneficial owner, and an entry is registered in the FOCBS information system. Below that amount, money-laundering or terrorist-financing suspicion can still trigger information powers, and provisional seizure may occur on suspicion.",
+    "business": "Under Code of Obligations Art. 84, pecuniary debts are discharged in the legal tender of the currency in which the debt was incurred; a debt expressed in another currency may be discharged in the national currency of the place of payment at the maturity exchange rate unless the contract requires literal performance in 'actual currency' or equivalent wording. Separately, VAT classifies a consideration as foreign-currency where the invoice or receipt is issued in foreign currency, and foreign-currency considerations must be converted into Swiss francs for VAT assessment using FTA monthly average or daily sell rates. The Swiss Interbank Clearing (SIC) system is Switzerland's central payment infrastructure, and domestic account-to-account instant payments operate with immediate final settlement within their evidenced domestic scope."
   },
   "rules": {
-    "bring_foreign_currency_in": "Foreign currency and Swiss Francs may be freely imported. Large amounts do not require advance notification but may be recorded by customs for statistical and AML purposes.",
-    "take_foreign_currency_out": "Residents may export currency and CHF earned from business or salary. Non-residents may freely repatriate. Large capital exports by residents are monitored under FINMA supervision but face no outright prohibition.",
-    "cash_declaration_threshold": "No mandatory currency declaration threshold applies for ordinary travelers. Large or suspicious cash movements are subject to anti-money laundering reporting requirements by financial institutions.",
-    "resident_holding_rules": "Swiss residents may hold and maintain foreign currency accounts freely with authorised banks and financial institutions.",
-    "non_resident_rules": "Non-residents may open and operate foreign currency accounts and transfer funds freely without prior approval.",
-    "business_invoicing_settlement": "Business transactions may be invoiced and settled in foreign currency or CHF. Cross-border payments and repatriation of funds are handled freely through authorised financial institutions.",
-    "exchange_controls": "Switzerland maintains no exchange controls. The regime is fully liberalised for both current and capital account transactions.",
-    "banking_conversion_practicality": "Foreign exchange conversion and transfers are widely available through banks, licensed money exchange houses, and ATMs throughout Switzerland."
+    "bring_foreign_currency_in": "On entry into Switzerland, covered notes and coins, foreign currencies and bearer negotiable instruments (shares, bonds and cheques) may be brought in with no quantitative inbound carriage ceiling under the FOCBS border-cash framework. Travellers are not obliged to make a spontaneous FOCBS declaration merely because covered cash crosses the inbound border. If FOCBS staff question a person about cash during an inbound check, truthful information must be provided. Where inbound cash amounts to at least CHF 10,000 or the foreign-currency equivalent, express questioning requires information on identity, the import of the cash, its origin, intended use and beneficial owner.",
+    "take_foreign_currency_out": "On exit from Switzerland, the same FOCBS physical-carriage architecture applies to covered notes and coins, foreign currencies and bearer negotiable instruments leaving the country: there is no quantitative outbound carriage ceiling, and no spontaneous FOCBS declaration obligation for the outbound movement itself. This outbound field is limited to physical carriage of those instruments; it does not address salary remittance, business earnings or non-physical capital repatriation. If FOCBS staff question a person about cash during an outbound check, truthful information must be provided, and where outbound cash amounts to at least CHF 10,000 or the foreign-currency equivalent, express questioning covers identity, the export of the cash, origin, intended use and beneficial owner.",
+    "cash_declaration_threshold": "There is no spontaneous FOCBS declaration threshold for covered notes, coins, foreign currencies or bearer negotiable instruments merely because they cross the Swiss border. Separately, where cash amounts to at least CHF 10,000 or the foreign-currency equivalent, express customs questioning requires information on identity, the cash movement, origin, intended use and beneficial owner, and an entry is registered in the FOCBS information system. Below CHF 10,000, money-laundering or terrorist-financing suspicion can still activate customs information powers. Provisional seizure under Customs Act Art. 104 is amount-independent and suspicion-based, and refused or false information on the identity and cash-movement limbs is an administrative offence — these are conduct mechanisms, not a numeric carriage ceiling or a declaration threshold.",
+    "resident_holding_rules": "The reviewed sources do not establish a statutory resident entitlement to open or hold a foreign-currency account. Where a financial intermediary nevertheless establishes or maintains a resident client relationship, AMLA requires verification of the contracting party's identity on a document of evidentiary value, and banks applying CDB 20 verify contracting-partner identity when opening accounts, passbooks or securities accounts. Beneficial owners must be identified and verified with due diligence appropriate to the circumstances, and banks require a beneficial-ownership statement at those openings. Doubt as to customer or beneficial-owner identity triggers repeated verification; records are checked and updated periodically according to the risk posed by the customer. Enhanced clarification of economic background and purpose applies only on conditional triggers — unusual relationships or transactions, relevant crime or terrorist-financing indications, higher risk, or specified AMLA data matches — not because the client is a resident. Boards of financial intermediaries set institutional money-laundering risk tolerance, including communications on particularly high-risk clients, high-risk countries and services outside that tolerance; for high-risk relationships of the kind addressed by FINMA, asset origin must be clarified in detail and verified as legal, with careful monitoring of higher-risk transactions. Successful KYC does not guarantee account acceptance.",
+    "non_resident_rules": "The reviewed sources likewise do not establish a universal non-resident right to open or operate Swiss accounts, nor a universal ban. Foreign residence is not itself treated as automatic high risk and does not by itself force enhanced due diligence, source-of-wealth proof or rejection. Where an intermediary establishes a client relationship with a non-resident, the same AMLA identity, beneficial-owner identification/verification, doubt-triggered repetition and risk-based periodic updating duties apply, and banks under CDB 20 still verify contracting-partner identity and require beneficial-ownership statements when opening accounts or securities accounts. Enhanced clarification remains trigger-based — unusual activity, crime or terrorist-financing indications, higher-risk profiles such as high-risk countries or PEPs, or specified AMLA data matches — so country risk must not be collapsed into non-resident status. Institutional risk-tolerance decisions and FINMA high-risk-client origin-of-assets / monitoring expectations may still shape whether a particular non-resident relationship is accepted or escalated, without creating either a national entitlement or a national prohibition.",
+    "business_invoicing_settlement": "Contractual debt denomination, invoice classification, VAT treatment, payment currency, accounting currency and payment rail are distinct. Under Code of Obligations Art. 84, pecuniary debts must be discharged in the legal tender of the currency in which the debt was incurred; a debt expressed other than in the national currency of the place of payment may be discharged in that national currency at the maturity exchange rate, unless the contract uses 'actual currency' or equivalent wording requiring literal performance in the stipulated currency. For VAT, a consideration is in foreign currency if the invoice or receipt is issued in foreign currency regardless of the payment currency, and foreign-currency considerations must be converted into Swiss francs for VAT assessment at the tax-claim date using the FTA monthly average rate or the daily exchange rate (sell). SIC is Switzerland's central payment system for eligible participants' large-value and related retail payments; domestic account-to-account instant payments provide immediate final settlement within their evidenced domestic scope.",
+    "exchange_controls": "On current international transactions, the IMF 2026 Informational Annex describes Switzerland's exchange system as free of multiple currency practices and of restrictions on payments and transfers for current international transactions, except for security-related restrictions notified to the IMF pursuant to Executive Board Decision No. 144–(52/51). Separately, since 1 January 2003 the Embargo Act (Embargogesetz, EmbG) has been the framework law for Swiss sanctions implementation, with concrete measures in separate ordinances; under that Act the Federal Council may enact coercive measures such as financial sanctions, trade restrictions, travel bans or asset freezes. On capital and investment movements, OECD Code Annex B records actor- and transaction-specific Swiss reservations rather than a single global capital-account rule: List A I/A limits specified non-resident inward direct-investment sectors and situations; List B III subjects non-resident real-estate acquisition to cantonal authorisation where the property is not used for a permanent establishment, with holiday-home quotas and a bar on purely financial real-estate investments subject to exceptions; List A IV/D1 and List B V/D1 reserve private pension-fund and insurance purchases of specified non-resident-issued securities and money-market instruments above stated limits; and List B XI/B1–B2 reserves deposits of funds by private pension funds or insurance companies with non-resident financial institutions above the stated limits. SNB monetary-policy intervention capability, FOCBS border-cash controls, AML/KYC account-relationship duties, VAT conversion mechanics and SIC payment infrastructure are not classified here as exchange controls.",
+    "banking_conversion_practicality": "The Swiss Interbank Clearing (SIC) payment system is Switzerland's central payment system, operated by SIX Interbank Clearing Ltd on behalf of the Swiss National Bank for eligible participants' large-value and related retail payments. Domestic account-to-account instant payments allow private individuals and companies to settle with immediate execution and final settlement in seconds, 24 hours a day, 7 days a week, within that domestic scope."
   },
   "source_authorities": [
     {
-      "label": "Swiss National Bank (SNB) — Foreign Exchange & Monetary Policy",
-      "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy",
-      "type": "central_bank",
-      "tier": "primary"
-    },
-    {
-      "label": "Swiss Financial Market Supervisory Authority (FINMA) — FX Regulation",
-      "url": "https://www.finma.ch/en/",
-      "type": "primary_regulator",
-      "tier": "primary"
-    },
-    {
-      "label": "Swiss Customs Administration — Travel & Currency Rules",
-      "url": "https://www.ezv.admin.ch/ezv/en/home.html",
+      "label": "Federal Office for Customs and Border Security (FOCBS) — Cash, foreign currency and securities (border carriage, questioning, CHF 10,000 inquiry/registration, seizure consequences)",
+      "url": "https://www.bazg.admin.ch/en/cash-foreign-currency-securities",
       "type": "customs",
+      "tier": "primary"
+    },
+    {
+      "label": "SR 631.052 — Ordinance on the control of cross-border cash movements (Art. 3 information package / below-threshold suspicion; Art. 4 provisional seizure; Art. 5 offence)",
+      "url": "https://www.fedlex.admin.ch/eli/cc/2009/118/de",
+      "type": "ministry",
+      "tier": "primary"
+    },
+    {
+      "label": "SR 955.0 — Anti-Money Laundering Act (AMLA / GwG): customer identity, beneficial owner, doubt-triggered repetition, special due diligence, risk-based record updating",
+      "url": "https://www.fedlex.admin.ch/eli/cc/1998/892_892_892/en",
+      "type": "ministry",
+      "tier": "primary"
+    },
+    {
+      "label": "CDB 20 — Swiss banks’ code of conduct on due diligence (contracting-partner identity and beneficial-ownership statement at account / securities-account opening)",
+      "url": "https://www.gkb.ch/content/dam/gkb/dokumente/ueber-uns/regulatorische-unterlagen/VSB-EN.pdf",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "FINMA — Combating money laundering (supervisory clarification of unusual / heightened-risk relationships and transactions)",
+      "url": "https://www.finma.ch/en/supervision/cross-sector-issues/combating-money-laundering/",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "FINMA — Focus on high-risk clients (2024): institutional risk tolerance; detailed origin-of-assets clarification and monitoring for high-risk relationships",
+      "url": "https://www.finma.ch/en/documentation/dossier/dossier-geldwaeschereibekaempfung/augenmerk-auf-hochrisikokundinnen-und--kunden-in-der-geldwaeschereibekaempfung/",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "SR 220 — Code of Obligations Art. 84 (pecuniary debts; local-currency substitution at maturity; ‘actual currency’ exception)",
+      "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/en",
+      "type": "ministry",
+      "tier": "primary"
+    },
+    {
+      "label": "SR 641.201 — VAT Ordinance Art. 45 (foreign-currency considerations; invoice/receipt classification; CHF conversion for VAT assessment)",
+      "url": "https://www.fedlex.admin.ch/eli/cc/2009/828/en",
+      "type": "ministry",
+      "tier": "primary"
+    },
+    {
+      "label": "Federal Tax Administration FTA — Foreign currency exchange rates for VAT (monthly average / daily sell)",
+      "url": "https://www.estv.admin.ch/en/vat-foreign-exchange-rates",
+      "type": "ministry",
+      "tier": "primary"
+    },
+    {
+      "label": "Swiss National Bank — Swiss Interbank Clearing (SIC) payment system",
+      "url": "https://www.snb.ch/en/the-snb/mandates-goals/payment-transactions/swiss-interbank-clearing",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "Swiss National Bank — domestic instant payments (immediate final settlement, 24/7 domestic account-to-account scope)",
+      "url": "https://www.snb.ch/en/publications/communication/press-releases/2025/pre_20250929_1",
+      "type": "regulator",
+      "tier": "primary"
+    },
+    {
+      "label": "IMF — Switzerland 2026 Article IV Staff Report (CR 2026/233) Informational Annex: de jure free floating; de facto crawl-like from 25 April 2025; market forces / free-market rates; SNB intervene right; current-transaction exchange system with Decision 144–(52/51) security exception",
+      "url": "https://www.imf.org/-/media/files/publications/cr/2026/english/1cheea2026001.pdf",
+      "type": "multilateral",
+      "tier": "secondary"
+    },
+    {
+      "label": "OECD — Code of Liberalisation of Capital Movements, Annex B Switzerland (List A I/A; List B III; List A IV/D1; List B V/D1; List B XI/B1–B2)",
+      "url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-issues/investment/Code-capital-movements-EN.pdf",
+      "type": "multilateral",
+      "tier": "secondary"
+    },
+    {
+      "label": "SECO — Embargo Act / Embargogesetz (EmbG) legal basis for Swiss sanctions implementation (framework law; measures in ordinances)",
+      "url": "https://www.seco.admin.ch/de/rechtliche-grundlagen-sanktionen",
+      "type": "ministry",
+      "tier": "primary"
+    },
+    {
+      "label": "SECO — General information on sanctions (Federal Council coercive-measure categories)",
+      "url": "https://www.seco.admin.ch/de/allgemeine-informationen-sanktionen",
+      "type": "ministry",
       "tier": "primary"
     }
   ],
   "source_map": {
     "country_overview": [
       {
-        "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy",
-        "pages": [],
-        "section": "FX Regime Overview"
+        "url": "https://www.imf.org/-/media/files/publications/cr/2026/english/1cheea2026001.pdf",
+        "pages": [104, 105],
+        "section": "Informational Annex — Fund Relations / Exchange Rate Arrangement",
+        "source_kind": "pdf"
+      },
+      {
+        "url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-issues/investment/Code-capital-movements-EN.pdf",
+        "pages": [121, 122, 124],
+        "section": "Annex B — SWITZERLAND (List A I/A; List B III; List A IV/D1; List B V/D1; List B XI)",
+        "source_kind": "pdf"
       }
     ],
     "summary.traveler": [
       {
-        "url": "https://www.ezv.admin.ch/ezv/en/home.html",
+        "url": "https://www.bazg.admin.ch/en/cash-foreign-currency-securities",
         "pages": [],
-        "section": "Travel & Currency Movement"
+        "section": "Taking cash in and out of Switzerland / Possible consequences of checks",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.fedlex.admin.ch/eli/cc/2009/118/de",
+        "pages": [],
+        "section": "SR 631.052 Art. 3 Abs. 1–2; Art. 4",
+        "article": "Art. 3–4",
+        "source_kind": "law"
       }
     ],
     "summary.business": [
       {
-        "url": "https://www.finma.ch/en/",
+        "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/en",
         "pages": [],
-        "section": "Business & Capital Movement"
+        "section": "Code of Obligations Art. 84",
+        "article": "Art. 84",
+        "source_kind": "law"
+      },
+      {
+        "url": "https://www.fedlex.admin.ch/eli/cc/2009/828/en",
+        "pages": [],
+        "section": "VAT Ordinance Art. 45",
+        "article": "Art. 45",
+        "source_kind": "law"
+      },
+      {
+        "url": "https://www.estv.admin.ch/en/vat-foreign-exchange-rates",
+        "pages": [],
+        "section": "FTA foreign currency exchange rates for VAT",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.snb.ch/en/the-snb/mandates-goals/payment-transactions/swiss-interbank-clearing",
+        "pages": [],
+        "section": "Swiss Interbank Clearing (SIC) payment system",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.snb.ch/en/publications/communication/press-releases/2025/pre_20250929_1",
+        "pages": [],
+        "section": "Domestic account-to-account instant payments",
+        "source_kind": "html"
       }
     ],
     "rules.bring_foreign_currency_in": [
       {
-        "url": "https://www.ezv.admin.ch/ezv/en/home.html",
+        "url": "https://www.bazg.admin.ch/en/cash-foreign-currency-securities",
         "pages": [],
-        "section": "Import of Currency"
+        "section": "Taking cash in and out of Switzerland (inbound carriage; questioning; CHF 10,000 inquiry)",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.fedlex.admin.ch/eli/cc/2009/118/de",
+        "pages": [],
+        "section": "SR 631.052 Art. 3 Abs. 1",
+        "article": "Art. 3 Abs. 1",
+        "source_kind": "law"
       }
     ],
     "rules.take_foreign_currency_out": [
       {
-        "url": "https://www.ezv.admin.ch/ezv/en/home.html",
+        "url": "https://www.bazg.admin.ch/en/cash-foreign-currency-securities",
         "pages": [],
-        "section": "Export of Currency"
+        "section": "Taking cash in and out of Switzerland (outbound carriage; questioning; CHF 10,000 inquiry)",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.fedlex.admin.ch/eli/cc/2009/118/de",
+        "pages": [],
+        "section": "SR 631.052 Art. 3 Abs. 1",
+        "article": "Art. 3 Abs. 1",
+        "source_kind": "law"
       }
     ],
     "rules.cash_declaration_threshold": [
       {
-        "url": "https://www.ezv.admin.ch/ezv/en/home.html",
+        "url": "https://www.bazg.admin.ch/en/cash-foreign-currency-securities",
         "pages": [],
-        "section": "Cash Declaration Rules"
+        "section": "Taking cash in and out of Switzerland / Possible consequences of checks",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.fedlex.admin.ch/eli/cc/2009/118/de",
+        "pages": [],
+        "section": "SR 631.052 Art. 3 Abs. 1–2; Art. 4; Art. 5",
+        "article": "Art. 3–5",
+        "source_kind": "law"
       }
     ],
     "rules.resident_holding_rules": [
       {
-        "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy",
+        "url": "https://www.fedlex.admin.ch/eli/cc/1998/892_892_892/en",
         "pages": [],
-        "section": "Resident Foreign Currency Accounts"
+        "section": "AMLA Arts. 3–7 (identity, beneficial owner, doubt repetition, special DD, record updating)",
+        "article": "Arts. 3–7",
+        "source_kind": "law"
+      },
+      {
+        "url": "https://www.gkb.ch/content/dam/gkb/dokumente/ueber-uns/regulatorische-unterlagen/VSB-EN.pdf",
+        "pages": [12, 24],
+        "section": "CDB 20 Art. 4 contracting-partner identity; Art. 27 beneficial-ownership statement",
+        "article": "Art. 4; Art. 27",
+        "source_kind": "pdf"
+      },
+      {
+        "url": "https://www.finma.ch/en/supervision/cross-sector-issues/combating-money-laundering/",
+        "pages": [],
+        "section": "FINMA AML supervisory clarification of unusual / heightened-risk relationships",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.finma.ch/en/documentation/dossier/dossier-geldwaeschereibekaempfung/augenmerk-auf-hochrisikokundinnen-und--kunden-in-der-geldwaeschereibekaempfung/",
+        "pages": [],
+        "section": "FINMA high-risk clients — risk tolerance and origin-of-assets clarification",
+        "source_kind": "html"
       }
     ],
     "rules.non_resident_rules": [
       {
-        "url": "https://www.finma.ch/en/",
+        "url": "https://www.fedlex.admin.ch/eli/cc/1998/892_892_892/en",
         "pages": [],
-        "section": "Non-Resident Accounts & Transfers"
+        "section": "AMLA Arts. 3–7 (identity, beneficial owner, doubt repetition, special DD, record updating)",
+        "article": "Arts. 3–7",
+        "source_kind": "law"
+      },
+      {
+        "url": "https://www.gkb.ch/content/dam/gkb/dokumente/ueber-uns/regulatorische-unterlagen/VSB-EN.pdf",
+        "pages": [12, 24],
+        "section": "CDB 20 Art. 4 contracting-partner identity; Art. 27 beneficial-ownership statement",
+        "article": "Art. 4; Art. 27",
+        "source_kind": "pdf"
+      },
+      {
+        "url": "https://www.finma.ch/en/supervision/cross-sector-issues/combating-money-laundering/",
+        "pages": [],
+        "section": "FINMA AML supervisory clarification of unusual / heightened-risk relationships",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.finma.ch/en/documentation/dossier/dossier-geldwaeschereibekaempfung/augenmerk-auf-hochrisikokundinnen-und--kunden-in-der-geldwaeschereibekaempfung/",
+        "pages": [],
+        "section": "FINMA high-risk clients — risk tolerance and origin-of-assets clarification",
+        "source_kind": "html"
       }
     ],
     "rules.business_invoicing_settlement": [
       {
-        "url": "https://www.finma.ch/en/",
+        "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/en",
         "pages": [],
-        "section": "Business & Cross-Border Payments"
+        "section": "Code of Obligations Art. 84",
+        "article": "Art. 84",
+        "source_kind": "law"
+      },
+      {
+        "url": "https://www.fedlex.admin.ch/eli/cc/2009/828/en",
+        "pages": [],
+        "section": "VAT Ordinance Art. 45",
+        "article": "Art. 45",
+        "source_kind": "law"
+      },
+      {
+        "url": "https://www.estv.admin.ch/en/vat-foreign-exchange-rates",
+        "pages": [],
+        "section": "FTA foreign currency exchange rates for VAT",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.snb.ch/en/the-snb/mandates-goals/payment-transactions/swiss-interbank-clearing",
+        "pages": [],
+        "section": "Swiss Interbank Clearing (SIC) payment system",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.snb.ch/en/publications/communication/press-releases/2025/pre_20250929_1",
+        "pages": [],
+        "section": "Domestic account-to-account instant payments",
+        "source_kind": "html"
       }
     ],
     "rules.exchange_controls": [
       {
-        "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy",
+        "url": "https://www.imf.org/-/media/files/publications/cr/2026/english/1cheea2026001.pdf",
+        "pages": [104, 105],
+        "section": "Informational Annex — current international transactions exchange system; Decision 144–(52/51) security exception",
+        "source_kind": "pdf"
+      },
+      {
+        "url": "https://www.seco.admin.ch/de/rechtliche-grundlagen-sanktionen",
         "pages": [],
-        "section": "Absence of Exchange Controls"
+        "section": "Embargo Act / Embargogesetz framework law and ordinance architecture",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.seco.admin.ch/de/allgemeine-informationen-sanktionen",
+        "pages": [],
+        "section": "Federal Council coercive measures (financial sanctions, trade restrictions, travel bans, asset freezes)",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-issues/investment/Code-capital-movements-EN.pdf",
+        "pages": [121, 122, 124],
+        "section": "Annex B — SWITZERLAND actor/transaction reservations (I/A; III; IV/D1; V/D1; XI/B1–B2)",
+        "source_kind": "pdf"
       }
     ],
     "rules.banking_conversion_practicality": [
       {
-        "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy",
+        "url": "https://www.snb.ch/en/the-snb/mandates-goals/payment-transactions/swiss-interbank-clearing",
         "pages": [],
-        "section": "Authorised Dealers & Exchange Houses"
+        "section": "Swiss Interbank Clearing (SIC) central payment system",
+        "source_kind": "html"
+      },
+      {
+        "url": "https://www.snb.ch/en/publications/communication/press-releases/2025/pre_20250929_1",
+        "pages": [],
+        "section": "Domestic account-to-account instant payments",
+        "source_kind": "html"
       }
     ]
   },
-  "disclaimer": "This page provides general informational reference only. Foreign-exchange rules in Switzerland are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, and the applicable Swiss National Bank / FINMA / Swiss Customs framework. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the Swiss National Bank, FINMA, or a qualified professional before making any financial or travel decisions."
+  "disclaimer": "This page provides general informational reference only. Swiss foreign-exchange, border-cash, AML, tax, payment-system and sanctions rules are subject to change, and transaction-specific requirements may depend on residency status, documentation, amount, counterparty type and the applicable legal instruments. This is not legal, regulatory, tax, financial, or compliance advice. Always verify current rules directly with the competent Swiss authorities or a qualified professional before making financial or travel decisions."
 }
