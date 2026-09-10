@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
-  "notes": "Switzerland Hardening I border-cash excerpts. FOCBS English page excerpts are verbatim_quote. Fedlex SR 631.052 excerpts are German verbatim_quote from the official consolidated text (English ELI does not supply a separate authoritative English instrument); English glosses are retained only in locator_note for operator navigation. No FINMA/SNB monetary excerpts. No banking-AML intermediary excerpts.",
+  "notes": "Switzerland Hardening I border-cash excerpts preserved. Hardening II appends AMLA / FINMA / CDB 20 / temporal excerpts for accounts-AML evidence. No statutory resident/non-resident account entitlement excerpts. No SNB monetary-policy or exchange-controls characterization excerpts.",
   "excerpts": [
     {
       "excerpt_id": "EX-CH-FOCBS-UNRESTRICTED",
@@ -428,6 +428,550 @@
         "amount_independent",
         "information_system"
       ]
+    },
+    {
+      "excerpt_id": "EX-CH-AMLA-ART3-1",
+      "source_id": "SRC-CH-AMLA-955-0",
+      "representation": "verbatim_quote",
+      "source_text": "When establishing a business relationship, the financial intermediary must verify the identity of the customer on the basis of a document of evidentiary value. Where the customer is a legal entity, the financial intermediary must acknowledge the provisions regulating the power to bind the legal entity, and verify the identity of the persons who enter into the business relationship on behalf of the legal entity.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": "Art. 3 para. 1",
+        "section": "Duties of due diligence",
+        "heading": "Verification of the identity of the customer",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "AMLA Art. 3 para. 1 contracting-party/customer identity at business-relationship establishment"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_fedlex_html_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-AMLA-ART4-1",
+      "source_id": "SRC-CH-AMLA-955-0",
+      "representation": "verbatim_quote",
+      "source_text": "The financial intermediary must identify the beneficial owner with the due diligence required in the circumstances and verify its identity in order to ensure that it knows who the beneficial owner is. If the customer is a listed company or a subsidiary over which a listed company has majority control, the identity of the beneficial owner need not be established.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": "Art. 4 para. 1",
+        "section": "Duties of due diligence",
+        "heading": "Establishing the identity of the beneficial owner",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "AMLA Art. 4 para. 1 beneficial-owner identify+verify (post-1 Jan 2023 wording); listed-company exception retained"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_fedlex_html_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-AMLA-ART5-1",
+      "source_id": "SRC-CH-AMLA-955-0",
+      "representation": "verbatim_quote",
+      "source_text": "If doubt arises in the course of the business relationship as to the identity of the customer or of the beneficial owner, the verification of identity or establishment of identity in terms of Articles 3 and 4 respectively must be repeated.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": "Art. 5 para. 1",
+        "section": "Duties of due diligence",
+        "heading": "Repetition of the verification of the identity of the customer or the establishment of the identity of the beneficial owner",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "AMLA Art. 5 para. 1 event-driven repetition on doubt — not continuous re-verification of every customer"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_fedlex_html_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-AMLA-ART6-2",
+      "source_id": "SRC-CH-AMLA-955-0",
+      "representation": "verbatim_quote",
+      "source_text": "The financial intermediary must clarify the economic background and the purpose of a transaction or of a business relationship if: a. the transaction or the business relationship appears unusual, unless its legality is clear; b. there are indications that assets are the proceeds of a felony or an aggravated tax misdemeanour under Article 305 bis number 1 bis SCC or are subject to the power of disposal of a criminal or terrorist organisation (Art. 260 ter SCC) or serve the financing of terrorism (Art. 260 quinquies para. 1 SCC); c. the transaction or the business relationship carries a higher risk; d. the data on a customer, a beneficial owner or an authorised signatory in a business relationship or transaction are identical or very similar to the data passed on to the financial intermediary under Article 22 a paragraph 2 or 3.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": "Art. 6 para. 2",
+        "section": "Duties of due diligence",
+        "heading": "Special duties of due diligence",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "AMLA Art. 6 para. 2 conditional enhanced clarification triggers; not universal foreign-client source-of-funds duty"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_fedlex_html_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-AMLA-ART7-1BIS",
+      "source_id": "SRC-CH-AMLA-955-0",
+      "representation": "verbatim_quote",
+      "source_text": "The financial intermediary must periodically check the required records to ensure that they are up to date, and update them if need be. The periodicity, scope and type of checking and updating are based on the risk posed by the customer.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": "Art. 7 para. 1bis",
+        "section": "Duties of due diligence",
+        "heading": "Duty to keep records",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "AMLA Art. 7 para. 1bis risk-based periodic record check/update (in force since 1 Jan 2023)"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_fedlex_html_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-FINMA-AML-DD",
+      "source_id": "SRC-CH-FINMA-AML",
+      "representation": "verbatim_quote",
+      "source_text": "They must verify the identity of the contracting partner and identify the beneficial owner of the assets brought in.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": null,
+        "section": "Requirements for financial intermediaries",
+        "heading": "Requirements for financial intermediaries",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "FINMA supervisory restatement of identity + beneficial-owner duties for financial intermediaries"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_html_page_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-FINMA-AML-EDD",
+      "source_id": "SRC-CH-FINMA-AML",
+      "representation": "verbatim_quote",
+      "source_text": "If a business relationship or transaction appears unusual or if there are indications that the funds stem from criminal activity or serve to finance terrorism, the financial intermediary must clarify the financial background and purpose of the business relationship or transaction.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": null,
+        "section": "Requirements for financial intermediaries",
+        "heading": "Requirements for financial intermediaries",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "FINMA supervisory restatement of conditional clarification duty"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_html_page_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-FINMA-AML-HIGH-RISK",
+      "source_id": "SRC-CH-FINMA-AML",
+      "representation": "verbatim_quote",
+      "source_text": "Business relationships and transactions with heightened risk, such as business relationships with clients in high-risk countries or with politically exposed persons (PEPs) must be recorded and clarified in greater detail.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": null,
+        "section": "Requirements for financial intermediaries",
+        "heading": "Requirements for financial intermediaries",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "FINMA heightened-risk recording/clarification; example factors are high-risk countries/PEPs — not all non-residents"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_html_page_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-FINMA-AML-CDB20",
+      "source_id": "SRC-CH-FINMA-AML",
+      "representation": "verbatim_quote",
+      "source_text": "The obligation to verify the identity of the contracting partner and identify the beneficial owner is governed by the special provisions of the \"Agreement on the Swiss banks’ code of conduct with regard to the exercise of due diligence (CDB 20)\" of 13 June 2018. This agreement was enacted by the Swiss Bankers Association (SBA) in a self-regulatory procedure and approved by FINMA.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": null,
+        "section": "Banks and security firms",
+        "heading": "Banks and security firms",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "FINMA recognition/approval of CDB 20 for banks and securities firms identity/BO duties"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_html_page_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-CDB-ART4",
+      "source_id": "SRC-CH-CDB-20",
+      "representation": "verbatim_quote",
+      "source_text": "The bank undertakes to verify the identity of the contracting partner when establishing business relationships. This applies to: a) opening of accounts or passbooks; b) opening securities accounts; c) entering into fiduciary transactions; d) renting of safe-deposit boxes; e) entering into management agreements for assets deposited with third parties; f) the execution of transactions involving trading in securities, currencies and precious metals as well as other commodities; g) cash transactions exceeding the amount of 15,000 Swiss francs.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": "Art. 4 paras. 1–2",
+        "section": "Verifying the identity of the contracting partner",
+        "heading": "Verifying the identity of the contracting partner",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "CDB 20 Art. 4 — bank identity verification expressly covers account and securities-account opening"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-CDB-ART7",
+      "source_id": "SRC-CH-CDB-20",
+      "representation": "verbatim_quote",
+      "source_text": "For natural persons, the following is to be appropriately documented: Name, first name, date of birth, nationality and the actual domicile address as well as the means used to prove identity.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": "Art. 7 para. 1",
+        "section": "Information to be documented",
+        "heading": "Information to be documented",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "CDB 20 Art. 7 para. 1 natural-person documentation including actual domicile address"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-CDB-ART20",
+      "source_id": "SRC-CH-CDB-20",
+      "representation": "verbatim_quote",
+      "source_text": "If an operating legal entity or partnership has one or more controlling persons with voting rights or capital shares of 25% or more, these are to be identified in writing. A controlling person must generally be a natural person.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": "Art. 20 paras. 1–2",
+        "section": "Establishing the identity of the controlling person",
+        "heading": "Establishing the identity of the controlling person",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "CDB 20 Art. 20 controlling-person identification for operating legal entities/partnerships; distinct from asset beneficial owner"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-CDB-ART27",
+      "source_id": "SRC-CH-CDB-20",
+      "representation": "verbatim_quote",
+      "source_text": "The bank requires from its contracting partner a statement concerning the beneficial ownership of the assets. Generally, the beneficial owners of the assets are natural persons. This applies to: a) opening accounts or passbooks; b) opening securities accounts;",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": "Art. 27 paras. 1–3",
+        "section": "Establishing the identity of the beneficial owner",
+        "heading": "Establishing the identity of the beneficial owner",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "CDB 20 Art. 27 beneficial-ownership statement at account/securities-account opening (bank self-regulation)"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_pdf_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-FINMA-RISK-TOLERANCE",
+      "source_id": "SRC-CH-FINMA-HIGH-RISK-2024",
+      "representation": "verbatim_quote",
+      "source_text": "In order for anti-money laundering processes to be effective and efficient, it is necessary for the boards of directors of financial intermediaries to establish a clearly defined risk tolerance (\"tone from the top\"). That also includes clear communications regarding particularly high-risk clients, high-risk countries and services that are deemed outside the risk tolerance limits.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": null,
+        "section": "Focus on high-risk clients",
+        "heading": "Focus on high-risk clients in the context of combating money laundering (2024)",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "FINMA risk-tolerance / outside-tolerance boundary for high-risk clients, countries and services"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_html_page_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-FINMA-HIGH-RISK-SOW",
+      "source_id": "SRC-CH-FINMA-HIGH-RISK-2024",
+      "representation": "verbatim_quote",
+      "source_text": "In the first instance, the origin of the client's assets must be clarified in detail, and it must be verified that the assets originate from legal sources. Furthermore, higher-risk transactions must be monitored very carefully.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": null,
+        "section": "Focus on high-risk clients",
+        "heading": "Focus on high-risk clients in the context of combating money laundering (2024)",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Source-of-assets clarification and higher-risk transaction monitoring for high-risk client relationships — conditional, not all foreign clients"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_html_page_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-FC-AMLA-OCT2026",
+      "source_id": "SRC-CH-FC-AMLA-EIF-2026",
+      "representation": "verbatim_quote",
+      "source_text": "The revised Anti-Money Laundering Act and the new Act on the Transparency of Legal Persons and the Identification of Beneficial Owners will enter into force on 1 October 2026.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": null,
+        "section": "Press release",
+        "heading": "Federal Council brings new anti-money laundering rules into force",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Temporal: revised AMLA + transparency act EIF 1 Oct 2026 — future relative to 2026-09-09"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_html_page_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
+    },
+    {
+      "excerpt_id": "EX-CH-FINMA-AMLO-CONSULT",
+      "source_id": "SRC-CH-FINMA-AMLO-CONSULT-2026",
+      "representation": "verbatim_quote",
+      "source_text": "On 12 May 2026, the Swiss Financial Market Supervisory Authority FINMA launched the consultation on the partially revised AMLO-FINMA. The consultation will go on until 9 June 2026.",
+      "source_language": "en",
+      "translation_text": null,
+      "quote_delimited": true,
+      "pinpoint": {
+        "article": null,
+        "section": "Press release",
+        "heading": "FINMA launches consultation on partial revision of the FINMA Anti-Money Laundering Ordinance",
+        "page": null,
+        "url_fragment": null,
+        "locator_note": "Temporal: AMLO-FINMA partial revision consultation launched 12 May 2026 — not current law; expected future package ~1 Jan 2027"
+      },
+      "capture_status": "human_verified",
+      "verified_by": "operator",
+      "verified_at": "2026-09-09",
+      "verification_method": "official_html_page_capture",
+      "captured_at": "2026-09-09",
+      "captured_by": "operator",
+      "method": "manual_copy",
+      "source_accessed_at": "2026-09-09",
+      "claim_neutrality_status": "reviewed",
+      "topics": [
+        "accounts",
+        "aml",
+        "hardening_ii"
+      ],
+      "notes": "Hardening II accounts/AML evidence. Does not establish statutory account entitlement."
     }
   ]
 }
