@@ -25,21 +25,127 @@
       "reason": "Candidate text may be compound (heuristic)",
       "required_action": "Split into atomic candidates if multiple propositions",
       "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-002",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-003",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-004",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-005",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-006",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-007",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-008",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-009",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-010",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-011",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-014",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-ACC-015",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
     }
   ],
   "needs_human_review": [
     "CC-CH-CASH-002:special_review",
     "CC-CH-CASH-008:special_review",
-    "CC-CH-CASH-013:special_review"
+    "CC-CH-CASH-013:special_review",
+    "CC-CH-ACC-001:semantic_review_pending",
+    "CC-CH-ACC-002:semantic_review_pending",
+    "CC-CH-ACC-002:special_review",
+    "CC-CH-ACC-003:semantic_review_pending",
+    "CC-CH-ACC-004:semantic_review_pending",
+    "CC-CH-ACC-004:special_review",
+    "CC-CH-ACC-005:semantic_review_pending",
+    "CC-CH-ACC-006:semantic_review_pending",
+    "CC-CH-ACC-007:semantic_review_pending",
+    "CC-CH-ACC-008:semantic_review_pending",
+    "CC-CH-ACC-009:semantic_review_pending",
+    "CC-CH-ACC-009:special_review",
+    "CC-CH-ACC-010:semantic_review_pending",
+    "CC-CH-ACC-010:special_review",
+    "CC-CH-ACC-011:semantic_review_pending",
+    "CC-CH-ACC-011:special_review",
+    "CC-CH-ACC-012:semantic_review_pending",
+    "CC-CH-ACC-013:semantic_review_pending",
+    "CC-CH-ACC-013:special_review",
+    "CC-CH-ACC-014:semantic_review_pending",
+    "CC-CH-ACC-014:special_review",
+    "CC-CH-ACC-015:semantic_review_pending"
   ],
   "stats": {
-    "candidate_claims_total": 13,
-    "direct_restating": 7,
+    "candidate_claims_total": 28,
+    "direct_restating": 13,
     "translation_based": 0,
-    "bounded_normalization": 6,
-    "semantic_review_pending": 0,
+    "bounded_normalization": 15,
+    "semantic_review_pending": 15,
     "downstream_eligible": 13,
-    "human_review_required": 3
+    "human_review_required": 10
   },
   "summary": "CLAIM EXTRACTION PASS (structural only)",
   "capability_note": "M2 validator checks extraction contract structure, evidence eligibility, language/mode consistency, and review/fingerprint gates. It does not establish legal or semantic approval of candidate claims."

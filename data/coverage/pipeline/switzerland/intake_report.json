@@ -18,11 +18,27 @@
       "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}",
       "required_action": "Resolve via human review before downstream use",
       "blocking": false
+    },
+    {
+      "layer": "eligibility",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
+      "required_action": "Resolve via human review before downstream use",
+      "blocking": false
+    },
+    {
+      "layer": "eligibility",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}",
+      "required_action": "Resolve via human review before downstream use",
+      "blocking": false
     }
   ],
   "needs_human_review": [
     "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-10K-OPERATOR-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'CHF 10,000 operator wording on FOCBS page vs ordinance', 'detail': \"FOCBS English page body uses 'CHF 10,000 or more' / 'equals or exceeds CHF 10,000' for inquiry and information-system registration. Ordinance Art. 3 uses 'mindestens 10 000 Franken' (at least CHF 10,000 / >=). A FOCBS page lead sentence also uses 'over 10,000 francs' shorthand. Disposition: prefer the body inquiry/registration clauses and Art. 3 'mindestens' (>=) for Hardening I candidates; do not promote a strict-exceeding (>) operator for the threshold mechanics.\", 'status': 'preserved_prefer_ge', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'Use >= / CHF 10,000 or more / equals or exceeds / mindestens 10 000 Franken. Do not flatten to > CHF 10,000 for the inquiry or registration mechanics.'}",
-    "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}"
+    "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}",
+    "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
+    "source_conflict:{'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}"
   ],
   "excerpt_eligibility": {
     "EX-CH-FOCBS-UNRESTRICTED": true,
@@ -37,14 +53,31 @@
     "EX-CH-ORD-ART3-2": true,
     "EX-CH-ORD-ART4": true,
     "EX-CH-ORD-ART5": true,
-    "EX-CH-ORD-ART6-2": true
+    "EX-CH-ORD-ART6-2": true,
+    "EX-CH-AMLA-ART3-1": true,
+    "EX-CH-AMLA-ART4-1": true,
+    "EX-CH-AMLA-ART5-1": true,
+    "EX-CH-AMLA-ART6-2": true,
+    "EX-CH-AMLA-ART7-1BIS": true,
+    "EX-CH-FINMA-AML-DD": true,
+    "EX-CH-FINMA-AML-EDD": true,
+    "EX-CH-FINMA-AML-HIGH-RISK": true,
+    "EX-CH-FINMA-AML-CDB20": true,
+    "EX-CH-CDB-ART4": true,
+    "EX-CH-CDB-ART7": true,
+    "EX-CH-CDB-ART20": true,
+    "EX-CH-CDB-ART27": true,
+    "EX-CH-FINMA-RISK-TOLERANCE": true,
+    "EX-CH-FINMA-HIGH-RISK-SOW": true,
+    "EX-CH-FC-AMLA-OCT2026": true,
+    "EX-CH-FINMA-AMLO-CONSULT": true
   },
   "stats": {
-    "sources_total": 2,
-    "sources_current": 2,
+    "sources_total": 9,
+    "sources_current": 9,
     "sources_superseded": 0,
-    "excerpts_total": 13,
-    "excerpts_downstream_eligible": 13
+    "excerpts_total": 30,
+    "excerpts_downstream_eligible": 30
   },
   "summary": "INTAKE PASS (not downstream-eligible)",
   "capability_note": "M1 validator validates declared provenance and structural evidence controls; it does not independently establish textual fidelity unless a locally preserved source capture is available."
