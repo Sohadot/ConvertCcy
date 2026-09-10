@@ -3,7 +3,7 @@
   "country_slug": "switzerland",
   "country_name": "Switzerland",
   "iso2": "CH",
-  "notes": "Switzerland Hardening I (border cash) + Hardening II (accounts/AML/residency evidence). H1 authorities FOCBS + SR 631.052 preserved unchanged. H2 appends AMLA SR 955.0, AMLO-FINMA SR 955.033, FINMA AML supervision, CDB 20, FINMA high-risk-client dossier, and temporal 2026/2027 sources. As of 2026-09-09: current AMLA consolidation Status as of 1 March 2024 remains in force; revised AMLA/LETA enter into force 1 October 2026 (future). AMLO-FINMA Stand 1 January 2023 is current; FINMA launched AMLO-FINMA partial-revision consultation on 12 May 2026 with industry expectation of 1 January 2027 effectiveness (future). CDB 20 (13 June 2018 / in force 1 January 2020) remains the current bank due-diligence framework on 2026-09-09. No general resident/non-resident statutory account entitlement or prior-approval rule is established in this pack. Does not modify claims.json, bindings, adoption, M2.5, or data/rules/switzerland.json.",
+  "notes": "Switzerland Hardening I (border cash) + Hardening II (accounts/AML) + Hardening III (business/payments/capital evidence). H3 appends Code of Obligations Art. 84 / accounting-currency provisions (SR 220), VAT Ordinance Art. 45 (SR 641.201), SNB SIC / instant-payment exploration, SECO Investment Screening Act temporal status, and FINMA sanctions-implementation notices. Evidence cutoff 2026-09-10. Does not characterise overall exchange-control regime (Hardening IV). Does not modify claims.json, field_bindings.json, adoption_decision.json, M2.5 artefacts, or data/rules/switzerland.json.",
   "source_conflicts": [
     {
       "conflict_id": "CH-SRC-CONFLICT-10K-OPERATOR-01",
@@ -56,6 +56,30 @@
       "closure_phase": "hardening_ii_evidence",
       "closed_at": "2026-09-09",
       "wording_boundary": "Do not apply consulted/future AMLO-FINMA or successor CDB as current rules."
+    },
+    {
+      "conflict_id": "CH-SRC-CONFLICT-ISA-TEMPORAL-2027",
+      "sources": [
+        "SRC-CH-SECO-ISA"
+      ],
+      "topic": "Investment Screening Act adopted 2025 vs expected 2027 entry into force",
+      "detail": "On 2026-09-10 SECO states Parliament adopted the ISA on 19 December 2025 and entry into force is expected in 2027; applications cannot currently be submitted or reviewed. Disposition: treat ISA prior-approval architecture as future/temporal only; do not draft it as current Swiss law governing ordinary bank transfers, dividends, FX conversion, or general capital movements.",
+      "status": "preserved_current_vs_future",
+      "closure_phase": "hardening_iii_evidence",
+      "closed_at": "2026-09-10",
+      "wording_boundary": "Do not state ISA approval is currently required for capital transfers; do not deny the future critical-sector acquisition-screening framework when discussing post-EIF rules."
+    },
+    {
+      "conflict_id": "CH-SRC-CONFLICT-IP-DOMESTIC-VS-EXPLORATION",
+      "sources": [
+        "SRC-CH-SNB-IP-ECB-2025"
+      ],
+      "topic": "domestic SIC instant payments vs SNB/ECB TIPS interlinking exploration",
+      "detail": "The same SNB 29 September 2025 press release describes current domestic instant payments and an exploration of SIC IP–TIPS interlinking continuing throughout 2026. Disposition: keep domestic IP capability distinct from prospective cross-currency interlinking; exploration is not production capability.",
+      "status": "preserved_current_vs_future",
+      "closure_phase": "hardening_iii_evidence",
+      "closed_at": "2026-09-10",
+      "wording_boundary": "Do not draft cross-currency SIC/TIPS interlinking as currently operational."
     }
   ],
   "missing_authorities": [
@@ -82,6 +106,54 @@
       "search_record": "Bounded search of AMLA due-diligence articles and CDB 20 identification/controlling-person/beneficial-owner rules for explicit resident vs non-resident account-opening categories, general prohibitions, or general approval requirements keyed to residence. No such general residence-based entitlement/prohibition/approval class located in the reviewed federal AML / bank due-diligence corpus. Residence may appear as domicile/address data or within risk assessment; that does not create a statutory resident/non-resident account class. Do not infer identical treatment in every regime.",
       "closure_phase": "hardening_ii_evidence",
       "wording_boundary": "Do not equate non-resident with high-risk client; do not invent residence-based account rights or bans from silence."
+    },
+    {
+      "authority_id": "CH-H3-MISSING-UNIVERSAL-INVOICE-CURRENCY-RULE",
+      "topic": "general federal rule that businesses may/must invoice in any foreign currency or only CHF",
+      "status": "not_established",
+      "search_record": "Bounded search 2026-09-10 across Fedlex CO Art. 84 (monetary debts), VAT Ordinance Art. 45 (VAT consideration/invoice currency for tax calculation), CO Arts. 957a/958d (accounting/reporting currency), FTA VAT FX page. Result: Art. 84 regulates monetary debt payment currency mechanics; Art. 45 regulates VAT assessment when invoices are in FCY; accounting rules regulate books/reports. No single federal provision located establishing a universal commercial rule that businesses may invoice in any currency or must invoice only in CHF. Do not infer universal invoicing freedom solely from Art. 84.",
+      "closure_phase": "hardening_iii_evidence",
+      "wording_boundary": "Do not draft 'Business transactions may be invoiced ... in foreign currency or CHF' as a universal statutory entitlement from H3 alone."
+    },
+    {
+      "authority_id": "CH-H3-MISSING-GENERAL-CROSSBORDER-TRANSFER-ENTITLEMENT",
+      "topic": "general legal entitlement to transfer business funds abroad / unrestricted cross-border payments",
+      "status": "not_established",
+      "search_record": "Bounded search 2026-09-10 of Fedlex CO payment articles (Art. 84), SNB SIC / instant-payment materials, SECO ISA page, FINMA sanctions notices, and H2 AML corpus cross-reference. Found payment-system mechanics and sanctions/AML overlays; no federal primary source establishing a general legal entitlement for businesses to transfer any funds to any destination freely. Bank operational capacity ≠ statutory transfer right. Do not candidate-extract 'businesses can freely transfer funds abroad'.",
+      "closure_phase": "hardening_iii_evidence",
+      "wording_boundary": "Do not draft unrestricted cross-border payment/repatriation freedom from H3 evidence."
+    },
+    {
+      "authority_id": "CH-H3-MISSING-GENERAL-REPATRIATION-RIGHT",
+      "topic": "general Swiss domestic-law right to repatriate foreign currency / dividends / investment proceeds / capital return",
+      "status": "not_established",
+      "search_record": "Bounded search 2026-09-10 for primary Swiss statutes or official SECO/SIF/SNB pages establishing a general repatriation right covering dividends, investment proceeds, capital return, loan principal/interest, or non-resident balance withdrawals. No such universal domestic-law proposition located in the H3 corpus. Treaty/BIT transfer protections were not used as universal domestic entitlement. Record as not established.",
+      "closure_phase": "hardening_iii_evidence",
+      "wording_boundary": "Do not preserve legacy 'repatriate foreign currency' as a governed universal right."
+    },
+    {
+      "authority_id": "CH-H3-MISSING-GENERAL-CAPITAL-CONTROL-STATUTE",
+      "topic": "general Swiss capital-control prohibition or affirmative 'no capital controls' statute",
+      "status": "not_established",
+      "search_record": "Bounded search 2026-09-10 of Fedlex for a general capital-control licensing statute and of SNB/SECO official pages for an affirmative 'Switzerland has no capital controls' legal proposition within H3 scope. No general capital-control licence form or H3-eligible affirmative negative statute was located. Absence of one FX-approval mechanism is not converted into unrestricted transfer freedom or a project-truth negative. Overall exchange-control characterisation deferred to Hardening IV.",
+      "closure_phase": "hardening_iii_evidence",
+      "wording_boundary": "H3 finding only: general capital-transfer restriction / liberalisation statute not established in H3 corpus — not project truth; not 'Switzerland has no exchange controls'."
+    },
+    {
+      "authority_id": "CH-H3-MISSING-GENERAL-FX-GOVT-APPROVAL",
+      "topic": "general SNB/FINMA/federal prior approval for ordinary FX conversion or business payments",
+      "status": "not_established_as_positive_requirement",
+      "search_record": "Bounded search 2026-09-10 of SNB SIC/payment pages, FINMA sanctions notices, SECO ISA, and CO Art. 84. SNB role located as SIC system manager / cashless-payment facilitation; FINMA as supervisor/sanctions notifier; ISA as future acquisition screening. No general prior approval by SNB or FINMA for ordinary customer FX conversion or routine business payments located. Do not candidate-extract 'without prior approval' or 'SNB approves business FX conversion'. Sanctions/AML overlays remain applicable where triggered.",
+      "closure_phase": "hardening_iii_evidence",
+      "wording_boundary": "Do not draft 'no approval is required' / 'handled freely through authorised institutions' from H3 silence."
+    },
+    {
+      "authority_id": "CH-H3-MISSING-AUTHORISED-BANK-LEGAL-CATEGORY",
+      "topic": "legacy 'authorised banks and financial institutions' as Swiss legal category for routine FX/payment",
+      "status": "not_established",
+      "search_record": "Bounded search 2026-09-10 of SNB SIC participation wording and FINMA/SECO materials for a legal category 'authorised banks and financial institutions' governing routine FX conversion/payment. SNB refers to banks and other financial market participants / SIC participants; H2 uses financial intermediary / banks under CDB. Legacy phrase not preserved as a Swiss legal category for H3 candidates.",
+      "closure_phase": "hardening_iii_evidence",
+      "wording_boundary": "Prefer bank / financial intermediary / SIC participant — not 'authorised banks and financial institutions' unless a source uses that exact category."
     }
   ],
   "sources": [
@@ -238,6 +310,123 @@
       "content_persistence": "not_preserved",
       "retrieval_method": "manual",
       "notes": "Temporal: FINMA launched AMLO-FINMA partial-revision consultation 12 May 2026 (to 9 June 2026). Industry/official commentary expects effectiveness around 1 January 2027 with revised CDB. Consultation text is not current law. Keep current vs future explicit."
+    },
+    {
+      "source_id": "SRC-CH-CO-220",
+      "label": "SR 220 — Federal Act of 30 March 1911 on the Amendment of the Swiss Civil Code (Part Five: The Code of Obligations)",
+      "url": "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/en",
+      "type": "ministry",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss Confederation / Fedlex",
+      "authority_kind": "legislature_publication",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-10",
+      "published_date": "1911-03-30",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Official Fedlex English consolidation of the Code of Obligations. H3 pins Art. 84 (pecuniary debts / foreign-currency payment mechanics; footnote 41: amended by Currency and Payment Instruments Act, in force since 1 May 2000) and Arts. 957a / 958d (accounting and financial-reporting currency). Official English uses 'actual currency' for the literal-performance clause corresponding to German 'effektiv'. Does not establish universal invoicing freedom, bank-execution entitlement, transfer freedom, or exchange-control characterisation."
+    },
+    {
+      "source_id": "SRC-CH-VAT-ORD-641-201",
+      "label": "SR 641.201 — Ordinance of 27 November 2009 on Value Added Tax (VAT Ordinance / MWSTV)",
+      "url": "https://www.fedlex.admin.ch/eli/cc/2009/828/en",
+      "type": "ministry",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss Confederation / Fedlex",
+      "authority_kind": "legislature_publication",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-10",
+      "published_date": "2009-11-27",
+      "effective_date": "2010-01-01",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Official Fedlex English consolidation. H3 uses Art. 45 (considerations in foreign currency) for VAT calculation/conversion mechanics. Tax conversion into CHF ≠ prohibition on contractual foreign-currency denomination or settlement currency."
+    },
+    {
+      "source_id": "SRC-CH-FTA-VAT-FX",
+      "label": "Federal Tax Administration FTA — Foreign currency exchange rates VAT",
+      "url": "https://www.estv.admin.ch/en/vat-foreign-exchange-rates",
+      "type": "ministry",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Federal Tax Administration (FTA / ESTV)",
+      "authority_kind": "ministry",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-10",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Current FTA English guidance corroborating VAT foreign-currency conversion into CHF using FTA monthly average or daily sell rates (or Swiss-bank daily sell where FTA publishes no rate). Supporting surface for Art. 45 VAT Ordinance; not a contractual settlement prohibition."
+    },
+    {
+      "source_id": "SRC-CH-SNB-SIC",
+      "label": "Swiss National Bank — The Swiss Interbank Clearing (SIC) payment system",
+      "url": "https://www.snb.ch/en/the-snb/mandates-goals/payment-transactions/swiss-interbank-clearing",
+      "type": "regulator",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss National Bank (SNB)",
+      "authority_kind": "central_bank",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-10",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Official SNB English description of SIC as Switzerland's central payment system, operated by SIX Interbank Clearing Ltd on behalf of the SNB; large-value and retail payments for financial-market participants. Infrastructure/mechanics only — not universal payment entitlement, unrestricted cross-border transfers, or SNB transaction-by-transaction approval."
+    },
+    {
+      "source_id": "SRC-CH-SNB-IP-ECB-2025",
+      "label": "SNB press release — SNB and ECB explore interlinking of instant payment systems (29 September 2025)",
+      "url": "https://www.snb.ch/en/publications/communication/press-releases/2025/pre_20250929_1",
+      "type": "regulator",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss National Bank (SNB)",
+      "authority_kind": "central_bank",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-10",
+      "published_date": "2025-09-29",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Official SNB press release distinguishing current domestic instant payments (account-to-account, immediate final settlement) from an exploration phase with the ECB/TIPS continuing throughout 2026. Exploration ≠ operational cross-currency interlinking production capability."
+    },
+    {
+      "source_id": "SRC-CH-SECO-ISA",
+      "label": "SECO — Investment Screening (Investment Screening Act / ISA)",
+      "url": "https://www.seco.admin.ch/en/investment-screening",
+      "type": "ministry",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "State Secretariat for Economic Affairs (SECO)",
+      "authority_kind": "ministry",
+      "jurisdiction": "CH",
+      "language": "en",
+      "accessed_at": "2026-09-10",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Current SECO English investment-screening page. Parliament adopted the Investment Screening Act on 19 December 2025; entry into force expected in 2027; applications cannot currently be submitted or reviewed. Future prior-approval for specified acquisitions of Swiss companies in especially critical sectors by foreign state-controlled investors. Not current law for ordinary bank transfers, dividends, or FX conversion. Distinct from H4 exchange-control characterisation."
+    },
+    {
+      "source_id": "SRC-CH-FINMA-SANCTIONS-UA-202604",
+      "label": "FINMA — Aktualisierte Sanktionsmeldung: Ukraine (7 April 2026)",
+      "url": "https://www.finma.ch/en/news/2026/04/20260407-sr-946-231-176-72/",
+      "type": "regulator",
+      "tier": "primary",
+      "currency": "current",
+      "authority": "Swiss Financial Market Supervisory Authority FINMA",
+      "authority_kind": "regulator",
+      "jurisdiction": "CH",
+      "language": "de",
+      "accessed_at": "2026-09-10",
+      "published_date": "2026-04-07",
+      "content_persistence": "not_preserved",
+      "retrieval_method": "manual",
+      "notes": "Current FINMA sanctions-update notice for the Ukraine ordinance. System-level illustration that, under applicable sanctions ordinances, financial intermediaries are called to implement prohibitions, freeze assets of sanctioned persons, and report affected business relationships to SECO; SECO report does not displace AMLA Art. 6/9 duties. Regime/person-specific overlay — not a general capital-transfer approval requirement. Does not reclone H2 AML claims."
     }
   ]
 }

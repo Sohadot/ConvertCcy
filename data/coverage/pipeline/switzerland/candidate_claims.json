@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
   "generation_mode": "governed_extraction",
-  "notes": "Switzerland Hardening I border-cash candidates preserved (CC-CH-CASH-001..013, M2.5 closed). Hardening II ACC candidates CC-CH-ACC-001..015 M2.5 closed (pending→closed). No adoption, bindings, or switzerland.json changes. General AML duties are not duplicated into resident/non-resident entitlement claims.",
+  "notes": "Switzerland Hardening I–III candidate claims. H3 appends CC-CH-BIZ-001..014 (business/payments/capital atomic candidates). All H3 candidates remain unreviewed / not downstream-eligible / not adoption-eligible. H1 CASH and H2 ACC candidates preserved byte-identically. No M2.5 in this gate.",
   "candidates": [
     {
       "candidate_id": "CC-CH-CASH-001",
@@ -1610,6 +1610,808 @@
         "reviewed_at": "2026-09-09",
         "decision": "supported",
         "reviewed_candidate_fingerprint": "sha256:9616777e7cc0a674779feaea6fbe80c568481b21ae733383e57cc55a948fb4e4",
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-001",
+      "candidate_text": "Pecuniary debts must be discharged in legal tender of the currency in which the debt was incurred.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "pecuniary_debt_currency_of_discharge",
+        "actor": "debtor",
+        "transaction_context": "monetary_obligation_under_code_of_obligations",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-CO-ART84-1",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-002",
+      "candidate_text": "A debt expressed in a currency other than the national currency of the place of payment may be discharged in that national currency at the rate of exchange that applies on the day it falls due.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "foreign_currency_debt_local_currency_substitution",
+        "actor": "debtor",
+        "transaction_context": "monetary_obligation_place_of_payment",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-CO-ART84-2-SUB",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [],
+        "omissions": [
+          "literal_performance_actual_currency_exception_retained_in_sibling_candidate_CC-CH-BIZ-003"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-003",
+      "candidate_text": "Literal performance in the stipulated currency is required where the contract includes the expression 'actual currency' or words to that effect, excluding the debtor's option to discharge a non-local-currency debt in the national currency of the place of payment.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "exception",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "actual_currency_literal_performance_clause",
+        "actor": "contracting_parties",
+        "transaction_context": "monetary_obligation_contractual_clause",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-CO-ART84-2-SUB",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "official_english_actual_currency_clause_corresponds_to_german_effektiv"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-004",
+      "candidate_text": "For purposes of calculating the VAT payable, considerations paid in foreign currency must be converted into national currency at the date the tax claim arises.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "vat_foreign_currency_consideration_conversion",
+        "actor": "taxable_person",
+        "transaction_context": "vat_assessment_basis",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-VAT-ART45-1",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-005",
+      "candidate_text": "A consideration is in foreign currency if the invoice or the receipt is issued in foreign currency; it is irrelevant whether the payment is in national or foreign currency.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "definition",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "vat_foreign_currency_invoice_defines_consideration",
+        "actor": "taxable_person_supplier",
+        "transaction_context": "vat_invoice_and_payment_currency_distinction",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-VAT-ART45-2",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [],
+        "omissions": [
+          "book_entry_fallback_when_no_invoice_or_receipt",
+          "change_currency_clause"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-006",
+      "candidate_text": "Considerations in foreign currency need to be converted into Swiss francs for the purposes of calculating the domestic tax and the reverse charge at the time the tax claim arises, using either the monthly average rate published by the Federal Tax Administration FTA or the daily exchange rate (sell).",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "fta_vat_fx_conversion_rate_choice",
+        "actor": "taxable_person",
+        "transaction_context": "vat_calculation_fx_rate",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FTA-VAT-FX-CONVERT",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [],
+        "omissions": [
+          "recoverable_input_tax_timing_sentence"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-007",
+      "candidate_text": "Accounting is carried out in the national currency or in the currency required for business operations.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "permitted_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "commercial_accounting_currency",
+        "actor": "undertaking",
+        "transaction_context": "commercial_accounting",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-CO-ART957A-4",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-008",
+      "candidate_text": "Financial reports are presented in the national currency or in the currency required for business operations; if the national currency is not used, the values must also be shown in the national currency and the exchange rates applied must be published in the notes to the accounts.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "financial_reporting_currency_presentation",
+        "actor": "undertaking",
+        "transaction_context": "annual_financial_reports",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-CO-ART958D-3",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [],
+        "omissions": [
+          "if_applicable_explained_limb_compressed"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "primary_law",
+        "claim_voice": "statutory_obligation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-009",
+      "candidate_text": "The Swiss Interbank Clearing (SIC) payment system is Switzerland's central payment system, operated by SIX Interbank Clearing Ltd on behalf of the Swiss National Bank; eligible participants primarily include Swiss banks and other financial market participants, and SIC processes large-value transactions as well as retail payments connected with services provided by financial market participants (bank transfers, card payments, direct debits).",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "sic_central_payment_system_mechanics",
+        "actor": "sic_participants_banks_and_financial_market_participants",
+        "transaction_context": "chf_interbank_and_retail_payment_settlement",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-SNB-SIC-CENTRAL",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [],
+        "omissions": [
+          "launch_date_10_june_1987"
+        ],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-010",
+      "candidate_text": "Instant payments allow private individuals and companies to settle domestic account-to-account transactions with immediate execution and final settlement in seconds, 24 hours a day, 7 days a week (including public holidays).",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "domestic_instant_payments",
+        "actor": "private_individuals_and_companies",
+        "transaction_context": "domestic_account_to_account_instant_payment",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-SNB-IP-DOMESTIC",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "guidance_description",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": false,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-011",
+      "candidate_text": "The Swiss National Bank and the European Central Bank are conducting an exploration phase throughout 2026 to evaluate an interlinking between the SIC instant payment service and the Eurosystem's TIPS service; the exploration assesses feasibility and economic viability and does not itself establish operational cross-currency instant settlement.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "sic_tips_interlinking_exploration",
+        "actor": "snb_and_ecb",
+        "transaction_context": "prospective_cross_currency_instant_payment_interlinking",
+        "temporal_scope": "effective_from"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-SNB-IP-EXPLORATION",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "exploration_phase_continues_throughout_2026_not_production_capability"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_announcement",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-012",
+      "candidate_text": "Under applicable sanctions ordinances, financial intermediaries are required to implement the prohibitions, freeze the assets of sanctioned persons, and report affected business relationships to SECO; a report to SECO does not relieve the intermediary of AMLA clarification and MROS reporting duties where suspicion remains.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "required_action",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "sanctions_ordinance_fi_prohibition_freeze_seco_reporting",
+        "actor": "financial_intermediary",
+        "transaction_context": "sanctions_triggered_financial_relationships",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-FINMA-SANCTIONS-FI-DUTIES",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [
+          "german_finma_notice_restated_in_english_system_level",
+          "ukraine_ordinance_used_as_illustration_of_applicable_sanctions_ordinances"
+        ],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "supervisory_expectation",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-013",
+      "candidate_text": "On 19 December 2025, Parliament adopted the Investment Screening Act, which aims to subject acquisitions of Swiss companies operating in especially critical sectors by foreign state-controlled investors to prior approval; entry into force is expected in 2027.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "regime_description",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "investment_screening_act_adoption_and_expected_eif",
+        "actor": "foreign_state_controlled_investors_acquiring_critical_sector_swiss_companies",
+        "transaction_context": "foreign_investment_acquisition_screening",
+        "temporal_scope": "effective_from"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-SECO-ISA-ADOPT-EIF",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "bounded_normalization",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_announcement",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
+        "notes": null
+      }
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-014",
+      "candidate_text": "As the Investment Screening Act is expected to enter into force only in 2027, no applications can currently be submitted or reviewed.",
+      "reviewed_text": null,
+      "claim_language": "en",
+      "claim_type": "descriptive_rule",
+      "scope": {
+        "jurisdiction": "CH",
+        "subject": "investment_screening_act_not_yet_operational",
+        "actor": "seco_investment_screening",
+        "transaction_context": "isa_application_process",
+        "temporal_scope": "current"
+      },
+      "evidence_links": [
+        {
+          "excerpt_id": "EX-CH-SECO-ISA-NO-APPS",
+          "support_role": "direct"
+        }
+      ],
+      "transformation": {
+        "mode": "direct_restating",
+        "normalizations": [],
+        "omissions": [],
+        "added_terms": [],
+        "translation_source": null
+      },
+      "authority_posture": {
+        "source_authority_level": "official_guidance",
+        "claim_voice": "temporal_announcement",
+        "authority_preservation_status": "structurally_consistent"
+      },
+      "exception_handling": {
+        "evidence_exception_signal": "none_detected",
+        "exception_review_status": "closed",
+        "exception_preserved": null,
+        "exception_excerpt_ids": []
+      },
+      "origin": {
+        "mode": "human_authored",
+        "authored_by": "operator"
+      },
+      "semantic_review_status": "pending",
+      "special_review_required": true,
+      "support_status": "unreviewed",
+      "downstream_eligible": false,
+      "adoption_gate_conditions_met": false,
+      "adoption_eligible": false,
+      "human_review": {
+        "status": "pending",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "decision": null,
+        "reviewed_candidate_fingerprint": null,
         "notes": null
       }
     }

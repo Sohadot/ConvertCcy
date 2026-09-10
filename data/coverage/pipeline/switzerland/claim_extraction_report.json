@@ -109,6 +109,55 @@
       "reason": "Candidate text may be compound (heuristic)",
       "required_action": "Split into atomic candidates if multiple propositions",
       "blocking": false
+    },
+    {
+      "layer": "evidence",
+      "field": "CC-CH-BIZ-003",
+      "reason": "Excerpt 'EX-CH-CO-ART84-2-SUB' also used by CC-CH-BIZ-002",
+      "required_action": "Prefer one candidate per excerpt in M2.0 pilot",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-BIZ-005",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-BIZ-008",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-BIZ-009",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-BIZ-011",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-BIZ-012",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
+    },
+    {
+      "layer": "atomicity",
+      "field": "CC-CH-BIZ-013",
+      "reason": "Candidate text may be compound (heuristic)",
+      "required_action": "Split into atomic candidates if multiple propositions",
+      "blocking": false
     }
   ],
   "needs_human_review": [
@@ -121,16 +170,40 @@
     "CC-CH-ACC-010:special_review",
     "CC-CH-ACC-011:special_review",
     "CC-CH-ACC-013:special_review",
-    "CC-CH-ACC-014:special_review"
+    "CC-CH-ACC-014:special_review",
+    "CC-CH-BIZ-001:semantic_review_pending",
+    "CC-CH-BIZ-002:semantic_review_pending",
+    "CC-CH-BIZ-002:special_review",
+    "CC-CH-BIZ-003:semantic_review_pending",
+    "CC-CH-BIZ-003:special_review",
+    "CC-CH-BIZ-004:semantic_review_pending",
+    "CC-CH-BIZ-004:special_review",
+    "CC-CH-BIZ-005:semantic_review_pending",
+    "CC-CH-BIZ-005:special_review",
+    "CC-CH-BIZ-006:semantic_review_pending",
+    "CC-CH-BIZ-006:special_review",
+    "CC-CH-BIZ-007:semantic_review_pending",
+    "CC-CH-BIZ-008:semantic_review_pending",
+    "CC-CH-BIZ-009:semantic_review_pending",
+    "CC-CH-BIZ-009:special_review",
+    "CC-CH-BIZ-010:semantic_review_pending",
+    "CC-CH-BIZ-011:semantic_review_pending",
+    "CC-CH-BIZ-011:special_review",
+    "CC-CH-BIZ-012:semantic_review_pending",
+    "CC-CH-BIZ-012:special_review",
+    "CC-CH-BIZ-013:semantic_review_pending",
+    "CC-CH-BIZ-013:special_review",
+    "CC-CH-BIZ-014:semantic_review_pending",
+    "CC-CH-BIZ-014:special_review"
   ],
   "stats": {
-    "candidate_claims_total": 28,
-    "direct_restating": 13,
+    "candidate_claims_total": 42,
+    "direct_restating": 18,
     "translation_based": 0,
-    "bounded_normalization": 15,
-    "semantic_review_pending": 0,
+    "bounded_normalization": 24,
+    "semantic_review_pending": 14,
     "downstream_eligible": 28,
-    "human_review_required": 10
+    "human_review_required": 20
   },
   "summary": "CLAIM EXTRACTION PASS (structural only)",
   "capability_note": "M2 validator checks extraction contract structure, evidence eligibility, language/mode consistency, and review/fingerprint gates. It does not establish legal or semantic approval of candidate claims."
