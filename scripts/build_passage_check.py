@@ -552,15 +552,181 @@ EXCHANGE_CONTROLS = {
 }
 
 # Opt-in typed border-cash transcription (Passage Check v1.1).
-# Empty in this architecture sprint — first real consumer is a later jurisdiction
-# hardening/publication sprint. Exactly one of DECLARATION or BORDER_CASH_CONTROLS
-# may author a published slug.
-BORDER_CASH_CONTROLS: Dict[str, dict] = {}
+# Exactly one of DECLARATION or BORDER_CASH_CONTROLS may author a published slug.
+# Switzerland is the first live typed consumer.
+BORDER_CASH_CONTROLS: Dict[str, dict] = {
+    "switzerland": {
+        "declaration": {
+            "mode": "none_spontaneous",
+        },
+        "mechanisms": [
+            {
+                "kind": "inquiry",
+                "trigger": {
+                    "type": "amount",
+                    "value": 10000,
+                    "currency": "CHF",
+                    "operator": ">=",
+                },
+                "scope": (
+                    "covered notes, coins, foreign currencies and bearer negotiable "
+                    "instruments within the governed Swiss border-cash rule"
+                ),
+                "applies": "cross-border Swiss customs cash movement/check context",
+                "authority": "FOCBS / SR 631.052",
+                "mechanism": (
+                    "at CHF 10,000 or the foreign-currency equivalent, express customs "
+                    "questioning requires the governed information package concerning "
+                    "identity, cash movement, origin, intended use and beneficial owner"
+                ),
+            },
+            {
+                "kind": "registration",
+                "trigger": {
+                    "type": "amount",
+                    "value": 10000,
+                    "currency": "CHF",
+                    "operator": ">=",
+                },
+                "scope": (
+                    "covered notes, coins, foreign currencies and bearer negotiable "
+                    "instruments within the governed Swiss border-cash rule"
+                ),
+                "applies": "cross-border Swiss customs cash movement/check context",
+                "authority": "FOCBS / SR 631.052",
+                "mechanism": (
+                    "at the governed threshold, an entry is registered in the FOCBS "
+                    "information system"
+                ),
+            },
+            {
+                "kind": "inquiry",
+                "trigger": {
+                    "type": "condition",
+                    "condition": (
+                        "money-laundering or terrorist-financing suspicion below CHF 10,000"
+                    ),
+                },
+                "scope": (
+                    "covered notes, coins, foreign currencies and bearer negotiable "
+                    "instruments within the governed Swiss border-cash rule"
+                ),
+                "applies": "cross-border Swiss customs cash movement/check context",
+                "authority": "FOCBS / SR 631.052",
+                "mechanism": (
+                    "such suspicion may activate customs information powers"
+                ),
+            },
+            {
+                "kind": "enforcement",
+                "trigger": {
+                    "type": "condition",
+                    "condition": (
+                        "suspicion basis for provisional seizure under the governed "
+                        "Swiss customs framework"
+                    ),
+                },
+                "scope": (
+                    "covered notes, coins, foreign currencies and bearer negotiable "
+                    "instruments within the governed Swiss border-cash rule"
+                ),
+                "applies": "cross-border Swiss customs cash movement/check context",
+                "authority": "Customs Act Art. 104 / FOCBS / SR 631.052",
+                "mechanism": (
+                    "provisional seizure may occur on suspicion and is amount-independent"
+                ),
+            },
+            {
+                "kind": "enforcement",
+                "trigger": {
+                    "type": "condition",
+                    "condition": (
+                        "refusal or false information concerning the governed identity "
+                        "and cash-movement information limbs"
+                    ),
+                },
+                "scope": (
+                    "covered notes, coins, foreign currencies and bearer negotiable "
+                    "instruments within the governed Swiss border-cash rule"
+                ),
+                "applies": "cross-border Swiss customs cash movement/check context",
+                "authority": "FOCBS / SR 631.052",
+                "mechanism": (
+                    "the governed conduct may constitute the applicable administrative offence"
+                ),
+            },
+        ],
+        "note": (
+            "There is no spontaneous FOCBS declaration threshold merely because covered "
+            "cash crosses the Swiss border. CHF 10,000 or the foreign-currency equivalent "
+            "is an inquiry and information-system-registration trigger, not a declaration "
+            "threshold or carriage ceiling. Below that amount, ML/TF suspicion may still "
+            "activate information powers; provisional seizure and false/refused-information "
+            "consequences are conduct/suspicion mechanisms rather than numeric declaration "
+            "rules."
+        ),
+        "pair_surface_summary": (
+            "no spontaneous declaration · ≥ CHF 10,000 inquiry + FOCBS registration · "
+            "below-threshold ML/TF suspicion powers · seizure/offence are non-threshold controls"
+        ),
+    },
+}
 
 # Opt-in layered exchange-control profiles (Passage Check v1.1).
-# Empty in this architecture sprint. Exactly one of EXCHANGE_CONTROLS or
-# EXCHANGE_CONTROL_PROFILES may author a published slug.
-EXCHANGE_CONTROL_PROFILES: Dict[str, dict] = {}
+# Exactly one of EXCHANGE_CONTROLS or EXCHANGE_CONTROL_PROFILES may author a published slug.
+# Switzerland is the first live layered consumer.
+EXCHANGE_CONTROL_PROFILES: Dict[str, dict] = {
+    "switzerland": {
+        "classification_mode": "layered",
+        "posture": "layered",
+        "label": (
+            "IMF exchange system free of multiple currency practices and of restrictions "
+            "on payments and transfers for current international transactions except "
+            "security-related restrictions notified under Decision No. 144–(52/51); "
+            "separate Swiss sanctions architecture under the Embargo Act and "
+            "actor-/transaction-specific OECD capital and investment reservations."
+        ),
+        "components": [
+            {
+                "scope": "Current international transactions",
+                "summary": (
+                    "The IMF 2026 Informational Annex describes Switzerland's exchange system as "
+                    "free of multiple currency practices and of restrictions on payments and "
+                    "transfers for current international transactions, except security-related "
+                    "restrictions notified pursuant to Executive Board Decision No. 144–(52/51)."
+                ),
+            },
+            {
+                "scope": "Security and sanctions",
+                "summary": (
+                    "The Embargo Act is the Swiss framework law for sanctions implementation; "
+                    "concrete measures are contained in separate ordinances, and the Federal "
+                    "Council may enact measures such as financial sanctions, trade restrictions, "
+                    "travel bans and asset freezes."
+                ),
+            },
+            {
+                "scope": "Capital and investment reservations",
+                "summary": (
+                    "OECD Code Annex B records actor- and transaction-specific Swiss reservations, "
+                    "including specified inward direct-investment situations, non-resident "
+                    "real-estate acquisition controls, and private pension-fund / insurance limits "
+                    "on foreign securities, money-market instruments and deposits with "
+                    "non-resident financial institutions."
+                ),
+            },
+            {
+                "scope": "Classification boundary",
+                "summary": (
+                    "SNB monetary-policy intervention, Swiss border-cash controls, AML/KYC "
+                    "account-relationship duties, VAT conversion mechanics and SIC payment "
+                    "infrastructure are not classified by the governed Switzerland rule as "
+                    "exchange controls."
+                ),
+            },
+        ],
+    },
+}
 
 # Which rule fields the engine surfaces, and the ontology class each maps into.
 RULE_FIELDS = {

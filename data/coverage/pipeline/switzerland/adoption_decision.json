@@ -1,0 +1,829 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "switzerland",
+  "gate": "switzerland_hardening_i_ii_iii_iv_adoption",
+  "baseline_head": "a1eca8ba0488ddf4a2987d0bd672bcb4a8babb75",
+  "decided_at": "2026-09-10",
+  "decided_by": "operator",
+  "decision": "PASS",
+  "m2_5_frozen": true,
+  "frozen_artifacts": [
+    "candidate_claims.json",
+    "human_claim_review.json",
+    "claim_review_report.json",
+    "claim_extraction_report.json",
+    "sources.json",
+    "evidence_excerpts.json",
+    "intake_report.json"
+  ],
+  "notes": "Hardening I–III adoption rows preserved. Hardening IV Adoption Gate adopts CC-CH-REG-001..017 into CH-REG-01..17 (17 distinct; zero reconciliation). Bound: CH-REG-01..04,06,11..17. Unbound: CH-REG-05,07..10. Bindings added for country_overview and rules.exchange_controls (total bindings 11; remaining required unbound fields 0). Dual IMF taxonomy preserved. REG-006 retains CURRENT-international-transactions scope + security exception. Zero no-exchange-controls / no-capital-controls / fully-liberalised / freely-convertible / synthetic capital-account claims. passage_check_posture_status = deferred_to_semantic_closure (do not modify build_passage_check.py; posture is hand-verified transcription from final rules prose). M2.5 adoption_eligible remains false. Does not draft switzerland.json. Hardening I–IV CLOSED; next = Semantic/Fidelity Closure.",
+  "stats": {
+    "hardening_i_candidates": 13,
+    "hardening_ii_candidates": 15,
+    "hardening_iii_candidates": 14,
+    "hardening_iv_candidates": 17,
+    "candidates_in_scope_total": 59,
+    "hardening_i_project_claims": 10,
+    "hardening_ii_project_claims_created": 13,
+    "hardening_iii_project_claims_created": 13,
+    "hardening_iv_project_claims_created": 17,
+    "distinct_project_claims_total": 53,
+    "hardening_iv_adopted_bound": 12,
+    "hardening_iv_adopted_unbound": 5,
+    "hardening_iv_reconciled_into_canonical": 0,
+    "not_adopted": 0,
+    "duplicate_project_claims_created": 0,
+    "field_bindings_total": 11,
+    "remaining_required_unbound_fields": 0,
+    "publication_changes": 0,
+    "switzerland_rules_changes": 0,
+    "no_exchange_controls_claims_created": 0,
+    "no_capital_controls_claims_created": 0,
+    "fully_liberalised_claims_created": 0,
+    "freely_convertible_claims_created": 0,
+    "general_capital_account_claims_created": 0,
+    "invoice_freedom_claims_created": 0,
+    "transfer_freedom_claims_created": 0,
+    "repatriation_right_claims_created": 0,
+    "prior_approval_negative_claims_created": 0,
+    "general_capital_liberalisation_claims_created": 0,
+    "resident_entitlement_claims_created": 0,
+    "non_resident_entitlement_claims_created": 0,
+    "passage_check_posture_status": "deferred_to_semantic_closure"
+  },
+  "adoptions": [
+    {
+      "candidate_id": "CC-CH-CASH-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-CASH-01"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:0c8529702aa3d8fe6a3272f606b98dae38021019abcabde574ae93fecdb3faca",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: FOCBS unrestricted quantitative carriage into/through/out is a standalone verified/E1 proposition. Scope limited to absence of quantitative carriage ceiling under the FOCBS border-cash framework. Forbidden inferences block no-controls / no-AML / no-seizure overreads. Bound to traveler summary and entry/exit carriage fields. Not a mechanical map from M2.5 supported→verified."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-002",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-CASH-02"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:01b17759baf75ddb56af885d696ac998be0e153ca1879be7e2c4a3551ecafcaf",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: M2.5 reviewed_text is the semantic source for the negative no-spontaneous-FOCBS-declaration claim. Project status verified (not mapped from M2.5 bounded) because the primary FOCBS statement directly supports the negative and forbidden inferences are strong. Bound into traveler summary, entry/exit, and cash_declaration_threshold. No-declaration ≠ no-control."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-003",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-CASH-03"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:219025c530bcd3ea46fa6799e6b4f25e9220bf388db49765d060f4ffd9390628",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: truthful-information-when-questioned remains independently useful after reconciliation. Trigger 'during a check' preserved; not transformed into proactive declaration. Bound to traveler summary and threshold architecture fields."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "adoption_decision": "reconciled",
+      "project_claim_ids": [
+        "CH-CASH-04"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6b161e141f7ce37a94bd062aad20d7f79f87abbe71d245e8016e7e9b1baf3fa2",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-CASH-04. FOCBS public >=CHF10k inquiry package establishes the same material proposition as Ordinance Art. 3 Abs. 1 (CC-CH-CASH-009). Legal text is the semantic spine; FOCBS guidance is supporting public/current corroboration cited on the same project claim. No second project claim minted. Fingerprint retained for Adoption history."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-005",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-CASH-05"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:0d44e061695995626b60b700acb25dd26d49414bf2d8aa76b7e49f5f10298ecd",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: >=CHF10k FOCBS information-system entry is materially distinct from inquiry (CH-CASH-04) and from Art. 6 Meldung (CH-CASH-10). Kept as standalone verified/E1 operational claim. Not called statistical recording, AML report, or declaration."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-006",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "adoption_decision": "reconciled",
+      "project_claim_ids": [
+        "CH-CASH-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:a0e3130d0b208ea386efce9f962149171d79b482fa22e668f83a42c12a39f0f2",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-CASH-08. FOCBS refusal/false-information customs-offence guidance overlaps Art. 5 lit. a–b (CC-CH-CASH-012). Ordinance lit. a–b controls operative scope; FOCBS wording is supporting representation only and must not broaden beyond lit. a–b. No duplicate offence claim."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-007",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "adoption_decision": "reconciled",
+      "project_claim_ids": [
+        "CH-CASH-07"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:a555cf296ea5747b05a242fbbe01fece080d1582ed9316b072621ccdfe643895",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-CASH-07. FOCBS temporary seizure / police handover is the same provisional-seizure mechanism as Ordinance Art. 4 (CC-CH-CASH-011). One canonical claim; temporary and provisional are not separate claims. Suspicion trigger and amount-independence preserved; not threshold-driven."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-008",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-CASH-09"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:929b860bbd566b2baf564f2b2f2ebba1ed3f0ac31cef1d4bc7701d8006fae4c2",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: Art. 2 Barmittel definition adopted verified/E0 for category fidelity but left unbound so traveler fields are not turned into a statutory-definition recital. German legal basis preserved; English rule is project rendering only, not unofficial English authority."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-009",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-CASH-04"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:aae2efa32c3a0ec07104053736f4b373d338cba7fb9427f8b2e2314153029675",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Art. 3 Abs. 1 is the legal spine for the canonical >=CHF10k inquiry/information package (CH-CASH-04, verified/E0). Preserves mindestens CHF 10,000, identity, origin/source, intended use, beneficial owner, express-questioning trigger. CC-CH-CASH-004 reconciled into this claim. Forbidden: declaration threshold, carriage ceiling, permit, automatic suspicion."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-010",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-CASH-06"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:7ce5808c0f6fff952d16d2636cde8d1e366bcd056cec68a784eef11c383ba59d",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Art. 3 Abs. 2 below-threshold suspicion inquiry is strategically distinct — prevents 'below CHF 10,000 = outside customs control'. Exact ML/TF suspicion condition preserved. Bound into traveler summary and cash_declaration_threshold wording architecture."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-011",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-CASH-07"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:e299b32dee366f3cf52463517b90904d88e4083c0a712a3e789efeb9c37200b3",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Art. 4 provisional seizure is the legal spine for CH-CASH-07 (verified/E0). Amount-independent; ML/TF suspicion context; provisional only. CC-CH-CASH-007 FOCBS temporary-seizure guidance reconciled into this claim. Bound carefully so cash_declaration_threshold does not read as seizure-on-threshold."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-012",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-CASH-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:09b56a64ccf199c3ec1bb6c076f38e7313e57b54b87cad98a398fdc6b598adf3",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Art. 5 lit. a–b refusal/false-information offence is the legal spine for CH-CASH-08 (verified/E0). Scope limited exactly to lit. a–b. CC-CH-CASH-006 FOCBS guidance reconciled as supporting representation. Bound to cash_declaration_threshold; traveler summary not overloaded with penalty detail."
+    },
+    {
+      "candidate_id": "CC-CH-CASH-013",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-CASH-10"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:05356f7b613c0d703e4aa2365f914fb073efcda1ee3e16dec566ac5d918d31e3",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: Art. 6 Abs. 2 amount-independent Meldung adopted as bounded/E1 and unbound. M2.5 reviewed_text retained as German operative rule. Actor/recipient/trigger semantics are insufficient for safe traveler drafting. Binding into cash_declaration_threshold would risk false inference of amount-independent traveler declaration. Distinct from CH-CASH-05 FOCBS information-system entry. Forbidden: Meldung = traveller declaration; traveler must declare regardless of amount."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-01"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:2e1743652ec10239cb80be0218179b3be812585fae915ace2d983625305f5d13",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: AMLA Art. 3 para. 1 contracting-party identity is verified/E0. KYC ≠ entitlement. Bound to resident/non-resident fields as compliance condition only."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-002",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-03"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6ca74e91753fc0fb07cdb8a2d828ac1604d77c84d2fa88dc136c13b133004f26",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: AMLA Art. 4 beneficial-owner identify+verify is verified/E0. Distinct from CDB Art. 27 statement mechanics (CH-ACC-04)."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-003",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-06"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:90bf64fb2a8ad091678d8236884da859ce3a7b5953eb14ddeb538f4ca1b8303f",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: AMLA Art. 5 doubt-triggered repetition is verified/E0. Distinct from Art. 7 para. 1bis periodic update."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:39db2547db953afe45fd19ef42283d10fcb519c4524b36012d0d691045957de9",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: AMLA Art. 6 para. 2 is the legal spine for conditional enhanced clarification (CH-ACC-08, verified/E0). ACC-009 and ACC-015 reconcile into this claim as FINMA corroboration."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-005",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-07"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:5ef2199df90dd656f075e52f69ae4f649250e5a3c39383d944d7fd25364ff138",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: AMLA Art. 7 para. 1bis risk-based periodic record update is verified/E0. Not continuous re-identification."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-006",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-02"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:88e09ba1a5d2bb96650bf0363ed1f7d25feff30d9c1ab1c12baf33f36e7c4fd3",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: CDB Art. 4 bank account/securities-account opening identity is verified/E1 and kept distinct from AMLA Art. 3 general FI duty (CH-ACC-01). Actor scope = banks/CDB — not all intermediaries."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-007",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-ACC-05"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:b9d0e98420bab13eacd79660d7c1ae41a12330a4801f2cd054282968788a3aba",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: CDB Art. 20 controlling-person identification adopted verified/E1 but unbound — too technical for resident/non-resident public surfaces; retained as fidelity guardrail."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-008",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-ACC-11"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:5b2523487bc7dd91684b7b0b6d8e56fb2a10548b10f7b8f14408e4970676c950",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: CDB Art. 7 domicile documentation adopted verified/E1 unbound. Data requirement ≠ residence account class; public fields do not need this documentary detail."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-009",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:93989c76d6789e264fd5500ba5025599ee13a22d60d7b474928d9702c3ed74f9",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-ACC-08. FINMA heightened-risk recording/clarification is a supervisory manifestation of the same conditional enhanced-clarification architecture as AMLA Art. 6. No second claim. Non-resident ≠ high-risk class preserved in forbidden inferences.",
+      "adoption_decision": "reconciled"
+    },
+    {
+      "candidate_id": "CC-CH-ACC-010",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-09"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:cd78d712a860f3b0a46776186e7a24efdd5cde6e62982c2244fc78807cf8c970",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: FINMA institutional risk-tolerance boundary adopted as bounded/E1 (supervisory institutional expectation, not statutory ban). Bound to defeat legacy 'freely' without inventing a national prohibition."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-011",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-10"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:44ad7aa2b0b461a8fc5883ab8b13e526ae25c2ca544cfc59b6344a14c6d03063",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: high-risk source-of-assets clarification and higher-risk transaction monitoring adopted as bounded/E1 and kept distinct from CH-ACC-08 baseline Art. 6 triggers. Not universal foreign SoW."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-012",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-04"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:226299d51d2952a2d88fb4ab108cf000262762251d01122582400bd99e5c97eb",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: CDB Art. 27 bank BO statement on account opening is verified/E1 and kept distinct from AMLA Art. 4 general BO duty (CH-ACC-03)."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-013",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-ACC-12"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:67a3255c26f2b3101c11daeca5e915a3e8fea158ebf98e99f74c10f405a0a153",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: 1 October 2026 revised AMLA/transparency EIF adopted unbound as verified temporal/future fact. Not current on 2026-09-09. No current-field binding."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-014",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-ACC-13"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:baf39159deb6d1d79c6c6c47eb933a9a450fb12dbcf4edf057332f218af57ddf",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: AMLO-FINMA May 2026 consultation adopted unbound as bounded temporal process claim. Consultation ≠ adopted current ordinance. No current-field binding."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-015",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:9616777e7cc0a674779feaea6fbe80c568481b21ae733383e57cc55a948fb4e4",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-ACC-08. FINMA unusual/crime-TF clarification overlaps AMLA Art. 6 conditional clarification architecture. Retained as supporting supervisory representation — no duplicate claim.",
+      "adoption_decision": "reconciled"
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-01"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:171f755a06ae0abf1caad630dba9c325ffe1dc6e71903fc775dbadf4365c4abe",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: CO Art. 84 para. 1 verified/E0. Contractual debt mechanics only; not mechanical supported→verified map. Bound to summary.business and business_invoicing_settlement."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-002",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-02"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6e26d1373554f5e60779c914e966ac5d927889c2c4e6a25ffb944883b63c2b74",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Art. 84 para. 2 substitution limb verified/E0, kept distinct from CH-BIZ-03 exception."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-003",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-03"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:5ed4c161b1fdb2a46b572675282587f7cbabc4946da0869b54f4ca90a9a8f6c7",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: actual-currency literal-performance exception verified/E0; coupled with but not merged into CH-BIZ-02."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-04"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:b176d3550c8b4cb42c24e020ab8e5d3d3bb93d43ff3a326a780f30cd92e8bdb2",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: VAT Art. 45 para. 1 verified/E0 tax-assessment conversion. Tax ≠ CHF settlement mandate."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-005",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-05"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:afc2b991e8b2e1b06f591f562f3dbcdfc8669aaa0b21a044c74ecbcb3ac1c0cb",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: VAT Art. 45 para. 2 verified/E0 classification mechanism. Not universal invoice freedom."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-006",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-06"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:81558c9a11d91add8491fdc1f5595ec06e628234bb119c4a83e770bea60f1cae",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: FTA VAT FX rate mechanics verified/E1 official guidance. Not bank/SNB commercial FX rate."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-007",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-BIZ-07"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:0699f31e2c7f657995437d1c6896990f044e6a2c30a42e6a50d82da5c20c4877",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: Art. 957a(4) accounting currency verified/E0 adopt_unbound — guardrail only; not forced into H3 public fields."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-008",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-BIZ-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:cb81b82175e31bd68c182c4c1e03c2118b2e7b2a26898c25cd5283044b610413",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: Art. 958d(3) financial-reporting currency verified/E0 adopt_unbound; distinct from CH-BIZ-07."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-009",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-09"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6c94b1b8d35be9a9c854e951d3d504bc968569964dd1df2400bf5e0ba27d2d44",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: SIC infrastructure verified/E1. Bound to all three H3 fields as payment-rail mechanics only — not entitlement."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-010",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-10"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:95a36547e61f7e0a82f4e67fbc1bae569033099ac84f821863d07ab08e2d85f7",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: domestic instant payments verified/E1. Bound with CH-BIZ-09; remains domestic-only."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-011",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-BIZ-11"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:26f36906752b6fff6362abd2e126eaaff1aa310a3450d24dda4cb93a33a1d84d",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: SIC–TIPS exploration adopted unbound as verified temporal fact. Not production; no current-field binding."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-012",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-BIZ-12"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:7204d194882014f6836a1d4ce48a031aedc9f5ffa0d53eef65e683c101bb4ecd",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: use M2.5 reviewed_text (Ukraine ordinance FINMA notice). Bounded/E1 adopt_unbound — fidelity guardrail, not generic Switzerland business-rule binding. Not mechanical M2.5 bounded→project bounded alone; ordinance-specificity requires bounded project status."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-013",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-BIZ-13"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:62dc71995ed9340310a1f24a145cc756c24433973b2257414813203f3c079f30",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: ISA adoption + expected 2027 EIF + bounded acquisition architecture adopted unbound as verified temporal composite (CH-BIZ-13). BIZ-014 reconciles into this claim. Not current FX/payment approval."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-014",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-13"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:96af7396c6c329760b291570c98490fc4d394af2092bf16cbc2328f4e35039aa",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-BIZ-13. Current non-operability (no applications can be submitted/reviewed) is the complementary temporal limb of the same ISA architecture. No duplicate claim.",
+      "adoption_decision": "reconciled"
+    },
+    {
+      "candidate_id": "CC-CH-REG-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-01"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:cb00d350d92c59a9887f1762707781e643f37234c338d38d4be6383619ccec1d",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: IMF de jure free floating verified/E1. Bound to country_overview. Distinct from CH-REG-04. Not mechanical supported→verified map."
+    },
+    {
+      "candidate_id": "CC-CH-REG-002",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-02"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:3162ab0ab8b702c7bdd4586bd817ca0ad93c259968a4547eae8190fbcc860bda",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: use M2.5 reviewed_text. Bounded/E1 for IMF-annex context sensitivity. Bound to country_overview. Not retail mid-market."
+    },
+    {
+      "candidate_id": "CC-CH-REG-003",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-03"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:7199f9e97e97f175efb384db38b27dae763f85aae14f14747331e5856cb68db6",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: SNB intervention right verified/E1. Bound to country_overview as structural counterweight to overreading free floating/market forces."
+    },
+    {
+      "candidate_id": "CC-CH-REG-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-04"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:412e355bc035be7507efb08313cd8864d0f9efd7c71cd3663fc177cfc91e5ab9",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: IMF de facto crawl-like verified/E1. Bound to country_overview. Must coexist with CH-REG-01; not rewritten as managed float/peg."
+    },
+    {
+      "candidate_id": "CC-CH-REG-005",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-REG-05"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:f8feae95bd5bc1b7b303c0a582f6dd332295747ffadb59b06d799aaf9af35e4b",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: Article VIII §§2–4 acceptance verified/E1 adopt_unbound. Provenance/audit; CH-REG-06 carries drafting consequence."
+    },
+    {
+      "candidate_id": "CC-CH-REG-006",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-06"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6ea1b4fdc58a9d6affad48eeeaff12a30e9deb8d10136e127c0870691e9b93c5",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: canonical current-international-payments architecture verified/E1. Bound to country_overview and rules.exchange_controls. Security exception mandatory."
+    },
+    {
+      "candidate_id": "CC-CH-REG-007",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-REG-07"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:7bc25be08d03145afc9fd3d0fbcb92254788ed9a6492a28aa22ea06b205adec2",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: SNB buy/sell FX mechanism verified/E1 adopt_unbound. Operational depth; CH-REG-03 covers structural overview."
+    },
+    {
+      "candidate_id": "CC-CH-REG-008",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-REG-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:8641ad5307c404094068cae6102e0ba27d7ff3f99dcb1bd93182fb7fd7ebce78",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: SNB spot/swap mechanics verified/E1 adopt_unbound."
+    },
+    {
+      "candidate_id": "CC-CH-REG-009",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-REG-09"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:9cb503cdff00a5ddb6d3a5e8874bb8f46d032130c16930a771cf857a16d27940",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: SNB counterparties verified/E1 adopt_unbound."
+    },
+    {
+      "candidate_id": "CC-CH-REG-010",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-REG-10"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:165c3fee9cc00101d160bbb267bd553d393b5dab58d329e79b2b72bbd6f4d84f",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: 18 June 2026 intervention posture verified/E1 temporal adopt_unbound. Not structural overview layer."
+    },
+    {
+      "candidate_id": "CC-CH-REG-011",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-11"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:c716a3ec480296cd2546efb3fc80f44d6dafe507be820f4096d010edd759480c",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: EmbG framework verified/E1. Bound to rules.exchange_controls (security/sanctions layer). Overview covered by CH-REG-06 exception."
+    },
+    {
+      "candidate_id": "CC-CH-REG-012",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-12"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:199f065675cc9768e6d46e2cdc790f9ca4506d16c8e7b7874c3ec91eb5c5840a",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Federal Council coercive-measure powers verified/E1. Bound to rules.exchange_controls."
+    },
+    {
+      "candidate_id": "CC-CH-REG-013",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-13"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:06fcf195032235d65bd398e4871ba43dfb179684f26353a47074db200e35f290",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: OECD List A I/A FDI reservation verified/E1. Bound to country_overview and rules.exchange_controls."
+    },
+    {
+      "candidate_id": "CC-CH-REG-014",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-14"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:c8ab9059fc0a941fcd93f86eb53683e81b62b4805a1cdc147b7aacb2adb122b8",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: OECD non-resident real-estate reservation verified/E1. Bound to country_overview and rules.exchange_controls."
+    },
+    {
+      "candidate_id": "CC-CH-REG-015",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-15"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:cd797af40e80c243b89fa29942de375f05c95019017071b796ba93c66a15f544",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: OECD pension/insurance foreign-securities reservation verified/E1. Bound to both final fields; overview must not numeric-overcompress to households."
+    },
+    {
+      "candidate_id": "CC-CH-REG-016",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-16"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:9ca06234599351b5f5d18e4af0e271373065b1c97a2fe6b9b275cfafbd59998d",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: OECD pension/insurance money-market reservation verified/E1. Bound to both final fields."
+    },
+    {
+      "candidate_id": "CC-CH-REG-017",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-REG-17"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:2a940e7e21485d8c9615cd44369d581562098ad2c896a7ae1210db2de6a32f34",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: use M2.5 reviewed_text with institutional actors front-loaded. Bounded/E1. Bound to country_overview and rules.exchange_controls."
+    }
+  ]
+}

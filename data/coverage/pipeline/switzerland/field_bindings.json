@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "switzerland",
+  "notes": "Switzerland Hardening I–IV bindings. Prior nine H1–H3 bindings preserved. Hardening IV adds country_overview and rules.exchange_controls only (total 11). Remaining required unbound fields: 0. Passage Check posture not bound here — deferred to Semantic/Fidelity Closure after rules prose exists.",
+  "bindings": [
+    {
+      "field": "summary.traveler",
+      "claim_ids": [
+        "CH-CASH-01",
+        "CH-CASH-02",
+        "CH-CASH-03",
+        "CH-CASH-04",
+        "CH-CASH-05",
+        "CH-CASH-06",
+        "CH-CASH-07"
+      ],
+      "wording_boundary": "May summarize, concisely: (1) unrestricted quantitative carriage of covered cash/instruments into/through/out of Switzerland under the FOCBS border-cash framework; (2) no spontaneous FOCBS declaration obligation for those covered instruments; (3) when questioned during a FOCBS check, truthful information is required; (4) a separate >= CHF 10,000 inquiry and FOCBS information-system registration layer; (5) below-threshold ML/TF suspicion may still trigger information powers; (6) provisional/temporary seizure on ML/TF suspicion remains possible and is not threshold-driven. Must NOT imply: Switzerland has no cash controls; nothing must be reported; CHF 10,000 declaration threshold; cash above CHF 10,000 is prohibited; CHF 10,000 carriage ceiling; permission required above CHF 10,000; unlimited and unregulated; no AML controls; below CHF 10,000 no controls; Meldung/Art. 6 as traveller declaration; FINMA capital-export monitoring; free import means no customs authority."
+    },
+    {
+      "field": "rules.bring_foreign_currency_in",
+      "claim_ids": [
+        "CH-CASH-01",
+        "CH-CASH-02",
+        "CH-CASH-03",
+        "CH-CASH-04"
+      ],
+      "wording_boundary": "Inbound physical carriage framing: no quantitative inbound carriage ceiling for covered notes/coins/foreign currencies/bearer instruments under the reviewed FOCBS framework; no spontaneous FOCBS declaration obligation; inquiry/information-on-request and >= CHF 10,000 express-questioning package remain. Forbid: free import means no customs authority; no AML/TF control; >= CHF 10,000 requires permission; >= CHF 10,000 must be spontaneously declared; CHF 10,000 declaration threshold; CHF 10,000 carriage ceiling; statistical recording as the inbound rule; FINMA/SNB as inbound cash authorities; capital-account repatriation language in this border field."
+    },
+    {
+      "field": "rules.take_foreign_currency_out",
+      "claim_ids": [
+        "CH-CASH-01",
+        "CH-CASH-02",
+        "CH-CASH-03",
+        "CH-CASH-04"
+      ],
+      "wording_boundary": "Outbound physical carriage framing only (same architecture as inbound): unrestricted quantitative outbound carriage of covered instruments; no spontaneous FOCBS declaration; questioning/information and >= CHF 10,000 inquiry package remain. This field concerns physical border carriage, not capital-account repatriation. Forbid and treat as fidelity-invalid: earned from business or salary; Non-residents may freely repatriate; monitored under FINMA; Large capital exports by residents are monitored under FINMA; CHF 10,000 declaration threshold; CHF 10,000 carriage ceiling; permission required above CHF 10,000; spontaneous declaration at exit; free export means no customs controls."
+    },
+    {
+      "field": "rules.cash_declaration_threshold",
+      "claim_ids": [
+        "CH-CASH-02",
+        "CH-CASH-03",
+        "CH-CASH-04",
+        "CH-CASH-05",
+        "CH-CASH-06",
+        "CH-CASH-07",
+        "CH-CASH-08"
+      ],
+      "wording_boundary": "Encode four architecture layers explicitly and keep them atomic: (A) no spontaneous FOCBS declaration threshold / no obligation to declare covered cash to FOCBS merely for crossing the border; (B) separate >= CHF 10,000 (mindestens / or more / equals or exceeds) inquiry package on express questioning (identity, origin/source, intended use, beneficial owner) plus FOCBS information-system registration at equals-or-exceeds CHF 10,000 — inquiry ≠ recording and neither is spontaneous declaration; (C) below-threshold ML/TF suspicion may still permit information powers under Art. 3 Abs. 2; (D) provisional/temporary seizure and Art. 5 lit. a–b refusal/false-information offence are suspicion/conduct mechanisms, not numeric carriage restrictions. Hard forbid: CHF 10,000 declaration threshold; declaration required at CHF 10,000; cash above CHF 10,000 must be declared; CHF 10,000 carriage ceiling; permission required above CHF 10,000; below CHF 10,000 no controls; no declaration for normal amounts; large amounts recorded for statistical and AML purposes (unsupported statistical purpose); large or suspicious cash movements subject to AML reporting by financial institutions as the border rule; Meldung/Art. 6 as traveller declaration; automatic confiscation; permanent seizure as the threshold consequence."
+    },
+    {
+      "field": "rules.resident_holding_rules",
+      "claim_ids": [
+        "CH-ACC-01",
+        "CH-ACC-02",
+        "CH-ACC-03",
+        "CH-ACC-04",
+        "CH-ACC-06",
+        "CH-ACC-07",
+        "CH-ACC-08",
+        "CH-ACC-09",
+        "CH-ACC-10"
+      ],
+      "wording_boundary": "Describe only governed H2 AML/account-relationship compliance conditions where a relevant financial intermediary establishes or maintains a client relationship with a resident: contracting-party identity verification (AMLA / bank CDB account-opening where applicable); beneficial-owner identification/verification and bank BO statement mechanics; repeated verification on doubt; risk-based periodic record updating; conditional enhanced clarification (unusual / higher-risk / crime-TF indicators); institutional money-laundering risk tolerance that may place certain clients/countries/services outside acceptance limits; and, for high-risk relationships, detailed source-of-assets clarification and careful monitoring of higher-risk transactions. H2 did NOT establish a statutory resident right to open or hold bank or foreign-currency accounts — do not state or imply such entitlement. Hard forbid: Swiss residents may hold and maintain foreign currency accounts freely; residents have a right to foreign-currency accounts; residents may open accounts without restriction; freely; KYC proves entitlement; successful KYC guarantees acceptance; without prior approval; no approval is required; unrestricted cross-border transfers; unrestricted repatriation; authorised banks and financial institutions as a vague entitlement actor class without AML scope. Residence-specific entitlement or exemption is not established by these H2 claims; do not assert residents and non-residents are treated identically under all Swiss law."
+    },
+    {
+      "field": "rules.non_resident_rules",
+      "claim_ids": [
+        "CH-ACC-01",
+        "CH-ACC-02",
+        "CH-ACC-03",
+        "CH-ACC-04",
+        "CH-ACC-06",
+        "CH-ACC-07",
+        "CH-ACC-08",
+        "CH-ACC-09",
+        "CH-ACC-10"
+      ],
+      "wording_boundary": "Describe governed AML/account-relationship requirements where a relevant financial intermediary establishes a client relationship — without asserting universal non-resident account entitlement or the opposite ban. May include identity verification, beneficial-owner requirements, bank CDB account-opening mechanics where applicable, risk-based updates, conditional enhanced DD, institutional risk tolerance / outside-tolerance acceptance, and high-risk conditional source-of-assets monitoring. Governed agnosticism on universal entitlement. Hard forbid: Non-residents may open and operate foreign currency accounts; transfer funds freely; without prior approval; freely; all non-residents are entitled to Swiss accounts; foreign clients are legally guaranteed access; all non-residents are high risk; all non-residents require enhanced DD; foreign residence automatically requires source-of-wealth proof; unrestricted transfer/repatriation rights; non-residents have no right to accounts (unsupported opposite). Country risk ≠ residency class. Institutional refusal under risk tolerance ≠ statutory nationality/residence prohibition."
+    },
+    {
+      "field": "summary.business",
+      "claim_ids": [
+        "CH-BIZ-01",
+        "CH-BIZ-02",
+        "CH-BIZ-03",
+        "CH-BIZ-04",
+        "CH-BIZ-05",
+        "CH-BIZ-06",
+        "CH-BIZ-09",
+        "CH-BIZ-10"
+      ],
+      "wording_boundary": "Mechanism-based business summary only within bound H3 claims: Swiss private law (CO Art. 84) contemplates foreign-currency pecuniary debts; local-currency substitution at maturity is possible subject to the actual-currency contractual exception; Swiss VAT rules separately recognise foreign-currency invoices/receipts for tax classification and require CHF conversion for VAT assessment using FTA monthly average or daily sell rates; SIC provides central Swiss payment infrastructure and domestic account-to-account instant payments operate within their evidenced scope. Hard forbid: full freedom; freely; businesses enjoy full freedom to hold, transfer, convert and repatriate; Business transactions may be invoiced and settled in foreign currency or CHF (as a universal legal rule); Cross-border payments and repatriation of funds are handled freely; unrestricted settlement; unrestricted cross-border payments; unrestricted repatriation; no approval required; fully liberalised; no exchange controls; widely available FX conversion; SIC proves international transfer freedom; domestic instant payment equals international/cross-currency instant payment; VAT conversion equals CHF-only settlement; accounting currency equals payment currency; authorised banks and financial institutions as a vague entitlement class. Do not bind or import narrow Ukraine sanctions or future ISA into this summary."
+    },
+    {
+      "field": "rules.business_invoicing_settlement",
+      "claim_ids": [
+        "CH-BIZ-01",
+        "CH-BIZ-02",
+        "CH-BIZ-03",
+        "CH-BIZ-04",
+        "CH-BIZ-05",
+        "CH-BIZ-06",
+        "CH-BIZ-09",
+        "CH-BIZ-10"
+      ],
+      "wording_boundary": "Distinguish explicitly: invoice ≠ debt denomination ≠ VAT classification ≠ payment currency ≠ accounting currency ≠ settlement rail. May describe Art. 84 FCY-denominated monetary obligations and local-currency substitution / actual-currency exception; VAT Art. 45 foreign-currency invoice/receipt classification and CHF conversion for VAT assessment with FTA rate mechanics; SIC and domestic instant-payment infrastructure within evidenced scope. Must NOT state: Business transactions may be invoiced and settled in foreign currency or CHF as a universal legal rule; Cross-border payments and repatriation are handled freely; full freedom; freely; unrestricted transfers; no approval required; authorised banks and financial institutions as legacy entitlement wording; VAT conversion requires commercial settlement in CHF; accounting/reporting currency equals invoice or payment currency. Do not bind CH-BIZ-07/08/11/12/13."
+    },
+    {
+      "field": "rules.banking_conversion_practicality",
+      "claim_ids": [
+        "CH-BIZ-09",
+        "CH-BIZ-10"
+      ],
+      "wording_boundary": "Evidence-grounded infrastructure only: SIC is central Swiss payment infrastructure within its evidenced participant/large-value/retail scope; domestic account-to-account instant payments operate within the evidenced domestic scope. This field remains agnostic on general customer FX-conversion availability — H3 did not establish it. Hard forbid: Foreign exchange conversion and transfers are widely available; easy conversion; unrestricted conversion; competitive rates; low friction; licensed money exchange houses throughout Switzerland; ATMs provide general FX conversion; all banks provide conversion; cross-border payments are free/unrestricted; SIC performs general customer FX conversion; domestic instant payments are cross-currency; no approval required; freely; full freedom. Do not force Art. 84 / VAT / FTA tax-conversion claims into this banking field."
+    },
+    {
+      "field": "country_overview",
+      "claim_ids": [
+        "CH-REG-01",
+        "CH-REG-02",
+        "CH-REG-03",
+        "CH-REG-04",
+        "CH-REG-06",
+        "CH-REG-13",
+        "CH-REG-14",
+        "CH-REG-15",
+        "CH-REG-16",
+        "CH-REG-17"
+      ],
+      "wording_boundary": "Layered overview only within bound H4 claims. Must be able to convey: (A) IMF dual taxonomy — de jure free floating AND de facto crawl-like from 25 April 2025 — without homemade harmonisation; (B) CHF market-forces / free-market settlement wording only within the IMF 2026 Informational Annex exchange-rate arrangement context (CH-REG-02); (C) SNB retains intervention capability (CH-REG-03) as monetary-policy action, not customer exchange control; (D) CURRENT international transactions — IMF exchange system free of MCP and of restrictions on current payments/transfers EXCEPT security restrictions notified under Decision 144–(52/51) (CH-REG-06); (E) CAPITAL/INVESTMENT — separate OECD Annex B reservations exist in specified actor/transaction categories (bounded inward FDI; non-resident real estate; institutional pension/insurance foreign securities, money-market, and non-resident-deposit reservations). Hard forbid: fully liberalised; no exchange controls; no restrictions on current or capital account; CHF freely convertible; completely free; unrestricted capital movement; capital account regulated as an unsupported global claim; crawl-like = crawling peg / managed float; intervention = managed float / peg / exchange control; no sanctions; all current payments always executable by every customer; all residents subject to OECD institutional limits / 30% household foreign-asset limit; Swiss residents generally cannot hold foreign accounts. Do not force CH-REG-05/07/08/09/10 or EmbG detail (CH-REG-11/12) into the overview — REG-006 already supplies the security-exception architecture at summary level. H1 cash / H2 AML / H3 Art.84-VAT-SIC / future ISA remain adjacent frameworks, not exchange-control substitutes."
+    },
+    {
+      "field": "rules.exchange_controls",
+      "claim_ids": [
+        "CH-REG-06",
+        "CH-REG-11",
+        "CH-REG-12",
+        "CH-REG-13",
+        "CH-REG-14",
+        "CH-REG-15",
+        "CH-REG-16",
+        "CH-REG-17"
+      ],
+      "wording_boundary": "Mechanism-based field answering what specific restrictions/overlays exist — not a binary controls/no-controls answer. Required architecture: (A) CURRENT INTERNATIONAL TRANSACTIONS — IMF exchange system free of multiple currency practices and of restrictions on payments/transfers for current international transactions, except security restrictions notified to the IMF under Decision No. 144–(52/51) (CH-REG-06); (B) SECURITY/SANCTIONS — Embargo Act is the framework law since 1 January 2003; concrete coercive measures reside in separate ordinances; Federal Council may enact measures such as financial sanctions, trade restrictions, travel bans, and asset freezes (CH-REG-11/12). Do not claim every sanctions measure is an IMF exchange restriction; (C) CAPITAL/INVESTMENT RESERVATIONS — OECD Annex B actor/transaction-specific reservations including bounded inward FDI sectors/situations, non-resident real-estate authorisation/quotas, and pension/insurance foreign securities, money-market, and non-resident-deposit limits (CH-REG-13..17). These do NOT establish a universal capital-control regime; (D) ADJACENT BUT NOT EXCHANGE CONTROLS — do not treat as exchange controls: SNB monetary-policy FX intervention; H1 border-cash mechanics; H2 AML/KYC; H3 VAT conversion; H3 SIC infrastructure. Future ISA remains CH-BIZ-13 and must not be restated as current FX control. Hard forbid: no exchange controls; fully liberalised; all capital transfers unrestricted; all capital transfers controlled; current and capital transactions unrestricted; sanctions = general payment approval; OECD reservation = FX conversion restriction; real-estate approval = currency-transfer approval; 30% limit applies to all residents; SNB intervention = capital control; CHF freely convertible; no capital controls; capital account regulated as an unsupported global claim."
+    }
+  ]
+}

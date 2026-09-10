@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0.0",
+  "country_slug": "switzerland",
+  "decision": "PASS",
+  "layers": {
+    "fidelity": {
+      "blocking_count": 0,
+      "findings": []
+    },
+    "evidence": {
+      "blocking_count": 0,
+      "findings": []
+    },
+    "structural": {
+      "blocking_count": 0,
+      "findings": []
+    },
+    "governance": {
+      "blocking_count": 0,
+      "findings": [
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-10K-OPERATOR-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'CHF 10,000 operator wording on FOCBS page vs ordinance', 'detail': \"FOCBS English page body uses 'CHF 10,000 or more' / 'equals or exceeds CHF 10,000' for inquiry and information-system registration. Ordinance Art. 3 uses 'mindestens 10 000 Franken' (at least CHF 10,000 / >=). A FOCBS page lead sentence also uses 'over 10,000 francs' shorthand. Disposition: prefer the body inquiry/registration clauses and Art. 3 'mindestens' (>=) for Hardening I candidates; do not promote a strict-exceeding (>) operator for the threshold mechanics.\", 'status': 'preserved_prefer_ge', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'Use >= / CHF 10,000 or more / equals or exceeds / mindestens 10 000 Franken. Do not flatten to > CHF 10,000 for the inquiry or registration mechanics.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-ISA-TEMPORAL-2027', 'sources': ['SRC-CH-SECO-ISA'], 'topic': 'Investment Screening Act adopted 2025 vs expected 2027 entry into force', 'detail': 'On 2026-09-10 SECO states Parliament adopted the ISA on 19 December 2025 and entry into force is expected in 2027; applications cannot currently be submitted or reviewed. Disposition: treat ISA prior-approval architecture as future/temporal only; do not draft it as current Swiss law governing ordinary bank transfers, dividends, FX conversion, or general capital movements.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not state ISA approval is currently required for capital transfers; do not deny the future critical-sector acquisition-screening framework when discussing post-EIF rules.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-IP-DOMESTIC-VS-EXPLORATION', 'sources': ['SRC-CH-SNB-IP-ECB-2025'], 'topic': 'domestic SIC instant payments vs SNB/ECB TIPS interlinking exploration', 'detail': 'The same SNB 29 September 2025 press release describes current domestic instant payments and an exploration of SIC IP–TIPS interlinking continuing throughout 2026. Disposition: keep domestic IP capability distinct from prospective cross-currency interlinking; exploration is not production capability.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not draft cross-currency SIC/TIPS interlinking as currently operational.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-DEJURE-DEFACTO-2026', 'sources': ['SRC-CH-IMF-AIV-2026'], 'topic': 'de jure free floating vs de facto crawl-like (2026 Annex)', 'detail': \"IMF Country Report No. 2026/233 Informational Annex states the de jure exchange-rate arrangement is free floating while the de facto arrangement is classified as crawl-like from 25 April 2025 (bilateral EUR volatility below the 2-percent threshold). Disposition: preserve both classifications separately; do not collapse into a single 'floating' label; do not invent managed-float / dirty-float taxonomy; do not treat de facto crawl-like as an exchange-control regime or peg.\", 'status': 'preserved_dual_classification', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': \"Use IMF exact terms: de jure free floating; de facto crawl-like from April 25, 2025. Do not backfill 2025 'de facto floating' wording as current.\"}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-INTERVENTION-VS-ARRANGEMENT', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-SNB-MP-IMPL', 'SRC-CH-SNB-MPA-20260618'], 'topic': 'SNB FX intervention capability/posture vs IMF exchange-rate classification', 'detail': 'IMF annex states SNB reserves the right to intervene while classifying de jure free floating / de facto crawl-like. SNB implementation page states SNB may buy/sell FX against CHF (usually spot/swap) with domestic and foreign counterparties. SNB 18 June 2026 MPA states increased willingness to intervene if necessary against rapid/excessive CHF appreciation threatening price stability. Disposition: keep intervention capability and 2026 posture distinct from IMF regime labels; intervention ≠ peg ≠ exchange-control regime.', 'status': 'preserved_separate_layers', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not transform increased willingness to intervene into continuous intervention, exchange-rate target, managed-float label, or capital control.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-CURRENT-VS-CAPITAL-LIBERALISATION', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-OECD-CLCM'], 'topic': 'IMF Article VIII current-transaction posture vs OECD capital reservations', 'detail': \"IMF 2026 annex supports an exchange system free of multiple currency practices and of restrictions on payments/transfers for CURRENT international transactions except notified security restrictions. OECD Annex B records current Swiss capital-movement reservations (inward FDI sectors, non-resident real estate, pension/insurance foreign-asset and related holdings). Disposition: never let Article VIII stand for capital-account full liberalisation; never summarise OECD reservations as 'Switzerland has capital controls' without actor/transaction scope.\", 'status': 'preserved_dual_architecture', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Current international transactions ≠ capital transactions. Preserve IMF and OECD scopes separately.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        }
+      ]
+    }
+  },
+  "blocking_findings": [],
+  "improvement_findings": [
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-10K-OPERATOR-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'CHF 10,000 operator wording on FOCBS page vs ordinance', 'detail': \"FOCBS English page body uses 'CHF 10,000 or more' / 'equals or exceeds CHF 10,000' for inquiry and information-system registration. Ordinance Art. 3 uses 'mindestens 10 000 Franken' (at least CHF 10,000 / >=). A FOCBS page lead sentence also uses 'over 10,000 francs' shorthand. Disposition: prefer the body inquiry/registration clauses and Art. 3 'mindestens' (>=) for Hardening I candidates; do not promote a strict-exceeding (>) operator for the threshold mechanics.\", 'status': 'preserved_prefer_ge', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'Use >= / CHF 10,000 or more / equals or exceeds / mindestens 10 000 Franken. Do not flatten to > CHF 10,000 for the inquiry or registration mechanics.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-ISA-TEMPORAL-2027', 'sources': ['SRC-CH-SECO-ISA'], 'topic': 'Investment Screening Act adopted 2025 vs expected 2027 entry into force', 'detail': 'On 2026-09-10 SECO states Parliament adopted the ISA on 19 December 2025 and entry into force is expected in 2027; applications cannot currently be submitted or reviewed. Disposition: treat ISA prior-approval architecture as future/temporal only; do not draft it as current Swiss law governing ordinary bank transfers, dividends, FX conversion, or general capital movements.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not state ISA approval is currently required for capital transfers; do not deny the future critical-sector acquisition-screening framework when discussing post-EIF rules.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-IP-DOMESTIC-VS-EXPLORATION', 'sources': ['SRC-CH-SNB-IP-ECB-2025'], 'topic': 'domestic SIC instant payments vs SNB/ECB TIPS interlinking exploration', 'detail': 'The same SNB 29 September 2025 press release describes current domestic instant payments and an exploration of SIC IP–TIPS interlinking continuing throughout 2026. Disposition: keep domestic IP capability distinct from prospective cross-currency interlinking; exploration is not production capability.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not draft cross-currency SIC/TIPS interlinking as currently operational.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-DEJURE-DEFACTO-2026', 'sources': ['SRC-CH-IMF-AIV-2026'], 'topic': 'de jure free floating vs de facto crawl-like (2026 Annex)', 'detail': \"IMF Country Report No. 2026/233 Informational Annex states the de jure exchange-rate arrangement is free floating while the de facto arrangement is classified as crawl-like from 25 April 2025 (bilateral EUR volatility below the 2-percent threshold). Disposition: preserve both classifications separately; do not collapse into a single 'floating' label; do not invent managed-float / dirty-float taxonomy; do not treat de facto crawl-like as an exchange-control regime or peg.\", 'status': 'preserved_dual_classification', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': \"Use IMF exact terms: de jure free floating; de facto crawl-like from April 25, 2025. Do not backfill 2025 'de facto floating' wording as current.\"}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-INTERVENTION-VS-ARRANGEMENT', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-SNB-MP-IMPL', 'SRC-CH-SNB-MPA-20260618'], 'topic': 'SNB FX intervention capability/posture vs IMF exchange-rate classification', 'detail': 'IMF annex states SNB reserves the right to intervene while classifying de jure free floating / de facto crawl-like. SNB implementation page states SNB may buy/sell FX against CHF (usually spot/swap) with domestic and foreign counterparties. SNB 18 June 2026 MPA states increased willingness to intervene if necessary against rapid/excessive CHF appreciation threatening price stability. Disposition: keep intervention capability and 2026 posture distinct from IMF regime labels; intervention ≠ peg ≠ exchange-control regime.', 'status': 'preserved_separate_layers', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not transform increased willingness to intervene into continuous intervention, exchange-rate target, managed-float label, or capital control.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-CURRENT-VS-CAPITAL-LIBERALISATION', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-OECD-CLCM'], 'topic': 'IMF Article VIII current-transaction posture vs OECD capital reservations', 'detail': \"IMF 2026 annex supports an exchange system free of multiple currency practices and of restrictions on payments/transfers for CURRENT international transactions except notified security restrictions. OECD Annex B records current Swiss capital-movement reservations (inward FDI sectors, non-resident real estate, pension/insurance foreign-asset and related holdings). Disposition: never let Article VIII stand for capital-account full liberalisation; never summarise OECD reservations as 'Switzerland has capital controls' without actor/transaction scope.\", 'status': 'preserved_dual_architecture', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Current international transactions ≠ capital transactions. Preserve IMF and OECD scopes separately.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
+    }
+  ],
+  "needs_human_review": [
+    "{'conflict_id': 'CH-SRC-CONFLICT-10K-OPERATOR-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'CHF 10,000 operator wording on FOCBS page vs ordinance', 'detail': \"FOCBS English page body uses 'CHF 10,000 or more' / 'equals or exceeds CHF 10,000' for inquiry and information-system registration. Ordinance Art. 3 uses 'mindestens 10 000 Franken' (at least CHF 10,000 / >=). A FOCBS page lead sentence also uses 'over 10,000 francs' shorthand. Disposition: prefer the body inquiry/registration clauses and Art. 3 'mindestens' (>=) for Hardening I candidates; do not promote a strict-exceeding (>) operator for the threshold mechanics.\", 'status': 'preserved_prefer_ge', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'Use >= / CHF 10,000 or more / equals or exceeds / mindestens 10 000 Franken. Do not flatten to > CHF 10,000 for the inquiry or registration mechanics.'}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-ISA-TEMPORAL-2027', 'sources': ['SRC-CH-SECO-ISA'], 'topic': 'Investment Screening Act adopted 2025 vs expected 2027 entry into force', 'detail': 'On 2026-09-10 SECO states Parliament adopted the ISA on 19 December 2025 and entry into force is expected in 2027; applications cannot currently be submitted or reviewed. Disposition: treat ISA prior-approval architecture as future/temporal only; do not draft it as current Swiss law governing ordinary bank transfers, dividends, FX conversion, or general capital movements.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not state ISA approval is currently required for capital transfers; do not deny the future critical-sector acquisition-screening framework when discussing post-EIF rules.'}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-IP-DOMESTIC-VS-EXPLORATION', 'sources': ['SRC-CH-SNB-IP-ECB-2025'], 'topic': 'domestic SIC instant payments vs SNB/ECB TIPS interlinking exploration', 'detail': 'The same SNB 29 September 2025 press release describes current domestic instant payments and an exploration of SIC IP–TIPS interlinking continuing throughout 2026. Disposition: keep domestic IP capability distinct from prospective cross-currency interlinking; exploration is not production capability.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not draft cross-currency SIC/TIPS interlinking as currently operational.'}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-DEJURE-DEFACTO-2026', 'sources': ['SRC-CH-IMF-AIV-2026'], 'topic': 'de jure free floating vs de facto crawl-like (2026 Annex)', 'detail': \"IMF Country Report No. 2026/233 Informational Annex states the de jure exchange-rate arrangement is free floating while the de facto arrangement is classified as crawl-like from 25 April 2025 (bilateral EUR volatility below the 2-percent threshold). Disposition: preserve both classifications separately; do not collapse into a single 'floating' label; do not invent managed-float / dirty-float taxonomy; do not treat de facto crawl-like as an exchange-control regime or peg.\", 'status': 'preserved_dual_classification', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': \"Use IMF exact terms: de jure free floating; de facto crawl-like from April 25, 2025. Do not backfill 2025 'de facto floating' wording as current.\"}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-INTERVENTION-VS-ARRANGEMENT', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-SNB-MP-IMPL', 'SRC-CH-SNB-MPA-20260618'], 'topic': 'SNB FX intervention capability/posture vs IMF exchange-rate classification', 'detail': 'IMF annex states SNB reserves the right to intervene while classifying de jure free floating / de facto crawl-like. SNB implementation page states SNB may buy/sell FX against CHF (usually spot/swap) with domestic and foreign counterparties. SNB 18 June 2026 MPA states increased willingness to intervene if necessary against rapid/excessive CHF appreciation threatening price stability. Disposition: keep intervention capability and 2026 posture distinct from IMF regime labels; intervention ≠ peg ≠ exchange-control regime.', 'status': 'preserved_separate_layers', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not transform increased willingness to intervene into continuous intervention, exchange-rate target, managed-float label, or capital control.'}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-CURRENT-VS-CAPITAL-LIBERALISATION', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-OECD-CLCM'], 'topic': 'IMF Article VIII current-transaction posture vs OECD capital reservations', 'detail': \"IMF 2026 annex supports an exchange system free of multiple currency practices and of restrictions on payments/transfers for CURRENT international transactions except notified security restrictions. OECD Annex B records current Swiss capital-movement reservations (inward FDI sectors, non-resident real estate, pension/insurance foreign-asset and related holdings). Disposition: never let Article VIII stand for capital-account full liberalisation; never summarise OECD reservations as 'Switzerland has capital controls' without actor/transaction scope.\", 'status': 'preserved_dual_architecture', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Current international transactions ≠ capital transactions. Preserve IMF and OECD scopes separately.'}"
+  ],
+  "summary": "READY TO PUBLISH"
+}

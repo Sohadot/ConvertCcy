@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-09T19:50:34+00:00",
+  "generated_at": "2026-09-10T17:17:57+00:00",
   "base_url": "https://convertccy.com/",
   "schema_version_target": "1.2.1",
   "counts": {
-    "published": 23,
-    "verified": 1,
+    "published": 24,
+    "verified": 0,
     "needs_hardening": 1,
     "secondary_review": 0,
     "skipped": 0,
@@ -165,6 +165,14 @@
     },
     {
       "status": "published",
+      "country_slug": "switzerland",
+      "country_name": "Switzerland",
+      "output_html": "rules/switzerland-foreign-currency-rules.html",
+      "sitemap_eligible": true,
+      "public_url": "https://convertccy.com/rules/switzerland-foreign-currency-rules.html"
+    },
+    {
+      "status": "published",
       "country_slug": "turkey",
       "country_name": "Turkey",
       "output_html": "rules/turkey-foreign-currency-rules.html",
@@ -196,15 +204,7 @@
       "public_url": "https://convertccy.com/rules/united-states-foreign-currency-rules.html"
     }
   ],
-  "verified_entries": [
-    {
-      "status": "verified",
-      "country_slug": "switzerland",
-      "country_name": "Switzerland",
-      "output_html": "preview/rules/verified/switzerland-foreign-currency-rules.html",
-      "sitemap_eligible": false
-    }
-  ],
+  "verified_entries": [],
   "needs_hardening_entries": [
     {
       "status": "needs_hardening",
