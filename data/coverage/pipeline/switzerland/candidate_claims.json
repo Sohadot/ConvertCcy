@@ -1642,7 +1642,7 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_obligation",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -1654,18 +1654,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:171f755a06ae0abf1caad630dba9c325ffe1dc6e71903fc775dbadf4365c4abe",
         "notes": null
       }
     },
@@ -1700,7 +1700,7 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -1712,18 +1712,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:6e26d1373554f5e60779c914e966ac5d927889c2c4e6a25ffb944883b63c2b74",
         "notes": null
       }
     },
@@ -1758,7 +1758,7 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -1770,18 +1770,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:5ed4c161b1fdb2a46b572675282587f7cbabc4946da0869b54f4ca90a9a8f6c7",
         "notes": null
       }
     },
@@ -1814,7 +1814,7 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_obligation",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -1826,18 +1826,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:b176d3550c8b4cb42c24e020ab8e5d3d3bb93d43ff3a326a780f30cd92e8bdb2",
         "notes": null
       }
     },
@@ -1873,7 +1873,7 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -1885,18 +1885,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:afc2b991e8b2e1b06f591f562f3dbcdfc8669aaa0b21a044c74ecbcb3ac1c0cb",
         "notes": null
       }
     },
@@ -1931,7 +1931,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -1943,18 +1943,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:81558c9a11d91add8491fdc1f5595ec06e628234bb119c4a83e770bea60f1cae",
         "notes": null
       }
     },
@@ -1987,7 +1987,7 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -1999,18 +1999,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:0699f31e2c7f657995437d1c6896990f044e6a2c30a42e6a50d82da5c20c4877",
         "notes": null
       }
     },
@@ -2045,7 +2045,7 @@
       "authority_posture": {
         "source_authority_level": "primary_law",
         "claim_voice": "statutory_obligation",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2057,18 +2057,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:cb81b82175e31bd68c182c4c1e03c2118b2e7b2a26898c25cd5283044b610413",
         "notes": null
       }
     },
@@ -2103,7 +2103,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2115,18 +2115,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:6c94b1b8d35be9a9c854e951d3d504bc968569964dd1df2400bf5e0ba27d2d44",
         "notes": null
       }
     },
@@ -2159,7 +2159,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "guidance_description",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2171,18 +2171,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": false,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:95a36547e61f7e0a82f4e67fbc1bae569033099ac84f821863d07ab08e2d85f7",
         "notes": null
       }
     },
@@ -2217,7 +2217,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "temporal_announcement",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2229,25 +2229,25 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:26f36906752b6fff6362abd2e126eaaff1aa310a3450d24dda4cb93a33a1d84d",
         "notes": null
       }
     },
     {
       "candidate_id": "CC-CH-BIZ-012",
       "candidate_text": "Under applicable sanctions ordinances, financial intermediaries are required to implement the prohibitions, freeze the assets of sanctioned persons, and report affected business relationships to SECO; a report to SECO does not relieve the intermediary of AMLA clarification and MROS reporting duties where suspicion remains.",
-      "reviewed_text": null,
+      "reviewed_text": "Under the applicable Ukraine sanctions ordinance as notified by FINMA on 7 April 2026, financial intermediaries are called upon to implement the prohibitions, freeze the assets of sanctioned persons, and report affected business relationships to SECO; a report to SECO does not relieve the intermediary of additional clarifications under AMLA Art. 6 where suspicion remains, nor of an immediate MROS report under AMLA Art. 9 where those clarifications cannot be dispelled.",
       "claim_language": "en",
       "claim_type": "required_action",
       "scope": {
@@ -2276,7 +2276,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "supervisory_expectation",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2288,18 +2288,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "bounded",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "bounded",
+        "reviewed_candidate_fingerprint": "sha256:7204d194882014f6836a1d4ce48a031aedc9f5ffa0d53eef65e683c101bb4ecd",
         "notes": null
       }
     },
@@ -2332,7 +2332,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "temporal_announcement",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2344,18 +2344,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:62dc71995ed9340310a1f24a145cc756c24433973b2257414813203f3c079f30",
         "notes": null
       }
     },
@@ -2388,7 +2388,7 @@
       "authority_posture": {
         "source_authority_level": "official_guidance",
         "claim_voice": "temporal_announcement",
-        "authority_preservation_status": "structurally_consistent"
+        "authority_preservation_status": "human_confirmed"
       },
       "exception_handling": {
         "evidence_exception_signal": "none_detected",
@@ -2400,18 +2400,18 @@
         "mode": "human_authored",
         "authored_by": "operator"
       },
-      "semantic_review_status": "pending",
+      "semantic_review_status": "closed",
       "special_review_required": true,
-      "support_status": "unreviewed",
-      "downstream_eligible": false,
-      "adoption_gate_conditions_met": false,
+      "support_status": "supported",
+      "downstream_eligible": true,
+      "adoption_gate_conditions_met": true,
       "adoption_eligible": false,
       "human_review": {
-        "status": "pending",
-        "reviewed_by": null,
-        "reviewed_at": null,
-        "decision": null,
-        "reviewed_candidate_fingerprint": null,
+        "status": "closed",
+        "reviewed_by": "operator",
+        "reviewed_at": "2026-09-10",
+        "decision": "supported",
+        "reviewed_candidate_fingerprint": "sha256:96af7396c6c329760b291570c98490fc4d394af2092bf16cbc2328f4e35039aa",
         "notes": null
       }
     }
