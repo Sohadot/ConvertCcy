@@ -3,8 +3,8 @@
   "country_slug": "switzerland",
   "country_name": "Switzerland",
   "iso2": "CH",
-  "matrix_date": "2026-09-09",
-  "notes": "Switzerland Hardening I Adoption Gate — border-cash project claims only. Ten distinct claims from thirteen M2.5-reviewed candidates (three public-guidance candidates reconciled into Ordinance-spine claims). Does not draft data/rules/switzerland.json. Art. 6 amount-independent Meldung and Art. 2 definition adopted unbound. No CHF 10,000 declaration threshold or carriage ceiling. No-declaration does not mean no-control.",
+  "matrix_date": "2026-09-10",
+  "notes": "Switzerland Hardening I border-cash claims (CH-CASH-01..10) preserved. Hardening II Adoption Gate appends CH-ACC-01..13 accounts/AML claims from fifteen M2.5-reviewed ACC candidates (ACC-009 and ACC-015 reconciled into CH-ACC-08). AML/KYC ≠ account entitlement. No resident/non-resident statutory entitlement claims minted. Temporal ACC-013/014 adopted unbound. Does not draft data/rules/switzerland.json.",
   "claims": [
     {
       "claim_id": "CH-CASH-01",
@@ -347,6 +347,494 @@
         "reporting is threshold-triggered",
         "Meldung is made by the traveller",
         "amount-independent traveller reporting obligation"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-01",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Contracting-party / customer identity verification at business-relationship establishment",
+      "rule": "When establishing a business relationship, the financial intermediary must verify the identity of the customer on the basis of a document of evidentiary value",
+      "scope": "AMLA Art. 3 para. 1; financial intermediaries; business-relationship establishment; current as of 2026-09-09",
+      "authority": "SR 955.0 Anti-Money Laundering Act (AMLA)",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-AMLA-955-0"
+      ],
+      "matching_source_note": "Adopted from CC-CH-ACC-001; fingerprint sha256:2e1743652ec10239cb80be0218179b3be812585fae915ace2d983625305f5d13. AMLA Art. 3 para. 1 legal spine. KYC ≠ entitlement.",
+      "allowed_wording": [
+        "verify the identity of the customer",
+        "when establishing a business relationship",
+        "document of evidentiary value",
+        "financial intermediary"
+      ],
+      "forbidden_inferences": [
+        "Swiss residents may hold and maintain foreign currency accounts freely",
+        "residents have a right to foreign-currency accounts",
+        "residents may open accounts without restriction",
+        "Non-residents may open and operate foreign currency accounts",
+        "non-residents are entitled to Swiss accounts",
+        "foreign clients are legally guaranteed access",
+        "KYC proves entitlement",
+        "successful KYC guarantees acceptance",
+        "identity verification equals account entitlement",
+        "without prior approval",
+        "no approval is required",
+        "transfer funds freely",
+        "unrestricted repatriation",
+        "unrestricted cross-border transfers",
+        "freely",
+        "identity verification equals FINMA approval",
+        "identity verification equals SNB approval",
+        "every verified client must be accepted"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-02",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Bank identity verification on opening accounts or securities accounts (CDB 20)",
+      "rule": "Banks must verify the identity of the contracting partner when establishing business relationships, including when opening accounts or passbooks and when opening securities accounts",
+      "scope": "CDB 20 Art. 4; banks and securities dealers under CDB; account/securities-account opening; not generalised to all financial intermediaries; current as of 2026-09-09",
+      "authority": "Swiss Bankers Association CDB 20 (FINMA-recognised)",
+      "category": "mandatory_actions",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-CDB-20"
+      ],
+      "matching_source_note": "Adopted from CC-CH-ACC-006; fingerprint sha256:88e09ba1a5d2bb96650bf0363ed1f7d25feff30d9c1ab1c12baf33f36e7c4fd3. Distinct from CH-ACC-01: bank-specific CDB account-opening limb. Not universal AMLA actor scope.",
+      "allowed_wording": [
+        "banks must verify the identity of the contracting partner",
+        "opening accounts or passbooks",
+        "opening securities accounts",
+        "CDB 20"
+      ],
+      "forbidden_inferences": [
+        "Swiss residents may hold and maintain foreign currency accounts freely",
+        "residents have a right to foreign-currency accounts",
+        "residents may open accounts without restriction",
+        "Non-residents may open and operate foreign currency accounts",
+        "non-residents are entitled to Swiss accounts",
+        "foreign clients are legally guaranteed access",
+        "KYC proves entitlement",
+        "successful KYC guarantees acceptance",
+        "identity verification equals account entitlement",
+        "without prior approval",
+        "no approval is required",
+        "transfer funds freely",
+        "unrestricted repatriation",
+        "unrestricted cross-border transfers",
+        "freely",
+        "CDB 20 applies to all Swiss financial intermediaries",
+        "account opening KYC creates a legal right to an account"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-03",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Beneficial-owner identification and verification",
+      "rule": "The financial intermediary must identify the beneficial owner with the due diligence required in the circumstances and verify its identity in order to ensure that it knows who the beneficial owner is",
+      "scope": "AMLA Art. 4 para. 1; financial intermediaries; beneficial owner distinct from contracting party; current as of 2026-09-09",
+      "authority": "SR 955.0 Anti-Money Laundering Act (AMLA)",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-AMLA-955-0"
+      ],
+      "matching_source_note": "Adopted from CC-CH-ACC-002; fingerprint sha256:6ca74e91753fc0fb07cdb8a2d828ac1604d77c84d2fa88dc136c13b133004f26. Contracting party ≠ beneficial owner.",
+      "allowed_wording": [
+        "identify the beneficial owner",
+        "verify its identity",
+        "due diligence required in the circumstances"
+      ],
+      "forbidden_inferences": [
+        "Swiss residents may hold and maintain foreign currency accounts freely",
+        "residents have a right to foreign-currency accounts",
+        "residents may open accounts without restriction",
+        "Non-residents may open and operate foreign currency accounts",
+        "non-residents are entitled to Swiss accounts",
+        "foreign clients are legally guaranteed access",
+        "KYC proves entitlement",
+        "successful KYC guarantees acceptance",
+        "identity verification equals account entitlement",
+        "without prior approval",
+        "no approval is required",
+        "transfer funds freely",
+        "unrestricted repatriation",
+        "unrestricted cross-border transfers",
+        "freely",
+        "account holder always equals beneficial owner",
+        "beneficial-owner verification creates account entitlement"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-04",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Bank beneficial-ownership statement on account / securities-account opening (CDB 20)",
+      "rule": "The bank requires from its contracting partner a statement concerning the beneficial ownership of the assets when opening accounts or passbooks and when opening securities accounts",
+      "scope": "CDB 20 Art. 27; banks under CDB; account/securities-account opening declaration mechanics; distinct from AMLA Art. 4 general BO duty; current as of 2026-09-09",
+      "authority": "Swiss Bankers Association CDB 20 (FINMA-recognised)",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-CDB-20"
+      ],
+      "matching_source_note": "Adopted from CC-CH-ACC-012; fingerprint sha256:226299d51d2952a2d88fb4ab108cf000262762251d01122582400bd99e5c97eb. Operational CDB declaration limb; not universal AMLA procedure.",
+      "allowed_wording": [
+        "statement concerning the beneficial ownership of the assets",
+        "opening accounts or passbooks",
+        "opening securities accounts"
+      ],
+      "forbidden_inferences": [
+        "Swiss residents may hold and maintain foreign currency accounts freely",
+        "residents have a right to foreign-currency accounts",
+        "residents may open accounts without restriction",
+        "Non-residents may open and operate foreign currency accounts",
+        "non-residents are entitled to Swiss accounts",
+        "foreign clients are legally guaranteed access",
+        "KYC proves entitlement",
+        "successful KYC guarantees acceptance",
+        "identity verification equals account entitlement",
+        "without prior approval",
+        "no approval is required",
+        "transfer funds freely",
+        "unrestricted repatriation",
+        "unrestricted cross-border transfers",
+        "freely",
+        "CDB Form A is the exclusive AMLA procedure for all intermediaries",
+        "contracting party is necessarily the beneficial owner"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-05",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Controlling-person identification for operating legal entities (CDB 20)",
+      "rule": "If an operating legal entity or partnership has one or more controlling persons with voting rights or capital shares of 25% or more, these are to be identified in writing; a controlling person must generally be a natural person",
+      "scope": "CDB 20 Art. 20; banks; operating legal entities/partnerships; controlling person ≠ asset beneficial owner; current as of 2026-09-09",
+      "authority": "Swiss Bankers Association CDB 20 (FINMA-recognised)",
+      "category": "mandatory_actions",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-CDB-20"
+      ],
+      "matching_source_note": "Adopted unbound from CC-CH-ACC-007; fingerprint sha256:b9d0e98420bab13eacd79660d7c1ae41a12330a4801f2cd054282968788a3aba. Too technical for resident/non-resident public fields; fidelity guardrail.",
+      "allowed_wording": [
+        "controlling persons",
+        "25% or more",
+        "voting rights or capital shares",
+        "natural person"
+      ],
+      "forbidden_inferences": [
+        "controlling person equals beneficial owner of every account asset",
+        "25% threshold applies universally across all Swiss AML concepts",
+        "natural-person customers always require controlling-person determination",
+        "Swiss residents may hold and maintain foreign currency accounts freely",
+        "residents have a right to foreign-currency accounts",
+        "residents may open accounts without restriction",
+        "Non-residents may open and operate foreign currency accounts",
+        "non-residents are entitled to Swiss accounts"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-06",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Repeated identity / beneficial-owner verification when doubt arises",
+      "rule": "If doubt arises in the course of the business relationship as to the identity of the customer or of the beneficial owner, the verification of identity or establishment of identity in terms of Articles 3 and 4 respectively must be repeated",
+      "scope": "AMLA Art. 5 para. 1; doubt-triggered; distinct from Art. 7 para. 1bis periodic update; current as of 2026-09-09",
+      "authority": "SR 955.0 Anti-Money Laundering Act (AMLA)",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-AMLA-955-0"
+      ],
+      "matching_source_note": "Adopted from CC-CH-ACC-003; fingerprint sha256:90bf64fb2a8ad091678d8236884da859ce3a7b5953eb14ddeb538f4ca1b8303f. Event/doubt trigger only.",
+      "allowed_wording": [
+        "if doubt arises",
+        "must be repeated",
+        "Articles 3 and 4"
+      ],
+      "forbidden_inferences": [
+        "continuous re-identification of every client",
+        "annual mandatory re-KYC",
+        "fixed-frequency re-verification for everyone",
+        "Swiss residents may hold and maintain foreign currency accounts freely",
+        "residents have a right to foreign-currency accounts",
+        "residents may open accounts without restriction",
+        "Non-residents may open and operate foreign currency accounts",
+        "non-residents are entitled to Swiss accounts",
+        "foreign clients are legally guaranteed access",
+        "KYC proves entitlement",
+        "successful KYC guarantees acceptance"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-07",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Risk-based periodic checking and updating of required AML records",
+      "rule": "The financial intermediary must periodically check the required records to ensure that they are up to date, and update them if need be; the periodicity, scope and type of checking and updating are based on the risk posed by the customer",
+      "scope": "AMLA Art. 7 para. 1bis; risk-based periodic update; no fixed statutory annual frequency; current as of 2026-09-09",
+      "authority": "SR 955.0 Anti-Money Laundering Act (AMLA)",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-AMLA-955-0"
+      ],
+      "matching_source_note": "Adopted from CC-CH-ACC-005; fingerprint sha256:5ef2199df90dd656f075e52f69ae4f649250e5a3c39383d944d7fd25364ff138. Distinct from Art. 5 doubt repetition.",
+      "allowed_wording": [
+        "periodically check the required records",
+        "update them if need be",
+        "based on the risk posed by the customer"
+      ],
+      "forbidden_inferences": [
+        "continuous verification of all customers",
+        "annual frequency mandated by AMLA Art. 7 para. 1bis",
+        "account access prohibition from updating duty",
+        "Swiss residents may hold and maintain foreign currency accounts freely",
+        "residents have a right to foreign-currency accounts",
+        "residents may open accounts without restriction",
+        "Non-residents may open and operate foreign currency accounts",
+        "non-residents are entitled to Swiss accounts",
+        "foreign clients are legally guaranteed access",
+        "KYC proves entitlement",
+        "successful KYC guarantees acceptance"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-08",
+      "status": "verified",
+      "type": "positive",
+      "subject": "Conditional special / enhanced due-diligence clarification (Art. 6 and FINMA corroboration)",
+      "rule": "The financial intermediary must clarify the economic background and the purpose of a transaction or of a business relationship if the transaction or business relationship appears unusual (unless its legality is clear), if there are relevant crime or terrorist-financing indications, if it carries a higher risk, or if customer/beneficial-owner/authorised-signatory data match or closely match data passed under Article 22a AMLA. FINMA supervisory guidance correspondingly requires clarification where a relationship or transaction appears unusual or funds appear linked to crime or terrorist financing, and requires that heightened-risk relationships and transactions — such as with clients in high-risk countries or PEPs — be recorded and clarified in greater detail",
+      "scope": "AMLA Art. 6 para. 2 legal spine with FINMA supervisory corroboration; conditional triggers only; current as of 2026-09-09",
+      "authority": "SR 955.0 AMLA Art. 6; FINMA Combating money laundering supervision",
+      "category": "mandatory_actions",
+      "evidence_target": "E0",
+      "final_evidence_level": "E0",
+      "source_budget": 2,
+      "source_refs": [
+        "SRC-CH-AMLA-955-0",
+        "SRC-CH-FINMA-AML"
+      ],
+      "matching_source_note": "Canonical from CC-CH-ACC-004 (Art. 6 Abs. 2; fingerprint sha256:39db2547db953afe45fd19ef42283d10fcb519c4524b36012d0d691045957de9); CC-CH-ACC-009 reconciled (fingerprint sha256:93989c76d6789e264fd5500ba5025599ee13a22d60d7b474928d9702c3ed74f9); CC-CH-ACC-015 reconciled (fingerprint sha256:9616777e7cc0a674779feaea6fbe80c568481b21ae733383e57cc55a948fb4e4). One enhanced-clarification architecture; FINMA does not broaden Art. 6 into universal foreign-client SoF.",
+      "allowed_wording": [
+        "clarify the economic background and the purpose",
+        "appears unusual",
+        "higher risk",
+        "heightened risk",
+        "high-risk countries",
+        "politically exposed persons",
+        "recorded and clarified in greater detail"
+      ],
+      "forbidden_inferences": [
+        "every non-resident requires enhanced due diligence",
+        "every foreign account requires source-of-funds proof",
+        "every foreign transfer is unusual",
+        "enhanced due diligence is universal",
+        "all non-residents are high risk",
+        "foreign domicile automatically triggers enhanced DD",
+        "AML duties are exchange controls",
+        "Swiss residents may hold and maintain foreign currency accounts freely",
+        "residents have a right to foreign-currency accounts",
+        "residents may open accounts without restriction",
+        "Non-residents may open and operate foreign currency accounts",
+        "non-residents are entitled to Swiss accounts",
+        "foreign clients are legally guaranteed access",
+        "KYC proves entitlement",
+        "successful KYC guarantees acceptance"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-09",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "Institutional money-laundering risk tolerance / outside-tolerance acceptance boundary",
+      "rule": "Boards of directors of financial intermediaries must establish a clearly defined money-laundering risk tolerance, including clear communications regarding particularly high-risk clients, high-risk countries and services that are deemed outside the risk tolerance limits",
+      "scope": "FINMA supervisory expectation (2024 high-risk-client dossier); institutional risk acceptance — not a national statutory prohibition or governmental approval; current as of 2026-09-09",
+      "authority": "Swiss Financial Market Supervisory Authority FINMA",
+      "category": "regime",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-FINMA-HIGH-RISK-2024"
+      ],
+      "matching_source_note": "Adopted from CC-CH-ACC-010; fingerprint sha256:cd78d712a860f3b0a46776186e7a24efdd5cde6e62982c2244fc78807cf8c970. Fresh judgment: bounded (supervisory institutional expectation, not statutory ban). Anti-overclaim guardrail against 'freely'.",
+      "allowed_wording": [
+        "risk tolerance",
+        "outside the risk tolerance limits",
+        "high-risk clients",
+        "high-risk countries",
+        "institutional risk acceptance"
+      ],
+      "forbidden_inferences": [
+        "Swiss law prohibits such clients",
+        "FINMA account-opening approval",
+        "SNB approval",
+        "universal residency prohibition",
+        "banks may reject anyone at will",
+        "all non-residents are outside risk tolerance",
+        "Swiss residents may hold and maintain foreign currency accounts freely",
+        "residents have a right to foreign-currency accounts",
+        "residents may open accounts without restriction",
+        "Non-residents may open and operate foreign currency accounts",
+        "non-residents are entitled to Swiss accounts",
+        "foreign clients are legally guaranteed access",
+        "KYC proves entitlement",
+        "successful KYC guarantees acceptance",
+        "identity verification equals account entitlement",
+        "without prior approval",
+        "no approval is required",
+        "transfer funds freely",
+        "unrestricted repatriation",
+        "unrestricted cross-border transfers",
+        "freely"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-10",
+      "status": "bounded",
+      "type": "operational",
+      "subject": "High-risk relationship source-of-assets clarification and higher-risk transaction monitoring",
+      "rule": "For high-risk client relationships of the kind addressed by FINMA, the origin of the client's assets must be clarified in detail and verified as originating from legal sources, and higher-risk transactions must be monitored very carefully",
+      "scope": "FINMA high-risk-client supervisory material; conditional high-risk relationships only; distinct from baseline Art. 6 triggers; current as of 2026-09-09",
+      "authority": "Swiss Financial Market Supervisory Authority FINMA",
+      "category": "mandatory_actions",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-FINMA-HIGH-RISK-2024"
+      ],
+      "matching_source_note": "Adopted from CC-CH-ACC-011; fingerprint sha256:44ad7aa2b0b461a8fc5883ab8b13e526ae25c2ca544cfc59b6344a14c6d03063. Fresh judgment: bounded. Not universal foreign-client SoW.",
+      "allowed_wording": [
+        "high-risk client relationships",
+        "origin of the client's assets",
+        "verified as originating from legal sources",
+        "higher-risk transactions must be monitored"
+      ],
+      "forbidden_inferences": [
+        "every foreign client must prove source of wealth",
+        "all non-residents are high risk",
+        "all accounts require source-of-wealth proof",
+        "foreign domicile automatically triggers this duty",
+        "Swiss residents may hold and maintain foreign currency accounts freely",
+        "residents have a right to foreign-currency accounts",
+        "residents may open accounts without restriction",
+        "Non-residents may open and operate foreign currency accounts",
+        "non-residents are entitled to Swiss accounts",
+        "foreign clients are legally guaranteed access",
+        "KYC proves entitlement",
+        "successful KYC guarantees acceptance"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-11",
+      "status": "verified",
+      "type": "operational",
+      "subject": "Natural-person domicile / identity documentation under CDB 20",
+      "rule": "For natural persons, banks must appropriately document name, first name, date of birth, nationality and the actual domicile address as well as the means used to prove identity",
+      "scope": "CDB 20 Art. 7 para. 1; bank documentation/data requirement; not a statutory resident/non-resident account class; current as of 2026-09-09",
+      "authority": "Swiss Bankers Association CDB 20 (FINMA-recognised)",
+      "category": "operational",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-CDB-20"
+      ],
+      "matching_source_note": "Adopted unbound from CC-CH-ACC-008; fingerprint sha256:5b2523487bc7dd91684b7b0b6d8e56fb2a10548b10f7b8f14408e4970676c950. Domicile data ≠ residence entitlement class.",
+      "allowed_wording": [
+        "actual domicile address",
+        "date of birth",
+        "nationality",
+        "means used to prove identity"
+      ],
+      "forbidden_inferences": [
+        "foreign domicile requires approval",
+        "Swiss domicile guarantees acceptance",
+        "non-resident status itself creates enhanced due diligence",
+        "domicile information creates a legal resident/non-resident account class",
+        "Swiss residents may hold and maintain foreign currency accounts freely",
+        "residents have a right to foreign-currency accounts",
+        "residents may open accounts without restriction",
+        "Non-residents may open and operate foreign currency accounts",
+        "non-residents are entitled to Swiss accounts",
+        "foreign clients are legally guaranteed access"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-12",
+      "status": "verified",
+      "type": "historical",
+      "subject": "Revised AMLA / transparency-register package entry into force (temporal)",
+      "rule": "The revised Anti-Money Laundering Act and the new Act on the Transparency of Legal Persons and the Identification of Beneficial Owners will enter into force on 1 October 2026",
+      "scope": "Temporal/future fact relative to drafting baseline 2026-09-09; enacted package with effective_from 2026-10-01; not current operative account/AML drafting rules",
+      "authority": "Swiss Federal Council / State Secretariat for International Finance",
+      "category": "other",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-FC-AMLA-EIF-2026"
+      ],
+      "matching_source_note": "Adopted unbound from CC-CH-ACC-013; fingerprint sha256:67a3255c26f2b3101c11daeca5e915a3e8fea158ebf98e99f74c10f405a0a153. Verified future temporal fact. Must not leak into current resident/non-resident drafting.",
+      "allowed_wording": [
+        "enter into force on 1 October 2026",
+        "revised Anti-Money Laundering Act",
+        "not yet in force on 2026-09-09"
+      ],
+      "forbidden_inferences": [
+        "revised AMLA already in force on 2026-09-09",
+        "future substantive AMLA provisions apply as current rules",
+        "use of 1 October 2026 reforms in current public Switzerland drafting"
+      ]
+    },
+    {
+      "claim_id": "CH-ACC-13",
+      "status": "bounded",
+      "type": "historical",
+      "subject": "AMLO-FINMA partial-revision consultation (temporal process fact)",
+      "rule": "On 12 May 2026, FINMA launched the consultation on the partially revised AMLO-FINMA; the consultation ran until 9 June 2026 and is not itself the current operative ordinance",
+      "scope": "Temporal/process fact; consultation ≠ adopted regulation; current AMLO-FINMA remains Stand 1 January 2023 on 2026-09-09; expected ~1 Jan 2027 timing remains contingent and is not asserted as final here",
+      "authority": "Swiss Financial Market Supervisory Authority FINMA",
+      "category": "other",
+      "evidence_target": "E1",
+      "final_evidence_level": "E1",
+      "source_budget": 1,
+      "source_refs": [
+        "SRC-CH-FINMA-AMLO-CONSULT-2026"
+      ],
+      "matching_source_note": "Adopted unbound from CC-CH-ACC-014; fingerprint sha256:baf39159deb6d1d79c6c6c47eb933a9a450fb12dbcf4edf057332f218af57ddf. Fresh judgment: bounded temporal process claim. No current-field binding.",
+      "allowed_wording": [
+        "launched the consultation",
+        "partially revised AMLO-FINMA",
+        "not itself the current operative ordinance"
+      ],
+      "forbidden_inferences": [
+        "revised AMLO-FINMA is current",
+        "final 2027 AMLO-FINMA text is known",
+        "consultation equals adoption",
+        "expected 1 January 2027 effectiveness is certain final law"
       ]
     }
   ]

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
-  "notes": "Switzerland Hardening I field bindings only: summary.traveler, rules.bring_foreign_currency_in, rules.take_foreign_currency_out, rules.cash_declaration_threshold. CH-CASH-09 (Art. 2 definition) and CH-CASH-10 (Art. 6 Meldung) remain unbound. Future Hardening II–IV fields intentionally unmapped in this gate.",
+  "notes": "Switzerland Hardening I bindings preserved (4 traveler/cash fields). Hardening II adds rules.resident_holding_rules and rules.non_resident_rules only. CH-ACC-05/11/12/13 unbound. Total bindings: 6. Future Hardening III–IV fields intentionally unmapped. AML/KYC ≠ account entitlement; non-resident ≠ high-risk class; future rules unbound.",
   "bindings": [
     {
       "field": "summary.traveler",
@@ -48,6 +48,36 @@
         "CH-CASH-08"
       ],
       "wording_boundary": "Encode four architecture layers explicitly and keep them atomic: (A) no spontaneous FOCBS declaration threshold / no obligation to declare covered cash to FOCBS merely for crossing the border; (B) separate >= CHF 10,000 (mindestens / or more / equals or exceeds) inquiry package on express questioning (identity, origin/source, intended use, beneficial owner) plus FOCBS information-system registration at equals-or-exceeds CHF 10,000 — inquiry ≠ recording and neither is spontaneous declaration; (C) below-threshold ML/TF suspicion may still permit information powers under Art. 3 Abs. 2; (D) provisional/temporary seizure and Art. 5 lit. a–b refusal/false-information offence are suspicion/conduct mechanisms, not numeric carriage restrictions. Hard forbid: CHF 10,000 declaration threshold; declaration required at CHF 10,000; cash above CHF 10,000 must be declared; CHF 10,000 carriage ceiling; permission required above CHF 10,000; below CHF 10,000 no controls; no declaration for normal amounts; large amounts recorded for statistical and AML purposes (unsupported statistical purpose); large or suspicious cash movements subject to AML reporting by financial institutions as the border rule; Meldung/Art. 6 as traveller declaration; automatic confiscation; permanent seizure as the threshold consequence."
+    },
+    {
+      "field": "rules.resident_holding_rules",
+      "claim_ids": [
+        "CH-ACC-01",
+        "CH-ACC-02",
+        "CH-ACC-03",
+        "CH-ACC-04",
+        "CH-ACC-06",
+        "CH-ACC-07",
+        "CH-ACC-08",
+        "CH-ACC-09",
+        "CH-ACC-10"
+      ],
+      "wording_boundary": "Describe only governed H2 AML/account-relationship compliance conditions where a relevant financial intermediary establishes or maintains a client relationship with a resident: contracting-party identity verification (AMLA / bank CDB account-opening where applicable); beneficial-owner identification/verification and bank BO statement mechanics; repeated verification on doubt; risk-based periodic record updating; conditional enhanced clarification (unusual / higher-risk / crime-TF indicators); institutional money-laundering risk tolerance that may place certain clients/countries/services outside acceptance limits; and, for high-risk relationships, detailed source-of-assets clarification and careful monitoring of higher-risk transactions. H2 did NOT establish a statutory resident right to open or hold bank or foreign-currency accounts — do not state or imply such entitlement. Hard forbid: Swiss residents may hold and maintain foreign currency accounts freely; residents have a right to foreign-currency accounts; residents may open accounts without restriction; freely; KYC proves entitlement; successful KYC guarantees acceptance; without prior approval; no approval is required; unrestricted cross-border transfers; unrestricted repatriation; authorised banks and financial institutions as a vague entitlement actor class without AML scope. Residence-specific entitlement or exemption is not established by these H2 claims; do not assert residents and non-residents are treated identically under all Swiss law."
+    },
+    {
+      "field": "rules.non_resident_rules",
+      "claim_ids": [
+        "CH-ACC-01",
+        "CH-ACC-02",
+        "CH-ACC-03",
+        "CH-ACC-04",
+        "CH-ACC-06",
+        "CH-ACC-07",
+        "CH-ACC-08",
+        "CH-ACC-09",
+        "CH-ACC-10"
+      ],
+      "wording_boundary": "Describe governed AML/account-relationship requirements where a relevant financial intermediary establishes a client relationship — without asserting universal non-resident account entitlement or the opposite ban. May include identity verification, beneficial-owner requirements, bank CDB account-opening mechanics where applicable, risk-based updates, conditional enhanced DD, institutional risk tolerance / outside-tolerance acceptance, and high-risk conditional source-of-assets monitoring. Governed agnosticism on universal entitlement. Hard forbid: Non-residents may open and operate foreign currency accounts; transfer funds freely; without prior approval; freely; all non-residents are entitled to Swiss accounts; foreign clients are legally guaranteed access; all non-residents are high risk; all non-residents require enhanced DD; foreign residence automatically requires source-of-wealth proof; unrestricted transfer/repatriation rights; non-residents have no right to accounts (unsupported opposite). Country risk ≠ residency class. Institutional refusal under risk tolerance ≠ statutory nationality/residence prohibition."
     }
   ]
 }

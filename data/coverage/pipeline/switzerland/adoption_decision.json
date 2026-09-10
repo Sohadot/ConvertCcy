@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
-  "gate": "switzerland_hardening_i_adoption",
-  "baseline_head": "af2f6cf078cc4858bf8b1acb4f5a630e25c8ecd7",
-  "decided_at": "2026-09-09",
+  "gate": "switzerland_hardening_i_ii_adoption",
+  "baseline_head": "1039ccdc05aa047933f77bdedbe542e84245976d",
+  "decided_at": "2026-09-10",
   "decided_by": "operator",
   "decision": "PASS",
   "m2_5_frozen": true,
@@ -12,18 +12,26 @@
     "human_claim_review.json",
     "claim_review_report.json"
   ],
-  "notes": "Switzerland Hardening I Adoption Gate. Fresh project judgment mints ten distinct project claims (CH-CASH-01..10) from thirteen M2.5-closed candidates. Three FOCBS public-guidance candidates are reconciled into Ordinance-spine claims (004→04 with 009; 006→08 with 012; 007→07 with 011) using repository-native reconciled / equivalent_existing_claim semantics — no duplicate project claims. CH-CASH-09 (Art. 2 definition) and CH-CASH-10 (Art. 6 Abs. 2 amount-independent Meldung) adopted unbound. Bindings only for Hardening I fields: summary.traveler, rules.bring_foreign_currency_in, rules.take_foreign_currency_out, rules.cash_declaration_threshold. Does not draft or modify data/rules/switzerland.json. M2.5 adoption_eligible remains false. No publication. No Hardening II.",
+  "notes": "Hardening I adoption rows preserved (13 CASH → CH-CASH-01..10). Hardening II Adoption Gate adopts CC-CH-ACC-001..015 into CH-ACC-01..13. ACC-009 and ACC-015 reconciled into CH-ACC-08 (Art. 6 spine + FINMA corroboration). ACC-001/006 and ACC-002/012 kept distinct (AMLA vs CDB operational limbs). CH-ACC-05/11/12/13 unbound. Bindings added only for rules.resident_holding_rules and rules.non_resident_rules (total bindings 6). No resident/non-resident entitlement claims; no generic prior-approval negative; no transfer-freedom claims. M2.5 adoption_eligible remains false. Does not draft switzerland.json. No Hardening III.",
   "stats": {
-    "candidates_in_scope": 13,
-    "distinct_project_claims_created": 10,
-    "adopted_bound": 8,
-    "adopted_unbound": 2,
-    "reconciled_into_canonical": 3,
+    "hardening_i_candidates": 13,
+    "hardening_ii_candidates": 15,
+    "candidates_in_scope_total": 28,
+    "hardening_i_project_claims": 10,
+    "hardening_ii_project_claims_created": 13,
+    "distinct_project_claims_total": 23,
+    "hardening_ii_adopted_bound": 9,
+    "hardening_ii_adopted_unbound": 4,
+    "hardening_ii_reconciled_into_canonical": 2,
     "not_adopted": 0,
     "duplicate_project_claims_created": 0,
-    "field_bindings_total": 4,
+    "field_bindings_total": 6,
     "publication_changes": 0,
-    "switzerland_rules_changes": 0
+    "switzerland_rules_changes": 0,
+    "resident_entitlement_claims_created": 0,
+    "non_resident_entitlement_claims_created": 0,
+    "prior_approval_negative_claims_created": 0,
+    "transfer_freedom_claims_created": 0
   },
   "adoptions": [
     {
@@ -31,7 +39,9 @@
       "m2_5_decision": "supported",
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt",
-      "project_claim_ids": ["CH-CASH-01"],
+      "project_claim_ids": [
+        "CH-CASH-01"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:0c8529702aa3d8fe6a3272f606b98dae38021019abcabde574ae93fecdb3faca",
       "relationship": "new_project_claim",
@@ -42,7 +52,9 @@
       "m2_5_decision": "bounded",
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt",
-      "project_claim_ids": ["CH-CASH-02"],
+      "project_claim_ids": [
+        "CH-CASH-02"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:01b17759baf75ddb56af885d696ac998be0e153ca1879be7e2c4a3551ecafcaf",
       "relationship": "new_project_claim",
@@ -53,7 +65,9 @@
       "m2_5_decision": "supported",
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt",
-      "project_claim_ids": ["CH-CASH-03"],
+      "project_claim_ids": [
+        "CH-CASH-03"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:219025c530bcd3ea46fa6799e6b4f25e9220bf388db49765d060f4ffd9390628",
       "relationship": "new_project_claim",
@@ -65,7 +79,9 @@
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt",
       "adoption_decision": "reconciled",
-      "project_claim_ids": ["CH-CASH-04"],
+      "project_claim_ids": [
+        "CH-CASH-04"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:6b161e141f7ce37a94bd062aad20d7f79f87abbe71d245e8016e7e9b1baf3fa2",
       "relationship": "equivalent_existing_claim",
@@ -76,7 +92,9 @@
       "m2_5_decision": "supported",
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt",
-      "project_claim_ids": ["CH-CASH-05"],
+      "project_claim_ids": [
+        "CH-CASH-05"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:0d44e061695995626b60b700acb25dd26d49414bf2d8aa76b7e49f5f10298ecd",
       "relationship": "new_project_claim",
@@ -88,7 +106,9 @@
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt",
       "adoption_decision": "reconciled",
-      "project_claim_ids": ["CH-CASH-08"],
+      "project_claim_ids": [
+        "CH-CASH-08"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:a0e3130d0b208ea386efce9f962149171d79b482fa22e668f83a42c12a39f0f2",
       "relationship": "equivalent_existing_claim",
@@ -100,7 +120,9 @@
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt",
       "adoption_decision": "reconciled",
-      "project_claim_ids": ["CH-CASH-07"],
+      "project_claim_ids": [
+        "CH-CASH-07"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:a555cf296ea5747b05a242fbbe01fece080d1582ed9316b072621ccdfe643895",
       "relationship": "equivalent_existing_claim",
@@ -111,7 +133,9 @@
       "m2_5_decision": "supported",
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt_unbound",
-      "project_claim_ids": ["CH-CASH-09"],
+      "project_claim_ids": [
+        "CH-CASH-09"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:929b860bbd566b2baf564f2b2f2ebba1ed3f0ac31cef1d4bc7701d8006fae4c2",
       "relationship": "new_project_claim_unbound",
@@ -122,7 +146,9 @@
       "m2_5_decision": "supported",
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt",
-      "project_claim_ids": ["CH-CASH-04"],
+      "project_claim_ids": [
+        "CH-CASH-04"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:aae2efa32c3a0ec07104053736f4b373d338cba7fb9427f8b2e2314153029675",
       "relationship": "new_project_claim",
@@ -133,7 +159,9 @@
       "m2_5_decision": "supported",
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt",
-      "project_claim_ids": ["CH-CASH-06"],
+      "project_claim_ids": [
+        "CH-CASH-06"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:7ce5808c0f6fff952d16d2636cde8d1e366bcd056cec68a784eef11c383ba59d",
       "relationship": "new_project_claim",
@@ -144,7 +172,9 @@
       "m2_5_decision": "supported",
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt",
-      "project_claim_ids": ["CH-CASH-07"],
+      "project_claim_ids": [
+        "CH-CASH-07"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:e299b32dee366f3cf52463517b90904d88e4083c0a712a3e789efeb9c37200b3",
       "relationship": "new_project_claim",
@@ -155,7 +185,9 @@
       "m2_5_decision": "supported",
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt",
-      "project_claim_ids": ["CH-CASH-08"],
+      "project_claim_ids": [
+        "CH-CASH-08"
+      ],
       "project_status": "verified",
       "reviewed_candidate_fingerprint": "sha256:09b56a64ccf199c3ec1bb6c076f38e7313e57b54b87cad98a398fdc6b598adf3",
       "relationship": "new_project_claim",
@@ -166,11 +198,210 @@
       "m2_5_decision": "bounded",
       "adoption_gate_conditions_met": true,
       "human_adoption_decision": "adopt_unbound",
-      "project_claim_ids": ["CH-CASH-10"],
+      "project_claim_ids": [
+        "CH-CASH-10"
+      ],
       "project_status": "bounded",
       "reviewed_candidate_fingerprint": "sha256:05356f7b613c0d703e4aa2365f914fb073efcda1ee3e16dec566ac5d918d31e3",
       "relationship": "new_project_claim_unbound",
       "rationale": "Fresh project judgment: Art. 6 Abs. 2 amount-independent Meldung adopted as bounded/E1 and unbound. M2.5 reviewed_text retained as German operative rule. Actor/recipient/trigger semantics are insufficient for safe traveler drafting. Binding into cash_declaration_threshold would risk false inference of amount-independent traveler declaration. Distinct from CH-CASH-05 FOCBS information-system entry. Forbidden: Meldung = traveller declaration; traveler must declare regardless of amount."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-01"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:2e1743652ec10239cb80be0218179b3be812585fae915ace2d983625305f5d13",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: AMLA Art. 3 para. 1 contracting-party identity is verified/E0. KYC ≠ entitlement. Bound to resident/non-resident fields as compliance condition only."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-002",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-03"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6ca74e91753fc0fb07cdb8a2d828ac1604d77c84d2fa88dc136c13b133004f26",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: AMLA Art. 4 beneficial-owner identify+verify is verified/E0. Distinct from CDB Art. 27 statement mechanics (CH-ACC-04)."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-003",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-06"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:90bf64fb2a8ad091678d8236884da859ce3a7b5953eb14ddeb538f4ca1b8303f",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: AMLA Art. 5 doubt-triggered repetition is verified/E0. Distinct from Art. 7 para. 1bis periodic update."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:39db2547db953afe45fd19ef42283d10fcb519c4524b36012d0d691045957de9",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: AMLA Art. 6 para. 2 is the legal spine for conditional enhanced clarification (CH-ACC-08, verified/E0). ACC-009 and ACC-015 reconcile into this claim as FINMA corroboration."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-005",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-07"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:5ef2199df90dd656f075e52f69ae4f649250e5a3c39383d944d7fd25364ff138",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: AMLA Art. 7 para. 1bis risk-based periodic record update is verified/E0. Not continuous re-identification."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-006",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-02"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:88e09ba1a5d2bb96650bf0363ed1f7d25feff30d9c1ab1c12baf33f36e7c4fd3",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: CDB Art. 4 bank account/securities-account opening identity is verified/E1 and kept distinct from AMLA Art. 3 general FI duty (CH-ACC-01). Actor scope = banks/CDB — not all intermediaries."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-007",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-ACC-05"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:b9d0e98420bab13eacd79660d7c1ae41a12330a4801f2cd054282968788a3aba",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: CDB Art. 20 controlling-person identification adopted verified/E1 but unbound — too technical for resident/non-resident public surfaces; retained as fidelity guardrail."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-008",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-ACC-11"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:5b2523487bc7dd91684b7b0b6d8e56fb2a10548b10f7b8f14408e4970676c950",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: CDB Art. 7 domicile documentation adopted verified/E1 unbound. Data requirement ≠ residence account class; public fields do not need this documentary detail."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-009",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:93989c76d6789e264fd5500ba5025599ee13a22d60d7b474928d9702c3ed74f9",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-ACC-08. FINMA heightened-risk recording/clarification is a supervisory manifestation of the same conditional enhanced-clarification architecture as AMLA Art. 6. No second claim. Non-resident ≠ high-risk class preserved in forbidden inferences.",
+      "adoption_decision": "reconciled"
+    },
+    {
+      "candidate_id": "CC-CH-ACC-010",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-09"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:cd78d712a860f3b0a46776186e7a24efdd5cde6e62982c2244fc78807cf8c970",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: FINMA institutional risk-tolerance boundary adopted as bounded/E1 (supervisory institutional expectation, not statutory ban). Bound to defeat legacy 'freely' without inventing a national prohibition."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-011",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-10"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:44ad7aa2b0b461a8fc5883ab8b13e526ae25c2ca544cfc59b6344a14c6d03063",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: high-risk source-of-assets clarification and higher-risk transaction monitoring adopted as bounded/E1 and kept distinct from CH-ACC-08 baseline Art. 6 triggers. Not universal foreign SoW."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-012",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-04"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:226299d51d2952a2d88fb4ab108cf000262762251d01122582400bd99e5c97eb",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: CDB Art. 27 bank BO statement on account opening is verified/E1 and kept distinct from AMLA Art. 4 general BO duty (CH-ACC-03)."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-013",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-ACC-12"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:67a3255c26f2b3101c11daeca5e915a3e8fea158ebf98e99f74c10f405a0a153",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: 1 October 2026 revised AMLA/transparency EIF adopted unbound as verified temporal/future fact. Not current on 2026-09-09. No current-field binding."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-014",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-ACC-13"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:baf39159deb6d1d79c6c6c47eb933a9a450fb12dbcf4edf057332f218af57ddf",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: AMLO-FINMA May 2026 consultation adopted unbound as bounded temporal process claim. Consultation ≠ adopted current ordinance. No current-field binding."
+    },
+    {
+      "candidate_id": "CC-CH-ACC-015",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-ACC-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:9616777e7cc0a674779feaea6fbe80c568481b21ae733383e57cc55a948fb4e4",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-ACC-08. FINMA unusual/crime-TF clarification overlaps AMLA Art. 6 conditional clarification architecture. Retained as supporting supervisory representation — no duplicate claim.",
+      "adoption_decision": "reconciled"
     }
   ]
 }

@@ -26,15 +26,65 @@
           "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}",
           "required_action": "Resolve via human exception review",
           "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
         }
       ]
     },
-    "structural": {
-      "blocking_count": 0,
-      "findings": []
+    "evidence": {
+      "blocking_count": 5,
+      "findings": [
+        {
+          "layer": "evidence",
+          "field": "country_overview",
+          "reason": "Required field has no claim binding",
+          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
+          "blocking": true
+        },
+        {
+          "layer": "evidence",
+          "field": "summary.business",
+          "reason": "Required field has no claim binding",
+          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
+          "blocking": true
+        },
+        {
+          "layer": "evidence",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Required field has no claim binding",
+          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
+          "blocking": true
+        },
+        {
+          "layer": "evidence",
+          "field": "rules.exchange_controls",
+          "reason": "Required field has no claim binding",
+          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
+          "blocking": true
+        },
+        {
+          "layer": "evidence",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Required field has no claim binding",
+          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
+          "blocking": true
+        }
+      ]
     },
     "fidelity": {
-      "blocking_count": 12,
+      "blocking_count": 50,
       "findings": [
         {
           "layer": "fidelity",
@@ -119,62 +169,278 @@
           "reason": "Draft contains forbidden inference from 'CH-CASH-05': 'anti-money laundering reporting requirements by financial institutions'",
           "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
           "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-06': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-07': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-08': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.resident_holding_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-10': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'Non-residents may open and operate foreign currency accounts'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'without prior approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'transfer funds freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'Non-residents may open and operate foreign currency accounts'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'without prior approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'transfer funds freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'Non-residents may open and operate foreign currency accounts'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'without prior approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'transfer funds freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'Non-residents may open and operate foreign currency accounts'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'without prior approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'transfer funds freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-06': 'Non-residents may open and operate foreign currency accounts'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-07': 'Non-residents may open and operate foreign currency accounts'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-08': 'Non-residents may open and operate foreign currency accounts'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'Non-residents may open and operate foreign currency accounts'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'without prior approval'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'transfer funds freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.non_resident_rules",
+          "reason": "Draft contains forbidden inference from 'CH-ACC-10': 'Non-residents may open and operate foreign currency accounts'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
         }
       ]
     },
-    "evidence": {
-      "blocking_count": 7,
-      "findings": [
-        {
-          "layer": "evidence",
-          "field": "country_overview",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "summary.business",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "rules.resident_holding_rules",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "rules.non_resident_rules",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "rules.business_invoicing_settlement",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "rules.exchange_controls",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "rules.banking_conversion_practicality",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        }
-      ]
+    "structural": {
+      "blocking_count": 0,
+      "findings": []
     }
   },
   "blocking_findings": [
@@ -188,20 +454,6 @@
     {
       "layer": "evidence",
       "field": "summary.business",
-      "reason": "Required field has no claim binding",
-      "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-      "blocking": true
-    },
-    {
-      "layer": "evidence",
-      "field": "rules.resident_holding_rules",
-      "reason": "Required field has no claim binding",
-      "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-      "blocking": true
-    },
-    {
-      "layer": "evidence",
-      "field": "rules.non_resident_rules",
       "reason": "Required field has no claim binding",
       "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
       "blocking": true
@@ -312,6 +564,272 @@
       "blocking": true
     },
     {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-06': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-07': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-08': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.resident_holding_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-10': 'Swiss residents may hold and maintain foreign currency accounts freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'Non-residents may open and operate foreign currency accounts'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'without prior approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'transfer funds freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-01': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'Non-residents may open and operate foreign currency accounts'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'without prior approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'transfer funds freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-02': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'Non-residents may open and operate foreign currency accounts'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'without prior approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'transfer funds freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-03': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'Non-residents may open and operate foreign currency accounts'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'without prior approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'transfer funds freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-04': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-06': 'Non-residents may open and operate foreign currency accounts'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-07': 'Non-residents may open and operate foreign currency accounts'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-08': 'Non-residents may open and operate foreign currency accounts'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'Non-residents may open and operate foreign currency accounts'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'without prior approval'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'transfer funds freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-09': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.non_resident_rules",
+      "reason": "Draft contains forbidden inference from 'CH-ACC-10': 'Non-residents may open and operate foreign currency accounts'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
       "layer": "governance",
       "field": "publication",
       "reason": "indexing_allowed must be true for publication",
@@ -333,11 +851,27 @@
       "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}",
       "required_action": "Resolve via human exception review",
       "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
     }
   ],
   "needs_human_review": [
     "{'conflict_id': 'CH-SRC-CONFLICT-10K-OPERATOR-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'CHF 10,000 operator wording on FOCBS page vs ordinance', 'detail': \"FOCBS English page body uses 'CHF 10,000 or more' / 'equals or exceeds CHF 10,000' for inquiry and information-system registration. Ordinance Art. 3 uses 'mindestens 10 000 Franken' (at least CHF 10,000 / >=). A FOCBS page lead sentence also uses 'over 10,000 francs' shorthand. Disposition: prefer the body inquiry/registration clauses and Art. 3 'mindestens' (>=) for Hardening I candidates; do not promote a strict-exceeding (>) operator for the threshold mechanics.\", 'status': 'preserved_prefer_ge', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'Use >= / CHF 10,000 or more / equals or exceeds / mindestens 10 000 Franken. Do not flatten to > CHF 10,000 for the inquiry or registration mechanics.'}",
-    "{'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}"
+    "{'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}"
   ],
-  "summary": "BLOCKED BY 20 SPECIFIC FINDING(S)"
+  "summary": "BLOCKED BY 56 SPECIFIC FINDING(S)"
 }
