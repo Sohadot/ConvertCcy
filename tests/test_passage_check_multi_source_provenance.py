@@ -36,9 +36,18 @@ class PassageCheckMultiSourceProvenanceTest(unittest.TestCase):
         cls.html = (REPO / "passage-check.html").read_text(encoding="utf-8")
 
     def test_published_count(self):
-        self.assertEqual(len(self.ds_by), 23)
-        self.assertEqual(len(self.pc_by), 23)
-        self.assertEqual(self.pc["count"], 23)
+        # Durable cross-surface consistency (not a hardcoded pre-Switzerland count).
+        self.assertEqual(len(self.ds_by), len(self.pc_by))
+        self.assertEqual(self.pc["count"], len(self.pc["countries"]))
+        self.assertEqual(self.pc["count"], len(self.pc_by))
+        self.assertEqual(self.api.get("count"), self.pc["count"])
+        self.assertEqual(set(self.ds_by), set(self.pc_by))
+        self.assertEqual(set(self.pc_by), set(self.api_by))
+        # Publication Closure acceptance: Switzerland is jurisdiction 24.
+        self.assertEqual(len(self.ds_by), 24)
+        self.assertIn("switzerland", self.ds_by)
+        self.assertIn("switzerland", self.pc_by)
+        self.assertIn("switzerland", self.api_by)
 
     def test_nigeria_semantics(self):
         self.assertIn("nigeria", self.pc_by)

@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 """Passage Check Taxonomy v1.1 — typed border-cash + layered exchange profiles.
 
-Capability / guard / legacy-regression tests. Does not publish any jurisdiction.
-Synthetic fixtures represent Switzerland-like architecture without using a
-published Switzerland record.
+Capability / guard / legacy-regression tests.
+Synthetic fixtures remain for generic architecture checks.
+Switzerland is the first live typed Passage Check v1.1 consumer (published).
 """
 from __future__ import annotations
 
@@ -634,16 +634,23 @@ class PassageCheckV11TaxonomyTest(unittest.TestCase):
         )
 
     def test_legacy_23_semantic_regression(self):
+        """Original 23 remain grandfathered; Switzerland is typed-only."""
         payload = bpc.build_payload(self.dataset)
-        self.assertEqual(payload["count"], 23)
+        self.assertEqual(payload["count"], 24)
         self.assertEqual(payload["version"], "1.1")
         after_by = {c["country_slug"]: c for c in payload["countries"]}
-        self.assertEqual(set(after_by), set(bpc.DECLARATION))
-        self.assertEqual(set(after_by), set(bpc.EXCHANGE_CONTROLS))
-        self.assertNotIn("switzerland", after_by)
-        self.assertEqual(bpc.BORDER_CASH_CONTROLS, {})
-        self.assertEqual(bpc.EXCHANGE_CONTROL_PROFILES, {})
-        for slug, new in after_by.items():
+        legacy_slugs = set(bpc.DECLARATION)
+        self.assertEqual(legacy_slugs, set(bpc.EXCHANGE_CONTROLS))
+        self.assertEqual(len(legacy_slugs), 23)
+        self.assertNotIn("switzerland", legacy_slugs)
+        self.assertEqual(set(after_by), legacy_slugs | {"switzerland"})
+        self.assertEqual(set(bpc.BORDER_CASH_CONTROLS), {"switzerland"})
+        self.assertEqual(set(bpc.EXCHANGE_CONTROL_PROFILES), {"switzerland"})
+        self.assertNotIn("switzerland", bpc.DECLARATION)
+        self.assertNotIn("switzerland", bpc.EXCHANGE_CONTROLS)
+
+        for slug in legacy_slugs:
+            new = after_by[slug]
             self.assertNotIn("border_cash", new)
             legacy_decl = bpc.DECLARATION[slug]
             self.assertEqual(new["declaration"].get("thresholds"), legacy_decl.get("thresholds"))
@@ -659,7 +666,6 @@ class PassageCheckV11TaxonomyTest(unittest.TestCase):
             cash_rule = new["rules"].get("cash_declaration_threshold")
             self.assertIsNotNone(cash_rule)
             self.assertEqual(cash_rule["label"], "Declaration threshold")
-            # Governed prose unchanged vs dataset.
             ds = next(c for c in self.dataset["countries"] if c["country_slug"] == slug)
             self.assertEqual(cash_rule["text"], ds["rules"]["cash_declaration_threshold"])
 
@@ -782,14 +788,27 @@ class PassageCheckV11TaxonomyTest(unittest.TestCase):
             gen.PASSAGE_FILE = old
             path.unlink(missing_ok=True)
 
-    def test_no_switzerland_in_live_tables(self):
+    def test_switzerland_is_first_live_typed_consumer(self):
         self.assertNotIn("switzerland", bpc.DECLARATION)
-        self.assertNotIn("switzerland", bpc.BORDER_CASH_CONTROLS)
         self.assertNotIn("switzerland", bpc.EXCHANGE_CONTROLS)
-        self.assertNotIn("switzerland", bpc.EXCHANGE_CONTROL_PROFILES)
-        self.assertEqual(self.dataset["count"], 23)
-        self.assertFalse(
+        self.assertIn("switzerland", bpc.BORDER_CASH_CONTROLS)
+        self.assertIn("switzerland", bpc.EXCHANGE_CONTROL_PROFILES)
+        self.assertEqual(set(bpc.BORDER_CASH_CONTROLS), {"switzerland"})
+        self.assertEqual(set(bpc.EXCHANGE_CONTROL_PROFILES), {"switzerland"})
+        self.assertEqual(self.dataset["count"], 24)
+        self.assertTrue(
             any(c["country_slug"] == "switzerland" for c in self.dataset["countries"])
+        )
+        payload = bpc.build_payload(self.dataset)
+        ch = next(c for c in payload["countries"] if c["country_slug"] == "switzerland")
+        self.assertIn("border_cash", ch)
+        self.assertTrue(ch["declaration"].get("compatibility_view"))
+        self.assertEqual(ch["exchange_controls"]["posture"], "layered")
+        self.assertEqual(ch["border_cash"]["declaration"]["mode"], "none_spontaneous")
+        self.assertEqual(ch["declaration"]["thresholds"], [])
+        self.assertEqual(
+            ch["rules"]["cash_declaration_threshold"]["label"],
+            "Border cash controls",
         )
 
 

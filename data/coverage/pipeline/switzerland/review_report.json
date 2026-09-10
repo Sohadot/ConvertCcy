@@ -1,26 +1,23 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
-  "decision": "BLOCK",
+  "decision": "PASS",
   "layers": {
-    "evidence": {
-      "blocking_count": 0,
-      "findings": []
-    },
     "fidelity": {
       "blocking_count": 0,
       "findings": []
     },
+    "evidence": {
+      "blocking_count": 0,
+      "findings": []
+    },
+    "structural": {
+      "blocking_count": 0,
+      "findings": []
+    },
     "governance": {
-      "blocking_count": 1,
+      "blocking_count": 0,
       "findings": [
-        {
-          "layer": "governance",
-          "field": "publication",
-          "reason": "indexing_allowed must be true for publication",
-          "required_action": "Do not flip publication flags until all publication gates pass",
-          "blocking": true
-        },
         {
           "layer": "governance",
           "field": "sources.source_conflicts",
@@ -85,21 +82,9 @@
           "blocking": false
         }
       ]
-    },
-    "structural": {
-      "blocking_count": 0,
-      "findings": []
     }
   },
-  "blocking_findings": [
-    {
-      "layer": "governance",
-      "field": "publication",
-      "reason": "indexing_allowed must be true for publication",
-      "required_action": "Do not flip publication flags until all publication gates pass",
-      "blocking": true
-    }
-  ],
+  "blocking_findings": [],
   "improvement_findings": [
     {
       "layer": "governance",
@@ -176,5 +161,5 @@
     "{'conflict_id': 'CH-SRC-CONFLICT-INTERVENTION-VS-ARRANGEMENT', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-SNB-MP-IMPL', 'SRC-CH-SNB-MPA-20260618'], 'topic': 'SNB FX intervention capability/posture vs IMF exchange-rate classification', 'detail': 'IMF annex states SNB reserves the right to intervene while classifying de jure free floating / de facto crawl-like. SNB implementation page states SNB may buy/sell FX against CHF (usually spot/swap) with domestic and foreign counterparties. SNB 18 June 2026 MPA states increased willingness to intervene if necessary against rapid/excessive CHF appreciation threatening price stability. Disposition: keep intervention capability and 2026 posture distinct from IMF regime labels; intervention ≠ peg ≠ exchange-control regime.', 'status': 'preserved_separate_layers', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not transform increased willingness to intervene into continuous intervention, exchange-rate target, managed-float label, or capital control.'}",
     "{'conflict_id': 'CH-SRC-CONFLICT-CURRENT-VS-CAPITAL-LIBERALISATION', 'sources': ['SRC-CH-IMF-AIV-2026', 'SRC-CH-OECD-CLCM'], 'topic': 'IMF Article VIII current-transaction posture vs OECD capital reservations', 'detail': \"IMF 2026 annex supports an exchange system free of multiple currency practices and of restrictions on payments/transfers for CURRENT international transactions except notified security restrictions. OECD Annex B records current Swiss capital-movement reservations (inward FDI sectors, non-resident real estate, pension/insurance foreign-asset and related holdings). Disposition: never let Article VIII stand for capital-account full liberalisation; never summarise OECD reservations as 'Switzerland has capital controls' without actor/transaction scope.\", 'status': 'preserved_dual_architecture', 'closure_phase': 'hardening_iv_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Current international transactions ≠ capital transactions. Preserve IMF and OECD scopes separately.'}"
   ],
-  "summary": "BLOCKED BY 1 SPECIFIC FINDING(S)"
+  "summary": "READY TO PUBLISH"
 }
