@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
-  "gate": "switzerland_hardening_i_ii_adoption",
-  "baseline_head": "1039ccdc05aa047933f77bdedbe542e84245976d",
+  "gate": "switzerland_hardening_i_ii_iii_adoption",
+  "baseline_head": "eba96ae957ec2454096a78e1a540c2590c9b8cfa",
   "decided_at": "2026-09-10",
   "decided_by": "operator",
   "decision": "PASS",
@@ -10,28 +10,35 @@
   "frozen_artifacts": [
     "candidate_claims.json",
     "human_claim_review.json",
-    "claim_review_report.json"
+    "claim_review_report.json",
+    "claim_extraction_report.json"
   ],
-  "notes": "Hardening I adoption rows preserved (13 CASH → CH-CASH-01..10). Hardening II Adoption Gate adopts CC-CH-ACC-001..015 into CH-ACC-01..13. ACC-009 and ACC-015 reconciled into CH-ACC-08 (Art. 6 spine + FINMA corroboration). ACC-001/006 and ACC-002/012 kept distinct (AMLA vs CDB operational limbs). CH-ACC-05/11/12/13 unbound. Bindings added only for rules.resident_holding_rules and rules.non_resident_rules (total bindings 6). No resident/non-resident entitlement claims; no generic prior-approval negative; no transfer-freedom claims. M2.5 adoption_eligible remains false. Does not draft switzerland.json. No Hardening III.",
+  "notes": "Hardening I–II adoption rows preserved. Hardening III Adoption Gate adopts CC-CH-BIZ-001..014 into CH-BIZ-01..13 (BIZ-014 reconciled into CH-BIZ-13). Bound claims: CH-BIZ-01..06,09,10. Unbound: CH-BIZ-07,08,11,12,13. Bindings added for summary.business, rules.business_invoicing_settlement, rules.banking_conversion_practicality (total bindings 9). Remaining unbound required fields: country_overview, rules.exchange_controls (H4). Zero invoice-freedom / transfer-freedom / repatriation / prior-approval-negative / capital-liberalisation claims. M2.5 adoption_eligible remains false. Does not draft switzerland.json. No Hardening IV.",
   "stats": {
     "hardening_i_candidates": 13,
     "hardening_ii_candidates": 15,
-    "candidates_in_scope_total": 28,
+    "hardening_iii_candidates": 14,
+    "candidates_in_scope_total": 42,
     "hardening_i_project_claims": 10,
     "hardening_ii_project_claims_created": 13,
-    "distinct_project_claims_total": 23,
-    "hardening_ii_adopted_bound": 9,
-    "hardening_ii_adopted_unbound": 4,
-    "hardening_ii_reconciled_into_canonical": 2,
+    "hardening_iii_project_claims_created": 13,
+    "distinct_project_claims_total": 36,
+    "hardening_iii_adopted_bound": 8,
+    "hardening_iii_adopted_unbound": 5,
+    "hardening_iii_reconciled_into_canonical": 1,
     "not_adopted": 0,
     "duplicate_project_claims_created": 0,
-    "field_bindings_total": 6,
+    "field_bindings_total": 9,
+    "remaining_required_unbound_fields": 2,
     "publication_changes": 0,
     "switzerland_rules_changes": 0,
-    "resident_entitlement_claims_created": 0,
-    "non_resident_entitlement_claims_created": 0,
+    "invoice_freedom_claims_created": 0,
+    "transfer_freedom_claims_created": 0,
+    "repatriation_right_claims_created": 0,
     "prior_approval_negative_claims_created": 0,
-    "transfer_freedom_claims_created": 0
+    "general_capital_liberalisation_claims_created": 0,
+    "resident_entitlement_claims_created": 0,
+    "non_resident_entitlement_claims_created": 0
   },
   "adoptions": [
     {
@@ -401,6 +408,189 @@
       "reviewed_candidate_fingerprint": "sha256:9616777e7cc0a674779feaea6fbe80c568481b21ae733383e57cc55a948fb4e4",
       "relationship": "equivalent_existing_claim",
       "rationale": "Reconciled into CH-ACC-08. FINMA unusual/crime-TF clarification overlaps AMLA Art. 6 conditional clarification architecture. Retained as supporting supervisory representation — no duplicate claim.",
+      "adoption_decision": "reconciled"
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-001",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-01"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:171f755a06ae0abf1caad630dba9c325ffe1dc6e71903fc775dbadf4365c4abe",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: CO Art. 84 para. 1 verified/E0. Contractual debt mechanics only; not mechanical supported→verified map. Bound to summary.business and business_invoicing_settlement."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-002",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-02"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6e26d1373554f5e60779c914e966ac5d927889c2c4e6a25ffb944883b63c2b74",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: Art. 84 para. 2 substitution limb verified/E0, kept distinct from CH-BIZ-03 exception."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-003",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-03"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:5ed4c161b1fdb2a46b572675282587f7cbabc4946da0869b54f4ca90a9a8f6c7",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: actual-currency literal-performance exception verified/E0; coupled with but not merged into CH-BIZ-02."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-004",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-04"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:b176d3550c8b4cb42c24e020ab8e5d3d3bb93d43ff3a326a780f30cd92e8bdb2",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: VAT Art. 45 para. 1 verified/E0 tax-assessment conversion. Tax ≠ CHF settlement mandate."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-005",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-05"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:afc2b991e8b2e1b06f591f562f3dbcdfc8669aaa0b21a044c74ecbcb3ac1c0cb",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: VAT Art. 45 para. 2 verified/E0 classification mechanism. Not universal invoice freedom."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-006",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-06"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:81558c9a11d91add8491fdc1f5595ec06e628234bb119c4a83e770bea60f1cae",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: FTA VAT FX rate mechanics verified/E1 official guidance. Not bank/SNB commercial FX rate."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-007",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-BIZ-07"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:0699f31e2c7f657995437d1c6896990f044e6a2c30a42e6a50d82da5c20c4877",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: Art. 957a(4) accounting currency verified/E0 adopt_unbound — guardrail only; not forced into H3 public fields."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-008",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-BIZ-08"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:cb81b82175e31bd68c182c4c1e03c2118b2e7b2a26898c25cd5283044b610413",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: Art. 958d(3) financial-reporting currency verified/E0 adopt_unbound; distinct from CH-BIZ-07."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-009",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-09"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:6c94b1b8d35be9a9c854e951d3d504bc968569964dd1df2400bf5e0ba27d2d44",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: SIC infrastructure verified/E1. Bound to all three H3 fields as payment-rail mechanics only — not entitlement."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-010",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-10"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:95a36547e61f7e0a82f4e67fbc1bae569033099ac84f821863d07ab08e2d85f7",
+      "relationship": "new_project_claim",
+      "rationale": "Fresh project judgment: domestic instant payments verified/E1. Bound with CH-BIZ-09; remains domestic-only."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-011",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-BIZ-11"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:26f36906752b6fff6362abd2e126eaaff1aa310a3450d24dda4cb93a33a1d84d",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: SIC–TIPS exploration adopted unbound as verified temporal fact. Not production; no current-field binding."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-012",
+      "m2_5_decision": "bounded",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-BIZ-12"
+      ],
+      "project_status": "bounded",
+      "reviewed_candidate_fingerprint": "sha256:7204d194882014f6836a1d4ce48a031aedc9f5ffa0d53eef65e683c101bb4ecd",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: use M2.5 reviewed_text (Ukraine ordinance FINMA notice). Bounded/E1 adopt_unbound — fidelity guardrail, not generic Switzerland business-rule binding. Not mechanical M2.5 bounded→project bounded alone; ordinance-specificity requires bounded project status."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-013",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt_unbound",
+      "project_claim_ids": [
+        "CH-BIZ-13"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:62dc71995ed9340310a1f24a145cc756c24433973b2257414813203f3c079f30",
+      "relationship": "new_project_claim_unbound",
+      "rationale": "Fresh project judgment: ISA adoption + expected 2027 EIF + bounded acquisition architecture adopted unbound as verified temporal composite (CH-BIZ-13). BIZ-014 reconciles into this claim. Not current FX/payment approval."
+    },
+    {
+      "candidate_id": "CC-CH-BIZ-014",
+      "m2_5_decision": "supported",
+      "adoption_gate_conditions_met": true,
+      "human_adoption_decision": "adopt",
+      "project_claim_ids": [
+        "CH-BIZ-13"
+      ],
+      "project_status": "verified",
+      "reviewed_candidate_fingerprint": "sha256:96af7396c6c329760b291570c98490fc4d394af2092bf16cbc2328f4e35039aa",
+      "relationship": "equivalent_existing_claim",
+      "rationale": "Reconciled into CH-BIZ-13. Current non-operability (no applications can be submitted/reviewed) is the complementary temporal limb of the same ISA architecture. No duplicate claim.",
       "adoption_decision": "reconciled"
     }
   ]

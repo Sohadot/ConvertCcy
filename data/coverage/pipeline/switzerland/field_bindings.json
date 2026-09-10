@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "country_slug": "switzerland",
-  "notes": "Switzerland Hardening I bindings preserved (4 traveler/cash fields). Hardening II adds rules.resident_holding_rules and rules.non_resident_rules only. CH-ACC-05/11/12/13 unbound. Total bindings: 6. Future Hardening III–IV fields intentionally unmapped. AML/KYC ≠ account entitlement; non-resident ≠ high-risk class; future rules unbound.",
+  "notes": "Switzerland Hardening I–III bindings. H1 four traveler/cash + H2 two resident/non-resident bindings preserved. Hardening III adds summary.business, rules.business_invoicing_settlement, and rules.banking_conversion_practicality only (total 9). CH-BIZ-07/08/11/12/13 unbound. country_overview and rules.exchange_controls remain for Hardening IV. No invoice/transfer/repatriation freedom; banking_conversion_practicality remains agnostic on general FX availability.",
   "bindings": [
     {
       "field": "summary.traveler",
@@ -78,6 +78,42 @@
         "CH-ACC-10"
       ],
       "wording_boundary": "Describe governed AML/account-relationship requirements where a relevant financial intermediary establishes a client relationship — without asserting universal non-resident account entitlement or the opposite ban. May include identity verification, beneficial-owner requirements, bank CDB account-opening mechanics where applicable, risk-based updates, conditional enhanced DD, institutional risk tolerance / outside-tolerance acceptance, and high-risk conditional source-of-assets monitoring. Governed agnosticism on universal entitlement. Hard forbid: Non-residents may open and operate foreign currency accounts; transfer funds freely; without prior approval; freely; all non-residents are entitled to Swiss accounts; foreign clients are legally guaranteed access; all non-residents are high risk; all non-residents require enhanced DD; foreign residence automatically requires source-of-wealth proof; unrestricted transfer/repatriation rights; non-residents have no right to accounts (unsupported opposite). Country risk ≠ residency class. Institutional refusal under risk tolerance ≠ statutory nationality/residence prohibition."
+    },
+    {
+      "field": "summary.business",
+      "claim_ids": [
+        "CH-BIZ-01",
+        "CH-BIZ-02",
+        "CH-BIZ-03",
+        "CH-BIZ-04",
+        "CH-BIZ-05",
+        "CH-BIZ-06",
+        "CH-BIZ-09",
+        "CH-BIZ-10"
+      ],
+      "wording_boundary": "Mechanism-based business summary only within bound H3 claims: Swiss private law (CO Art. 84) contemplates foreign-currency pecuniary debts; local-currency substitution at maturity is possible subject to the actual-currency contractual exception; Swiss VAT rules separately recognise foreign-currency invoices/receipts for tax classification and require CHF conversion for VAT assessment using FTA monthly average or daily sell rates; SIC provides central Swiss payment infrastructure and domestic account-to-account instant payments operate within their evidenced scope. Hard forbid: full freedom; freely; businesses enjoy full freedom to hold, transfer, convert and repatriate; Business transactions may be invoiced and settled in foreign currency or CHF (as a universal legal rule); Cross-border payments and repatriation of funds are handled freely; unrestricted settlement; unrestricted cross-border payments; unrestricted repatriation; no approval required; fully liberalised; no exchange controls; widely available FX conversion; SIC proves international transfer freedom; domestic instant payment equals international/cross-currency instant payment; VAT conversion equals CHF-only settlement; accounting currency equals payment currency; authorised banks and financial institutions as a vague entitlement class. Do not bind or import narrow Ukraine sanctions or future ISA into this summary."
+    },
+    {
+      "field": "rules.business_invoicing_settlement",
+      "claim_ids": [
+        "CH-BIZ-01",
+        "CH-BIZ-02",
+        "CH-BIZ-03",
+        "CH-BIZ-04",
+        "CH-BIZ-05",
+        "CH-BIZ-06",
+        "CH-BIZ-09",
+        "CH-BIZ-10"
+      ],
+      "wording_boundary": "Distinguish explicitly: invoice ≠ debt denomination ≠ VAT classification ≠ payment currency ≠ accounting currency ≠ settlement rail. May describe Art. 84 FCY-denominated monetary obligations and local-currency substitution / actual-currency exception; VAT Art. 45 foreign-currency invoice/receipt classification and CHF conversion for VAT assessment with FTA rate mechanics; SIC and domestic instant-payment infrastructure within evidenced scope. Must NOT state: Business transactions may be invoiced and settled in foreign currency or CHF as a universal legal rule; Cross-border payments and repatriation are handled freely; full freedom; freely; unrestricted transfers; no approval required; authorised banks and financial institutions as legacy entitlement wording; VAT conversion requires commercial settlement in CHF; accounting/reporting currency equals invoice or payment currency. Do not bind CH-BIZ-07/08/11/12/13."
+    },
+    {
+      "field": "rules.banking_conversion_practicality",
+      "claim_ids": [
+        "CH-BIZ-09",
+        "CH-BIZ-10"
+      ],
+      "wording_boundary": "Evidence-grounded infrastructure only: SIC is central Swiss payment infrastructure within its evidenced participant/large-value/retail scope; domestic account-to-account instant payments operate within the evidenced domestic scope. This field remains agnostic on general customer FX-conversion availability — H3 did not establish it. Hard forbid: Foreign exchange conversion and transfers are widely available; easy conversion; unrestricted conversion; competitive rates; low friction; licensed money exchange houses throughout Switzerland; ATMs provide general FX conversion; all banks provide conversion; cross-border payments are free/unrestricted; SIC performs general customer FX conversion; domestic instant payments are cross-currency; no approval required; freely; full freedom. Do not force Art. 84 / VAT / FTA tax-conversion claims into this banking field."
     }
   ]
 }

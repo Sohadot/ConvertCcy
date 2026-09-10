@@ -3,88 +3,8 @@
   "country_slug": "switzerland",
   "decision": "BLOCK",
   "layers": {
-    "governance": {
-      "blocking_count": 1,
-      "findings": [
-        {
-          "layer": "governance",
-          "field": "publication",
-          "reason": "indexing_allowed must be true for publication",
-          "required_action": "Do not flip publication flags until all publication gates pass",
-          "blocking": true
-        },
-        {
-          "layer": "governance",
-          "field": "sources.source_conflicts",
-          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-10K-OPERATOR-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'CHF 10,000 operator wording on FOCBS page vs ordinance', 'detail': \"FOCBS English page body uses 'CHF 10,000 or more' / 'equals or exceeds CHF 10,000' for inquiry and information-system registration. Ordinance Art. 3 uses 'mindestens 10 000 Franken' (at least CHF 10,000 / >=). A FOCBS page lead sentence also uses 'over 10,000 francs' shorthand. Disposition: prefer the body inquiry/registration clauses and Art. 3 'mindestens' (>=) for Hardening I candidates; do not promote a strict-exceeding (>) operator for the threshold mechanics.\", 'status': 'preserved_prefer_ge', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'Use >= / CHF 10,000 or more / equals or exceeds / mindestens 10 000 Franken. Do not flatten to > CHF 10,000 for the inquiry or registration mechanics.'}",
-          "required_action": "Resolve via human exception review",
-          "blocking": false
-        },
-        {
-          "layer": "governance",
-          "field": "sources.source_conflicts",
-          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}",
-          "required_action": "Resolve via human exception review",
-          "blocking": false
-        },
-        {
-          "layer": "governance",
-          "field": "sources.source_conflicts",
-          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
-          "required_action": "Resolve via human exception review",
-          "blocking": false
-        },
-        {
-          "layer": "governance",
-          "field": "sources.source_conflicts",
-          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}",
-          "required_action": "Resolve via human exception review",
-          "blocking": false
-        }
-      ]
-    },
-    "evidence": {
-      "blocking_count": 5,
-      "findings": [
-        {
-          "layer": "evidence",
-          "field": "country_overview",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "summary.business",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "rules.business_invoicing_settlement",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "rules.exchange_controls",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        },
-        {
-          "layer": "evidence",
-          "field": "rules.banking_conversion_practicality",
-          "reason": "Required field has no claim binding",
-          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-          "blocking": true
-        }
-      ]
-    },
     "fidelity": {
-      "blocking_count": 50,
+      "blocking_count": 104,
       "findings": [
         {
           "layer": "fidelity",
@@ -435,6 +355,457 @@
           "reason": "Draft contains forbidden inference from 'CH-ACC-10': 'Non-residents may open and operate foreign currency accounts'",
           "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
           "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'full freedom'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'authorised banks and financial institutions'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'full freedom'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'authorised banks and financial institutions'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'full freedom'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'authorised banks and financial institutions'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'full freedom'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'authorised banks and financial institutions'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'full freedom'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'authorised banks and financial institutions'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'full freedom'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'authorised banks and financial institutions'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'full freedom'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'authorised banks and financial institutions'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'full freedom'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "summary.business",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'authorised banks and financial institutions'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'Cross-border payments and repatriation of funds are handled freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'Cross-border payments and repatriation of funds are handled freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'Cross-border payments and repatriation of funds are handled freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'Cross-border payments and repatriation of funds are handled freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'Cross-border payments and repatriation of funds are handled freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'Cross-border payments and repatriation of funds are handled freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'Cross-border payments and repatriation of funds are handled freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.business_invoicing_settlement",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'Cross-border payments and repatriation of funds are handled freely'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'Foreign exchange conversion and transfers are widely available'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'licensed money exchange houses'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'ATMs throughout Switzerland'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'Foreign exchange conversion and transfers are widely available'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'licensed money exchange houses'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        },
+        {
+          "layer": "fidelity",
+          "field": "rules.banking_conversion_practicality",
+          "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'ATMs throughout Switzerland'",
+          "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+          "blocking": true
+        }
+      ]
+    },
+    "governance": {
+      "blocking_count": 1,
+      "findings": [
+        {
+          "layer": "governance",
+          "field": "publication",
+          "reason": "indexing_allowed must be true for publication",
+          "required_action": "Do not flip publication flags until all publication gates pass",
+          "blocking": true
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-10K-OPERATOR-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'CHF 10,000 operator wording on FOCBS page vs ordinance', 'detail': \"FOCBS English page body uses 'CHF 10,000 or more' / 'equals or exceeds CHF 10,000' for inquiry and information-system registration. Ordinance Art. 3 uses 'mindestens 10 000 Franken' (at least CHF 10,000 / >=). A FOCBS page lead sentence also uses 'over 10,000 francs' shorthand. Disposition: prefer the body inquiry/registration clauses and Art. 3 'mindestens' (>=) for Hardening I candidates; do not promote a strict-exceeding (>) operator for the threshold mechanics.\", 'status': 'preserved_prefer_ge', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'Use >= / CHF 10,000 or more / equals or exceeds / mindestens 10 000 Franken. Do not flatten to > CHF 10,000 for the inquiry or registration mechanics.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-ISA-TEMPORAL-2027', 'sources': ['SRC-CH-SECO-ISA'], 'topic': 'Investment Screening Act adopted 2025 vs expected 2027 entry into force', 'detail': 'On 2026-09-10 SECO states Parliament adopted the ISA on 19 December 2025 and entry into force is expected in 2027; applications cannot currently be submitted or reviewed. Disposition: treat ISA prior-approval architecture as future/temporal only; do not draft it as current Swiss law governing ordinary bank transfers, dividends, FX conversion, or general capital movements.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not state ISA approval is currently required for capital transfers; do not deny the future critical-sector acquisition-screening framework when discussing post-EIF rules.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        },
+        {
+          "layer": "governance",
+          "field": "sources.source_conflicts",
+          "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-IP-DOMESTIC-VS-EXPLORATION', 'sources': ['SRC-CH-SNB-IP-ECB-2025'], 'topic': 'domestic SIC instant payments vs SNB/ECB TIPS interlinking exploration', 'detail': 'The same SNB 29 September 2025 press release describes current domestic instant payments and an exploration of SIC IP–TIPS interlinking continuing throughout 2026. Disposition: keep domestic IP capability distinct from prospective cross-currency interlinking; exploration is not production capability.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not draft cross-currency SIC/TIPS interlinking as currently operational.'}",
+          "required_action": "Resolve via human exception review",
+          "blocking": false
+        }
+      ]
+    },
+    "evidence": {
+      "blocking_count": 2,
+      "findings": [
+        {
+          "layer": "evidence",
+          "field": "country_overview",
+          "reason": "Required field has no claim binding",
+          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
+          "blocking": true
+        },
+        {
+          "layer": "evidence",
+          "field": "rules.exchange_controls",
+          "reason": "Required field has no claim binding",
+          "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
+          "blocking": true
         }
       ]
     },
@@ -453,28 +824,7 @@
     },
     {
       "layer": "evidence",
-      "field": "summary.business",
-      "reason": "Required field has no claim binding",
-      "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-      "blocking": true
-    },
-    {
-      "layer": "evidence",
-      "field": "rules.business_invoicing_settlement",
-      "reason": "Required field has no claim binding",
-      "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-      "blocking": true
-    },
-    {
-      "layer": "evidence",
       "field": "rules.exchange_controls",
-      "reason": "Required field has no claim binding",
-      "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
-      "blocking": true
-    },
-    {
-      "layer": "evidence",
-      "field": "rules.banking_conversion_practicality",
       "reason": "Required field has no claim binding",
       "required_action": "Add a field_bindings entry with drafting-allowed claim_ids",
       "blocking": true
@@ -830,6 +1180,384 @@
       "blocking": true
     },
     {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'full freedom'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'authorised banks and financial institutions'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'full freedom'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'authorised banks and financial institutions'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'full freedom'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'authorised banks and financial institutions'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'full freedom'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'authorised banks and financial institutions'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'full freedom'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'authorised banks and financial institutions'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'full freedom'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'authorised banks and financial institutions'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'full freedom'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'authorised banks and financial institutions'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'full freedom'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'Businesses and individuals enjoy full freedom to hold, transfer, convert and repatriate foreign currency'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "summary.business",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'authorised banks and financial institutions'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-01': 'Cross-border payments and repatriation of funds are handled freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-02': 'Cross-border payments and repatriation of funds are handled freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-03': 'Cross-border payments and repatriation of funds are handled freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-04': 'Cross-border payments and repatriation of funds are handled freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-05': 'Cross-border payments and repatriation of funds are handled freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-06': 'Cross-border payments and repatriation of funds are handled freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'Cross-border payments and repatriation of funds are handled freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'Business transactions may be invoiced and settled in foreign currency or CHF'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.business_invoicing_settlement",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'Cross-border payments and repatriation of funds are handled freely'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'Foreign exchange conversion and transfers are widely available'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'licensed money exchange houses'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-09': 'ATMs throughout Switzerland'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'Foreign exchange conversion and transfers are widely available'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'licensed money exchange houses'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
+      "layer": "fidelity",
+      "field": "rules.banking_conversion_practicality",
+      "reason": "Draft contains forbidden inference from 'CH-BIZ-10': 'ATMs throughout Switzerland'",
+      "required_action": "Remove or rewrite the phrase; claim boundary forbids it",
+      "blocking": true
+    },
+    {
       "layer": "governance",
       "field": "publication",
       "reason": "indexing_allowed must be true for publication",
@@ -865,13 +1593,29 @@
       "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}",
       "required_action": "Resolve via human exception review",
       "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-ISA-TEMPORAL-2027', 'sources': ['SRC-CH-SECO-ISA'], 'topic': 'Investment Screening Act adopted 2025 vs expected 2027 entry into force', 'detail': 'On 2026-09-10 SECO states Parliament adopted the ISA on 19 December 2025 and entry into force is expected in 2027; applications cannot currently be submitted or reviewed. Disposition: treat ISA prior-approval architecture as future/temporal only; do not draft it as current Swiss law governing ordinary bank transfers, dividends, FX conversion, or general capital movements.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not state ISA approval is currently required for capital transfers; do not deny the future critical-sector acquisition-screening framework when discussing post-EIF rules.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
+    },
+    {
+      "layer": "governance",
+      "field": "sources.source_conflicts",
+      "reason": "Source conflict recorded: {'conflict_id': 'CH-SRC-CONFLICT-IP-DOMESTIC-VS-EXPLORATION', 'sources': ['SRC-CH-SNB-IP-ECB-2025'], 'topic': 'domestic SIC instant payments vs SNB/ECB TIPS interlinking exploration', 'detail': 'The same SNB 29 September 2025 press release describes current domestic instant payments and an exploration of SIC IP–TIPS interlinking continuing throughout 2026. Disposition: keep domestic IP capability distinct from prospective cross-currency interlinking; exploration is not production capability.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not draft cross-currency SIC/TIPS interlinking as currently operational.'}",
+      "required_action": "Resolve via human exception review",
+      "blocking": false
     }
   ],
   "needs_human_review": [
     "{'conflict_id': 'CH-SRC-CONFLICT-10K-OPERATOR-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'CHF 10,000 operator wording on FOCBS page vs ordinance', 'detail': \"FOCBS English page body uses 'CHF 10,000 or more' / 'equals or exceeds CHF 10,000' for inquiry and information-system registration. Ordinance Art. 3 uses 'mindestens 10 000 Franken' (at least CHF 10,000 / >=). A FOCBS page lead sentence also uses 'over 10,000 francs' shorthand. Disposition: prefer the body inquiry/registration clauses and Art. 3 'mindestens' (>=) for Hardening I candidates; do not promote a strict-exceeding (>) operator for the threshold mechanics.\", 'status': 'preserved_prefer_ge', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'Use >= / CHF 10,000 or more / equals or exceeds / mindestens 10 000 Franken. Do not flatten to > CHF 10,000 for the inquiry or registration mechanics.'}",
     "{'conflict_id': 'CH-SRC-CONFLICT-REGISTRATION-SCOPE-01', 'sources': ['SRC-CH-FOCBS-CASH', 'SRC-CH-ORD-631-052'], 'topic': 'public >=CHF10k registration narrative vs Art. 6 reporting independence', 'detail': 'FOCBS public guidance states that if cash equals or exceeds CHF 10,000, an entry is registered in the FOCBS information system. Ordinance Art. 6 Abs. 2 states that customs reporting (Meldung) to the Oberzolldirektion is permissible independent of the cash amount. Disposition: keep FOCBS public >=10k registration as a distinct public-guidance proposition; keep Art. 6 amount-independent reporting as a distinct statutory reporting permission. Do not collapse them into one threshold-only recording rule.', 'status': 'preserved_dual_surface', 'closure_phase': 'hardening_i', 'closed_at': '2026-09-09', 'wording_boundary': 'FOCBS public surface: >= CHF 10,000 information-system entry. Ordinance Art. 6: Meldung may occur independent of amount.'}",
     "{'conflict_id': 'CH-SRC-CONFLICT-AMLA-TEMPORAL-2026', 'sources': ['SRC-CH-AMLA-955-0', 'SRC-CH-FC-AMLA-EIF-2026'], 'topic': 'current AMLA consolidation vs revised AMLA effective 1 October 2026', 'detail': 'On 2026-09-09 the Fedlex AMLA consolidation (Status as of 1 March 2024) is the operative current text. The Federal Council has set 1 October 2026 as entry into force for the revised AMLA and transparency-register act. Disposition: H2 current candidates use only the pre-1-Oct-2026 operative AMLA; 1 Oct 2026 reforms are temporal/future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not draft 1 October 2026 AMLA reforms as current account/AML rules before that date.'}",
-    "{'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}"
+    "{'conflict_id': 'CH-SRC-CONFLICT-AMLO-TEMPORAL-2027', 'sources': ['SRC-CH-AMLO-FINMA', 'SRC-CH-FINMA-AMLO-CONSULT-2026'], 'topic': 'current AMLO-FINMA vs 2026 consultation / expected 2027 revision', 'detail': 'Current AMLO-FINMA Stand 1 January 2023 remains operative on 2026-09-09. FINMA consultation of 12 May 2026 on partial revision is not yet current law; expected effectiveness commonly stated as 1 January 2027 alongside revised CDB. Disposition: keep current ordinance and CDB 20 for present drafting; record 2027 package as future only.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_ii_evidence', 'closed_at': '2026-09-09', 'wording_boundary': 'Do not apply consulted/future AMLO-FINMA or successor CDB as current rules.'}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-ISA-TEMPORAL-2027', 'sources': ['SRC-CH-SECO-ISA'], 'topic': 'Investment Screening Act adopted 2025 vs expected 2027 entry into force', 'detail': 'On 2026-09-10 SECO states Parliament adopted the ISA on 19 December 2025 and entry into force is expected in 2027; applications cannot currently be submitted or reviewed. Disposition: treat ISA prior-approval architecture as future/temporal only; do not draft it as current Swiss law governing ordinary bank transfers, dividends, FX conversion, or general capital movements.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not state ISA approval is currently required for capital transfers; do not deny the future critical-sector acquisition-screening framework when discussing post-EIF rules.'}",
+    "{'conflict_id': 'CH-SRC-CONFLICT-IP-DOMESTIC-VS-EXPLORATION', 'sources': ['SRC-CH-SNB-IP-ECB-2025'], 'topic': 'domestic SIC instant payments vs SNB/ECB TIPS interlinking exploration', 'detail': 'The same SNB 29 September 2025 press release describes current domestic instant payments and an exploration of SIC IP–TIPS interlinking continuing throughout 2026. Disposition: keep domestic IP capability distinct from prospective cross-currency interlinking; exploration is not production capability.', 'status': 'preserved_current_vs_future', 'closure_phase': 'hardening_iii_evidence', 'closed_at': '2026-09-10', 'wording_boundary': 'Do not draft cross-currency SIC/TIPS interlinking as currently operational.'}"
   ],
-  "summary": "BLOCKED BY 56 SPECIFIC FINDING(S)"
+  "summary": "BLOCKED BY 107 SPECIFIC FINDING(S)"
 }
