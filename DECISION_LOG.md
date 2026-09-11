@@ -4,6 +4,49 @@ This file records architectural and editorial decisions that are not obvious fro
 
 ---
 
+## SEO-A1 — Truthful sitemap freshness and search-surface segregation
+**Status:** Implementation on branch `claude/seo-a1-truthful-sitemap`
+
+### Decision
+
+`generate.py` → `build_sitemap()` remains the **sole authoritative** search-sitemap producer.
+
+`<lastmod>` must represent a trustworthy **content-change** date for the URL:
+
+- tracked unchanged file → date of the newest Git commit that materially changed that file
+- tracked file dirty in the working tree, or newly created/untracked public file → current UTC date
+- no trustworthy Git/content date → **omit** `<lastmod>` (never fabricate)
+
+Retired: global build-day stamping via `iso_today()` applied to every URL.
+
+Rejected as truth: filesystem `mtime` (including `scripts/generate_sitemap.py`’s `iso_lastmod`). Git does not preserve meaningful mtimes across clone/checkout.
+
+`scripts/generate_sitemap.py` remains **non-authoritative / legacy** relative to `generate.py`. SEO-A1 does not switch production generation to it and does not create a second competing sitemap truth model.
+
+### Search-surface segregation
+
+Raw machine-readable resources remain public on disk for agents, but are **not** advertised through the search sitemap:
+
+- `/api/v1/index.json`
+- `/api/v1/rules-index.json`
+- `/api/v1/passage-check.json`
+- `/api/v1/rules/*.json`
+- `/llms.txt`
+
+Human API HTML hubs remain search-facing: `/api.html` and `/api/` (`api/index.html`).
+
+No `robots.txt` Disallow and no mass `noindex` decision is made here (SEO-A4).
+
+### Explicit non-scope
+
+SEO-A2 (pair discovery graph), SEO-A3 (static rate snapshot in HTML), and SEO-A4 (indexation policy audit) remain separate. No pair-page content, jurisdiction semantics, Passage Check, Switzerland, or publication lifecycle changes.
+
+### Pre-existing committed-sitemap lag (reported)
+
+At baseline `9bb2e688…`, committed `sitemap.xml` lagged authoritative `build_sitemap()` by 69 URLs (missing human surfaces such as briefs/ontology/API HTML hubs, plus the 28 machine URLs). SEO-A1 regenerates from `generate.py`: restores human search surfaces, excludes the 28 machine URLs only relative to the pre-A1 generator inventory.
+
+---
+
 ## Passage Check Taxonomy v1.1 — Border-cash typing and layered exchange profiles
 **Status:** Implementation on branch `claude/passage-check-taxonomy-v1-1` (independent of Switzerland publication)
 

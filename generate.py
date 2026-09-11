@@ -110,6 +110,98 @@ def replace_tokens(text: str, tokens: Dict[str, str]) -> str:
 def file_exists(name: str) -> bool:
     return (BASE_DIR / name).exists()
 
+
+def _git_run(repo_root: Path, args: List[str]):
+    import subprocess
+    return subprocess.run(
+        ["git", "-C", str(repo_root), *args],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        check=False,
+    )
+
+
+def build_git_content_lastmod_index(
+    repo_root: Path,
+    *,
+    today: Optional[str] = None,
+    git_runner=None,
+) -> Tuple[Dict[str, str], Set[str], Optional[str], float]:
+    """Build path → content-change date maps from repository history.
+
+    Returns:
+      history_dates: tracked path (posix, repo-relative) → YYYY-MM-DD of the
+        newest commit that materially changed that path
+      dirty_paths: modified or untracked paths (posix) whose content is changing
+        in this working tree
+      today_iso: UTC date used for dirty/untracked paths (None if clock not set
+        and no dirty paths need it)
+      elapsed_seconds: wall time spent building the maps
+
+    Does NOT use filesystem mtime. If Git history cannot be read, history_dates
+    is empty and callers must omit <lastmod> rather than fabricate dates.
+    """
+    import time as _time
+
+    t0 = _time.perf_counter()
+    today_iso = today if today is not None else iso_today()
+    runner = git_runner or (lambda args: _git_run(repo_root, args))
+
+    history_dates: Dict[str, str] = {}
+    dirty_paths: Set[str] = set()
+
+    log = runner(["log", "--pretty=format:%cI", "--name-only", "--diff-filter=ACMR"])
+    if log.returncode != 0:
+        # No trustworthy Git history — omit lastmod rather than invent dates.
+        return {}, set(), today_iso, _time.perf_counter() - t0
+
+    current_date: Optional[str] = None
+    for raw_line in log.stdout.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if "T" in line and len(line) >= 10 and line[0:4].isdigit():
+            # Committer ISO timestamp → calendar date in that timestamp's zone
+            # prefix (YYYY-MM-DD). Prefer the date component only.
+            current_date = line[:10]
+            continue
+        if current_date is None:
+            continue
+        path = line.replace("\\", "/")
+        # Newest commit first: keep the first date seen per path.
+        if path not in history_dates:
+            history_dates[path] = current_date
+
+    status = runner(["status", "--porcelain", "-uall"])
+    if status.returncode == 0:
+        for raw_line in status.stdout.splitlines():
+            if len(raw_line) < 4:
+                continue
+            entry = raw_line[3:].strip()
+            if " -> " in entry:
+                entry = entry.split(" -> ", 1)[1].strip()
+            entry = entry.strip('"').replace("\\", "/")
+            if entry:
+                dirty_paths.add(entry)
+
+    return history_dates, dirty_paths, today_iso, _time.perf_counter() - t0
+
+
+def resolve_content_lastmod(
+    rel_path: str,
+    history_dates: Dict[str, str],
+    dirty_paths: Set[str],
+    today_iso: Optional[str],
+) -> Optional[str]:
+    """Return YYYY-MM-DD for a repo-relative path, or None to omit <lastmod>."""
+    path = rel_path.replace("\\", "/")
+    if path in dirty_paths:
+        return today_iso
+    return history_dates.get(path)
+
+
 # -----------------------------------------------------------------------------
 # LOAD CURRENCIES
 # -----------------------------------------------------------------------------
@@ -1199,26 +1291,45 @@ def build_framework_page(content: Dict[str, Any]) -> str:
 # SITEMAP
 # -----------------------------------------------------------------------------
 
-def build_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> str:
-    """Complete, generator-authoritative sitemap. Includes, in crawl-priority order:
-    home; static/authority pages; the intelligence layer (governance, CRIS standard,
-    ontology hub + class pages, Passage Check); articles; the PUBLISHED sovereign
-    rules layer (only /rules/ — preview/RC entries live under /preview/ and are never
-    listed); and all pair pages. Only files that exist on disk are emitted, so the
-    sitemap can never reference a page that was not built. Previously the rules and
-    article URLs were hand-merged into the sitemap after generation; they are now
-    produced here so the sitemap stays complete on every build."""
-    lastmod = iso_today()
-    urls = [f"{BASE_URL}/"]
+def build_sitemap(
+    pair_profiles: Dict[str, Dict[str, Any]],
+    *,
+    history_dates: Optional[Dict[str, str]] = None,
+    dirty_paths: Optional[Set[str]] = None,
+    today: Optional[str] = None,
+    lastmod_index_builder=None,
+) -> str:
+    """Complete, generator-authoritative SEARCH sitemap.
+
+    Includes, in crawl-priority order: home; static/authority pages; the
+    intelligence layer; articles; published /rules/ (never /preview/); human
+    API HTML hubs; and all pair pages. Only files that exist on disk are
+    emitted.
+
+    SEO-A1:
+    - <lastmod> is a trustworthy content-change date (Git history), not the
+      sitemap build day. Untrusted dates are omitted, never fabricated.
+    - Raw machine-readable api/v1/*.json and llms.txt remain public files but
+      are NOT advertised in the search sitemap. Human /api.html and /api/ stay.
+    """
+    # (url, repo-relative posix path used for lastmod resolution)
+    entries: List[Tuple[str, str]] = [(f"{BASE_URL}/", "index.html")]
 
     # Static + authority pages (only those present on disk).
-    authority_pages = STATIC_CORE_PAGES + ["governance.html", "standard.html", "passage-check.html", "passage-briefs.html", "licensing.html", "api.html"]
+    authority_pages = STATIC_CORE_PAGES + [
+        "governance.html",
+        "standard.html",
+        "passage-check.html",
+        "passage-briefs.html",
+        "licensing.html",
+        "api.html",
+    ]
     seen_pages = set()
     for page in authority_pages:
         if page == "index.html" or page in seen_pages:
             continue
         if file_exists(page):
-            urls.append(f"{BASE_URL}/{page}")
+            entries.append((f"{BASE_URL}/{page}", page.replace("\\", "/")))
             seen_pages.add(page)
 
     # Directory hubs + their contents (hub index first, then children, sorted).
@@ -1226,45 +1337,50 @@ def build_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> str:
         d = BASE_DIR / dir_name
         if not (d / index_name).exists():
             return
-        urls.append(f"{BASE_URL}/{dir_name}/")
+        entries.append((f"{BASE_URL}/{dir_name}/", f"{dir_name}/{index_name}"))
         for f in sorted(d.glob(child_glob)):
             if f.name == index_name:
                 continue
-            urls.append(f"{BASE_URL}/{dir_name}/{f.name}")
+            # Human HTML only under these hubs. Never emit raw JSON siblings.
+            if f.suffix.lower() != ".html":
+                continue
+            entries.append((f"{BASE_URL}/{dir_name}/{f.name}", f"{dir_name}/{f.name}"))
 
     add_dir("ontology", "*.html")
     add_dir("articles", "*.html")
     add_dir("briefs", "*.html")
     # Published sovereign layer only: the country rules files, never /preview/.
     add_dir("rules", "*-foreign-currency-rules.html")
-    # Static Agent Interface hub (P7A) — generated hub page, no other HTML children.
+    # Static Agent Interface hub (P7A) — human HTML hub only (api/index.html → /api/).
+    # Raw api/v1/*.json and llms.txt are intentionally excluded from the search sitemap.
     add_dir("api", "*.html")
 
-    # Static Agent Interface JSON routes (P7A). These are static, read-only files
-    # generated by scripts/build_static_agent_interface.py from published data
-    # only — never /preview/. Only files present on disk are ever listed.
-    api_v1_dir = BASE_DIR / "api" / "v1"
-    if (api_v1_dir / "index.json").exists():
-        urls.append(f"{BASE_URL}/api/v1/index.json")
-    if (api_v1_dir / "rules-index.json").exists():
-        urls.append(f"{BASE_URL}/api/v1/rules-index.json")
-    if (api_v1_dir / "passage-check.json").exists():
-        urls.append(f"{BASE_URL}/api/v1/passage-check.json")
-    for f in sorted((api_v1_dir / "rules").glob("*.json")) if (api_v1_dir / "rules").exists() else []:
-        urls.append(f"{BASE_URL}/api/v1/rules/{f.name}")
-    if file_exists("llms.txt"):
-        urls.append(f"{BASE_URL}/llms.txt")
-
     for profile in sorted(pair_profiles.values(), key=lambda p: p["pair_slug"]):
-        urls.append(f'{BASE_URL}/pages/{profile["pair_slug"]}.html')
+        slug = profile["pair_slug"]
+        entries.append((f"{BASE_URL}/pages/{slug}.html", f"pages/{slug}.html"))
 
-    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
-             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    if history_dates is None or dirty_paths is None:
+        builder = lastmod_index_builder or build_git_content_lastmod_index
+        history_dates, dirty_paths, today_iso, elapsed = builder(BASE_DIR, today=today)
+        print(f"Sitemap lastmod index: {len(history_dates)} paths from Git history in {elapsed:.2f}s")
+    else:
+        today_iso = today if today is not None else iso_today()
 
-    for url in urls:
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+
+    seen_locs: Set[str] = set()
+    for url, rel_path in entries:
+        if url in seen_locs:
+            continue
+        seen_locs.add(url)
         lines.append("  <url>")
         lines.append(f"    <loc>{url}</loc>")
-        lines.append(f"    <lastmod>{lastmod}</lastmod>")
+        lastmod = resolve_content_lastmod(rel_path, history_dates or {}, dirty_paths or set(), today_iso)
+        if lastmod:
+            lines.append(f"    <lastmod>{lastmod}</lastmod>")
         lines.append("  </url>")
 
     lines.append("</urlset>")
