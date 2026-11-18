@@ -695,6 +695,362 @@ def replace_pair_navigation(page_html: str, new_nav: str) -> str:
     return page_html[:start] + new_nav + page_html[end:]
 
 # -----------------------------------------------------------------------------
+# STATIC PAIR VALUE (SEO-A3)
+# -----------------------------------------------------------------------------
+#
+# Architecture: ONE shared numeric source (data/rate_snapshot.json, byte-identical
+# public copy at rates/snapshot.json, built by scripts/build_rate_snapshot.py).
+# Pair pages carry values DERIVED from it inside three marked regions:
+#
+#   <!-- STATIC-RATE:START -->        rate banner, freshness/source note, converter
+#   <!-- STATIC-RATE-TABLE:START -->  static conversion table
+#   <!-- RATE-SCRIPT:START -->        <script src="/assets/js/pair-rate.js">
+#
+# `generate.py --static-rates-only` rewrites only those regions (fail-closed on
+# missing/duplicated markers). The snapshot JSON can be refreshed on its own
+# (2 files); pages then upgrade client-side to the newer snapshot, and the
+# baked HTML values are refreshed on a governed cadence, never implicitly.
+# Runtime logic lives in ONE shared file, so JS changes never touch pair HTML.
+
+RATE_SNAPSHOT_FILE = DATA_DIR / "rate_snapshot.json"
+PUBLIC_RATE_SNAPSHOT_FILE = BASE_DIR / "rates" / "snapshot.json"
+RATE_SCRIPT_SRC = "/assets/js/pair-rate.js"
+RATE_SIG_MIN = 3
+RATE_SIG_MAX = 6
+DEFAULT_STATIC_AMOUNTS = [1, 5, 10, 20, 50, 100, 500, 1000, 10000]
+
+STATIC_RATE_START = "  <!-- STATIC-RATE:START -->"
+STATIC_RATE_END = "  <!-- STATIC-RATE:END -->"
+STATIC_TABLE_START = "    <!-- STATIC-RATE-TABLE:START -->"
+STATIC_TABLE_END = "    <!-- STATIC-RATE-TABLE:END -->"
+RATE_SCRIPT_START = "<!-- RATE-SCRIPT:START -->"
+RATE_SCRIPT_END = "<!-- RATE-SCRIPT:END -->"
+
+# Pre-SEO-A3 layout anchors, used once to migrate legacy pages into markers.
+_LEGACY_RATE_START = '  <div class="rate-banner">\n'
+_LEGACY_RATE_END = '\n\n  <section class="section">\n    <div class="sec-title">Pair Overview</div>'
+_LEGACY_TABLE_START = '    <div class="card" style="padding:0;overflow:hidden">\n      <div class="table-wrap">'
+_LEGACY_TABLE_END = '\n  </section>\n\n  <section class="section">\n    <div class="sec-title">FAQ</div>'
+_LEGACY_SCRIPT_START = "<script>\nconst FROM = '"
+_LEGACY_SCRIPT_END = "init();\n</script>"
+
+# Codes with no rate in the snapshot source, classified (SEO-A3 §15). Indexability
+# is NOT changed here; the classification only drives a truthful static message.
+UNSUPPORTED_CODE_REASONS = {
+    "XTS": "XTS is the ISO 4217 code reserved for testing; it has no exchange rate",
+    "XXX": "XXX is the ISO 4217 code for transactions where no currency is involved; it has no exchange rate",
+    "XAU": "XAU (gold, troy ounce) is a precious-metal code that the snapshot source does not price",
+    "XAG": "XAG (silver, troy ounce) is a precious-metal code that the snapshot source does not price",
+    "XPD": "XPD (palladium, troy ounce) is a precious-metal code that the snapshot source does not price",
+    "XPT": "XPT (platinum, troy ounce) is a precious-metal code that the snapshot source does not price",
+    "XSU": "XSU (SUCRE) is a regional unit of account that the snapshot source does not publish",
+    "XUA": "XUA (ADB Unit of Account) is a unit of account that the snapshot source does not publish",
+    "UYW": "UYW (Uruguayan nominal wage index unit) is a unit of account that the snapshot source does not publish",
+    "CUC": "CUC (Cuban convertible peso) is a legacy/transition code that the snapshot source does not publish",
+    "SVC": "SVC (Salvadoran colón) is a legacy/transition code that the snapshot source does not publish",
+    "KPW": "KPW (North Korean won) is a valid currency that the snapshot source does not publish",
+    "VED": "VED (Venezuelan digital bolívar) is a valid currency that the snapshot source does not publish",
+}
+
+
+class RateSnapshotError(ValueError):
+    pass
+
+
+def _reject_duplicate_keys(pairs):
+    seen = {}
+    for k, v in pairs:
+        if k in seen:
+            raise RateSnapshotError(f"duplicate key in snapshot: {k!r}")
+        seen[k] = v
+    return seen
+
+
+def parse_rate_snapshot(text: str) -> Dict[str, Any]:
+    try:
+        return json.loads(text, object_pairs_hook=_reject_duplicate_keys)
+    except json.JSONDecodeError as exc:
+        raise RateSnapshotError(f"snapshot is not valid JSON: {exc}") from exc
+
+
+def validate_rate_snapshot_data(snap: Any) -> List[str]:
+    """Return a list of schema/data errors (empty = valid)."""
+    errs: List[str] = []
+    if not isinstance(snap, dict):
+        return ["snapshot root must be an object"]
+    if snap.get("type") != "reference_rate_snapshot":
+        errs.append("type must be 'reference_rate_snapshot'")
+    base = snap.get("base")
+    if not (isinstance(base, str) and re.fullmatch(r"[A-Z]{3}", base)):
+        errs.append("base must be a 3-letter uppercase code")
+    as_of = snap.get("as_of")
+    try:
+        datetime.strptime(str(as_of), "%Y-%m-%d")
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(as_of)):
+            raise ValueError
+    except ValueError:
+        errs.append(f"as_of must be YYYY-MM-DD, got {as_of!r}")
+    cap = snap.get("captured_at")
+    if not (isinstance(cap, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", cap)):
+        errs.append("captured_at must be an ISO-8601 UTC timestamp (YYYY-MM-DDTHH:MM:SSZ)")
+    if not (isinstance(snap.get("source"), str) and snap["source"].strip()):
+        errs.append("source must be a non-empty string")
+    rates = snap.get("rates")
+    if not isinstance(rates, dict) or not rates:
+        errs.append("rates must be a non-empty object")
+        return errs
+    for code, val in rates.items():
+        if not (isinstance(code, str) and re.fullmatch(r"[A-Z]{3}", code)):
+            errs.append(f"malformed currency code {code!r}")
+        if isinstance(val, bool) or not isinstance(val, (int, float)):
+            errs.append(f"{code}: rate must be numeric, got {val!r}")
+        elif not (val == val and val not in (float("inf"), float("-inf"))):
+            errs.append(f"{code}: rate must be finite")
+        elif val <= 0:
+            errs.append(f"{code}: rate must be positive, got {val!r}")
+    if isinstance(base, str) and rates.get(base) != 1:
+        errs.append(f"base currency {base} must have rate exactly 1")
+    if snap.get("count") != len(rates):
+        errs.append(f"count {snap.get('count')!r} != number of rates {len(rates)}")
+    return errs
+
+
+_SNAPSHOT_CACHE: Dict[str, Dict[str, Any]] = {}
+
+
+def load_rate_snapshot(path: Path = RATE_SNAPSHOT_FILE) -> Dict[str, Any]:
+    """Load and validate the snapshot; raises RateSnapshotError on bad data."""
+    key = str(path)
+    if key not in _SNAPSHOT_CACHE:
+        snap = parse_rate_snapshot(Path(path).read_text(encoding="utf-8"))
+        errs = validate_rate_snapshot_data(snap)
+        if errs:
+            raise RateSnapshotError("invalid rate snapshot: " + "; ".join(errs[:5]))
+        _SNAPSHOT_CACHE[key] = snap
+    return _SNAPSHOT_CACHE[key]
+
+
+# ---- precision policy -------------------------------------------------------
+#
+# The source publishes each USD-based rate with 2 decimal places or 3
+# significant digits, whichever is finer (JSON drops trailing zeros, so
+# 0.310 arrives as 0.31). A leg's relative uncertainty is therefore
+# half a unit of its last published digit; the base leg (exactly 1) has none.
+# A cross rate's uncertainty is the sum of its two legs, and it is shown with
+#     sig = clamp(floor(-log10(u_from + u_to)), 3, 6)
+# significant digits, rounded half-up, in plain decimal notation with thousands
+# separators (never scientific notation). Table values (amount x rate) and the
+# inverse (1 / rate) use the same sig, so no row claims more precision than
+# the rate itself.
+
+def leg_relative_uncertainty(value: float, base_value: bool = False) -> float:
+    if base_value:
+        return 0.0
+    from decimal import Decimal
+    exp = Decimal(repr(float(value))).adjusted()
+    last_digit_exp = min(-2, exp - 2)
+    return 0.5 * (10.0 ** last_digit_exp) / float(value)
+
+
+def significant_digits_for(uncertainty: float) -> int:
+    import math
+    if uncertainty <= 0:
+        return RATE_SIG_MAX
+    return max(RATE_SIG_MIN, min(RATE_SIG_MAX, int(math.floor(-math.log10(uncertainty)))))
+
+
+def format_rate_value(value: float, sig: int) -> str:
+    """Round to `sig` significant digits (half-up); plain decimal with grouping."""
+    from decimal import Decimal, ROUND_HALF_UP
+    d = Decimal(repr(float(value)))
+    if d <= 0:
+        raise ValueError("format_rate_value requires a positive value")
+    exp = d.adjusted()
+    r = d.quantize(Decimal(1).scaleb(exp - sig + 1), rounding=ROUND_HALF_UP)
+    if r.adjusted() != exp:  # rounding carried into a new leading digit (9.995 -> 10.0)
+        exp = r.adjusted()
+        r = d.quantize(Decimal(1).scaleb(exp - sig + 1), rounding=ROUND_HALF_UP)
+    if r.as_tuple().exponent >= 0:
+        return f"{int(r):,}"
+    return f"{r:,f}"
+
+
+def format_amount(amount: Any) -> str:
+    return f"{int(amount):,}" if float(amount) == int(amount) else f"{amount:,}"
+
+
+def static_pair_rate(from_code: str, to_code: str, snapshot: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    """Derive the static cross rate; None when either side has no snapshot rate."""
+    rates = snapshot["rates"]
+    base = snapshot["base"]
+    rf, rt = rates.get(from_code), rates.get(to_code)
+    if not rf or not rt:
+        return None
+    rate = float(rt) / float(rf)
+    u = leg_relative_uncertainty(rf, from_code == base) + leg_relative_uncertainty(rt, to_code == base)
+    sig = significant_digits_for(u)
+    return {
+        "rate": rate,
+        "inverse": 1.0 / rate,
+        "sig": sig,
+        "as_of": snapshot["as_of"],
+        "source": snapshot["source"],
+    }
+
+
+def unsupported_reason(from_code: str, to_code: str, snapshot: Dict[str, Any]) -> str:
+    bits = []
+    for c in (from_code, to_code):
+        if c not in snapshot["rates"]:
+            bits.append(UNSUPPORTED_CODE_REASONS.get(c, f"{c} is not published by the snapshot source"))
+    return "; ".join(dict.fromkeys(bits))
+
+
+def static_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
+    """Rate banner + freshness/source note + converter (between STATIC-RATE markers)."""
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    rev_href = f'/pages/{T.lower()}-to-{F.lower()}.html'
+    sr = static_pair_rate(F, T, snapshot)
+    if sr is None:
+        reason = unsupported_reason(F, T, snapshot)
+        return f"""{STATIC_RATE_START}
+  <div class="rate-banner" id="rate-root" data-from="{esc(F)}" data-to="{esc(T)}" data-mode="unsupported">
+    <div>
+      <div class="rate-main" id="live-rate">No reference rate available</div>
+      <div class="rate-sub" id="rate-sub">{esc(F)} → {esc(T)} is not covered by the ConvertCCY reference snapshot</div>
+    </div>
+    <div class="rate-badge off" id="rate-badge">NO RATE</div>
+  </div>
+  <p class="rate-note" id="rate-source">No current reference rate is available for this pair in the ConvertCCY snapshot: {esc(reason)}. No value is shown rather than an estimate.</p>
+
+  <div class="card">
+    <div class="card-title">Currency Converter</div>
+    <p class="result-info">Conversion is not available for {esc(F)} → {esc(T)} because no reference rate exists for this pair. <a href="{rev_href}">Open the reverse pair</a> or use the related pairs and currency hubs below.</p>
+  </div>
+{STATIC_RATE_END}"""
+
+    sig = sr["sig"]
+    rate_s = format_rate_value(sr["rate"], sig)
+    inv_s = format_rate_value(sr["inverse"], sig)
+    as_of = esc(sr["as_of"])
+    source = esc(sr["source"])
+    quick = "\n".join(
+        f'      <button class="quick-btn" type="button" onclick="setAmt({a})">{format_amount(a)}</button>'
+        for a in (1, 5, 10, 50, 100, 500, 1000)
+    )
+    return f"""{STATIC_RATE_START}
+  <div class="rate-banner" id="rate-root" data-from="{esc(F)}" data-to="{esc(T)}" data-mode="snapshot" data-rate="{sr['rate']!r}" data-sig="{sig}" data-asof="{as_of}">
+    <div>
+      <div class="rate-main" id="live-rate">1 {esc(F)} = {rate_s} {esc(T)}</div>
+      <div class="rate-sub" id="rate-sub">1 {esc(T)} = <span id="inverse-rate">{inv_s}</span> {esc(F)}</div>
+    </div>
+    <div class="rate-badge snap" id="rate-badge">SNAPSHOT · {as_of}</div>
+  </div>
+  <p class="rate-note" id="rate-source">Reference snapshot as of {as_of} · source: {source} (USD-based reference rates, cross-calculated by ConvertCCY). Indicative only — not a live or dealing rate; providers apply their own spread and fees. When the live source responds, this page switches to the live reference value and labels it as live.</p>
+
+  <div class="card">
+    <div class="card-title">Currency Converter</div>
+    <div class="conv-row">
+      <div class="field">
+        <label for="from-input">{esc(F)} Amount</label>
+        <input type="number" id="from-input" value="1" min="0" inputmode="decimal">
+      </div>
+      <a class="swap-btn" href="{rev_href}" title="Open reverse pair" aria-label="Open {esc(T)} to {esc(F)}" style="text-decoration:none">⇄</a>
+      <div class="field">
+        <label for="to-input">{esc(T)} Result</label>
+        <input type="number" id="to-input" value="{format_rate_value(sr['rate'], sig).replace(',', '')}" min="0" inputmode="decimal">
+      </div>
+    </div>
+    <div class="result-row">
+      <span class="result-val" id="main-result">1 {esc(F)} = {rate_s} {esc(T)}</span>
+      <span class="result-info" id="rate-info">Reference snapshot as of {as_of}</span>
+    </div>
+    <div class="quick-grid">
+{quick}
+    </div>
+    <noscript><p class="result-info" style="margin-top:.8rem">Custom amounts need JavaScript; the conversion table below lists fixed amounts at the snapshot rate.</p></noscript>
+  </div>
+{STATIC_RATE_END}"""
+
+
+def static_table_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
+    """Static conversion table card (between STATIC-RATE-TABLE markers)."""
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    amounts = profile.get("static_amounts") or DEFAULT_STATIC_AMOUNTS
+    sr = static_pair_rate(F, T, snapshot)
+    if sr is None:
+        body = f'            <tr><td colspan="2">No conversion table: no reference rate is available for {esc(F)} → {esc(T)}.</td></tr>'
+        label = f"{F} to {T} conversion table (no reference rate available)"
+        foot = ""
+    else:
+        sig = sr["sig"]
+        body = "\n".join(
+            f'            <tr data-amount="{a}"><td>{format_amount(a)} {esc(F)}</td><td>{format_rate_value(a * sr["rate"], sig)} {esc(T)}</td></tr>'
+            for a in amounts
+        )
+        label = f"{F} to {T} conversion table, reference snapshot as of {sr['as_of']}"
+        foot = f'\n      <p class="result-info" id="table-source" style="padding:.7rem 1rem">Reference snapshot as of {esc(sr["as_of"])} · source: {esc(sr["source"])}</p>'
+    return f"""{STATIC_TABLE_START}
+    <div class="card" style="padding:0;overflow:hidden">
+      <div class="table-wrap">
+        <table aria-label="{esc(label)}">
+          <thead>
+            <tr>
+              <th scope="col">{esc(F)}</th>
+              <th scope="col">{esc(T)}</th>
+            </tr>
+          </thead>
+          <tbody id="conv-table">
+{body}
+          </tbody>
+        </table>
+      </div>{foot}
+    </div>
+{STATIC_TABLE_END}"""
+
+
+def rate_script_region_html() -> str:
+    return f'{RATE_SCRIPT_START}\n<script src="{RATE_SCRIPT_SRC}" defer></script>\n{RATE_SCRIPT_END}'
+
+
+def _replace_region(page: str, start: str, end: str, new: str,
+                    legacy_start: str, legacy_end: str, legacy_end_inclusive: bool, label: str) -> str:
+    """Replace one marked region; migrate a legacy page exactly once. Fail closed."""
+    ns, ne = page.count(start), page.count(end)
+    if ns or ne:
+        if ns != 1 or ne != 1:
+            raise ValueError(f"{label}: markers found {ns}/{ne} times (need exactly 1/1)")
+        i = page.index(start)
+        j = page.index(end) + len(end)
+        if j <= i:
+            raise ValueError(f"{label}: markers out of order")
+        return page[:i] + new + page[j:]
+    ls, le = page.count(legacy_start), page.count(legacy_end)
+    if ls != 1 or le != 1:
+        raise ValueError(f"{label}: no markers and legacy layout not found exactly once ({ls}/{le})")
+    i = page.index(legacy_start)
+    j = page.index(legacy_end)
+    if legacy_end_inclusive:
+        j += len(legacy_end)
+    if j <= i:
+        raise ValueError(f"{label}: legacy anchors out of order")
+    return page[:i] + new + page[j:]
+
+
+def replace_static_rate_regions(page: str, profile: Dict[str, Any], tokens: Dict[str, str],
+                                snapshot: Dict[str, Any]) -> str:
+    page = _replace_region(page, STATIC_RATE_START, STATIC_RATE_END,
+                           static_rate_region_html(profile, tokens, snapshot),
+                           _LEGACY_RATE_START, _LEGACY_RATE_END, False, "STATIC-RATE")
+    page = _replace_region(page, STATIC_TABLE_START, STATIC_TABLE_END,
+                           static_table_region_html(profile, tokens, snapshot),
+                           _LEGACY_TABLE_START, _LEGACY_TABLE_END, False, "STATIC-RATE-TABLE")
+    page = _replace_region(page, RATE_SCRIPT_START, RATE_SCRIPT_END, rate_script_region_html(),
+                           _LEGACY_SCRIPT_START, _LEGACY_SCRIPT_END, True, "RATE-SCRIPT")
+    return page
+
+
+# -----------------------------------------------------------------------------
 # HTML TEMPLATES
 # -----------------------------------------------------------------------------
 
@@ -862,7 +1218,7 @@ def build_currency_passage_section(profile: Dict[str, Any],
   </section>"""
 
 
-def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], all_codes: List[str], gov_map: Dict[str, List[Dict[str, Any]]] = None, importance: Optional[Dict[Tuple[str, str], int]] = None) -> str:
+def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], all_codes: List[str], gov_map: Dict[str, List[Dict[str, Any]]] = None, importance: Optional[Dict[Tuple[str, str], int]] = None, snapshot: Optional[Dict[str, Any]] = None) -> str:
     tokens = make_pair_tokens(profile, currencies)
     gov_map = gov_map or {}
 
@@ -888,6 +1244,10 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
     title = f'{tokens["FROM_CODE"]} to {tokens["TO_CODE"]} Converter | {brand}'
     description = f'Convert {tokens["FROM_NAME"]} to {tokens["TO_NAME"]} with a clear reference exchange-rate page, conversion table, FAQ, and currency context.'
     navigation_html = pair_navigation_html(profile["from_code"], profile["to_code"], all_codes, importance)
+    snapshot = snapshot if snapshot is not None else load_rate_snapshot()
+    static_rate_html = static_rate_region_html(profile, tokens, snapshot)
+    static_table_html = static_table_region_html(profile, tokens, snapshot)
+    rate_script_html = rate_script_region_html()
     passage_section = build_currency_passage_section(profile, currencies, tokens, gov_map)
 
     faq_block_html = ""
@@ -1072,42 +1432,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="pair-subtitle">{esc(tagline)}</p>
   </div>
 
-  <div class="rate-banner">
-    <div>
-      <div class="rate-main" id="live-rate">Loading…</div>
-      <div class="rate-sub">1 {esc(tokens["FROM_CODE"])} = <span id="live-rate-num">—</span> {esc(tokens["TO_CODE"])}</div>
-    </div>
-    <div class="rate-badge" id="rate-badge">REFERENCE</div>
-  </div>
-  <p class="rate-note">Indicative reference rate — live when available, otherwise a dated reference snapshot. Not a dealing rate; providers apply their own spread and fees.</p>
-
-  <div class="card">
-    <div class="card-title">Currency Converter</div>
-    <div class="conv-row">
-      <div class="field">
-        <label>{esc(tokens["FROM_CODE"])} Amount</label>
-        <input type="number" id="from-input" value="1" min="0">
-      </div>
-      <button class="swap-btn" onclick="swapPair()" title="Open reverse pair">⇄</button>
-      <div class="field">
-        <label>{esc(tokens["TO_CODE"])} Result</label>
-        <input type="number" id="to-input" placeholder="0.00">
-      </div>
-    </div>
-    <div class="result-row">
-      <span class="result-val" id="main-result">—</span>
-      <span class="result-info" id="rate-info">Fetching rate…</span>
-    </div>
-    <div class="quick-grid">
-      <button class="quick-btn" onclick="setAmt(1)">1</button>
-      <button class="quick-btn" onclick="setAmt(5)">5</button>
-      <button class="quick-btn" onclick="setAmt(10)">10</button>
-      <button class="quick-btn" onclick="setAmt(50)">50</button>
-      <button class="quick-btn" onclick="setAmt(100)">100</button>
-      <button class="quick-btn" onclick="setAmt(500)">500</button>
-      <button class="quick-btn" onclick="setAmt(1000)">1,000</button>
-    </div>
-  </div>
+{static_rate_html}
 
   <section class="section">
     <div class="sec-title">Pair Overview</div>
@@ -1144,19 +1469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="section">
     <div class="sec-title">Conversion Table</div>
     <p>{esc(table_intro)}</p>
-    <div class="card" style="padding:0;overflow:hidden">
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>{esc(tokens["FROM_CODE"])}</th>
-              <th>{esc(tokens["TO_CODE"])}</th>
-            </tr>
-          </thead>
-          <tbody id="conv-table"></tbody>
-        </table>
-      </div>
-    </div>
+{static_table_html}
   </section>
 
   <section class="section">
@@ -1174,124 +1487,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p style="margin-top:.55rem">{esc(content.get("footer_copy", {}).get("line_2", ""))}</p>
 </footer>
 
-<script>
-const FROM = '{tokens["FROM_CODE"]}';
-const TO = '{tokens["TO_CODE"]}';
-let rate = null;
-let rateMode = '';      // 'live' | 'snapshot' | 'unavailable'
-let snapDate = '';
-const AMOUNTS = [1,5,10,20,50,100,200,500,1000,5000];
-
-async function getLiveRate() {{
-  // Time-box the live call: a hanging free endpoint is the most common failure,
-  // so we abort after 3.5s and fall back to the dated snapshot rather than stall.
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), 3500);
-  try {{
-    const res = await fetch('https://api.exchangerate-api.com/v4/latest/' + FROM, {{signal: ctrl.signal}});
-    if (!res.ok) throw new Error('live http');
-    const data = await res.json();
-    const r = data && data.rates && data.rates[TO];
-    if (typeof r !== 'number' || !isFinite(r) || r <= 0) throw new Error('live rate missing');
-    return r;
-  }} finally {{ clearTimeout(t); }}
-}}
-
-// Fallback: same-origin dated reference snapshot (see /rates/snapshot.json).
-// Never presented as live; always labelled with its capture date.
-async function getSnapshotRate() {{
-  const res = await fetch('/rates/snapshot.json', {{cache: 'no-cache'}});
-  if (!res.ok) throw new Error('snapshot http');
-  const s = await res.json();
-  snapDate = s.as_of || '';
-  const rf = s.rates && s.rates[FROM], rt = s.rates && s.rates[TO];
-  if (!rf || !rt) throw new Error('snapshot pair missing');
-  return rt / rf;
-}}
-
-async function init() {{
-  try {{
-    rate = await getLiveRate(); rateMode = 'live';
-  }} catch (e) {{
-    try {{ rate = await getSnapshotRate(); rateMode = 'snapshot'; }}
-    catch (e2) {{ rate = null; rateMode = 'unavailable'; }}
-  }}
-  renderRate();
-  convertFrom();
-  buildTable();
-}}
-
-function renderRate() {{
-  const main = document.getElementById('live-rate');
-  const num = document.getElementById('live-rate-num');
-  const badge = document.getElementById('rate-badge');
-  if (rateMode === 'unavailable' || rate === null) {{
-    main.textContent = 'Rate unavailable right now';
-    num.textContent = '—';
-    badge.textContent = 'UNAVAILABLE'; badge.className = 'rate-badge off';
-    return;
-  }}
-  main.textContent = `1 ${{FROM}} = ${{rate.toFixed(4)}} ${{TO}}`;
-  num.textContent = rate.toFixed(4);
-  if (rateMode === 'snapshot') {{
-    badge.textContent = snapDate ? `SNAPSHOT · ${{snapDate}}` : 'SNAPSHOT';
-    badge.className = 'rate-badge snap';
-    badge.title = 'Live source unavailable — showing a dated reference snapshot, not a live rate';
-  }} else {{
-    badge.textContent = 'REFERENCE'; badge.className = 'rate-badge';
-  }}
-}}
-
-function rateContext() {{
-  if (rateMode === 'snapshot') return ` · reference snapshot as of ${{snapDate || 'recent capture'}}, not live`;
-  return '';
-}}
-
-function convertFrom() {{
-  if (!rate) {{
-    document.getElementById('main-result').textContent = '—';
-    document.getElementById('rate-info').textContent = 'Live rate unavailable and no snapshot for this pair.';
-    return;
-  }}
-  const a = parseFloat(document.getElementById('from-input').value) || 0;
-  const b = a * rate;
-  document.getElementById('to-input').value = b.toFixed(4);
-  document.getElementById('main-result').textContent = `${{a.toLocaleString()}} ${{FROM}} = ${{b.toLocaleString('en-US', {{maximumFractionDigits:4}})}} ${{TO}}`;
-  document.getElementById('rate-info').textContent = `Reference rate: 1 ${{FROM}} = ${{rate.toFixed(4)}} ${{TO}}${{rateContext()}}`;
-}}
-
-function convertTo() {{
-  if (!rate) return;
-  const b = parseFloat(document.getElementById('to-input').value) || 0;
-  const a = b / rate;
-  document.getElementById('from-input').value = a.toFixed(4);
-  document.getElementById('main-result').textContent = `${{b.toLocaleString()}} ${{TO}} = ${{a.toLocaleString('en-US', {{maximumFractionDigits:4}})}} ${{FROM}}`;
-  document.getElementById('rate-info').textContent = `Reference rate: 1 ${{TO}} = ${{(1/rate).toFixed(4)}} ${{FROM}}${{rateContext()}}`;
-}}
-
-function setAmt(n) {{
-  document.getElementById('from-input').value = n;
-  convertFrom();
-}}
-
-function buildTable() {{
-  const tbody = document.getElementById('conv-table');
-  if (!rate) {{ tbody.innerHTML = `<tr><td colspan="2">Conversion table unavailable — no live rate or snapshot for this pair right now.</td></tr>`; return; }}
-  tbody.innerHTML = AMOUNTS.map(a => {{
-    const b = (a * rate).toLocaleString('en-US', {{minimumFractionDigits:2, maximumFractionDigits:2}});
-    return `<tr><td>${{a.toLocaleString()}} ${{FROM}}</td><td>${{b}} ${{TO}}</td></tr>`;
-  }}).join('');
-}}
-
-function swapPair() {{
-  window.location.href = `/pages/${{TO.toLowerCase()}}-to-${{FROM.toLowerCase()}}.html`;
-}}
-
-document.getElementById('from-input').addEventListener('input', convertFrom);
-document.getElementById('to-input').addEventListener('input', convertTo);
-
-init();
-</script>
+{rate_script_html}
 
 </body>
 </html>
@@ -1722,6 +1918,7 @@ def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str
     all_codes = sorted(currencies.keys(), key=lambda x: (x not in DEFAULT_POPULAR_CODES, x))
     gov_map = load_governed_currency_map()
     importance = build_pair_importance_index(pair_profiles)
+    snapshot = load_rate_snapshot()
     if gov_map:
         print(f"Governed currency enrichment active for: {', '.join(sorted(gov_map.keys()))}")
     else:
@@ -1753,7 +1950,7 @@ def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str
             out_of_scope += 1
             continue
 
-        html_doc = build_pair_page(profile, currencies, content, all_codes, gov_map, importance)
+        html_doc = build_pair_page(profile, currencies, content, all_codes, gov_map, importance, snapshot)
         out_path = PAGES_DIR / f'{profile["pair_slug"]}.html'
         write_text(out_path, html_doc)
         count += 1
@@ -1891,6 +2088,36 @@ def refresh_pair_navigation(
     return changed, unchanged
 
 
+def refresh_static_rates(
+    currencies: Dict[str, Dict[str, Any]],
+    pair_profiles: Dict[str, Dict[str, Any]],
+) -> Tuple[int, int]:
+    """SEO-A3: rewrite ONLY the marked static-rate regions of existing pair pages.
+
+    Reads the validated snapshot (data/rate_snapshot.json), recomputes each
+    page's STATIC-RATE / STATIC-RATE-TABLE / RATE-SCRIPT regions, and writes a
+    page only if a region actually changed. Everything outside the markers
+    (prose, metadata, passage section, FAQ, navigation) is left byte-for-byte.
+    Fails closed (ValueError) on missing or duplicated markers.
+    """
+    snapshot = load_rate_snapshot()
+    changed = unchanged = 0
+    for profile in pair_profiles.values():
+        a, b = profile["from_code"], profile["to_code"]
+        if a == b or a not in currencies or b not in currencies:
+            continue
+        path = PAGES_DIR / f'{profile["pair_slug"]}.html'
+        old = path.read_text(encoding="utf-8")
+        new = replace_static_rate_regions(old, profile, make_pair_tokens(profile, currencies), snapshot)
+        if new != old:
+            write_text(path, new)
+            changed += 1
+        else:
+            unchanged += 1
+    print(f"Static rates (snapshot as_of {snapshot['as_of']}): {changed} pair pages changed, {unchanged} unchanged")
+    return changed, unchanged
+
+
 def run_navigation_only(
     currencies: Dict[str, Dict[str, Any]],
     content: Dict[str, Any],
@@ -1947,10 +2174,20 @@ def main():
             "metadata and scripts are left byte-for-byte as published."
         ),
     )
+    parser.add_argument(
+        "--static-rates-only",
+        action="store_true",
+        help=(
+            "SEO-A3: rewrite ONLY the marked static-rate regions (rate banner, "
+            "converter, conversion table, rate script tag) of existing pair pages "
+            "from the validated data/rate_snapshot.json. Pair prose, metadata, "
+            "navigation, support pages and sitemap.xml are left untouched."
+        ),
+    )
     args = parser.parse_args()
     only_currencies = parse_only_currencies(args.only_currency)
-    if args.navigation_only and only_currencies:
-        parser.error("--navigation-only cannot be combined with --only-currency")
+    if sum(bool(x) for x in (args.navigation_only, args.static_rates_only, only_currencies)) > 1:
+        parser.error("--navigation-only, --static-rates-only and --only-currency are mutually exclusive")
 
     if not CURRENCIES_FILE.exists():
         raise FileNotFoundError(f"Missing file: {CURRENCIES_FILE}")
@@ -1975,6 +2212,11 @@ def main():
             "Support pages and sitemap.xml intentionally left unchanged "
             "(pair-page URLs are stable, so the sitemap does not move)."
         )
+        return
+
+    if args.static_rates_only:
+        refresh_static_rates(currencies, pair_profiles)
+        print("\nStatic-rates-only build complete. Support pages and sitemap.xml unchanged.")
         return
 
     if args.navigation_only:
