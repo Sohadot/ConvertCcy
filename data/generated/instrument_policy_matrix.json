@@ -2449,10 +2449,8 @@
    "reference_rate_expected": true,
    "current_rate_coverage": true,
    "active": true,
-   "classification_confidence": "medium",
-   "review_flags": [
-    "official_vs_market_rate_review"
-   ],
+   "classification_confidence": "high",
+   "review_flags": [],
    "policy_conformance": "conformant"
   },
   "LKR": {
