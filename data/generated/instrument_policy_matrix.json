@@ -1,0 +1,4991 @@
+{
+ "provenance": {
+  "generated_by": "instrument_policy.py --write-matrix",
+  "source": "data/instrument_classification.json",
+  "joined_with": [
+   "data/currencies.json (names)",
+   "data/rate_snapshot.json (coverage only)"
+  ],
+  "taxonomy_version": "A4.1",
+  "note": "Derived artifact. Never hand-edit; rebuild and commit."
+ },
+ "type_matrix": {
+  "fiat_currency": {
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "codes": [
+    "AED",
+    "AFN",
+    "ALL",
+    "AMD",
+    "AOA",
+    "ARS",
+    "AUD",
+    "AWG",
+    "AZN",
+    "BAM",
+    "BBD",
+    "BDT",
+    "BHD",
+    "BIF",
+    "BMD",
+    "BND",
+    "BOB",
+    "BRL",
+    "BSD",
+    "BTN",
+    "BWP",
+    "BYN",
+    "BZD",
+    "CAD",
+    "CDF",
+    "CHF",
+    "CLP",
+    "CNY",
+    "COP",
+    "CRC",
+    "CVE",
+    "CZK",
+    "DJF",
+    "DKK",
+    "DOP",
+    "DZD",
+    "EGP",
+    "ERN",
+    "ETB",
+    "EUR",
+    "FJD",
+    "FKP",
+    "GBP",
+    "GEL",
+    "GHS",
+    "GIP",
+    "GMD",
+    "GNF",
+    "GTQ",
+    "GYD",
+    "HKD",
+    "HNL",
+    "HTG",
+    "HUF",
+    "IDR",
+    "ILS",
+    "INR",
+    "IQD",
+    "IRR",
+    "ISK",
+    "JMD",
+    "JOD",
+    "JPY",
+    "KES",
+    "KGS",
+    "KHR",
+    "KMF",
+    "KRW",
+    "KWD",
+    "KYD",
+    "KZT",
+    "LAK",
+    "LBP",
+    "LKR",
+    "LRD",
+    "LSL",
+    "LYD",
+    "MAD",
+    "MDL",
+    "MGA",
+    "MKD",
+    "MMK",
+    "MNT",
+    "MOP",
+    "MRU",
+    "MUR",
+    "MVR",
+    "MWK",
+    "MXN",
+    "MYR",
+    "MZN",
+    "NAD",
+    "NGN",
+    "NIO",
+    "NOK",
+    "NPR",
+    "NZD",
+    "OMR",
+    "PAB",
+    "PEN",
+    "PGK",
+    "PHP",
+    "PKR",
+    "PLN",
+    "PYG",
+    "QAR",
+    "RON",
+    "RSD",
+    "RUB",
+    "RWF",
+    "SAR",
+    "SBD",
+    "SCR",
+    "SDG",
+    "SEK",
+    "SGD",
+    "SHP",
+    "SLE",
+    "SOS",
+    "SRD",
+    "SSP",
+    "STN",
+    "SYP",
+    "SZL",
+    "THB",
+    "TJS",
+    "TMT",
+    "TND",
+    "TOP",
+    "TRY",
+    "TTD",
+    "TWD",
+    "TZS",
+    "UAH",
+    "UGX",
+    "USD",
+    "UYU",
+    "UZS",
+    "VED",
+    "VES",
+    "VND",
+    "VUV",
+    "WST",
+    "XAF",
+    "XCD",
+    "XOF",
+    "XPF",
+    "YER",
+    "ZAR",
+    "ZMW"
+   ],
+   "count": 150
+  },
+  "restricted_fiat_currency": {
+   "page_role": "restricted_currency_reference",
+   "converter_behavior": "caveated",
+   "rate_policy": "official_reference_with_regime_caveat",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "index_with_specialized_reference_role",
+   "commercial_role": [
+    "source_availability_dataset",
+    "compliance_reference_api",
+    "cross_border_intelligence"
+   ],
+   "codes": [
+    "CUP",
+    "KPW"
+   ],
+   "count": 2
+  },
+  "precious_metal": {
+   "page_role": "precious_metal_reference",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "dedicated_metal_benchmark_required",
+   "source_policy": [
+    "bullion_benchmark_administrator",
+    "established_metals_data_provider"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "index_with_specialized_reference_role",
+   "commercial_role": [
+    "metals_pricing_intelligence",
+    "fx_reference_api",
+    "analytical_dataset"
+   ],
+   "codes": [
+    "XAG",
+    "XAU",
+    "XPD",
+    "XPT"
+   ],
+   "count": 4
+  },
+  "unit_of_account": {
+   "page_role": "institutional_unit_dossier",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "issuer_published_valuation",
+   "source_policy": [
+    "issuing_institution",
+    "official_methodology_publication"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "institutional_units_reference",
+    "analytical_dataset"
+   ],
+   "codes": [
+    "CLF",
+    "UYW"
+   ],
+   "count": 2
+  },
+  "regional_unit": {
+   "page_role": "institutional_unit_dossier",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "issuer_published_valuation",
+   "source_policy": [
+    "issuing_institution",
+    "treaty_body",
+    "official_methodology_publication"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "institutional_units_reference",
+    "analytical_dataset"
+   ],
+   "codes": [
+    "XSU",
+    "XUA"
+   ],
+   "count": 2
+  },
+  "special_instrument": {
+   "page_role": "supranational_instrument_dossier",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "issuer_published_valuation",
+   "source_policy": [
+    "issuing_institution",
+    "international_financial_institution_record"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "index_with_specialized_reference_role",
+   "commercial_role": [
+    "institutional_units_reference",
+    "fx_reference_api",
+    "analytical_dataset"
+   ],
+   "codes": [
+    "XDR"
+   ],
+   "count": 1
+  },
+  "historical_currency": {
+   "page_role": "historical_currency_dossier",
+   "converter_behavior": "archival_only",
+   "rate_policy": "archival_fixed_conversion_only",
+   "source_policy": [
+    "central_bank_archive",
+    "official_government_archive",
+    "international_financial_institution_record"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "historical_currency_dataset",
+    "provenance_dataset",
+    "ai_retrieval_corpus"
+   ],
+   "codes": [
+    "ANG",
+    "BGN",
+    "CUC",
+    "HRK",
+    "ZWL"
+   ],
+   "count": 5
+  },
+  "legacy_transition": {
+   "page_role": "legacy_currency_dossier",
+   "converter_behavior": "archival_only",
+   "rate_policy": "fixed_parity_or_successor_reference",
+   "source_policy": [
+    "central_bank",
+    "central_bank_archive",
+    "official_government_archive"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "historical_currency_dataset",
+    "provenance_dataset",
+    "ai_retrieval_corpus"
+   ],
+   "codes": [
+    "SLL",
+    "SVC"
+   ],
+   "count": 2
+  },
+  "test_code": {
+   "page_role": "iso_standards_reference",
+   "converter_behavior": "none",
+   "rate_policy": "no_rate",
+   "source_policy": [
+    "iso_4217_maintenance_agency"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "candidate_for_consolidation",
+   "commercial_role": [
+    "standards_reference_api",
+    "ai_retrieval_corpus"
+   ],
+   "codes": [
+    "XTS"
+   ],
+   "count": 1
+  },
+  "no_currency": {
+   "page_role": "iso_semantics_reference",
+   "converter_behavior": "none",
+   "rate_policy": "no_rate",
+   "source_policy": [
+    "iso_4217_maintenance_agency"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "candidate_for_consolidation",
+   "commercial_role": [
+    "standards_reference_api",
+    "ai_retrieval_corpus"
+   ],
+   "codes": [
+    "XXX"
+   ],
+   "count": 1
+  }
+ },
+ "code_matrix": {
+  "AED": {
+   "name": "United Arab Emirates Dirham",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "AFN": {
+   "name": "Afghan Afghani",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "ALL": {
+   "name": "Albanian Lek",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "AMD": {
+   "name": "Armenian Dram",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "ANG": {
+   "name": "Netherlands Antillean Guilder",
+   "instrument_type": "historical_currency",
+   "page_role": "historical_currency_dossier",
+   "converter_behavior": "archival_only",
+   "rate_policy": "archival_fixed_conversion_only",
+   "source_policy": [
+    "central_bank_archive",
+    "official_government_archive",
+    "international_financial_institution_record"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "historical_currency_dataset",
+    "provenance_dataset",
+    "ai_retrieval_corpus"
+   ],
+   "reference_rate_expected": false,
+   "current_rate_coverage": true,
+   "active": false,
+   "classification_confidence": "high",
+   "review_flags": [
+    "rate_shown_for_withdrawn_instrument",
+    "successor_not_in_site_set"
+   ],
+   "policy_conformance": "rate_shown_contrary_to_policy"
+  },
+  "AOA": {
+   "name": "Angolan Kwanza",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "ARS": {
+   "name": "Argentine Peso",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "AUD": {
+   "name": "Australian Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "AWG": {
+   "name": "Aruban Florin",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "AZN": {
+   "name": "Azerbaijani Manat",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BAM": {
+   "name": "Bosnia and Herzegovina Convertible Mark",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BBD": {
+   "name": "Barbadian Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BDT": {
+   "name": "Bangladeshi Taka",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BGN": {
+   "name": "Bulgarian Lev",
+   "instrument_type": "historical_currency",
+   "page_role": "historical_currency_dossier",
+   "converter_behavior": "archival_only",
+   "rate_policy": "archival_fixed_conversion_only",
+   "source_policy": [
+    "central_bank_archive",
+    "official_government_archive",
+    "international_financial_institution_record"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "historical_currency_dataset",
+    "provenance_dataset",
+    "ai_retrieval_corpus"
+   ],
+   "reference_rate_expected": false,
+   "current_rate_coverage": true,
+   "active": false,
+   "classification_confidence": "high",
+   "review_flags": [
+    "rate_shown_for_withdrawn_instrument"
+   ],
+   "policy_conformance": "rate_shown_contrary_to_policy"
+  },
+  "BHD": {
+   "name": "Bahraini Dinar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BIF": {
+   "name": "Burundian Franc",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BMD": {
+   "name": "Bermudian Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BND": {
+   "name": "Brunei Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BOB": {
+   "name": "Bolivian Boliviano",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BRL": {
+   "name": "Brazilian Real",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BSD": {
+   "name": "Bahamian Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BTN": {
+   "name": "Bhutanese Ngultrum",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BWP": {
+   "name": "Botswana Pula",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BYN": {
+   "name": "Belarusian Ruble",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "BZD": {
+   "name": "Belize Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "CAD": {
+   "name": "Canadian Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "CDF": {
+   "name": "Congolese Franc",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "CHF": {
+   "name": "Swiss Franc",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "CLF": {
+   "name": "Chilean Unidad de Fomento",
+   "instrument_type": "unit_of_account",
+   "page_role": "institutional_unit_dossier",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "issuer_published_valuation",
+   "source_policy": [
+    "issuing_institution",
+    "official_methodology_publication"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "institutional_units_reference",
+    "analytical_dataset"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [
+    "provider_value_vs_issuer_valuation_review"
+   ],
+   "policy_conformance": "provider_rate_pending_issuer_source"
+  },
+  "CLP": {
+   "name": "Chilean Peso",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "CNY": {
+   "name": "Chinese Yuan Renminbi",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "COP": {
+   "name": "Colombian Peso",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "CRC": {
+   "name": "Costa Rican Colón",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "CUC": {
+   "name": "Cuban Convertible Peso",
+   "instrument_type": "historical_currency",
+   "page_role": "historical_currency_dossier",
+   "converter_behavior": "archival_only",
+   "rate_policy": "archival_fixed_conversion_only",
+   "source_policy": [
+    "central_bank_archive",
+    "official_government_archive",
+    "international_financial_institution_record"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "historical_currency_dataset",
+    "provenance_dataset",
+    "ai_retrieval_corpus"
+   ],
+   "reference_rate_expected": false,
+   "current_rate_coverage": false,
+   "active": false,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "CUP": {
+   "name": "Cuban Peso",
+   "instrument_type": "restricted_fiat_currency",
+   "page_role": "restricted_currency_reference",
+   "converter_behavior": "caveated",
+   "rate_policy": "official_reference_with_regime_caveat",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "index_with_specialized_reference_role",
+   "commercial_role": [
+    "source_availability_dataset",
+    "compliance_reference_api",
+    "cross_border_intelligence"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "medium",
+   "review_flags": [
+    "official_vs_market_rate_review"
+   ],
+   "policy_conformance": "rate_shown_without_regime_caveat"
+  },
+  "CVE": {
+   "name": "Cape Verdean Escudo",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "CZK": {
+   "name": "Czech Koruna",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "DJF": {
+   "name": "Djiboutian Franc",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "DKK": {
+   "name": "Danish Krone",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "DOP": {
+   "name": "Dominican Peso",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "DZD": {
+   "name": "Algerian Dinar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "EGP": {
+   "name": "Egyptian Pound",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "ERN": {
+   "name": "Eritrean Nakfa",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "ETB": {
+   "name": "Ethiopian Birr",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "EUR": {
+   "name": "Euro",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "FJD": {
+   "name": "Fijian Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "FKP": {
+   "name": "Falkland Islands Pound",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "GBP": {
+   "name": "British Pound Sterling",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "GEL": {
+   "name": "Georgian Lari",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "GHS": {
+   "name": "Ghanaian Cedi",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "GIP": {
+   "name": "Gibraltar Pound",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "GMD": {
+   "name": "Gambian Dalasi",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "GNF": {
+   "name": "Guinean Franc",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "GTQ": {
+   "name": "Guatemalan Quetzal",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "GYD": {
+   "name": "Guyanese Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "HKD": {
+   "name": "Hong Kong Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "HNL": {
+   "name": "Honduran Lempira",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "HRK": {
+   "name": "Croatian Kuna",
+   "instrument_type": "historical_currency",
+   "page_role": "historical_currency_dossier",
+   "converter_behavior": "archival_only",
+   "rate_policy": "archival_fixed_conversion_only",
+   "source_policy": [
+    "central_bank_archive",
+    "official_government_archive",
+    "international_financial_institution_record"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "historical_currency_dataset",
+    "provenance_dataset",
+    "ai_retrieval_corpus"
+   ],
+   "reference_rate_expected": false,
+   "current_rate_coverage": true,
+   "active": false,
+   "classification_confidence": "high",
+   "review_flags": [
+    "rate_shown_for_withdrawn_instrument"
+   ],
+   "policy_conformance": "rate_shown_contrary_to_policy"
+  },
+  "HTG": {
+   "name": "Haitian Gourde",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "HUF": {
+   "name": "Hungarian Forint",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "IDR": {
+   "name": "Indonesian Rupiah",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "ILS": {
+   "name": "Israeli New Shekel",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "INR": {
+   "name": "Indian Rupee",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "IQD": {
+   "name": "Iraqi Dinar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "IRR": {
+   "name": "Iranian Rial",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "medium",
+   "review_flags": [
+    "official_vs_market_rate_review"
+   ],
+   "policy_conformance": "conformant"
+  },
+  "ISK": {
+   "name": "Icelandic Króna",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "JMD": {
+   "name": "Jamaican Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "JOD": {
+   "name": "Jordanian Dinar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "JPY": {
+   "name": "Japanese Yen",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "KES": {
+   "name": "Kenyan Shilling",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "KGS": {
+   "name": "Kyrgyzstani Som",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "KHR": {
+   "name": "Cambodian Riel",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "KMF": {
+   "name": "Comorian Franc",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "KPW": {
+   "name": "North Korean Won",
+   "instrument_type": "restricted_fiat_currency",
+   "page_role": "restricted_currency_reference",
+   "converter_behavior": "caveated",
+   "rate_policy": "official_reference_with_regime_caveat",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "index_with_specialized_reference_role",
+   "commercial_role": [
+    "source_availability_dataset",
+    "compliance_reference_api",
+    "cross_border_intelligence"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": false,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "rate_source_missing"
+  },
+  "KRW": {
+   "name": "South Korean Won",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "KWD": {
+   "name": "Kuwaiti Dinar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "KYD": {
+   "name": "Cayman Islands Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "KZT": {
+   "name": "Kazakhstani Tenge",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "LAK": {
+   "name": "Lao Kip",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "LBP": {
+   "name": "Lebanese Pound",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "LKR": {
+   "name": "Sri Lankan Rupee",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "LRD": {
+   "name": "Liberian Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "LSL": {
+   "name": "Lesotho Loti",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "LYD": {
+   "name": "Libyan Dinar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MAD": {
+   "name": "Moroccan Dirham",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MDL": {
+   "name": "Moldovan Leu",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MGA": {
+   "name": "Malagasy Ariary",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MKD": {
+   "name": "Macedonian Denar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MMK": {
+   "name": "Myanmar Kyat",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "medium",
+   "review_flags": [
+    "official_vs_market_rate_review"
+   ],
+   "policy_conformance": "conformant"
+  },
+  "MNT": {
+   "name": "Mongolian Tögrög",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MOP": {
+   "name": "Macanese Pataca",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MRU": {
+   "name": "Mauritanian Ouguiya",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MUR": {
+   "name": "Mauritian Rupee",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MVR": {
+   "name": "Maldivian Rufiyaa",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MWK": {
+   "name": "Malawian Kwacha",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MXN": {
+   "name": "Mexican Peso",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MYR": {
+   "name": "Malaysian Ringgit",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "MZN": {
+   "name": "Mozambican Metical",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "NAD": {
+   "name": "Namibian Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "NGN": {
+   "name": "Nigerian Naira",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "NIO": {
+   "name": "Nicaraguan Córdoba",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "NOK": {
+   "name": "Norwegian Krone",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "NPR": {
+   "name": "Nepalese Rupee",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "NZD": {
+   "name": "New Zealand Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "OMR": {
+   "name": "Omani Rial",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "PAB": {
+   "name": "Panamanian Balboa",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "PEN": {
+   "name": "Peruvian Sol",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "PGK": {
+   "name": "Papua New Guinean Kina",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "PHP": {
+   "name": "Philippine Peso",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "PKR": {
+   "name": "Pakistani Rupee",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "PLN": {
+   "name": "Polish Złoty",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "PYG": {
+   "name": "Paraguayan Guaraní",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "QAR": {
+   "name": "Qatari Riyal",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "RON": {
+   "name": "Romanian Leu",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "RSD": {
+   "name": "Serbian Dinar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "RUB": {
+   "name": "Russian Ruble",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "RWF": {
+   "name": "Rwandan Franc",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SAR": {
+   "name": "Saudi Riyal",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SBD": {
+   "name": "Solomon Islands Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SCR": {
+   "name": "Seychellois Rupee",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SDG": {
+   "name": "Sudanese Pound",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SEK": {
+   "name": "Swedish Krona",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SGD": {
+   "name": "Singapore Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SHP": {
+   "name": "Saint Helena Pound",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SLE": {
+   "name": "Sierra Leonean Leone",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SLL": {
+   "name": "Sierra Leonean Leone (old)",
+   "instrument_type": "legacy_transition",
+   "page_role": "legacy_currency_dossier",
+   "converter_behavior": "archival_only",
+   "rate_policy": "fixed_parity_or_successor_reference",
+   "source_policy": [
+    "central_bank",
+    "central_bank_archive",
+    "official_government_archive"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "historical_currency_dataset",
+    "provenance_dataset",
+    "ai_retrieval_corpus"
+   ],
+   "reference_rate_expected": false,
+   "current_rate_coverage": true,
+   "active": false,
+   "classification_confidence": "medium",
+   "review_flags": [
+    "rate_shown_for_withdrawn_instrument",
+    "legal_tender_status_review"
+   ],
+   "policy_conformance": "rate_shown_contrary_to_policy"
+  },
+  "SOS": {
+   "name": "Somali Shilling",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SRD": {
+   "name": "Surinamese Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SSP": {
+   "name": "South Sudanese Pound",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "STN": {
+   "name": "São Tomé and Príncipe Dobra",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SVC": {
+   "name": "Salvadoran Colón",
+   "instrument_type": "legacy_transition",
+   "page_role": "legacy_currency_dossier",
+   "converter_behavior": "archival_only",
+   "rate_policy": "fixed_parity_or_successor_reference",
+   "source_policy": [
+    "central_bank",
+    "central_bank_archive",
+    "official_government_archive"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "historical_currency_dataset",
+    "provenance_dataset",
+    "ai_retrieval_corpus"
+   ],
+   "reference_rate_expected": false,
+   "current_rate_coverage": false,
+   "active": false,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "SYP": {
+   "name": "Syrian Pound",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "medium",
+   "review_flags": [
+    "official_vs_market_rate_review"
+   ],
+   "policy_conformance": "conformant"
+  },
+  "SZL": {
+   "name": "Eswatini Lilangeni",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "THB": {
+   "name": "Thai Baht",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "TJS": {
+   "name": "Tajikistani Somoni",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "TMT": {
+   "name": "Turkmenistani Manat",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "medium",
+   "review_flags": [
+    "official_vs_market_rate_review"
+   ],
+   "policy_conformance": "conformant"
+  },
+  "TND": {
+   "name": "Tunisian Dinar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "TOP": {
+   "name": "Tongan Paʻanga",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "TRY": {
+   "name": "Turkish Lira",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "TTD": {
+   "name": "Trinidad and Tobago Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "TWD": {
+   "name": "New Taiwan Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "TZS": {
+   "name": "Tanzanian Shilling",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "UAH": {
+   "name": "Ukrainian Hryvnia",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "UGX": {
+   "name": "Ugandan Shilling",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "USD": {
+   "name": "US Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "UYU": {
+   "name": "Uruguayan Peso",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "UYW": {
+   "name": "Uruguayan Nominal Wage Index Unit",
+   "instrument_type": "unit_of_account",
+   "page_role": "institutional_unit_dossier",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "issuer_published_valuation",
+   "source_policy": [
+    "issuing_institution",
+    "official_methodology_publication"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "institutional_units_reference",
+    "analytical_dataset"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": false,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "rate_source_missing"
+  },
+  "UZS": {
+   "name": "Uzbekistani Som",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "VED": {
+   "name": "Venezuelan Digital Bolívar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": false,
+   "active": true,
+   "classification_confidence": "medium",
+   "review_flags": [
+    "code_mapping_review",
+    "official_vs_market_rate_review"
+   ],
+   "policy_conformance": "rate_source_missing"
+  },
+  "VES": {
+   "name": "Venezuelan Bolívar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "medium",
+   "review_flags": [
+    "code_mapping_review",
+    "official_vs_market_rate_review"
+   ],
+   "policy_conformance": "conformant"
+  },
+  "VND": {
+   "name": "Vietnamese Đồng",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "VUV": {
+   "name": "Vanuatu Vatu",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "WST": {
+   "name": "Samoan Tala",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "XAF": {
+   "name": "Central African CFA Franc",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "XAG": {
+   "name": "Silver (troy ounce)",
+   "instrument_type": "precious_metal",
+   "page_role": "precious_metal_reference",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "dedicated_metal_benchmark_required",
+   "source_policy": [
+    "bullion_benchmark_administrator",
+    "established_metals_data_provider"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "index_with_specialized_reference_role",
+   "commercial_role": [
+    "metals_pricing_intelligence",
+    "fx_reference_api",
+    "analytical_dataset"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": false,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "rate_source_missing"
+  },
+  "XAU": {
+   "name": "Gold (troy ounce)",
+   "instrument_type": "precious_metal",
+   "page_role": "precious_metal_reference",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "dedicated_metal_benchmark_required",
+   "source_policy": [
+    "bullion_benchmark_administrator",
+    "established_metals_data_provider"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "index_with_specialized_reference_role",
+   "commercial_role": [
+    "metals_pricing_intelligence",
+    "fx_reference_api",
+    "analytical_dataset"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": false,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "rate_source_missing"
+  },
+  "XCD": {
+   "name": "East Caribbean Dollar",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "XDR": {
+   "name": "Special Drawing Right",
+   "instrument_type": "special_instrument",
+   "page_role": "supranational_instrument_dossier",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "issuer_published_valuation",
+   "source_policy": [
+    "issuing_institution",
+    "international_financial_institution_record"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "index_with_specialized_reference_role",
+   "commercial_role": [
+    "institutional_units_reference",
+    "fx_reference_api",
+    "analytical_dataset"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [
+    "provider_value_vs_issuer_valuation_review"
+   ],
+   "policy_conformance": "provider_rate_pending_issuer_source"
+  },
+  "XOF": {
+   "name": "West African CFA Franc",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "XPD": {
+   "name": "Palladium (troy ounce)",
+   "instrument_type": "precious_metal",
+   "page_role": "precious_metal_reference",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "dedicated_metal_benchmark_required",
+   "source_policy": [
+    "bullion_benchmark_administrator",
+    "established_metals_data_provider"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "index_with_specialized_reference_role",
+   "commercial_role": [
+    "metals_pricing_intelligence",
+    "fx_reference_api",
+    "analytical_dataset"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": false,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "rate_source_missing"
+  },
+  "XPF": {
+   "name": "CFP Franc",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "XPT": {
+   "name": "Platinum (troy ounce)",
+   "instrument_type": "precious_metal",
+   "page_role": "precious_metal_reference",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "dedicated_metal_benchmark_required",
+   "source_policy": [
+    "bullion_benchmark_administrator",
+    "established_metals_data_provider"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "index_with_specialized_reference_role",
+   "commercial_role": [
+    "metals_pricing_intelligence",
+    "fx_reference_api",
+    "analytical_dataset"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": false,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "rate_source_missing"
+  },
+  "XSU": {
+   "name": "SUCRE (regional unit of account)",
+   "instrument_type": "regional_unit",
+   "page_role": "institutional_unit_dossier",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "issuer_published_valuation",
+   "source_policy": [
+    "issuing_institution",
+    "treaty_body",
+    "official_methodology_publication"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "institutional_units_reference",
+    "analytical_dataset"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": false,
+   "active": true,
+   "classification_confidence": "medium",
+   "review_flags": [
+    "issuer_verification",
+    "activity_status_review"
+   ],
+   "policy_conformance": "rate_source_missing"
+  },
+  "XTS": {
+   "name": "Testing Currency Code",
+   "instrument_type": "test_code",
+   "page_role": "iso_standards_reference",
+   "converter_behavior": "none",
+   "rate_policy": "no_rate",
+   "source_policy": [
+    "iso_4217_maintenance_agency"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "candidate_for_consolidation",
+   "commercial_role": [
+    "standards_reference_api",
+    "ai_retrieval_corpus"
+   ],
+   "reference_rate_expected": false,
+   "current_rate_coverage": false,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "XUA": {
+   "name": "ADB Unit of Account",
+   "instrument_type": "regional_unit",
+   "page_role": "institutional_unit_dossier",
+   "converter_behavior": "valuation_only",
+   "rate_policy": "issuer_published_valuation",
+   "source_policy": [
+    "issuing_institution",
+    "treaty_body",
+    "official_methodology_publication"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "institutional_units_reference",
+    "analytical_dataset"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": false,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "rate_source_missing"
+  },
+  "XXX": {
+   "name": "No Currency",
+   "instrument_type": "no_currency",
+   "page_role": "iso_semantics_reference",
+   "converter_behavior": "none",
+   "rate_policy": "no_rate",
+   "source_policy": [
+    "iso_4217_maintenance_agency"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "candidate_for_consolidation",
+   "commercial_role": [
+    "standards_reference_api",
+    "ai_retrieval_corpus"
+   ],
+   "reference_rate_expected": false,
+   "current_rate_coverage": false,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "YER": {
+   "name": "Yemeni Rial",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "ZAR": {
+   "name": "South African Rand",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "ZMW": {
+   "name": "Zambian Kwacha",
+   "instrument_type": "fiat_currency",
+   "page_role": "fx_converter_reference",
+   "converter_behavior": "standard",
+   "rate_policy": "live_plus_snapshot",
+   "source_policy": [
+    "central_bank",
+    "official_government_institution",
+    "established_fx_data_provider"
+   ],
+   "hub_indexability": "index",
+   "pair_indexability": "index",
+   "commercial_role": [
+    "fx_reference_api",
+    "historical_rate_dataset",
+    "cross_border_intelligence",
+    "institutional_data_licensing"
+   ],
+   "reference_rate_expected": true,
+   "current_rate_coverage": true,
+   "active": true,
+   "classification_confidence": "high",
+   "review_flags": [],
+   "policy_conformance": "conformant"
+  },
+  "ZWL": {
+   "name": "Zimbabwean Dollar",
+   "instrument_type": "historical_currency",
+   "page_role": "historical_currency_dossier",
+   "converter_behavior": "archival_only",
+   "rate_policy": "archival_fixed_conversion_only",
+   "source_policy": [
+    "central_bank_archive",
+    "official_government_archive",
+    "international_financial_institution_record"
+   ],
+   "hub_indexability": "index_with_specialized_reference_role",
+   "pair_indexability": "needs_further_evidence",
+   "commercial_role": [
+    "historical_currency_dataset",
+    "provenance_dataset",
+    "ai_retrieval_corpus"
+   ],
+   "reference_rate_expected": false,
+   "current_rate_coverage": true,
+   "active": false,
+   "classification_confidence": "high",
+   "review_flags": [
+    "rate_shown_for_withdrawn_instrument",
+    "provider_alias_suspected",
+    "successor_not_in_site_set"
+   ],
+   "policy_conformance": "rate_shown_contrary_to_policy"
+  }
+ },
+ "pair_cohorts": {
+  "total_directed_pairs": 28730,
+  "by_pair_indexability": {
+   "candidate_for_consolidation": 674,
+   "index": 22350,
+   "index_with_specialized_reference_role": 2142,
+   "needs_further_evidence": 3564
+  },
+  "by_converter_behavior": {
+   "archival_only": 2296,
+   "caveated": 602,
+   "none": 674,
+   "standard": 22350,
+   "valuation_only": 2808
+  }
+ },
+ "policy_conformance": {
+  "conformant": [
+   "AED",
+   "AFN",
+   "ALL",
+   "AMD",
+   "AOA",
+   "ARS",
+   "AUD",
+   "AWG",
+   "AZN",
+   "BAM",
+   "BBD",
+   "BDT",
+   "BHD",
+   "BIF",
+   "BMD",
+   "BND",
+   "BOB",
+   "BRL",
+   "BSD",
+   "BTN",
+   "BWP",
+   "BYN",
+   "BZD",
+   "CAD",
+   "CDF",
+   "CHF",
+   "CLP",
+   "CNY",
+   "COP",
+   "CRC",
+   "CUC",
+   "CVE",
+   "CZK",
+   "DJF",
+   "DKK",
+   "DOP",
+   "DZD",
+   "EGP",
+   "ERN",
+   "ETB",
+   "EUR",
+   "FJD",
+   "FKP",
+   "GBP",
+   "GEL",
+   "GHS",
+   "GIP",
+   "GMD",
+   "GNF",
+   "GTQ",
+   "GYD",
+   "HKD",
+   "HNL",
+   "HTG",
+   "HUF",
+   "IDR",
+   "ILS",
+   "INR",
+   "IQD",
+   "IRR",
+   "ISK",
+   "JMD",
+   "JOD",
+   "JPY",
+   "KES",
+   "KGS",
+   "KHR",
+   "KMF",
+   "KRW",
+   "KWD",
+   "KYD",
+   "KZT",
+   "LAK",
+   "LBP",
+   "LKR",
+   "LRD",
+   "LSL",
+   "LYD",
+   "MAD",
+   "MDL",
+   "MGA",
+   "MKD",
+   "MMK",
+   "MNT",
+   "MOP",
+   "MRU",
+   "MUR",
+   "MVR",
+   "MWK",
+   "MXN",
+   "MYR",
+   "MZN",
+   "NAD",
+   "NGN",
+   "NIO",
+   "NOK",
+   "NPR",
+   "NZD",
+   "OMR",
+   "PAB",
+   "PEN",
+   "PGK",
+   "PHP",
+   "PKR",
+   "PLN",
+   "PYG",
+   "QAR",
+   "RON",
+   "RSD",
+   "RUB",
+   "RWF",
+   "SAR",
+   "SBD",
+   "SCR",
+   "SDG",
+   "SEK",
+   "SGD",
+   "SHP",
+   "SLE",
+   "SOS",
+   "SRD",
+   "SSP",
+   "STN",
+   "SVC",
+   "SYP",
+   "SZL",
+   "THB",
+   "TJS",
+   "TMT",
+   "TND",
+   "TOP",
+   "TRY",
+   "TTD",
+   "TWD",
+   "TZS",
+   "UAH",
+   "UGX",
+   "USD",
+   "UYU",
+   "UZS",
+   "VES",
+   "VND",
+   "VUV",
+   "WST",
+   "XAF",
+   "XCD",
+   "XOF",
+   "XPF",
+   "XTS",
+   "XXX",
+   "YER",
+   "ZAR",
+   "ZMW"
+  ],
+  "provider_rate_pending_issuer_source": [
+   "CLF",
+   "XDR"
+  ],
+  "rate_shown_contrary_to_policy": [
+   "ANG",
+   "BGN",
+   "HRK",
+   "SLL",
+   "ZWL"
+  ],
+  "rate_shown_without_regime_caveat": [
+   "CUP"
+  ],
+  "rate_source_missing": [
+   "KPW",
+   "UYW",
+   "VED",
+   "XAG",
+   "XAU",
+   "XPD",
+   "XPT",
+   "XSU",
+   "XUA"
+  ]
+ }
+}

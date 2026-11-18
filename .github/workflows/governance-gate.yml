@@ -54,6 +54,13 @@ jobs:
       - name: Site hygiene — JSON, target=_blank, preview leaks (validate_site_hygiene.py)
         run: python3 scripts/validate_site_hygiene.py
 
+      - name: Instrument classification gate (validate_instrument_classification.py)
+        # SEO-A4.1: authoritative taxonomy for all 170 codes, fail-closed
+        # status combinations, anchored special codes, legacy-label
+        # reconciliation, and derived policy-matrix drift. Runs before the
+        # generator-dependent gates below.
+        run: python3 scripts/validate_instrument_classification.py
+
       - name: Pair internal-link graph gate (validate_pair_link_graph.py)
         # SEO-A2: every pair page reachable from index.html via <a href>
         # within 3 clicks, no reverse-pair-only 2-cycles, every pair linked
