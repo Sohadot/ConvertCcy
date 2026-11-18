@@ -496,7 +496,7 @@
    "reference_rate_expected": false,
    "current_rate_coverage": true,
    "active": false,
-   "classification_confidence": "medium",
+   "classification_confidence": "high",
    "review_flags": [
     "rate_shown_for_withdrawn_instrument",
     "successor_not_in_site_set"
@@ -732,7 +732,7 @@
    "reference_rate_expected": false,
    "current_rate_coverage": true,
    "active": false,
-   "classification_confidence": "medium",
+   "classification_confidence": "high",
    "review_flags": [
     "rate_shown_for_withdrawn_instrument"
    ],
@@ -4197,10 +4197,8 @@
    "reference_rate_expected": true,
    "current_rate_coverage": false,
    "active": true,
-   "classification_confidence": "medium",
-   "review_flags": [
-    "issuer_verification"
-   ],
+   "classification_confidence": "high",
+   "review_flags": [],
    "policy_conformance": "rate_source_missing"
   },
   "UZS": {
@@ -4661,9 +4659,7 @@
    "current_rate_coverage": false,
    "active": true,
    "classification_confidence": "high",
-   "review_flags": [
-    "valuation_basis_verification"
-   ],
+   "review_flags": [],
    "policy_conformance": "rate_source_missing"
   },
   "XXX": {
@@ -4787,7 +4783,7 @@
    "reference_rate_expected": false,
    "current_rate_coverage": true,
    "active": false,
-   "classification_confidence": "medium",
+   "classification_confidence": "high",
    "review_flags": [
     "rate_shown_for_withdrawn_instrument",
     "provider_alias_suspected",
