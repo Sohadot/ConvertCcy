@@ -930,6 +930,8 @@ def static_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], sna
         return standards_rate_region_html(tokens)
     if treatment == "precious_metal":
         return metal_rate_region_html(tokens, snapshot)
+    if treatment == "institutional_unit":
+        return institutional_rate_region_html(tokens, snapshot)
     if treatment == "historical":
         return historical_rate_region_html(tokens, snapshot)
     rev_href = f'/pages/{T.lower()}-to-{F.lower()}.html'
@@ -1004,6 +1006,8 @@ def static_table_region_html(profile: Dict[str, Any], tokens: Dict[str, str], sn
         return standards_table_region_html(tokens)
     if treatment == "precious_metal":
         return metal_table_region_html(tokens, snapshot)
+    if treatment == "institutional_unit":
+        return institutional_table_region_html(tokens, snapshot)
     if treatment == "historical":
         return historical_table_region_html(tokens, snapshot)
     amounts = profile.get("static_amounts") or DEFAULT_STATIC_AMOUNTS
@@ -1115,6 +1119,8 @@ def pair_semantic_treatment(from_code: str, to_code: str, snapshot: Optional[Dic
     'standards_special'      a side is an ISO 4217 test/no-currency code (converter behaviour none)
     'historical'             a side is historical/legacy (archival_only), unless the above governs
     'precious_metal'         a side is a precious metal (XAU/XAG/XPT/XPD), unless the above govern
+    'institutional_unit'     a side is an institutional unit (XDR/CLF/UYW/XUA/XSU), unless the above govern
+                             (SEO-A4.5; a provider FX value for the unit never makes the pair ordinary FX)
     'ordinary_fx'            snapshot-covered pair rendered by the A3 rate logic
     'unsupported_specialized' no rate source yet (metals, units, restricted fiat, …)
     Policy (instrument_policy.resolve_pair) decides first; snapshot coverage only
@@ -1128,13 +1134,15 @@ def pair_semantic_treatment(from_code: str, to_code: str, snapshot: Optional[Dic
     pol = instrument_policy_layer()
     if pol.is_precious_metal(from_code) or pol.is_precious_metal(to_code):
         return "precious_metal"
+    if pol.is_institutional_unit(from_code) or pol.is_institutional_unit(to_code):
+        return "institutional_unit"
     snapshot = snapshot if snapshot is not None else load_rate_snapshot()
     return "ordinary_fx" if static_pair_rate(from_code, to_code, snapshot) is not None else "unsupported_specialized"
 
 
 _RATE_TREATMENT = {"ordinary_fx": "snapshot", "unsupported_specialized": "unsupported",
                    "historical": "historical", "standards_special": "standards_special",
-                   "precious_metal": "precious_metal"}
+                   "precious_metal": "precious_metal", "institutional_unit": "institutional_unit"}
 
 
 def pair_rate_treatment(from_code: str, to_code: str, snapshot: Optional[Dict[str, Any]] = None) -> str:
@@ -1142,7 +1150,7 @@ def pair_rate_treatment(from_code: str, to_code: str, snapshot: Optional[Dict[st
     return _RATE_TREATMENT[pair_semantic_treatment(from_code, to_code, snapshot)]
 
 
-SPECIAL_TREATMENTS = ("historical", "standards_special", "precious_metal")
+SPECIAL_TREATMENTS = ("historical", "standards_special", "precious_metal", "institutional_unit")
 
 
 HISTORICAL_VALUE_LABELS = {
@@ -1389,6 +1397,8 @@ def pair_metadata(tokens: Dict[str, str], archival: Any = False, brand: str = SI
         return standards_pair_metadata(tokens, brand)
     if archival == "precious_metal":
         return metal_pair_metadata(tokens, brand)
+    if archival == "institutional_unit":
+        return institutional_pair_metadata(tokens, brand)
     if not archival:
         return {
             "title": f"{F} to {T} Converter | {brand}",
@@ -1953,6 +1963,289 @@ def apply_metal_semantics(page: str, tokens: Dict[str, str], content: Dict[str, 
     return replace_webpage_jsonld(page, tokens, items, "precious_metal")
 
 
+# ---- SEO-A4.5: institutional units (XDR, CLF, UYW, XUA, XSU) ----------------
+#
+# Pairs with an institutional-unit side (instrument types special_instrument,
+# unit_of_account, regional_unit), unless standards / historical / precious-metal
+# treatment governs, are institutional valuation references — never ordinary FX
+# converters, even where the raw FX snapshot carries a provider value (that value
+# is classified secondary-only and is not rendered). Facts come only from
+# instrument_policy.institutional_view() (registry-cited). Any numeric value comes
+# only from institutional_reference.value_view(), which reads
+# data/institutional_reference_snapshot.json and refuses unless licence,
+# provenance, methodology, dates, cadence freshness and FX-skew rules all pass.
+# Current state: reference_layer_only -> every value is "unavailable".
+
+_INSTITUTIONAL_SNAPSHOT = None
+
+
+def institutional_snapshot() -> Dict[str, Any]:
+    global _INSTITUTIONAL_SNAPSHOT
+    if _INSTITUTIONAL_SNAPSHOT is None:
+        import institutional_reference
+        _INSTITUTIONAL_SNAPSHOT = institutional_reference.load_institutional_snapshot()
+    return _INSTITUTIONAL_SNAPSHOT
+
+
+def _institutional_sides(F: str, T: str) -> List[Dict[str, Any]]:
+    pol = instrument_policy_layer()
+    return [pol.institutional_view(c) for c in (F, T) if pol.is_institutional_unit(c)]
+
+
+def institutional_value(F: str, T: str, fx: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    import institutional_reference
+    fx = fx if fx is not None else load_rate_snapshot()
+    return institutional_reference.value_view(F, T, institutional_snapshot(), fx, format_rate_value)
+
+
+INSTITUTIONAL_VALUE_BADGE = {"issuer_published_valuation": "ISSUER VALUATION", "indexed_unit_value": "OFFICIAL INDEXED VALUE",
+                             "basket_valuation": "ISSUER BASKET VALUATION", "derived_reference_value": "DERIVED"}
+
+
+def _code_article(code: str) -> str:
+    """'an XDR' / 'a CLF': the article follows the spoken first letter of the code."""
+    return "an" if code[:1] in "AEFHILMNORSX" else "a"
+
+
+def institutional_pair_role(F: str, T: str) -> str:
+    sides = _institutional_sides(F, T)
+    return "institutional_relative_reference" if len(sides) == 2 else sides[0]["pair_role"]
+
+
+def _institutional_governing(F: str, T: str) -> Dict[str, Any]:
+    """The side whose identity names the page: the unit that declares a relationship
+    to the other (XUA -> XDR), else the from-side unit."""
+    sides = _institutional_sides(F, T)
+    if len(sides) == 2:
+        for s in sides:
+            if s["related_unit"] in (F, T):
+                return s
+    return sides[0]
+
+
+def institutional_pair_metadata(tokens: Dict[str, str], brand: str = SITE_NAME,
+                                fx: Optional[Dict[str, Any]] = None) -> Dict[str, str]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _institutional_sides(F, T)
+    role = institutional_pair_role(F, T)
+    active = institutional_value(F, T, fx)["value_type"] != "unavailable"
+    g = _institutional_governing(F, T)
+    if role == "institutional_relative_reference":
+        if g["related_unit"] in (F, T):
+            title = f"{F} / {T} — {g['title_role']} | {brand}"
+        else:
+            title = f"{F} / {T} — Institutional Units Relative Reference | {brand}"
+        description = (f"Institutional reference for {sides[0]['display_name']} ({sides[0]['code']}) and "
+                       f"{sides[1]['display_name']} ({sides[1]['code']}): issuers, classification, valuation methodology, "
+                       f"the relationship between the two units and source provenance. No market exchange rate exists for this pair.")
+    else:
+        title = f"{F} to {T} — {g['title_role']} | {brand}"
+        other = T if g["code"] == F else F
+        description = (f"Institutional reference for the {g['display_name']} ({g['code']}) against {_cur_name(other)} ({other}): "
+                       + (f"issuer {g['issuer_display']}, " if g["issuer_display"] else "issuer unresolved, ")
+                       + "classification, valuation methodology, status and source provenance. "
+                       + ("Values are labelled with issuer, dates and direct or derived type." if active
+                          else "No issuer value is currently published on ConvertCCY."))
+    return {"title": title, "description": description, "schema_name": title, "schema_description": description}
+
+
+def _institutional_h1(F: str, T: str) -> Tuple[str, str]:
+    sides = _institutional_sides(F, T)
+    if len(sides) == 2:
+        return f"{sides[0]['display_name']} ({F}) / {sides[1]['display_name']} ({T})", "Institutional Relative Reference"
+    u = sides[0]
+    if u["code"] == F:
+        return f"{u['display_name']} ({F})", f"{u['h1_role']} in {_cur_name(T)} ({T})"
+    return f"{_cur_name(F)} ({F})", f"Expressed in {u['display_name']} ({T})"
+
+
+def _institutional_block(iv: Dict[str, Any]) -> str:
+    lines = [_cited_line(iv["iso_designation"], "ISO 4217 designation: ")]
+    issuer = iv["issuer_display"] or "unresolved — no current issuer publication verified"
+    lines.append(f'<div class="pj-line">Instrument type: {esc(iv["classification_label"])} · Issuer: {esc(issuer)}</div>')
+    status = "unresolved" if iv["activity_status"] == "status_unresolved" else iv["activity_status"].replace("_", " ")
+    lines.append(f'<div class="pj-line" data-activity-status="{esc(iv["activity_status"])}">Status: {esc(status)}</div>')
+    lines += [_cited_line(c) for c in iv["activity_claims"]]
+    lines += [_cited_line(c, "Reported (secondary source): ") for c in iv["reported_indicators"]]
+    lines += [_cited_line(c) for c in iv["claims"]]
+    lines.append(f'<div class="pj-line">Valuation: {esc(iv["explanations"]["value_status"])}</div>')
+    lines += [_cited_line(c) for c in iv["licensing_claims"]]
+    lines.append(f'<div class="pj-line">Authoritative reference: <a href="{currency_hub_href(iv["code"])}">'
+                 f'{esc(iv["code"])} — {esc(iv["display_name"])} reference →</a></div>')
+    body = "\n          ".join(lines)
+    return f"""
+        <div class="pj-block pj-plain" data-institutional-code="{esc(iv["code"])}" data-value-decision="{esc(iv["value_decision"])}">
+          <div class="pj-head"><span class="pj-badge">INSTITUTIONAL UNIT</span> {esc(iv["code"])} — {esc(iv["display_name"])}</div>
+          {body}
+        </div>"""
+
+
+def _institutional_relation_note(F: str, T: str) -> str:
+    sides = _institutional_sides(F, T)
+    if len(sides) != 2:
+        return ""
+    for s in sides:
+        if s["related_unit"] in (F, T):
+            return f" {s['explanations']['valuation']}"
+    return (f" Both {F} and {T} are institutional units with their own issuers; no issuer defines a relationship "
+            f"between them, so no {F}/{T} value is shown.")
+
+
+def institutional_rate_region_html(tokens: Dict[str, str], fx: Optional[Dict[str, Any]] = None) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _institutional_sides(F, T)
+    role = institutional_pair_role(F, T)
+    v = institutional_value(F, T, fx)
+    vt = v["value_type"]
+    hubs = " and ".join(f'<a href="{currency_hub_href(s["code"])}">{esc(s["code"])} reference</a>' for s in sides)
+    sub = "; ".join(f'{s["code"]} is the {s["display_name"]} — an institutional unit, not a circulating currency' for s in sides)
+    if vt == "unavailable":
+        main = "No issuer value published here"
+        badge = " · ".join(dict.fromkeys(s["decision_label"] for s in sides))
+        note = (" ".join(dict.fromkeys(s["explanations"]["value_status"] for s in sides))
+                + _institutional_relation_note(F, T) + f" Issuer, methodology and source provenance: ")
+        note_html = f"{esc(note)}{hubs}."
+    else:
+        main = f'<span data-value-type="{vt}">1 {esc(F)} = {esc(v["value_text"])} {esc(T)}</span>'
+        badge = INSTITUTIONAL_VALUE_BADGE[vt] + " · " + esc(v["valuation_date"])
+        if v["derived"]:
+            lead = f"DERIVED FROM {v['issuer'].upper()} VALUATION — not a direct issuer quote."
+        else:
+            lead = f"Direct issuer value published by {v['issuer']}."
+        parts = [lead, f"Issuer source: {v['issuer_source']}", f"valuation date: {v['valuation_date']}",
+                 f"methodology: {v['methodology_id']}"]
+        if v.get("fx_source"):
+            parts += [f"FX source: {v['fx_source']}", f"FX timestamp: {v['fx_timestamp']}"]
+        if v["derivation_method"]:
+            parts.append(f"derivation: {v['derivation_method']}")
+        note_html = esc(" · ".join(parts) + ".")
+    return f"""{STATIC_RATE_START}
+  <div class="rate-banner" id="rate-root" data-from="{esc(F)}" data-to="{esc(T)}" data-mode="institutional" data-value-type="{vt}" data-pair-role="{esc(role)}">
+    <div>
+      <div class="rate-main" id="live-rate">{main}</div>
+      <div class="rate-sub" id="rate-sub">{esc(sub)}</div>
+    </div>
+    <div class="rate-badge snap" id="rate-badge">{esc(badge) if vt == "unavailable" else badge}</div>
+  </div>
+  <p class="rate-note" id="rate-source">{note_html}</p>
+
+  <div class="card">
+    <div class="card-title">Institutional Unit Reference</div>
+    <div class="pj-grid">{"".join(_institutional_block(s) for s in sides)}
+    </div>
+  </div>
+{STATIC_RATE_END}"""
+
+
+def institutional_table_region_html(tokens: Dict[str, str], fx: Optional[Dict[str, Any]] = None) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    v = institutional_value(F, T, fx)
+    if v["value_type"] == "unavailable":
+        text = "No valuation table: no licensed issuer valuation is activated for this institutional pair."
+    else:
+        text = f"No conversion table: the institutional value above applies to one {F} unit on its valuation date only."
+    return f"""{STATIC_TABLE_START}
+    <div class="card">
+      <p class="result-info" id="table-source">{esc(text)}</p>
+    </div>
+{STATIC_TABLE_END}"""
+
+
+def institutional_faq_items(tokens: Dict[str, str], fx: Optional[Dict[str, Any]] = None) -> List[Dict[str, str]]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _institutional_sides(F, T)
+    v = institutional_value(F, T, fx)
+    items: List[Dict[str, str]] = []
+    for s in sides:
+        for f in s["faq"]:
+            if f["q"] not in {i["q"] for i in items}:
+                items.append(dict(f))
+    issuers = " or ".join(dict.fromkeys(s["issuer_display"] or f"an issuer of {s['code']}" for s in sides))
+    if v["value_type"] == "unavailable":
+        a_direct = (f"No {F}/{T} value is shown. " + " ".join(dict.fromkeys(s["explanations"]["value_status"] for s in sides))
+                    + " When an issuer value is activated, a value in the unit's own denomination is labelled as a direct issuer value "
+                      "and any other currency or inverse value is labelled as derived from the issuer valuation.")
+        a_date = ("None: no value is published, so no valuation date applies. An activated value shows the issuer valuation date "
+                  "and, if derived, the FX reference date as well.")
+    else:
+        a_direct = (f"No — it is derived from the {v['issuer']} valuation and an FX reference ({v['derivation_method']})."
+                    if v["derived"] else f"Yes — it is the direct value published by {v['issuer']}.")
+        a_date = f"Issuer valuation date {v['valuation_date']}" + (f"; FX timestamp {v['fx_timestamp']}." if v.get("fx_timestamp") else ".")
+    items += [{"q": f"Is this {F}/{T} value published directly by {issuers}?", "a": a_direct},
+              {"q": "What date does this reference use?", "a": a_date}]
+    return items
+
+
+def institutional_overview_html(tokens: Dict[str, str]) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    pol = instrument_policy_layer()
+    sides = _institutional_sides(F, T)
+    role = institutional_pair_role(F, T)
+    heading = {"supranational_valuation_reference": "Supranational Valuation Reference",
+               "indexed_unit_reference": "Indexed Unit Reference",
+               "institutional_valuation_reference": "Institutional Valuation Reference",
+               "institutional_relative_reference": "Institutional Relative Reference"}[role]
+    paras = [esc(f"{s['explanations']['what']} {s['explanations']['not_this']}") for s in sides]
+    if len(sides) == 1:
+        other = T if sides[0]["code"] == F else F
+        paras.append(f'{esc(other)} ({esc(pol.resolve(other)["name"])}) is the counter-currency; see its '
+                     f'<a href="{currency_hub_href(other)}">{esc(other)} reference</a> for its own pairs.')
+        paras.append(esc(sides[0]["explanations"]["valuation"]))
+    else:
+        paras.append(esc(_institutional_relation_note(F, T).strip()))
+    body = "\n".join(f"    <p>{p}</p>" for p in paras)
+    return f"""  <section class="section">
+    <div class="sec-title">Pair Overview</div>
+    <div class="sec-h2">{esc(F)} / {esc(T)} {esc(heading)}</div>
+{body}
+  </section>"""
+
+
+INSTITUTIONAL_EDUCATION_HTML = """  <section class="section">
+    <div class="sec-title">Reading an Institutional-Unit Reference</div>
+    <div class="card">
+      <p>An institutional unit is defined and valued by an institution — through a currency basket, an official index or an institutional rule — rather than priced by a foreign-exchange market. Its governing value is the one its issuer publishes, on the issuer's own schedule.</p>
+      <p>A value shown in the unit's own denomination is a direct issuer value. A value in any other currency, or an inverse value, is derived from the issuer valuation and a separate FX reference; both dates are shown, and it is not an issuer quote.</p>
+    </div>
+  </section>
+"""
+
+
+def apply_institutional_semantics(page: str, tokens: Dict[str, str], content: Dict[str, Any],
+                                  fx: Optional[Dict[str, Any]] = None) -> str:
+    """Rewrite institutional-unit pair metadata and page semantics. Idempotent; fails closed."""
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    brand = content.get("site_copy", {}).get("brand_name", SITE_NAME)
+    meta = institutional_pair_metadata(tokens, brand, fx)
+    left, right = _institutional_h1(F, T)
+    for rx, tpl in _META_PATTERNS:
+        if len(rx.findall(page)) != 1:
+            raise ValueError(f"institutional metadata: {rx.pattern} not found exactly once")
+        page = rx.sub(lambda _m: tpl.format(title=esc(meta["title"]), description=esc(meta["description"])), page)
+    for rx, new, label in ((_ROBOTS_RE, f'<meta name="robots" content="{pair_robots(F, T)}">', "robots"),
+                           (_H1_RE, f"<h1>{esc(left)} <em>{esc(right)}</em></h1>", "h1"),
+                           (_SUBTITLE_RE, '<p class="pair-subtitle">Institutional-unit reference</p>', "subtitle")):
+        if len(rx.findall(page)) != 1:
+            raise ValueError(f"institutional {label} anchor not found exactly once")
+        page = rx.sub(lambda _m, v=new: v, page)
+    if page.count(_OVERVIEW_START) != 1 or page.count(_PASSAGE_START) != 1 or page.count(STATIC_TABLE_START) != 1:
+        raise ValueError("institutional body anchors not found exactly once")
+    i = page.index(_OVERVIEW_START)
+    j = page.index("\n  </section>", i) + len("\n  </section>")
+    page = page[:i] + institutional_overview_html(tokens) + page[j:]
+    page = _MACRO_RE.sub("", page)
+    p = page.index(_PASSAGE_START)
+    edu_start = page.index("\n  </section>", p) + len("\n  </section>")
+    table_start = page.rindex('\n  <section class="section">\n', 0, page.index(STATIC_TABLE_START))
+    page = page[:edu_start] + "\n" + INSTITUTIONAL_EDUCATION_HTML + page[table_start:]
+    t0 = page.rindex('\n  <section class="section">\n', 0, page.index(STATIC_TABLE_START)) + 1
+    t1 = page.index(STATIC_TABLE_START)
+    page = page[:t0] + '  <section class="section">\n    <div class="sec-title">Institutional Valuation Status</div>\n' + page[t1:]
+    items = institutional_faq_items(tokens, fx)
+    page = replace_faq_regions(page, items)
+    return replace_webpage_jsonld(page, tokens, items, "institutional_unit")
+
+
 WEBPAGE_JSONLD_START = '<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@graph": ['
 
 
@@ -2095,6 +2388,46 @@ def refresh_precious_metals(
     return changed, unchanged, hubs
 
 
+def refresh_institutional_units(
+    currencies: Dict[str, Dict[str, Any]],
+    content: Dict[str, Any],
+    pair_profiles: Dict[str, Dict[str, Any]],
+) -> Tuple[int, int, int]:
+    """SEO-A4.5: rewrite ONLY pairs whose policy treatment is institutional_unit and the
+    hubs of institutional-unit codes. Cohort comes from the policy layer. Robots stay
+    indexable for every institutional class, so the sitemap is unchanged."""
+    snapshot = load_rate_snapshot()
+    pol = instrument_policy_layer()
+    changed = unchanged = 0
+    for profile in pair_profiles.values():
+        a, b = profile["from_code"], profile["to_code"]
+        if a == b or a not in currencies or b not in currencies:
+            continue
+        if pair_rate_treatment(a, b, snapshot) != "institutional_unit":
+            continue
+        tokens = make_pair_tokens(profile, currencies)
+        path = PAGES_DIR / f'{profile["pair_slug"]}.html'
+        old = path.read_text(encoding="utf-8")
+        new = replace_static_rate_regions(old, profile, tokens, snapshot)
+        new = apply_institutional_semantics(new, tokens, content, snapshot)
+        if new != old:
+            write_text(path, new)
+            changed += 1
+        else:
+            unchanged += 1
+    gov_map = load_governed_currency_map()
+    hubs = 0
+    for code in currencies:
+        if pol.is_institutional_unit(code):
+            path = BASE_DIR / currency_hub_href(code).lstrip("/")
+            html_doc = build_currency_hub_page(code, currencies, gov_map)
+            if not path.exists() or path.read_text(encoding="utf-8") != html_doc:
+                write_text(path, html_doc)
+                hubs += 1
+    print(f"Institutional units: {changed} pair pages changed, {unchanged} unchanged, {hubs} hubs changed")
+    return changed, unchanged, hubs
+
+
 # ---- SEO-A3.1: rate-aware FAQ truthfulness ----------------------------------
 #
 # Support status comes ONLY from static_pair_rate() (the validated snapshot).
@@ -2121,6 +2454,8 @@ def rate_aware_faq_items(items: List[Dict[str, str]], tokens: Dict[str, str],
         return standards_faq_items(tokens)
     if treatment == "precious_metal":
         return metal_faq_items(tokens, snapshot)
+    if treatment == "institutional_unit":
+        return institutional_faq_items(tokens, snapshot)
     if treatment == "historical":
         return historical_faq_items(tokens, snapshot)
     if static_pair_rate(F, T, snapshot) is not None:
@@ -2641,6 +2976,8 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
         page = apply_standards_semantics(page, tokens, content)
     elif treatment == "precious_metal":
         page = apply_metal_semantics(page, tokens, content, snapshot)
+    elif treatment == "institutional_unit":
+        page = apply_institutional_semantics(page, tokens, content, snapshot)
     return page
 
 
@@ -2768,6 +3105,8 @@ def build_currency_hub_page(
     pol = instrument_policy_layer()
     if pol.is_precious_metal(code):
         kind = "precious-metal code"   # SEO-A4.4: ISO 4217 states no unit; the unit is not asserted here
+    if pol.is_institutional_unit(code):
+        kind = pol.institutional_view(code)["classification_label"].lower()   # SEO-A4.5: A4.1 taxonomy, not the legacy label
     if pol.is_historical(code):
         hv = pol.historical_view(code)
         kind = ("historical currency" if hv["instrument_type"] == "historical_currency" else "legacy currency code") + \
@@ -2894,6 +3233,67 @@ def build_currency_hub_page(
                        f"Precious metal · not a currency · {'licensed reference pricing' if priced else 'no licensed price published'}.</p>")
         from_heading = f"Metal valuation references: {esc(code)} with other codes"
         to_heading = f"Metal valuation references: other codes with {esc(code)}"
+        webpage = json.dumps({"@context": "https://schema.org", "@type": "WebPage", "name": title,
+                              "url": canonical, "description": description}, ensure_ascii=False, indent=2)
+        faq_ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": i["q"], "acceptedAnswer": {"@type": "Answer", "text": i["a"]}} for i in faq]},
+            ensure_ascii=False, indent=2)
+        extra_jsonld = (f'\n\n<script type="application/ld+json">\n{webpage}\n</script>'
+                        f'\n\n<script type="application/ld+json">\n{faq_ld}\n</script>')
+
+    elif pol.is_institutional_unit(code):
+        # SEO-A4.5: authoritative institutional-unit reference (no value until a licensed issuer source is activated).
+        iv = pol.institutional_view(code)
+        ex = iv["explanations"]
+        title = f"{code} — {iv['display_name']} Reference | {SITE_NAME}"
+        description = (f"Institutional reference for {code}, the {iv['display_name']}: "
+                       + (f"issuer {iv['issuer_display']}, " if iv["issuer_display"] else "issuer unresolved, ")
+                       + "classification, status, purpose, valuation methodology and source provenance. "
+                       + ("No issuer value is currently published on ConvertCCY." if iv["value_decision"] != "issuer_value_activated" else ""))
+        description = description.strip()
+        h1_text = f"{esc(code)} — {esc(iv['display_name'])}"
+
+        def cl(c, prefix=""):
+            return (f'<li>{esc(prefix)}<span data-claim>{esc(c["text"])}</span> — '
+                    + ", ".join(f'<a href="{esc(x["url"])}">{esc(x["authority"])}</a>' for x in c["sources"]) + "</li>")
+
+        def ul(items):
+            return '<ul class="hub-sources">' + "".join(chr(10) + "      " + x for x in items) + "\n    </ul>"
+        status = "unresolved" if iv["activity_status"] == "status_unresolved" else iv["activity_status"].replace("_", " ")
+        issuer = iv["issuer_display"] or "unresolved — no current issuer publication verified"
+        sg = iv["source_governance"]
+        gov_rows = "".join(f"\n      <li>{esc(k.replace('_', ' ').capitalize())}: {esc(v)}</li>" for k, v in sg.items())
+        faq = list(iv["faq"]) + [{
+            "q": f"Does ConvertCCY publish {_code_article(code)} {code} value?",
+            "a": f"{ex['value_status']} {ex['valuation']}"}]
+        faq_html = "".join(f'\n    <div class="hub-faq"><h3>{esc(i["q"])}</h3><p>{esc(i["a"])}</p></div>' for i in faq)
+        related = ""
+        if iv["related_unit"]:
+            ru = pol.institutional_view(iv["related_unit"])
+            related = (f'\n    <p>Related institutional unit: <a href="{currency_hub_href(ru["code"])}">{esc(ru["code"])} — '
+                       f'{esc(ru["display_name"])} reference</a>.</p>')
+        sections = [
+            ("Institutional identity",
+             ul([cl(iv["iso_designation"], "ISO 4217 designation: ")])
+             + f"\n    <p>Instrument type: {esc(iv['classification_label'])} (A4.1 class <code>{esc(iv['instrument_type'])}</code>) · "
+               f"Issuer: {esc(issuer)} · Status: <span data-activity-status=\"{esc(iv['activity_status'])}\">{esc(status)}</span></p>"),
+            ("Purpose and role", f"<p>{esc(ex['what'])}</p>\n    <p>{esc(ex['not_this'])}</p>{related}"),
+            ("Definition and valuation methodology", ul([cl(c) for c in iv["claims"]])),
+            ("Current status", ul([cl(c) for c in iv["activity_claims"]] + [cl(c, "Reported (secondary source): ") for c in iv["reported_indicators"]])
+             if (iv["activity_claims"] or iv["reported_indicators"]) else f"<p>{esc(ex['value_status'])}</p>"),
+            ("Valuation state",
+             f'<p><span class="hub-decision">{esc(iv["decision_label"])}</span> · {esc(ex["value_status"])}</p>\n    <p>{esc(ex["valuation"])}</p>'
+             + (("\n    " + ul([cl(c) for c in iv["licensing_claims"]])) if iv["licensing_claims"] else "")),
+            ("Source governance", f'<ul class="hub-sources">{gov_rows}\n    </ul>'),
+            (f"{esc(code)} FAQ", faq_html.lstrip("\n")),
+        ]
+        standards_html = "".join(f"\n\n  <section class=\"hub-std\">\n    <h2>{h}</h2>\n    {b}\n  </section>" for h, b in sections)
+        rules_html += (f'\n  <p class="hub-rules" data-instrument-type="{esc(iv["instrument_type"])}" data-converter="valuation_only" '
+                       f'data-value-decision="{esc(iv["value_decision"])}" data-activity-status="{esc(iv["activity_status"])}" '
+                       f'data-pair-indexability="{esc(iv["pair_indexability"])}">'
+                       f"Institutional unit · not a circulating currency · {esc(iv['decision_label'].lower())}.</p>")
+        from_heading = f"Institutional valuation references: {esc(code)} with other codes"
+        to_heading = f"Institutional valuation references: other codes with {esc(code)}"
         webpage = json.dumps({"@context": "https://schema.org", "@type": "WebPage", "name": title,
                               "url": canonical, "description": description}, ensure_ascii=False, indent=2)
         faq_ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
@@ -3525,6 +3925,15 @@ def main():
         ),
     )
     parser.add_argument(
+        "--institutional-units-only",
+        action="store_true",
+        help=(
+            "SEO-A4.5: rewrite only pairs whose policy treatment is institutional_unit "
+            "(XDR/CLF/UYW/XUA/XSU, unless standards/historical/metal precedence governs) and "
+            "the institutional-unit hubs. Sitemap and robots are unchanged (classes stay indexable)."
+        ),
+    )
+    parser.add_argument(
         "--standards-special-only",
         action="store_true",
         help=(
@@ -3545,7 +3954,7 @@ def main():
     args = parser.parse_args()
     only_currencies = parse_only_currencies(args.only_currency)
     modes = (args.navigation_only, args.static_rates_only, args.faq_only, args.historical_instruments_only,
-             args.standards_special_only, args.precious_metals_only, only_currencies)
+             args.standards_special_only, args.precious_metals_only, args.institutional_units_only, only_currencies)
     if sum(bool(x) for x in modes) > 1:
         parser.error("--navigation-only, --static-rates-only, --faq-only, --historical-instruments-only and --only-currency are mutually exclusive")
 
@@ -3572,6 +3981,11 @@ def main():
             "Support pages and sitemap.xml intentionally left unchanged "
             "(pair-page URLs are stable, so the sitemap does not move)."
         )
+        return
+
+    if args.institutional_units_only:
+        refresh_institutional_units(currencies, content, pair_profiles)
+        print("\nInstitutional-units-only build complete. Sitemap unchanged.")
         return
 
     if args.precious_metals_only:

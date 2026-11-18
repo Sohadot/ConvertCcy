@@ -210,6 +210,122 @@ def validate(doc: Dict[str, Any], currencies: Optional[Dict[str, Any]] = None,
     errs.extend(_historical_reference_errors(doc))
     errs.extend(_standards_reference_errors(doc))
     errs.extend(_metals_reference_errors(doc))
+    errs.extend(_institutional_reference_errors(doc))
+    return errs
+
+
+INSTITUTIONAL_TYPES = ("unit_of_account", "regional_unit", "special_instrument")
+INSTITUTIONAL_EXPLANATION_KEYS = ("what", "not_this", "valuation", "value_status")
+INSTITUTIONAL_GOVERNANCE_KEYS = ("official_valuation_source", "methodology", "update_frequency", "publication_schedule",
+                                 "unit_definition", "reference_basket", "historical_continuity", "redistribution")
+INSTITUTIONAL_UNIT_KEYS = ("display_name", "short_name", "classification_label", "issuer_display", "issuer_role", "pair_role",
+                           "title_role", "h1_role", "activity_status", "valuation_type", "value_decision", "decision_label",
+                           "related_unit", "iso_designation", "activity_claims", "reported_indicators", "claims",
+                           "licensing_claims", "explanations", "source_governance", "faq")
+# Which value decision each label may carry (A4.5 §48-§51).
+INSTITUTIONAL_DECISION_LABELS = {
+    "issuer_value_activated": ("IMF VALUE ACTIVATED", "OFFICIAL CLF VALUE ACTIVATED", "OFFICIAL UYW VALUE ACTIVATED",
+                               "XUA VALUATION ACTIVATED"),
+    "issuer_methodology_only": ("IMF REFERENCE ONLY", "METHODOLOGY ONLY", "REFERENCE ONLY"),
+    "reference_layer_only": ("SDR-RELATIONSHIP REFERENCE ONLY", "STATUS UNRESOLVED", "REFERENCE ONLY"),
+}
+
+
+def _source_tier(doc: Dict[str, Any], cite: Dict[str, Any]) -> Optional[str]:
+    entries = doc.get("verification_sources", {}).get(cite.get("source"), [])
+    i = cite.get("index")
+    return entries[i].get("source_tier", "primary") if isinstance(i, int) and 0 <= i < len(entries) else None
+
+
+def _institutional_reference_errors(doc: Dict[str, Any]) -> List[str]:
+    """SEO-A4.5: institutional-unit facts are registry-cited; status and valuation decisions are explicit."""
+    import re as _re
+    inst = doc.get("instruments", {})
+    codes = {c for c, r in inst.items() if r.get("instrument_type") in INSTITUTIONAL_TYPES}
+    ir = doc.get("institutional_units_reference")
+    if ir is None:
+        return ["missing institutional_units_reference section"] if codes else []
+    errs: List[str] = []
+    units = ir.get("units") or {}
+    if set(units) != codes:
+        errs.append(f"institutional_units_reference.units {sorted(units)} != institutional codes {sorted(codes)}")
+    for code, u in units.items():
+        w = f"institutional_units_reference.units.{code}"
+        r = inst.get(code, {})
+        if set(u) != set(INSTITUTIONAL_UNIT_KEYS):
+            errs.append(f"{w}: keys must be exactly {sorted(INSTITUTIONAL_UNIT_KEYS)} (diff {sorted(set(u) ^ set(INSTITUTIONAL_UNIT_KEYS))})")
+            continue
+        for k in ("display_name", "short_name", "classification_label", "title_role", "h1_role", "decision_label"):
+            if not isinstance(u[k], str) or not u[k].strip():
+                errs.append(f"{w}: {k} required")
+        if u["pair_role"] not in ir.get("pair_roles", []) or u["pair_role"] == "institutional_relative_reference":
+            errs.append(f"{w}: pair_role invalid")
+        if u["activity_status"] not in ir.get("activity_statuses", []):
+            errs.append(f"{w}: activity_status invalid")
+        if u["valuation_type"] not in ir.get("valuation_types", []) or u["valuation_type"] == "derived_reference_value":
+            errs.append(f"{w}: valuation_type must be a stored (non-derived) valuation type")
+        if u["value_decision"] not in ir.get("value_decisions", []):
+            errs.append(f"{w}: value_decision invalid")
+        elif u["decision_label"] not in INSTITUTIONAL_DECISION_LABELS[u["value_decision"]]:
+            errs.append(f"{w}: decision_label {u['decision_label']!r} contradicts value_decision {u['value_decision']}")
+        if u["related_unit"] is not None and u["related_unit"] not in units:
+            errs.append(f"{w}: related_unit must be another institutional code")
+        # issuer: shown only when the record names one and status is not unresolved
+        if u["issuer_display"] != r.get("issuer_name"):
+            errs.append(f"{w}: issuer_display must equal the instrument record issuer_name")
+        if u["activity_status"] == "status_unresolved":
+            if u["activity_claims"]:
+                errs.append(f"{w}: an unresolved status cannot carry activity claims")
+            if u["value_decision"] != "reference_layer_only" or u["valuation_type"] != "unavailable":
+                errs.append(f"{w}: an unresolved status allows only reference_layer_only / unavailable")
+            if r.get("classification_confidence") == "high":
+                errs.append(f"{w}: an unresolved status cannot carry high classification confidence")
+        elif u["activity_status"] == "active" and not u["activity_claims"]:
+            errs.append(f"{w}: an active status needs at least one cited activity claim")
+        if u["value_decision"] == "issuer_methodology_only" and not u["claims"]:
+            errs.append(f"{w}: issuer_methodology_only requires cited methodology claims")
+        errs.extend(_cited_claim_errors(doc, f"{w}.iso_designation", u["iso_designation"], verbatim=True))
+        for group in ("activity_claims", "claims", "licensing_claims", "reported_indicators"):
+            for k, cl in enumerate(u[group] or []):
+                errs.extend(_cited_claim_errors(doc, f"{w}.{group}[{k}]", cl))
+                tiers = {_source_tier(doc, c) for c in cl.get("cites") or []}
+                if group == "reported_indicators":
+                    if tiers != {"secondary_press"}:
+                        errs.append(f"{w}.reported_indicators[{k}]: must cite secondary_press sources only")
+                    if "report" not in cl.get("text", ""):
+                        errs.append(f"{w}.reported_indicators[{k}]: must be worded as a report")
+                elif tiers != {"primary"}:
+                    errs.append(f"{w}.{group}[{k}]: issuer statements must cite primary sources only")
+        ex = u["explanations"] or {}
+        if set(ex) != set(INSTITUTIONAL_EXPLANATION_KEYS):
+            errs.append(f"{w}: explanations must define exactly {list(INSTITUTIONAL_EXPLANATION_KEYS)}")
+        for k, v in ex.items():
+            if not v or _re.search(r"\d", v.replace("ISO 4217", "ISO")):
+                errs.append(f"{w}.explanations.{k}: must be figure-free policy wording")
+        if _re.search(r"\bcirculat(es|ing) (currency|money)\b", " ".join(ex.values()).replace("not a circulating", "")):
+            errs.append(f"{w}: explanations must not describe the unit as circulating money")
+        sg = u["source_governance"] or {}
+        if set(sg) != set(INSTITUTIONAL_GOVERNANCE_KEYS) or any(not isinstance(v, str) or not v for v in sg.values()):
+            errs.append(f"{w}: source_governance must define {list(INSTITUTIONAL_GOVERNANCE_KEYS)} as non-empty strings")
+        groups = {"claim": u["claims"], "activity": u["activity_claims"], "reported": u["reported_indicators"],
+                  "licensing": u["licensing_claims"]}
+        qs = [f.get("q") for f in u["faq"] or []]
+        if not qs or len(set(qs)) != len(qs):
+            errs.append(f"{w}: faq must be a non-empty list of distinct questions")
+        for k, f in enumerate(u["faq"] or []):
+            parts = f.get("a") or []
+            if not parts:
+                errs.append(f"{w}.faq[{k}]: answer parts required")
+            for part in parts:
+                kind, _, ref = str(part).partition(":")
+                if kind == "ex":
+                    ok = ref in ex
+                elif kind in groups:
+                    ok = ref.isdigit() and int(ref) < len(groups[kind])
+                else:
+                    ok = False
+                if not ok:
+                    errs.append(f"{w}.faq[{k}]: answer part {part!r} does not resolve to governed content")
     return errs
 
 
@@ -427,10 +543,12 @@ def _combination_errors(code: str, r: Dict[str, Any], site_codes: set) -> List[s
             e.append(f"{t} must be non-circulating and not legal tender")
         if r["market_pricing_expected"]:
             e.append(f"{t} is valued by its issuer, not market-priced")
-        want = {"unit_of_account": "national_monetary_authority", "regional_unit": "regional_institution",
-                "special_instrument": "supranational_institution"}[t]
-        if r["issuer_type"] != want:
-            e.append(f"{t} requires issuer_type {want}")
+        # SEO-A4.5: a statutory unit may be administered by a national statistical authority (UYW / INE).
+        want = {"unit_of_account": ("national_monetary_authority", "national_statistical_authority"),
+                "regional_unit": ("regional_institution",),
+                "special_instrument": ("supranational_institution",)}[t]
+        if r["issuer_type"] not in want:
+            e.append(f"{t} requires issuer_type {' or '.join(want)}")
     if t in ("historical_currency", "legacy_transition"):
         want_status = "withdrawn" if t == "historical_currency" else "superseded"
         if r["instrument_status"] != want_status or r["active"]:
@@ -519,7 +637,9 @@ class InstrumentPolicy:
         if expected and covered and p["rate_policy"] == "official_reference_with_regime_caveat":
             return "rate_shown_without_regime_caveat"
         if expected and covered and p["rate_policy"] == "issuer_published_valuation":
-            return "provider_rate_pending_issuer_source"
+            # SEO-A4.5: the provider value stays in the raw FX snapshot but is never rendered as the
+            # governing value; issuer comparison state lives in data/institutional_reference_snapshot.json.
+            return "provider_value_secondary_only"
         return "conformant"
 
     def is_historical(self, code: str) -> bool:
@@ -657,6 +777,64 @@ class InstrumentPolicy:
             "explanations": {k: v.format(**fill) for k, v in pm["explanations"].items()},
             "pair_indexability": self.doc["type_policies"][METAL_TYPE]["pair_indexability"],
             "hub_indexability": self.doc["type_policies"][METAL_TYPE]["hub_indexability"],
+        }
+
+    def is_institutional_unit(self, code: str) -> bool:
+        return self.resolve(code)["instrument_type"] in INSTITUTIONAL_TYPES
+
+    def institutional_view(self, code: str) -> Dict[str, Any]:
+        """Render-ready, registry-cited facts for an institutional unit (SEO-A4.5)."""
+        code = code.upper()
+        if not self.is_institutional_unit(code):
+            raise ValueError(f"{code} is not an institutional unit")
+        u = self.doc["institutional_units_reference"]["units"][code]
+        r = self.doc["instruments"][code]
+        reg = self.doc.get("verification_sources", {})
+
+        def cited(claim):
+            out = []
+            for c in claim["cites"]:
+                if _cited_supports(self.doc, c) is None:
+                    raise ClassificationError(f"{code}: unresolvable citation {c}")
+                ent = reg[c["source"]][c["index"]]
+                item = {"authority": ent["authority"], "url": ent["url"]}
+                if item not in out:
+                    out.append(item)
+            return {"text": claim["text"], "sources": out}
+
+        groups = {"claim": [cited(c) for c in u["claims"]],
+                  "activity": [cited(c) for c in u["activity_claims"]],
+                  "reported": [cited(c) for c in u["reported_indicators"]],
+                  "licensing": [cited(c) for c in u["licensing_claims"]]}
+        ex = dict(u["explanations"])
+
+        def answer(parts):
+            out = []
+            for part in parts:
+                kind, _, ref = part.partition(":")
+                out.append(ex[ref] if kind == "ex" else groups[kind][int(ref)]["text"])
+            return " ".join(out)
+
+        policy = self.doc["type_policies"][r["instrument_type"]]
+        return {
+            "code": code,
+            "name": self.currencies.get(code, {}).get("display_name", code),
+            "instrument_type": r["instrument_type"],
+            "classification_confidence": r["classification_confidence"],
+            "issuer_type": r["issuer_type"],
+            **{k: u[k] for k in ("display_name", "short_name", "classification_label", "issuer_display", "issuer_role",
+                                 "pair_role", "title_role", "h1_role", "activity_status", "valuation_type",
+                                 "value_decision", "decision_label", "related_unit")},
+            "source_governance": dict(u["source_governance"]),
+            "iso_designation": cited(u["iso_designation"]),
+            "claims": groups["claim"],
+            "activity_claims": groups["activity"],
+            "reported_indicators": groups["reported"],
+            "licensing_claims": groups["licensing"],
+            "explanations": ex,
+            "faq": [{"q": f["q"], "a": answer(f["a"])} for f in u["faq"]],
+            "pair_indexability": policy["pair_indexability"],
+            "hub_indexability": policy["hub_indexability"],
         }
 
     def is_ordinary_converter(self, code: str) -> bool:

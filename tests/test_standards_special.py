@@ -148,7 +148,7 @@ class SitemapTest(unittest.TestCase):
 class FreezeTest(unittest.TestCase):
     def test_L_M_controls_byte_identical(self):
         for rel in ("pages/usd-to-eur.html", "pages/bgn-to-eur.html",           # xau-to-usd moved to A4.4 metals
-                    "pages/clf-to-usd.html", "currencies/usd.html", "currencies/bgn.html"):
+                    "currencies/usd.html", "currencies/bgn.html"):          # clf-to-usd moved to A4.5 institutional units
             base = at_baseline(rel)
             if base is None:
                 self.skipTest("baseline commit not available")

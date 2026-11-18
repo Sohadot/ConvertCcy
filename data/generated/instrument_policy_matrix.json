@@ -234,7 +234,7 @@
     "official_methodology_publication"
    ],
    "hub_indexability": "index_with_specialized_reference_role",
-   "pair_indexability": "needs_further_evidence",
+   "pair_indexability": "index_with_specialized_reference_role",
    "commercial_role": [
     "institutional_units_reference",
     "analytical_dataset"
@@ -1113,7 +1113,7 @@
     "official_methodology_publication"
    ],
    "hub_indexability": "index_with_specialized_reference_role",
-   "pair_indexability": "needs_further_evidence",
+   "pair_indexability": "index_with_specialized_reference_role",
    "commercial_role": [
     "institutional_units_reference",
     "analytical_dataset"
@@ -1125,7 +1125,7 @@
    "review_flags": [
     "provider_value_vs_issuer_valuation_review"
    ],
-   "policy_conformance": "provider_rate_pending_issuer_source"
+   "policy_conformance": "provider_value_secondary_only"
   },
   "CLP": {
    "name": "Chilean Peso",
@@ -4187,7 +4187,7 @@
     "official_methodology_publication"
    ],
    "hub_indexability": "index_with_specialized_reference_role",
-   "pair_indexability": "needs_further_evidence",
+   "pair_indexability": "index_with_specialized_reference_role",
    "commercial_role": [
     "institutional_units_reference",
     "analytical_dataset"
@@ -4485,7 +4485,7 @@
    "review_flags": [
     "provider_value_vs_issuer_valuation_review"
    ],
-   "policy_conformance": "provider_rate_pending_issuer_source"
+   "policy_conformance": "provider_value_secondary_only"
   },
   "XOF": {
    "name": "West African CFA Franc",
@@ -4607,10 +4607,11 @@
    "reference_rate_expected": true,
    "current_rate_coverage": false,
    "active": true,
-   "classification_confidence": "medium",
+   "classification_confidence": "low",
    "review_flags": [
     "issuer_verification",
-    "activity_status_review"
+    "activity_status_review",
+    "valuation_basis_verification"
    ],
    "policy_conformance": "rate_source_missing"
   },
@@ -4794,8 +4795,8 @@
   "total_directed_pairs": 28730,
   "by_pair_indexability": {
    "index": 22350,
-   "index_with_specialized_reference_role": 2142,
-   "needs_further_evidence": 3564,
+   "index_with_specialized_reference_role": 2772,
+   "needs_further_evidence": 2934,
    "noindex_follow_consolidated_reference": 674
   },
   "by_converter_behavior": {
@@ -4962,16 +4963,16 @@
    "ZAR",
    "ZMW"
   ],
-  "provider_rate_pending_issuer_source": [
-   "CLF",
-   "XDR"
-  ],
   "provider_value_present_but_policy_disallows_live_use": [
    "ANG",
    "BGN",
    "HRK",
    "SLL",
    "ZWL"
+  ],
+  "provider_value_secondary_only": [
+   "CLF",
+   "XDR"
   ],
   "rate_shown_without_regime_caveat": [
    "CUP"
