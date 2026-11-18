@@ -8,7 +8,8 @@
     "derived_artifacts": [
       "data/generated/instrument_policy_matrix.json (built by instrument_policy.py --write-matrix; never hand-edited)"
     ],
-    "fact_policy": "Facts marked verification_status=requires_source_verification, and every code with classification_confidence below 'high', must be source-verified before they are published on any public page. Classification here is internal governance metadata; nothing in this file is rendered to users in A4.1."
+    "fact_policy": "Facts marked verification_status=requires_source_verification, and every code with classification_confidence below 'high', must be source-verified before they are published on any public page. Classification here is internal governance metadata; nothing in this file is rendered to users in A4.1.",
+    "historical_reference_policy": "historical_reference holds the ONLY historical/legacy facts that may be rendered publicly (SEO-A4.2). Every claim and fixed conversion cites verification_sources entries by key, index and the exact 'supports' string; status and successor come from the instrument record. Dates and numbers are never rendered unless cited here."
   },
   "enums": {
     "instrument_type": [
@@ -157,6 +158,11 @@
     "verification_status": [
       "requires_source_verification",
       "verified"
+    ],
+    "fixed_conversion_kind": [
+      "historical_fixed_conversion",
+      "redenomination",
+      "fixed_legal_parity"
     ]
   },
   "indexability_order": [
@@ -4697,5 +4703,225 @@
         ]
       }
     ]
+  },
+  "historical_reference": {
+    "ANG": {
+      "claims": [
+        {
+          "text": "The Caribbean guilder (XCG) was introduced on 2025-03-31.",
+          "cites": [
+            {
+              "source": "ANG",
+              "index": 0,
+              "supports": "XCG introduced 2025-03-31"
+            }
+          ]
+        },
+        {
+          "text": "ANG ceased circulation and legal-tender use after 2025-06-30.",
+          "cites": [
+            {
+              "source": "ANG",
+              "index": 0,
+              "supports": "ANG ceased circulation/legal-tender use after 2025-06-30"
+            }
+          ]
+        }
+      ],
+      "fixed_conversion": {
+        "kind": "historical_fixed_conversion",
+        "base_code": "ANG",
+        "base_units": "1",
+        "quote_code": "XCG",
+        "quote_units": "1",
+        "cites": [
+          {
+            "source": "ANG",
+            "index": 0,
+            "supports": "ANG:XCG conversion 1:1"
+          }
+        ]
+      }
+    },
+    "BGN": {
+      "claims": [
+        {
+          "text": "Bulgaria adopted the euro on 2026-01-01.",
+          "cites": [
+            {
+              "source": "BGN",
+              "index": 0,
+              "supports": "Bulgaria adopted EUR on 2026-01-01"
+            }
+          ]
+        },
+        {
+          "text": "The euro became the sole legal tender after the dual-circulation period.",
+          "cites": [
+            {
+              "source": "BGN",
+              "index": 1,
+              "supports": "EUR became sole legal tender after dual-circulation period"
+            }
+          ]
+        },
+        {
+          "text": "BGN banknotes remain exchangeable at the Bulgarian National Bank.",
+          "cites": [
+            {
+              "source": "BGN",
+              "index": 1,
+              "supports": "BGN banknotes remain exchangeable at Bulgarian National Bank"
+            }
+          ]
+        }
+      ],
+      "fixed_conversion": {
+        "kind": "historical_fixed_conversion",
+        "base_code": "EUR",
+        "base_units": "1",
+        "quote_code": "BGN",
+        "quote_units": "1.95583",
+        "cites": [
+          {
+            "source": "BGN",
+            "index": 0,
+            "supports": "fixed conversion EUR 1 = BGN 1.95583"
+          }
+        ]
+      }
+    },
+    "HRK": {
+      "claims": [],
+      "fixed_conversion": {
+        "kind": "historical_fixed_conversion",
+        "base_code": "EUR",
+        "base_units": "1",
+        "quote_code": "HRK",
+        "quote_units": "7.53450",
+        "cites": [
+          {
+            "source": "HRK",
+            "index": 0,
+            "supports": "fixed conversion EUR 1 = HRK 7.53450"
+          }
+        ]
+      }
+    },
+    "SLL": {
+      "claims": [
+        {
+          "text": "The Bank of Sierra Leone redenominated the leone, dividing nominal values by 1,000.",
+          "cites": [
+            {
+              "source": "SLL",
+              "index": 1,
+              "supports": "redenomination divides nominal value by 1,000"
+            }
+          ]
+        }
+      ],
+      "fixed_conversion": {
+        "kind": "redenomination",
+        "base_code": "SLE",
+        "base_units": "1",
+        "quote_code": "SLL",
+        "quote_units": "1,000",
+        "cites": [
+          {
+            "source": "SLL",
+            "index": 0,
+            "supports": "SLL 1,000 = SLE 1 equivalence"
+          }
+        ]
+      },
+      "unverified_note": "ConvertCCY has not verified the date on which SLL stopped being legal tender."
+    },
+    "ZWL": {
+      "claims": [
+        {
+          "text": "ISO code ZWG/924 (Zimbabwe Gold) replaced ZWL/932 effective 2024-06-25.",
+          "cites": [
+            {
+              "source": "ZWL",
+              "index": 0,
+              "supports": "ZWG/924 replaced ZWL/932 effective 2024-06-25"
+            }
+          ]
+        },
+        {
+          "text": "ZW$ notes remained legal tender only until 2024-04-30 during the ZiG transition.",
+          "cites": [
+            {
+              "source": "ZWL",
+              "index": 1,
+              "supports": "ZW$ notes remained legal tender only until 2024-04-30 during ZiG transition"
+            }
+          ]
+        }
+      ],
+      "fixed_conversion": null,
+      "unverified_note": "No verified ZWL-to-ZWG conversion figure is recorded, so none is shown."
+    },
+    "CUC": {
+      "claims": [
+        {
+          "text": "Cuba's monetary unification began on 2021-01-01.",
+          "cites": [
+            {
+              "source": "CUC_CUP",
+              "index": 0,
+              "supports": "monetary unification from 2021-01-01"
+            }
+          ]
+        },
+        {
+          "text": "CUC was withdrawn over 180 days, after which CUP became the sole legal tender.",
+          "cites": [
+            {
+              "source": "CUC_CUP",
+              "index": 0,
+              "supports": "CUC withdrawal over 180 days"
+            },
+            {
+              "source": "CUC_CUP",
+              "index": 0,
+              "supports": "CUP sole legal tender after withdrawal period"
+            }
+          ]
+        }
+      ],
+      "fixed_conversion": {
+        "kind": "historical_fixed_conversion",
+        "base_code": "CUC",
+        "base_units": "1",
+        "quote_code": "CUP",
+        "quote_units": "24",
+        "cites": [
+          {
+            "source": "CUC_CUP",
+            "index": 1,
+            "supports": "CUC account conversion at CUC 1 = CUP 24"
+          }
+        ]
+      }
+    },
+    "SVC": {
+      "claims": [],
+      "fixed_conversion": {
+        "kind": "fixed_legal_parity",
+        "base_code": "USD",
+        "base_units": "1",
+        "quote_code": "SVC",
+        "quote_units": "8.75",
+        "cites": [
+          {
+            "source": "SVC",
+            "index": 0,
+            "supports": "official quotation SVC 8.75 per USD"
+          }
+        ]
+      }
+    }
   }
 }

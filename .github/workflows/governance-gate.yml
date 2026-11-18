@@ -61,6 +61,13 @@ jobs:
         # generator-dependent gates below.
         run: python3 scripts/validate_instrument_classification.py
 
+      - name: Historical & legacy instrument gate (validate_historical_instruments.py)
+        # SEO-A4.2: policy-resolved historical/legacy pair pages carry no
+        # LIVE/SNAPSHOT state, no rate runtime, only verified and labelled
+        # figures, no provider-alias leak, aligned FAQ/JSON-LD, and match
+        # the generator output.
+        run: python3 scripts/validate_historical_instruments.py
+
       - name: Pair internal-link graph gate (validate_pair_link_graph.py)
         # SEO-A2: every pair page reachable from index.html via <a href>
         # within 3 clicks, no reverse-pair-only 2-cycles, every pair linked

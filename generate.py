@@ -498,13 +498,13 @@ def pair_breadcrumb_jsonld(tokens: Dict[str, str]) -> str:
         ]
     }, ensure_ascii=False, indent=2)
 
-def pair_webpage_jsonld(tokens: Dict[str, str], faq_items: List[Dict[str, str]]) -> str:
+def pair_webpage_jsonld(tokens: Dict[str, str], faq_items: List[Dict[str, str]], archival: bool = False) -> str:
     graph = [
         {
             "@type": "WebPage",
-            "name": f'{tokens["FROM_CODE"]} to {tokens["TO_CODE"]} Converter | {SITE_NAME}',
+            "name": pair_metadata(tokens, archival)["schema_name"],
             "url": f'{BASE_URL}/pages/{tokens["PAIR_SLUG"]}.html',
-            "description": f'Convert {tokens["FROM_NAME"]} to {tokens["TO_NAME"]} using a clear reference exchange-rate page.'
+            "description": pair_metadata(tokens, archival)["schema_description"]
         },
         {
             "@type": "WebApplication",
@@ -514,6 +514,10 @@ def pair_webpage_jsonld(tokens: Dict[str, str], faq_items: List[Dict[str, str]])
             "url": f'{BASE_URL}/pages/{tokens["PAIR_SLUG"]}.html'
         }
     ]
+    if archival:
+        # SEO-A4.2: no operational converter exists for a historical/legacy pair,
+        # so the WebApplication node would misdescribe the page.
+        graph = graph[:1]
     return json.dumps({
         "@context": "https://schema.org",
         "@graph": graph
@@ -921,6 +925,8 @@ def unsupported_reason(from_code: str, to_code: str, snapshot: Dict[str, Any]) -
 def static_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
     """Rate banner + freshness/source note + converter (between STATIC-RATE markers)."""
     F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    if pair_rate_treatment(F, T, snapshot) == "historical":
+        return historical_rate_region_html(tokens, snapshot)
     rev_href = f'/pages/{T.lower()}-to-{F.lower()}.html'
     sr = static_pair_rate(F, T, snapshot)
     if sr is None:
@@ -988,6 +994,8 @@ def static_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], sna
 def static_table_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
     """Static conversion table card (between STATIC-RATE-TABLE markers)."""
     F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    if pair_rate_treatment(F, T, snapshot) == "historical":
+        return historical_table_region_html(tokens, snapshot)
     amounts = profile.get("static_amounts") or DEFAULT_STATIC_AMOUNTS
     sr = static_pair_rate(F, T, snapshot)
     if sr is None:
@@ -1021,7 +1029,12 @@ def static_table_region_html(profile: Dict[str, Any], tokens: Dict[str, str], sn
 {STATIC_TABLE_END}"""
 
 
-def rate_script_region_html() -> str:
+def rate_script_region_html(from_code: Optional[str] = None, to_code: Optional[str] = None,
+                            snapshot: Optional[Dict[str, Any]] = None) -> str:
+    """Rate script tag. Historical/legacy pairs get NO script: their values must
+    never enter the live/snapshot converter lifecycle (SEO-A4.2)."""
+    if from_code and to_code and pair_rate_treatment(from_code, to_code, snapshot) == "historical":
+        return f"{RATE_SCRIPT_START}\n{RATE_SCRIPT_END}"
     return f'{RATE_SCRIPT_START}\n<script src="{RATE_SCRIPT_SRC}" defer></script>\n{RATE_SCRIPT_END}'
 
 
@@ -1057,9 +1070,448 @@ def replace_static_rate_regions(page: str, profile: Dict[str, Any], tokens: Dict
     page = _replace_region(page, STATIC_TABLE_START, STATIC_TABLE_END,
                            static_table_region_html(profile, tokens, snapshot),
                            _LEGACY_TABLE_START, _LEGACY_TABLE_END, False, "STATIC-RATE-TABLE")
-    page = _replace_region(page, RATE_SCRIPT_START, RATE_SCRIPT_END, rate_script_region_html(),
+    page = _replace_region(page, RATE_SCRIPT_START, RATE_SCRIPT_END,
+                           rate_script_region_html(tokens["FROM_CODE"], tokens["TO_CODE"], snapshot),
                            _LEGACY_SCRIPT_START, _LEGACY_SCRIPT_END, True, "RATE-SCRIPT")
     return page
+
+
+# ---- SEO-A4.2: historical & legacy instruments ------------------------------
+#
+# Treatment is decided ONLY by the A4.1 policy layer (instrument_policy.py):
+# a pair whose most restrictive converter behaviour is "archival_only" (a
+# historical_currency or legacy_transition side, not overridden by XTS/XXX) is
+# rendered as a historical reference. Such pages never carry a LIVE/SNAPSHOT
+# state, a data-rate, the pair-rate.js runtime or a current-rate table. Only
+# registry-cited facts from instrument_policy.historical_view() are rendered.
+# Value types: historical_fixed_conversion | redenomination | fixed_legal_parity
+# (successor pair with a verified fixed relationship) or archival_unavailable.
+# Decision A4.2: no successor-derived present-day values (see docs).
+
+_POLICY_LAYER = None
+
+
+def instrument_policy_layer():
+    global _POLICY_LAYER
+    if _POLICY_LAYER is None:
+        import instrument_policy
+        _POLICY_LAYER = instrument_policy.InstrumentPolicy()
+    return _POLICY_LAYER
+
+
+def pair_rate_treatment(from_code: str, to_code: str, snapshot: Optional[Dict[str, Any]] = None) -> str:
+    """'historical' | 'snapshot' | 'unsupported' — policy first, then snapshot coverage."""
+    if instrument_policy_layer().resolve_pair(from_code, to_code)["converter_behavior"] == "archival_only":
+        return "historical"
+    snapshot = snapshot if snapshot is not None else load_rate_snapshot()
+    return "snapshot" if static_pair_rate(from_code, to_code, snapshot) is not None else "unsupported"
+
+
+HISTORICAL_VALUE_LABELS = {
+    "historical_fixed_conversion": ("FIXED CONVERSION", "Historical fixed conversion — not a current market rate"),
+    "redenomination": ("REDENOMINATION", "Redenomination ratio — not a market rate"),
+    "fixed_legal_parity": ("FIXED PARITY", "Fixed official parity — not a floating market quote"),
+}
+
+
+def _historical_sides(F: str, T: str) -> List[Dict[str, Any]]:
+    pol = instrument_policy_layer()
+    return [pol.historical_view(c) for c in (F, T) if pol.is_historical(c)]
+
+
+def _pair_fixed_conversion(F: str, T: str) -> Optional[Dict[str, Any]]:
+    """The verified fixed relationship when the pair is (historical code, its successor)."""
+    for hv in _historical_sides(F, T):
+        other = T if hv["code"] == F else F
+        if hv["successor_code"] == other and hv["fixed_conversion"]:
+            return hv["fixed_conversion"]
+    return None
+
+
+def _status_phrase(hv: Dict[str, Any]) -> str:
+    bits = [hv["instrument_status"]]
+    bits.append({"legal_tender": "de jure legal tender", "not_legal_tender": "no longer legal tender",
+                 "unknown": "legal-tender end date not verified"}.get(hv["legal_tender_status"], ""))
+    if hv["circulation_status"] == "not_circulating":
+        bits.append("not in circulation")
+    return " · ".join(b for b in bits if b)
+
+
+def _source_links(sources: List[Dict[str, str]]) -> str:
+    return ", ".join(f'<a href="{esc(s["url"])}">{esc(s["authority"])}</a>' for s in sources)
+
+
+def provider_observation(code: str, snapshot: Dict[str, Any]) -> Optional[str]:
+    """Provenance sentence when the rate provider still publishes a value for a
+    historical/legacy code. The value itself is never rendered."""
+    rates = snapshot["rates"]
+    if code not in rates:
+        return None
+    hv = instrument_policy_layer().historical_view(code)
+    succ = hv["successor_code"]
+    note = f"The rate provider still publishes a value under the {code} code"
+    fc = hv["fixed_conversion"]
+    v = float(rates[code])
+    explained = False
+    if fc and succ in rates:
+        # code units per 1 successor, from the verified fixed conversion
+        bu, qu = float(fc["base_units"].replace(",", "")), float(fc["quote_units"].replace(",", ""))
+        per_succ = qu / bu if fc["base_code"] == succ else bu / qu
+        expected = float(rates[succ]) * per_succ
+        if abs(v - expected) <= 0.005 * expected:  # within the source's ~3-significant-digit precision
+            note += f" that matches the verified fixed conversion applied to the {succ} rate, i.e. it is derived from {succ} rather than from an independent {code} market"
+            explained = True
+    if not explained and succ in rates and v == float(rates[succ]):
+        note += f" that is identical to its {succ} value (an alias of the successor's pricing, with no verified one-to-one conversion behind it)"
+    return note + f". ConvertCCY does not present it as a current {code} market rate."
+
+
+def _side_block(hv: Dict[str, Any]) -> str:
+    succ = hv["successor_code"]
+    if succ and hv["successor_in_site"]:
+        succ_html = f'<a href="{currency_hub_href(succ)}">{esc(succ)} — {esc(hv["successor_name"] or succ)}</a>'
+    elif succ:
+        succ_html = f"{esc(succ)} (not yet covered by ConvertCCY)"
+    else:
+        succ_html = "none recorded"
+    lines = [f'<div class="pj-line">Status: {esc(_status_phrase(hv))}</div>',
+             f'<div class="pj-line">Successor: {succ_html}</div>']
+    fc = hv["fixed_conversion"]
+    if fc:
+        label = HISTORICAL_VALUE_LABELS[fc["kind"]][0].capitalize()
+        lines.append(f'<div class="pj-line">{esc(label)}: <span data-value-type="{fc["kind"]}">{esc(fc["statement"])}</span>'
+                     f' <span class="pj-muted">— {_source_links(fc["sources"])}</span></div>')
+    for c in hv["claims"]:
+        lines.append(f'<div class="pj-line"><span data-claim>{esc(c["text"])}</span>'
+                     f' <span class="pj-muted">— {_source_links(c["sources"])}</span></div>')
+    if hv["unverified_note"]:
+        lines.append(f'<div class="pj-line pj-muted">{esc(hv["unverified_note"])}</div>')
+    body = "\n          ".join(lines)
+    return f"""
+        <div class="pj-block pj-plain" data-historical-code="{esc(hv["code"])}">
+          <div class="pj-head"><span class="pj-badge">{esc(hv["status_label"])}</span> {esc(hv["code"])} — {esc(hv["name"])}</div>
+          {body}
+        </div>"""
+
+
+def _successor_pair_links(F: str, T: str) -> List[Tuple[str, str]]:
+    pol = instrument_policy_layer()
+    out = []
+    for hv in _historical_sides(F, T):
+        succ = hv["successor_code"]
+        if not (succ and hv["successor_in_site"]):
+            continue
+        a, b = (succ, T) if hv["code"] == F else (F, succ)
+        if a != b and not pol.is_historical(a) and not pol.is_historical(b) and (a, b) not in out:
+            out.append((a, b))
+    return out
+
+
+def historical_rate_region_html(tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _historical_sides(F, T)
+    fc = _pair_fixed_conversion(F, T)
+    if fc:
+        badge, sub = HISTORICAL_VALUE_LABELS[fc["kind"]]
+        value_type = fc["kind"]
+        main = f'<span data-value-type="{fc["kind"]}">{esc(fc["statement"])}</span>'
+        note = (f'{esc(sub)}, published by {_source_links(fc["sources"])}. '
+                f'It describes the fixed relationship between {esc(F)} and {esc(T)}; it is not a live or snapshot exchange rate.')
+    else:
+        badge = " / ".join(dict.fromkeys(hv["status_label"] for hv in sides))
+        value_type = "archival_unavailable"
+        main = "No current market rate"
+        sub = "; ".join(f'{hv["code"]} is a {"historical currency" if hv["status_label"] == "HISTORICAL" else "legacy currency code"}'
+                        + (f' (successor {hv["successor_code"]})' if hv["successor_code"] else "") for hv in sides)
+        note = (f"ConvertCCY does not show a current {esc(F)}/{esc(T)} market rate because "
+                + esc(" and ".join(hv["code"] for hv in sides))
+                + (" is" if len(sides) == 1 else " are") + " no longer a current traded currency.")
+    observations = [o for o in (provider_observation(hv["code"], snapshot) for hv in sides) if o]
+    obs_html = "".join(f" {esc(o)}" for o in observations)
+    links = _successor_pair_links(F, T)
+    links_html = ""
+    if links and not fc:
+        links_html = '\n    <p class="result-info">Current values: ' + " · ".join(
+            f'<a href="{pair_href(a, b)}">{esc(a)} → {esc(b)}</a>' for a, b in links) + "</p>"
+    blocks = "".join(_side_block(hv) for hv in sides)
+    return f"""{STATIC_RATE_START}
+  <div class="rate-banner" id="rate-root" data-from="{esc(F)}" data-to="{esc(T)}" data-mode="historical" data-value-type="{value_type}">
+    <div>
+      <div class="rate-main" id="live-rate">{main}</div>
+      <div class="rate-sub" id="rate-sub">{esc(sub)}</div>
+    </div>
+    <div class="rate-badge snap" id="rate-badge">{esc(badge)}</div>
+  </div>
+  <p class="rate-note" id="rate-source">{note}{obs_html}</p>
+
+  <div class="card">
+    <div class="card-title">Historical &amp; Legacy Currency Reference</div>
+    <div class="pj-grid">{blocks}
+    </div>{links_html}
+  </div>
+{STATIC_RATE_END}"""
+
+
+def historical_table_region_html(tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    fc = _pair_fixed_conversion(F, T)
+    codes = " and ".join(hv["code"] for hv in _historical_sides(F, T))
+    extra = (f' The fixed relationship is <span data-value-type="{fc["kind"]}">{esc(fc["statement"])}</span>.' if fc else "")
+    return f"""{STATIC_TABLE_START}
+    <div class="card">
+      <p class="result-info" id="table-source">No current-rate conversion table: {esc(codes)} {"is" if " and " not in codes else "are"} not a current traded currency.{extra}</p>
+    </div>
+{STATIC_TABLE_END}"""
+
+
+def historical_faq_items(tokens: Dict[str, str], snapshot: Dict[str, Any]) -> List[Dict[str, str]]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    hv = _historical_sides(F, T)[0]
+    H, succ = hv["code"], hv["successor_code"]
+    succ_label = f'{hv["successor_name"]} ({succ})' if hv["successor_name"] else succ
+    items = []
+    if hv["status_label"] == "HISTORICAL":
+        a1 = f"No. {H} ({hv['name']}) is a withdrawn currency and is no longer legal tender."
+    elif hv["legal_tender_status"] == "legal_tender":
+        a1 = f"{H} ({hv['name']}) is a legacy currency code: it remains de jure legal tender but is not in circulation."
+    else:
+        a1 = f"{H} ({hv['name']}) is a legacy currency code that has been superseded and is not in circulation."
+    if succ:
+        a1 += f" Its successor is {succ_label}."
+    if hv["unverified_note"] and hv["status_label"] == "LEGACY":
+        a1 += " " + hv["unverified_note"]
+    items.append({"q": f"Is {H} still a current currency?", "a": a1})
+    if succ:
+        a2 = f"{succ_label} is the successor of {H}."
+        if hv["claims"]:
+            a2 += " " + " ".join(c["text"] for c in hv["claims"])
+        items.append({"q": f"What replaced {H}?", "a": a2})
+    fc = hv["fixed_conversion"]
+    if fc:
+        q = {"historical_fixed_conversion": f"What was the fixed {H}/{succ} conversion?",
+             "redenomination": f"What is the {H}/{succ} redenomination ratio?",
+             "fixed_legal_parity": f"What is the fixed {H}/{succ} parity?"}[fc["kind"]]
+        auth = ", ".join(s["authority"] for s in fc["sources"])
+        items.append({"q": q, "a": f"{fc['statement']}, as published by {auth}. "
+                                  f"{HISTORICAL_VALUE_LABELS[fc['kind']][1]}."})
+    obs = provider_observation(H, snapshot)
+    a4 = (f"{H} is {'a withdrawn' if hv['status_label'] == 'HISTORICAL' else 'a superseded'} currency, so ConvertCCY "
+          f"does not treat it as a current traded currency or show a live or snapshot {F}/{T} rate.")
+    if obs:
+        a4 += " " + obs
+    items.append({"q": f"Why does ConvertCCY not show a live {F}/{T} market rate?", "a": a4})
+    return items
+
+
+# ---- SEO-A4.2.1: historical metadata & page semantics -------------------------
+#
+# ONE resolver (pair_metadata) feeds <title>, meta description, og/twitter
+# copies and the WebPage JSON-LD name/description. Ordinary pairs get the
+# pre-existing strings byte-for-byte. Historical pairs get wording derived from
+# the same semantic state as the visible page (value type + historical sides).
+# apply_historical_semantics() is the single body/head rewrite used by both the
+# full build and `--historical-instruments-only`.
+
+HISTORICAL_TITLE_SUFFIX = {
+    "historical_fixed_conversion": "Historical Fixed Conversion",
+    "redenomination": "Redenomination Reference",
+    "fixed_legal_parity": "Fixed Parity Reference",
+}
+HISTORICAL_OVERVIEW_HEADING = {
+    "historical_fixed_conversion": "Historical Reference",
+    "redenomination": "Redenomination Reference",
+    "fixed_legal_parity": "Fixed Parity Reference",
+}
+HISTORICAL_TABLE_HEADING = {
+    "historical_fixed_conversion": "Historical Fixed Conversion",
+    "redenomination": "Redenomination",
+    "fixed_legal_parity": "Fixed Parity",
+    "archival_unavailable": "Historical Conversion Status",
+}
+HISTORICAL_RELATION_NOUN = {
+    "historical_fixed_conversion": "verified fixed conversion",
+    "redenomination": "verified redenomination ratio",
+    "fixed_legal_parity": "verified fixed parity",
+}
+
+
+def historical_semantic_state(tokens: Dict[str, str]) -> Dict[str, Any]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _historical_sides(F, T)
+    fc = _pair_fixed_conversion(F, T)
+    value_type = fc["kind"] if fc else "archival_unavailable"
+    status_word = "Historical" if any(hv["status_label"] == "HISTORICAL" for hv in sides) else "Legacy"
+    return {"sides": sides, "fixed": fc, "value_type": value_type, "status_word": status_word}
+
+
+def pair_metadata(tokens: Dict[str, str], archival: bool = False, brand: str = SITE_NAME) -> Dict[str, str]:
+    """Single source for title / description / WebPage schema name & description."""
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    if not archival:
+        return {
+            "title": f"{F} to {T} Converter | {brand}",
+            "description": f'Convert {tokens["FROM_NAME"]} to {tokens["TO_NAME"]} with a clear reference exchange-rate page, conversion table, FAQ, and currency context.',
+            "schema_name": f"{F} to {T} Converter | {SITE_NAME}",
+            "schema_description": f'Convert {tokens["FROM_NAME"]} to {tokens["TO_NAME"]} using a clear reference exchange-rate page.',
+        }
+    st = historical_semantic_state(tokens)
+    vt, fc, sides = st["value_type"], st["fixed"], st["sides"]
+    pair_names = f'{tokens["FROM_NAME"]} ({F}) and {tokens["TO_NAME"]} ({T})'
+    if fc:
+        title = f"{F} to {T} {HISTORICAL_TITLE_SUFFIX[vt]} | {brand}"
+        description = (f"{st['status_word']} reference for {pair_names}, including the "
+                       f"{HISTORICAL_RELATION_NOUN[vt]} {fc['statement']} and its official source. "
+                       f"No current market rate is presented.")
+    else:
+        title = f"{F} to {T} {st['status_word']} Currency Reference | {brand}"
+        hist = " or ".join(hv["code"] for hv in sides)
+        description = (f"{st['status_word']} reference for {tokens['FROM_NAME']} ({F}) against {tokens['TO_NAME']} ({T}), "
+                       f"including successor information, verified transition facts and source provenance. "
+                       f"No current {hist} market rate is presented.")
+    return {"title": title, "description": description, "schema_name": title, "schema_description": description}
+
+
+def _historical_side_sentence(hv: Dict[str, Any]) -> str:
+    succ = hv["successor_code"]
+    succ_label = f'{hv["successor_name"]} ({succ})' if hv["successor_name"] else succ
+    if hv["status_label"] == "HISTORICAL":
+        s = f"{hv['name']} ({hv['code']}) is a withdrawn currency and is no longer legal tender."
+    elif hv["legal_tender_status"] == "legal_tender":
+        s = f"{hv['name']} ({hv['code']}) is a legacy currency code: it remains de jure legal tender but is not in circulation."
+    else:
+        s = f"{hv['name']} ({hv['code']}) is a legacy currency code that has been superseded and is not in circulation."
+    if succ:
+        s += f" Its successor is {succ_label}."
+    return s
+
+
+def historical_overview_html(tokens: Dict[str, str]) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    st = historical_semantic_state(tokens)
+    vt, fc = st["value_type"], st["fixed"]
+    heading = HISTORICAL_OVERVIEW_HEADING.get(vt, f"{st['status_word']} Currency Reference")
+    paras = [esc(_historical_side_sentence(hv)) for hv in st["sides"]]
+    if fc:
+        paras.append(f'The {esc(HISTORICAL_RELATION_NOUN[vt])} between {esc(F)} and {esc(T)} is '
+                     f'<span data-value-type="{vt}">{esc(fc["statement"])}</span>. It records how the units relate; '
+                     f'it is not a current market rate.')
+    else:
+        paras.append(f"No verified fixed relationship links {esc(F)} and {esc(T)} directly, so ConvertCCY does not "
+                     f"present a current {esc(F)}/{esc(T)} value.")
+    paras.append("This page is a reference for status, successor relationship and source provenance; the official "
+                 "sources are cited in the reference card above.")
+    body = "\n".join(f"    <p>{p}</p>" for p in paras)
+    return f"""  <section class="section">
+    <div class="sec-title">Pair Overview</div>
+    <div class="sec-h2">{esc(F)} / {esc(T)} {esc(heading)}</div>
+{body}
+  </section>"""
+
+
+HISTORICAL_EDUCATION_HTML = """  <section class="section">
+    <div class="sec-title">Reading a Historical Currency Reference</div>
+    <div class="card">
+      <p>A withdrawn or superseded currency has no current market rate. Where an official fixed conversion, redenomination ratio or parity exists, ConvertCCY shows it with its source: it describes how the old unit relates to its successor, not what the old unit trades for today.</p>
+      <p>For current values, use the pairs of the successor currency.</p>
+    </div>
+  </section>
+"""
+
+_META_PATTERNS = (
+    (re.compile(r"<title>[^<]*</title>"), "<title>{title}</title>"),
+    (re.compile(r'<meta name="description" content="[^"]*">'), '<meta name="description" content="{description}">'),
+    (re.compile(r'<meta property="og:title" content="[^"]*">'), '<meta property="og:title" content="{title}">'),
+    (re.compile(r'<meta property="og:description" content="[^"]*">'), '<meta property="og:description" content="{description}">'),
+    (re.compile(r'<meta name="twitter:title" content="[^"]*">'), '<meta name="twitter:title" content="{title}">'),
+    (re.compile(r'<meta name="twitter:description" content="[^"]*">'), '<meta name="twitter:description" content="{description}">'),
+)
+_SUBTITLE_RE = re.compile(r'<p class="pair-subtitle">[^<]*</p>')
+_MACRO_RE = re.compile(r'\n    <p class="pj-macro">[^<]*</p>')
+_OVERVIEW_START = '  <section class="section">\n    <div class="sec-title">Pair Overview</div>'
+_PASSAGE_START = '<section class="section pj-section">'
+
+
+def apply_historical_semantics(page: str, tokens: Dict[str, str], content: Dict[str, Any]) -> str:
+    """Rewrite historical metadata and page semantics. Idempotent; fails closed."""
+    brand = content.get("site_copy", {}).get("brand_name", SITE_NAME)
+    meta = pair_metadata(tokens, True, brand)
+    st = historical_semantic_state(tokens)
+    for rx, tpl in _META_PATTERNS:
+        if len(rx.findall(page)) != 1:
+            raise ValueError(f"historical metadata: {rx.pattern} not found exactly once")
+        page = rx.sub(lambda _m: tpl.format(title=esc(meta["title"]), description=esc(meta["description"])), page)
+    if len(_SUBTITLE_RE.findall(page)) != 1:
+        raise ValueError("historical subtitle anchor not found exactly once")
+    page = _SUBTITLE_RE.sub(lambda _m: f'<p class="pair-subtitle">{esc(st["status_word"])} currency reference</p>', page)
+    if page.count(_OVERVIEW_START) != 1 or page.count(_PASSAGE_START) != 1 or page.count(STATIC_TABLE_START) != 1:
+        raise ValueError("historical body anchors not found exactly once")
+    i = page.index(_OVERVIEW_START)
+    j = page.index("\n  </section>", i) + len("\n  </section>")
+    page = page[:i] + historical_overview_html(tokens) + page[j:]
+    page = _MACRO_RE.sub("", page)   # market-context line; the rest of the passage section is untouched
+    p = page.index(_PASSAGE_START)
+    edu_start = page.index("\n  </section>", p) + len("\n  </section>")
+    table_start = page.rindex('\n  <section class="section">\n', 0, page.index(STATIC_TABLE_START))
+    page = page[:edu_start] + "\n" + HISTORICAL_EDUCATION_HTML + page[table_start:]
+    t0 = page.rindex('\n  <section class="section">\n', 0, page.index(STATIC_TABLE_START)) + 1
+    t1 = page.index(STATIC_TABLE_START)
+    heading = HISTORICAL_TABLE_HEADING[st["value_type"]]
+    page = page[:t0] + f'  <section class="section">\n    <div class="sec-title">{esc(heading)}</div>\n' + page[t1:]
+    return page
+
+
+WEBPAGE_JSONLD_START = '<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@graph": ['
+
+
+def replace_webpage_jsonld(page: str, tokens: Dict[str, str], faq_items: List[Dict[str, str]], archival: bool) -> str:
+    if page.count(WEBPAGE_JSONLD_START) != 1:
+        raise ValueError(f"WebPage JSON-LD: anchor found {page.count(WEBPAGE_JSONLD_START)} times (need exactly 1)")
+    i = page.index(WEBPAGE_JSONLD_START) + len('<script type="application/ld+json">\n')
+    j = page.index("\n</script>", i)
+    return page[:i] + pair_webpage_jsonld(tokens, faq_items, archival) + page[j:]
+
+
+def refresh_historical_instruments(
+    currencies: Dict[str, Dict[str, Any]],
+    content: Dict[str, Any],
+    pair_profiles: Dict[str, Dict[str, Any]],
+) -> Tuple[int, int, int]:
+    """SEO-A4.2: rewrite ONLY pages whose pair resolves to historical treatment
+    (rate regions, FAQ regions, WebPage JSON-LD) plus the hubs of historical/legacy
+    codes. Cohort comes from the policy layer, never a code list."""
+    snapshot = load_rate_snapshot()
+    pol = instrument_policy_layer()
+    changed = unchanged = 0
+    for profile in pair_profiles.values():
+        a, b = profile["from_code"], profile["to_code"]
+        if a == b or a not in currencies or b not in currencies:
+            continue
+        if pair_rate_treatment(a, b, snapshot) != "historical":
+            continue
+        tokens = make_pair_tokens(profile, currencies)
+        path = PAGES_DIR / f'{profile["pair_slug"]}.html'
+        old = path.read_text(encoding="utf-8")
+        items = rate_aware_faq_items(build_faq_items(profile, content, tokens), tokens, snapshot, currencies)
+        new = replace_static_rate_regions(old, profile, tokens, snapshot)
+        new = replace_faq_regions(new, items)
+        new = replace_webpage_jsonld(new, tokens, items, True)
+        new = apply_historical_semantics(new, tokens, content)
+        if new != old:
+            write_text(path, new)
+            changed += 1
+        else:
+            unchanged += 1
+    gov_map = load_governed_currency_map()
+    hubs = 0
+    for code in currencies:
+        if pol.is_historical(code):
+            path = BASE_DIR / currency_hub_href(code).lstrip("/")
+            html_doc = build_currency_hub_page(code, currencies, gov_map)
+            if not path.exists() or path.read_text(encoding="utf-8") != html_doc:
+                write_text(path, html_doc)
+                hubs += 1
+    print(f"Historical instruments: {changed} pair pages changed, {unchanged} unchanged, {hubs} hubs changed")
+    return changed, unchanged, hubs
 
 
 # ---- SEO-A3.1: rate-aware FAQ truthfulness ----------------------------------
@@ -1083,10 +1535,13 @@ NO_EXCHANGE_VALUE_TYPES = {"test_code", "no_currency"}
 def rate_aware_faq_items(items: List[Dict[str, str]], tokens: Dict[str, str],
                          snapshot: Dict[str, Any], currencies: Dict[str, Dict[str, Any]]) -> List[Dict[str, str]]:
     F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    if pair_rate_treatment(F, T, snapshot) == "historical":
+        return historical_faq_items(tokens, snapshot)
     if static_pair_rate(F, T, snapshot) is not None:
         return items
     reason = unsupported_reason(F, T, snapshot)
-    no_value = [c for c in (F, T) if currencies.get(c, {}).get("instrument_type") in NO_EXCHANGE_VALUE_TYPES]
+    policy = instrument_policy_layer()
+    no_value = [c for c in (F, T) if policy.resolve(c)["instrument_type"] in NO_EXCHANGE_VALUE_TYPES]
     no_value_text = "; ".join(UNSUPPORTED_CODE_REASONS.get(c, f"{c} has no exchange value") for c in no_value)
     q_rate = replace_tokens(FAQ_Q_RATE, tokens)
     q_change = replace_tokens(FAQ_Q_CHANGE, tokens)
@@ -1318,7 +1773,7 @@ def build_currency_passage_section(profile: Dict[str, Any],
   </section>"""
 
 
-def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], all_codes: List[str], gov_map: Dict[str, List[Dict[str, Any]]] = None, importance: Optional[Dict[Tuple[str, str], int]] = None, snapshot: Optional[Dict[str, Any]] = None) -> str:
+def _build_pair_page_base(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], all_codes: List[str], gov_map: Dict[str, List[Dict[str, Any]]] = None, importance: Optional[Dict[Tuple[str, str], int]] = None, snapshot: Optional[Dict[str, Any]] = None) -> str:
     tokens = make_pair_tokens(profile, currencies)
     gov_map = gov_map or {}
 
@@ -1342,12 +1797,14 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
     faq_items = rate_aware_faq_items(build_faq_items(profile, content, tokens), tokens, snapshot, currencies)
 
     canonical = f'{BASE_URL}/pages/{tokens["PAIR_SLUG"]}.html'
-    title = f'{tokens["FROM_CODE"]} to {tokens["TO_CODE"]} Converter | {brand}'
-    description = f'Convert {tokens["FROM_NAME"]} to {tokens["TO_NAME"]} with a clear reference exchange-rate page, conversion table, FAQ, and currency context.'
+    _meta = pair_metadata(tokens, pair_rate_treatment(tokens["FROM_CODE"], tokens["TO_CODE"], snapshot) == "historical", brand)
+    title = _meta["title"]
+    description = _meta["description"]
     navigation_html = pair_navigation_html(profile["from_code"], profile["to_code"], all_codes, importance)
     static_rate_html = static_rate_region_html(profile, tokens, snapshot)
     static_table_html = static_table_region_html(profile, tokens, snapshot)
-    rate_script_html = rate_script_region_html()
+    rate_script_html = rate_script_region_html(tokens["FROM_CODE"], tokens["TO_CODE"], snapshot)
+    archival = pair_rate_treatment(tokens["FROM_CODE"], tokens["TO_CODE"], snapshot) == "historical"
     passage_section = build_currency_passage_section(profile, currencies, tokens, gov_map)
 
     faq_block_html = faq_items_html(faq_items)
@@ -1399,7 +1856,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:description" content="{esc(description)}">
 
 <script type="application/ld+json">
-{pair_webpage_jsonld(tokens, faq_items)}
+{pair_webpage_jsonld(tokens, faq_items, archival)}
 </script>
 
 <script type="application/ld+json">
@@ -1586,6 +2043,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </html>
 """
 
+def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], all_codes: List[str], gov_map: Dict[str, List[Dict[str, Any]]] = None, importance: Optional[Dict[Tuple[str, str], int]] = None, snapshot: Optional[Dict[str, Any]] = None) -> str:
+    snapshot = snapshot if snapshot is not None else load_rate_snapshot()
+    page = _build_pair_page_base(profile, currencies, content, all_codes, gov_map, importance, snapshot)
+    tokens = make_pair_tokens(profile, currencies)
+    if pair_rate_treatment(tokens["FROM_CODE"], tokens["TO_CODE"], snapshot) == "historical":
+        page = apply_historical_semantics(page, tokens, content)
+    return page
+
+
 def build_currencies_page(currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any]) -> str:
     brand = content.get("site_copy", {}).get("brand_name", SITE_NAME)
     title = f"Global Currencies Index | {brand}"
@@ -1707,6 +2173,11 @@ def build_currency_hub_page(
     )
 
     kind = INSTRUMENT_TYPE_LABELS.get(cur.get("instrument_type", ""), "")
+    pol = instrument_policy_layer()
+    if pol.is_historical(code):
+        hv = pol.historical_view(code)
+        kind = ("historical currency" if hv["instrument_type"] == "historical_currency" else "legacy currency code") + \
+            (f" (successor {hv['successor_code']})" if hv["successor_code"] else "")
     ident = f"ISO 4217 code {esc(code)}"
     sym = cur.get("symbol", "")
     if sym and sym.upper() != code.upper():
@@ -1719,6 +2190,30 @@ def build_currency_hub_page(
         for g in gov_map.get(code, []) if g.get("rules_page")
     )
     rules_html = f'\n  <p class="hub-rules">Published jurisdiction entries: {rules_links}</p>' if rules_links else ""
+    from_heading = f"Convert {esc(code)} to another currency"
+    to_heading = f"Convert another currency to {esc(code)}"
+    if pol.is_historical(code):
+        # SEO-A4.2.1: historical/legacy hubs are reference indexes, not converter indexes.
+        hv = pol.historical_view(code)
+        word = "Historical" if hv["instrument_type"] == "historical_currency" else "Legacy"
+        state = "withdrawn" if hv["instrument_type"] == "historical_currency" else "superseded"
+        succ = hv["successor_code"]
+        succ_name = hv["successor_name"] or succ
+        title = f"{name} ({code}) {word} Currency Reference | {SITE_NAME}"
+        description = (
+            f"Reference index for the {state} {name} ({code})"
+            + (f", its {succ_name} ({succ}) successor relationship" if succ else "")
+            + f", verified historical facts and {2 * len(others)} archived pair references."
+        )
+        succ_html = (f'<a href="{currency_hub_href(succ)}">{esc(succ)} — {esc(succ_name)}</a>' if succ and hv["successor_in_site"]
+                     else (f"{esc(succ)} (not yet covered by ConvertCCY)" if succ else "none recorded"))
+        fixed = hv["fixed_conversion"]
+        fixed_html = (f' · {esc(HISTORICAL_VALUE_LABELS[fixed["kind"]][0].capitalize())}: '
+                      f'<span data-value-type="{fixed["kind"]}">{esc(fixed["statement"])}</span>' if fixed else "")
+        rules_html += (f'\n  <p class="hub-rules">{word} currency · {esc(_status_phrase(hv))} · successor {succ_html}{fixed_html}. '
+                       f'The pair references below are archival: none presents a current {esc(code)} market rate.</p>')
+        from_heading = f"Archived {esc(code)} pair references"
+        to_heading = f"Archived pair references into {esc(code)}"
 
     def item(a: str, b: str, label_code: str) -> str:
         other_name = currencies.get(label_code, {}).get("name", label_code)
@@ -1788,14 +2283,14 @@ footer a{{color:#777}}
   <p class="hub-ident">{ident}</p>{rules_html}
 
   <section>
-    <h2>Convert {esc(code)} to another currency</h2>
+    <h2>{from_heading}</h2>
     <ul class="pair-list">
 {from_items}
     </ul>
   </section>
 
   <section>
-    <h2>Convert another currency to {esc(code)}</h2>
+    <h2>{to_heading}</h2>
     <ul class="pair-list">
 {to_items}
     </ul>
@@ -2286,10 +2781,20 @@ def main():
             "is left byte-for-byte."
         ),
     )
+    parser.add_argument(
+        "--historical-instruments-only",
+        action="store_true",
+        help=(
+            "SEO-A4.2: rewrite only pair pages whose pair resolves (via instrument_policy) "
+            "to historical/legacy treatment — rate regions, FAQ regions and WebPage JSON-LD — "
+            "plus the hubs of historical/legacy codes. Everything else is untouched."
+        ),
+    )
     args = parser.parse_args()
     only_currencies = parse_only_currencies(args.only_currency)
-    if sum(bool(x) for x in (args.navigation_only, args.static_rates_only, args.faq_only, only_currencies)) > 1:
-        parser.error("--navigation-only, --static-rates-only, --faq-only and --only-currency are mutually exclusive")
+    modes = (args.navigation_only, args.static_rates_only, args.faq_only, args.historical_instruments_only, only_currencies)
+    if sum(bool(x) for x in modes) > 1:
+        parser.error("--navigation-only, --static-rates-only, --faq-only, --historical-instruments-only and --only-currency are mutually exclusive")
 
     if not CURRENCIES_FILE.exists():
         raise FileNotFoundError(f"Missing file: {CURRENCIES_FILE}")
@@ -2314,6 +2819,11 @@ def main():
             "Support pages and sitemap.xml intentionally left unchanged "
             "(pair-page URLs are stable, so the sitemap does not move)."
         )
+        return
+
+    if args.historical_instruments_only:
+        refresh_historical_instruments(currencies, content, pair_profiles)
+        print("\nHistorical-instruments-only build complete. Sitemap unchanged.")
         return
 
     if args.faq_only:

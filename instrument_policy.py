@@ -207,6 +207,82 @@ def validate(doc: Dict[str, Any], currencies: Optional[Dict[str, Any]] = None,
             errs.append(f"{where}: anchored code must be one of {sorted(ANCHORS[code])}, got {t}")
         if r["classification_confidence"] != "high" and not r["notes"]:
             errs.append(f"{where}: non-high confidence requires notes explaining the uncertainty")
+    errs.extend(_historical_reference_errors(doc))
+    return errs
+
+
+HISTORICAL_TYPES = ("historical_currency", "legacy_transition")
+
+
+def _cited_supports(doc: Dict[str, Any], cite: Dict[str, Any]) -> Optional[str]:
+    """Return the cited 'supports' string if the citation resolves exactly, else None."""
+    reg = doc.get("verification_sources", {})
+    entries = reg.get(cite.get("source"), [])
+    i = cite.get("index")
+    if not isinstance(i, int) or not (0 <= i < len(entries)):
+        return None
+    entry = entries[i]
+    if not entry.get("url") or not entry.get("authority"):
+        return None
+    sup = cite.get("supports")
+    return sup if sup in (entry.get("supports") or []) else None
+
+
+def _historical_reference_errors(doc: Dict[str, Any]) -> List[str]:
+    """SEO-A4.2: public historical facts must be registry-cited, verified and consistent."""
+    import re as _re
+    errs: List[str] = []
+    hr = doc.get("historical_reference")
+    inst = doc.get("instruments", {})
+    hist_codes = {c for c, r in inst.items() if r.get("instrument_type") in HISTORICAL_TYPES}
+    if hr is None:
+        return ["missing historical_reference section"] if hist_codes else []
+    if set(hr) != hist_codes:
+        errs.append(f"historical_reference codes {sorted(hr)} != historical/legacy codes {sorted(hist_codes)}")
+    kinds = doc.get("enums", {}).get("fixed_conversion_kind", [])
+    for code, h in hr.items():
+        where = f"historical_reference.{code}"
+        r = inst.get(code, {})
+        extra = set(h) - {"claims", "fixed_conversion", "unverified_note"}
+        if extra:
+            errs.append(f"{where}: unknown fields {sorted(extra)}")
+        for k, claim in enumerate(h.get("claims") or []):
+            cites = claim.get("cites") or []
+            sups = [_cited_supports(doc, c) for c in cites]
+            if not claim.get("text") or not cites or any(s is None for s in sups):
+                errs.append(f"{where}.claims[{k}]: every claim needs text and resolvable registry citations")
+                continue
+            cited = " ".join(sups)
+            for num in _re.findall(r"\d[\d,./-]*\d|\d", claim["text"]):
+                if num.replace(",", "") not in cited.replace(",", ""):
+                    errs.append(f"{where}.claims[{k}]: figure {num!r} is not in the cited source statements")
+        fc = h.get("fixed_conversion")
+        dc = r.get("documented_conversion")
+        if fc is not None:
+            if fc.get("kind") not in kinds:
+                errs.append(f"{where}: fixed_conversion.kind invalid")
+            pair = {fc.get("base_code"), fc.get("quote_code")}
+            if pair != {code, r.get("successor_code")}:
+                errs.append(f"{where}: fixed conversion must relate {code} and its successor {r.get('successor_code')}")
+            sups = [_cited_supports(doc, c) for c in fc.get("cites") or []]
+            if not sups or any(s is None for s in sups):
+                errs.append(f"{where}: fixed conversion needs resolvable registry citations")
+            else:
+                cited = " ".join(sups).replace(",", "")
+                for f in ("base_units", "quote_units"):
+                    v = str(fc.get(f, "")).replace(",", "")
+                    if v != "1" and v not in cited:  # a unit amount is implicit in "per X" wording
+                        errs.append(f"{where}: fixed conversion {f}={fc.get(f)!r} not in the cited statement")
+            if not dc or dc.get("verification_status") != "verified":
+                errs.append(f"{where}: fixed conversion requires a verified documented_conversion")
+            else:
+                want = dc.get("units_per_successor") or dc.get("successor_units_per_code")
+                have = fc["quote_units"] if fc.get("base_code") == r.get("successor_code") else fc["base_units"]
+                other = fc["quote_units"] if fc.get("base_code") == code else None
+                if dc.get("successor_units_per_code"):
+                    have = other
+                if str(want).replace(",", "") != str(have).replace(",", ""):
+                    errs.append(f"{where}: fixed conversion figure disagrees with documented_conversion ({have} vs {want})")
     return errs
 
 
@@ -326,12 +402,74 @@ class InstrumentPolicy:
         if expected and not covered:
             return "rate_source_missing"
         if not expected and covered:
+            if r["instrument_type"] in HISTORICAL_TYPES:
+                # SEO-A4.2: the provider observation is preserved in the snapshot, but
+                # pages render the historical reference instead of a current rate.
+                return "provider_value_present_but_policy_disallows_live_use"
             return "rate_shown_contrary_to_policy"
         if expected and covered and p["rate_policy"] == "official_reference_with_regime_caveat":
             return "rate_shown_without_regime_caveat"
         if expected and covered and p["rate_policy"] == "issuer_published_valuation":
             return "provider_rate_pending_issuer_source"
         return "conformant"
+
+    def is_historical(self, code: str) -> bool:
+        return self.resolve(code)["instrument_type"] in HISTORICAL_TYPES
+
+    def historical_view(self, code: str) -> Dict[str, Any]:
+        """Render-ready, verified-only facts for a historical/legacy code (SEO-A4.2).
+
+        Only registry-cited claims are returned; a fixed conversion is returned
+        only when its documented_conversion is verified. Status and successor come
+        from the classification record.
+        """
+        code = code.upper()
+        r = self.doc["instruments"][code]
+        if r["instrument_type"] not in HISTORICAL_TYPES:
+            raise ValueError(f"{code} is not a historical or legacy instrument")
+        h = self.doc.get("historical_reference", {}).get(code, {})
+        reg = self.doc.get("verification_sources", {})
+
+        def sources(cites):
+            out = []
+            for c in cites:
+                if _cited_supports(self.doc, c) is None:
+                    raise ClassificationError(f"{code}: unresolvable citation {c}")
+                e = reg[c["source"]][c["index"]]
+                item = {"authority": e["authority"], "url": e["url"]}
+                if item not in out:
+                    out.append(item)
+            return out
+
+        claims = [{"text": c["text"], "sources": sources(c["cites"])} for c in h.get("claims") or []]
+        fc = h.get("fixed_conversion")
+        dc = r.get("documented_conversion") or {}
+        fixed = None
+        if fc and dc.get("verification_status") == "verified":
+            fixed = {
+                "kind": fc["kind"],
+                "statement": f'{fc["base_code"]} {fc["base_units"]} = {fc["quote_code"]} {fc["quote_units"]}',
+                "base_code": fc["base_code"], "base_units": fc["base_units"],
+                "quote_code": fc["quote_code"], "quote_units": fc["quote_units"],
+                "sources": sources(fc["cites"]),
+            }
+        succ = r["successor_code"]
+        return {
+            "code": code,
+            "name": self.currencies.get(code, {}).get("display_name", code),
+            "instrument_type": r["instrument_type"],
+            "status_label": "HISTORICAL" if r["instrument_type"] == "historical_currency" else "LEGACY",
+            "instrument_status": r["instrument_status"],
+            "legal_tender_status": r["legal_tender_status"],
+            "circulation_status": r["circulation_status"],
+            "successor_code": succ,
+            "successor_name": self.currencies.get(succ, {}).get("display_name") if succ else None,
+            "successor_in_site": bool(succ and succ in self.currencies),
+            "issuer_name": r["issuer_name"],
+            "claims": claims,
+            "fixed_conversion": fixed,
+            "unverified_note": h.get("unverified_note"),
+        }
 
     def is_ordinary_converter(self, code: str) -> bool:
         return self.resolve(code)["converter_behavior"] == "standard"

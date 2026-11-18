@@ -90,7 +90,7 @@ class FaqTruthfulnessTest(unittest.TestCase):
             ld = faq_ld(t)
             if ld != faq_visible(t):
                 bad["mismatch"] += 1
-            if g.static_pair_rate(prof["from_code"], prof["to_code"], SNAP) is None:
+            if g.pair_rate_treatment(prof["from_code"], prof["to_code"], SNAP) != "snapshot":
                 if FALSE_CLAIM in t:
                     bad["unsupported_false"] += 1
             elif FALSE_CLAIM not in ld[0][1]:

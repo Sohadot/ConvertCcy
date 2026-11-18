@@ -501,7 +501,7 @@
     "rate_shown_for_withdrawn_instrument",
     "successor_not_in_site_set"
    ],
-   "policy_conformance": "rate_shown_contrary_to_policy"
+   "policy_conformance": "provider_value_present_but_policy_disallows_live_use"
   },
   "AOA": {
    "name": "Angolan Kwanza",
@@ -736,7 +736,7 @@
    "review_flags": [
     "rate_shown_for_withdrawn_instrument"
    ],
-   "policy_conformance": "rate_shown_contrary_to_policy"
+   "policy_conformance": "provider_value_present_but_policy_disallows_live_use"
   },
   "BHD": {
    "name": "Bahraini Dinar",
@@ -1879,7 +1879,7 @@
    "review_flags": [
     "rate_shown_for_withdrawn_instrument"
    ],
-   "policy_conformance": "rate_shown_contrary_to_policy"
+   "policy_conformance": "provider_value_present_but_policy_disallows_live_use"
   },
   "HTG": {
    "name": "Haitian Gourde",
@@ -3651,7 +3651,7 @@
     "rate_shown_for_withdrawn_instrument",
     "legal_tender_status_review"
    ],
-   "policy_conformance": "rate_shown_contrary_to_policy"
+   "policy_conformance": "provider_value_present_but_policy_disallows_live_use"
   },
   "SOS": {
    "name": "Somali Shilling",
@@ -4787,7 +4787,7 @@
     "provider_alias_suspected",
     "successor_not_in_site_set"
    ],
-   "policy_conformance": "rate_shown_contrary_to_policy"
+   "policy_conformance": "provider_value_present_but_policy_disallows_live_use"
   }
  },
  "pair_cohorts": {
@@ -4966,7 +4966,7 @@
    "CLF",
    "XDR"
   ],
-  "rate_shown_contrary_to_policy": [
+  "provider_value_present_but_policy_disallows_live_use": [
    "ANG",
    "BGN",
    "HRK",
