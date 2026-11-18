@@ -153,6 +153,10 @@ def check_pages(snap):
             # historical/legacy pages: never a current-rate state (detail in validate_historical_instruments.py)
             if 'data-mode="historical"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
                 errors.append(f"{path.name}: historical page carries a current-rate state or the rate runtime")
+        elif treatment == "standards_special":
+            # ISO 4217 test/no-currency pages: never a rate state (detail in validate_standards_special_codes.py)
+            if 'data-mode="standards"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
+                errors.append(f"{path.name}: standards page carries a rate state or the rate runtime")
         elif 'data-mode="unsupported"' in page:
             if "data-rate=" in page or 'data-mode="snapshot"' in page:
                 errors.append(f"{path.name}: unsupported page carries a numeric rate")

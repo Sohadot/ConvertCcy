@@ -197,7 +197,7 @@ def main() -> int:
             errs = []
             if 'data-mode="historical"' in page:
                 errs.append("non-historical pair rendered in historical mode")
-            if '"@type": "WebApplication"' not in page:
+            if t in ("snapshot", "unsupported") and '"@type": "WebApplication"' not in page:
                 errs.append("ordinary pair lost its WebApplication node")
         if errs:
             failures.append((profile["pair_slug"], errs))
