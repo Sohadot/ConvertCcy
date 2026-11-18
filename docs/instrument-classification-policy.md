@@ -119,8 +119,9 @@ The following facts are now anchored to authoritative sources in the repository 
 - XDR: SDR valuation methodology — International Monetary Fund.
 - CLF: UF calculation methodology — Chilean official financial/central-bank source.
 - KPW: national-currency identity and attributed institutional rate series — United Nations Data.
+- LBP: official USD/LBP series at 89,500 in 2026, matching the current ConvertCCY snapshot — Banque du Liban.
 
-Medium-confidence classifications now remaining (10): CUP, IRR, LBP, MMK, SLL, SYP, TMT, VED, VES, XSU.
+Medium-confidence classifications now remaining (9): CUP, IRR, MMK, SLL, SYP, TMT, VED, VES, XSU.
 SLL remains medium because the exact old-note legal-tender end state still needs a dated issuer notice even though the 1,000:1 redenomination is verified.
 CUP remains medium because the 2021 official 24 CUP/USD unification rate is verified, while the current applicable exchange-rate regime still requires dedicated A4.6 treatment.
 XCG and ZWG are not yet in the site's currency set.
