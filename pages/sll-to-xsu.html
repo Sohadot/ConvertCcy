@@ -45,13 +45,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "SLL to XSU Converter | ConvertCCY",
       "url": "https://convertccy.com/pages/sll-to-xsu.html",
       "description": "Convert Sierra Leonean Leone (old) to SUCRE (regional unit of account) using a clear reference exchange-rate page."
-    },
-    {
-      "@type": "WebApplication",
-      "name": "SLL to XSU Currency Converter",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Web",
-      "url": "https://convertccy.com/pages/sll-to-xsu.html"
     }
   ]
 }
@@ -91,34 +84,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much is 1 SLL in XSU?",
+      "name": "Is SLL still a current currency?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ConvertCCY does not currently have a reference rate for SLL to XSU in its reference snapshot: XSU (SUCRE) is a regional unit of account that the snapshot source does not publish. No conversion value is shown rather than an estimate."
+        "text": "SLL (Sierra Leonean Leone (old)) is a legacy currency code that has been superseded and is not in circulation. Its successor is Sierra Leonean Leone (SLE). ConvertCCY has not verified the date on which SLL stopped being legal tender."
       }
     },
     {
       "@type": "Question",
-      "name": "Why does the SLL/XSU rate change?",
+      "name": "What replaced SLL?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment."
+        "text": "Sierra Leonean Leone (SLE) is the successor of SLL. The Bank of Sierra Leone redenominated the leone, dividing nominal values by 1,000."
       }
     },
     {
       "@type": "Question",
-      "name": "Is this the same as a bank rate?",
+      "name": "What is the SLL/SLE redenomination ratio?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate."
+        "text": "SLE 1 = SLL 1,000, as published by Bank of Sierra Leone. Redenomination ratio — not a market rate."
       }
     },
     {
       "@type": "Question",
-      "name": "What affects the value of SLL against XSU?",
+      "name": "Why does ConvertCCY not show a live SLL/XSU market rate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets."
+        "text": "SLL is a superseded currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot SLL/XSU rate. The rate provider still publishes a value under the SLL code that matches the verified fixed conversion applied to the SLE rate, i.e. it is derived from SLE rather than from an independent SLL market. ConvertCCY does not present it as a current SLL market rate."
       }
     }
   ]
@@ -241,18 +234,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- STATIC-RATE:START -->
-  <div class="rate-banner" id="rate-root" data-from="SLL" data-to="XSU" data-mode="unsupported">
+  <div class="rate-banner" id="rate-root" data-from="SLL" data-to="XSU" data-mode="historical" data-value-type="archival_unavailable">
     <div>
-      <div class="rate-main" id="live-rate">No reference rate available</div>
-      <div class="rate-sub" id="rate-sub">SLL → XSU is not covered by the ConvertCCY reference snapshot</div>
+      <div class="rate-main" id="live-rate">No current market rate</div>
+      <div class="rate-sub" id="rate-sub">SLL is a legacy currency code (successor SLE)</div>
     </div>
-    <div class="rate-badge off" id="rate-badge">NO RATE</div>
+    <div class="rate-badge snap" id="rate-badge">LEGACY</div>
   </div>
-  <p class="rate-note" id="rate-source">No current reference rate is available for this pair in the ConvertCCY snapshot: XSU (SUCRE) is a regional unit of account that the snapshot source does not publish. No value is shown rather than an estimate.</p>
+  <p class="rate-note" id="rate-source">ConvertCCY does not show a current SLL/XSU market rate because SLL is no longer a current traded currency. The rate provider still publishes a value under the SLL code that matches the verified fixed conversion applied to the SLE rate, i.e. it is derived from SLE rather than from an independent SLL market. ConvertCCY does not present it as a current SLL market rate.</p>
 
   <div class="card">
-    <div class="card-title">Currency Converter</div>
-    <p class="result-info">Conversion is not available for SLL → XSU because no reference rate exists for this pair. <a href="/pages/xsu-to-sll.html">Open the reverse pair</a> or use the related pairs and currency hubs below.</p>
+    <div class="card-title">Historical &amp; Legacy Currency Reference</div>
+    <div class="pj-grid">
+        <div class="pj-block pj-plain" data-historical-code="SLL">
+          <div class="pj-head"><span class="pj-badge">LEGACY</span> SLL — Sierra Leonean Leone (old)</div>
+          <div class="pj-line">Status: superseded · legal-tender end date not verified · not in circulation</div>
+          <div class="pj-line">Successor: <a href="/currencies/sle.html">SLE — Sierra Leonean Leone</a></div>
+          <div class="pj-line">Redenomination: <span data-value-type="redenomination">SLE 1 = SLL 1,000</span> <span class="pj-muted">— <a href="https://bsl.gov.sl/Public%20Notice%20on%20Redenomination.pdf">Bank of Sierra Leone</a></span></div>
+          <div class="pj-line"><span data-claim>The Bank of Sierra Leone redenominated the leone, dividing nominal values by 1,000.</span> <span class="pj-muted">— <a href="https://bsl.gov.sl/Redenomination%20of%20the%20Leone%20%28Characteristics%29%20Regulations%202021%20FINAL.pdf">Bank of Sierra Leone</a></span></div>
+          <div class="pj-line pj-muted">ConvertCCY has not verified the date on which SLL stopped being legal tender.</div>
+        </div>
+    </div>
+    <p class="result-info">Current values: <a href="/pages/sle-to-xsu.html">SLE → XSU</a></p>
   </div>
   <!-- STATIC-RATE:END -->
 
@@ -311,20 +314,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="sec-title">Conversion Table</div>
     <p>Reference conversion examples are useful for quick budgeting, pricing checks, and general comparison.</p>
     <!-- STATIC-RATE-TABLE:START -->
-    <div class="card" style="padding:0;overflow:hidden">
-      <div class="table-wrap">
-        <table aria-label="SLL to XSU conversion table (no reference rate available)">
-          <thead>
-            <tr>
-              <th scope="col">SLL</th>
-              <th scope="col">XSU</th>
-            </tr>
-          </thead>
-          <tbody id="conv-table">
-            <tr><td colspan="2">No conversion table: no reference rate is available for SLL → XSU.</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="card">
+      <p class="result-info" id="table-source">No current-rate conversion table: SLL is not a current traded currency.</p>
     </div>
     <!-- STATIC-RATE-TABLE:END -->
   </section>
@@ -334,23 +325,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="card">
       
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much is 1 SLL in XSU?</div>
-          <div class="faq-a">ConvertCCY does not currently have a reference rate for SLL to XSU in its reference snapshot: XSU (SUCRE) is a regional unit of account that the snapshot source does not publish. No conversion value is shown rather than an estimate.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is SLL still a current currency?</div>
+          <div class="faq-a">SLL (Sierra Leonean Leone (old)) is a legacy currency code that has been superseded and is not in circulation. Its successor is Sierra Leonean Leone (SLE). ConvertCCY has not verified the date on which SLL stopped being legal tender.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does the SLL/XSU rate change?</div>
-          <div class="faq-a">Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What replaced SLL?</div>
+          <div class="faq-a">Sierra Leonean Leone (SLE) is the successor of SLL. The Bank of Sierra Leone redenominated the leone, dividing nominal values by 1,000.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this the same as a bank rate?</div>
-          <div class="faq-a">Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the SLL/SLE redenomination ratio?</div>
+          <div class="faq-a">SLE 1 = SLL 1,000, as published by Bank of Sierra Leone. Redenomination ratio — not a market rate.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What affects the value of SLL against XSU?</div>
-          <div class="faq-a">This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does ConvertCCY not show a live SLL/XSU market rate?</div>
+          <div class="faq-a">SLL is a superseded currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot SLL/XSU rate. The rate provider still publishes a value under the SLL code that matches the verified fixed conversion applied to the SLE rate, i.e. it is derived from SLE rather than from an independent SLL market. ConvertCCY does not present it as a current SLL market rate.</div>
         </div>
         
     </div>
@@ -389,7 +380,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- RATE-SCRIPT:START -->
-<script src="/assets/js/pair-rate.js" defer></script>
 <!-- RATE-SCRIPT:END -->
 
 </body>

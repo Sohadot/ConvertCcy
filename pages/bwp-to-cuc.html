@@ -45,13 +45,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "BWP to CUC Converter | ConvertCCY",
       "url": "https://convertccy.com/pages/bwp-to-cuc.html",
       "description": "Convert Botswana Pula to Cuban Convertible Peso using a clear reference exchange-rate page."
-    },
-    {
-      "@type": "WebApplication",
-      "name": "BWP to CUC Currency Converter",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Web",
-      "url": "https://convertccy.com/pages/bwp-to-cuc.html"
     }
   ]
 }
@@ -91,34 +84,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much is 1 BWP in CUC?",
+      "name": "Is CUC still a current currency?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ConvertCCY does not currently have a reference rate for BWP to CUC in its reference snapshot: CUC (Cuban convertible peso) is a legacy/transition code that the snapshot source does not publish. No conversion value is shown rather than an estimate."
+        "text": "No. CUC (Cuban Convertible Peso) is a withdrawn currency and is no longer legal tender. Its successor is Cuban Peso (CUP)."
       }
     },
     {
       "@type": "Question",
-      "name": "Why does the BWP/CUC rate change?",
+      "name": "What replaced CUC?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment."
+        "text": "Cuban Peso (CUP) is the successor of CUC. Cuba's monetary unification began on 2021-01-01. CUC was withdrawn over 180 days, after which CUP became the sole legal tender."
       }
     },
     {
       "@type": "Question",
-      "name": "Is this the same as a bank rate?",
+      "name": "What was the fixed CUC/CUP conversion?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate."
+        "text": "CUC 1 = CUP 24, as published by Cuban monetary-ordering official reporting. Historical fixed conversion — not a current market rate."
       }
     },
     {
       "@type": "Question",
-      "name": "What affects the value of BWP against CUC?",
+      "name": "Why does ConvertCCY not show a live BWP/CUC market rate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets."
+        "text": "CUC is a withdrawn currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot BWP/CUC rate."
       }
     }
   ]
@@ -241,18 +234,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- STATIC-RATE:START -->
-  <div class="rate-banner" id="rate-root" data-from="BWP" data-to="CUC" data-mode="unsupported">
+  <div class="rate-banner" id="rate-root" data-from="BWP" data-to="CUC" data-mode="historical" data-value-type="archival_unavailable">
     <div>
-      <div class="rate-main" id="live-rate">No reference rate available</div>
-      <div class="rate-sub" id="rate-sub">BWP → CUC is not covered by the ConvertCCY reference snapshot</div>
+      <div class="rate-main" id="live-rate">No current market rate</div>
+      <div class="rate-sub" id="rate-sub">CUC is a historical currency (successor CUP)</div>
     </div>
-    <div class="rate-badge off" id="rate-badge">NO RATE</div>
+    <div class="rate-badge snap" id="rate-badge">HISTORICAL</div>
   </div>
-  <p class="rate-note" id="rate-source">No current reference rate is available for this pair in the ConvertCCY snapshot: CUC (Cuban convertible peso) is a legacy/transition code that the snapshot source does not publish. No value is shown rather than an estimate.</p>
+  <p class="rate-note" id="rate-source">ConvertCCY does not show a current BWP/CUC market rate because CUC is no longer a current traded currency.</p>
 
   <div class="card">
-    <div class="card-title">Currency Converter</div>
-    <p class="result-info">Conversion is not available for BWP → CUC because no reference rate exists for this pair. <a href="/pages/cuc-to-bwp.html">Open the reverse pair</a> or use the related pairs and currency hubs below.</p>
+    <div class="card-title">Historical &amp; Legacy Currency Reference</div>
+    <div class="pj-grid">
+        <div class="pj-block pj-plain" data-historical-code="CUC">
+          <div class="pj-head"><span class="pj-badge">HISTORICAL</span> CUC — Cuban Convertible Peso</div>
+          <div class="pj-line">Status: withdrawn · no longer legal tender · not in circulation</div>
+          <div class="pj-line">Successor: <a href="/currencies/cup.html">CUP — Cuban Peso</a></div>
+          <div class="pj-line">Fixed conversion: <span data-value-type="historical_fixed_conversion">CUC 1 = CUP 24</span> <span class="pj-muted">— <a href="https://www.granma.cu/tarea-ordenamiento/2020-12-15/sistema-bancario-cubano-de-cara-al-ordenamiento-monetario-15-12-2020-00-12-55">Cuban monetary-ordering official reporting</a></span></div>
+          <div class="pj-line"><span data-claim>Cuba&#x27;s monetary unification began on 2021-01-01.</span> <span class="pj-muted">— <a href="https://www.granma.cu/file/pdf/especiales/goc-2020-ex68%20Implementaci%C3%B3n%20Porceso%20ordenamiento%2C%20precios%20bodega.pdf">Gaceta Oficial de la República de Cuba</a></span></div>
+          <div class="pj-line"><span data-claim>CUC was withdrawn over 180 days, after which CUP became the sole legal tender.</span> <span class="pj-muted">— <a href="https://www.granma.cu/file/pdf/especiales/goc-2020-ex68%20Implementaci%C3%B3n%20Porceso%20ordenamiento%2C%20precios%20bodega.pdf">Gaceta Oficial de la República de Cuba</a></span></div>
+        </div>
+    </div>
+    <p class="result-info">Current values: <a href="/pages/bwp-to-cup.html">BWP → CUP</a></p>
   </div>
   <!-- STATIC-RATE:END -->
 
@@ -311,20 +314,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="sec-title">Conversion Table</div>
     <p>These sample amounts can help users compare value more quickly without entering each amount manually.</p>
     <!-- STATIC-RATE-TABLE:START -->
-    <div class="card" style="padding:0;overflow:hidden">
-      <div class="table-wrap">
-        <table aria-label="BWP to CUC conversion table (no reference rate available)">
-          <thead>
-            <tr>
-              <th scope="col">BWP</th>
-              <th scope="col">CUC</th>
-            </tr>
-          </thead>
-          <tbody id="conv-table">
-            <tr><td colspan="2">No conversion table: no reference rate is available for BWP → CUC.</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="card">
+      <p class="result-info" id="table-source">No current-rate conversion table: CUC is not a current traded currency.</p>
     </div>
     <!-- STATIC-RATE-TABLE:END -->
   </section>
@@ -334,23 +325,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="card">
       
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much is 1 BWP in CUC?</div>
-          <div class="faq-a">ConvertCCY does not currently have a reference rate for BWP to CUC in its reference snapshot: CUC (Cuban convertible peso) is a legacy/transition code that the snapshot source does not publish. No conversion value is shown rather than an estimate.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is CUC still a current currency?</div>
+          <div class="faq-a">No. CUC (Cuban Convertible Peso) is a withdrawn currency and is no longer legal tender. Its successor is Cuban Peso (CUP).</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does the BWP/CUC rate change?</div>
-          <div class="faq-a">Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What replaced CUC?</div>
+          <div class="faq-a">Cuban Peso (CUP) is the successor of CUC. Cuba&#x27;s monetary unification began on 2021-01-01. CUC was withdrawn over 180 days, after which CUP became the sole legal tender.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this the same as a bank rate?</div>
-          <div class="faq-a">Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What was the fixed CUC/CUP conversion?</div>
+          <div class="faq-a">CUC 1 = CUP 24, as published by Cuban monetary-ordering official reporting. Historical fixed conversion — not a current market rate.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What affects the value of BWP against CUC?</div>
-          <div class="faq-a">This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does ConvertCCY not show a live BWP/CUC market rate?</div>
+          <div class="faq-a">CUC is a withdrawn currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot BWP/CUC rate.</div>
         </div>
         
     </div>
@@ -389,7 +380,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- RATE-SCRIPT:START -->
-<script src="/assets/js/pair-rate.js" defer></script>
 <!-- RATE-SCRIPT:END -->
 
 </body>

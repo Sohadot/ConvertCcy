@@ -45,13 +45,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "ZWL to DKK Converter | ConvertCCY",
       "url": "https://convertccy.com/pages/zwl-to-dkk.html",
       "description": "Convert Zimbabwean Dollar to Danish Krone using a clear reference exchange-rate page."
-    },
-    {
-      "@type": "WebApplication",
-      "name": "ZWL to DKK Currency Converter",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Web",
-      "url": "https://convertccy.com/pages/zwl-to-dkk.html"
     }
   ]
 }
@@ -91,34 +84,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much is 1 ZWL in DKK?",
+      "name": "Is ZWL still a current currency?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This page shows the latest available reference exchange rate for converting Zimbabwean Dollar to Danish Krone."
+        "text": "No. ZWL (Zimbabwean Dollar) is a withdrawn currency and is no longer legal tender. Its successor is ZWG."
       }
     },
     {
       "@type": "Question",
-      "name": "Why does the ZWL/DKK rate change?",
+      "name": "What replaced ZWL?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment."
+        "text": "ZWG is the successor of ZWL. ISO code ZWG/924 (Zimbabwe Gold) replaced ZWL/932 effective 2024-06-25. ZW$ notes remained legal tender only until 2024-04-30 during the ZiG transition."
       }
     },
     {
       "@type": "Question",
-      "name": "Is this the same as a bank rate?",
+      "name": "Why does ConvertCCY not show a live ZWL/DKK market rate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What affects the value of ZWL against DKK?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets."
+        "text": "ZWL is a withdrawn currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot ZWL/DKK rate. The rate provider still publishes a value under the ZWL code that is identical to its ZWG value (an alias of the successor's pricing, with no verified one-to-one conversion behind it). ConvertCCY does not present it as a current ZWL market rate."
       }
     }
   ]
@@ -241,42 +226,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- STATIC-RATE:START -->
-  <div class="rate-banner" id="rate-root" data-from="ZWL" data-to="DKK" data-mode="snapshot" data-rate="0.25554302893649006" data-sig="3" data-asof="2026-11-18">
+  <div class="rate-banner" id="rate-root" data-from="ZWL" data-to="DKK" data-mode="historical" data-value-type="archival_unavailable">
     <div>
-      <div class="rate-main" id="live-rate">1 ZWL = 0.256 DKK</div>
-      <div class="rate-sub" id="rate-sub">1 DKK = <span id="inverse-rate">3.91</span> ZWL</div>
+      <div class="rate-main" id="live-rate">No current market rate</div>
+      <div class="rate-sub" id="rate-sub">ZWL is a historical currency (successor ZWG)</div>
     </div>
-    <div class="rate-badge snap" id="rate-badge">SNAPSHOT · 2026-11-18</div>
+    <div class="rate-badge snap" id="rate-badge">HISTORICAL</div>
   </div>
-  <p class="rate-note" id="rate-source">Reference snapshot as of 2026-11-18 · source: exchangerate-api.com (USD-based reference rates, cross-calculated by ConvertCCY). Indicative only — not a live or dealing rate; providers apply their own spread and fees. When the live source responds, this page switches to the live reference value and labels it as live.</p>
+  <p class="rate-note" id="rate-source">ConvertCCY does not show a current ZWL/DKK market rate because ZWL is no longer a current traded currency. The rate provider still publishes a value under the ZWL code that is identical to its ZWG value (an alias of the successor&#x27;s pricing, with no verified one-to-one conversion behind it). ConvertCCY does not present it as a current ZWL market rate.</p>
 
   <div class="card">
-    <div class="card-title">Currency Converter</div>
-    <div class="conv-row">
-      <div class="field">
-        <label for="from-input">ZWL Amount</label>
-        <input type="number" id="from-input" value="1" min="0" inputmode="decimal">
-      </div>
-      <a class="swap-btn" href="/pages/dkk-to-zwl.html" title="Open reverse pair" aria-label="Open DKK to ZWL" style="text-decoration:none">⇄</a>
-      <div class="field">
-        <label for="to-input">DKK Result</label>
-        <input type="number" id="to-input" value="0.256" min="0" inputmode="decimal">
-      </div>
+    <div class="card-title">Historical &amp; Legacy Currency Reference</div>
+    <div class="pj-grid">
+        <div class="pj-block pj-plain" data-historical-code="ZWL">
+          <div class="pj-head"><span class="pj-badge">HISTORICAL</span> ZWL — Zimbabwean Dollar</div>
+          <div class="pj-line">Status: withdrawn · no longer legal tender · not in circulation</div>
+          <div class="pj-line">Successor: ZWG (not yet covered by ConvertCCY)</div>
+          <div class="pj-line"><span data-claim>ISO code ZWG/924 (Zimbabwe Gold) replaced ZWL/932 effective 2024-06-25.</span> <span class="pj-muted">— <a href="https://www.rbz.co.zw/documents/press/2024/July/PRESS_STATEMENT_ON_ZiG_CURRENCY_CODE.pdf">Reserve Bank of Zimbabwe</a></span></div>
+          <div class="pj-line"><span data-claim>ZW$ notes remained legal tender only until 2024-04-30 during the ZiG transition.</span> <span class="pj-muted">— <a href="https://www.rbz.co.zw/documents/press/2024/April/PRESS_STATEMENT_10_April_2024.pdf">Reserve Bank of Zimbabwe</a></span></div>
+          <div class="pj-line pj-muted">No verified ZWL-to-ZWG conversion figure is recorded, so none is shown.</div>
+        </div>
     </div>
-    <div class="result-row">
-      <span class="result-val" id="main-result">1 ZWL = 0.256 DKK</span>
-      <span class="result-info" id="rate-info">Reference snapshot as of 2026-11-18</span>
-    </div>
-    <div class="quick-grid">
-      <button class="quick-btn" type="button" onclick="setAmt(1)">1</button>
-      <button class="quick-btn" type="button" onclick="setAmt(5)">5</button>
-      <button class="quick-btn" type="button" onclick="setAmt(10)">10</button>
-      <button class="quick-btn" type="button" onclick="setAmt(50)">50</button>
-      <button class="quick-btn" type="button" onclick="setAmt(100)">100</button>
-      <button class="quick-btn" type="button" onclick="setAmt(500)">500</button>
-      <button class="quick-btn" type="button" onclick="setAmt(1000)">1,000</button>
-    </div>
-    <noscript><p class="result-info" style="margin-top:.8rem">Custom amounts need JavaScript; the conversion table below lists fixed amounts at the snapshot rate.</p></noscript>
   </div>
   <!-- STATIC-RATE:END -->
 
@@ -335,29 +305,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="sec-title">Conversion Table</div>
     <p>Reference conversion examples are useful for quick budgeting, pricing checks, and general comparison.</p>
     <!-- STATIC-RATE-TABLE:START -->
-    <div class="card" style="padding:0;overflow:hidden">
-      <div class="table-wrap">
-        <table aria-label="ZWL to DKK conversion table, reference snapshot as of 2026-11-18">
-          <thead>
-            <tr>
-              <th scope="col">ZWL</th>
-              <th scope="col">DKK</th>
-            </tr>
-          </thead>
-          <tbody id="conv-table">
-            <tr data-amount="1"><td>1 ZWL</td><td>0.256 DKK</td></tr>
-            <tr data-amount="5"><td>5 ZWL</td><td>1.28 DKK</td></tr>
-            <tr data-amount="10"><td>10 ZWL</td><td>2.56 DKK</td></tr>
-            <tr data-amount="20"><td>20 ZWL</td><td>5.11 DKK</td></tr>
-            <tr data-amount="50"><td>50 ZWL</td><td>12.8 DKK</td></tr>
-            <tr data-amount="100"><td>100 ZWL</td><td>25.6 DKK</td></tr>
-            <tr data-amount="500"><td>500 ZWL</td><td>128 DKK</td></tr>
-            <tr data-amount="1000"><td>1,000 ZWL</td><td>256 DKK</td></tr>
-            <tr data-amount="10000"><td>10,000 ZWL</td><td>2,560 DKK</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="result-info" id="table-source" style="padding:.7rem 1rem">Reference snapshot as of 2026-11-18 · source: exchangerate-api.com</p>
+    <div class="card">
+      <p class="result-info" id="table-source">No current-rate conversion table: ZWL is not a current traded currency.</p>
     </div>
     <!-- STATIC-RATE-TABLE:END -->
   </section>
@@ -367,23 +316,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="card">
       
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much is 1 ZWL in DKK?</div>
-          <div class="faq-a">This page shows the latest available reference exchange rate for converting Zimbabwean Dollar to Danish Krone.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is ZWL still a current currency?</div>
+          <div class="faq-a">No. ZWL (Zimbabwean Dollar) is a withdrawn currency and is no longer legal tender. Its successor is ZWG.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does the ZWL/DKK rate change?</div>
-          <div class="faq-a">Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What replaced ZWL?</div>
+          <div class="faq-a">ZWG is the successor of ZWL. ISO code ZWG/924 (Zimbabwe Gold) replaced ZWL/932 effective 2024-06-25. ZW$ notes remained legal tender only until 2024-04-30 during the ZiG transition.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this the same as a bank rate?</div>
-          <div class="faq-a">Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate.</div>
-        </div>
-        
-        <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What affects the value of ZWL against DKK?</div>
-          <div class="faq-a">This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does ConvertCCY not show a live ZWL/DKK market rate?</div>
+          <div class="faq-a">ZWL is a withdrawn currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot ZWL/DKK rate. The rate provider still publishes a value under the ZWL code that is identical to its ZWG value (an alias of the successor&#x27;s pricing, with no verified one-to-one conversion behind it). ConvertCCY does not present it as a current ZWL market rate.</div>
         </div>
         
     </div>
@@ -422,7 +366,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- RATE-SCRIPT:START -->
-<script src="/assets/js/pair-rate.js" defer></script>
 <!-- RATE-SCRIPT:END -->
 
 </body>

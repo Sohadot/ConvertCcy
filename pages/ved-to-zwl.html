@@ -45,13 +45,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "VED to ZWL Converter | ConvertCCY",
       "url": "https://convertccy.com/pages/ved-to-zwl.html",
       "description": "Convert Venezuelan Digital Bolívar to Zimbabwean Dollar using a clear reference exchange-rate page."
-    },
-    {
-      "@type": "WebApplication",
-      "name": "VED to ZWL Currency Converter",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Web",
-      "url": "https://convertccy.com/pages/ved-to-zwl.html"
     }
   ]
 }
@@ -91,34 +84,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much is 1 VED in ZWL?",
+      "name": "Is ZWL still a current currency?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ConvertCCY does not currently have a reference rate for VED to ZWL in its reference snapshot: VED (Venezuelan digital bolívar) is a valid currency that the snapshot source does not publish. No conversion value is shown rather than an estimate."
+        "text": "No. ZWL (Zimbabwean Dollar) is a withdrawn currency and is no longer legal tender. Its successor is ZWG."
       }
     },
     {
       "@type": "Question",
-      "name": "Why does the VED/ZWL rate change?",
+      "name": "What replaced ZWL?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment."
+        "text": "ZWG is the successor of ZWL. ISO code ZWG/924 (Zimbabwe Gold) replaced ZWL/932 effective 2024-06-25. ZW$ notes remained legal tender only until 2024-04-30 during the ZiG transition."
       }
     },
     {
       "@type": "Question",
-      "name": "Is this the same as a bank rate?",
+      "name": "Why does ConvertCCY not show a live VED/ZWL market rate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What affects the value of VED against ZWL?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets."
+        "text": "ZWL is a withdrawn currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot VED/ZWL rate. The rate provider still publishes a value under the ZWL code that is identical to its ZWG value (an alias of the successor's pricing, with no verified one-to-one conversion behind it). ConvertCCY does not present it as a current ZWL market rate."
       }
     }
   ]
@@ -241,18 +226,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- STATIC-RATE:START -->
-  <div class="rate-banner" id="rate-root" data-from="VED" data-to="ZWL" data-mode="unsupported">
+  <div class="rate-banner" id="rate-root" data-from="VED" data-to="ZWL" data-mode="historical" data-value-type="archival_unavailable">
     <div>
-      <div class="rate-main" id="live-rate">No reference rate available</div>
-      <div class="rate-sub" id="rate-sub">VED → ZWL is not covered by the ConvertCCY reference snapshot</div>
+      <div class="rate-main" id="live-rate">No current market rate</div>
+      <div class="rate-sub" id="rate-sub">ZWL is a historical currency (successor ZWG)</div>
     </div>
-    <div class="rate-badge off" id="rate-badge">NO RATE</div>
+    <div class="rate-badge snap" id="rate-badge">HISTORICAL</div>
   </div>
-  <p class="rate-note" id="rate-source">No current reference rate is available for this pair in the ConvertCCY snapshot: VED (Venezuelan digital bolívar) is a valid currency that the snapshot source does not publish. No value is shown rather than an estimate.</p>
+  <p class="rate-note" id="rate-source">ConvertCCY does not show a current VED/ZWL market rate because ZWL is no longer a current traded currency. The rate provider still publishes a value under the ZWL code that is identical to its ZWG value (an alias of the successor&#x27;s pricing, with no verified one-to-one conversion behind it). ConvertCCY does not present it as a current ZWL market rate.</p>
 
   <div class="card">
-    <div class="card-title">Currency Converter</div>
-    <p class="result-info">Conversion is not available for VED → ZWL because no reference rate exists for this pair. <a href="/pages/zwl-to-ved.html">Open the reverse pair</a> or use the related pairs and currency hubs below.</p>
+    <div class="card-title">Historical &amp; Legacy Currency Reference</div>
+    <div class="pj-grid">
+        <div class="pj-block pj-plain" data-historical-code="ZWL">
+          <div class="pj-head"><span class="pj-badge">HISTORICAL</span> ZWL — Zimbabwean Dollar</div>
+          <div class="pj-line">Status: withdrawn · no longer legal tender · not in circulation</div>
+          <div class="pj-line">Successor: ZWG (not yet covered by ConvertCCY)</div>
+          <div class="pj-line"><span data-claim>ISO code ZWG/924 (Zimbabwe Gold) replaced ZWL/932 effective 2024-06-25.</span> <span class="pj-muted">— <a href="https://www.rbz.co.zw/documents/press/2024/July/PRESS_STATEMENT_ON_ZiG_CURRENCY_CODE.pdf">Reserve Bank of Zimbabwe</a></span></div>
+          <div class="pj-line"><span data-claim>ZW$ notes remained legal tender only until 2024-04-30 during the ZiG transition.</span> <span class="pj-muted">— <a href="https://www.rbz.co.zw/documents/press/2024/April/PRESS_STATEMENT_10_April_2024.pdf">Reserve Bank of Zimbabwe</a></span></div>
+          <div class="pj-line pj-muted">No verified ZWL-to-ZWG conversion figure is recorded, so none is shown.</div>
+        </div>
+    </div>
   </div>
   <!-- STATIC-RATE:END -->
 
@@ -311,20 +305,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="sec-title">Conversion Table</div>
     <p>The table below gives quick reference conversions based on the latest available rate shown on this page.</p>
     <!-- STATIC-RATE-TABLE:START -->
-    <div class="card" style="padding:0;overflow:hidden">
-      <div class="table-wrap">
-        <table aria-label="VED to ZWL conversion table (no reference rate available)">
-          <thead>
-            <tr>
-              <th scope="col">VED</th>
-              <th scope="col">ZWL</th>
-            </tr>
-          </thead>
-          <tbody id="conv-table">
-            <tr><td colspan="2">No conversion table: no reference rate is available for VED → ZWL.</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="card">
+      <p class="result-info" id="table-source">No current-rate conversion table: ZWL is not a current traded currency.</p>
     </div>
     <!-- STATIC-RATE-TABLE:END -->
   </section>
@@ -334,23 +316,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="card">
       
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much is 1 VED in ZWL?</div>
-          <div class="faq-a">ConvertCCY does not currently have a reference rate for VED to ZWL in its reference snapshot: VED (Venezuelan digital bolívar) is a valid currency that the snapshot source does not publish. No conversion value is shown rather than an estimate.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is ZWL still a current currency?</div>
+          <div class="faq-a">No. ZWL (Zimbabwean Dollar) is a withdrawn currency and is no longer legal tender. Its successor is ZWG.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does the VED/ZWL rate change?</div>
-          <div class="faq-a">Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What replaced ZWL?</div>
+          <div class="faq-a">ZWG is the successor of ZWL. ISO code ZWG/924 (Zimbabwe Gold) replaced ZWL/932 effective 2024-06-25. ZW$ notes remained legal tender only until 2024-04-30 during the ZiG transition.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this the same as a bank rate?</div>
-          <div class="faq-a">Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate.</div>
-        </div>
-        
-        <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What affects the value of VED against ZWL?</div>
-          <div class="faq-a">This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does ConvertCCY not show a live VED/ZWL market rate?</div>
+          <div class="faq-a">ZWL is a withdrawn currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot VED/ZWL rate. The rate provider still publishes a value under the ZWL code that is identical to its ZWG value (an alias of the successor&#x27;s pricing, with no verified one-to-one conversion behind it). ConvertCCY does not present it as a current ZWL market rate.</div>
         </div>
         
     </div>
@@ -389,7 +366,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- RATE-SCRIPT:START -->
-<script src="/assets/js/pair-rate.js" defer></script>
 <!-- RATE-SCRIPT:END -->
 
 </body>

@@ -45,13 +45,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "YER to SVC Converter | ConvertCCY",
       "url": "https://convertccy.com/pages/yer-to-svc.html",
       "description": "Convert Yemeni Rial to Salvadoran Colón using a clear reference exchange-rate page."
-    },
-    {
-      "@type": "WebApplication",
-      "name": "YER to SVC Currency Converter",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Web",
-      "url": "https://convertccy.com/pages/yer-to-svc.html"
     }
   ]
 }
@@ -91,34 +84,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much is 1 YER in SVC?",
+      "name": "Is SVC still a current currency?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ConvertCCY does not currently have a reference rate for YER to SVC in its reference snapshot: SVC (Salvadoran colón) is a legacy/transition code that the snapshot source does not publish. No conversion value is shown rather than an estimate."
+        "text": "SVC (Salvadoran Colón) is a legacy currency code: it remains de jure legal tender but is not in circulation. Its successor is US Dollar (USD)."
       }
     },
     {
       "@type": "Question",
-      "name": "Why does the YER/SVC rate change?",
+      "name": "What replaced SVC?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment."
+        "text": "US Dollar (USD) is the successor of SVC."
       }
     },
     {
       "@type": "Question",
-      "name": "Is this the same as a bank rate?",
+      "name": "What is the fixed SVC/USD parity?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate."
+        "text": "USD 1 = SVC 8.75, as published by Banco Central de Reserva de El Salvador. Fixed official parity — not a floating market quote."
       }
     },
     {
       "@type": "Question",
-      "name": "What affects the value of YER against SVC?",
+      "name": "Why does ConvertCCY not show a live YER/SVC market rate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets."
+        "text": "SVC is a superseded currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot YER/SVC rate."
       }
     }
   ]
@@ -241,18 +234,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- STATIC-RATE:START -->
-  <div class="rate-banner" id="rate-root" data-from="YER" data-to="SVC" data-mode="unsupported">
+  <div class="rate-banner" id="rate-root" data-from="YER" data-to="SVC" data-mode="historical" data-value-type="archival_unavailable">
     <div>
-      <div class="rate-main" id="live-rate">No reference rate available</div>
-      <div class="rate-sub" id="rate-sub">YER → SVC is not covered by the ConvertCCY reference snapshot</div>
+      <div class="rate-main" id="live-rate">No current market rate</div>
+      <div class="rate-sub" id="rate-sub">SVC is a legacy currency code (successor USD)</div>
     </div>
-    <div class="rate-badge off" id="rate-badge">NO RATE</div>
+    <div class="rate-badge snap" id="rate-badge">LEGACY</div>
   </div>
-  <p class="rate-note" id="rate-source">No current reference rate is available for this pair in the ConvertCCY snapshot: SVC (Salvadoran colón) is a legacy/transition code that the snapshot source does not publish. No value is shown rather than an estimate.</p>
+  <p class="rate-note" id="rate-source">ConvertCCY does not show a current YER/SVC market rate because SVC is no longer a current traded currency.</p>
 
   <div class="card">
-    <div class="card-title">Currency Converter</div>
-    <p class="result-info">Conversion is not available for YER → SVC because no reference rate exists for this pair. <a href="/pages/svc-to-yer.html">Open the reverse pair</a> or use the related pairs and currency hubs below.</p>
+    <div class="card-title">Historical &amp; Legacy Currency Reference</div>
+    <div class="pj-grid">
+        <div class="pj-block pj-plain" data-historical-code="SVC">
+          <div class="pj-head"><span class="pj-badge">LEGACY</span> SVC — Salvadoran Colón</div>
+          <div class="pj-line">Status: superseded · de jure legal tender · not in circulation</div>
+          <div class="pj-line">Successor: <a href="/currencies/usd.html">USD — US Dollar</a></div>
+          <div class="pj-line">Fixed parity: <span data-value-type="fixed_legal_parity">USD 1 = SVC 8.75</span> <span class="pj-muted">— <a href="https://www.bcr.gob.sv/bcrsite/uploaded/content/tc/2026-09-03es.pdf">Banco Central de Reserva de El Salvador</a></span></div>
+        </div>
+    </div>
+    <p class="result-info">Current values: <a href="/pages/yer-to-usd.html">YER → USD</a></p>
   </div>
   <!-- STATIC-RATE:END -->
 
@@ -311,20 +312,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="sec-title">Conversion Table</div>
     <p>The table below gives quick reference conversions based on the latest available rate shown on this page.</p>
     <!-- STATIC-RATE-TABLE:START -->
-    <div class="card" style="padding:0;overflow:hidden">
-      <div class="table-wrap">
-        <table aria-label="YER to SVC conversion table (no reference rate available)">
-          <thead>
-            <tr>
-              <th scope="col">YER</th>
-              <th scope="col">SVC</th>
-            </tr>
-          </thead>
-          <tbody id="conv-table">
-            <tr><td colspan="2">No conversion table: no reference rate is available for YER → SVC.</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="card">
+      <p class="result-info" id="table-source">No current-rate conversion table: SVC is not a current traded currency.</p>
     </div>
     <!-- STATIC-RATE-TABLE:END -->
   </section>
@@ -334,23 +323,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="card">
       
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much is 1 YER in SVC?</div>
-          <div class="faq-a">ConvertCCY does not currently have a reference rate for YER to SVC in its reference snapshot: SVC (Salvadoran colón) is a legacy/transition code that the snapshot source does not publish. No conversion value is shown rather than an estimate.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is SVC still a current currency?</div>
+          <div class="faq-a">SVC (Salvadoran Colón) is a legacy currency code: it remains de jure legal tender but is not in circulation. Its successor is US Dollar (USD).</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does the YER/SVC rate change?</div>
-          <div class="faq-a">Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What replaced SVC?</div>
+          <div class="faq-a">US Dollar (USD) is the successor of SVC.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this the same as a bank rate?</div>
-          <div class="faq-a">Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is the fixed SVC/USD parity?</div>
+          <div class="faq-a">USD 1 = SVC 8.75, as published by Banco Central de Reserva de El Salvador. Fixed official parity — not a floating market quote.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What affects the value of YER against SVC?</div>
-          <div class="faq-a">This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does ConvertCCY not show a live YER/SVC market rate?</div>
+          <div class="faq-a">SVC is a superseded currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot YER/SVC rate.</div>
         </div>
         
     </div>
@@ -389,7 +378,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- RATE-SCRIPT:START -->
-<script src="/assets/js/pair-rate.js" defer></script>
 <!-- RATE-SCRIPT:END -->
 
 </body>

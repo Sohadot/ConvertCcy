@@ -45,13 +45,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "IDR to HRK Converter | ConvertCCY",
       "url": "https://convertccy.com/pages/idr-to-hrk.html",
       "description": "Convert Indonesian Rupiah to Croatian Kuna using a clear reference exchange-rate page."
-    },
-    {
-      "@type": "WebApplication",
-      "name": "IDR to HRK Currency Converter",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Web",
-      "url": "https://convertccy.com/pages/idr-to-hrk.html"
     }
   ]
 }
@@ -91,34 +84,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much is 1 IDR in HRK?",
+      "name": "Is HRK still a current currency?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This page shows the latest available reference exchange rate for converting Indonesian Rupiah to Croatian Kuna."
+        "text": "No. HRK (Croatian Kuna) is a withdrawn currency and is no longer legal tender. Its successor is Euro (EUR)."
       }
     },
     {
       "@type": "Question",
-      "name": "Why does the IDR/HRK rate change?",
+      "name": "What replaced HRK?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment."
+        "text": "Euro (EUR) is the successor of HRK."
       }
     },
     {
       "@type": "Question",
-      "name": "Is this the same as a bank rate?",
+      "name": "What was the fixed HRK/EUR conversion?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate."
+        "text": "EUR 1 = HRK 7.53450, as published by European Central Bank. Historical fixed conversion — not a current market rate."
       }
     },
     {
       "@type": "Question",
-      "name": "What affects the value of IDR against HRK?",
+      "name": "Why does ConvertCCY not show a live IDR/HRK market rate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets."
+        "text": "HRK is a withdrawn currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot IDR/HRK rate. The rate provider still publishes a value under the HRK code that matches the verified fixed conversion applied to the EUR rate, i.e. it is derived from EUR rather than from an independent HRK market. ConvertCCY does not present it as a current HRK market rate."
       }
     }
   ]
@@ -241,42 +234,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- STATIC-RATE:START -->
-  <div class="rate-banner" id="rate-root" data-from="IDR" data-to="HRK" data-mode="snapshot" data-rate="0.00037476337932619184" data-sig="3" data-asof="2026-11-18">
+  <div class="rate-banner" id="rate-root" data-from="IDR" data-to="HRK" data-mode="historical" data-value-type="archival_unavailable">
     <div>
-      <div class="rate-main" id="live-rate">1 IDR = 0.000375 HRK</div>
-      <div class="rate-sub" id="rate-sub">1 HRK = <span id="inverse-rate">2,670</span> IDR</div>
+      <div class="rate-main" id="live-rate">No current market rate</div>
+      <div class="rate-sub" id="rate-sub">HRK is a historical currency (successor EUR)</div>
     </div>
-    <div class="rate-badge snap" id="rate-badge">SNAPSHOT · 2026-11-18</div>
+    <div class="rate-badge snap" id="rate-badge">HISTORICAL</div>
   </div>
-  <p class="rate-note" id="rate-source">Reference snapshot as of 2026-11-18 · source: exchangerate-api.com (USD-based reference rates, cross-calculated by ConvertCCY). Indicative only — not a live or dealing rate; providers apply their own spread and fees. When the live source responds, this page switches to the live reference value and labels it as live.</p>
+  <p class="rate-note" id="rate-source">ConvertCCY does not show a current IDR/HRK market rate because HRK is no longer a current traded currency. The rate provider still publishes a value under the HRK code that matches the verified fixed conversion applied to the EUR rate, i.e. it is derived from EUR rather than from an independent HRK market. ConvertCCY does not present it as a current HRK market rate.</p>
 
   <div class="card">
-    <div class="card-title">Currency Converter</div>
-    <div class="conv-row">
-      <div class="field">
-        <label for="from-input">IDR Amount</label>
-        <input type="number" id="from-input" value="1" min="0" inputmode="decimal">
-      </div>
-      <a class="swap-btn" href="/pages/hrk-to-idr.html" title="Open reverse pair" aria-label="Open HRK to IDR" style="text-decoration:none">⇄</a>
-      <div class="field">
-        <label for="to-input">HRK Result</label>
-        <input type="number" id="to-input" value="0.000375" min="0" inputmode="decimal">
-      </div>
+    <div class="card-title">Historical &amp; Legacy Currency Reference</div>
+    <div class="pj-grid">
+        <div class="pj-block pj-plain" data-historical-code="HRK">
+          <div class="pj-head"><span class="pj-badge">HISTORICAL</span> HRK — Croatian Kuna</div>
+          <div class="pj-line">Status: withdrawn · no longer legal tender · not in circulation</div>
+          <div class="pj-line">Successor: <a href="/currencies/eur.html">EUR — Euro</a></div>
+          <div class="pj-line">Fixed conversion: <span data-value-type="historical_fixed_conversion">EUR 1 = HRK 7.53450</span> <span class="pj-muted">— <a href="https://www.ecb.europa.eu/euro/intro/html/index.en.html">European Central Bank</a></span></div>
+        </div>
     </div>
-    <div class="result-row">
-      <span class="result-val" id="main-result">1 IDR = 0.000375 HRK</span>
-      <span class="result-info" id="rate-info">Reference snapshot as of 2026-11-18</span>
-    </div>
-    <div class="quick-grid">
-      <button class="quick-btn" type="button" onclick="setAmt(1)">1</button>
-      <button class="quick-btn" type="button" onclick="setAmt(5)">5</button>
-      <button class="quick-btn" type="button" onclick="setAmt(10)">10</button>
-      <button class="quick-btn" type="button" onclick="setAmt(50)">50</button>
-      <button class="quick-btn" type="button" onclick="setAmt(100)">100</button>
-      <button class="quick-btn" type="button" onclick="setAmt(500)">500</button>
-      <button class="quick-btn" type="button" onclick="setAmt(1000)">1,000</button>
-    </div>
-    <noscript><p class="result-info" style="margin-top:.8rem">Custom amounts need JavaScript; the conversion table below lists fixed amounts at the snapshot rate.</p></noscript>
+    <p class="result-info">Current values: <a href="/pages/idr-to-eur.html">IDR → EUR</a></p>
   </div>
   <!-- STATIC-RATE:END -->
 
@@ -337,29 +314,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="sec-title">Conversion Table</div>
     <p>Reference conversion examples are useful for quick budgeting, pricing checks, and general comparison.</p>
     <!-- STATIC-RATE-TABLE:START -->
-    <div class="card" style="padding:0;overflow:hidden">
-      <div class="table-wrap">
-        <table aria-label="IDR to HRK conversion table, reference snapshot as of 2026-11-18">
-          <thead>
-            <tr>
-              <th scope="col">IDR</th>
-              <th scope="col">HRK</th>
-            </tr>
-          </thead>
-          <tbody id="conv-table">
-            <tr data-amount="1"><td>1 IDR</td><td>0.000375 HRK</td></tr>
-            <tr data-amount="5"><td>5 IDR</td><td>0.00187 HRK</td></tr>
-            <tr data-amount="10"><td>10 IDR</td><td>0.00375 HRK</td></tr>
-            <tr data-amount="20"><td>20 IDR</td><td>0.00750 HRK</td></tr>
-            <tr data-amount="50"><td>50 IDR</td><td>0.0187 HRK</td></tr>
-            <tr data-amount="100"><td>100 IDR</td><td>0.0375 HRK</td></tr>
-            <tr data-amount="500"><td>500 IDR</td><td>0.187 HRK</td></tr>
-            <tr data-amount="1000"><td>1,000 IDR</td><td>0.375 HRK</td></tr>
-            <tr data-amount="10000"><td>10,000 IDR</td><td>3.75 HRK</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="result-info" id="table-source" style="padding:.7rem 1rem">Reference snapshot as of 2026-11-18 · source: exchangerate-api.com</p>
+    <div class="card">
+      <p class="result-info" id="table-source">No current-rate conversion table: HRK is not a current traded currency.</p>
     </div>
     <!-- STATIC-RATE-TABLE:END -->
   </section>
@@ -369,23 +325,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="card">
       
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much is 1 IDR in HRK?</div>
-          <div class="faq-a">This page shows the latest available reference exchange rate for converting Indonesian Rupiah to Croatian Kuna.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is HRK still a current currency?</div>
+          <div class="faq-a">No. HRK (Croatian Kuna) is a withdrawn currency and is no longer legal tender. Its successor is Euro (EUR).</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does the IDR/HRK rate change?</div>
-          <div class="faq-a">Exchange rates change as markets respond to inflation, interest rates, growth expectations, trade conditions, and overall market sentiment.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What replaced HRK?</div>
+          <div class="faq-a">Euro (EUR) is the successor of HRK.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this the same as a bank rate?</div>
-          <div class="faq-a">Not always. Banks and financial providers often apply a spread or fee, which can make the customer-facing rate different from a reference market rate.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What was the fixed HRK/EUR conversion?</div>
+          <div class="faq-a">EUR 1 = HRK 7.53450, as published by European Central Bank. Historical fixed conversion — not a current market rate.</div>
         </div>
         
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What affects the value of IDR against HRK?</div>
-          <div class="faq-a">This pair can be influenced by central-bank policy, inflation, growth conditions, trade flows, and broad risk appetite in financial markets.</div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why does ConvertCCY not show a live IDR/HRK market rate?</div>
+          <div class="faq-a">HRK is a withdrawn currency, so ConvertCCY does not treat it as a current traded currency or show a live or snapshot IDR/HRK rate. The rate provider still publishes a value under the HRK code that matches the verified fixed conversion applied to the EUR rate, i.e. it is derived from EUR rather than from an independent HRK market. ConvertCCY does not present it as a current HRK market rate.</div>
         </div>
         
     </div>
@@ -424,7 +380,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- RATE-SCRIPT:START -->
-<script src="/assets/js/pair-rate.js" defer></script>
 <!-- RATE-SCRIPT:END -->
 
 </body>
