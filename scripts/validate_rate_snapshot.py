@@ -24,6 +24,13 @@ Static-region checks (pages/*.html):
   - unsupported pages carry no numeric rate (no data-rate, NO RATE badge)
   - assets/js/pair-rate.js exists
 
+FAQ truthfulness checks (SEO-A3.1, pages/*.html):
+  - exactly one FAQPage JSON-LD block, valid JSON
+  - visible FAQ list and FAQPage JSON-LD carry identical questions/answers
+  - FAQ regions equal generate.py's rate-aware FAQ output (support status
+    from static_pair_rate, the same snapshot logic as the rate regions)
+  - no unsupported page claims "shows the latest available reference exchange rate"
+
 Run: python3 scripts/validate_rate_snapshot.py [--max-age-days N] [--skip-pages]
 """
 
@@ -41,6 +48,12 @@ if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
 import generate as g  # noqa: E402
+
+import html as _html
+
+LD_RE = re.compile(r'(?s)<script type="application/ld\+json">\n(.*?)\n</script>')
+VIS_FAQ_RE = re.compile(r'(?s)<div class="faq-q"[^>]*>(.*?)</div>\s*<div class="faq-a">(.*?)</div>')
+FALSE_RATE_CLAIM = "shows the latest available reference exchange rate"
 
 ASOF_RE = re.compile(r'id="rate-root"[^>]*data-asof="(\d{4}-\d{2}-\d{2})"')
 
@@ -89,8 +102,11 @@ def check_pages(snap):
     errors, info = [], []
     currencies = g.load_currencies()
     profiles = g.load_pair_profiles()
+    content = g.load_content_blocks()
     baked = {}
     mismatched = 0
+    faq = {"malformed_jsonld": 0, "faqpage_not_1": 0, "visible_jsonld_mismatch": 0,
+           "unsupported_false_claim": 0, "faq_region_drift": 0}
     for profile in profiles.values():
         a, b = profile["from_code"], profile["to_code"]
         if a == b or a not in currencies or b not in currencies:
@@ -105,7 +121,32 @@ def check_pages(snap):
                             (g.RATE_SCRIPT_START, g.RATE_SCRIPT_END, "RATE-SCRIPT")):
             if page.count(s) != 1 or page.count(e) != 1:
                 errors.append(f"{path.name}: {label} markers {page.count(s)}/{page.count(e)}")
-        supported = a in snap["rates"] and b in snap["rates"]
+        supported = g.static_pair_rate(a, b, snap) is not None
+        faq_pages = []
+        for blk in LD_RE.findall(page):
+            try:
+                obj = json.loads(blk)
+            except ValueError:
+                faq["malformed_jsonld"] += 1
+                continue
+            if isinstance(obj, dict) and obj.get("@type") == "FAQPage":
+                faq_pages.append(obj)
+        if len(faq_pages) != 1:
+            faq["faqpage_not_1"] += 1
+        else:
+            ld = [(e["name"], e["acceptedAnswer"]["text"]) for e in faq_pages[0]["mainEntity"]]
+            vis = [(_html.unescape(q), _html.unescape(x)) for q, x in VIS_FAQ_RE.findall(page)]
+            if ld != vis:
+                faq["visible_jsonld_mismatch"] += 1
+        if not supported and FALSE_RATE_CLAIM in page:
+            faq["unsupported_false_claim"] += 1
+        tokens = g.make_pair_tokens(profile, currencies)
+        items = g.rate_aware_faq_items(g.build_faq_items(profile, content, tokens), tokens, snap, currencies)
+        try:
+            if g.replace_faq_regions(page, items) != page:
+                faq["faq_region_drift"] += 1
+        except ValueError as exc:
+            errors.append(f"{path.name}: {exc}")
         m = ASOF_RE.search(page)
         if 'data-mode="unsupported"' in page:
             if "data-rate=" in page or 'data-mode="snapshot"' in page:
@@ -133,7 +174,11 @@ def check_pages(snap):
                       f"(run: python3 generate.py --static-rates-only)")
     if not (REPO / g.RATE_SCRIPT_SRC.lstrip("/")).exists():
         errors.append(f"missing {g.RATE_SCRIPT_SRC}")
+    for k, v in faq.items():
+        if v:
+            errors.append(f"FAQ: {k} = {v}" + (" (run: python3 generate.py --faq-only)" if k == "faq_region_drift" else ""))
     info.append(f"baked as_of dates: {baked or 'none'}")
+    info.append(f"FAQ checks: {faq}")
     return errors, info
 
 

@@ -458,6 +458,18 @@ def build_faq_items(profile: Dict[str, Any], content: Dict[str, Any], tokens: Di
     # limit to keep pages clean
     return faq_items[:6]
 
+def faq_items_html(faq_items: List[Dict[str, str]]) -> str:
+    out = ""
+    for item in faq_items:
+        out += f"""
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">{esc(item["q"])}</div>
+          <div class="faq-a">{esc(item["a"])}</div>
+        </div>
+        """
+    return out
+
+
 def faq_jsonld(faq_items: List[Dict[str, str]]) -> str:
     entities = []
     for item in faq_items:
@@ -1050,6 +1062,94 @@ def replace_static_rate_regions(page: str, profile: Dict[str, Any], tokens: Dict
     return page
 
 
+# ---- SEO-A3.1: rate-aware FAQ truthfulness ----------------------------------
+#
+# Support status comes ONLY from static_pair_rate() (the validated snapshot).
+# Supported pairs keep the default FAQ byte-for-byte. Unsupported pairs:
+#   * FAQ "How much is 1 A in B?"  -> states that no reference rate exists
+#   * FAQ "Why does the A/B rate change?" and "What affects the value of A
+#     against B?" -> corrected ONLY when a side is a code that by definition
+#     has no exchange value (instrument_type test_code / no_currency, i.e.
+#     XTS, XXX). For metals, units of account, legacy codes and unpublished
+#     currencies those generic answers remain true of the real instrument.
+#   * "Is this the same as a bank rate?" is generic and true; unchanged.
+
+FAQ_Q_RATE = "How much is 1 {FROM_CODE} in {TO_CODE}?"
+FAQ_Q_CHANGE = "Why does the {FROM_CODE}/{TO_CODE} rate change?"
+FAQ_Q_VALUE = "What affects the value of {FROM_CODE} against {TO_CODE}?"
+NO_EXCHANGE_VALUE_TYPES = {"test_code", "no_currency"}
+
+
+def rate_aware_faq_items(items: List[Dict[str, str]], tokens: Dict[str, str],
+                         snapshot: Dict[str, Any], currencies: Dict[str, Dict[str, Any]]) -> List[Dict[str, str]]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    if static_pair_rate(F, T, snapshot) is not None:
+        return items
+    reason = unsupported_reason(F, T, snapshot)
+    no_value = [c for c in (F, T) if currencies.get(c, {}).get("instrument_type") in NO_EXCHANGE_VALUE_TYPES]
+    no_value_text = "; ".join(UNSUPPORTED_CODE_REASONS.get(c, f"{c} has no exchange value") for c in no_value)
+    q_rate = replace_tokens(FAQ_Q_RATE, tokens)
+    q_change = replace_tokens(FAQ_Q_CHANGE, tokens)
+    q_value = replace_tokens(FAQ_Q_VALUE, tokens)
+    out = []
+    for item in items:
+        q, a = item["q"], item["a"]
+        if q == q_rate:
+            a = (f"ConvertCCY does not currently have a reference rate for {F} to {T} in its "
+                 f"reference snapshot: {reason}. No conversion value is shown rather than an estimate.")
+        elif no_value and q == q_change:
+            a = f"There is no {F}/{T} exchange rate that moves over time: {no_value_text}."
+        elif no_value and q == q_value:
+            a = f"No market factor sets a value of {F} against {T}: {no_value_text}."
+        out.append({"q": q, "a": a})
+    return out
+
+
+FAQ_VISIBLE_START = '    <div class="sec-title">FAQ</div>\n    <div class="card">\n      '
+FAQ_VISIBLE_END = '\n    </div>\n  </section>'
+FAQ_JSONLD_START = '<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@type": "FAQPage",'
+FAQ_JSONLD_END = '\n</script>'
+
+
+def replace_faq_regions(page: str, items: List[Dict[str, str]]) -> str:
+    """Rewrite ONLY the visible FAQ list and the FAQPage JSON-LD body. Fail closed."""
+    for anchor, label in ((FAQ_VISIBLE_START, "visible FAQ"), (FAQ_JSONLD_START, "FAQPage JSON-LD")):
+        if page.count(anchor) != 1:
+            raise ValueError(f"{label}: anchor found {page.count(anchor)} times (need exactly 1)")
+    i = page.index(FAQ_VISIBLE_START) + len(FAQ_VISIBLE_START)
+    j = page.index(FAQ_VISIBLE_END, i)
+    page = page[:i] + faq_items_html(items) + page[j:]
+    i = page.index(FAQ_JSONLD_START) + len('<script type="application/ld+json">\n')
+    j = page.index(FAQ_JSONLD_END, i)
+    return page[:i] + faq_jsonld(items) + page[j:]
+
+
+def refresh_faq_truthfulness(
+    currencies: Dict[str, Dict[str, Any]],
+    content: Dict[str, Any],
+    pair_profiles: Dict[str, Dict[str, Any]],
+) -> Tuple[int, int]:
+    """SEO-A3.1: rewrite ONLY the FAQ regions, from rate-aware FAQ items."""
+    snapshot = load_rate_snapshot()
+    changed = unchanged = 0
+    for profile in pair_profiles.values():
+        a, b = profile["from_code"], profile["to_code"]
+        if a == b or a not in currencies or b not in currencies:
+            continue
+        tokens = make_pair_tokens(profile, currencies)
+        items = rate_aware_faq_items(build_faq_items(profile, content, tokens), tokens, snapshot, currencies)
+        path = PAGES_DIR / f'{profile["pair_slug"]}.html'
+        old = path.read_text(encoding="utf-8")
+        new = replace_faq_regions(old, items)
+        if new != old:
+            write_text(path, new)
+            changed += 1
+        else:
+            unchanged += 1
+    print(f"FAQ truthfulness: {changed} pair pages changed, {unchanged} unchanged")
+    return changed, unchanged
+
+
 # -----------------------------------------------------------------------------
 # HTML TEMPLATES
 # -----------------------------------------------------------------------------
@@ -1238,26 +1338,19 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
 
     educational = content.get("educational_blocks", {})
     mid_market = content.get("pair_page_templates", {}).get("mid_market_section", {})
-    faq_items = build_faq_items(profile, content, tokens)
+    snapshot = snapshot if snapshot is not None else load_rate_snapshot()
+    faq_items = rate_aware_faq_items(build_faq_items(profile, content, tokens), tokens, snapshot, currencies)
 
     canonical = f'{BASE_URL}/pages/{tokens["PAIR_SLUG"]}.html'
     title = f'{tokens["FROM_CODE"]} to {tokens["TO_CODE"]} Converter | {brand}'
     description = f'Convert {tokens["FROM_NAME"]} to {tokens["TO_NAME"]} with a clear reference exchange-rate page, conversion table, FAQ, and currency context.'
     navigation_html = pair_navigation_html(profile["from_code"], profile["to_code"], all_codes, importance)
-    snapshot = snapshot if snapshot is not None else load_rate_snapshot()
     static_rate_html = static_rate_region_html(profile, tokens, snapshot)
     static_table_html = static_table_region_html(profile, tokens, snapshot)
     rate_script_html = rate_script_region_html()
     passage_section = build_currency_passage_section(profile, currencies, tokens, gov_map)
 
-    faq_block_html = ""
-    for item in faq_items:
-        faq_block_html += f"""
-        <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">{esc(item["q"])}</div>
-          <div class="faq-a">{esc(item["a"])}</div>
-        </div>
-        """
+    faq_block_html = faq_items_html(faq_items)
 
     exchange_heading = educational.get("exchange_rate_explained", {}).get("heading", "What an exchange rate means")
     exchange_paras = educational.get("exchange_rate_explained", {}).get("paragraphs", [])
@@ -2184,10 +2277,19 @@ def main():
             "navigation, support pages and sitemap.xml are left untouched."
         ),
     )
+    parser.add_argument(
+        "--faq-only",
+        action="store_true",
+        help=(
+            "SEO-A3.1: rewrite ONLY the visible FAQ list and FAQPage JSON-LD of "
+            "existing pair pages from the rate-aware FAQ items. Everything else "
+            "is left byte-for-byte."
+        ),
+    )
     args = parser.parse_args()
     only_currencies = parse_only_currencies(args.only_currency)
-    if sum(bool(x) for x in (args.navigation_only, args.static_rates_only, only_currencies)) > 1:
-        parser.error("--navigation-only, --static-rates-only and --only-currency are mutually exclusive")
+    if sum(bool(x) for x in (args.navigation_only, args.static_rates_only, args.faq_only, only_currencies)) > 1:
+        parser.error("--navigation-only, --static-rates-only, --faq-only and --only-currency are mutually exclusive")
 
     if not CURRENCIES_FILE.exists():
         raise FileNotFoundError(f"Missing file: {CURRENCIES_FILE}")
@@ -2212,6 +2314,11 @@ def main():
             "Support pages and sitemap.xml intentionally left unchanged "
             "(pair-page URLs are stable, so the sitemap does not move)."
         )
+        return
+
+    if args.faq_only:
+        refresh_faq_truthfulness(currencies, content, pair_profiles)
+        print("\nFAQ-only build complete. Support pages and sitemap.xml unchanged.")
         return
 
     if args.static_rates_only:
