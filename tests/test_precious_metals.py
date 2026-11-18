@@ -214,7 +214,7 @@ class PrecedenceTest(unittest.TestCase):
 
 class FreezeTest(unittest.TestCase):
     def test_O_P_Q_controls_byte_identical(self):
-        for rel in ("pages/usd-to-eur.html", "pages/bgn-to-eur.html", "pages/usd-to-xts.html", "pages/clf-to-usd.html",
+        for rel in ("pages/usd-to-eur.html", "pages/bgn-to-eur.html", "pages/usd-to-xts.html",  # clf-to-usd moved to A4.5 institutional units
                     "currencies/usd.html", "sitemap.xml"):
             base = at_baseline(rel)
             if base is None:

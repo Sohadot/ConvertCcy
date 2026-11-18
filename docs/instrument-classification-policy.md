@@ -260,9 +260,42 @@ pairs unchanged; robots, canonicals and sitemap unchanged. Gates:
 `scripts/validate_metal_snapshot.py`, `scripts/validate_precious_metals.py`; targeted build
 `python3 generate.py --precious-metals-only`.
 
-## 11. Next implementation sequence
+## 11. A4.5 — Institutional-unit reference layer (implemented)
 
-1. **A4.5 Institutional units layer** — XDR, CLF, UYW, XSU, XUA from issuer valuations.
+See `docs/institutional-units-methodology.md`. Summary: the 2026-11-18 source audit re-opened
+every primary source and recorded registry-cited facts in `verification_sources` and the new
+`institutional_units_reference` section (ISO designation, issuer, status, methodology, licensing,
+figure-free explanations, FAQ composed only of governed parts, per-unit source governance).
+Decisions: **XDR — IMF REFERENCE ONLY** (IMF terms require permission for commercial reuse of
+IMF Data); **CLF — METHODOLOGY ONLY**; **UYW — REFERENCE ONLY**; **XUA — SDR-RELATIONSHIP
+REFERENCE ONLY**; **XSU — STATUS UNRESOLVED**. Taxonomy changes, each with evidence:
+
+* **UYW issuer corrected** from Banco Central del Uruguay to the Instituto Nacional de
+  Estadística: Ley N° 19.608 art. 3 (quoted in INE's own bulletin) assigns INE the administration
+  of the unit and publication of its daily value. New `issuer_type` value
+  `national_statistical_authority`, accepted for `unit_of_account` only.
+* **XSU confidence lowered to `low`** and `valuation_basis_verification` added: no current issuer
+  publication was retrievable (the former official domain redirects to an unrelated site);
+  secondary press reports citing Banco Central del Ecuador describe no operations since 2020.
+  The enum has no "unresolved" status, so `instrument_status` stays `active`, but
+  `institutional_units_reference.units.XSU.activity_status = status_unresolved` governs all
+  rendering and the validator rejects any page that calls XSU active.
+* **`unit_of_account` pair_indexability → `index_with_specialized_reference_role`** (CLF and
+  UYW are fully governed at methodology level). Robots and sitemap are unchanged because both
+  values already render `index,follow`. `regional_unit` stays `needs_further_evidence` because of XSU.
+* Conformance label for institutional provider values: `provider_value_secondary_only`.
+
+The router precedence is now standards_special › historical › precious_metal ›
+**institutional_unit** › unsupported_specialized / ordinary_fx. The A4.5 changes were 1,540 pair
+pages and 5 hubs. The 70 historical-governed, 40 metal-governed and 20 standards-governed
+institutional pairs were left unchanged. Gates: `scripts/validate_institutional_snapshot.py` and
+`scripts/validate_institutional_units.py`. Targeted build: `python3 generate.py --institutional-units-only`.
+
+## 12. Next implementation sequence
+
+1. **A4.5 follow-up — issuer value activation.** Obtain IMF commercial-reuse permission and
+   verify the reuse terms of the BCCh/SII and INE publications. Values then enter
+   `data/institutional_reference_snapshot.json` and pages need no semantic change.
 3. **A4.6 Restricted & missing fiat sources** — KPW, VED, CUP regime caveat, review-flagged
    fiat (IRR, SYP, MMK, TMT, VES).
 4. **Related-link pass** — stop promoting noindex pairs from ordinary pages (deliberate churn).

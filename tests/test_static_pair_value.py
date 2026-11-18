@@ -99,7 +99,7 @@ class SupportedPairStaticHtmlTest(unittest.TestCase):
 
 class UnsupportedPairStaticHtmlTest(unittest.TestCase):
     def test_E_no_fake_numeric_rate(self):
-        for slug in ("uyw-to-usd", "xsu-to-eur", "kpw-to-usd", "eur-to-ved"):   # XTS/XXX, metals: own tests
+        for slug in ("kpw-to-usd", "eur-to-ved", "ved-to-kpw"):   # XTS/XXX, metals, institutional units (A4.5): own tests
             html = page(slug)
             rate = region(html, g.STATIC_RATE_START, g.STATIC_RATE_END)
             tbl = region(html, g.STATIC_TABLE_START, g.STATIC_TABLE_END)
