@@ -68,6 +68,12 @@ jobs:
         # the generator output.
         run: python3 scripts/validate_historical_instruments.py
 
+      - name: ISO 4217 standards-special gate (validate_standards_special_codes.py)
+        # SEO-A4.3: XTS/XXX pair pages are noindex,follow self-canonical standards
+        # references with no rate state, absent from the sitemap; hubs indexable
+        # and registry-cited; no sitemap URL points to noindex content.
+        run: python3 scripts/validate_standards_special_codes.py
+
       - name: Pair internal-link graph gate (validate_pair_link_graph.py)
         # SEO-A2: every pair page reachable from index.html via <a href>
         # within 3 clicks, no reverse-pair-only 2-cycles, every pair linked
