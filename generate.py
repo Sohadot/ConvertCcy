@@ -507,23 +507,192 @@ def pair_webpage_jsonld(tokens: Dict[str, str], faq_items: List[Dict[str, str]])
         "@graph": graph
     }, ensure_ascii=False, indent=2)
 
-def related_pairs_html(from_code: str, to_code: str, all_codes: List[str], limit: int = 8) -> str:
-    related = []
-    related.append((to_code, from_code))
+# -----------------------------------------------------------------------------
+# INTERNAL LINK GRAPH (SEO-A2)
+# -----------------------------------------------------------------------------
+#
+# Crawl path for every pair page (all plain <a href>, no JS navigation):
+#
+#   index.html -> currencies.html -> /currencies/<code>.html -> /pages/<a>-to-<b>.html
+#
+# Each currency hub links all 169 pairs FROM that currency and all 169 pairs
+# TO it, so every pair page has exactly two non-pair (hub) inbound links and
+# sits at depth <= 3 from the homepage. Pair pages additionally carry a
+# bounded, deterministic related-pairs block (RELATED_PAIR_LIMIT links) built
+# from four sources — reverse pair, alphabetical "ring" neighbours on both
+# sides (spreads inbound links evenly across all pairs), and importance-ranked
+# alternatives from the profile `importance_score` — plus links to both hubs.
 
-    for code in all_codes:
-        if code not in {from_code, to_code}:
-            related.append((from_code, code))
-        if len(related) >= limit:
-            break
+RELATED_PAIR_LIMIT = 12
+RELATED_IMPORTANCE_PER_SIDE = 3
 
+
+def currency_hub_href(code: str) -> str:
+    return f"/currencies/{code.lower()}.html"
+
+
+def pair_href(from_code: str, to_code: str) -> str:
+    return f"/pages/{from_code.lower()}-to-{to_code.lower()}.html"
+
+
+def popularity_rank(code: str) -> int:
+    try:
+        return DEFAULT_POPULAR_CODES.index(code)
+    except ValueError:
+        return len(DEFAULT_POPULAR_CODES)
+
+
+def site_currency_order(codes) -> List[str]:
+    """Popular-first, then alphabetical (the order used across the site)."""
+    return sorted(codes, key=lambda x: (x not in DEFAULT_POPULAR_CODES, x))
+
+
+def build_pair_importance_index(pair_profiles: Dict[str, Dict[str, Any]]) -> Dict[Tuple[str, str], int]:
+    out: Dict[Tuple[str, str], int] = {}
+    for p in pair_profiles.values():
+        try:
+            out[(p["from_code"], p["to_code"])] = int(p.get("importance_score") or 0)
+        except (TypeError, ValueError):
+            out[(p["from_code"], p["to_code"])] = 0
+    return out
+
+
+def select_related_pairs(
+    from_code: str,
+    to_code: str,
+    all_codes: List[str],
+    importance: Optional[Dict[Tuple[str, str], int]] = None,
+    limit: int = RELATED_PAIR_LIMIT,
+) -> List[Tuple[str, str]]:
+    """Deterministic, bounded related-pair selection for one directed pair.
+
+    Order of preference (duplicates and self-pairs skipped):
+      1. reverse pair (B -> A)
+      2. same-base ring:  A -> next/prev of B in alphabetical order
+      3. same-quote ring: next/prev of A -> B in alphabetical order
+      4. same-base importance: top A -> X by importance_score
+      5. same-quote importance: top X -> B by importance_score
+      6. widen the rings (distance 2, 3, ...) until `limit` is reached
+
+    The rings guarantee every pair receives links from its four alphabetical
+    neighbours, which removes reverse-pair-only 2-cycles without depending on
+    popularity. Importance ties break on DEFAULT_POPULAR_CODES order, then code.
+    No randomness: identical input always yields identical output.
+    """
+    importance = importance or {}
+    codes = sorted(set(all_codes))
+    A, B = from_code, to_code
+    out: List[Tuple[str, str]] = []
+    seen: Set[Tuple[str, str]] = {(A, B)}
+
+    def add(pair: Tuple[str, str]) -> None:
+        a, b = pair
+        if a == b or pair in seen or a not in codes or b not in codes:
+            return
+        if len(out) >= limit:
+            return
+        seen.add(pair)
+        out.append(pair)
+
+    quotes = [c for c in codes if c != A]   # possible B for base A
+    bases = [c for c in codes if c != B]    # possible A for quote B
+    qi = quotes.index(B) if B in quotes else 0
+    bi = bases.index(A) if A in bases else 0
+
+    def ring(d: int) -> List[Tuple[str, str]]:
+        return [
+            (A, quotes[(qi + d) % len(quotes)]),
+            (A, quotes[(qi - d) % len(quotes)]),
+            (bases[(bi + d) % len(bases)], B),
+            (bases[(bi - d) % len(bases)], B),
+        ]
+
+    add((B, A))
+    for pair in ring(1):
+        add(pair)
+
+    def rank_key(score_pair: Tuple[str, str], other: str):
+        return (-importance.get(score_pair, 0), popularity_rank(other), other)
+
+    from_side = sorted((c for c in quotes if c != B), key=lambda c: rank_key((A, c), c))
+    to_side = sorted((c for c in bases if c != A), key=lambda c: rank_key((c, B), c))
+    for c in from_side[:RELATED_IMPORTANCE_PER_SIDE]:
+        add((A, c))
+    for c in to_side[:RELATED_IMPORTANCE_PER_SIDE]:
+        add((c, B))
+
+    d = 2
+    while len(out) < limit and d <= len(codes):
+        for pair in ring(d):
+            add(pair)
+        d += 1
+    return out
+
+
+def related_pairs_html(
+    from_code: str,
+    to_code: str,
+    all_codes: List[str],
+    importance: Optional[Dict[Tuple[str, str], int]] = None,
+    limit: int = RELATED_PAIR_LIMIT,
+) -> str:
     cards = []
-    for a, b in related[:limit]:
-        href = f"/pages/{a.lower()}-to-{b.lower()}.html"
+    for a, b in select_related_pairs(from_code, to_code, all_codes, importance, limit):
         cards.append(
-            f'<a class="related-card" href="{href}"><span>{esc(a)} → {esc(b)}</span><small>→</small></a>'
+            f'<a class="related-card" href="{pair_href(a, b)}"><span>{esc(a)} → {esc(b)}</span><small>→</small></a>'
         )
     return "\n".join(cards)
+
+
+PAIR_NAV_START_MARKER = '  <section class="section">\n    <div class="sec-title">Related Pairs</div>'
+PAIR_NAV_END_MARKER = "\n</div>\n\n<footer>"
+
+
+def pair_navigation_html(
+    from_code: str,
+    to_code: str,
+    all_codes: List[str],
+    importance: Optional[Dict[Tuple[str, str], int]] = None,
+) -> str:
+    """The pair page's navigation region (related pairs + currency hubs).
+
+    This is the ONLY region a navigation-only refresh rewrites in an existing
+    pair page; it starts at PAIR_NAV_START_MARKER and ends right before
+    PAIR_NAV_END_MARKER. Reuses existing CSS classes (no <head> change).
+    """
+    related_html = related_pairs_html(from_code, to_code, all_codes, importance)
+    hubs_html = "\n".join(
+        f'<a class="related-card" href="{currency_hub_href(c)}"><span>All {esc(c)} pairs</span><small>→</small></a>'
+        for c in (from_code, to_code)
+    )
+    return f"""  <section class="section">
+    <div class="sec-title">Related Pairs</div>
+    <div class="related-grid">
+      {related_html}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-title">Currency Hubs</div>
+    <div class="related-grid">
+      {hubs_html}
+    </div>
+  </section>"""
+
+
+def replace_pair_navigation(page_html: str, new_nav: str) -> str:
+    """Swap only the navigation region of an already-published pair page.
+
+    Raises ValueError if the region cannot be located exactly once, so a
+    template mismatch never silently rewrites anything else.
+    """
+    if page_html.count(PAIR_NAV_START_MARKER) != 1 or page_html.count(PAIR_NAV_END_MARKER) != 1:
+        raise ValueError("pair navigation region not found exactly once")
+    start = page_html.index(PAIR_NAV_START_MARKER)
+    end = page_html.index(PAIR_NAV_END_MARKER)
+    if end <= start:
+        raise ValueError("pair navigation region markers out of order")
+    return page_html[:start] + new_nav + page_html[end:]
 
 # -----------------------------------------------------------------------------
 # HTML TEMPLATES
@@ -693,7 +862,7 @@ def build_currency_passage_section(profile: Dict[str, Any],
   </section>"""
 
 
-def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], all_codes: List[str], gov_map: Dict[str, List[Dict[str, Any]]] = None) -> str:
+def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any], all_codes: List[str], gov_map: Dict[str, List[Dict[str, Any]]] = None, importance: Optional[Dict[Tuple[str, str], int]] = None) -> str:
     tokens = make_pair_tokens(profile, currencies)
     gov_map = gov_map or {}
 
@@ -718,7 +887,7 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
     canonical = f'{BASE_URL}/pages/{tokens["PAIR_SLUG"]}.html'
     title = f'{tokens["FROM_CODE"]} to {tokens["TO_CODE"]} Converter | {brand}'
     description = f'Convert {tokens["FROM_NAME"]} to {tokens["TO_NAME"]} with a clear reference exchange-rate page, conversion table, FAQ, and currency context.'
-    related_html = related_pairs_html(profile["from_code"], profile["to_code"], all_codes)
+    navigation_html = pair_navigation_html(profile["from_code"], profile["to_code"], all_codes, importance)
     passage_section = build_currency_passage_section(profile, currencies, tokens, gov_map)
 
     faq_block_html = ""
@@ -997,12 +1166,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <section class="section">
-    <div class="sec-title">Related Pairs</div>
-    <div class="related-grid">
-      {related_html}
-    </div>
-  </section>
+{navigation_html}
 </div>
 
 <footer>
@@ -1141,6 +1305,7 @@ def build_currencies_page(currencies: Dict[str, Dict[str, Any]], content: Dict[s
     all_codes = sorted(currencies.keys(), key=lambda x: (x not in DEFAULT_POPULAR_CODES, x))
     cards = []
 
+    pair_total = 2 * (len(all_codes) - 1)
     for code in all_codes:
         cur = currencies[code]
         samples = choose_pair_samples(all_codes, code, limit=3)
@@ -1148,12 +1313,14 @@ def build_currencies_page(currencies: Dict[str, Dict[str, Any]], content: Dict[s
             f'<a href="/pages/{code.lower()}-to-{s.lower()}.html">{esc(code)} → {esc(s)}</a>'
             for s in samples
         )
+        hub = currency_hub_href(code)
 
         cards.append(f"""
         <div class="currency-card">
-          <div class="currency-code">{esc(code)}</div>
+          <div class="currency-code"><a href="{hub}">{esc(code)}</a></div>
           <div class="currency-name">{esc(cur.get("name", code))}</div>
           <div class="pair-links">{links}</div>
+          <a class="hub-link" href="{hub}">All {pair_total} {esc(code)} pairs →</a>
         </div>
         """)
 
@@ -1186,6 +1353,10 @@ h2{{margin-top:50px;font-size:24px}}
 .currency-name{{font-size:14px;color:#666;margin-bottom:10px}}
 .pair-links a{{display:block;font-size:13px;margin:4px 0;color:#1a6b3c;text-decoration:none}}
 .pair-links a:hover{{text-decoration:underline}}
+.currency-code a{{color:inherit;text-decoration:none}}
+.currency-code a:hover{{color:#1a6b3c}}
+.hub-link{{display:inline-block;margin-top:8px;font-size:13px;font-weight:600;color:#1a6b3c;text-decoration:none}}
+.hub-link:hover{{text-decoration:underline}}
 .section{{margin-top:60px}}
 footer{{border-top:1px solid #e8e8e4;padding:30px;text-align:center;margin-top:80px;color:#777;font-size:14px}}
 </style>
@@ -1212,6 +1383,150 @@ footer{{border-top:1px solid #e8e8e4;padding:30px;text-align:center;margin-top:8
 </body>
 </html>
 """
+
+INSTRUMENT_TYPE_LABELS = {
+    "fiat_currency": "national fiat currency",
+    "regional_currency": "regional (multi-country) currency",
+    "unit_of_account": "unit of account",
+    "legacy_or_transition": "legacy or transition currency code",
+    "precious_metal": "precious-metal code (troy ounce)",
+    "test_code": "ISO 4217 testing code",
+    "no_currency": "ISO 4217 code for transactions without a currency",
+}
+
+
+def build_currency_hub_page(
+    code: str,
+    currencies: Dict[str, Dict[str, Any]],
+    gov_map: Optional[Dict[str, List[Dict[str, Any]]]] = None,
+) -> str:
+    """Navigation hub for one currency: every directed pair from and to it.
+
+    Navigation architecture, not a landing page: identity line from
+    currencies.json, links to already-published rules entries (if any), and
+    two plain-HTML link lists. No generated prose, no JS navigation.
+    """
+    gov_map = gov_map or {}
+    cur = currencies[code]
+    name = cur.get("name", code)
+    others = [c for c in site_currency_order(currencies.keys()) if c != code]
+    canonical = f"{BASE_URL}{currency_hub_href(code)}"
+    title = f"{name} ({code}) Currency Pairs | {SITE_NAME}"
+    description = (
+        f"All {2 * len(others)} {SITE_NAME} reference pages involving the {name} ({code}): "
+        f"convert {code} to {len(others)} currencies and {len(others)} currencies to {code}."
+    )
+
+    kind = INSTRUMENT_TYPE_LABELS.get(cur.get("instrument_type", ""), "")
+    ident = f"ISO 4217 code {esc(code)}"
+    sym = cur.get("symbol", "")
+    if sym and sym.upper() != code.upper():
+        ident += f" · symbol {esc(sym)}"
+    if kind:
+        ident += f" · {esc(kind)}"
+
+    rules_links = " · ".join(
+        f'<a href="{esc(g["rules_page"])}">{esc(g["country_name"])} foreign-currency rules →</a>'
+        for g in gov_map.get(code, []) if g.get("rules_page")
+    )
+    rules_html = f'\n  <p class="hub-rules">Published jurisdiction entries: {rules_links}</p>' if rules_links else ""
+
+    def item(a: str, b: str, label_code: str) -> str:
+        other_name = currencies.get(label_code, {}).get("name", label_code)
+        return (
+            f'<li><a href="{pair_href(a, b)}">{esc(a)} → {esc(b)}</a>'
+            f' <span>{esc(other_name)}</span></li>'
+        )
+
+    from_items = "\n".join(item(code, o, o) for o in others)
+    to_items = "\n".join(item(o, code, o) for o in others)
+
+    breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE_URL}/"},
+            {"@type": "ListItem", "position": 2, "name": "Currencies", "item": f"{BASE_URL}/currencies.html"},
+            {"@type": "ListItem", "position": 3, "name": f"{code}", "item": canonical},
+        ],
+    }, ensure_ascii=False, indent=2)
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(description)}">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="{canonical}">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(description)}">
+<meta property="og:url" content="{canonical}">
+
+<script type="application/ld+json">
+{breadcrumb}
+</script>
+
+<style>
+body{{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f7f7f5;color:#111;line-height:1.7;margin:0}}
+.container{{max-width:1100px;margin:auto;padding:50px 20px 70px}}
+nav{{border-bottom:1px solid #e8e8e4;padding:18px 20px;background:#fff}}
+nav a{{color:#111;text-decoration:none;margin-right:16px}}
+.breadcrumb{{font-size:13px;color:#777;margin-bottom:18px}}
+.breadcrumb a{{color:#777;text-decoration:none}}
+h1{{font-size:38px;margin:0 0 8px}}
+.hub-ident{{color:#555;margin:0 0 6px}}
+.hub-rules{{font-size:14px;margin:0 0 6px}}
+.hub-rules a{{color:#1a6b3c;text-decoration:none}}
+h2{{margin-top:44px;font-size:22px}}
+.pair-list{{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px 16px}}
+.pair-list li{{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.pair-list a{{color:#1a6b3c;text-decoration:none;font-weight:600}}
+.pair-list a:hover{{text-decoration:underline}}
+.pair-list span{{color:#777}}
+footer{{border-top:1px solid #e8e8e4;padding:30px;text-align:center;margin-top:80px;color:#777;font-size:14px}}
+footer a{{color:#777}}
+</style>
+</head>
+<body>
+<nav><a href="/">{SITE_NAME}</a><a href="/currencies.html">Currencies</a></nav>
+<div class="container">
+  <div class="breadcrumb"><a href="/">Home</a> › <a href="/currencies.html">Currencies</a> › {esc(code)}</div>
+  <h1>{esc(name)} ({esc(code)})</h1>
+  <p class="hub-ident">{ident}</p>{rules_html}
+
+  <section>
+    <h2>Convert {esc(code)} to another currency</h2>
+    <ul class="pair-list">
+{from_items}
+    </ul>
+  </section>
+
+  <section>
+    <h2>Convert another currency to {esc(code)}</h2>
+    <ul class="pair-list">
+{to_items}
+    </ul>
+  </section>
+</div>
+<footer>
+  <p>© 2026 {SITE_NAME} — <a href="/currencies.html">All currencies</a></p>
+</footer>
+</body>
+</html>
+"""
+
+
+def generate_currency_hubs(currencies: Dict[str, Dict[str, Any]]) -> int:
+    gov_map = load_governed_currency_map()
+    for code in currencies:
+        write_text(BASE_DIR / currency_hub_href(code).lstrip("/"), build_currency_hub_page(code, currencies, gov_map))
+    print(f"Generated {len(currencies)} currency hub pages")
+    return len(currencies)
+
 
 def simple_page(title: str, description: str, body_html: str, canonical_path: str) -> str:
     return f"""<!DOCTYPE html>
@@ -1291,27 +1606,8 @@ def build_framework_page(content: Dict[str, Any]) -> str:
 # SITEMAP
 # -----------------------------------------------------------------------------
 
-def build_sitemap(
-    pair_profiles: Dict[str, Dict[str, Any]],
-    *,
-    history_dates: Optional[Dict[str, str]] = None,
-    dirty_paths: Optional[Set[str]] = None,
-    today: Optional[str] = None,
-    lastmod_index_builder=None,
-) -> str:
-    """Complete, generator-authoritative SEARCH sitemap.
-
-    Includes, in crawl-priority order: home; static/authority pages; the
-    intelligence layer; articles; published /rules/ (never /preview/); human
-    API HTML hubs; and all pair pages. Only files that exist on disk are
-    emitted.
-
-    SEO-A1:
-    - <lastmod> is a trustworthy content-change date (Git history), not the
-      sitemap build day. Untrusted dates are omitted, never fabricated.
-    - Raw machine-readable api/v1/*.json and llms.txt remain public files but
-      are NOT advertised in the search sitemap. Human /api.html and /api/ stay.
-    """
+def sitemap_entries(pair_profiles: Dict[str, Dict[str, Any]]) -> List[Tuple[str, str]]:
+    """Ordered (url, repo-relative path) list for the search sitemap."""
     # (url, repo-relative posix path used for lastmod resolution)
     entries: List[Tuple[str, str]] = [(f"{BASE_URL}/", "index.html")]
 
@@ -1331,6 +1627,12 @@ def build_sitemap(
         if file_exists(page):
             entries.append((f"{BASE_URL}/{page}", page.replace("\\", "/")))
             seen_pages.add(page)
+
+    # SEO-A2 currency hubs (/currencies/<code>.html) — the pair crawl path.
+    hubs_dir = BASE_DIR / "currencies"
+    if hubs_dir.is_dir():
+        for f in sorted(hubs_dir.glob("*.html")):
+            entries.append((f"{BASE_URL}/currencies/{f.name}", f"currencies/{f.name}"))
 
     # Directory hubs + their contents (hub index first, then children, sorted).
     def add_dir(dir_name: str, child_glob: str, index_name: str = "index.html"):
@@ -1358,6 +1660,31 @@ def build_sitemap(
     for profile in sorted(pair_profiles.values(), key=lambda p: p["pair_slug"]):
         slug = profile["pair_slug"]
         entries.append((f"{BASE_URL}/pages/{slug}.html", f"pages/{slug}.html"))
+    return entries
+
+
+def build_sitemap(
+    pair_profiles: Dict[str, Dict[str, Any]],
+    *,
+    history_dates: Optional[Dict[str, str]] = None,
+    dirty_paths: Optional[Set[str]] = None,
+    today: Optional[str] = None,
+    lastmod_index_builder=None,
+) -> str:
+    """Complete, generator-authoritative SEARCH sitemap.
+
+    Includes, in crawl-priority order: home; static/authority pages; the
+    intelligence layer; articles; published /rules/ (never /preview/); human
+    API HTML hubs; and all pair pages. Only files that exist on disk are
+    emitted.
+
+    SEO-A1:
+    - <lastmod> is a trustworthy content-change date (Git history), not the
+      sitemap build day. Untrusted dates are omitted, never fabricated.
+    - Raw machine-readable api/v1/*.json and llms.txt remain public files but
+      are NOT advertised in the search sitemap. Human /api.html and /api/ stay.
+    """
+    entries = sitemap_entries(pair_profiles)
 
     if history_dates is None or dirty_paths is None:
         builder = lastmod_index_builder or build_git_content_lastmod_index
@@ -1394,6 +1721,7 @@ def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str
     PAGES_DIR.mkdir(parents=True, exist_ok=True)
     all_codes = sorted(currencies.keys(), key=lambda x: (x not in DEFAULT_POPULAR_CODES, x))
     gov_map = load_governed_currency_map()
+    importance = build_pair_importance_index(pair_profiles)
     if gov_map:
         print(f"Governed currency enrichment active for: {', '.join(sorted(gov_map.keys()))}")
     else:
@@ -1425,7 +1753,7 @@ def generate_pair_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str
             out_of_scope += 1
             continue
 
-        html_doc = build_pair_page(profile, currencies, content, all_codes, gov_map)
+        html_doc = build_pair_page(profile, currencies, content, all_codes, gov_map, importance)
         out_path = PAGES_DIR / f'{profile["pair_slug"]}.html'
         write_text(out_path, html_doc)
         count += 1
@@ -1445,6 +1773,7 @@ MANUALLY_MANAGED_BUILDERS = [
 
 def generate_support_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[str, Any]) -> None:
     write_text(BASE_DIR / "currencies.html", build_currencies_page(currencies, content))
+    generate_currency_hubs(currencies)
     write_text(BASE_DIR / "disclaimer.html", build_disclaimer_page(content))
 
     for name, builder in MANUALLY_MANAGED_BUILDERS:
@@ -1459,6 +1788,124 @@ def generate_support_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[
 def generate_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> None:
     write_text(BASE_DIR / "sitemap.xml", build_sitemap(pair_profiles))
     print("Generated sitemap.xml")
+
+_SITEMAP_URL_BLOCK_RE = re.compile(
+    r"  <url>\n    <loc>([^<]+)</loc>\n(?:    <lastmod>[^<]*</lastmod>\n)?  </url>\n"
+)
+
+
+def merge_sitemap_additively(
+    existing_xml: str,
+    pair_profiles: Dict[str, Dict[str, Any]],
+    *,
+    history_dates: Optional[Dict[str, str]] = None,
+    dirty_paths: Optional[Set[str]] = None,
+    today: Optional[str] = None,
+) -> Tuple[str, List[str]]:
+    """Add newly required sitemap URLs without touching existing entries.
+
+    Every <url> block already in `existing_xml` is kept byte-for-byte (same
+    loc, same lastmod). URLs that sitemap_entries() now requires but the file
+    lacks are inserted at their generator-order position with a lastmod from
+    the normal resolve_content_lastmod() rules. Raises ValueError if the
+    existing file holds a URL the generator no longer emits, or if relative
+    order would change — membership and order of existing URLs are frozen.
+    """
+    head = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    tail = "</urlset>"
+    if not existing_xml.startswith(head) or not existing_xml.rstrip("\n").endswith(tail):
+        raise ValueError("unexpected sitemap envelope")
+    body = existing_xml[len(head):existing_xml.rstrip("\n").rindex(tail)]
+    blocks: Dict[str, str] = {}
+    order: List[str] = []
+    pos = 0
+    for m in _SITEMAP_URL_BLOCK_RE.finditer(body):
+        if m.start() != pos:
+            raise ValueError("unparseable content in existing sitemap")
+        blocks[m.group(1)] = m.group(0)
+        order.append(m.group(1))
+        pos = m.end()
+    if pos != len(body):
+        raise ValueError("unparseable trailing content in existing sitemap")
+
+    entries = sitemap_entries(pair_profiles)
+    wanted = [u for u, _ in entries]
+    missing_from_generator = set(order) - set(wanted)
+    if missing_from_generator:
+        raise ValueError(f"existing sitemap URLs no longer generated: {sorted(missing_from_generator)[:5]}")
+    kept_in_order = [u for u in wanted if u in blocks]
+    if kept_in_order != order:
+        raise ValueError("existing sitemap URL order differs from generator order")
+
+    if history_dates is None or dirty_paths is None:
+        history_dates, dirty_paths, today_iso, _ = build_git_content_lastmod_index(BASE_DIR, today=today)
+    else:
+        today_iso = today if today is not None else iso_today()
+
+    out = [head]
+    added: List[str] = []
+    seen: Set[str] = set()
+    for url, rel_path in entries:
+        if url in seen:
+            continue
+        seen.add(url)
+        if url in blocks:
+            out.append(blocks[url])
+            continue
+        lastmod = resolve_content_lastmod(rel_path, history_dates or {}, dirty_paths or set(), today_iso)
+        block = f"  <url>\n    <loc>{url}</loc>\n"
+        if lastmod:
+            block += f"    <lastmod>{lastmod}</lastmod>\n"
+        out.append(block + "  </url>\n")
+        added.append(url)
+    out.append(tail)
+    return "".join(out), added
+
+
+def refresh_pair_navigation(
+    currencies: Dict[str, Dict[str, Any]],
+    pair_profiles: Dict[str, Dict[str, Any]],
+) -> Tuple[int, int]:
+    """Rewrite ONLY the navigation region of each existing pair page.
+
+    Everything outside PAIR_NAV_START_MARKER..PAIR_NAV_END_MARKER (title,
+    metadata, prose, passage section, FAQ, rate script) is left byte-for-byte
+    as published. Returns (changed, unchanged).
+    """
+    all_codes = site_currency_order(currencies.keys())
+    importance = build_pair_importance_index(pair_profiles)
+    changed = unchanged = 0
+    for profile in pair_profiles.values():
+        a, b = profile["from_code"], profile["to_code"]
+        if a == b or a not in currencies or b not in currencies:
+            continue
+        path = PAGES_DIR / f'{profile["pair_slug"]}.html'
+        old = path.read_text(encoding="utf-8")
+        new = replace_pair_navigation(old, pair_navigation_html(a, b, all_codes, importance))
+        if new != old:
+            write_text(path, new)
+            changed += 1
+        else:
+            unchanged += 1
+    print(f"Navigation refreshed on {changed} pair pages ({unchanged} already current)")
+    return changed, unchanged
+
+
+def run_navigation_only(
+    currencies: Dict[str, Dict[str, Any]],
+    content: Dict[str, Any],
+    pair_profiles: Dict[str, Dict[str, Any]],
+) -> None:
+    """SEO-A2 navigation-only build: hubs, currencies.html, pair nav regions,
+    and additive sitemap entries. Never re-renders pair-page prose."""
+    write_text(BASE_DIR / "currencies.html", build_currencies_page(currencies, content))
+    generate_currency_hubs(currencies)
+    refresh_pair_navigation(currencies, pair_profiles)
+    sitemap_path = BASE_DIR / "sitemap.xml"
+    xml, added = merge_sitemap_additively(sitemap_path.read_text(encoding="utf-8"), pair_profiles)
+    write_text(sitemap_path, xml)
+    print(f"Sitemap: added {len(added)} URLs; existing entries unchanged")
+
 
 def parse_only_currencies(values: Optional[List[str]]) -> Optional[Set[str]]:
     if not values:
@@ -1490,8 +1937,20 @@ def main():
             "a full build."
         ),
     )
+    parser.add_argument(
+        "--navigation-only",
+        action="store_true",
+        help=(
+            "SEO-A2: regenerate currencies.html and the /currencies/ hubs, rewrite "
+            "ONLY the navigation region of existing pair pages, and add missing "
+            "sitemap URLs without touching existing entries. Pair-page prose, "
+            "metadata and scripts are left byte-for-byte as published."
+        ),
+    )
     args = parser.parse_args()
     only_currencies = parse_only_currencies(args.only_currency)
+    if args.navigation_only and only_currencies:
+        parser.error("--navigation-only cannot be combined with --only-currency")
 
     if not CURRENCIES_FILE.exists():
         raise FileNotFoundError(f"Missing file: {CURRENCIES_FILE}")
@@ -1516,6 +1975,11 @@ def main():
             "Support pages and sitemap.xml intentionally left unchanged "
             "(pair-page URLs are stable, so the sitemap does not move)."
         )
+        return
+
+    if args.navigation_only:
+        run_navigation_only(currencies, content, pair_profiles)
+        print("\nNavigation-only build complete.")
         return
 
     generate_pair_pages(currencies, content, pair_profiles)
