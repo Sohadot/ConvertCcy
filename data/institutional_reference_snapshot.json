@@ -1,0 +1,125 @@
+{
+  "type": "institutional_reference_snapshot",
+  "schema_version": "1.0.0",
+  "sprint": "SEO-A4.5",
+  "purpose": "Governed issuer valuations for institutional units (XDR, CLF, UYW, XUA, XSU). Separate from data/rate_snapshot.json and data/metal_reference_snapshot.json. A value may be rendered only when its source licence permits publication and it carries full provenance.",
+  "activation_state": "reference_layer_only",
+  "captured_at": null,
+  "source_audit_date": "2026-11-18",
+  "freshness_policies": {
+    "imf_business_daily": {
+      "cadence": "daily_business",
+      "basis": "The IMF calculates the SDR valuation daily except on IMF holidays; a value up to four calendar days old spans a weekend plus a holiday.",
+      "current_max_hours": 96,
+      "recent_max_hours": 168,
+      "max_fx_skew_hours": 24,
+      "advance_publication_hours": 0
+    },
+    "uf_daily_by_monthly_period": {
+      "cadence": "daily_published_by_period",
+      "basis": "Banco Central de Chile calculates each UF period (day 10 to day 9) in advance; each calendar day has its own official value, so only the value dated for the build day is current.",
+      "current_max_hours": 24,
+      "recent_max_hours": 48,
+      "max_fx_skew_hours": 24,
+      "advance_publication_hours": 744
+    },
+    "up_daily_by_monthly_bulletin": {
+      "cadence": "daily_published_by_period",
+      "basis": "INE publishes the daily Unidad Previsional values for a whole month in advance; only the value dated for the build day is current.",
+      "current_max_hours": 24,
+      "recent_max_hours": 48,
+      "max_fx_skew_hours": 24,
+      "advance_publication_hours": 744
+    },
+    "follows_sdr": {
+      "cadence": "follows_related_unit",
+      "basis": "The issuer states the UA is equivalent to the SDR; no independent XUA value publication was verified."
+    },
+    "unresolved": {
+      "cadence": "unresolved",
+      "basis": "No current issuer publication for XSU was found."
+    }
+  },
+  "methodologies": {
+    "imf_sdr_basket_valuation": {
+      "summary": "IMF basket valuation: the US-dollar value of the SDR is the sum of the US-dollar equivalents of the basket currency amounts at market exchange rates; the US dollar value in SDR is rounded to six significant digits.",
+      "evidence": [
+        {"source": "XDR", "index": 0, "supports": "The currency value of the SDR is determined by summing the values in U.S. dollars, based on market exchange rates"},
+        {"source": "XDR", "index": 0, "supports": "the value of the U.S. dollar in terms of the SDR is rounded to six significant digits"}
+      ]
+    },
+    "bcch_uf_cpi_indexation": {
+      "summary": "Banco Central de Chile calculates the UF each month, adjusting it at the geometric average rate of the prior month's CPI change, for a period from day 10 to day 9.",
+      "evidence": [
+        {"source": "CLF", "index": 0, "supports": "La Unidad de Fomento (UF) es calculada cada mes por el Banco Central de Chile"},
+        {"source": "CLF", "index": 0, "supports": "se reajusta a la tasa promedio geométrica correspondiente a la variación que haya experimentado el Indice de Precios al Consumidor"}
+      ]
+    },
+    "ley_19608_imsn_indexation": {
+      "summary": "Ley N° 19.608: the UP changes daily until it accumulates the prior month's change in the Índice Medio de Salarios Nominales; INE administers and publishes the daily value.",
+      "evidence": [
+        {"source": "UYW", "index": 1, "supports": "la UP variará diariamente hasta acumular la misma variación que haya acumulado el índice Medio de Salarios Nominales durante el mes inmediato anterior"},
+        {"source": "UYW", "index": 1, "supports": "El Instituto Nacional de Estadística (INE) se encargará de todo lo relativo a la administración de la nueva unidad de cuenta y dará a publicidad el valor diario de la UP"}
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "imf_sdr_valuation",
+      "name": "IMF SDR Valuation",
+      "authority": "International Monetary Fund",
+      "url": "https://www.imf.org/external/np/fin/data/rms_sdrv.aspx",
+      "role": "issuer",
+      "codes": ["XDR"],
+      "license_state": "license_unclear",
+      "license_basis": "IMF terms permit reuse of IMF Data with attribution but require permission for any potential commercial reuse; permission has not been obtained, and automated retrieval also requires permission.",
+      "license_evidence": {"source": "IMF_TERMS", "index": 0, "supports": "For any potential commercial reuse of IMF Data, email copyright@imf.org to request permission."}
+    },
+    {
+      "id": "sii_uf_daily_values",
+      "name": "SII Unidad de Fomento daily values",
+      "authority": "Servicio de Impuestos Internos (Chile)",
+      "url": "https://www.sii.cl/valores_y_fechas/uf/uf2026.htm",
+      "role": "official_republisher",
+      "codes": ["CLF"],
+      "license_state": "license_unclear",
+      "license_basis": "Reuse terms for the published UF values (SII, Banco Central de Chile, CMF) were not verified in the source audit; the Banco Central de Chile terms page was not retrievable."
+    },
+    {
+      "id": "ine_up_daily_values",
+      "name": "INE Unidad Previsional daily values",
+      "authority": "Instituto Nacional de Estadística (Uruguay)",
+      "url": "https://www5.ine.gub.uy/documents/Estad%C3%ADsticasecon%C3%B3micas/SERIES%20Y%20OTROS/UP/Unidad%20Previsional%20-%20UP.xls",
+      "role": "statutory_publisher",
+      "codes": ["UYW"],
+      "license_state": "license_unclear",
+      "license_basis": "INE is the statutory publisher (Ley N° 19.608, art. 3); reuse terms for the series were not verified in the source audit."
+    }
+  ],
+  "instruments": {
+    "XDR": {"value_decision": "issuer_methodology_only", "valuation_type": "basket_valuation", "denomination_currency": "USD", "methodology_id": "imf_sdr_basket_valuation", "source_id": "imf_sdr_valuation", "freshness_policy_id": "imf_business_daily", "precision_policy": "source_precision"},
+    "CLF": {"value_decision": "issuer_methodology_only", "valuation_type": "indexed_unit_value", "denomination_currency": "CLP", "methodology_id": "bcch_uf_cpi_indexation", "source_id": "sii_uf_daily_values", "freshness_policy_id": "uf_daily_by_monthly_period", "precision_policy": "source_precision"},
+    "UYW": {"value_decision": "issuer_methodology_only", "valuation_type": "indexed_unit_value", "denomination_currency": "UYU", "methodology_id": "ley_19608_imsn_indexation", "source_id": "ine_up_daily_values", "freshness_policy_id": "up_daily_by_monthly_bulletin", "precision_policy": "source_precision"},
+    "XUA": {"value_decision": "reference_layer_only", "valuation_type": "institutional_parity", "denomination_currency": null, "methodology_id": null, "source_id": null, "freshness_policy_id": "follows_sdr", "precision_policy": "not_applicable"},
+    "XSU": {"value_decision": "reference_layer_only", "valuation_type": "unavailable", "denomination_currency": null, "methodology_id": null, "source_id": null, "freshness_policy_id": "unresolved", "precision_policy": "not_applicable"}
+  },
+  "values": [],
+  "provider_values": {
+    "XDR": {
+      "provider": "exchangerate-api.com (data/rate_snapshot.json)",
+      "classification": "provider_value_secondary_only",
+      "rendered": false,
+      "comparison_date": "2026-11-18",
+      "comparison_state": "consistent_within_provider_rounding",
+      "note": "The provider value agrees with the IMF valuation for the same day to within the provider's published precision. Issuer figures are not stored here because the IMF value is not licensed for publication."
+    },
+    "CLF": {
+      "provider": "exchangerate-api.com (data/rate_snapshot.json)",
+      "classification": "provider_value_pending_issuer_comparison",
+      "rendered": false,
+      "comparison_date": "2026-11-18",
+      "comparison_state": "unresolved_difference",
+      "note": "The provider-implied CLF/CLP value differs from the official UF for the same day by more than the provider's published precision can explain; the cause is not established. Issuer figures are not stored here because their reuse terms are unverified."
+    }
+  }
+}
