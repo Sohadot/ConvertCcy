@@ -2296,24 +2296,23 @@
       "legal_tender_status": "legal_tender",
       "convertibility_status": "not_assessed",
       "issuer_type": "national_monetary_authority",
-      "issuer_name": null,
+      "issuer_name": "Banque du Liban",
       "jurisdiction_scope": "single_jurisdiction",
       "market_pricing_expected": true,
       "reference_rate_expected": true,
       "historical": false,
       "active": true,
-      "classification_confidence": "medium",
+      "classification_confidence": "high",
       "evidence": [
         "repo_currencies_json",
-        "repo_rate_snapshot_quote"
+        "repo_rate_snapshot_quote",
+        "official_source_verified"
       ],
-      "review_flags": [
-        "official_vs_market_rate_review"
-      ],
+      "review_flags": [],
       "successor_code": null,
       "documented_conversion": null,
       "reclassification_reason": null,
-      "notes": "Remains classified as ordinary fiat; multiple or managed exchange-rate regimes are reported for this currency. A4.6 must verify which regime the provider quote represents before any reclassification."
+      "notes": "Banque du Liban publishes an official USD/LBP series at 89,500 in 2026; the ConvertCCY 2026-11-18 snapshot also carries 89,500. Classification and current reference-rate provenance are therefore issuer-anchored."
     },
     "LKR": {
       "instrument_type": "fiat_currency",
@@ -4684,6 +4683,17 @@
         "supports": [
           "North Korean Won code KPW is the national currency",
           "UN publishes an attributed exchange-rate series"
+        ]
+      }
+    ],
+    "LBP": [
+      {
+        "authority": "Banque du Liban",
+        "url": "https://bdl.gov.lb/economicandfinancialdatasub.php?code=9&docId=161&filecode=90",
+        "supports": [
+          "official USD/LBP series",
+          "2026 official rate 89,500 LBP per USD",
+          "current snapshot value matches issuer series"
         ]
       }
     ]
