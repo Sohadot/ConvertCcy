@@ -60,6 +60,13 @@ jobs:
         # by its currency hubs, no broken internal links.
         run: python3 scripts/validate_pair_link_graph.py
 
+      - name: Rate snapshot & static pair-rate gate (validate_rate_snapshot.py)
+        # SEO-A3: snapshot schema/data validity, data/public copies identical,
+        # every unsupported code classified, and every pair page's marked
+        # static-rate regions exactly match the snapshot derivation. Staleness
+        # is reported, not enforced (CI must not fail only because time passed).
+        run: python3 scripts/validate_rate_snapshot.py
+
       - name: Country pipeline gate (validate_country_pipeline.py)
         # Staging packs: publication readiness is informational.
         # Packs that already claim verified/published or indexing_allowed=true
