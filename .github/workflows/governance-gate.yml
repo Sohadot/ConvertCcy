@@ -54,6 +54,12 @@ jobs:
       - name: Site hygiene — JSON, target=_blank, preview leaks (validate_site_hygiene.py)
         run: python3 scripts/validate_site_hygiene.py
 
+      - name: Pair internal-link graph gate (validate_pair_link_graph.py)
+        # SEO-A2: every pair page reachable from index.html via <a href>
+        # within 3 clicks, no reverse-pair-only 2-cycles, every pair linked
+        # by its currency hubs, no broken internal links.
+        run: python3 scripts/validate_pair_link_graph.py
+
       - name: Country pipeline gate (validate_country_pipeline.py)
         # Staging packs: publication readiness is informational.
         # Packs that already claim verified/published or indexing_allowed=true
