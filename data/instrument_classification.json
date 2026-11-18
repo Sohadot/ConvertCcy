@@ -9,7 +9,8 @@
       "data/generated/instrument_policy_matrix.json (built by instrument_policy.py --write-matrix; never hand-edited)"
     ],
     "fact_policy": "Facts marked verification_status=requires_source_verification, and every code with classification_confidence below 'high', must be source-verified before they are published on any public page. Classification here is internal governance metadata; nothing in this file is rendered to users in A4.1.",
-    "historical_reference_policy": "historical_reference holds the ONLY historical/legacy facts that may be rendered publicly (SEO-A4.2). Every claim and fixed conversion cites verification_sources entries by key, index and the exact 'supports' string; status and successor come from the instrument record. Dates and numbers are never rendered unless cited here."
+    "historical_reference_policy": "historical_reference holds the ONLY historical/legacy facts that may be rendered publicly (SEO-A4.2). Every claim and fixed conversion cites verification_sources entries by key, index and the exact 'supports' string; status and successor come from the instrument record. Dates and numbers are never rendered unless cited here.",
+    "standards_reference_policy": "standards_reference holds the only XTS/XXX facts that may be rendered (SEO-A4.3). ISO designations and claims cite verification_sources by key, index and exact 'supports' string; explanations are policy wording and must contain no dates or figures."
   },
   "enums": {
     "instrument_type": [
@@ -124,7 +125,8 @@
       "index_with_specialized_reference_role",
       "candidate_for_consolidation",
       "candidate_for_noindex",
-      "needs_further_evidence"
+      "needs_further_evidence",
+      "noindex_follow_consolidated_reference"
     ],
     "source_class": [
       "central_bank",
@@ -170,7 +172,8 @@
     "index_with_specialized_reference_role",
     "needs_further_evidence",
     "candidate_for_consolidation",
-    "candidate_for_noindex"
+    "candidate_for_noindex",
+    "noindex_follow_consolidated_reference"
   ],
   "legacy_type_mapping": {
     "fiat_currency": "fiat_currency",
@@ -330,7 +333,7 @@
         "iso_4217_maintenance_agency"
       ],
       "hub_indexability": "index_with_specialized_reference_role",
-      "pair_indexability": "candidate_for_consolidation",
+      "pair_indexability": "noindex_follow_consolidated_reference",
       "commercial_role": [
         "standards_reference_api",
         "ai_retrieval_corpus"
@@ -345,7 +348,7 @@
         "iso_4217_maintenance_agency"
       ],
       "hub_indexability": "index_with_specialized_reference_role",
-      "pair_indexability": "candidate_for_consolidation",
+      "pair_indexability": "noindex_follow_consolidated_reference",
       "commercial_role": [
         "standards_reference_api",
         "ai_retrieval_corpus"
@@ -4373,13 +4376,14 @@
       "evidence": [
         "repo_currencies_json",
         "repo_rate_snapshot_no_quote",
-        "iso_4217_listing_knowledge"
+        "iso_4217_listing_knowledge",
+        "official_source_verified"
       ],
       "review_flags": [],
       "successor_code": null,
       "documented_conversion": null,
       "reclassification_reason": null,
-      "notes": "Reserved by ISO 4217 for testing. Pair pages are candidates for consolidation into one standards reference page."
+      "notes": "Reserved by ISO 4217 for testing (SIX list, verified). Pair pages are deployed as noindex,follow contextual references consolidated under /currencies/xts.html (SEO-A4.3)."
     },
     "XUA": {
       "instrument_type": "regional_unit",
@@ -4424,13 +4428,14 @@
       "evidence": [
         "repo_currencies_json",
         "repo_rate_snapshot_no_quote",
-        "iso_4217_listing_knowledge"
+        "iso_4217_listing_knowledge",
+        "official_source_verified"
       ],
       "review_flags": [],
       "successor_code": null,
       "documented_conversion": null,
       "reclassification_reason": null,
-      "notes": "ISO 4217 code for transactions where no currency is involved. Pair pages are candidates for consolidation into one ISO semantics reference page."
+      "notes": "ISO 4217 code for transactions where no currency is involved (SIX list, verified). Pair pages are deployed as noindex,follow contextual references consolidated under /currencies/xxx.html (SEO-A4.3)."
     },
     "YER": {
       "instrument_type": "fiat_currency",
@@ -4702,6 +4707,44 @@
           "current snapshot value matches issuer series"
         ]
       }
+    ],
+    "XTS": [
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+        "supports": [
+          "XTS: Codes specifically reserved for testing purposes",
+          "XTS numeric code 963",
+          "XTS minor units N.A.",
+          "ISO 4217 list published 2026-09-17"
+        ]
+      },
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/en/products-services/financial-information/data-standards.html",
+        "supports": [
+          "SIX is the official Maintenance Agency of these currency codes under ISO 4217"
+        ]
+      }
+    ],
+    "XXX": [
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+        "supports": [
+          "XXX: The codes assigned for transactions where no currency is involved",
+          "XXX numeric code 999",
+          "XXX minor units N.A.",
+          "ISO 4217 list published 2026-09-17"
+        ]
+      },
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/en/products-services/financial-information/data-standards.html",
+        "supports": [
+          "SIX is the official Maintenance Agency of these currency codes under ISO 4217"
+        ]
+      }
     ]
   },
   "historical_reference": {
@@ -4921,6 +4964,138 @@
             "supports": "official quotation SVC 8.75 per USD"
           }
         ]
+      }
+    }
+  },
+  "standards_reference": {
+    "XTS": {
+      "code_role": "ISO 4217 testing code",
+      "badge": "ISO 4217 TEST CODE",
+      "title_role": "Test Code Reference",
+      "iso_designation": {
+        "text": "Codes specifically reserved for testing purposes",
+        "cites": [
+          {
+            "source": "XTS",
+            "index": 0,
+            "supports": "XTS: Codes specifically reserved for testing purposes"
+          }
+        ]
+      },
+      "claims": [
+        {
+          "text": "XTS has the ISO 4217 numeric code 963.",
+          "cites": [
+            {
+              "source": "XTS",
+              "index": 0,
+              "supports": "XTS numeric code 963"
+            }
+          ]
+        },
+        {
+          "text": "The ISO 4217 list gives XTS no minor units (N.A.).",
+          "cites": [
+            {
+              "source": "XTS",
+              "index": 0,
+              "supports": "XTS minor units N.A."
+            }
+          ]
+        },
+        {
+          "text": "The cited ISO 4217 list was published on 2026-09-17.",
+          "cites": [
+            {
+              "source": "XTS",
+              "index": 0,
+              "supports": "ISO 4217 list published 2026-09-17"
+            }
+          ]
+        },
+        {
+          "text": "SIX is the official Maintenance Agency of the currency codes under ISO 4217.",
+          "cites": [
+            {
+              "source": "XTS",
+              "index": 1,
+              "supports": "SIX is the official Maintenance Agency of these currency codes under ISO 4217"
+            }
+          ]
+        }
+      ],
+      "explanations": {
+        "what": "XTS is not money: the ISO 4217 Maintenance Agency reserves it for testing purposes.",
+        "why_exists": "A testing code gives systems a valid ISO 4217 code that does not denote real money.",
+        "not_this": "XTS is not legal tender, not a circulating currency, not a tradable asset and not an exchange-rate instrument.",
+        "no_rate": "Because XTS denotes no money, it has no exchange rate and no conversion against any currency.",
+        "implementation": "Treat XTS as a test value only; it should not appear as the currency of a real amount.",
+        "pair_role": "test code"
+      }
+    },
+    "XXX": {
+      "code_role": "ISO 4217 no-currency code",
+      "badge": "ISO 4217 NO-CURRENCY CODE",
+      "title_role": "No-Currency Code Reference",
+      "iso_designation": {
+        "text": "The codes assigned for transactions where no currency is involved",
+        "cites": [
+          {
+            "source": "XXX",
+            "index": 0,
+            "supports": "XXX: The codes assigned for transactions where no currency is involved"
+          }
+        ]
+      },
+      "claims": [
+        {
+          "text": "XXX has the ISO 4217 numeric code 999.",
+          "cites": [
+            {
+              "source": "XXX",
+              "index": 0,
+              "supports": "XXX numeric code 999"
+            }
+          ]
+        },
+        {
+          "text": "The ISO 4217 list gives XXX no minor units (N.A.).",
+          "cites": [
+            {
+              "source": "XXX",
+              "index": 0,
+              "supports": "XXX minor units N.A."
+            }
+          ]
+        },
+        {
+          "text": "The cited ISO 4217 list was published on 2026-09-17.",
+          "cites": [
+            {
+              "source": "XXX",
+              "index": 0,
+              "supports": "ISO 4217 list published 2026-09-17"
+            }
+          ]
+        },
+        {
+          "text": "SIX is the official Maintenance Agency of the currency codes under ISO 4217.",
+          "cites": [
+            {
+              "source": "XXX",
+              "index": 1,
+              "supports": "SIX is the official Maintenance Agency of these currency codes under ISO 4217"
+            }
+          ]
+        }
+      ],
+      "explanations": {
+        "what": "XXX is a semantic marker, not money: it denotes that no currency is involved in a transaction or record.",
+        "why_exists": "It lets a system state explicitly that no currency applies, instead of leaving the currency field empty or guessing one.",
+        "not_this": "XXX is not a currency, not a tradable asset, not a conversion target and not an exchange-rate instrument.",
+        "no_rate": "Because XXX denotes the absence of a currency, there is nothing to convert and no exchange rate exists.",
+        "implementation": "XXX does not mean an amount of zero in some currency; it marks that no currency is involved at all.",
+        "pair_role": "no-currency code"
       }
     }
   }

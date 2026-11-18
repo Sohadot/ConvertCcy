@@ -61,19 +61,21 @@ class FaqTruthfulnessTest(unittest.TestCase):
         self.assertNotIn(FALSE_CLAIM, page("xau-to-xts"))
 
     def test_C_unsupported_truthful_answer(self):
-        a1 = faq_ld(page("xau-to-xts"))[0][1]
-        self.assertTrue(a1.startswith("ConvertCCY does not currently have a reference rate for XAU to XTS"))
+        # SEO-A4.3: XTS/XXX pairs are standards pages now; XAU->USD stays the unsupported example
+        a1 = faq_ld(page("xau-to-usd"))[0][1]
+        self.assertTrue(a1.startswith("ConvertCCY does not currently have a reference rate for XAU to USD"))
         self.assertIn("No conversion value is shown rather than an estimate.", a1)
         self.assertIn(g.UNSUPPORTED_CODE_REASONS["XAU"], a1)
         for word in ("latest", "current rate", "live", "market rate is"):
             self.assertNotIn(word, a1)
 
-    def test_C_no_exchange_value_codes_fix_q2_q4_only(self):
+    def test_C_no_exchange_value_codes_use_standards_faq(self):
+        # SEO-A4.3 supersedes the A3.1 Q2/Q4 patch: XTS/XXX pairs carry the standards FAQ
         items = dict(faq_ld(page("xau-to-xts")))
-        self.assertTrue(items["Why does the XAU/XTS rate change?"].startswith("There is no XAU/XTS exchange rate"))
-        self.assertTrue(items["What affects the value of XAU against XTS?"].startswith("No market factor sets a value"))
-        # bank-rate FAQ is generic and true: unchanged default text
-        self.assertEqual(items["Is this the same as a bank rate?"], CONTENT["faq_defaults"][2]["a"])
+        self.assertIn("Is XTS a real currency?", items)
+        self.assertIn("Does XTS have an exchange rate?", items)
+        self.assertNotIn("Is this the same as a bank rate?", items)
+        self.assertNotIn("How much is 1 XAU in XTS?", items)
         # unsupported but real instrument (KPW): Q2/Q4 keep the default generic wording
         kpw = dict(faq_ld(page("kpw-to-usd")))
         self.assertEqual(kpw["Why does the KPW/USD rate change?"], CONTENT["faq_defaults"][1]["a"])

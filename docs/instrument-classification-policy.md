@@ -54,20 +54,18 @@ Secondary attributes: `instrument_status`, `circulation_status`, `legal_tender_s
 | special_instrument | supranational_instrument_dossier | valuation_only | issuer_published_valuation | specialized | specialized |
 | historical_currency | historical_currency_dossier | archival_only | archival_fixed_conversion_only | specialized | needs_further_evidence |
 | legacy_transition | legacy_currency_dossier | archival_only | fixed_parity_or_successor_reference | specialized | needs_further_evidence |
-| test_code | iso_standards_reference | none | no_rate | specialized | candidate_for_consolidation |
-| no_currency | iso_semantics_reference | none | no_rate | specialized | candidate_for_consolidation |
+| test_code | iso_standards_reference | none | no_rate | specialized | noindex_follow_consolidated_reference |
+| no_currency | iso_semantics_reference | none | no_rate | specialized | noindex_follow_consolidated_reference |
 
 "specialized" = `index_with_specialized_reference_role`. A pair takes the **most restrictive**
 side (`index` < specialized < `needs_further_evidence` < `candidate_for_consolidation` <
-`candidate_for_noindex`). No class defaults to `candidate_for_noindex`; this sprint changes
-no robots/canonical tags.
+`candidate_for_noindex` < `noindex_follow_consolidated_reference`). No protected class may
+default to a noindex value. `noindex_follow_consolidated_reference` is a **deployed** state
+(SEO-A4.3), not a candidate: the generator maps it to `<meta name="robots" content="noindex,follow">`
+and excludes the URL from the search sitemap.
 
 Pair cohorts (28,730): index 22,350 · specialized 2,142 · needs_further_evidence 3,564 ·
-candidate_for_consolidation 674 (every XTS/XXX pair).
-
-**XTS / XXX:** pair pages carry no information beyond the code's own semantics; a single ISO
-reference page per code is the stronger canonical target. Recommended: consolidation (A4.2),
-decided and executed in that sprint, not here.
+noindex_follow_consolidated_reference 674 (every XTS/XXX pair).
 
 ## 4. Source policy and verification registry
 
@@ -206,14 +204,54 @@ when no fixed relationship applies). H1 is unchanged. Historical/legacy hubs are
 lists as archived references. The historical gate checks every one of these surfaces against
 the resolver and against the exact ordinary template strings for the pair.
 
-## 9. Next implementation sequence
+## 9. A4.3 — XTS / XXX standards reference & pair consolidation (implemented)
 
-1. **A4.3 Test / no-currency standards reference** — XTS/XXX reference pages and the
-   consolidation decision for their 674 pair pages.
-2. **A4.4 Precious metals reference layer** — benchmark source, troy-ounce semantics.
-3. **A4.5 Institutional units layer** — XDR, CLF, UYW, XSU, XUA from issuer valuations.
-4. **A4.6 Restricted & missing fiat sources** — KPW, VED, CUP regime caveat, review-flagged
+**Semantics (registry-cited).** The ISO 4217 Maintenance Agency (SIX — "the official Maintenance
+Agency of these currency codes under ISO 4217") lists XTS 963 as "Codes specifically reserved for
+testing purposes" and XXX 999 as "The codes assigned for transactions where no currency is
+involved", both with minor units N.A. (list published 2026-09-17). These are stored in
+`verification_sources` (XTS, XXX) and `standards_reference`; designations are quoted verbatim,
+every figure is cited, and the explanatory wording carries no figures. Nothing beyond the ISO
+designation is claimed about specific testing practice.
+
+**Router.** `generate.pair_semantic_treatment()` is the single decision point:
+`standards_special` (policy converter behaviour `none`) › `historical` (`archival_only`) ›
+`ordinary_fx` / `unsupported_specialized` (snapshot coverage). `pair_rate_treatment()` derives
+from it; every surface branches on it.
+
+**Architecture decision — Option B (consolidate).** 674 pair pages (338 XTS, 338 XXX, overlap 2).
+Option A (674 indexable standards pages) would repeat one explanation 674 times with only the
+other code's name varying. Option C (a few indexable examples such as USD/XTS) adds nothing the
+hub does not already say. The two hubs are the authoritative, indexable references; pair pages
+remain as contextual references.
+
+| Concern | Decision |
+|---|---|
+| Robots | pair pages `noindex,follow` (from policy value `noindex_follow_consolidated_reference`); hubs `index,follow` |
+| Sitemap | 674 pair URLs removed (28,982 → 28,308); both hubs kept; every other entry byte-identical |
+| Canonical | self-canonical on every pair page — the pair URL is a distinct explanatory page, not a duplicate of the hub |
+| Redirects | none — a hub does not satisfy the pair URL's context (it also links the ordinary side), and redirects would break the A2 graph |
+| Pair page | no rate, converter, table rows or rate runtime; standards component (ISO designation, cited claims, why no rate, link to the hub); standards FAQ; no WebApplication; title/H1 "USD / XTS — Test Code Reference" |
+| Hubs | sections: what it means, why it exists, why no exchange rate, vs real currencies, implementation, provenance, FAQ (visible = FAQPage JSON-LD), WebPage JSON-LD; all 338 pair links kept, headed "Standards reference examples"; machine-readable `data-instrument-type`, `data-converter`, `data-rate-eligible`, `data-pair-indexability` |
+| Link graph | unchanged: every pair still linked from its two hubs (reachability 28,730, depth ≤ 3). 1,167 ordinary pages still carry 1,515 related-pair links into the cohort; removing them would rewrite those ordinary pages, so it is deferred to a later related-link pass |
+
+**Gate.** `scripts/validate_standards_special_codes.py` (Governance Gate) fails closed on any rate
+state, converter wording, resolver drift, boilerplate, WebApplication, FAQ mismatch, robots or
+canonical deviation, redirect rule, sitemap inclusion of a noindex URL, uncited claim, missing hub
+link, or generator drift. Targeted rebuild: `python3 generate.py --standards-special-only`
+(idempotent; also applies the sitemap policy).
+
+**Open questions.** Whether ordinary pages should stop linking noindex XTS/XXX pairs (related-pair
+pass); whether the BreadcrumbList label "USD to XTS" should change; how XTS/XXX are exposed in a
+future standards API.
+
+## 10. Next implementation sequence
+
+1. **A4.4 Precious metals reference layer** — benchmark source, troy-ounce semantics.
+2. **A4.5 Institutional units layer** — XDR, CLF, UYW, XSU, XUA from issuer valuations.
+3. **A4.6 Restricted & missing fiat sources** — KPW, VED, CUP regime caveat, review-flagged
    fiat (IRR, SYP, MMK, TMT, VES).
+4. **Related-link pass** — stop promoting noindex pairs from ordinary pages (deliberate churn).
 5. **Successor migration (XCG, ZWG)** and a **per-pair indexability override** for the 10
    successor pairs.
 

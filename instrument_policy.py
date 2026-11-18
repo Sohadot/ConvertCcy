@@ -208,6 +208,49 @@ def validate(doc: Dict[str, Any], currencies: Optional[Dict[str, Any]] = None,
         if r["classification_confidence"] != "high" and not r["notes"]:
             errs.append(f"{where}: non-high confidence requires notes explaining the uncertainty")
     errs.extend(_historical_reference_errors(doc))
+    errs.extend(_standards_reference_errors(doc))
+    return errs
+
+
+STANDARDS_TYPES = ("test_code", "no_currency")
+STANDARDS_EXPLANATION_KEYS = ("what", "why_exists", "not_this", "no_rate", "implementation", "pair_role")
+
+
+def _standards_reference_errors(doc: Dict[str, Any]) -> List[str]:
+    """SEO-A4.3: XTS/XXX public facts must be registry-cited; explanations carry no figures."""
+    import re as _re
+    errs: List[str] = []
+    inst = doc.get("instruments", {})
+    codes = {c for c, r in inst.items() if r.get("instrument_type") in STANDARDS_TYPES}
+    sr = doc.get("standards_reference")
+    if sr is None:
+        return ["missing standards_reference section"] if codes else []
+    if set(sr) != codes:
+        errs.append(f"standards_reference codes {sorted(sr)} != test/no-currency codes {sorted(codes)}")
+    for code, e in sr.items():
+        where = f"standards_reference.{code}"
+        for k in ("code_role", "badge", "title_role", "iso_designation", "claims", "explanations"):
+            if not e.get(k):
+                errs.append(f"{where}: missing {k}")
+        entries = [e.get("iso_designation") or {}] + list(e.get("claims") or [])
+        for k, claim in enumerate(entries):
+            sups = [_cited_supports(doc, c) for c in claim.get("cites") or []]
+            if not claim.get("text") or not sups or any(x is None for x in sups):
+                errs.append(f"{where}[{k}]: needs text and resolvable registry citations")
+                continue
+            cited = " ".join(sups)
+            if k == 0 and claim["text"] not in cited:
+                errs.append(f"{where}: ISO designation must quote the cited statement verbatim")
+            # the standard's own name is not a figure
+            for num in _re.findall(r"\d[\d,./-]*\d|\d", claim["text"].replace("ISO 4217", "ISO")):
+                if num.replace(",", "") not in cited.replace(",", ""):
+                    errs.append(f"{where}[{k}]: figure {num!r} is not in the cited source statements")
+        ex = e.get("explanations") or {}
+        if set(ex) != set(STANDARDS_EXPLANATION_KEYS):
+            errs.append(f"{where}: explanations must define exactly {list(STANDARDS_EXPLANATION_KEYS)}")
+        for k, v in ex.items():
+            if not v or _re.search(r"\d", v.replace("ISO 4217", "ISO")):
+                errs.append(f"{where}.explanations.{k}: must be non-empty policy wording without figures")
     return errs
 
 
@@ -469,6 +512,43 @@ class InstrumentPolicy:
             "claims": claims,
             "fixed_conversion": fixed,
             "unverified_note": h.get("unverified_note"),
+        }
+
+    def is_standards_special(self, code: str) -> bool:
+        return self.resolve(code)["instrument_type"] in STANDARDS_TYPES
+
+    def standards_view(self, code: str) -> Dict[str, Any]:
+        """Render-ready, registry-cited facts for an ISO 4217 special code (SEO-A4.3)."""
+        code = code.upper()
+        r = self.doc["instruments"][code]
+        if r["instrument_type"] not in STANDARDS_TYPES:
+            raise ValueError(f"{code} is not an ISO 4217 test/no-currency code")
+        e = self.doc["standards_reference"][code]
+        reg = self.doc.get("verification_sources", {})
+
+        def sources(cites):
+            out = []
+            for c in cites:
+                if _cited_supports(self.doc, c) is None:
+                    raise ClassificationError(f"{code}: unresolvable citation {c}")
+                ent = reg[c["source"]][c["index"]]
+                item = {"authority": ent["authority"], "url": ent["url"]}
+                if item not in out:
+                    out.append(item)
+            return out
+
+        return {
+            "code": code,
+            "name": self.currencies.get(code, {}).get("display_name", code),
+            "instrument_type": r["instrument_type"],
+            "code_role": e["code_role"],
+            "badge": e["badge"],
+            "title_role": e["title_role"],
+            "iso_designation": {"text": e["iso_designation"]["text"], "sources": sources(e["iso_designation"]["cites"])},
+            "claims": [{"text": c["text"], "sources": sources(c["cites"])} for c in e["claims"]],
+            "explanations": dict(e["explanations"]),
+            "pair_indexability": self.doc["type_policies"][r["instrument_type"]]["pair_indexability"],
+            "hub_indexability": self.doc["type_policies"][r["instrument_type"]]["hub_indexability"],
         }
 
     def is_ordinary_converter(self, code: str) -> bool:

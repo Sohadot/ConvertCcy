@@ -173,7 +173,7 @@ class RegenerationGovernanceTest(unittest.TestCase):
         self.assertEqual(len(hist), 2296)
         codes = {c for c in pol.codes() if pol.is_historical(c)}
         self.assertEqual(codes, {"ANG", "BGN", "CUC", "HRK", "SLL", "SVC", "ZWL"})
-        self.assertEqual(g.pair_rate_treatment("XTS", "BGN", SNAP), "unsupported")  # XTS governs
+        self.assertEqual(g.pair_rate_treatment("XTS", "BGN", SNAP), "standards_special")  # XTS governs
 
     def test_gate_passes(self):
         out = subprocess.run([sys.executable, str(REPO / "scripts" / "validate_historical_instruments.py")],

@@ -498,7 +498,7 @@ def pair_breadcrumb_jsonld(tokens: Dict[str, str]) -> str:
         ]
     }, ensure_ascii=False, indent=2)
 
-def pair_webpage_jsonld(tokens: Dict[str, str], faq_items: List[Dict[str, str]], archival: bool = False) -> str:
+def pair_webpage_jsonld(tokens: Dict[str, str], faq_items: List[Dict[str, str]], archival: Any = False) -> str:
     graph = [
         {
             "@type": "WebPage",
@@ -925,7 +925,10 @@ def unsupported_reason(from_code: str, to_code: str, snapshot: Dict[str, Any]) -
 def static_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
     """Rate banner + freshness/source note + converter (between STATIC-RATE markers)."""
     F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
-    if pair_rate_treatment(F, T, snapshot) == "historical":
+    treatment = pair_rate_treatment(F, T, snapshot)
+    if treatment == "standards_special":
+        return standards_rate_region_html(tokens)
+    if treatment == "historical":
         return historical_rate_region_html(tokens, snapshot)
     rev_href = f'/pages/{T.lower()}-to-{F.lower()}.html'
     sr = static_pair_rate(F, T, snapshot)
@@ -994,7 +997,10 @@ def static_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], sna
 def static_table_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
     """Static conversion table card (between STATIC-RATE-TABLE markers)."""
     F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
-    if pair_rate_treatment(F, T, snapshot) == "historical":
+    treatment = pair_rate_treatment(F, T, snapshot)
+    if treatment == "standards_special":
+        return standards_table_region_html(tokens)
+    if treatment == "historical":
         return historical_table_region_html(tokens, snapshot)
     amounts = profile.get("static_amounts") or DEFAULT_STATIC_AMOUNTS
     sr = static_pair_rate(F, T, snapshot)
@@ -1033,7 +1039,7 @@ def rate_script_region_html(from_code: Optional[str] = None, to_code: Optional[s
                             snapshot: Optional[Dict[str, Any]] = None) -> str:
     """Rate script tag. Historical/legacy pairs get NO script: their values must
     never enter the live/snapshot converter lifecycle (SEO-A4.2)."""
-    if from_code and to_code and pair_rate_treatment(from_code, to_code, snapshot) == "historical":
+    if from_code and to_code and pair_rate_treatment(from_code, to_code, snapshot) in SPECIAL_TREATMENTS:
         return f"{RATE_SCRIPT_START}\n{RATE_SCRIPT_END}"
     return f'{RATE_SCRIPT_START}\n<script src="{RATE_SCRIPT_SRC}" defer></script>\n{RATE_SCRIPT_END}'
 
@@ -1099,12 +1105,35 @@ def instrument_policy_layer():
     return _POLICY_LAYER
 
 
-def pair_rate_treatment(from_code: str, to_code: str, snapshot: Optional[Dict[str, Any]] = None) -> str:
-    """'historical' | 'snapshot' | 'unsupported' — policy first, then snapshot coverage."""
-    if instrument_policy_layer().resolve_pair(from_code, to_code)["converter_behavior"] == "archival_only":
+def pair_semantic_treatment(from_code: str, to_code: str, snapshot: Optional[Dict[str, Any]] = None) -> str:
+    """SEO-A4.3 semantic-treatment router — the single decision point.
+
+    'standards_special'      a side is an ISO 4217 test/no-currency code (converter behaviour none)
+    'historical'             a side is historical/legacy (archival_only), unless the above governs
+    'ordinary_fx'            snapshot-covered pair rendered by the A3 rate logic
+    'unsupported_specialized' no rate source yet (metals, units, restricted fiat, …)
+    Policy (instrument_policy.resolve_pair) decides first; snapshot coverage only
+    distinguishes the last two.
+    """
+    behaviour = instrument_policy_layer().resolve_pair(from_code, to_code)["converter_behavior"]
+    if behaviour == "none":
+        return "standards_special"
+    if behaviour == "archival_only":
         return "historical"
     snapshot = snapshot if snapshot is not None else load_rate_snapshot()
-    return "snapshot" if static_pair_rate(from_code, to_code, snapshot) is not None else "unsupported"
+    return "ordinary_fx" if static_pair_rate(from_code, to_code, snapshot) is not None else "unsupported_specialized"
+
+
+_RATE_TREATMENT = {"ordinary_fx": "snapshot", "unsupported_specialized": "unsupported",
+                   "historical": "historical", "standards_special": "standards_special"}
+
+
+def pair_rate_treatment(from_code: str, to_code: str, snapshot: Optional[Dict[str, Any]] = None) -> str:
+    """'snapshot' | 'unsupported' | 'historical' | 'standards_special' (derived from the router)."""
+    return _RATE_TREATMENT[pair_semantic_treatment(from_code, to_code, snapshot)]
+
+
+SPECIAL_TREATMENTS = ("historical", "standards_special")
 
 
 HISTORICAL_VALUE_LABELS = {
@@ -1344,9 +1373,11 @@ def historical_semantic_state(tokens: Dict[str, str]) -> Dict[str, Any]:
     return {"sides": sides, "fixed": fc, "value_type": value_type, "status_word": status_word}
 
 
-def pair_metadata(tokens: Dict[str, str], archival: bool = False, brand: str = SITE_NAME) -> Dict[str, str]:
+def pair_metadata(tokens: Dict[str, str], archival: Any = False, brand: str = SITE_NAME) -> Dict[str, str]:
     """Single source for title / description / WebPage schema name & description."""
     F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    if archival == "standards_special":
+        return standards_pair_metadata(tokens, brand)
     if not archival:
         return {
             "title": f"{F} to {T} Converter | {brand}",
@@ -1460,10 +1491,198 @@ def apply_historical_semantics(page: str, tokens: Dict[str, str], content: Dict[
     return page
 
 
+# ---- SEO-A4.3: ISO 4217 standards-special codes (XTS, XXX) -------------------
+#
+# Pairs whose policy converter behaviour is "none" (instrument types test_code /
+# no_currency) are contextual standards references: no rate, no converter, no
+# rate runtime, no WebApplication. Robots follow the deployed policy value
+# (noindex_follow_consolidated_reference -> "noindex,follow"); canonical stays
+# self-referential; URLs are kept (no redirects). The /currencies/<code>.html
+# hub is the authoritative, indexable reference. Facts come only from
+# instrument_policy.standards_view() (registry-cited); wording varies by
+# instrument type, never by code name.
+
+ROBOTS_BY_PAIR_INDEXABILITY = {"noindex_follow_consolidated_reference": "noindex,follow"}
+INDEXABLE_ROBOTS = "index,follow,max-image-preview:large"
+
+STANDARDS_FAQ = {
+    "test_code": [
+        ("Is {S} a real currency?", "No. In the ISO 4217 code list maintained by SIX, {S} is listed as “{designation}”. {not_this}"),
+        ("What is {S} used for?", "{why_exists} {implementation}"),
+        ("Does {S} have an exchange rate?", "{no_rate}"),
+    ],
+    "no_currency": [
+        ("Is {S} a currency?", "No. In the ISO 4217 code list maintained by SIX, {S} is listed as “{designation}”. {not_this}"),
+        ("What does {S} mean in ISO 4217?", "{what} {implementation}"),
+        ("Can {S} be converted into another currency?", "{no_rate}"),
+    ],
+}
+
+
+def _standards_sides(F: str, T: str) -> List[Dict[str, Any]]:
+    pol = instrument_policy_layer()
+    return [pol.standards_view(c) for c in (F, T) if pol.is_standards_special(c)]
+
+
+def _standards_role(sides: List[Dict[str, Any]]) -> str:
+    return sides[0]["title_role"] if len(sides) == 1 else "ISO 4217 Special Codes Reference"
+
+
+def standards_pair_metadata(tokens: Dict[str, str], brand: str = SITE_NAME) -> Dict[str, str]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _standards_sides(F, T)
+    title = f"{F} / {T} — {_standards_role(sides)} | {brand}"
+    reasons = " and ".join(f'{sv["code"]} is the {sv["code_role"]} (“{sv["iso_designation"]["text"]}”)' for sv in sides)
+    description = (f"Reference explaining why {F}/{T} has no exchange rate: {reasons}, not a currency. "
+                   f"See the {' and '.join(sv['code'] for sv in sides)} standards reference.")
+    return {"title": title, "description": description, "schema_name": title, "schema_description": description}
+
+
+def _standards_block(sv: Dict[str, Any]) -> str:
+    links = ", ".join(f'<a href="{esc(s["url"])}">{esc(s["authority"])}</a>' for s in sv["iso_designation"]["sources"])
+    lines = [f'<div class="pj-line">ISO 4217 designation: <span data-claim>{esc(sv["iso_designation"]["text"])}</span>'
+             f' <span class="pj-muted">— {links}</span></div>']
+    for c in sv["claims"]:
+        lines.append(f'<div class="pj-line"><span data-claim>{esc(c["text"])}</span> <span class="pj-muted">— '
+                     + ", ".join(f'<a href="{esc(s["url"])}">{esc(s["authority"])}</a>' for s in c["sources"]) + "</span></div>")
+    lines.append(f'<div class="pj-line">{esc(sv["explanations"]["no_rate"])}</div>')
+    lines.append(f'<div class="pj-line">Authoritative reference: <a href="{currency_hub_href(sv["code"])}">'
+                 f'{esc(sv["code"])} standards reference →</a></div>')
+    body = "\n          ".join(lines)
+    return f"""
+        <div class="pj-block pj-plain" data-standards-code="{esc(sv["code"])}">
+          <div class="pj-head"><span class="pj-badge">{esc(sv["badge"])}</span> {esc(sv["code"])} — {esc(sv["name"])}</div>
+          {body}
+        </div>"""
+
+
+def standards_rate_region_html(tokens: Dict[str, str]) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _standards_sides(F, T)
+    badge = " / ".join(sv["badge"] for sv in sides)
+    sub = "; ".join(f'{sv["code"]} is the {sv["code_role"]} — not a currency' for sv in sides)
+    hubs = " and ".join(f'<a href="{currency_hub_href(sv["code"])}">{esc(sv["code"])} standards reference</a>' for sv in sides)
+    return f"""{STATIC_RATE_START}
+  <div class="rate-banner" id="rate-root" data-from="{esc(F)}" data-to="{esc(T)}" data-mode="standards" data-value-type="no_exchange_relationship">
+    <div>
+      <div class="rate-main" id="live-rate">No exchange-rate relationship</div>
+      <div class="rate-sub" id="rate-sub">{esc(sub)}</div>
+    </div>
+    <div class="rate-badge snap" id="rate-badge">{esc(badge)}</div>
+  </div>
+  <p class="rate-note" id="rate-source">{esc(F)} / {esc(T)} is not a valid exchange-rate relationship, so ConvertCCY shows no rate and offers no conversion. Authoritative explanation: {hubs}.</p>
+
+  <div class="card">
+    <div class="card-title">ISO 4217 Standards Reference</div>
+    <div class="pj-grid">{"".join(_standards_block(sv) for sv in sides)}
+    </div>
+  </div>
+{STATIC_RATE_END}"""
+
+
+def standards_table_region_html(tokens: Dict[str, str]) -> str:
+    sides = _standards_sides(tokens["FROM_CODE"], tokens["TO_CODE"])
+    why = " ".join(sv["explanations"]["no_rate"] for sv in sides)
+    return f"""{STATIC_TABLE_START}
+    <div class="card">
+      <p class="result-info" id="table-source">No conversion table: {esc(why)}</p>
+    </div>
+{STATIC_TABLE_END}"""
+
+
+def _standards_faq_core(sv: Dict[str, Any]) -> List[Dict[str, str]]:
+    ex = sv["explanations"]
+    fill = {"S": sv["code"], "designation": sv["iso_designation"]["text"], **ex}
+    return [{"q": q.format(**fill), "a": a.format(**fill)} for q, a in STANDARDS_FAQ[sv["instrument_type"]]]
+
+
+def standards_faq_items(tokens: Dict[str, str]) -> List[Dict[str, str]]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sv = _standards_sides(F, T)[0]
+    items = _standards_faq_core(sv)
+    items.append({"q": f"Why does this {F}/{T} page exist?",
+                  "a": (f"ConvertCCY covers every code in its ISO 4217 set, so a {F}/{T} page exists for completeness. "
+                        f"It is a contextual reference only and is not indexed; the authoritative explanation is the "
+                        f"{sv['code']} standards reference.")})
+    return items
+
+
+def standards_overview_html(tokens: Dict[str, str]) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    pol = instrument_policy_layer()
+    sides = _standards_sides(F, T)
+    paras = [f'{esc(sv["code"])} ({esc(sv["name"])}) is the {esc(sv["code_role"])}: {esc(sv["explanations"]["what"])}'
+             for sv in sides]
+    for other in (F, T):
+        if not pol.is_standards_special(other):
+            paras.append(f'{esc(other)} ({esc(pol.resolve(other)["name"])}) is a separate code; see its '
+                         f'<a href="{currency_hub_href(other)}">{esc(other)} reference</a> for its own pairs.')
+    paras.append(f"This page is a contextual reference: the {' and '.join(esc(sv['code']) for sv in sides)} "
+                 f"standards reference is authoritative, and this page is not indexed.")
+    body = "\n".join(f"    <p>{p}</p>" for p in paras)
+    return f"""  <section class="section">
+    <div class="sec-title">Pair Overview</div>
+    <div class="sec-h2">{esc(F)} / {esc(T)} Standards Reference</div>
+{body}
+  </section>"""
+
+
+STANDARDS_EDUCATION_HTML = """  <section class="section">
+    <div class="sec-title">Reading an ISO 4217 Special Code</div>
+    <div class="card">
+      <p>ISO 4217 includes a few codes that are not currencies. A testing code and a no-currency code are standards markers: they denote no money, so no exchange rate, conversion or market price exists for them.</p>
+      <p>The authoritative explanation of each code is on its standards reference page.</p>
+    </div>
+  </section>
+"""
+
+_ROBOTS_RE = re.compile(r'<meta name="robots" content="[^"]*">')
+_H1_RE = re.compile(r"(?s)<h1>.*?</h1>")
+
+
+def pair_robots(from_code: str, to_code: str) -> str:
+    return ROBOTS_BY_PAIR_INDEXABILITY.get(instrument_policy_layer().resolve_pair(from_code, to_code)["pair_indexability"],
+                                           INDEXABLE_ROBOTS)
+
+
+def apply_standards_semantics(page: str, tokens: Dict[str, str], content: Dict[str, Any]) -> str:
+    """Rewrite standards-special pair metadata, robots and page semantics. Idempotent; fails closed."""
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    brand = content.get("site_copy", {}).get("brand_name", SITE_NAME)
+    meta = standards_pair_metadata(tokens, brand)
+    sides = _standards_sides(F, T)
+    for rx, tpl in _META_PATTERNS:
+        if len(rx.findall(page)) != 1:
+            raise ValueError(f"standards metadata: {rx.pattern} not found exactly once")
+        page = rx.sub(lambda _m: tpl.format(title=esc(meta["title"]), description=esc(meta["description"])), page)
+    for rx, new, label in ((_ROBOTS_RE, f'<meta name="robots" content="{pair_robots(F, T)}">', "robots"),
+                           (_H1_RE, f"<h1>{esc(F)} / {esc(T)} <em>{esc(_standards_role(sides))}</em></h1>", "h1"),
+                           (_SUBTITLE_RE, '<p class="pair-subtitle">ISO 4217 standards reference</p>', "subtitle")):
+        if len(rx.findall(page)) != 1:
+            raise ValueError(f"standards {label} anchor not found exactly once")
+        page = rx.sub(lambda _m, v=new: v, page)
+    if page.count(_OVERVIEW_START) != 1 or page.count(_PASSAGE_START) != 1 or page.count(STATIC_TABLE_START) != 1:
+        raise ValueError("standards body anchors not found exactly once")
+    i = page.index(_OVERVIEW_START)
+    j = page.index("\n  </section>", i) + len("\n  </section>")
+    page = page[:i] + standards_overview_html(tokens) + page[j:]
+    page = _MACRO_RE.sub("", page)
+    p = page.index(_PASSAGE_START)
+    edu_start = page.index("\n  </section>", p) + len("\n  </section>")
+    table_start = page.rindex('\n  <section class="section">\n', 0, page.index(STATIC_TABLE_START))
+    page = page[:edu_start] + "\n" + STANDARDS_EDUCATION_HTML + page[table_start:]
+    t0 = page.rindex('\n  <section class="section">\n', 0, page.index(STATIC_TABLE_START)) + 1
+    t1 = page.index(STATIC_TABLE_START)
+    page = page[:t0] + '  <section class="section">\n    <div class="sec-title">Conversion Status</div>\n' + page[t1:]
+    items = standards_faq_items(tokens)
+    page = replace_faq_regions(page, items)
+    return replace_webpage_jsonld(page, tokens, items, "standards_special")
+
+
 WEBPAGE_JSONLD_START = '<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@graph": ['
 
 
-def replace_webpage_jsonld(page: str, tokens: Dict[str, str], faq_items: List[Dict[str, str]], archival: bool) -> str:
+def replace_webpage_jsonld(page: str, tokens: Dict[str, str], faq_items: List[Dict[str, str]], archival: Any) -> str:
     if page.count(WEBPAGE_JSONLD_START) != 1:
         raise ValueError(f"WebPage JSON-LD: anchor found {page.count(WEBPAGE_JSONLD_START)} times (need exactly 1)")
     i = page.index(WEBPAGE_JSONLD_START) + len('<script type="application/ld+json">\n')
@@ -1514,6 +1733,55 @@ def refresh_historical_instruments(
     return changed, unchanged, hubs
 
 
+def refresh_standards_special(
+    currencies: Dict[str, Dict[str, Any]],
+    content: Dict[str, Any],
+    pair_profiles: Dict[str, Dict[str, Any]],
+) -> Tuple[int, int, int, int]:
+    """SEO-A4.3: rewrite ONLY pairs whose policy treatment is standards_special,
+    the hubs of ISO 4217 test/no-currency codes, and the sitemap entries the
+    deployed robots policy requires. Cohort comes from the policy layer."""
+    snapshot = load_rate_snapshot()
+    pol = instrument_policy_layer()
+    changed = unchanged = 0
+    for profile in pair_profiles.values():
+        a, b = profile["from_code"], profile["to_code"]
+        if a == b or a not in currencies or b not in currencies:
+            continue
+        if pair_rate_treatment(a, b, snapshot) != "standards_special":
+            continue
+        tokens = make_pair_tokens(profile, currencies)
+        path = PAGES_DIR / f'{profile["pair_slug"]}.html'
+        old = path.read_text(encoding="utf-8")
+        new = replace_static_rate_regions(old, profile, tokens, snapshot)
+        new = apply_standards_semantics(new, tokens, content)
+        if new != old:
+            write_text(path, new)
+            changed += 1
+        else:
+            unchanged += 1
+    gov_map = load_governed_currency_map()
+    hubs = 0
+    hub_paths: Set[str] = set()
+    for code in currencies:
+        if pol.is_standards_special(code):
+            rel = currency_hub_href(code).lstrip("/")
+            path = BASE_DIR / rel
+            html_doc = build_currency_hub_page(code, currencies, gov_map)
+            if not path.exists() or path.read_text(encoding="utf-8") != html_doc:
+                write_text(path, html_doc)
+                hubs += 1
+                hub_paths.add(rel)
+    sitemap_path = BASE_DIR / "sitemap.xml"
+    old_xml = sitemap_path.read_text(encoding="utf-8")
+    xml, removed, refreshed = apply_sitemap_policy(old_xml, pair_profiles, refresh_paths=hub_paths)
+    if xml != old_xml:
+        write_text(sitemap_path, xml)
+    print(f"Standards special: {changed} pair pages changed, {unchanged} unchanged, {hubs} hubs changed; "
+          f"sitemap: {len(removed)} noindex URLs removed, {len(refreshed)} lastmods refreshed")
+    return changed, unchanged, hubs, len(removed)
+
+
 # ---- SEO-A3.1: rate-aware FAQ truthfulness ----------------------------------
 #
 # Support status comes ONLY from static_pair_rate() (the validated snapshot).
@@ -1535,7 +1803,10 @@ NO_EXCHANGE_VALUE_TYPES = {"test_code", "no_currency"}
 def rate_aware_faq_items(items: List[Dict[str, str]], tokens: Dict[str, str],
                          snapshot: Dict[str, Any], currencies: Dict[str, Dict[str, Any]]) -> List[Dict[str, str]]:
     F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
-    if pair_rate_treatment(F, T, snapshot) == "historical":
+    treatment = pair_rate_treatment(F, T, snapshot)
+    if treatment == "standards_special":
+        return standards_faq_items(tokens)
+    if treatment == "historical":
         return historical_faq_items(tokens, snapshot)
     if static_pair_rate(F, T, snapshot) is not None:
         return items
@@ -1797,14 +2068,15 @@ def _build_pair_page_base(profile: Dict[str, Any], currencies: Dict[str, Dict[st
     faq_items = rate_aware_faq_items(build_faq_items(profile, content, tokens), tokens, snapshot, currencies)
 
     canonical = f'{BASE_URL}/pages/{tokens["PAIR_SLUG"]}.html'
-    _meta = pair_metadata(tokens, pair_rate_treatment(tokens["FROM_CODE"], tokens["TO_CODE"], snapshot) == "historical", brand)
+    _treatment = pair_rate_treatment(tokens["FROM_CODE"], tokens["TO_CODE"], snapshot)
+    _meta = pair_metadata(tokens, _treatment if _treatment in SPECIAL_TREATMENTS else False, brand)
     title = _meta["title"]
     description = _meta["description"]
     navigation_html = pair_navigation_html(profile["from_code"], profile["to_code"], all_codes, importance)
     static_rate_html = static_rate_region_html(profile, tokens, snapshot)
     static_table_html = static_table_region_html(profile, tokens, snapshot)
     rate_script_html = rate_script_region_html(tokens["FROM_CODE"], tokens["TO_CODE"], snapshot)
-    archival = pair_rate_treatment(tokens["FROM_CODE"], tokens["TO_CODE"], snapshot) == "historical"
+    archival = _treatment if _treatment in SPECIAL_TREATMENTS else False
     passage_section = build_currency_passage_section(profile, currencies, tokens, gov_map)
 
     faq_block_html = faq_items_html(faq_items)
@@ -2047,8 +2319,11 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
     snapshot = snapshot if snapshot is not None else load_rate_snapshot()
     page = _build_pair_page_base(profile, currencies, content, all_codes, gov_map, importance, snapshot)
     tokens = make_pair_tokens(profile, currencies)
-    if pair_rate_treatment(tokens["FROM_CODE"], tokens["TO_CODE"], snapshot) == "historical":
+    treatment = pair_rate_treatment(tokens["FROM_CODE"], tokens["TO_CODE"], snapshot)
+    if treatment == "historical":
         page = apply_historical_semantics(page, tokens, content)
+    elif treatment == "standards_special":
+        page = apply_standards_semantics(page, tokens, content)
     return page
 
 
@@ -2214,6 +2489,52 @@ def build_currency_hub_page(
                        f'The pair references below are archival: none presents a current {esc(code)} market rate.</p>')
         from_heading = f"Archived {esc(code)} pair references"
         to_heading = f"Archived pair references into {esc(code)}"
+    standards_html = ""
+    extra_jsonld = ""
+    h1_text = f"{esc(name)} ({esc(code)})"
+    if pol.is_standards_special(code):
+        # SEO-A4.3: authoritative, indexable ISO 4217 standards reference for this code.
+        sv = pol.standards_view(code)
+        ex = sv["explanations"]
+        role = sv["code_role"]
+        role_title = " ".join(w if (w.isupper() or w[0].isdigit()) else "-".join(x.capitalize() for x in w.split("-"))
+                              for w in role.split())
+        title = f"{code} — ISO 4217 {sv['title_role']} | {SITE_NAME}"
+        description = (f"Standards reference for {code}: the {role} (“{sv['iso_designation']['text']}”). "
+                       f"What it means, why it has no exchange rate, implementation notes and ISO 4217 provenance.")
+        h1_text = f"{esc(code)} — {esc(role_title)}"
+        def src(sources):
+            return ", ".join(f'<a href="{esc(x["url"])}">{esc(x["authority"])}</a>' for x in sources)
+        faq = _standards_faq_core(sv) + [{
+            "q": f"Why does ConvertCCY list {code} pair pages?",
+            "a": (f"ConvertCCY covers every code in its ISO 4217 set, so pair pages exist for completeness. They are "
+                  f"contextual references that are not indexed; this page is the authoritative {code} reference.")}]
+        faq_html = "".join(f'\n    <div class="hub-faq"><h3>{esc(i["q"])}</h3><p>{esc(i["a"])}</p></div>' for i in faq)
+        claims = "".join(f'\n      <li><span data-claim>{esc(c["text"])}</span> — {src(c["sources"])}</li>' for c in sv["claims"])
+        sections = [
+            (f"What {esc(code)} means", f'<p>ISO 4217 designation: <span data-claim>“{esc(sv["iso_designation"]["text"])}”</span> — '
+                                         f'{src(sv["iso_designation"]["sources"])}.</p>\n    <p>{esc(ex["what"])}</p>'),
+            (f"Why {esc(code)} exists", f"<p>{esc(ex['why_exists'])}</p>"),
+            (f"Why {esc(code)} has no exchange rate", f"<p>{esc(ex['no_rate'])}</p>"),
+            (f"{esc(code)} vs real currencies", f"<p>{esc(ex['not_this'])}</p>"),
+            ("Implementation considerations", f"<p>{esc(ex['implementation'])}</p>"),
+            ("Source and standards provenance", f"<ul class=\"hub-sources\">{claims}\n    </ul>"),
+            (f"{esc(code)} FAQ", faq_html.lstrip("\n")),
+        ]
+        standards_html = "".join(f"\n\n  <section class=\"hub-std\">\n    <h2>{h}</h2>\n    {b}\n  </section>" for h, b in sections)
+        status = (f'\n  <p class="hub-rules" data-instrument-type="{esc(sv["instrument_type"])}" data-converter="none" '
+                  f'data-rate-eligible="false" data-pair-indexability="{esc(sv["pair_indexability"])}">'
+                  f"Standards code · not a currency · no exchange rate · no conversion.</p>")
+        rules_html += status
+        from_heading = f"Standards reference examples: {esc(code)} with other codes"
+        to_heading = f"Standards reference examples: other codes with {esc(code)}"
+        webpage = json.dumps({"@context": "https://schema.org", "@type": "WebPage", "name": title,
+                              "url": canonical, "description": description}, ensure_ascii=False, indent=2)
+        faq_ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": i["q"], "acceptedAnswer": {"@type": "Answer", "text": i["a"]}} for i in faq]},
+            ensure_ascii=False, indent=2)
+        extra_jsonld = (f'\n\n<script type="application/ld+json">\n{webpage}\n</script>'
+                        f'\n\n<script type="application/ld+json">\n{faq_ld}\n</script>')
 
     def item(a: str, b: str, label_code: str) -> str:
         other_name = currencies.get(label_code, {}).get("name", label_code)
@@ -2252,7 +2573,7 @@ def build_currency_hub_page(
 
 <script type="application/ld+json">
 {breadcrumb}
-</script>
+</script>{extra_jsonld}
 
 <style>
 body{{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f7f7f5;color:#111;line-height:1.7;margin:0}}
@@ -2279,8 +2600,8 @@ footer a{{color:#777}}
 <nav><a href="/">{SITE_NAME}</a><a href="/currencies.html">Currencies</a></nav>
 <div class="container">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="/currencies.html">Currencies</a> › {esc(code)}</div>
-  <h1>{esc(name)} ({esc(code)})</h1>
-  <p class="hub-ident">{ident}</p>{rules_html}
+  <h1>{h1_text}</h1>
+  <p class="hub-ident">{ident}</p>{rules_html}{standards_html}
 
   <section>
     <h2>{from_heading}</h2>
@@ -2442,9 +2763,57 @@ def sitemap_entries(pair_profiles: Dict[str, Dict[str, Any]]) -> List[Tuple[str,
     add_dir("api", "*.html")
 
     for profile in sorted(pair_profiles.values(), key=lambda p: p["pair_slug"]):
+        if not pair_in_search_sitemap(profile["from_code"], profile["to_code"]):
+            continue  # SEO-A4.3: noindex pages never belong in the search sitemap
         slug = profile["pair_slug"]
         entries.append((f"{BASE_URL}/pages/{slug}.html", f"pages/{slug}.html"))
     return entries
+
+
+def pair_in_search_sitemap(from_code: str, to_code: str) -> bool:
+    """Only pairs whose deployed policy keeps them indexable are sitemap entries."""
+    return pair_robots(from_code, to_code) == INDEXABLE_ROBOTS
+
+
+def apply_sitemap_policy(
+    existing_xml: str,
+    pair_profiles: Dict[str, Dict[str, Any]],
+    *,
+    refresh_paths: Optional[Set[str]] = None,
+    history_dates: Optional[Dict[str, str]] = None,
+    dirty_paths: Optional[Set[str]] = None,
+    today: Optional[str] = None,
+) -> Tuple[str, List[str], List[str]]:
+    """Remove pair URLs that policy excludes (noindex), refresh lastmod only for
+    `refresh_paths` (regenerated files), add missing URLs; every other entry is
+    kept byte-for-byte. Returns (xml, removed_urls, refreshed_urls)."""
+    if history_dates is None or dirty_paths is None:
+        history_dates, dirty_paths, today_iso, _ = build_git_content_lastmod_index(BASE_DIR, today=today)
+    else:
+        today_iso = today if today is not None else iso_today()
+    excluded = {f"{BASE_URL}/pages/{p['pair_slug']}.html" for p in pair_profiles.values()
+                if p["from_code"] != p["to_code"] and not pair_in_search_sitemap(p["from_code"], p["to_code"])}
+    removed: List[str] = []
+    refreshed: List[str] = []
+    refresh_urls = {f"{BASE_URL}/{r}": r for r in (refresh_paths or set())}
+
+    def edit(m):
+        loc = m.group(1)
+        if loc in excluded:
+            removed.append(loc)
+            return ""
+        if loc in refresh_urls:
+            lastmod = resolve_content_lastmod(refresh_urls[loc], history_dates or {}, dirty_paths or set(), today_iso)
+            block = f"  <url>\n    <loc>{loc}</loc>\n" + (f"    <lastmod>{lastmod}</lastmod>\n" if lastmod else "") + "  </url>\n"
+            if block != m.group(0):
+                refreshed.append(loc)
+            return block
+        return m.group(0)
+
+    pruned = _SITEMAP_URL_BLOCK_RE.sub(edit, existing_xml)
+    xml, _added = merge_sitemap_additively(pruned, pair_profiles, history_dates=history_dates,
+                                           dirty_paths=dirty_paths, today=today_iso)
+    return xml, removed, refreshed
 
 
 def build_sitemap(
@@ -2782,6 +3151,15 @@ def main():
         ),
     )
     parser.add_argument(
+        "--standards-special-only",
+        action="store_true",
+        help=(
+            "SEO-A4.3: rewrite only pairs whose policy treatment is standards_special "
+            "(ISO 4217 test/no-currency codes), their hubs, and the sitemap entries the "
+            "deployed noindex policy requires."
+        ),
+    )
+    parser.add_argument(
         "--historical-instruments-only",
         action="store_true",
         help=(
@@ -2792,7 +3170,8 @@ def main():
     )
     args = parser.parse_args()
     only_currencies = parse_only_currencies(args.only_currency)
-    modes = (args.navigation_only, args.static_rates_only, args.faq_only, args.historical_instruments_only, only_currencies)
+    modes = (args.navigation_only, args.static_rates_only, args.faq_only, args.historical_instruments_only,
+             args.standards_special_only, only_currencies)
     if sum(bool(x) for x in modes) > 1:
         parser.error("--navigation-only, --static-rates-only, --faq-only, --historical-instruments-only and --only-currency are mutually exclusive")
 
@@ -2819,6 +3198,11 @@ def main():
             "Support pages and sitemap.xml intentionally left unchanged "
             "(pair-page URLs are stable, so the sitemap does not move)."
         )
+        return
+
+    if args.standards_special_only:
+        refresh_standards_special(currencies, content, pair_profiles)
+        print("\nStandards-special-only build complete.")
         return
 
     if args.historical_instruments_only:

@@ -341,7 +341,7 @@
     "iso_4217_maintenance_agency"
    ],
    "hub_indexability": "index_with_specialized_reference_role",
-   "pair_indexability": "candidate_for_consolidation",
+   "pair_indexability": "noindex_follow_consolidated_reference",
    "commercial_role": [
     "standards_reference_api",
     "ai_retrieval_corpus"
@@ -359,7 +359,7 @@
     "iso_4217_maintenance_agency"
    ],
    "hub_indexability": "index_with_specialized_reference_role",
-   "pair_indexability": "candidate_for_consolidation",
+   "pair_indexability": "noindex_follow_consolidated_reference",
    "commercial_role": [
     "standards_reference_api",
     "ai_retrieval_corpus"
@@ -4624,7 +4624,7 @@
     "iso_4217_maintenance_agency"
    ],
    "hub_indexability": "index_with_specialized_reference_role",
-   "pair_indexability": "candidate_for_consolidation",
+   "pair_indexability": "noindex_follow_consolidated_reference",
    "commercial_role": [
     "standards_reference_api",
     "ai_retrieval_corpus"
@@ -4670,7 +4670,7 @@
     "iso_4217_maintenance_agency"
    ],
    "hub_indexability": "index_with_specialized_reference_role",
-   "pair_indexability": "candidate_for_consolidation",
+   "pair_indexability": "noindex_follow_consolidated_reference",
    "commercial_role": [
     "standards_reference_api",
     "ai_retrieval_corpus"
@@ -4793,10 +4793,10 @@
  "pair_cohorts": {
   "total_directed_pairs": 28730,
   "by_pair_indexability": {
-   "candidate_for_consolidation": 674,
    "index": 22350,
    "index_with_specialized_reference_role": 2142,
-   "needs_further_evidence": 3564
+   "needs_further_evidence": 3564,
+   "noindex_follow_consolidated_reference": 674
   },
   "by_converter_behavior": {
    "archival_only": 2296,

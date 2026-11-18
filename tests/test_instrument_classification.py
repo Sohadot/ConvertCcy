@@ -111,7 +111,7 @@ class ResolutionTest(unittest.TestCase):
     def test_J_pair_resolution_most_restrictive(self):
         self.assertEqual(POLICY.resolve_pair("USD", "EUR")["pair_indexability"], "index")
         self.assertEqual(POLICY.resolve_pair("USD", "XAU")["pair_indexability"], "index_with_specialized_reference_role")
-        self.assertEqual(POLICY.resolve_pair("XAU", "XTS")["pair_indexability"], "candidate_for_consolidation")
+        self.assertEqual(POLICY.resolve_pair("XAU", "XTS")["pair_indexability"], "noindex_follow_consolidated_reference")
         p = POLICY.resolve_pair("HRK", "USD")
         self.assertEqual((p["converter_behavior"], p["governing_side"]), ("archival_only", "HRK"))
         cohorts = json.loads(ip.MATRIX_FILE.read_text())["pair_cohorts"]
