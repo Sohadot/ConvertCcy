@@ -10,7 +10,8 @@
     ],
     "fact_policy": "Facts marked verification_status=requires_source_verification, and every code with classification_confidence below 'high', must be source-verified before they are published on any public page. Classification here is internal governance metadata; nothing in this file is rendered to users in A4.1.",
     "historical_reference_policy": "historical_reference holds the ONLY historical/legacy facts that may be rendered publicly (SEO-A4.2). Every claim and fixed conversion cites verification_sources entries by key, index and the exact 'supports' string; status and successor come from the instrument record. Dates and numbers are never rendered unless cited here.",
-    "standards_reference_policy": "standards_reference holds the only XTS/XXX facts that may be rendered (SEO-A4.3). ISO designations and claims cite verification_sources by key, index and exact 'supports' string; explanations are policy wording and must contain no dates or figures."
+    "standards_reference_policy": "standards_reference holds the only XTS/XXX facts that may be rendered (SEO-A4.3). ISO designations and claims cite verification_sources by key, index and exact 'supports' string; explanations are policy wording and must contain no dates or figures.",
+    "precious_metals_reference_policy": "precious_metals_reference holds the only XAU/XAG/XPT/XPD facts that may be rendered (SEO-A4.4). ISO designations, the NIST troy-ounce factor and the licensing statements cite verification_sources by key, index and exact 'supports' string. Pricing activation_state is reference_layer_only: no metal price may be rendered until data/metal_reference_snapshot.json holds a quote from a source whose license_state permits publication."
   },
   "enums": {
     "instrument_type": [
@@ -4148,13 +4149,14 @@
       "evidence": [
         "repo_currencies_json",
         "repo_rate_snapshot_no_quote",
-        "iso_4217_listing_knowledge"
+        "iso_4217_listing_knowledge",
+        "official_source_verified"
       ],
       "review_flags": [],
       "successor_code": null,
       "documented_conversion": null,
       "reclassification_reason": null,
-      "notes": "Quoted per troy ounce. The current FX provider does not price metals; a dedicated metals benchmark source is required."
+      "notes": "ISO 4217 lists the metal name only (SIX list, verified); no unit is stated by ISO. No licensed pricing source is activated (LBMA/IBA benchmark use requires a licence, verified), so pages are a reference layer without prices (SEO-A4.4)."
     },
     "XAU": {
       "instrument_type": "precious_metal",
@@ -4173,13 +4175,14 @@
       "evidence": [
         "repo_currencies_json",
         "repo_rate_snapshot_no_quote",
-        "iso_4217_listing_knowledge"
+        "iso_4217_listing_knowledge",
+        "official_source_verified"
       ],
       "review_flags": [],
       "successor_code": null,
       "documented_conversion": null,
       "reclassification_reason": null,
-      "notes": "Quoted per troy ounce. The current FX provider does not price metals; a dedicated metals benchmark source is required."
+      "notes": "ISO 4217 lists the metal name only (SIX list, verified); no unit is stated by ISO. No licensed pricing source is activated (LBMA/IBA benchmark use requires a licence, verified), so pages are a reference layer without prices (SEO-A4.4)."
     },
     "XCD": {
       "instrument_type": "fiat_currency",
@@ -4274,13 +4277,14 @@
       "evidence": [
         "repo_currencies_json",
         "repo_rate_snapshot_no_quote",
-        "iso_4217_listing_knowledge"
+        "iso_4217_listing_knowledge",
+        "official_source_verified"
       ],
       "review_flags": [],
       "successor_code": null,
       "documented_conversion": null,
       "reclassification_reason": null,
-      "notes": "Quoted per troy ounce. The current FX provider does not price metals; a dedicated metals benchmark source is required."
+      "notes": "ISO 4217 lists the metal name only (SIX list, verified); no unit is stated by ISO. No licensed pricing source is activated (LBMA/IBA benchmark use requires a licence, verified), so pages are a reference layer without prices (SEO-A4.4)."
     },
     "XPF": {
       "instrument_type": "fiat_currency",
@@ -4323,13 +4327,14 @@
       "evidence": [
         "repo_currencies_json",
         "repo_rate_snapshot_no_quote",
-        "iso_4217_listing_knowledge"
+        "iso_4217_listing_knowledge",
+        "official_source_verified"
       ],
       "review_flags": [],
       "successor_code": null,
       "documented_conversion": null,
       "reclassification_reason": null,
-      "notes": "Quoted per troy ounce. The current FX provider does not price metals; a dedicated metals benchmark source is required."
+      "notes": "ISO 4217 lists the metal name only (SIX list, verified); no unit is stated by ISO. No licensed pricing source is activated (LBMA/IBA benchmark use requires a licence, verified), so pages are a reference layer without prices (SEO-A4.4)."
     },
     "XSU": {
       "instrument_type": "regional_unit",
@@ -4745,6 +4750,89 @@
           "SIX is the official Maintenance Agency of these currency codes under ISO 4217"
         ]
       }
+    ],
+    "XAU": [
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+        "supports": [
+          "XAU: Gold",
+          "XAU numeric code 959",
+          "XAU minor units N.A.",
+          "ISO 4217 list published 2026-09-17"
+        ]
+      }
+    ],
+    "XAG": [
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+        "supports": [
+          "XAG: Silver",
+          "XAG numeric code 961",
+          "XAG minor units N.A.",
+          "ISO 4217 list published 2026-09-17"
+        ]
+      }
+    ],
+    "XPT": [
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+        "supports": [
+          "XPT: Platinum",
+          "XPT numeric code 962",
+          "XPT minor units N.A.",
+          "ISO 4217 list published 2026-09-17"
+        ]
+      }
+    ],
+    "XPD": [
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+        "supports": [
+          "XPD: Palladium",
+          "XPD numeric code 964",
+          "XPD minor units N.A.",
+          "ISO 4217 list published 2026-09-17"
+        ]
+      }
+    ],
+    "TROY_OUNCE": [
+      {
+        "authority": "NIST (Special Publication 811, Appendix B.9)",
+        "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+        "supports": [
+          "ounce (troy or apothecary) (oz) to gram (g): 3.110 348 E+01"
+        ]
+      }
+    ],
+    "METAL_PRICE_LICENSING": [
+      {
+        "authority": "LBMA",
+        "url": "https://www.lbma.org.uk/prices-and-data/lbma-gold-price",
+        "supports": [
+          "The LBMA Gold Price is administered independently by ICE Benchmark Administration (IBA)",
+          "Any party using the LBMA Gold Price for valuation and pricing activities and in transactions and financial products requires a usage licence with IBA"
+        ]
+      },
+      {
+        "authority": "ICE Benchmark Administration (IBA)",
+        "url": "https://www.ice.com/iba/lbma-gold-silver-price",
+        "supports": [
+          "These LBMA Precious Metals Prices benchmark settings are available under licence from IBA (including for valuation and pricing activities and for use in transactions)"
+        ]
+      },
+      {
+        "authority": "LBMA",
+        "url": "https://www.lbma.org.uk/prices-and-data/precious-metal-prices",
+        "supports": [
+          "LBMA Precious Metal Prices: International prices for gold, silver, platinum and palladium",
+          "In order to view this data on our Portal, you will need to have the relevant licence from IBA",
+          "The LBMA Gold Price is set twice daily in auctions independently operated and administered by ICE Benchmark Administration Limited (IBA) and commencing at 10:30 and 15:00 London time"
+        ]
+      }
     ]
   },
   "historical_reference": {
@@ -5097,6 +5185,247 @@
         "implementation": "XXX does not mean an amount of zero in some currency; it marks that no currency is involved at all.",
         "pair_role": "no-currency code"
       }
+    }
+  },
+  "precious_metals_reference": {
+    "metals": {
+      "XAU": {
+        "metal_name": "Gold",
+        "iso_designation": {
+          "text": "Gold",
+          "cites": [
+            {
+              "source": "XAU",
+              "index": 0,
+              "supports": "XAU: Gold"
+            }
+          ]
+        },
+        "claims": [
+          {
+            "text": "XAU has the ISO 4217 numeric code 959.",
+            "cites": [
+              {
+                "source": "XAU",
+                "index": 0,
+                "supports": "XAU numeric code 959"
+              }
+            ]
+          },
+          {
+            "text": "The ISO 4217 list gives XAU no minor units (N.A.).",
+            "cites": [
+              {
+                "source": "XAU",
+                "index": 0,
+                "supports": "XAU minor units N.A."
+              }
+            ]
+          },
+          {
+            "text": "The cited ISO 4217 list was published on 2026-09-17.",
+            "cites": [
+              {
+                "source": "XAU",
+                "index": 0,
+                "supports": "ISO 4217 list published 2026-09-17"
+              }
+            ]
+          }
+        ]
+      },
+      "XAG": {
+        "metal_name": "Silver",
+        "iso_designation": {
+          "text": "Silver",
+          "cites": [
+            {
+              "source": "XAG",
+              "index": 0,
+              "supports": "XAG: Silver"
+            }
+          ]
+        },
+        "claims": [
+          {
+            "text": "XAG has the ISO 4217 numeric code 961.",
+            "cites": [
+              {
+                "source": "XAG",
+                "index": 0,
+                "supports": "XAG numeric code 961"
+              }
+            ]
+          },
+          {
+            "text": "The ISO 4217 list gives XAG no minor units (N.A.).",
+            "cites": [
+              {
+                "source": "XAG",
+                "index": 0,
+                "supports": "XAG minor units N.A."
+              }
+            ]
+          },
+          {
+            "text": "The cited ISO 4217 list was published on 2026-09-17.",
+            "cites": [
+              {
+                "source": "XAG",
+                "index": 0,
+                "supports": "ISO 4217 list published 2026-09-17"
+              }
+            ]
+          }
+        ]
+      },
+      "XPT": {
+        "metal_name": "Platinum",
+        "iso_designation": {
+          "text": "Platinum",
+          "cites": [
+            {
+              "source": "XPT",
+              "index": 0,
+              "supports": "XPT: Platinum"
+            }
+          ]
+        },
+        "claims": [
+          {
+            "text": "XPT has the ISO 4217 numeric code 962.",
+            "cites": [
+              {
+                "source": "XPT",
+                "index": 0,
+                "supports": "XPT numeric code 962"
+              }
+            ]
+          },
+          {
+            "text": "The ISO 4217 list gives XPT no minor units (N.A.).",
+            "cites": [
+              {
+                "source": "XPT",
+                "index": 0,
+                "supports": "XPT minor units N.A."
+              }
+            ]
+          },
+          {
+            "text": "The cited ISO 4217 list was published on 2026-09-17.",
+            "cites": [
+              {
+                "source": "XPT",
+                "index": 0,
+                "supports": "ISO 4217 list published 2026-09-17"
+              }
+            ]
+          }
+        ]
+      },
+      "XPD": {
+        "metal_name": "Palladium",
+        "iso_designation": {
+          "text": "Palladium",
+          "cites": [
+            {
+              "source": "XPD",
+              "index": 0,
+              "supports": "XPD: Palladium"
+            }
+          ]
+        },
+        "claims": [
+          {
+            "text": "XPD has the ISO 4217 numeric code 964.",
+            "cites": [
+              {
+                "source": "XPD",
+                "index": 0,
+                "supports": "XPD numeric code 964"
+              }
+            ]
+          },
+          {
+            "text": "The ISO 4217 list gives XPD no minor units (N.A.).",
+            "cites": [
+              {
+                "source": "XPD",
+                "index": 0,
+                "supports": "XPD minor units N.A."
+              }
+            ]
+          },
+          {
+            "text": "The cited ISO 4217 list was published on 2026-09-17.",
+            "cites": [
+              {
+                "source": "XPD",
+                "index": 0,
+                "supports": "ISO 4217 list published 2026-09-17"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "unit": {
+      "iso_unit_stated": false,
+      "convention_text": "The ISO 4217 code list names the metal but states no unit. Precious-metal prices are customarily quoted per troy ounce; ConvertCCY will state the unit exactly as an activated pricing source defines it.",
+      "troy_ounce_definition": {
+        "text": "NIST lists one troy ounce as 3.110 348 E+01 grams (a rounded conversion factor).",
+        "cites": [
+          {
+            "source": "TROY_OUNCE",
+            "index": 0,
+            "supports": "ounce (troy or apothecary) (oz) to gram (g): 3.110 348 E+01"
+          }
+        ]
+      },
+      "gram_conversion_published": false
+    },
+    "pricing": {
+      "activation_state": "reference_layer_only",
+      "reason_text": "No licensed precious-metal pricing source is activated, so ConvertCCY shows no metal price.",
+      "licensing_claims": [
+        {
+          "text": "The LBMA Gold Price is administered independently by ICE Benchmark Administration (IBA).",
+          "cites": [
+            {
+              "source": "METAL_PRICE_LICENSING",
+              "index": 0,
+              "supports": "The LBMA Gold Price is administered independently by ICE Benchmark Administration (IBA)"
+            }
+          ]
+        },
+        {
+          "text": "Using the LBMA Gold Price for valuation and pricing activities requires a usage licence with IBA.",
+          "cites": [
+            {
+              "source": "METAL_PRICE_LICENSING",
+              "index": 0,
+              "supports": "Any party using the LBMA Gold Price for valuation and pricing activities and in transactions and financial products requires a usage licence with IBA"
+            }
+          ]
+        },
+        {
+          "text": "The LBMA Precious Metals Prices benchmark settings are available under licence from IBA, including for valuation and pricing activities.",
+          "cites": [
+            {
+              "source": "METAL_PRICE_LICENSING",
+              "index": 1,
+              "supports": "These LBMA Precious Metals Prices benchmark settings are available under licence from IBA (including for valuation and pricing activities and for use in transactions)"
+            }
+          ]
+        }
+      ]
+    },
+    "explanations": {
+      "what": "{S} is the ISO 4217 code for {metal}. It denotes a quantity of the metal, not money issued by any authority.",
+      "not_this": "{S} is not a circulating currency, not legal tender and not an ordinary foreign-exchange rate.",
+      "benchmark_vs_dealer": "A benchmark or reference metal price is not the price a buyer or seller will receive: dealers quote buy and sell prices with a spread, and coins and bars add fabrication and retail premiums and, in some jurisdictions, tax.",
+      "derived": "When a price source is activated, any value in a currency other than the source currency will be labelled as derived and will show both the metal source and the FX source with their timestamps."
     }
   }
 }
