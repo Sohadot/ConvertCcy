@@ -928,6 +928,8 @@ def static_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], sna
     treatment = pair_rate_treatment(F, T, snapshot)
     if treatment == "standards_special":
         return standards_rate_region_html(tokens)
+    if treatment == "precious_metal":
+        return metal_rate_region_html(tokens, snapshot)
     if treatment == "historical":
         return historical_rate_region_html(tokens, snapshot)
     rev_href = f'/pages/{T.lower()}-to-{F.lower()}.html'
@@ -1000,6 +1002,8 @@ def static_table_region_html(profile: Dict[str, Any], tokens: Dict[str, str], sn
     treatment = pair_rate_treatment(F, T, snapshot)
     if treatment == "standards_special":
         return standards_table_region_html(tokens)
+    if treatment == "precious_metal":
+        return metal_table_region_html(tokens, snapshot)
     if treatment == "historical":
         return historical_table_region_html(tokens, snapshot)
     amounts = profile.get("static_amounts") or DEFAULT_STATIC_AMOUNTS
@@ -1110,6 +1114,7 @@ def pair_semantic_treatment(from_code: str, to_code: str, snapshot: Optional[Dic
 
     'standards_special'      a side is an ISO 4217 test/no-currency code (converter behaviour none)
     'historical'             a side is historical/legacy (archival_only), unless the above governs
+    'precious_metal'         a side is a precious metal (XAU/XAG/XPT/XPD), unless the above govern
     'ordinary_fx'            snapshot-covered pair rendered by the A3 rate logic
     'unsupported_specialized' no rate source yet (metals, units, restricted fiat, …)
     Policy (instrument_policy.resolve_pair) decides first; snapshot coverage only
@@ -1120,12 +1125,16 @@ def pair_semantic_treatment(from_code: str, to_code: str, snapshot: Optional[Dic
         return "standards_special"
     if behaviour == "archival_only":
         return "historical"
+    pol = instrument_policy_layer()
+    if pol.is_precious_metal(from_code) or pol.is_precious_metal(to_code):
+        return "precious_metal"
     snapshot = snapshot if snapshot is not None else load_rate_snapshot()
     return "ordinary_fx" if static_pair_rate(from_code, to_code, snapshot) is not None else "unsupported_specialized"
 
 
 _RATE_TREATMENT = {"ordinary_fx": "snapshot", "unsupported_specialized": "unsupported",
-                   "historical": "historical", "standards_special": "standards_special"}
+                   "historical": "historical", "standards_special": "standards_special",
+                   "precious_metal": "precious_metal"}
 
 
 def pair_rate_treatment(from_code: str, to_code: str, snapshot: Optional[Dict[str, Any]] = None) -> str:
@@ -1133,7 +1142,7 @@ def pair_rate_treatment(from_code: str, to_code: str, snapshot: Optional[Dict[st
     return _RATE_TREATMENT[pair_semantic_treatment(from_code, to_code, snapshot)]
 
 
-SPECIAL_TREATMENTS = ("historical", "standards_special")
+SPECIAL_TREATMENTS = ("historical", "standards_special", "precious_metal")
 
 
 HISTORICAL_VALUE_LABELS = {
@@ -1378,6 +1387,8 @@ def pair_metadata(tokens: Dict[str, str], archival: Any = False, brand: str = SI
     F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
     if archival == "standards_special":
         return standards_pair_metadata(tokens, brand)
+    if archival == "precious_metal":
+        return metal_pair_metadata(tokens, brand)
     if not archival:
         return {
             "title": f"{F} to {T} Converter | {brand}",
@@ -1679,6 +1690,269 @@ def apply_standards_semantics(page: str, tokens: Dict[str, str], content: Dict[s
     return replace_webpage_jsonld(page, tokens, items, "standards_special")
 
 
+# ---- SEO-A4.4: precious metals (XAU, XAG, XPT, XPD) ---------------------------
+#
+# Pairs with a precious-metal side (unless standards/historical govern) are metal
+# valuation references, never ordinary FX converters. Facts come only from
+# instrument_policy.metal_view() (registry-cited). Any numeric value comes only
+# from metal_reference.value_view(), which reads data/metal_reference_snapshot.json
+# and refuses unless licence, provenance, timestamp, freshness and skew rules pass.
+# Current state: reference_layer_only -> every value is "unavailable".
+
+_METAL_SNAPSHOT = None
+
+
+def metal_snapshot() -> Dict[str, Any]:
+    global _METAL_SNAPSHOT
+    if _METAL_SNAPSHOT is None:
+        import metal_reference
+        _METAL_SNAPSHOT = metal_reference.load_metal_snapshot()
+    return _METAL_SNAPSHOT
+
+
+def _metal_sides(F: str, T: str) -> List[Dict[str, Any]]:
+    pol = instrument_policy_layer()
+    return [pol.metal_view(c) for c in (F, T) if pol.is_precious_metal(c)]
+
+
+def metal_value(F: str, T: str, fx: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    import metal_reference
+    fx = fx if fx is not None else load_rate_snapshot()
+    return metal_reference.value_view(F, T, metal_snapshot(), fx, format_rate_value)
+
+
+METAL_VALUE_BADGE = {"benchmark_reference": "BENCHMARK", "market_reference": "MARKET REFERENCE",
+                     "derived_cross_value": "DERIVED", "derived_inverse": "DERIVED", "derived_metal_ratio": "DERIVED"}
+
+
+def _metal_pair_shape(F: str, T: str) -> str:
+    sides = _metal_sides(F, T)
+    return "ratio" if len(sides) == 2 else ("metal_from" if sides[0]["code"] == F else "metal_to")
+
+
+def _cur_name(code: str) -> str:
+    return instrument_policy_layer().resolve(code)["name"]
+
+
+def metal_pair_metadata(tokens: Dict[str, str], brand: str = SITE_NAME, fx: Optional[Dict[str, Any]] = None) -> Dict[str, str]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _metal_sides(F, T)
+    shape = _metal_pair_shape(F, T)
+    active = metal_value(F, T, fx)["value_type"] != "unavailable"
+    if shape == "ratio":
+        a, b = sides[0]["metal_name"], sides[1]["metal_name"]
+        title = f"{F} / {T} {a}-{b} Ratio Reference | {brand}"
+        description = (f"Reference for the {a.lower()}-to-{b.lower()} relative value: ISO 4217 identity of both metals, "
+                       f"ratio methodology and pricing status. "
+                       + ("A derived ratio is shown with its sources and timestamps." if active else "No ratio is currently published."))
+    else:
+        m = sides[0]
+        role = "Reference Price" if active else "Valuation Reference"
+        title = f"{F} to {T} {m['metal_name']} {role} | {brand}"
+        if shape == "metal_from":
+            subject = f"the value of {m['metal_name'].lower()} ({F}) in {_cur_name(T)} ({T})"
+        else:
+            subject = f"the value of {_cur_name(F)} ({F}) expressed in {m['metal_name'].lower()} ({T})"
+        description = (f"Reference for {subject}: ISO 4217 identity, unit convention, pricing provenance and licensing status. "
+                       + ("Values are labelled with source, timestamp and direct or derived type."
+                          if active else f"No licensed {m['metal_name'].lower()} price is currently published."))
+    return {"title": title, "description": description, "schema_name": title, "schema_description": description}
+
+
+def _metal_h1(F: str, T: str) -> Tuple[str, str]:
+    sides = _metal_sides(F, T)
+    shape = _metal_pair_shape(F, T)
+    if shape == "ratio":
+        return f"{sides[0]['metal_name']} / {sides[1]['metal_name']}", "Relative Value Reference"
+    if shape == "metal_from":
+        return f"{sides[0]['metal_name']} ({F}) Valuation in", f"{_cur_name(T)} ({T})"
+    return f"{_cur_name(F)} ({F}) Valuation in", f"{sides[0]['metal_name']} ({T})"
+
+
+def _cited_line(claim: Dict[str, Any], prefix: str = "") -> str:
+    links = ", ".join(f'<a href="{esc(s["url"])}">{esc(s["authority"])}</a>' for s in claim["sources"])
+    return (f'<div class="pj-line">{esc(prefix)}<span data-claim>{esc(claim["text"])}</span>'
+            f' <span class="pj-muted">— {links}</span></div>')
+
+
+def _metal_block(mv: Dict[str, Any]) -> str:
+    lines = [_cited_line(mv["iso_designation"], "ISO 4217 designation: ")]
+    lines += [_cited_line(c) for c in mv["claims"]]
+    lines.append(f'<div class="pj-line">Unit: {esc(mv["unit_convention"])}</div>')
+    lines.append(_cited_line(mv["troy_ounce_definition"]))
+    lines.append(f'<div class="pj-line">Pricing: {esc(mv["pricing_reason"])}</div>')
+    lines += [_cited_line(c) for c in mv["licensing_claims"]]
+    lines.append(f'<div class="pj-line">Authoritative reference: <a href="{currency_hub_href(mv["code"])}">'
+                 f'{esc(mv["code"])} — {esc(mv["metal_name"])} reference →</a></div>')
+    body = "\n          ".join(lines)
+    return f"""
+        <div class="pj-block pj-plain" data-metal-code="{esc(mv["code"])}">
+          <div class="pj-head"><span class="pj-badge">PRECIOUS METAL</span> {esc(mv["code"])} — {esc(mv["metal_name"])}</div>
+          {body}
+        </div>"""
+
+
+def _other_side_note(F: str, T: str) -> str:
+    pol = instrument_policy_layer()
+    for c in (F, T):
+        if not pol.is_precious_metal(c) and pol.resolve(c)["converter_behavior"] == "valuation_only":
+            return (f" {c} is an institutional unit whose valuation source is not activated, so no {F}/{T} value "
+                    f"can be derived until both sides have governed sources.")
+    return ""
+
+
+def metal_rate_region_html(tokens: Dict[str, str], fx: Optional[Dict[str, Any]] = None) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _metal_sides(F, T)
+    v = metal_value(F, T, fx)
+    vt = v["value_type"]
+    hubs = " and ".join(f'<a href="{currency_hub_href(m["code"])}">{esc(m["code"])} reference</a>' for m in sides)
+    sub = "; ".join(f'{m["code"]} is the ISO 4217 code for {m["metal_name"].lower()} — a metal, not a currency' for m in sides)
+    if vt == "unavailable":
+        main = "Reference pricing source not yet activated"
+        badge = "METAL REFERENCE"
+        note = (f"{esc(sides[0]['pricing_reason'])}{esc(_other_side_note(F, T))} Benchmark and source provenance: {hubs}.")
+    else:
+        lhs = f"1 {F}" if vt != "derived_metal_ratio" else f"{F} / {T}"
+        main = f'<span data-value-type="{vt}">{esc(lhs)} = {esc(v["value_text"])}' + ("" if vt == "derived_metal_ratio" else f" {esc(T)}") + "</span>"
+        badge = METAL_VALUE_BADGE[vt] + " · AS OF " + esc(v["timestamps"][0][:10])
+        note = (f"{'Derived' if v['derived'] else 'Direct'} value · sources: {esc(', '.join(v['sources']))} · "
+                f"timestamps: {esc(', '.join(v['timestamps']))}. A reference value, not a dealer buy or sell price.")
+    return f"""{STATIC_RATE_START}
+  <div class="rate-banner" id="rate-root" data-from="{esc(F)}" data-to="{esc(T)}" data-mode="metal" data-value-type="{vt}">
+    <div>
+      <div class="rate-main" id="live-rate">{main}</div>
+      <div class="rate-sub" id="rate-sub">{esc(sub)}</div>
+    </div>
+    <div class="rate-badge snap" id="rate-badge">{badge}</div>
+  </div>
+  <p class="rate-note" id="rate-source">{note}</p>
+
+  <div class="card">
+    <div class="card-title">Precious-Metal Reference</div>
+    <div class="pj-grid">{"".join(_metal_block(m) for m in sides)}
+    </div>
+  </div>
+{STATIC_RATE_END}"""
+
+
+def metal_table_region_html(tokens: Dict[str, str], fx: Optional[Dict[str, Any]] = None) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    v = metal_value(F, T, fx)
+    if v["value_type"] == "unavailable":
+        text = "No valuation table: no licensed precious-metal pricing source is activated."
+    else:
+        text = (f"No valuation table: the reference value above applies to one {F} unit only; "
+                f"dealer, retail and premium-inclusive prices differ.")
+    return f"""{STATIC_TABLE_START}
+    <div class="card">
+      <p class="result-info" id="table-source">{esc(text)}</p>
+    </div>
+{STATIC_TABLE_END}"""
+
+
+def metal_faq_items(tokens: Dict[str, str], fx: Optional[Dict[str, Any]] = None) -> List[Dict[str, str]]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    m = _metal_sides(F, T)[0]
+    M = m["code"]
+    ex = m["explanations"]
+    shape = _metal_pair_shape(F, T)
+    v = metal_value(F, T, fx)
+    unavailable = v["value_type"] == "unavailable"
+    items = [
+        {"q": f"What does {M} mean?", "a": f"ISO 4217 lists {M} as “{m['iso_designation']['text']}”. {ex['what']}"},
+        {"q": f"Is {M} a currency?", "a": f"No. {ex['not_this']}"},
+        {"q": f"What unit does {M} represent?", "a": f"{m['unit_convention']} {m['troy_ounce_definition']['text']}"},
+    ]
+    q4 = f"How is the {F}/{T} ratio determined?" if shape == "ratio" else f"How is this {F}/{T} value determined?"
+    if unavailable:
+        a4 = f"{m['pricing_reason']} {m['licensing_claims'][1]['text']} {ex['derived']}{_other_side_note(F, T)}"
+        a5 = ("No value is published yet. When a licensed source is activated, a value quoted directly by the source "
+              "is labelled as a benchmark or market reference, and any other currency, inverse or ratio value is labelled as derived.")
+        a7 = ("None yet: no value is published. An activated value shows its source timestamp, a derived value also shows "
+              "the FX timestamp, and values older than the freshness limit are not shown.")
+    else:
+        a4 = (f"The value is {'derived' if v['derived'] else 'quoted directly'} from {', '.join(v['sources'])}. {ex['derived']}")
+        a5 = f"It is {'a derived value' if v['derived'] else 'a direct ' + METAL_VALUE_BADGE[v['value_type']].lower() + ' value'}."
+        a7 = f"Source timestamps: {', '.join(v['timestamps'])}."
+    items += [{"q": q4, "a": a4.strip()},
+              {"q": "Is this a direct benchmark or a derived value?", "a": a5},
+              {"q": "Why may a metal value differ from a dealer quote?", "a": ex["benchmark_vs_dealer"]},
+              {"q": "What timestamp does this reference use?", "a": a7}]
+    return items
+
+
+def metal_overview_html(tokens: Dict[str, str]) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    pol = instrument_policy_layer()
+    sides = _metal_sides(F, T)
+    shape = _metal_pair_shape(F, T)
+    heading = "Relative Metal Value Reference" if shape == "ratio" else "Metal Valuation Reference"
+    paras = [esc(f"{m['explanations']['what']} {m['explanations']['not_this']}") for m in sides]
+    if shape == "ratio":
+        paras.append(esc(f"A {sides[0]['metal_name'].lower()}-to-{sides[1]['metal_name'].lower()} ratio compares two metal "
+                         f"values in the same currency and unit at aligned timestamps; it is not an exchange rate."))
+    else:
+        other = T if shape == "metal_from" else F
+        paras.append(f'{esc(other)} ({esc(pol.resolve(other)["name"])}) is the counter-currency; see its '
+                     f'<a href="{currency_hub_href(other)}">{esc(other)} reference</a> for its own pairs.'
+                     + esc(_other_side_note(F, T)))
+    paras.append(esc(sides[0]["pricing_reason"]))
+    body = "\n".join(f"    <p>{p}</p>" for p in paras)
+    return f"""  <section class="section">
+    <div class="sec-title">Pair Overview</div>
+    <div class="sec-h2">{esc(F)} / {esc(T)} {esc(heading)}</div>
+{body}
+  </section>"""
+
+
+def metal_education_html(tokens: Dict[str, str]) -> str:
+    ex = _metal_sides(tokens["FROM_CODE"], tokens["TO_CODE"])[0]["explanations"]
+    return f"""  <section class="section">
+    <div class="sec-title">Reading a Precious-Metal Reference</div>
+    <div class="card">
+      <p>{esc(ex["benchmark_vs_dealer"])}</p>
+      <p>{esc(ex["derived"])}</p>
+    </div>
+  </section>
+"""
+
+
+def apply_metal_semantics(page: str, tokens: Dict[str, str], content: Dict[str, Any],
+                          fx: Optional[Dict[str, Any]] = None) -> str:
+    """Rewrite precious-metal pair metadata and page semantics. Idempotent; fails closed."""
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    brand = content.get("site_copy", {}).get("brand_name", SITE_NAME)
+    meta = metal_pair_metadata(tokens, brand, fx)
+    left, right = _metal_h1(F, T)
+    for rx, tpl in _META_PATTERNS:
+        if len(rx.findall(page)) != 1:
+            raise ValueError(f"metal metadata: {rx.pattern} not found exactly once")
+        page = rx.sub(lambda _m: tpl.format(title=esc(meta["title"]), description=esc(meta["description"])), page)
+    for rx, new, label in ((_ROBOTS_RE, f'<meta name="robots" content="{pair_robots(F, T)}">', "robots"),
+                           (_H1_RE, f"<h1>{esc(left)} <em>{esc(right)}</em></h1>", "h1"),
+                           (_SUBTITLE_RE, '<p class="pair-subtitle">Precious-metal reference</p>', "subtitle")):
+        if len(rx.findall(page)) != 1:
+            raise ValueError(f"metal {label} anchor not found exactly once")
+        page = rx.sub(lambda _m, v=new: v, page)
+    if page.count(_OVERVIEW_START) != 1 or page.count(_PASSAGE_START) != 1 or page.count(STATIC_TABLE_START) != 1:
+        raise ValueError("metal body anchors not found exactly once")
+    i = page.index(_OVERVIEW_START)
+    j = page.index("\n  </section>", i) + len("\n  </section>")
+    page = page[:i] + metal_overview_html(tokens) + page[j:]
+    page = _MACRO_RE.sub("", page)
+    p = page.index(_PASSAGE_START)
+    edu_start = page.index("\n  </section>", p) + len("\n  </section>")
+    table_start = page.rindex('\n  <section class="section">\n', 0, page.index(STATIC_TABLE_START))
+    page = page[:edu_start] + "\n" + metal_education_html(tokens) + page[table_start:]
+    t0 = page.rindex('\n  <section class="section">\n', 0, page.index(STATIC_TABLE_START)) + 1
+    t1 = page.index(STATIC_TABLE_START)
+    page = page[:t0] + '  <section class="section">\n    <div class="sec-title">Metal Valuation Status</div>\n' + page[t1:]
+    items = metal_faq_items(tokens, fx)
+    page = replace_faq_regions(page, items)
+    return replace_webpage_jsonld(page, tokens, items, "precious_metal")
+
+
 WEBPAGE_JSONLD_START = '<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@graph": ['
 
 
@@ -1782,6 +2056,45 @@ def refresh_standards_special(
     return changed, unchanged, hubs, len(removed)
 
 
+def refresh_precious_metals(
+    currencies: Dict[str, Dict[str, Any]],
+    content: Dict[str, Any],
+    pair_profiles: Dict[str, Dict[str, Any]],
+) -> Tuple[int, int, int]:
+    """SEO-A4.4: rewrite ONLY pairs whose policy treatment is precious_metal and the
+    hubs of precious-metal codes. Cohort comes from the policy layer."""
+    snapshot = load_rate_snapshot()
+    pol = instrument_policy_layer()
+    changed = unchanged = 0
+    for profile in pair_profiles.values():
+        a, b = profile["from_code"], profile["to_code"]
+        if a == b or a not in currencies or b not in currencies:
+            continue
+        if pair_rate_treatment(a, b, snapshot) != "precious_metal":
+            continue
+        tokens = make_pair_tokens(profile, currencies)
+        path = PAGES_DIR / f'{profile["pair_slug"]}.html'
+        old = path.read_text(encoding="utf-8")
+        new = replace_static_rate_regions(old, profile, tokens, snapshot)
+        new = apply_metal_semantics(new, tokens, content, snapshot)
+        if new != old:
+            write_text(path, new)
+            changed += 1
+        else:
+            unchanged += 1
+    gov_map = load_governed_currency_map()
+    hubs = 0
+    for code in currencies:
+        if pol.is_precious_metal(code):
+            path = BASE_DIR / currency_hub_href(code).lstrip("/")
+            html_doc = build_currency_hub_page(code, currencies, gov_map)
+            if not path.exists() or path.read_text(encoding="utf-8") != html_doc:
+                write_text(path, html_doc)
+                hubs += 1
+    print(f"Precious metals: {changed} pair pages changed, {unchanged} unchanged, {hubs} hubs changed")
+    return changed, unchanged, hubs
+
+
 # ---- SEO-A3.1: rate-aware FAQ truthfulness ----------------------------------
 #
 # Support status comes ONLY from static_pair_rate() (the validated snapshot).
@@ -1806,6 +2119,8 @@ def rate_aware_faq_items(items: List[Dict[str, str]], tokens: Dict[str, str],
     treatment = pair_rate_treatment(F, T, snapshot)
     if treatment == "standards_special":
         return standards_faq_items(tokens)
+    if treatment == "precious_metal":
+        return metal_faq_items(tokens, snapshot)
     if treatment == "historical":
         return historical_faq_items(tokens, snapshot)
     if static_pair_rate(F, T, snapshot) is not None:
@@ -2324,6 +2639,8 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
         page = apply_historical_semantics(page, tokens, content)
     elif treatment == "standards_special":
         page = apply_standards_semantics(page, tokens, content)
+    elif treatment == "precious_metal":
+        page = apply_metal_semantics(page, tokens, content, snapshot)
     return page
 
 
@@ -2449,6 +2766,8 @@ def build_currency_hub_page(
 
     kind = INSTRUMENT_TYPE_LABELS.get(cur.get("instrument_type", ""), "")
     pol = instrument_policy_layer()
+    if pol.is_precious_metal(code):
+        kind = "precious-metal code"   # SEO-A4.4: ISO 4217 states no unit; the unit is not asserted here
     if pol.is_historical(code):
         hv = pol.historical_view(code)
         kind = ("historical currency" if hv["instrument_type"] == "historical_currency" else "legacy currency code") + \
@@ -2528,6 +2847,53 @@ def build_currency_hub_page(
         rules_html += status
         from_heading = f"Standards reference examples: {esc(code)} with other codes"
         to_heading = f"Standards reference examples: other codes with {esc(code)}"
+        webpage = json.dumps({"@context": "https://schema.org", "@type": "WebPage", "name": title,
+                              "url": canonical, "description": description}, ensure_ascii=False, indent=2)
+        faq_ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": i["q"], "acceptedAnswer": {"@type": "Answer", "text": i["a"]}} for i in faq]},
+            ensure_ascii=False, indent=2)
+        extra_jsonld = (f'\n\n<script type="application/ld+json">\n{webpage}\n</script>'
+                        f'\n\n<script type="application/ld+json">\n{faq_ld}\n</script>')
+    elif pol.is_precious_metal(code):
+        # SEO-A4.4: authoritative precious-metal reference (no price until a licensed source is activated).
+        mv = pol.metal_view(code)
+        ex = mv["explanations"]
+        metal = mv["metal_name"]
+        priced = mv["activation_state"] == "source_activated"
+        title = f"{code} — {metal} {'Price & ' if priced else '/ '}ISO 4217 Reference | {SITE_NAME}"
+        description = (f"Reference for {code}, the ISO 4217 code for {metal.lower()}: unit convention, pricing methodology, "
+                       f"benchmark licensing status and the benchmark-versus-dealer distinction."
+                       + ("" if priced else f" No licensed {metal.lower()} price is currently published."))
+        h1_text = f"{esc(code)} — {esc(metal)}"
+
+        def cl(c):
+            return (f'<li><span data-claim>{esc(c["text"])}</span> — '
+                    + ", ".join(f'<a href="{esc(x["url"])}">{esc(x["authority"])}</a>' for x in c["sources"]) + "</li>")
+        faq = [
+            {"q": f"What does {code} mean?", "a": f"ISO 4217 lists {code} as “{mv['iso_designation']['text']}”. {ex['what']}"},
+            {"q": f"Is {code} a currency?", "a": f"No. {ex['not_this']}"},
+            {"q": f"What unit does {code} represent?", "a": f"{mv['unit_convention']} {mv['troy_ounce_definition']['text']}"},
+            {"q": f"Does ConvertCCY publish a {metal.lower()} price?",
+             "a": f"{mv['pricing_reason']} {mv['licensing_claims'][1]['text']}" if not priced else "Yes, with source, timestamp and value type."},
+            {"q": f"Why may a {metal.lower()} reference value differ from a dealer quote?", "a": ex["benchmark_vs_dealer"]},
+        ]
+        faq_html = "".join(f'\n    <div class="hub-faq"><h3>{esc(i["q"])}</h3><p>{esc(i["a"])}</p></div>' for i in faq)
+        sections = [
+            (f"What {esc(code)} means", f"<ul class=\"hub-sources\">{chr(10)}      {cl(mv['iso_designation']).replace('<li>', '<li>ISO 4217 designation: ', 1)}{''.join(chr(10) + '      ' + cl(c) for c in mv['claims'])}\n    </ul>\n    <p>{esc(ex['what'])}</p>"),
+            ("Unit semantics", f"<p>{esc(mv['unit_convention'])}</p>\n    <ul class=\"hub-sources\">\n      {cl(mv['troy_ounce_definition'])}\n    </ul>"),
+            ("Pricing status and methodology",
+             f"<p>{esc(mv['pricing_reason'])}</p>\n    <ul class=\"hub-sources\">{''.join(chr(10) + '      ' + cl(c) for c in mv['licensing_claims'])}\n    </ul>\n    <p>{esc(ex['derived'])}</p>"),
+            ("Benchmark versus dealer prices", f"<p>{esc(ex['benchmark_vs_dealer'])}</p>"),
+            (f"What {esc(code)} is not", f"<p>{esc(ex['not_this'])}</p>"),
+            (f"{esc(code)} FAQ", faq_html.lstrip("\n")),
+        ]
+        standards_html = "".join(f"\n\n  <section class=\"hub-std\">\n    <h2>{h}</h2>\n    {b}\n  </section>" for h, b in sections)
+        rules_html += (f'\n  <p class="hub-rules" data-instrument-type="precious_metal" data-converter="valuation_only" '
+                       f'data-rate-eligible="true" data-pricing-activation="{esc(mv["activation_state"])}" '
+                       f'data-pair-indexability="{esc(mv["pair_indexability"])}">'
+                       f"Precious metal · not a currency · {'licensed reference pricing' if priced else 'no licensed price published'}.</p>")
+        from_heading = f"Metal valuation references: {esc(code)} with other codes"
+        to_heading = f"Metal valuation references: other codes with {esc(code)}"
         webpage = json.dumps({"@context": "https://schema.org", "@type": "WebPage", "name": title,
                               "url": canonical, "description": description}, ensure_ascii=False, indent=2)
         faq_ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
@@ -3151,6 +3517,14 @@ def main():
         ),
     )
     parser.add_argument(
+        "--precious-metals-only",
+        action="store_true",
+        help=(
+            "SEO-A4.4: rewrite only pairs whose policy treatment is precious_metal and the "
+            "precious-metal hubs. Sitemap and robots are unchanged (class stays indexable)."
+        ),
+    )
+    parser.add_argument(
         "--standards-special-only",
         action="store_true",
         help=(
@@ -3171,7 +3545,7 @@ def main():
     args = parser.parse_args()
     only_currencies = parse_only_currencies(args.only_currency)
     modes = (args.navigation_only, args.static_rates_only, args.faq_only, args.historical_instruments_only,
-             args.standards_special_only, only_currencies)
+             args.standards_special_only, args.precious_metals_only, only_currencies)
     if sum(bool(x) for x in modes) > 1:
         parser.error("--navigation-only, --static-rates-only, --faq-only, --historical-instruments-only and --only-currency are mutually exclusive")
 
@@ -3198,6 +3572,11 @@ def main():
             "Support pages and sitemap.xml intentionally left unchanged "
             "(pair-page URLs are stable, so the sitemap does not move)."
         )
+        return
+
+    if args.precious_metals_only:
+        refresh_precious_metals(currencies, content, pair_profiles)
+        print("\nPrecious-metals-only build complete. Sitemap unchanged.")
         return
 
     if args.standards_special_only:

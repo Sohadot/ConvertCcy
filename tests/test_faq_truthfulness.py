@@ -61,11 +61,11 @@ class FaqTruthfulnessTest(unittest.TestCase):
         self.assertNotIn(FALSE_CLAIM, page("xau-to-xts"))
 
     def test_C_unsupported_truthful_answer(self):
-        # SEO-A4.3: XTS/XXX pairs are standards pages now; XAU->USD stays the unsupported example
-        a1 = faq_ld(page("xau-to-usd"))[0][1]
-        self.assertTrue(a1.startswith("ConvertCCY does not currently have a reference rate for XAU to USD"))
+        # SEO-A4.3/A4.4: XTS/XXX and metal pairs have their own semantics; KPW->USD stays the unsupported example
+        a1 = faq_ld(page("kpw-to-usd"))[0][1]
+        self.assertTrue(a1.startswith("ConvertCCY does not currently have a reference rate for KPW to USD"))
         self.assertIn("No conversion value is shown rather than an estimate.", a1)
-        self.assertIn(g.UNSUPPORTED_CODE_REASONS["XAU"], a1)
+        self.assertIn(g.UNSUPPORTED_CODE_REASONS["KPW"], a1)
         for word in ("latest", "current rate", "live", "market rate is"):
             self.assertNotIn(word, a1)
 

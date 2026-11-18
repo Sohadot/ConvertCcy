@@ -209,6 +209,72 @@ def validate(doc: Dict[str, Any], currencies: Optional[Dict[str, Any]] = None,
             errs.append(f"{where}: non-high confidence requires notes explaining the uncertainty")
     errs.extend(_historical_reference_errors(doc))
     errs.extend(_standards_reference_errors(doc))
+    errs.extend(_metals_reference_errors(doc))
+    return errs
+
+
+METAL_TYPE = "precious_metal"
+METAL_ACTIVATION_STATES = ("reference_layer_only", "source_activated")
+METAL_EXPLANATION_KEYS = ("what", "not_this", "benchmark_vs_dealer", "derived")
+
+
+def _cited_claim_errors(doc: Dict[str, Any], where: str, claim: Dict[str, Any], verbatim: bool = False) -> List[str]:
+    import re as _re
+    sups = [_cited_supports(doc, c) for c in (claim or {}).get("cites") or []]
+    if not (claim or {}).get("text") or not sups or any(x is None for x in sups):
+        return [f"{where}: needs text and resolvable registry citations"]
+    cited = " ".join(sups)
+    errs = []
+    if verbatim and claim["text"] not in cited:
+        errs.append(f"{where}: must quote the cited statement verbatim")
+    for num in _re.findall(r"\d[\d,./-]*\d|\d", claim["text"].replace("ISO 4217", "ISO")):
+        if num.replace(",", "") not in cited.replace(",", ""):
+            errs.append(f"{where}: figure {num!r} is not in the cited source statements")
+    return errs
+
+
+def _metals_reference_errors(doc: Dict[str, Any]) -> List[str]:
+    """SEO-A4.4: metal facts are registry-cited; pricing activation is explicit."""
+    import re as _re
+    inst = doc.get("instruments", {})
+    codes = {c for c, r in inst.items() if r.get("instrument_type") == METAL_TYPE}
+    pm = doc.get("precious_metals_reference")
+    if pm is None:
+        return ["missing precious_metals_reference section"] if codes else []
+    errs: List[str] = []
+    metals = pm.get("metals") or {}
+    if set(metals) != codes:
+        errs.append(f"precious_metals_reference.metals {sorted(metals)} != precious_metal codes {sorted(codes)}")
+    for code, m in metals.items():
+        w = f"precious_metals_reference.metals.{code}"
+        if not m.get("metal_name"):
+            errs.append(f"{w}: missing metal_name")
+        errs.extend(_cited_claim_errors(doc, f"{w}.iso_designation", m.get("iso_designation"), verbatim=True))
+        for k, cl in enumerate(m.get("claims") or []):
+            errs.extend(_cited_claim_errors(doc, f"{w}.claims[{k}]", cl))
+    unit = pm.get("unit") or {}
+    if unit.get("iso_unit_stated") is not False:
+        errs.append("precious_metals_reference.unit: ISO 4217 states no unit; iso_unit_stated must be false")
+    if not unit.get("convention_text") or _re.search(r"\d", unit.get("convention_text", "").replace("ISO 4217", "ISO")):
+        errs.append("precious_metals_reference.unit.convention_text must be figure-free policy wording")
+    errs.extend(_cited_claim_errors(doc, "precious_metals_reference.unit.troy_ounce_definition", unit.get("troy_ounce_definition")))
+    if unit.get("gram_conversion_published") not in (True, False):
+        errs.append("precious_metals_reference.unit.gram_conversion_published must be boolean")
+    pricing = pm.get("pricing") or {}
+    if pricing.get("activation_state") not in METAL_ACTIVATION_STATES:
+        errs.append(f"precious_metals_reference.pricing.activation_state must be one of {METAL_ACTIVATION_STATES}")
+    if not pricing.get("reason_text") or _re.search(r"\d", pricing.get("reason_text", "")):
+        errs.append("precious_metals_reference.pricing.reason_text must be figure-free policy wording")
+    for k, cl in enumerate(pricing.get("licensing_claims") or []):
+        errs.extend(_cited_claim_errors(doc, f"precious_metals_reference.pricing.licensing_claims[{k}]", cl))
+    if not pricing.get("licensing_claims"):
+        errs.append("precious_metals_reference.pricing: licensing_claims required")
+    ex = pm.get("explanations") or {}
+    if set(ex) != set(METAL_EXPLANATION_KEYS):
+        errs.append(f"precious_metals_reference.explanations must define exactly {list(METAL_EXPLANATION_KEYS)}")
+    for k, v in ex.items():
+        if not v or _re.search(r"\d", v.replace("ISO 4217", "ISO")):
+            errs.append(f"precious_metals_reference.explanations.{k}: must be figure-free policy wording")
     return errs
 
 
@@ -549,6 +615,48 @@ class InstrumentPolicy:
             "explanations": dict(e["explanations"]),
             "pair_indexability": self.doc["type_policies"][r["instrument_type"]]["pair_indexability"],
             "hub_indexability": self.doc["type_policies"][r["instrument_type"]]["hub_indexability"],
+        }
+
+    def is_precious_metal(self, code: str) -> bool:
+        return self.resolve(code)["instrument_type"] == METAL_TYPE
+
+    def metal_view(self, code: str) -> Dict[str, Any]:
+        """Render-ready, registry-cited facts for a precious-metal code (SEO-A4.4)."""
+        code = code.upper()
+        if not self.is_precious_metal(code):
+            raise ValueError(f"{code} is not a precious-metal code")
+        pm = self.doc["precious_metals_reference"]
+        m = pm["metals"][code]
+        reg = self.doc.get("verification_sources", {})
+
+        def cited(claim):
+            out = []
+            for c in claim["cites"]:
+                if _cited_supports(self.doc, c) is None:
+                    raise ClassificationError(f"{code}: unresolvable citation {c}")
+                ent = reg[c["source"]][c["index"]]
+                item = {"authority": ent["authority"], "url": ent["url"]}
+                if item not in out:
+                    out.append(item)
+            return {"text": claim["text"], "sources": out}
+
+        fill = {"S": code, "metal": m["metal_name"].lower()}
+        return {
+            "code": code,
+            "metal_name": m["metal_name"],
+            "name": self.currencies.get(code, {}).get("display_name", code),
+            "instrument_type": METAL_TYPE,
+            "iso_designation": cited(m["iso_designation"]),
+            "claims": [cited(c) for c in m["claims"]],
+            "unit_convention": pm["unit"]["convention_text"],
+            "troy_ounce_definition": cited(pm["unit"]["troy_ounce_definition"]),
+            "gram_conversion_published": pm["unit"]["gram_conversion_published"],
+            "activation_state": pm["pricing"]["activation_state"],
+            "pricing_reason": pm["pricing"]["reason_text"],
+            "licensing_claims": [cited(c) for c in pm["pricing"]["licensing_claims"]],
+            "explanations": {k: v.format(**fill) for k, v in pm["explanations"].items()},
+            "pair_indexability": self.doc["type_policies"][METAL_TYPE]["pair_indexability"],
+            "hub_indexability": self.doc["type_policies"][METAL_TYPE]["hub_indexability"],
         }
 
     def is_ordinary_converter(self, code: str) -> bool:

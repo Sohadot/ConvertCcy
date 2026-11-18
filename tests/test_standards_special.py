@@ -147,7 +147,7 @@ class SitemapTest(unittest.TestCase):
 
 class FreezeTest(unittest.TestCase):
     def test_L_M_controls_byte_identical(self):
-        for rel in ("pages/usd-to-eur.html", "pages/bgn-to-eur.html", "pages/xau-to-usd.html",
+        for rel in ("pages/usd-to-eur.html", "pages/bgn-to-eur.html",           # xau-to-usd moved to A4.4 metals
                     "pages/clf-to-usd.html", "currencies/usd.html", "currencies/bgn.html"):
             base = at_baseline(rel)
             if base is None:
@@ -185,7 +185,8 @@ class FreezeTest(unittest.TestCase):
         self.assertEqual(g.pair_semantic_treatment("USD", "XTS", SNAP), "standards_special")
         self.assertEqual(g.pair_semantic_treatment("USD", "EUR", SNAP), "ordinary_fx")
         self.assertEqual(g.pair_semantic_treatment("BGN", "USD", SNAP), "historical")
-        self.assertEqual(g.pair_semantic_treatment("XAU", "USD", SNAP), "unsupported_specialized")
+        self.assertEqual(g.pair_semantic_treatment("KPW", "USD", SNAP), "unsupported_specialized")
+        self.assertEqual(g.pair_semantic_treatment("XAU", "USD", SNAP), "precious_metal")
 
     def test_registry_citations_enforced(self):
         doc = copy.deepcopy(ip.load_raw())

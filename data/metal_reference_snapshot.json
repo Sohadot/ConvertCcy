@@ -1,0 +1,128 @@
+{
+  "type": "metal_reference_snapshot",
+  "schema_version": "1.0.0",
+  "activation_state": "reference_layer_only",
+  "notice": "Governed precious-metal pricing snapshot (SEO-A4.4). Separate from data/rate_snapshot.json. No quote may be stored unless its source's license_state permits publication; derived values (cross, inverse, ratio) are computed at build time and never stored.",
+  "captured_at": null,
+  "sources": [
+    {
+      "id": "lbma_iba_gold_silver",
+      "name": "LBMA Gold Price and LBMA Silver Price",
+      "administrator": "ICE Benchmark Administration (IBA)",
+      "role": "benchmark",
+      "metals": [
+        "XAU",
+        "XAG"
+      ],
+      "license_state": "not_usable",
+      "license_basis": "Benchmark use for valuation and pricing requires a usage licence from IBA; ConvertCCY holds none.",
+      "license_evidence": {
+        "source": "METAL_PRICE_LICENSING",
+        "index": 0,
+        "supports": "Any party using the LBMA Gold Price for valuation and pricing activities and in transactions and financial products requires a usage licence with IBA"
+      }
+    },
+    {
+      "id": "lbma_iba_precious_metals",
+      "name": "LBMA Precious Metals Prices (benchmark settings)",
+      "administrator": "ICE Benchmark Administration (IBA)",
+      "role": "benchmark",
+      "metals": [
+        "XAU",
+        "XAG"
+      ],
+      "license_state": "not_usable",
+      "license_basis": "Benchmark settings are available under licence from IBA, including for valuation and pricing; ConvertCCY holds none.",
+      "license_evidence": {
+        "source": "METAL_PRICE_LICENSING",
+        "index": 1,
+        "supports": "These LBMA Precious Metals Prices benchmark settings are available under licence from IBA (including for valuation and pricing activities and for use in transactions)"
+      }
+    },
+    {
+      "id": "lbma_platinum_palladium",
+      "name": "LBMA Platinum Price and LBMA Palladium Price",
+      "administrator": "not verified",
+      "role": "benchmark",
+      "metals": [
+        "XPT",
+        "XPD"
+      ],
+      "license_state": "license_unclear",
+      "license_basis": "Listed among LBMA Precious Metal Prices; the administrator's redistribution terms could not be retrieved (automated access refused), so rights are unclear.",
+      "license_evidence": {
+        "source": "METAL_PRICE_LICENSING",
+        "index": 2,
+        "supports": "LBMA Precious Metal Prices: International prices for gold, silver, platinum and palladium"
+      }
+    },
+    {
+      "id": "lppm",
+      "name": "London Platinum and Palladium Market (LPPM)",
+      "administrator": "LPPM",
+      "role": "market_body",
+      "metals": [
+        "XPT",
+        "XPD"
+      ],
+      "license_state": "license_unclear",
+      "license_basis": "Market body for Good Delivery standards; its public site states no redistribution terms for price data.",
+      "license_evidence": null
+    },
+    {
+      "id": "exchangerate_api_fx",
+      "name": "exchangerate-api.com (current ConvertCCY FX provider)",
+      "administrator": "exchangerate-api.com",
+      "role": "fx_provider",
+      "metals": [],
+      "license_state": "not_usable",
+      "license_basis": "Publishes no XAU, XAG, XPT or XPD values (absent from data/rate_snapshot.json); usable only as the FX leg of a future derived value.",
+      "license_evidence": null
+    }
+  ],
+  "value_types": [
+    "benchmark_reference",
+    "market_reference",
+    "derived_cross_value",
+    "derived_inverse",
+    "derived_metal_ratio",
+    "unavailable"
+  ],
+  "freshness_policy": {
+    "current_max_hours": 24,
+    "recent_max_hours": 72,
+    "states": [
+      "current",
+      "recent",
+      "stale",
+      "historical_snapshot",
+      "unavailable"
+    ],
+    "reference_clock": "captured_at of this snapshot (deterministic builds; never the wall clock)",
+    "stale_behaviour": "no numeric value rendered; the state and source date are shown"
+  },
+  "derivation_policy": {
+    "max_timestamp_skew_hours": 24,
+    "fx_source": "data/rate_snapshot.json",
+    "cross": "metal quote x (target FX rate / quote-currency FX rate); both sources and timestamps shown",
+    "inverse": "1 / metal value in that currency, labelled derived_inverse",
+    "ratio": "metal A value / metal B value; same quote currency, same unit, within max skew",
+    "refuse_when": "licence not publishable, stale, missing timestamp, unit mismatch, or skew above the limit"
+  },
+  "precision_policy": {
+    "direct": "exactly the decimal places published by the source; no added digits",
+    "derived": "significant digits = clamp(floor(-log10(sum of relative input uncertainties)), 3, 6); uncertainty is half a unit of each input's last published digit (A3 rule)",
+    "ratio": "as derived; both metal legs contribute uncertainty"
+  },
+  "refresh_lifecycle": {
+    "frequency": "not scheduled (no publishable source)",
+    "ingestion": "manual, licence-gated",
+    "gate": [
+      "licence permits publication",
+      "validate_metal_snapshot.py passes",
+      "generate.py --precious-metals-only"
+    ],
+    "automated_fetching": false
+  },
+  "quotes": []
+}
