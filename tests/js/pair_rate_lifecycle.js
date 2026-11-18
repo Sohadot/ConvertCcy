@@ -60,8 +60,8 @@ async function open(browser, path, { js = true, live = 'fail', snapshot = null }
     live: 'fail',
     snapshot: { base: 'USD', as_of: '2099-01-01', source: 'exchangerate-api.com', rates: { USD: 1, EUR: 0.5 } },
   });
-  res.unsupported = await open(browser, '/pages/xau-to-usd.html', { live: 'fail' });
-  res.unsupportedNoJs = await open(browser, '/pages/xau-to-usd.html', { js: false });
+  res.unsupported = await open(browser, '/pages/kpw-to-usd.html', { live: 'fail' });
+  res.unsupportedNoJs = await open(browser, '/pages/kpw-to-usd.html', { js: false });
   await browser.close();
   console.log(JSON.stringify(res));
 })().catch(e => { console.log(JSON.stringify({ error: String(e) })); });

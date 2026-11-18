@@ -153,6 +153,10 @@ def check_pages(snap):
             # historical/legacy pages: never a current-rate state (detail in validate_historical_instruments.py)
             if 'data-mode="historical"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
                 errors.append(f"{path.name}: historical page carries a current-rate state or the rate runtime")
+        elif treatment == "precious_metal":
+            # precious-metal pages: never an FX rate state (detail in validate_precious_metals.py)
+            if 'data-mode="metal"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
+                errors.append(f"{path.name}: metal page carries an FX rate state or the rate runtime")
         elif treatment == "standards_special":
             # ISO 4217 test/no-currency pages: never a rate state (detail in validate_standards_special_codes.py)
             if 'data-mode="standards"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:

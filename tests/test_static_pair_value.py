@@ -99,7 +99,7 @@ class SupportedPairStaticHtmlTest(unittest.TestCase):
 
 class UnsupportedPairStaticHtmlTest(unittest.TestCase):
     def test_E_no_fake_numeric_rate(self):
-        for slug in ("xau-to-usd", "xag-to-eur", "kpw-to-usd", "eur-to-ved"):   # XTS/XXX: see test_standards_special
+        for slug in ("uyw-to-usd", "xsu-to-eur", "kpw-to-usd", "eur-to-ved"):   # XTS/XXX, metals: own tests
             html = page(slug)
             rate = region(html, g.STATIC_RATE_START, g.STATIC_RATE_END)
             tbl = region(html, g.STATIC_TABLE_START, g.STATIC_TABLE_END)
@@ -111,10 +111,10 @@ class UnsupportedPairStaticHtmlTest(unittest.TestCase):
             self.assertNotIn("Loading…", html)
 
     def test_F_truthful_unsupported_message(self):
-        html = page("xau-to-xag")
+        html = page("kpw-to-ved")
         self.assertIn("No current reference rate is available for this pair in the ConvertCCY snapshot", html)
-        self.assertIn(g.UNSUPPORTED_CODE_REASONS["XAU"], html)
-        self.assertIn(g.UNSUPPORTED_CODE_REASONS["XAG"], html)
+        self.assertIn(g.UNSUPPORTED_CODE_REASONS["KPW"], html)
+        self.assertIn(g.UNSUPPORTED_CODE_REASONS["VED"], html)
         self.assertIn(">NO RATE<", html)
 
     def test_every_missing_code_is_classified(self):

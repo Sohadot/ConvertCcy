@@ -245,13 +245,29 @@ link, or generator drift. Targeted rebuild: `python3 generate.py --standards-spe
 pass); whether the BreadcrumbList label "USD to XTS" should change; how XTS/XXX are exposed in a
 future standards API.
 
-## 10. Next implementation sequence
+## 10. A4.4 — Precious metals reference layer (implemented)
 
-1. **A4.4 Precious metals reference layer** — benchmark source, troy-ounce semantics.
-2. **A4.5 Institutional units layer** — XDR, CLF, UYW, XSU, XUA from issuer valuations.
+See `docs/precious-metals-methodology.md`. Summary: activation decision **B (reference layer
+only)** — ISO identity (SIX), troy-ounce factor (NIST) and benchmark licensing (LBMA/IBA) are
+registry-cited in `verification_sources` and `precious_metals_reference`; no metal price is
+published because no source with publication rights exists (IBA licence required; Pt/Pd terms
+unclear). `data/metal_reference_snapshot.json` (separate from the FX snapshot) records every
+candidate source with its `license_state` and carries no quotes; `metal_reference.py` is the only
+value path and refuses unless licence, provenance, timestamp, freshness and skew rules pass.
+Router precedence: standards_special › historical › precious_metal › unsupported/ordinary.
+1,268 metal pages and 4 hubs rewritten; 56 historical-governed and 16 standards-governed metal
+pairs unchanged; robots, canonicals and sitemap unchanged. Gates:
+`scripts/validate_metal_snapshot.py`, `scripts/validate_precious_metals.py`; targeted build
+`python3 generate.py --precious-metals-only`.
+
+## 11. Next implementation sequence
+
+1. **A4.5 Institutional units layer** — XDR, CLF, UYW, XSU, XUA from issuer valuations.
 3. **A4.6 Restricted & missing fiat sources** — KPW, VED, CUP regime caveat, review-flagged
    fiat (IRR, SYP, MMK, TMT, VES).
 4. **Related-link pass** — stop promoting noindex pairs from ordinary pages (deliberate churn).
+   Also: metals source activation once a publication licence or a redistribution-permitting
+   provider is obtained (no page-semantics change required).
 5. **Successor migration (XCG, ZWG)** and a **per-pair indexability override** for the 10
    successor pairs.
 
