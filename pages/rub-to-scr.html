@@ -240,42 +240,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="pair-subtitle">Currency conversion, done right.</p>
   </div>
 
-  <div class="rate-banner">
+  <!-- STATIC-RATE:START -->
+  <div class="rate-banner" id="rate-root" data-from="RUB" data-to="SCR" data-mode="snapshot" data-rate="0.17925674034491132" data-sig="3" data-asof="2026-11-18">
     <div>
-      <div class="rate-main" id="live-rate">Loading…</div>
-      <div class="rate-sub">1 RUB = <span id="live-rate-num">—</span> SCR</div>
+      <div class="rate-main" id="live-rate">1 RUB = 0.179 SCR</div>
+      <div class="rate-sub" id="rate-sub">1 SCR = <span id="inverse-rate">5.58</span> RUB</div>
     </div>
-    <div class="rate-badge" id="rate-badge">REFERENCE</div>
+    <div class="rate-badge snap" id="rate-badge">SNAPSHOT · 2026-11-18</div>
   </div>
-  <p class="rate-note">Indicative reference rate — live when available, otherwise a dated reference snapshot. Not a dealing rate; providers apply their own spread and fees.</p>
+  <p class="rate-note" id="rate-source">Reference snapshot as of 2026-11-18 · source: exchangerate-api.com (USD-based reference rates, cross-calculated by ConvertCCY). Indicative only — not a live or dealing rate; providers apply their own spread and fees. When the live source responds, this page switches to the live reference value and labels it as live.</p>
 
   <div class="card">
     <div class="card-title">Currency Converter</div>
     <div class="conv-row">
       <div class="field">
-        <label>RUB Amount</label>
-        <input type="number" id="from-input" value="1" min="0">
+        <label for="from-input">RUB Amount</label>
+        <input type="number" id="from-input" value="1" min="0" inputmode="decimal">
       </div>
-      <button class="swap-btn" onclick="swapPair()" title="Open reverse pair">⇄</button>
+      <a class="swap-btn" href="/pages/scr-to-rub.html" title="Open reverse pair" aria-label="Open SCR to RUB" style="text-decoration:none">⇄</a>
       <div class="field">
-        <label>SCR Result</label>
-        <input type="number" id="to-input" placeholder="0.00">
+        <label for="to-input">SCR Result</label>
+        <input type="number" id="to-input" value="0.179" min="0" inputmode="decimal">
       </div>
     </div>
     <div class="result-row">
-      <span class="result-val" id="main-result">—</span>
-      <span class="result-info" id="rate-info">Fetching rate…</span>
+      <span class="result-val" id="main-result">1 RUB = 0.179 SCR</span>
+      <span class="result-info" id="rate-info">Reference snapshot as of 2026-11-18</span>
     </div>
     <div class="quick-grid">
-      <button class="quick-btn" onclick="setAmt(1)">1</button>
-      <button class="quick-btn" onclick="setAmt(5)">5</button>
-      <button class="quick-btn" onclick="setAmt(10)">10</button>
-      <button class="quick-btn" onclick="setAmt(50)">50</button>
-      <button class="quick-btn" onclick="setAmt(100)">100</button>
-      <button class="quick-btn" onclick="setAmt(500)">500</button>
-      <button class="quick-btn" onclick="setAmt(1000)">1,000</button>
+      <button class="quick-btn" type="button" onclick="setAmt(1)">1</button>
+      <button class="quick-btn" type="button" onclick="setAmt(5)">5</button>
+      <button class="quick-btn" type="button" onclick="setAmt(10)">10</button>
+      <button class="quick-btn" type="button" onclick="setAmt(50)">50</button>
+      <button class="quick-btn" type="button" onclick="setAmt(100)">100</button>
+      <button class="quick-btn" type="button" onclick="setAmt(500)">500</button>
+      <button class="quick-btn" type="button" onclick="setAmt(1000)">1,000</button>
     </div>
+    <noscript><p class="result-info" style="margin-top:.8rem">Custom amounts need JavaScript; the conversion table below lists fixed amounts at the snapshot rate.</p></noscript>
   </div>
+  <!-- STATIC-RATE:END -->
 
   <section class="section">
     <div class="sec-title">Pair Overview</div>
@@ -331,19 +334,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="section">
     <div class="sec-title">Conversion Table</div>
     <p>The table below gives quick reference conversions based on the latest available rate shown on this page.</p>
+    <!-- STATIC-RATE-TABLE:START -->
     <div class="card" style="padding:0;overflow:hidden">
       <div class="table-wrap">
-        <table>
+        <table aria-label="RUB to SCR conversion table, reference snapshot as of 2026-11-18">
           <thead>
             <tr>
-              <th>RUB</th>
-              <th>SCR</th>
+              <th scope="col">RUB</th>
+              <th scope="col">SCR</th>
             </tr>
           </thead>
-          <tbody id="conv-table"></tbody>
+          <tbody id="conv-table">
+            <tr data-amount="1"><td>1 RUB</td><td>0.179 SCR</td></tr>
+            <tr data-amount="5"><td>5 RUB</td><td>0.896 SCR</td></tr>
+            <tr data-amount="10"><td>10 RUB</td><td>1.79 SCR</td></tr>
+            <tr data-amount="20"><td>20 RUB</td><td>3.59 SCR</td></tr>
+            <tr data-amount="50"><td>50 RUB</td><td>8.96 SCR</td></tr>
+            <tr data-amount="100"><td>100 RUB</td><td>17.9 SCR</td></tr>
+            <tr data-amount="500"><td>500 RUB</td><td>89.6 SCR</td></tr>
+            <tr data-amount="1000"><td>1,000 RUB</td><td>179 SCR</td></tr>
+            <tr data-amount="10000"><td>10,000 RUB</td><td>1,790 SCR</td></tr>
+          </tbody>
         </table>
       </div>
+      <p class="result-info" id="table-source" style="padding:.7rem 1rem">Reference snapshot as of 2026-11-18 · source: exchangerate-api.com</p>
     </div>
+    <!-- STATIC-RATE-TABLE:END -->
   </section>
 
   <section class="section">
@@ -405,124 +421,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p style="margin-top:.55rem">Customer pricing from banks, cards, and transfer providers may differ.</p>
 </footer>
 
-<script>
-const FROM = 'RUB';
-const TO = 'SCR';
-let rate = null;
-let rateMode = '';      // 'live' | 'snapshot' | 'unavailable'
-let snapDate = '';
-const AMOUNTS = [1,5,10,20,50,100,200,500,1000,5000];
-
-async function getLiveRate() {
-  // Time-box the live call: a hanging free endpoint is the most common failure,
-  // so we abort after 3.5s and fall back to the dated snapshot rather than stall.
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), 3500);
-  try {
-    const res = await fetch('https://api.exchangerate-api.com/v4/latest/' + FROM, {signal: ctrl.signal});
-    if (!res.ok) throw new Error('live http');
-    const data = await res.json();
-    const r = data && data.rates && data.rates[TO];
-    if (typeof r !== 'number' || !isFinite(r) || r <= 0) throw new Error('live rate missing');
-    return r;
-  } finally { clearTimeout(t); }
-}
-
-// Fallback: same-origin dated reference snapshot (see /rates/snapshot.json).
-// Never presented as live; always labelled with its capture date.
-async function getSnapshotRate() {
-  const res = await fetch('/rates/snapshot.json', {cache: 'no-cache'});
-  if (!res.ok) throw new Error('snapshot http');
-  const s = await res.json();
-  snapDate = s.as_of || '';
-  const rf = s.rates && s.rates[FROM], rt = s.rates && s.rates[TO];
-  if (!rf || !rt) throw new Error('snapshot pair missing');
-  return rt / rf;
-}
-
-async function init() {
-  try {
-    rate = await getLiveRate(); rateMode = 'live';
-  } catch (e) {
-    try { rate = await getSnapshotRate(); rateMode = 'snapshot'; }
-    catch (e2) { rate = null; rateMode = 'unavailable'; }
-  }
-  renderRate();
-  convertFrom();
-  buildTable();
-}
-
-function renderRate() {
-  const main = document.getElementById('live-rate');
-  const num = document.getElementById('live-rate-num');
-  const badge = document.getElementById('rate-badge');
-  if (rateMode === 'unavailable' || rate === null) {
-    main.textContent = 'Rate unavailable right now';
-    num.textContent = '—';
-    badge.textContent = 'UNAVAILABLE'; badge.className = 'rate-badge off';
-    return;
-  }
-  main.textContent = `1 ${FROM} = ${rate.toFixed(4)} ${TO}`;
-  num.textContent = rate.toFixed(4);
-  if (rateMode === 'snapshot') {
-    badge.textContent = snapDate ? `SNAPSHOT · ${snapDate}` : 'SNAPSHOT';
-    badge.className = 'rate-badge snap';
-    badge.title = 'Live source unavailable — showing a dated reference snapshot, not a live rate';
-  } else {
-    badge.textContent = 'REFERENCE'; badge.className = 'rate-badge';
-  }
-}
-
-function rateContext() {
-  if (rateMode === 'snapshot') return ` · reference snapshot as of ${snapDate || 'recent capture'}, not live`;
-  return '';
-}
-
-function convertFrom() {
-  if (!rate) {
-    document.getElementById('main-result').textContent = '—';
-    document.getElementById('rate-info').textContent = 'Live rate unavailable and no snapshot for this pair.';
-    return;
-  }
-  const a = parseFloat(document.getElementById('from-input').value) || 0;
-  const b = a * rate;
-  document.getElementById('to-input').value = b.toFixed(4);
-  document.getElementById('main-result').textContent = `${a.toLocaleString()} ${FROM} = ${b.toLocaleString('en-US', {maximumFractionDigits:4})} ${TO}`;
-  document.getElementById('rate-info').textContent = `Reference rate: 1 ${FROM} = ${rate.toFixed(4)} ${TO}${rateContext()}`;
-}
-
-function convertTo() {
-  if (!rate) return;
-  const b = parseFloat(document.getElementById('to-input').value) || 0;
-  const a = b / rate;
-  document.getElementById('from-input').value = a.toFixed(4);
-  document.getElementById('main-result').textContent = `${b.toLocaleString()} ${TO} = ${a.toLocaleString('en-US', {maximumFractionDigits:4})} ${FROM}`;
-  document.getElementById('rate-info').textContent = `Reference rate: 1 ${TO} = ${(1/rate).toFixed(4)} ${FROM}${rateContext()}`;
-}
-
-function setAmt(n) {
-  document.getElementById('from-input').value = n;
-  convertFrom();
-}
-
-function buildTable() {
-  const tbody = document.getElementById('conv-table');
-  if (!rate) { tbody.innerHTML = `<tr><td colspan="2">Conversion table unavailable — no live rate or snapshot for this pair right now.</td></tr>`; return; }
-  tbody.innerHTML = AMOUNTS.map(a => {
-    const b = (a * rate).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-    return `<tr><td>${a.toLocaleString()} ${FROM}</td><td>${b} ${TO}</td></tr>`;
-  }).join('');
-}
-
-function swapPair() {
-  window.location.href = `/pages/${TO.toLowerCase()}-to-${FROM.toLowerCase()}.html`;
-}
-
-document.getElementById('from-input').addEventListener('input', convertFrom);
-document.getElementById('to-input').addEventListener('input', convertTo);
-
-init();
-</script>
+<!-- RATE-SCRIPT:START -->
+<script src="/assets/js/pair-rate.js" defer></script>
+<!-- RATE-SCRIPT:END -->
 
 </body>
 </html>
