@@ -157,6 +157,10 @@ def check_pages(snap):
             # precious-metal pages: never an FX rate state (detail in validate_precious_metals.py)
             if 'data-mode="metal"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
                 errors.append(f"{path.name}: metal page carries an FX rate state or the rate runtime")
+        elif treatment == "institutional_unit":
+            # institutional-unit pages: never an FX rate state (detail in validate_institutional_units.py)
+            if 'data-mode="institutional"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
+                errors.append(f"{path.name}: institutional page carries an FX rate state or the rate runtime")
         elif treatment == "standards_special":
             # ISO 4217 test/no-currency pages: never a rate state (detail in validate_standards_special_codes.py)
             if 'data-mode="standards"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
