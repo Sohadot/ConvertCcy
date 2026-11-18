@@ -191,9 +191,20 @@ schema mismatch, WebApplication node, or region drift. `validate_rate_snapshot.p
 support status from `pair_rate_treatment()`. Targeted rebuild:
 `python3 generate.py --historical-instruments-only` (idempotent).
 
-**Remaining limitations.** Templated pair-overview prose (market-dynamics wording) and the
-page title, description and H1 ("Converter") are unchanged on historical pages. The 7
-historical/legacy hubs now carry the historical/legacy label.
+**A4.2.1 — metadata & page semantics.** One resolver, `generate.pair_metadata()`, feeds
+`<title>`, meta description, og/twitter copies and the WebPage JSON-LD name/description
+(ordinary pairs: the pre-existing strings, byte-for-byte). Historical pairs are titled by value
+type — "Historical Fixed Conversion", "Redenomination Reference", "Fixed Parity Reference" or
+"Historical/Legacy Currency Reference" — and described as references with "No current market
+rate is presented". `apply_historical_semantics()` (shared by the full build and
+`--historical-instruments-only`) also replaces the subtitle, the Pair Overview (status,
+successor, verified relationship, page purpose), removes the market-context line of the passage
+section, replaces the three market-education sections with one "Reading a Historical Currency
+Reference" section, and renames the table section by value type ("Historical Conversion Status"
+when no fixed relationship applies). H1 is unchanged. Historical/legacy hubs are titled
+"… Historical/Legacy Currency Reference", describe status and successor, and label their pair
+lists as archived references. The historical gate checks every one of these surfaces against
+the resolver and against the exact ordinary template strings for the pair.
 
 ## 9. Next implementation sequence
 
@@ -203,8 +214,8 @@ historical/legacy hubs now carry the historical/legacy label.
 3. **A4.5 Institutional units layer** — XDR, CLF, UYW, XSU, XUA from issuer valuations.
 4. **A4.6 Restricted & missing fiat sources** — KPW, VED, CUP regime caveat, review-flagged
    fiat (IRR, SYP, MMK, TMT, VES).
-5. **Successor migration (XCG, ZWG)** and a **historical prose/metadata pass** (pair-overview
-   prose, titles/descriptions, per-pair indexability override for successor pairs).
+5. **Successor migration (XCG, ZWG)** and a **per-pair indexability override** for the 10
+   successor pairs.
 
 The legacy `instrument_type` label in `currencies.json` is now used only for the generic hub
 identity line of non-historical codes; it can be retired once A4.3–A4.5 move those to the

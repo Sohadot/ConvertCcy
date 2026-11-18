@@ -54,6 +54,57 @@ def region(page: str, start: str, end: str) -> str:
     return page[page.index(start): page.index(end) + len(end)]
 
 
+def ordinary_boilerplate(profile, tokens, content):
+    """The exact ordinary current-FX template strings this pair would render."""
+    edu = content.get("educational_blocks", {})
+    mid = content.get("pair_page_templates", {}).get("mid_market_section", {})
+    sentences = [g.build_pair_intro(profile, content, tokens), g.build_from_currency_para(profile, content, tokens),
+                 g.build_to_currency_para(profile, content, tokens), g.build_relationship_para(profile, content, tokens),
+                 g.build_driver_intro(profile, content), g.build_table_intro(profile, content),
+                 content.get("site_copy", {}).get("trust_statement", ""), profile.get("macro_context", "")]
+    for block in (edu.get("exchange_rate_explained", {}), mid, edu.get("market_drivers_explained", {})):
+        sentences.extend(block.get("paragraphs", []))
+    headings = [edu.get("exchange_rate_explained", {}).get("heading", "What an exchange rate means"),
+                mid.get("heading", "Reference rate vs bank rate"),
+                edu.get("market_drivers_explained", {}).get("heading", "What moves currencies"), "Conversion Table"]
+    return [x for x in sentences if x], headings
+
+
+def semantic_errors(page, profile, tokens, content, blocks):
+    errs = []
+    brand = content.get("site_copy", {}).get("brand_name", g.SITE_NAME)
+    meta = g.pair_metadata(tokens, True, brand)
+    title = html.unescape(re.search(r"<title>([^<]*)</title>", page).group(1))
+    fields = {k: html.unescape(re.search(rf'<meta (?:name|property)="{k}" content="([^"]*)">', page).group(1))
+              for k in ("description", "og:title", "og:description", "twitter:title", "twitter:description")}
+    webpage = [n for x in blocks for n in x.get("@graph", []) if n.get("@type") == "WebPage"]
+    if len(webpage) != 1:
+        return ["expected exactly one WebPage node"]
+    wp = webpage[0]
+    for label, val in (("title", title), ("og:title", fields["og:title"]), ("twitter:title", fields["twitter:title"]),
+                       ("WebPage name", wp.get("name", ""))):
+        if "Converter" in val:
+            errs.append(f"{label} uses converter semantics: {val!r}")
+        if val != meta["title"]:
+            errs.append(f"{label} drifts from the metadata resolver")
+    for label, val in (("description", fields["description"]), ("og:description", fields["og:description"]),
+                       ("twitter:description", fields["twitter:description"]), ("WebPage description", wp.get("description", ""))):
+        if val.startswith("Convert ") or "conversion table" in val.lower():
+            errs.append(f"{label} uses consumer-converter wording: {val!r}")
+        if val != meta["description"]:
+            errs.append(f"{label} drifts from the metadata resolver")
+    sentences, headings = ordinary_boilerplate(profile, tokens, content)
+    for x in sentences:
+        if g.esc(x) in page:
+            errs.append(f"ordinary current-market boilerplate present: {x[:60]!r}")
+    for h in headings:
+        if f'<div class="sec-title">{g.esc(h)}</div>' in page:
+            errs.append(f"ordinary section heading present: {h!r}")
+    if f'{tokens["FROM_CODE"]} / {tokens["TO_CODE"]} Exchange Rate</div>' in page:
+        errs.append("overview heading claims an ordinary exchange rate")
+    return errs
+
+
 def check_page(page: str, profile, currencies, content, snap, pol):
     errs = []
     a, b = profile["from_code"], profile["to_code"]
@@ -68,7 +119,10 @@ def check_page(page: str, profile, currencies, content, snap, pol):
     verified = {hv["code"]: hv for hv in (pol.historical_view(c) for c in (a, b) if pol.is_historical(c))}
     statements = {hv["fixed_conversion"]["statement"] for hv in verified.values() if hv["fixed_conversion"]}
     claims = {c["text"] for hv in verified.values() for c in hv["claims"]}
-    surfaces = region(page, g.STATIC_RATE_START, g.STATIC_RATE_END) + region(page, g.STATIC_TABLE_START, g.STATIC_TABLE_END)
+    ov_i = page.index(g._OVERVIEW_START)
+    overview = page[ov_i: page.index("\n  </section>", ov_i)]
+    surfaces = (region(page, g.STATIC_RATE_START, g.STATIC_RATE_END) + region(page, g.STATIC_TABLE_START, g.STATIC_TABLE_END)
+                + overview)
     for kind, text in VALUE_RE.findall(surfaces):
         if kind not in g.HISTORICAL_VALUE_LABELS or html.unescape(text) not in statements:
             errs.append(f"unverified or unlabelled value {text!r} ({kind})")
@@ -78,7 +132,7 @@ def check_page(page: str, profile, currencies, content, snap, pol):
     stripped = CLAIM_RE.sub(" ", VALUE_RE.sub(" ", surfaces))
     stripped = re.sub(r"(?s)<[^>]+>", " ", stripped)
     if re.search(r"\d", html.unescape(stripped)):
-        errs.append("unlabelled numeric value in historical rate/table region")
+        errs.append("unlabelled numeric value in historical rate/table/overview region")
     sr = g.static_pair_rate(a, b, snap)
     if sr is not None:
         # what readers and parsers receive: visible text (tags/attributes, CSS and
@@ -109,10 +163,12 @@ def check_page(page: str, profile, currencies, content, snap, pol):
     for x in blocks:
         if any(n.get("@type") == "WebApplication" for n in x.get("@graph", [])):
             errs.append("WebApplication node on an archival page")
+    errs.extend(semantic_errors(page, profile, tokens, content, blocks))
     items = g.rate_aware_faq_items(g.build_faq_items(profile, content, tokens), tokens, snap, currencies)
     expected = g.replace_static_rate_regions(page, profile, tokens, snap)
     expected = g.replace_faq_regions(expected, items)
     expected = g.replace_webpage_jsonld(expected, tokens, items, True)
+    expected = g.apply_historical_semantics(expected, tokens, content)
     if expected != page:
         errs.append("historical regions differ from generator output (run: python3 generate.py --historical-instruments-only)")
     return errs
@@ -149,8 +205,19 @@ def main() -> int:
     for code in currencies:
         if pol.is_historical(code):
             hub = (REPO / "currencies" / f"{code.lower()}.html").read_text(encoding="utf-8")
+            herr = []
             if hub != g.build_currency_hub_page(code, currencies, gov) or "fiat currency" in hub:
-                failures.append((f"hub {code}", ["hub not regenerated with historical/legacy label"]))
+                herr.append("hub not regenerated with historical/legacy label")
+            t = re.search(r"<title>([^<]*)</title>", hub).group(1)
+            d = html.unescape(re.search(r'<meta name="description" content="([^"]*)">', hub).group(1))
+            if "Currency Pairs" in t or "Reference" not in t:
+                herr.append(f"hub title uses converter-index semantics: {t!r}")
+            if f"convert {code} to" in d.lower() or "currencies to" in d.lower():
+                herr.append(f"hub description uses converter wording: {d!r}")
+            if f"<h2>Convert {code}" in hub or "<h2>Convert another currency" in hub:
+                herr.append("hub headings use converter wording")
+            if herr:
+                failures.append((f"hub {code}", herr))
             counts["historical_hubs"] += 1
     print("cohort: " + " ".join(f"{k}={v}" for k, v in sorted(counts.items())))
     if failures:
