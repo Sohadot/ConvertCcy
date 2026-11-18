@@ -121,7 +121,8 @@ def check_pages(snap):
                             (g.RATE_SCRIPT_START, g.RATE_SCRIPT_END, "RATE-SCRIPT")):
             if page.count(s) != 1 or page.count(e) != 1:
                 errors.append(f"{path.name}: {label} markers {page.count(s)}/{page.count(e)}")
-        supported = g.static_pair_rate(a, b, snap) is not None
+        treatment = g.pair_rate_treatment(a, b, snap)   # policy first (SEO-A4.2), then coverage
+        supported = treatment == "snapshot"
         faq_pages = []
         for blk in LD_RE.findall(page):
             try:
@@ -148,7 +149,11 @@ def check_pages(snap):
         except ValueError as exc:
             errors.append(f"{path.name}: {exc}")
         m = ASOF_RE.search(page)
-        if 'data-mode="unsupported"' in page:
+        if treatment == "historical":
+            # historical/legacy pages: never a current-rate state (detail in validate_historical_instruments.py)
+            if 'data-mode="historical"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
+                errors.append(f"{path.name}: historical page carries a current-rate state or the rate runtime")
+        elif 'data-mode="unsupported"' in page:
             if "data-rate=" in page or 'data-mode="snapshot"' in page:
                 errors.append(f"{path.name}: unsupported page carries a numeric rate")
         elif m:

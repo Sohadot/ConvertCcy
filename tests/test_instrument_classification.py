@@ -97,7 +97,7 @@ class AnchorTest(unittest.TestCase):
         for c in ("ANG", "BGN", "HRK", "ZWL", "SLL"):
             r = POLICY.resolve(c)
             self.assertNotEqual(r["instrument_type"], "fiat_currency")
-            self.assertEqual(r["policy_conformance"], "rate_shown_contrary_to_policy")
+            self.assertEqual(r["policy_conformance"], "provider_value_present_but_policy_disallows_live_use")
 
 
 class ResolutionTest(unittest.TestCase):

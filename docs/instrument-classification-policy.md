@@ -96,7 +96,7 @@ test/no-currency: standards reference API, AI retrieval corpus.
 
 | Gap | Codes | Meaning |
 |---|---|---|
-| rate_shown_contrary_to_policy | ANG, BGN, HRK, SLL, ZWL | Provider quotes a withdrawn/superseded code; pages show a market-style rate. ZWL's quote equals ZWG's (alias). |
+| provider_value_present_but_policy_disallows_live_use | ANG, BGN, HRK, SLL, ZWL | Provider still quotes a withdrawn/superseded code; since A4.2 pages render the historical reference instead (was `rate_shown_contrary_to_policy`). ZWL's quote equals ZWG's (alias). |
 | rate_source_missing | KPW, VED, UYW, XSU, XUA, XAU, XAG, XPT, XPD | Rate expected under policy, no acceptable source yet. |
 | rate_shown_without_regime_caveat | CUP | Provider value (24.0) matches the 2021 parity; regime not stated. |
 | provider_rate_pending_issuer_source | CLF, XDR | Provider quotes; issuer valuation is the governing source. |
@@ -126,17 +126,86 @@ SLL remains medium because the exact old-note legal-tender end state still needs
 CUP remains medium because the 2021 official 24 CUP/USD unification rate is verified, while the current applicable exchange-rate regime still requires dedicated A4.6 treatment.
 XCG and ZWG are not yet in the site's currency set.
 
-## 8. Next implementation sequence
+## 8. A4.2 — Historical & legacy rendering policy (implemented)
 
-1. **A4.2 Historical & legacy rate correction** — stop presenting market-style rates for ANG,
-   BGN, HRK, SLL, ZWL (live user-facing misstatement today, 1,670 pair pages), use the now-verified
-   conversion facts, and decide successor additions (XCG, ZWG).
-2. **A4.3 Test / no-currency standards reference** — XTS/XXX reference pages and the
+**Branching.** `generate.pair_rate_treatment()` asks the policy layer first: a pair whose
+`resolve_pair()` converter behaviour is `archival_only` (any `historical_currency` /
+`legacy_transition` side, unless XTS/XXX governs) is rendered as a historical reference.
+The legacy `currencies.json` label plays no part (XTS/XXX FAQ detection also moved to the
+resolver). Cohort: 7 codes (ANG, BGN, CUC, HRK, SLL, SVC, ZWL) → 2,324 pair pages, of which
+2,296 get historical treatment and 28 stay governed by XTS/XXX. Before A4.2, 1,540 of them
+showed a SNAPSHOT/LIVE rate and 756 showed "no rate".
+
+**Rendering rules.** Historical pages carry `data-mode="historical"`, no `data-rate`, no
+LIVE/SNAPSHOT state, no converter inputs, no current-rate table, no `pair-rate.js`, no
+WebApplication schema node, and a status-aware FAQ (visible list and FAQPage JSON-LD from one
+item list). Every figure sits in a labelled element: `data-value-type` (a verified fixed
+relationship) or `data-claim` (a registry-cited claim).
+
+**Value types.**
+
+| Type | When | Examples |
+|---|---|---|
+| `historical_fixed_conversion` | historical code ↔ successor, verified conversion | EUR 1 = BGN 1.95583 · EUR 1 = HRK 7.53450 · CUC 1 = CUP 24 |
+| `redenomination` | legacy code ↔ successor, verified ratio | SLE 1 = SLL 1,000 |
+| `fixed_legal_parity` | legacy code with an official fixed quotation | USD 1 = SVC 8.75 |
+| `archival_unavailable` | every other pair (2,286 pages) | BGN → USD, ZWL → USD, ANG → USD |
+
+Figures are shown only in the official direction (no derived inverses). ANG 1 = XCG 1 is shown
+as a fact on ANG pages; there is no ANG↔XCG pair page because XCG is not in the site set.
+
+**Verified facts only.** `historical_reference` in `data/instrument_classification.json` is the
+only renderable source. Each claim and fixed conversion cites `verification_sources` by key,
+index and the exact `supports` string; every date or number in a claim must occur in the cited
+statements; a fixed conversion requires a `verified` `documented_conversion` with matching
+figures. Status and successor come from the instrument record. Not rendered because not
+verified: the HRK changeover date, the SLL legal-tender end date, any ZWL→ZWG conversion figure.
+
+**Provider observations are preserved, not deleted.** The raw snapshot still holds ANG, BGN,
+HRK, SLL, ZWL. Pages state that the provider publishes a value and that ConvertCCY does not
+present it as a current market rate. "Derived from the successor" is stated only when the value
+matches the verified conversion applied to the successor rate (ANG, BGN, HRK, SLL); "alias" only
+when the value equals the successor's with no verified one-to-one conversion (ZWL = ZWG).
+
+**Successor-derived values — decision: not implemented (architecture A).** A present-day
+"successor-derived reference" (e.g. BGN → EUR → USD) is technically easy but reads as a BGN
+market rate, adds the snapshot-bake churn to 2,286 more pages, and is only meaningful where the
+old currency is still exchangeable (verified only for BGN banknotes at the Bulgarian National
+Bank). Archival pages instead link the successor pair (e.g. BGN → USD links EUR → USD). If added
+later it must be a distinct value type, outside the LIVE/SNAPSHOT lifecycle, restricted to
+codes with verified exchangeability.
+
+**XCG / ZWG — decision: ADD IN SEPARATE MIGRATION.** Both have verified issuers (CBCS, RBZ)
+and provider quotes, and both would complete successor chains. But each breaks the 170-code
+invariant (validator, graph gate, tests), adds 340 pair pages, needs pair profiles,
+classification (ZWG regime review) and sitemap/hub additions. Not required for A4.2 correctness.
+
+**Indexability — decision: unchanged.** Type-level `needs_further_evidence` stays for
+historical and legacy pairs. The 10 successor pairs now carry verified reference value and are
+candidates for `index_with_specialized_reference_role`, but the policy layer has no per-pair
+override and the 2,286 archival pages still carry the generic templated pair prose.
+
+**Gates.** `scripts/validate_historical_instruments.py` (Governance Gate) fails closed on any
+current-rate marker, unlabelled figure, unverified value, snapshot-derived value leak, FAQ or
+schema mismatch, WebApplication node, or region drift. `validate_rate_snapshot.py` takes
+support status from `pair_rate_treatment()`. Targeted rebuild:
+`python3 generate.py --historical-instruments-only` (idempotent).
+
+**Remaining limitations.** Templated pair-overview prose (market-dynamics wording) and the
+page title, description and H1 ("Converter") are unchanged on historical pages. The 7
+historical/legacy hubs now carry the historical/legacy label.
+
+## 9. Next implementation sequence
+
+1. **A4.3 Test / no-currency standards reference** — XTS/XXX reference pages and the
    consolidation decision for their 674 pair pages.
-3. **A4.4 Precious metals reference layer** — benchmark source, troy-ounce semantics.
-4. **A4.5 Institutional units layer** — XDR, CLF, UYW, XSU, XUA from issuer valuations.
-5. **A4.6 Restricted & missing fiat sources** — KPW, VED, CUP regime caveat, review-flagged
-   fiat (IRR, LBP, SYP, MMK, TMT, VES).
+2. **A4.4 Precious metals reference layer** — benchmark source, troy-ounce semantics.
+3. **A4.5 Institutional units layer** — XDR, CLF, UYW, XSU, XUA from issuer valuations.
+4. **A4.6 Restricted & missing fiat sources** — KPW, VED, CUP regime caveat, review-flagged
+   fiat (IRR, SYP, MMK, TMT, VES).
+5. **Successor migration (XCG, ZWG)** and a **historical prose/metadata pass** (pair-overview
+   prose, titles/descriptions, per-pair indexability override for successor pairs).
 
-Generators should be migrated to `instrument_policy.resolve()` in the sprint that first
-changes their output; the legacy `instrument_type` label can then be retired.
+The legacy `instrument_type` label in `currencies.json` is now used only for the generic hub
+identity line of non-historical codes; it can be retired once A4.3–A4.5 move those to the
+resolver.
