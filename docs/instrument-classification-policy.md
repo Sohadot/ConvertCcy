@@ -40,7 +40,7 @@ Secondary attributes: `instrument_status`, `circulation_status`, `legal_tender_s
 `issuer_type`, `issuer_name` (null unless well established), `jurisdiction_scope`,
 `market_pricing_expected`, `reference_rate_expected`, `active`, `historical`,
 `classification_confidence`, `evidence`, `review_flags`, `successor_code`,
-`documented_conversion` (always `requires_source_verification` until A4.5 verifies it).
+`documented_conversion` (verification state is explicit; historical conversions are promoted to `verified` only after an authoritative-source check).
 
 ## 3. Policy matrix (per type)
 
@@ -69,7 +69,7 @@ candidate_for_consolidation 674 (every XTS/XXX pair).
 reference page per code is the stronger canonical target. Recommended: consolidation (A4.2),
 decided and executed in that sprint, not here.
 
-## 4. Source policy (source classes, no URLs yet)
+## 4. Source policy and verification registry
 
 | Type | Acceptable source classes |
 |---|---|
@@ -80,6 +80,8 @@ decided and executed in that sprint, not here.
 | special instrument (XDR) | issuing institution · international financial institution record |
 | historical / legacy | central bank (archive) · official government archive · IFI record |
 | test / no-currency | ISO 4217 maintenance agency |
+
+Authoritative URLs and the exact claims they support are recorded in the `verification_sources` registry inside `data/instrument_classification.json`. This keeps the policy machine-readable while preserving claim-level provenance.
 
 ## 5. Commercial role (strategic metadata only)
 
@@ -102,19 +104,32 @@ test/no-currency: standards reference API, AI retrieval corpus.
 Review flags on fiat (no reclassification without evidence): IRR, LBP, SYP, MMK, TMT, VES, VED
 (`official_vs_market_rate_review`; VES/VED also `code_mapping_review`).
 
-## 7. Known uncertainties
+## 7. Source-verification pass and remaining uncertainties
 
-Medium-confidence classifications (14): ANG, BGN, CUP, IRR, LBP, MMK, SLL, SYP, TMT, UYW, VED,
-VES, XSU, ZWL. All documented conversions (HRK 7.53450/EUR, BGN 1.95583/EUR, SVC 8.75/USD,
-SLL 1,000/SLE, ANG 1/XCG, CUC 24 CUP) are knowledge-based and marked
-`requires_source_verification`; none may be published before verification. XCG and ZWG are
-not in the site's currency set.
+The following facts are now anchored to authoritative sources in the repository registry:
+- ANG → XCG: XCG introduction, 1:1 conversion, and end of ANG cash/legal-tender use — Centrale Bank van Curaçao en Sint Maarten.
+- BGN → EUR: euro adoption and fixed EUR 1 = BGN 1.95583 conversion — European Central Bank.
+- HRK → EUR: fixed EUR 1 = HRK 7.53450 conversion — European Central Bank.
+- SLL → SLE: redenomination at 1,000 old leones = 1 new leone — Bank of Sierra Leone.
+- ZWL → ZWG: replacement code and transition — Reserve Bank of Zimbabwe.
+- CUC → CUP: withdrawal under monetary unification and official CUC 1 = CUP 24 conversion — Cuban official legal/monetary-ordering sources.
+- SVC/USD: official 8.75 colones per USD quotation — Banco Central de Reserva de El Salvador.
+- UYW: issuer/publication status — Banco Central del Uruguay.
+- XUA: AfDB Unit of Account and SDR equivalence — African Development Bank.
+- XDR: SDR valuation methodology — International Monetary Fund.
+- CLF: UF calculation methodology — Chilean official financial/central-bank source.
+- KPW: national-currency identity and attributed institutional rate series — United Nations Data.
+
+Medium-confidence classifications now remaining (10): CUP, IRR, LBP, MMK, SLL, SYP, TMT, VED, VES, XSU.
+SLL remains medium because the exact old-note legal-tender end state still needs a dated issuer notice even though the 1,000:1 redenomination is verified.
+CUP remains medium because the 2021 official 24 CUP/USD unification rate is verified, while the current applicable exchange-rate regime still requires dedicated A4.6 treatment.
+XCG and ZWG are not yet in the site's currency set.
 
 ## 8. Next implementation sequence
 
 1. **A4.2 Historical & legacy rate correction** — stop presenting market-style rates for ANG,
-   BGN, HRK, SLL, ZWL (live user-facing misstatement today, 1,670 pair pages), verify
-   documented conversions, decide successor additions (XCG, ZWG).
+   BGN, HRK, SLL, ZWL (live user-facing misstatement today, 1,670 pair pages), use the now-verified
+   conversion facts, and decide successor additions (XCG, ZWG).
 2. **A4.3 Test / no-currency standards reference** — XTS/XXX reference pages and the
    consolidation decision for their 674 pair pages.
 3. **A4.4 Precious metals reference layer** — benchmark source, troy-ounce semantics.
