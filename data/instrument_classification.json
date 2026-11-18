@@ -11,7 +11,8 @@
     "fact_policy": "Facts marked verification_status=requires_source_verification, and every code with classification_confidence below 'high', must be source-verified before they are published on any public page. Classification here is internal governance metadata; nothing in this file is rendered to users in A4.1.",
     "historical_reference_policy": "historical_reference holds the ONLY historical/legacy facts that may be rendered publicly (SEO-A4.2). Every claim and fixed conversion cites verification_sources entries by key, index and the exact 'supports' string; status and successor come from the instrument record. Dates and numbers are never rendered unless cited here.",
     "standards_reference_policy": "standards_reference holds the only XTS/XXX facts that may be rendered (SEO-A4.3). ISO designations and claims cite verification_sources by key, index and exact 'supports' string; explanations are policy wording and must contain no dates or figures.",
-    "precious_metals_reference_policy": "precious_metals_reference holds the only XAU/XAG/XPT/XPD facts that may be rendered (SEO-A4.4). ISO designations, the NIST troy-ounce factor and the licensing statements cite verification_sources by key, index and exact 'supports' string. Pricing activation_state is reference_layer_only: no metal price may be rendered until data/metal_reference_snapshot.json holds a quote from a source whose license_state permits publication."
+    "precious_metals_reference_policy": "precious_metals_reference holds the only XAU/XAG/XPT/XPD facts that may be rendered (SEO-A4.4). ISO designations, the NIST troy-ounce factor and the licensing statements cite verification_sources by key, index and exact 'supports' string. Pricing activation_state is reference_layer_only: no metal price may be rendered until data/metal_reference_snapshot.json holds a quote from a source whose license_state permits publication.",
+    "institutional_units_reference_policy": "institutional_units_reference holds the only XDR/CLF/UYW/XUA/XSU facts that may be rendered (SEO-A4.5). ISO designations, issuer methodology, licensing and status statements cite verification_sources by key, index and exact 'supports' string. Explanations are figure-free policy wording. value_decision records the A/B/C valuation-source decision; no numeric institutional value may be rendered unless data/institutional_reference_snapshot.json holds a value from a source whose license_state permits publication. Secondary press sources (source_tier secondary_press) may only support claims rendered as reported indicators, never as issuer statements."
   },
   "enums": {
     "instrument_type": [
@@ -53,6 +54,7 @@
     "issuer_type": [
       "national_monetary_authority",
       "currency_union_authority",
+      "national_statistical_authority",
       "supranational_institution",
       "regional_institution",
       "no_issuer",
@@ -249,7 +251,7 @@
         "official_methodology_publication"
       ],
       "hub_indexability": "index_with_specialized_reference_role",
-      "pair_indexability": "needs_further_evidence",
+      "pair_indexability": "index_with_specialized_reference_role",
       "commercial_role": [
         "institutional_units_reference",
         "analytical_dataset"
@@ -3936,8 +3938,8 @@
       "circulation_status": "not_circulating",
       "legal_tender_status": "not_legal_tender",
       "convertibility_status": "not_applicable",
-      "issuer_type": "national_monetary_authority",
-      "issuer_name": "Banco Central del Uruguay",
+      "issuer_type": "national_statistical_authority",
+      "issuer_name": "Instituto Nacional de Estadística (Uruguay)",
       "jurisdiction_scope": "single_jurisdiction",
       "market_pricing_expected": false,
       "reference_rate_expected": true,
@@ -3954,7 +3956,7 @@
       "successor_code": null,
       "documented_conversion": null,
       "reclassification_reason": null,
-      "notes": "Unidad Previsional is an official Uruguayan indexed unit published by Banco Central del Uruguay. Its value is institutionally published rather than market-traded."
+      "notes": "Unidad Previsional, created by Ley N° 19.608 and indexed daily to the Índice Medio de Salarios Nominales. SEO-A4.5 source audit: Article 3 of the law assigns administration and publication of the daily value to the Instituto Nacional de Estadística (INE), so the issuer record was corrected from Banco Central del Uruguay to INE. The earlier BCU registry entry is retained as a republication reference only; its pages returned HTTP 503 during the audit."
     },
     "UZS": {
       "instrument_type": "fiat_currency",
@@ -4349,7 +4351,7 @@
       "reference_rate_expected": true,
       "historical": false,
       "active": true,
-      "classification_confidence": "medium",
+      "classification_confidence": "low",
       "evidence": [
         "repo_currencies_json",
         "repo_rate_snapshot_no_quote",
@@ -4357,12 +4359,13 @@
       ],
       "review_flags": [
         "issuer_verification",
-        "activity_status_review"
+        "activity_status_review",
+        "valuation_basis_verification"
       ],
       "successor_code": null,
       "documented_conversion": null,
       "reclassification_reason": "Legacy label unit_of_account: defined by a regional body (SUCRE system), so classified as a regional unit.",
-      "notes": "SUCRE regional compensation unit (ALBA-TCP members). Current operational status and publishing body require verification."
+      "notes": "SUCRE regional compensation unit. SEO-A4.5 source audit: ISO 4217 still lists XSU; no current issuer publication, valuation or operational statement could be obtained (the former official site redirects to an unrelated domain and member central-bank pages were unavailable). Secondary press reports citing Banco Central del Ecuador data describe no operations since 2020 and Ecuador's denunciation of the treaty. instrument_status stays 'active' only because the taxonomy has no 'unresolved' status; institutional_units_reference.units.XSU.activity_status = status_unresolved governs every public rendering, and no page may assert that XSU is active."
     },
     "XTS": {
       "instrument_type": "test_code",
@@ -4655,6 +4658,27 @@
           "Unidad Previsional is an official published unit",
           "BCU publishes its current value"
         ]
+      },
+      {
+        "authority": "Instituto Nacional de Estadística (Uruguay)",
+        "url": "https://www5.ine.gub.uy/documents/Estad%C3%ADsticasecon%C3%B3micas/PDF/UP/2025/UP%20Junio%202025.pdf",
+        "supports": [
+          "LEY N° 19.608 - CREACIÓN DE LA NUEVA UNIDAD PREVISIONAL",
+          "Créase la Unidad Previsional (UP) la que tendrá un valor inicial de $ 1,00 (pesos uruguayos uno) el último día calendario del mes de entrada en vigencia de la presente ley",
+          "la UP variará diariamente hasta acumular la misma variación que haya acumulado el índice Medio de Salarios Nominales durante el mes inmediato anterior",
+          "El Instituto Nacional de Estadística (INE) se encargará de todo lo relativo a la administración de la nueva unidad de cuenta y dará a publicidad el valor diario de la UP"
+        ]
+      },
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+        "supports": [
+          "UYW: Unidad Previsional",
+          "UYW entity: URUGUAY",
+          "UYW numeric code 927",
+          "UYW minor units 4",
+          "ISO 4217 list published 2026-09-17"
+        ]
       }
     ],
     "XUA": [
@@ -4672,6 +4696,17 @@
         "supports": [
           "AfDB Unit of Account is equivalent to IMF SDR"
         ]
+      },
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+        "supports": [
+          "XUA: ADB Unit of Account",
+          "XUA entity: MEMBER COUNTRIES OF THE AFRICAN DEVELOPMENT BANK GROUP",
+          "XUA numeric code 965",
+          "XUA minor units N.A.",
+          "ISO 4217 list published 2026-09-17"
+        ]
       }
     ],
     "XDR": [
@@ -4679,7 +4714,33 @@
         "authority": "International Monetary Fund",
         "url": "https://www.imf.org/external/np/fin/data/rms_sdrv.aspx",
         "supports": [
-          "SDR valuation is calculated daily from a basket of major currencies"
+          "SDR valuation is calculated daily from a basket of major currencies",
+          "The currency value of the SDR is determined by summing the values in U.S. dollars, based on market exchange rates",
+          "calculated daily except on IMF holidays",
+          "the value of the U.S. dollar in terms of the SDR is rounded to six significant digits",
+          "mid-market rates provided to the IMF by the Bank of England"
+        ]
+      },
+      {
+        "authority": "International Monetary Fund",
+        "url": "https://www.imf.org/en/About/Factsheets/Sheets/2023/special-drawing-rights-sdr",
+        "supports": [
+          "The SDR is an international reserve asset",
+          "The SDR is not a currency, but its value is based on a basket of five currencies",
+          "the US dollar, the euro, the Chinese renminbi, the Japanese yen, and the British pound sterling",
+          "The value of the SDR is determined daily based on market exchange rates",
+          "The SDR value in terms of the US dollar is posted on the IMF website"
+        ]
+      },
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+        "supports": [
+          "XDR: SDR (Special Drawing Right)",
+          "XDR entity: INTERNATIONAL MONETARY FUND (IMF)",
+          "XDR numeric code 960",
+          "XDR minor units N.A.",
+          "ISO 4217 list published 2026-09-17"
         ]
       }
     ],
@@ -4688,7 +4749,28 @@
         "authority": "Comisión para el Mercado Financiero de Chile / Banco Central de Chile methodology",
         "url": "https://api.cmfchile.cl/documentacion/UF.html",
         "supports": [
-          "Unidad de Fomento is calculated monthly by Banco Central de Chile and adjusted using CPI methodology"
+          "Unidad de Fomento is calculated monthly by Banco Central de Chile and adjusted using CPI methodology",
+          "La Unidad de Fomento (UF) es calculada cada mes por el Banco Central de Chile",
+          "se reajusta a la tasa promedio geométrica correspondiente a la variación que haya experimentado el Indice de Precios al Consumidor",
+          "El valor calculado cubre desde el día 10 de cada mes hasta el día 9 del mes siguiente"
+        ]
+      },
+      {
+        "authority": "Servicio de Impuestos Internos (Chile)",
+        "url": "https://www.sii.cl/valores_y_fechas/uf/uf2026.htm",
+        "supports": [
+          "valores diarios de la Unidad de Fomento (UF)"
+        ]
+      },
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+        "supports": [
+          "CLF: Unidad de Fomento",
+          "CLF entity: CHILE",
+          "CLF numeric code 990",
+          "CLF minor units 4",
+          "ISO 4217 list published 2026-09-17"
         ]
       }
     ],
@@ -4831,6 +4913,47 @@
           "LBMA Precious Metal Prices: International prices for gold, silver, platinum and palladium",
           "In order to view this data on our Portal, you will need to have the relevant licence from IBA",
           "The LBMA Gold Price is set twice daily in auctions independently operated and administered by ICE Benchmark Administration Limited (IBA) and commencing at 10:30 and 15:00 London time"
+        ]
+      }
+    ],
+    "IMF_TERMS": [
+      {
+        "authority": "International Monetary Fund",
+        "url": "https://www.imf.org/en/about/copyright-and-terms",
+        "supports": [
+          "Distributed or reproduced Data must appear accurately with attribution to the IMF as the source",
+          "For any potential commercial reuse of IMF Data, email copyright@imf.org to request permission."
+        ]
+      }
+    ],
+    "XSU": [
+      {
+        "authority": "SIX (ISO 4217 Maintenance Agency)",
+        "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+        "supports": [
+          "XSU: Sucre",
+          "XSU entity: SISTEMA UNITARIO DE COMPENSACION REGIONAL DE PAGOS \"SUCRE\"",
+          "XSU numeric code 994",
+          "XSU minor units N.A.",
+          "ISO 4217 list published 2026-09-17"
+        ]
+      },
+      {
+        "authority": "El Universo (press report)",
+        "source_tier": "secondary_press",
+        "url": "https://www.eluniverso.com/noticias/politica/ecuador-dejo-de-operar-en-el-sistema-sucre-desde-2019-denuncia-de-tratado-nota/",
+        "supports": [
+          "Desde 2019, Ecuador dejó de ejecutar transacciones a través del Sistema Unitario de Compensación Regional de Pagos (Sucre)."
+        ]
+      },
+      {
+        "authority": "El Diario (press report on an Asamblea Nacional del Ecuador report)",
+        "source_tier": "secondary_press",
+        "url": "https://www.eldiario.ec/ecuador/asamblea-vuelve-sobre-el-caso-sucre-y-pone-la-mira-en-mas-de-usd-56-millones-18092026/",
+        "supports": [
+          "El informe aprobado sostiene que el SUCRE llegó a un colapso operativo definitivo",
+          "registra 0 % de operaciones comerciales desde 2020",
+          "La Asamblea también aprobó en junio de 2026 la denuncia del tratado que creó este sistema."
         ]
       }
     ]
@@ -5426,6 +5549,631 @@
       "not_this": "{S} is not a circulating currency, not legal tender and not an ordinary foreign-exchange rate.",
       "benchmark_vs_dealer": "A benchmark or reference metal price is not the price a buyer or seller will receive: dealers quote buy and sell prices with a spread, and coins and bars add fabrication and retail premiums and, in some jurisdictions, tax.",
       "derived": "When a price source is activated, any value in a currency other than the source currency will be labelled as derived and will show both the metal source and the FX source with their timestamps."
+    }
+  },
+  "institutional_units_reference": {
+    "value_decisions": [
+      "issuer_value_activated",
+      "issuer_methodology_only",
+      "reference_layer_only"
+    ],
+    "activity_statuses": [
+      "active",
+      "inactive",
+      "suspended",
+      "legacy_institutional",
+      "historical",
+      "accounting_only",
+      "status_unresolved"
+    ],
+    "pair_roles": [
+      "supranational_valuation_reference",
+      "indexed_unit_reference",
+      "institutional_valuation_reference",
+      "institutional_relative_reference"
+    ],
+    "valuation_types": [
+      "issuer_published_valuation",
+      "indexed_unit_value",
+      "basket_valuation",
+      "derived_reference_value",
+      "institutional_parity",
+      "unavailable"
+    ],
+    "source_audit_date": "2026-11-18",
+    "units": {
+      "XDR": {
+        "display_name": "IMF Special Drawing Right",
+        "short_name": "SDR",
+        "classification_label": "Supranational reserve asset and unit of account",
+        "issuer_display": "International Monetary Fund",
+        "issuer_role": "issuer_and_valuation_publisher",
+        "pair_role": "supranational_valuation_reference",
+        "title_role": "IMF SDR Valuation Reference",
+        "h1_role": "Valuation Reference",
+        "activity_status": "active",
+        "valuation_type": "basket_valuation",
+        "value_decision": "issuer_methodology_only",
+        "decision_label": "IMF REFERENCE ONLY",
+        "related_unit": null,
+        "iso_designation": {
+          "text": "SDR (Special Drawing Right)",
+          "cites": [
+            {
+              "source": "XDR",
+              "index": 2,
+              "supports": "XDR: SDR (Special Drawing Right)"
+            }
+          ]
+        },
+        "activity_claims": [
+          {
+            "text": "The IMF posts the SDR value in terms of the US dollar on its website.",
+            "cites": [
+              {
+                "source": "XDR",
+                "index": 1,
+                "supports": "The SDR value in terms of the US dollar is posted on the IMF website"
+              }
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "text": "The SDR is an international reserve asset.",
+            "cites": [
+              {
+                "source": "XDR",
+                "index": 1,
+                "supports": "The SDR is an international reserve asset"
+              }
+            ]
+          },
+          {
+            "text": "The SDR is not a currency; its value is based on a basket of five currencies: the US dollar, the euro, the Chinese renminbi, the Japanese yen and the British pound sterling.",
+            "cites": [
+              {
+                "source": "XDR",
+                "index": 1,
+                "supports": "The SDR is not a currency, but its value is based on a basket of five currencies"
+              },
+              {
+                "source": "XDR",
+                "index": 1,
+                "supports": "the US dollar, the euro, the Chinese renminbi, the Japanese yen, and the British pound sterling"
+              }
+            ]
+          },
+          {
+            "text": "The currency value of the SDR is determined by summing the US-dollar values of the basket amounts, based on market exchange rates.",
+            "cites": [
+              {
+                "source": "XDR",
+                "index": 0,
+                "supports": "The currency value of the SDR is determined by summing the values in U.S. dollars, based on market exchange rates"
+              }
+            ]
+          },
+          {
+            "text": "The IMF calculates the SDR valuation daily, except on IMF holidays, using mid-market rates provided by the Bank of England.",
+            "cites": [
+              {
+                "source": "XDR",
+                "index": 0,
+                "supports": "calculated daily except on IMF holidays"
+              },
+              {
+                "source": "XDR",
+                "index": 0,
+                "supports": "mid-market rates provided to the IMF by the Bank of England"
+              }
+            ]
+          },
+          {
+            "text": "The IMF rounds the value of the US dollar in terms of the SDR to six significant digits.",
+            "cites": [
+              {
+                "source": "XDR",
+                "index": 0,
+                "supports": "the value of the U.S. dollar in terms of the SDR is rounded to six significant digits"
+              }
+            ]
+          }
+        ],
+        "licensing_claims": [
+          {
+            "text": "Distributed or reproduced IMF data must appear accurately with attribution to the IMF as the source.",
+            "cites": [
+              {
+                "source": "IMF_TERMS",
+                "index": 0,
+                "supports": "Distributed or reproduced Data must appear accurately with attribution to the IMF as the source"
+              }
+            ]
+          },
+          {
+            "text": "The IMF requires permission for any potential commercial reuse of IMF Data.",
+            "cites": [
+              {
+                "source": "IMF_TERMS",
+                "index": 0,
+                "supports": "For any potential commercial reuse of IMF Data, email copyright@imf.org to request permission."
+              }
+            ]
+          }
+        ],
+        "explanations": {
+          "what": "The Special Drawing Right is a reserve asset created and valued by the International Monetary Fund; it also serves as the IMF's unit of account.",
+          "not_this": "XDR is not a circulating currency, is not legal tender anywhere and is not traded on the foreign-exchange market, so an XDR pair is not an ordinary currency conversion.",
+          "valuation": "The IMF valuation is the governing value of the SDR. Any SDR value in a currency other than the US dollar is derived from that valuation and an FX reference, and is not an IMF quote.",
+          "value_status": "ConvertCCY does not publish the IMF SDR valuation: IMF terms require permission for commercial reuse of IMF data, and that permission has not been obtained."
+        },
+        "reported_indicators": [],
+        "source_governance": {
+          "official_valuation_source": "IMF SDR Valuation page",
+          "methodology": "IMF basket valuation (Rule O)",
+          "update_frequency": "daily, except IMF holidays",
+          "publication_schedule": "IMF business days",
+          "unit_definition": "SDR basket of five currencies",
+          "reference_basket": "USD, EUR, CNY, JPY, GBP",
+          "historical_continuity": "continuous IMF valuation series",
+          "redistribution": "attribution required; commercial reuse requires IMF permission (not obtained)"
+        },
+        "faq": [
+          {
+            "q": "Is XDR a currency?",
+            "a": [
+              "claim:1",
+              "ex:not_this"
+            ]
+          },
+          {
+            "q": "Who issues the SDR?",
+            "a": [
+              "ex:what",
+              "claim:0"
+            ]
+          },
+          {
+            "q": "How is the SDR valued?",
+            "a": [
+              "claim:2",
+              "claim:3",
+              "claim:4"
+            ]
+          }
+        ]
+      },
+      "CLF": {
+        "display_name": "Chile Unidad de Fomento",
+        "short_name": "UF",
+        "classification_label": "Inflation-indexed unit of account",
+        "issuer_display": "Banco Central de Chile",
+        "issuer_role": "issuer_and_methodology_owner",
+        "pair_role": "indexed_unit_reference",
+        "title_role": "Unidad de Fomento Indexed Value Reference",
+        "h1_role": "Official Indexed Value Reference",
+        "activity_status": "active",
+        "valuation_type": "indexed_unit_value",
+        "value_decision": "issuer_methodology_only",
+        "decision_label": "METHODOLOGY ONLY",
+        "related_unit": null,
+        "iso_designation": {
+          "text": "Unidad de Fomento",
+          "cites": [
+            {
+              "source": "CLF",
+              "index": 2,
+              "supports": "CLF: Unidad de Fomento"
+            }
+          ]
+        },
+        "activity_claims": [
+          {
+            "text": "Chile's Servicio de Impuestos Internos publishes daily values of the Unidad de Fomento.",
+            "cites": [
+              {
+                "source": "CLF",
+                "index": 1,
+                "supports": "valores diarios de la Unidad de Fomento (UF)"
+              }
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "text": "The Unidad de Fomento is calculated each month by Banco Central de Chile.",
+            "cites": [
+              {
+                "source": "CLF",
+                "index": 0,
+                "supports": "La Unidad de Fomento (UF) es calculada cada mes por el Banco Central de Chile"
+              }
+            ]
+          },
+          {
+            "text": "It is adjusted at the geometric average rate corresponding to the change in the Consumer Price Index.",
+            "cites": [
+              {
+                "source": "CLF",
+                "index": 0,
+                "supports": "se reajusta a la tasa promedio geométrica correspondiente a la variación que haya experimentado el Indice de Precios al Consumidor"
+              }
+            ]
+          },
+          {
+            "text": "Each calculated period runs from day 10 of one month to day 9 of the next.",
+            "cites": [
+              {
+                "source": "CLF",
+                "index": 0,
+                "supports": "El valor calculado cubre desde el día 10 de cada mes hasta el día 9 del mes siguiente"
+              }
+            ]
+          }
+        ],
+        "licensing_claims": [],
+        "explanations": {
+          "what": "The Unidad de Fomento is an accounting unit whose peso value follows Chilean consumer-price inflation under official Banco Central de Chile methodology.",
+          "not_this": "CLF is not banknotes or coins and is not a floating exchange rate: its peso value is set by an index formula, so CLF to CLP is an indexed value, not an FX quote.",
+          "valuation": "The official CLF value is expressed in Chilean pesos. A CLF value in any other currency would be derived from the official peso value and an FX reference, and is not published by the issuer.",
+          "value_status": "ConvertCCY does not yet publish the official CLF value because the reuse terms of the official publication have not been verified."
+        },
+        "reported_indicators": [],
+        "source_governance": {
+          "official_valuation_source": "Banco Central de Chile methodology; daily values published by official Chilean bodies",
+          "methodology": "CPI-indexed geometric daily adjustment",
+          "update_frequency": "daily values, calculated per monthly period",
+          "publication_schedule": "monthly period published in advance",
+          "unit_definition": "indexed peso value",
+          "reference_basket": "not applicable (single-currency index unit)",
+          "historical_continuity": "continuous official series",
+          "redistribution": "license_unclear (terms not verified)"
+        },
+        "faq": [
+          {
+            "q": "Is CLF a currency?",
+            "a": [
+              "ex:not_this"
+            ]
+          },
+          {
+            "q": "What is the Unidad de Fomento?",
+            "a": [
+              "ex:what"
+            ]
+          },
+          {
+            "q": "How is CLF calculated?",
+            "a": [
+              "claim:0",
+              "claim:1",
+              "claim:2"
+            ]
+          },
+          {
+            "q": "Why does CLF change over time?",
+            "a": [
+              "claim:1",
+              "ex:valuation"
+            ]
+          }
+        ]
+      },
+      "UYW": {
+        "display_name": "Uruguay Unidad Previsional",
+        "short_name": "UP",
+        "classification_label": "Wage-indexed unit of account",
+        "issuer_display": "Instituto Nacional de Estadística (Uruguay)",
+        "issuer_role": "statutory_administrator_and_publisher",
+        "pair_role": "indexed_unit_reference",
+        "title_role": "Unidad Previsional Reference",
+        "h1_role": "Indexed Value Reference",
+        "activity_status": "active",
+        "valuation_type": "indexed_unit_value",
+        "value_decision": "issuer_methodology_only",
+        "decision_label": "REFERENCE ONLY",
+        "related_unit": null,
+        "iso_designation": {
+          "text": "Unidad Previsional",
+          "cites": [
+            {
+              "source": "UYW",
+              "index": 2,
+              "supports": "UYW: Unidad Previsional"
+            }
+          ]
+        },
+        "activity_claims": [
+          {
+            "text": "Uruguay's Instituto Nacional de Estadística administers the unit and publishes its daily value.",
+            "cites": [
+              {
+                "source": "UYW",
+                "index": 1,
+                "supports": "El Instituto Nacional de Estadística (INE) se encargará de todo lo relativo a la administración de la nueva unidad de cuenta y dará a publicidad el valor diario de la UP"
+              }
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "text": "The Unidad Previsional was created by Ley N° 19.608 with an initial value of one Uruguayan peso.",
+            "cites": [
+              {
+                "source": "UYW",
+                "index": 1,
+                "supports": "LEY N° 19.608 - CREACIÓN DE LA NUEVA UNIDAD PREVISIONAL"
+              },
+              {
+                "source": "UYW",
+                "index": 1,
+                "supports": "Créase la Unidad Previsional (UP) la que tendrá un valor inicial de $ 1,00 (pesos uruguayos uno) el último día calendario del mes de entrada en vigencia de la presente ley"
+              }
+            ]
+          },
+          {
+            "text": "Its value changes daily until it has accumulated the change in the Índice Medio de Salarios Nominales over the previous month.",
+            "cites": [
+              {
+                "source": "UYW",
+                "index": 1,
+                "supports": "la UP variará diariamente hasta acumular la misma variación que haya acumulado el índice Medio de Salarios Nominales durante el mes inmediato anterior"
+              }
+            ]
+          }
+        ],
+        "licensing_claims": [],
+        "explanations": {
+          "what": "The Unidad Previsional is a statutory Uruguayan accounting unit whose peso value follows the nominal average wage index.",
+          "not_this": "UYW is not banknotes or coins and is not a floating exchange rate: its peso value is set by a wage-index formula, so UYW to UYU is an indexed value, not an FX quote.",
+          "valuation": "The official UYW value is expressed in Uruguayan pesos. A UYW value in any other currency would be derived from the official peso value and an FX reference, and is not published by INE.",
+          "value_status": "ConvertCCY does not yet publish the official UYW value because the reuse terms of the INE publication have not been verified."
+        },
+        "reported_indicators": [],
+        "source_governance": {
+          "official_valuation_source": "INE daily Unidad Previsional values",
+          "methodology": "Ley N° 19.608 wage-index formula",
+          "update_frequency": "daily values, published by month",
+          "publication_schedule": "monthly INE bulletin",
+          "unit_definition": "wage-indexed peso value",
+          "reference_basket": "not applicable (single-currency index unit)",
+          "historical_continuity": "continuous INE series since creation",
+          "redistribution": "license_unclear (terms not verified)"
+        },
+        "faq": [
+          {
+            "q": "What is the Unidad Previsional?",
+            "a": [
+              "ex:what",
+              "claim:0"
+            ]
+          },
+          {
+            "q": "How is UYW calculated?",
+            "a": [
+              "claim:1"
+            ]
+          },
+          {
+            "q": "Who publishes the UYW value?",
+            "a": [
+              "activity:0"
+            ]
+          },
+          {
+            "q": "Is UYW a currency?",
+            "a": [
+              "ex:not_this"
+            ]
+          }
+        ]
+      },
+      "XUA": {
+        "display_name": "African Development Bank Unit of Account",
+        "short_name": "UA",
+        "classification_label": "Regional institutional unit of account",
+        "issuer_display": "African Development Bank",
+        "issuer_role": "defining_institution",
+        "pair_role": "institutional_valuation_reference",
+        "title_role": "AfDB Unit of Account Reference",
+        "h1_role": "Reference",
+        "activity_status": "active",
+        "valuation_type": "institutional_parity",
+        "value_decision": "reference_layer_only",
+        "decision_label": "SDR-RELATIONSHIP REFERENCE ONLY",
+        "related_unit": "XDR",
+        "iso_designation": {
+          "text": "ADB Unit of Account",
+          "cites": [
+            {
+              "source": "XUA",
+              "index": 2,
+              "supports": "XUA: ADB Unit of Account"
+            }
+          ]
+        },
+        "activity_claims": [
+          {
+            "text": "The African Development Bank denominates its net assets in Units of Account.",
+            "cites": [
+              {
+                "source": "XUA",
+                "index": 0,
+                "supports": "AfDB net assets are denominated in Units of Account"
+              }
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "text": "The African Development Bank states that its Unit of Account is equivalent to the IMF Special Drawing Right.",
+            "cites": [
+              {
+                "source": "XUA",
+                "index": 1,
+                "supports": "AfDB Unit of Account is equivalent to IMF SDR"
+              }
+            ]
+          },
+          {
+            "text": "The Unit of Account tracks the SDR currency composition.",
+            "cites": [
+              {
+                "source": "XUA",
+                "index": 0,
+                "supports": "UA tracks SDR currency composition"
+              }
+            ]
+          }
+        ],
+        "licensing_claims": [],
+        "explanations": {
+          "what": "The AfDB Unit of Account is the accounting unit in which the African Development Bank Group keeps its accounts.",
+          "not_this": "XUA is not a circulating currency, is not legal tender and has no market quote; it is an institutional accounting unit.",
+          "valuation": "The issuer describes the Unit of Account as equivalent to the IMF SDR. ConvertCCY records this as an institutional relationship and does not convert it into a standing numeric parity without an issuer methodology statement.",
+          "value_status": "No independent XUA valuation is published on ConvertCCY; its valuation follows the IMF SDR, which is itself not published here."
+        },
+        "reported_indicators": [],
+        "source_governance": {
+          "official_valuation_source": "follows the IMF SDR valuation (issuer statement)",
+          "methodology": "issuer-stated equivalence to the SDR",
+          "update_frequency": "follows the SDR",
+          "publication_schedule": "no independent XUA publication verified",
+          "unit_definition": "equivalent to the IMF SDR (issuer statement)",
+          "reference_basket": "SDR currency composition",
+          "historical_continuity": "unresolved",
+          "redistribution": "not applicable (no independent value)"
+        },
+        "faq": [
+          {
+            "q": "What is the AfDB Unit of Account?",
+            "a": [
+              "ex:what",
+              "activity:0"
+            ]
+          },
+          {
+            "q": "How does XUA relate to the SDR?",
+            "a": [
+              "claim:0",
+              "claim:1",
+              "ex:valuation"
+            ]
+          },
+          {
+            "q": "Is XUA a currency?",
+            "a": [
+              "ex:not_this"
+            ]
+          }
+        ]
+      },
+      "XSU": {
+        "display_name": "SUCRE Regional Unit of Account",
+        "short_name": "XSUCRE",
+        "classification_label": "Regional settlement unit of account",
+        "issuer_display": null,
+        "issuer_role": "unresolved",
+        "pair_role": "institutional_valuation_reference",
+        "title_role": "SUCRE Unit Reference",
+        "h1_role": "Reference",
+        "activity_status": "status_unresolved",
+        "valuation_type": "unavailable",
+        "value_decision": "reference_layer_only",
+        "decision_label": "STATUS UNRESOLVED",
+        "related_unit": null,
+        "iso_designation": {
+          "text": "Sucre",
+          "cites": [
+            {
+              "source": "XSU",
+              "index": 0,
+              "supports": "XSU: Sucre"
+            }
+          ]
+        },
+        "activity_claims": [],
+        "reported_indicators": [
+          {
+            "text": "A press report states that Ecuador stopped executing transactions through the SUCRE system in 2019.",
+            "cites": [
+              {
+                "source": "XSU",
+                "index": 1,
+                "supports": "Desde 2019, Ecuador dejó de ejecutar transacciones a través del Sistema Unitario de Compensación Regional de Pagos (Sucre)."
+              }
+            ]
+          },
+          {
+            "text": "A press report on an Ecuadorian National Assembly report states that the system has recorded no commercial operations since 2020 and that the Assembly approved denunciation of its founding treaty.",
+            "cites": [
+              {
+                "source": "XSU",
+                "index": 2,
+                "supports": "registra 0 % de operaciones comerciales desde 2020"
+              },
+              {
+                "source": "XSU",
+                "index": 2,
+                "supports": "La Asamblea también aprobó en junio de 2026 la denuncia del tratado que creó este sistema."
+              }
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "text": "ISO 4217 lists XSU under the Sistema Unitario de Compensación Regional de Pagos (SUCRE).",
+            "cites": [
+              {
+                "source": "XSU",
+                "index": 0,
+                "supports": "XSU entity: SISTEMA UNITARIO DE COMPENSACION REGIONAL DE PAGOS \"SUCRE\""
+              }
+            ]
+          }
+        ],
+        "licensing_claims": [],
+        "explanations": {
+          "what": "XSU is the ISO 4217 code of the unit of account of the SUCRE regional payment-compensation system.",
+          "not_this": "XSU is not a circulating currency, is not legal tender and has no market quote.",
+          "valuation": "No current issuer valuation or methodology publication for XSU could be verified, so no XSU value is shown or derived.",
+          "value_status": "The current operational status of the SUCRE system is unresolved: no current issuer publication was available, and the indicators found come from secondary press reports."
+        },
+        "source_governance": {
+          "official_valuation_source": "unresolved",
+          "methodology": "unresolved",
+          "update_frequency": "unresolved",
+          "publication_schedule": "unresolved",
+          "unit_definition": "unresolved",
+          "reference_basket": "unresolved",
+          "historical_continuity": "unresolved",
+          "redistribution": "not applicable (no value)"
+        },
+        "faq": [
+          {
+            "q": "What is XSU?",
+            "a": [
+              "ex:what",
+              "claim:0"
+            ]
+          },
+          {
+            "q": "Is the SUCRE system still operating?",
+            "a": [
+              "ex:value_status",
+              "reported:0",
+              "reported:1"
+            ]
+          },
+          {
+            "q": "Does XSU have a published value?",
+            "a": [
+              "ex:valuation"
+            ]
+          }
+        ]
+      }
     }
   }
 }
