@@ -84,6 +84,17 @@ jobs:
         # values only with licence, provenance and timestamps; router precedence holds.
         run: python3 scripts/validate_precious_metals.py
 
+      - name: Institutional reference snapshot gate (validate_institutional_snapshot.py)
+        # SEO-A4.5: governed institutional snapshot schema, licensing gate, issuer-cadence
+        # freshness, methodology evidence and provenance; reference_layer_only carries no values.
+        run: python3 scripts/validate_institutional_snapshot.py
+
+      - name: Institutional units gate (validate_institutional_units.py)
+        # SEO-A4.5: XDR/CLF/UYW/XUA/XSU pages and hubs carry institutional semantics, no
+        # converter/FX state, values only with licence, issuer, dates and methodology; router
+        # precedence holds; XSU never asserted active.
+        run: python3 scripts/validate_institutional_units.py
+
       - name: Pair internal-link graph gate (validate_pair_link_graph.py)
         # SEO-A2: every pair page reachable from index.html via <a href>
         # within 3 clicks, no reverse-pair-only 2-cycles, every pair linked
