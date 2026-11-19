@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""SEO-A1 — truthful sitemap lastmod + search-surface segregation."""
+"""SEO-A1 — truthful sitemap lastmod + search-surface segregation.
+
+SEO-A5.1 update: the sitemap is a sitemap index of semantic child sitemaps, and a modified or
+untracked file has no committed content date yet, so its <lastmod> is OMITTED (the pre-A5.1
+rule stamped the current day, a wall-clock date). The other A1 guarantees are unchanged."""
 
 from __future__ import annotations
 
@@ -41,21 +45,17 @@ class SitemapLastmodResolverTest(unittest.TestCase):
             "2024-01-15",
         )
 
-    def test_dirty_tracked_file_uses_today(self):
+    def test_dirty_tracked_file_omits_lastmod(self):
         history = {"pages/usd-to-eur.html": "2024-01-15"}
         dirty = {"pages/usd-to-eur.html"}
-        self.assertEqual(
-            generate.resolve_content_lastmod("pages/usd-to-eur.html", history, dirty, "2026-09-11"),
-            "2026-09-11",
-        )
+        self.assertIsNone(
+            generate.resolve_content_lastmod("pages/usd-to-eur.html", history, dirty, "2026-09-11"))
 
-    def test_new_untracked_file_uses_today(self):
+    def test_new_untracked_file_omits_lastmod(self):
         history: Dict[str, str] = {}
         dirty = {"pages/new-pair.html"}
-        self.assertEqual(
-            generate.resolve_content_lastmod("pages/new-pair.html", history, dirty, "2026-09-11"),
-            "2026-09-11",
-        )
+        self.assertIsNone(
+            generate.resolve_content_lastmod("pages/new-pair.html", history, dirty, "2026-09-11"))
 
     def test_unknown_date_omits_lastmod(self):
         self.assertIsNone(
@@ -74,12 +74,10 @@ class SitemapLastmodResolverTest(unittest.TestCase):
             generate.resolve_content_lastmod("pages/usd-to-eur.html", history, dirty, "2026-09-11"),
             "2024-01-15",
         )
-        self.assertEqual(
-            generate.resolve_content_lastmod("pages/usd-to-gbp.html", history, dirty, "2026-09-11"),
-            "2026-09-11",
-        )
+        self.assertIsNone(
+            generate.resolve_content_lastmod("pages/usd-to-gbp.html", history, dirty, "2026-09-11"))
 
-    def test_git_index_parses_newest_commit_first(self):
+    def test_git_index_takes_newest_author_date_in_utc(self):
         def fake_runner(args: List[str]):
             class R:
                 returncode = 0
@@ -87,13 +85,12 @@ class SitemapLastmodResolverTest(unittest.TestCase):
                 stderr = ""
 
             if args[:1] == ["log"]:
-                # Newest commit first
+                self.assertIn("--diff-merges=dense-combined", args)
+                # NUL-separated records "author date / paths"; traversal order is irrelevant.
                 R.stdout = (
-                    "2026-03-10T12:00:00+00:00\n"
-                    "pages/usd-to-eur.html\n"
-                    "\n"
-                    "2024-01-15T12:00:00+00:00\n"
-                    "pages/usd-to-eur.html\n"
+                    "\x002024-01-15T12:00:00+00:00\n\npages/usd-to-eur.html\n"
+                    "\x002026-03-10T23:30:00-05:00\n\npages/usd-to-eur.html\n"
+                    "\x002025-05-01T10:00:00+02:00\n\npages/usd-to-eur.html\n"
                 )
                 return R()
             if args[:1] == ["status"]:
@@ -105,9 +102,9 @@ class SitemapLastmodResolverTest(unittest.TestCase):
         history, dirty, today, _elapsed = generate.build_git_content_lastmod_index(
             REPO, today="2026-09-11", git_runner=fake_runner
         )
-        self.assertEqual(history["pages/usd-to-eur.html"], "2026-03-10")
+        self.assertEqual(history["pages/usd-to-eur.html"], "2026-03-11")   # 23:30 -05:00 is 04:30 UTC next day
         self.assertEqual(dirty, set())
-        self.assertEqual(today, "2026-09-11")
+        self.assertIsNone(today)   # no wall-clock date is used
 
     def test_git_unavailable_yields_empty_history(self):
         def fake_runner(args: List[str]):
@@ -141,13 +138,13 @@ class SitemapSearchSurfaceTest(unittest.TestCase):
                 "rules/switzerland-foreign-currency-rules.html": "2025-01-01",
             }
         )
-        cls.xml = generate.build_sitemap(
-            profiles,
-            history_dates=history,
-            dirty_paths=set(),
-            today="2099-01-01",
-        )
-        cls.locs = _parse_locs_and_lastmods(cls.xml)
+        files, _manifest = generate.build_semantic_sitemaps(profiles, history_dates=history, dirty_paths=set())
+        cls.files = files
+        cls.xml = "".join(text for rel, text in sorted(files.items()) if rel.startswith("sitemaps/"))
+        cls.locs = {}
+        for rel, text in files.items():
+            if rel.startswith("sitemaps/"):
+                cls.locs.update(_parse_locs_and_lastmods(text))
 
     def test_machine_surfaces_excluded(self):
         forbidden = [
@@ -186,12 +183,14 @@ class SitemapSearchSurfaceTest(unittest.TestCase):
         self.assertEqual(len(raw), len(set(raw)))
 
     def test_xml_well_formed(self):
-        ET.fromstring(self.xml)
+        for rel, text in self.files.items():
+            if rel.endswith(".xml"):
+                ET.fromstring(text)
 
     def test_no_iso_today_stamping_on_clean_tree(self):
-        # Injected history dates must appear; fake "today" must not.
+        # Injected history dates must appear; no clock date can appear.
         self.assertEqual(self.locs["https://convertccy.com/pages/usd-to-eur.html"], "2025-01-01")
-        self.assertNotEqual(self.locs["https://convertccy.com/pages/usd-to-eur.html"], "2099-01-01")
+        self.assertNotIn(generate.iso_today(), {v for v in self.locs.values() if v} - {"2025-01-01"})
 
     def test_omit_lastmod_when_history_missing(self):
         profiles = {"x": {"pair_slug": "aaa-to-bbb"}}
@@ -205,9 +204,9 @@ class SitemapSearchSurfaceTest(unittest.TestCase):
         profiles = generate.load_pair_profiles()
         history = {"pages/usd-to-eur.html": "2025-06-01", "index.html": "2025-06-01"}
         dirty: Set[str] = set()
-        a = generate.build_sitemap(profiles, history_dates=history, dirty_paths=dirty, today="2099-01-01")
-        b = generate.build_sitemap(profiles, history_dates=history, dirty_paths=dirty, today="2099-12-31")
-        # Clean tree: today unused → identical output despite different clock.
+        a = generate.build_semantic_sitemaps(profiles, history_dates=history, dirty_paths=dirty)[0]
+        b = generate.build_semantic_sitemaps(profiles, history_dates=dict(history), dirty_paths=set(dirty))[0]
+        # Pure function of repository state: byte-identical output, no clock input.
         self.assertEqual(a, b)
 
     def test_architectural_url_delta_removes_only_machine_surfaces(self):
@@ -244,7 +243,7 @@ class SitemapGitIndexIntegrationSmoke(unittest.TestCase):
         self.assertLess(elapsed, 60.0)
         # Dirty set may be non-empty during local edits; must not force failure.
         self.assertIsInstance(dirty, set)
-        self.assertRegex(today or "", r"^\d{4}-\d{2}-\d{2}$")
+        self.assertIsNone(today)
 
 
 if __name__ == "__main__":

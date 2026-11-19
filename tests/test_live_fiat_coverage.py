@@ -350,8 +350,7 @@ class IdempotenceAndFreezeTest(unittest.TestCase):
             self.assertEqual(h, (REPO / "currencies" / f"{c.lower()}.html").read_text(encoding="utf-8"), c)
 
     def test_sitemap_membership_matches_indexability(self):
-        locs = set(re.findall(r"<loc>https://convertccy\.com/([^<]*)</loc>",
-                              (REPO / "sitemap.xml").read_text(encoding="utf-8")))
+        locs = set(u[len(g.BASE_URL) + 1:] for u in g.read_sitemap_locs(REPO))   # SEO-A5.1: index + children
         for (a, b), t in ROUTED.items():
             if t == "live_fiat_coverage":
                 self.assertEqual(g.pair_robots(a, b), g.INDEXABLE_ROBOTS)

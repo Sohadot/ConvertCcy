@@ -30,7 +30,7 @@ CONTENT = g.load_content_blocks()
 PROFILES = g.load_pair_profiles()
 POL = g.instrument_policy_layer()
 LD_RE = re.compile(r'(?s)<script type="application/ld\+json">\n(.*?)\n</script>')
-LOCS = set(re.findall(r"<loc>https://convertccy\.com/([^<]*)</loc>", (REPO / "sitemap.xml").read_text(encoding="utf-8")))
+LOCS = set(u[len(g.BASE_URL) + 1:] for u in g.read_sitemap_locs(REPO))   # SEO-A5.1: index + child sitemaps
 
 
 def read(rel):
@@ -301,12 +301,19 @@ class SurfaceTest(unittest.TestCase):
 class FreezeTest(unittest.TestCase):
     def test_R_S_T_U_controls_byte_identical(self):
         for rel in ("pages/usd-to-eur.html", "pages/bgn-to-eur.html", "pages/usd-to-xts.html", "pages/xau-to-usd.html",
-                    "currencies/usd.html", "currencies/bgn.html", "currencies/xau.html", "sitemap.xml",
+                    "currencies/usd.html", "currencies/bgn.html", "currencies/xau.html",
                     "data/rate_snapshot.json", "data/metal_reference_snapshot.json"):
             base = at_baseline(rel)
             if base is None:
                 self.skipTest("baseline commit not available")
             self.assertEqual(read(rel), base, rel)
+            # SEO-A5.1: sitemap.xml became a sitemap index; this sprint's freeze intent (sitemap
+            # membership unchanged) is asserted on the URL set exposed by the index + children.
+            base_sm = at_baseline("sitemap.xml")
+            if base_sm is not None:
+                import re as _re
+                base_urls = set(_re.findall(r"<loc>([^<]+)</loc>", base_sm))
+                self.assertEqual(set(g.read_sitemap_locs(REPO)), base_urls)
 
     def test_V_targeted_regeneration_idempotent(self):
         for key in ("XDR_USD", "USD_XDR", "CLF_CLP", "UYW_UYU", "XUA_XDR", "XSU_USD", "XDR_CLF", "KPW_CLF"):

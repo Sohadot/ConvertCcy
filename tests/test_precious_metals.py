@@ -215,11 +215,18 @@ class PrecedenceTest(unittest.TestCase):
 class FreezeTest(unittest.TestCase):
     def test_O_P_Q_controls_byte_identical(self):
         for rel in ("pages/usd-to-eur.html", "pages/bgn-to-eur.html", "pages/usd-to-xts.html",  # clf-to-usd moved to A4.5 institutional units
-                    "currencies/usd.html", "sitemap.xml"):
+                    "currencies/usd.html"):
             base = at_baseline(rel)
             if base is None:
                 self.skipTest("baseline commit not available")
             self.assertEqual(read(rel), base, rel)
+            # SEO-A5.1: sitemap.xml became a sitemap index; this sprint's freeze intent (sitemap
+            # membership unchanged) is asserted on the URL set exposed by the index + children.
+            base_sm = at_baseline("sitemap.xml")
+            if base_sm is not None:
+                import re as _re
+                base_urls = set(_re.findall(r"<loc>([^<]+)</loc>", base_sm))
+                self.assertEqual(set(g.read_sitemap_locs(REPO)), base_urls)
 
     def test_R_idempotent(self):
         for key in ("XAU_USD", "USD_XAU", "XAU_XAG", "XPD_XDR", "KPW_XAG"):
@@ -234,7 +241,7 @@ class FreezeTest(unittest.TestCase):
         if base is None:
             self.skipTest("baseline commit not available")
         self.assertIn("Converter", base)
-        locs = set(re.findall(r"<loc>https://convertccy\.com/([^<]*)</loc>", read("sitemap.xml")))
+        locs = set(u[len(g.BASE_URL) + 1:] for u in g.read_sitemap_locs(REPO))   # SEO-A5.1: index + children
         errs, _ = vp.check_pair(base, PROFILES["XAU_USD"], CUR, CONTENT, FX, POL, locs)
         self.assertTrue(errs)
 

@@ -131,35 +131,21 @@ class PairNavigationRegionTest(unittest.TestCase):
             generate.replace_pair_navigation("<html>no nav</html>", "x")
 
 
-class AdditiveSitemapMergeTest(unittest.TestCase):
-    def test_existing_entries_kept_and_hubs_added(self):
-        existing = (REPO / "sitemap.xml").read_text(encoding="utf-8")
-        xml, added = generate.merge_sitemap_additively(
-            existing, _Data.profiles, history_dates={}, dirty_paths=set(), today="2026-01-01"
-        )
-        self.assertEqual(added, [])          # committed sitemap already complete
-        self.assertEqual(xml, existing)      # and is reproduced byte-for-byte
+class SitemapHubMembershipTest(unittest.TestCase):
+    """SEO-A5.1 replaced the additive monolithic-sitemap merge with derived semantic sitemaps.
+    The A2 guarantees it protected still hold: the committed sitemaps list every generator URL
+    (no hub or pair missing, nothing extra), and every hub sits in the currency-hubs child."""
 
-        hub_block = (
-            "  <url>\n    <loc>https://convertccy.com/currencies/usd.html</loc>\n"
-        )
-        start = existing.index(hub_block)
-        end = existing.index("  </url>\n", start) + len("  </url>\n")
-        without = existing[:start] + existing[end:]
-        xml2, added2 = generate.merge_sitemap_additively(
-            without, _Data.profiles, history_dates={}, dirty_paths={"currencies/usd.html"}, today="2026-01-01"
-        )
-        self.assertEqual(added2, ["https://convertccy.com/currencies/usd.html"])
-        self.assertIn("<loc>https://convertccy.com/currencies/usd.html</loc>\n    <lastmod>2026-01-01</lastmod>", xml2)
-        self.assertEqual(xml2.replace(xml2[xml2.index(hub_block):xml2.index("  </url>\n", xml2.index(hub_block)) + 9], ""), without)
+    def test_committed_sitemaps_complete_and_exact(self):
+        locs = generate.read_sitemap_locs(REPO)
+        self.assertEqual(len(locs), len(set(locs)))
+        self.assertEqual(set(locs), {u for u, _ in generate.sitemap_entries(_Data.profiles)})
 
-    def test_unknown_existing_url_rejected(self):
-        existing = (REPO / "sitemap.xml").read_text(encoding="utf-8")
-        bogus = existing.replace(
-            "</urlset>", "  <url>\n    <loc>https://convertccy.com/nope.html</loc>\n  </url>\n</urlset>"
-        )
-        with self.assertRaises(ValueError):
-            generate.merge_sitemap_additively(bogus, _Data.profiles, history_dates={}, dirty_paths=set(), today="2026-01-01")
+    def test_every_hub_in_hub_sitemap(self):
+        hubs = (REPO / "sitemaps" / "currency-hubs.xml").read_text(encoding="utf-8")
+        for code in ("usd", "eur", "xts", "kpw"):
+            self.assertIn(f"<loc>https://convertccy.com/currencies/{code}.html</loc>", hubs)
+        self.assertEqual(hubs.count("<loc>"), len(list((REPO / "currencies").glob("*.html"))))
 
 
 class CommittedGraphGateTest(unittest.TestCase):
