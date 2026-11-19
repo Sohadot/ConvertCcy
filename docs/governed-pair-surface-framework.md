@@ -6,13 +6,17 @@ is planned or proposed, it is marked as such and is not described as current fun
 * **Reconciled against:** `main` at `ed6a4f67bd4ce1322e3fee24166c4411d82b1990`, the merge of PR #136 (SEO-A4.5).
 * **Updated for SEO-A4.6A** (residual KPW/VED live-fiat coverage), branched from `main` at
   `5d533190a3137a5fa32ed8682ce36166909c4325` (merge of PR #137). Sections 3–9 and 11 reflect it.
+* **Updated for SEO-A5.1** (semantic sitemap index and indexation-measurement architecture), branched
+  from `main` at `dc5e6669768c22f77dcfc5466415aab8273cf78e` (merge of PR #139). Sections 3, 6, 10 and
+  11 reflect it.
 * **Updated for SEO-A4.6B** (rate-regime governance for CUP, IRR, MMK, SYP, TMT, VES), branched from
   `main` at `005b3971042a3f07458b5da9c0de288969fca3fb` (merge of PR #138).
 * **Supersedes:** the earlier working draft titled "8,340 Page Governing Framework". That draft
   was never committed. This file is the single authoritative version.
 * **Companion documents:** `docs/instrument-classification-policy.md` (A4.1),
   `docs/precious-metals-methodology.md` (A4.4), `docs/institutional-units-methodology.md` (A4.5) and
-  `docs/live-fiat-coverage-methodology.md` (A4.6A) and `docs/rate-regime-governance-methodology.md` (A4.6B).
+  `docs/live-fiat-coverage-methodology.md` (A4.6A), `docs/rate-regime-governance-methodology.md` (A4.6B) and
+  `docs/indexation-measurement-methodology.md` (A5.1).
 
 ---
 
@@ -84,7 +88,7 @@ pair-page cohort, and the repository cannot reproduce it.
 | 3 | **A4.1–A4.5: semantic correction** | Each instrument is rendered as what it is | Implemented (A4.5 merged in PR #136) |
 | 4a | **A4.6A: residual live-fiat coverage** | The 602 KPW/VED pages that had no governed treatment | Implemented (§7) |
 | 4b | **A4.6B: rate-regime governance** | Review-flagged currencies that have provider values (CUP, IRR, MMK, SYP, TMT, VES) | Implemented (§7.3) |
-| 5 | **GSC measurement** | Cohort-level indexation measurement | Proposed as a future measurement sprint (§10) |
+| 5 | **A5.1: semantic sitemaps and GSC measurement** | Cohort-level indexation measurement | Implemented in the repository (§10). Search Console observation starts after deployment. |
 
 A2 and A3 are the **primary** indexation-recovery interventions. The A4 work corrects meaning on
 top of them and does not replace them.
@@ -224,7 +228,7 @@ claim review tests (tests.test_human_claim_review)", whose command is
 
 | Layer | Purpose | Governing data and code | Generator mode | Validator(s) | Tests | Governance Gate step(s) | Status |
 |---|---|---|---|---|---|---|---|
-| **SEO-A1** | Truthful sitemap `lastmod` and segregation of search surfaces | `generate.py` (`build_git_content_lastmod_index`, `resolve_content_lastmod`, `sitemap_entries`), `sitemap.xml` | full build | covered by the A2/A4.3 sitemap assertions | `tests/test_sitemap_semantics.py` | unit-test step | Implemented |
+| **SEO-A1** | Truthful sitemap `lastmod` and segregation of search surfaces | `generate.py` (`build_git_content_lastmod_index`, `resolve_content_lastmod`, `sitemap_entries`) | `python3 generate.py --sitemaps-only` (since A5.1) | `scripts/validate_semantic_sitemaps.py` (since A5.1) | `tests/test_sitemap_semantics.py` | unit-test step | Implemented; `lastmod` semantics revised in A5.1 |
 | **A2** | Link graph and currency hubs | `data/currencies.json`, `currencies.html`, `currencies/<code>.html`, related-pair graph in `generate.py` | `python3 generate.py --navigation-only` | `scripts/validate_pair_link_graph.py` | `tests/test_currency_hub_graph.py` | "Pair internal-link graph gate (validate_pair_link_graph.py)" | Implemented |
 | **A3** | Static reference value and progressive enhancement | `data/rate_snapshot.json` (byte-identical public copy `rates/snapshot.json`, built by `scripts/build_rate_snapshot.py`), `generate.UNSUPPORTED_CODE_REASONS`, `assets/js/pair-rate.js` | `python3 generate.py --static-rates-only` | `scripts/validate_rate_snapshot.py` | `tests/test_static_pair_value.py`; `tests/js/pair_rate_lifecycle.js`, run from that suite when node and Playwright are available | "Rate snapshot & static pair-rate gate (validate_rate_snapshot.py)" | Implemented |
 | **A3.1** | Truthful FAQ and FAQPage JSON-LD for unsupported pairs | FAQ items in `generate.py` | `python3 generate.py --faq-only` | `scripts/validate_rate_snapshot.py` (its FAQ-truthfulness checks) | `tests/test_faq_truthfulness.py` | unit-test step | Implemented |
@@ -235,7 +239,7 @@ claim review tests (tests.test_human_claim_review)", whose command is
 | **A4.5** | Institutional units | `institutional_units_reference` in `data/instrument_classification.json`, `data/institutional_reference_snapshot.json`, `institutional_reference.py` | `python3 generate.py --institutional-units-only` | `scripts/validate_institutional_snapshot.py`, `scripts/validate_institutional_units.py` | `tests/test_institutional_units.py` | "Institutional reference snapshot gate (validate_institutional_snapshot.py)"; "Institutional units gate (validate_institutional_units.py)" | **Implemented and merged (PR #136)** |
 | **A4.6A** | Residual live-fiat coverage (KPW, VED) | `data/live_fiat_reference_snapshot.json`, `live_fiat_reference.py` | `python3 generate.py --live-fiat-coverage-only` | `scripts/validate_live_fiat_snapshot.py`, `scripts/validate_live_fiat_coverage.py` | `tests/test_live_fiat_coverage.py` | "Live-fiat reference snapshot gate (validate_live_fiat_snapshot.py)"; "Live-fiat coverage gate (validate_live_fiat_coverage.py)" | **Implemented (this sprint's PR); no value activated** |
 | **A4.6B** | Rate-regime governance (CUP, IRR, MMK, SYP, TMT, VES) | `rate_regime_governance` in `data/live_fiat_reference_snapshot.json`, `live_fiat_reference.py` | `python3 generate.py --rate-regime-governance-only` | `scripts/validate_live_fiat_snapshot.py` (runs `validate_rate_regime`), `scripts/validate_rate_regime_governance.py` | `tests/test_rate_regime_governance.py` | "Live-fiat reference snapshot gate (validate_live_fiat_snapshot.py)"; "Rate-regime governance gate (validate_rate_regime_governance.py)" | **Implemented (this sprint's PR); no issuer value activated** |
-| **Semantic sitemap split** | Cohort-level GSC measurement | none | none | none | none | none | **Proposed as a future measurement sprint** |
+| **A5.1** | Semantic sitemap index and indexation-measurement manifest | `sitemap.xml` (index), `sitemaps/*.xml`, `data/generated/sitemap_measurement_manifest.json`; `generate.py` (`semantic_sitemap_cohorts`, `build_semantic_sitemaps`, `write_semantic_sitemaps`, `read_sitemap_locs`) | `python3 generate.py --sitemaps-only` | `scripts/validate_semantic_sitemaps.py` | `tests/test_semantic_sitemaps.py` | "Semantic sitemap gate (validate_semantic_sitemaps.py)" | **Implemented (this sprint's PR)** |
 
 ### 6.1 Layer notes
 
@@ -383,7 +387,7 @@ Success is measured on three separate axes.
 
 **Search and indexation success.** This axis is measured externally, in GSC.
 * "Crawled — currently not indexed" falls for the surfaces **intended** for indexation.
-* Cohort-level indexation improves once the sitemap segmentation in §10 exists.
+* Cohort-level indexation improves, measured per semantic child sitemap (§10, implemented in A5.1).
 * Deliberately `noindex` standards surfaces are never indexed.
 * Intentional redirects are **not** expected to become indexed.
 
@@ -397,41 +401,48 @@ Success is measured on three separate axes.
 Validators prove that the implementation is correct. **They do not prove that Google indexes the
 pages.**
 
-**Current baseline (implemented).** Today the programme is measured with GSC Page Indexing
-totals, plus sample or exported URLs where they are available. The sitemap is a single file,
-`sitemap.xml`, with **28,308** URLs: 28,056 pair pages, which is 28,730 minus the 674 noindex
-standards pages, plus 252 other URLs.
+**Before A5.1 (historical).** The programme was measured only with aggregate GSC Page Indexing
+totals and a single monolithic `sitemap.xml` of 28,308 URLs.
 
-**Future semantic measurement (proposed as a separate sprint, not implemented).** Restructure
-sitemap output into a **sitemap index** with semantically separated child sitemaps, for example:
+**Implemented in A5.1: the semantic sitemap index.** `sitemap.xml` is now a sitemap index of one
+child sitemap per semantic cohort. Membership comes from the router, never from URL lists. Counts at
+`dc5e666`:
 
-* ordinary FX;
-* historical;
-* precious metals;
-* institutional units;
-* live-fiat coverage references;
-* rate-regime-governed pages;
-* currency hubs;
-* any other meaningful indexable class, such as articles and rules.
+| Child sitemap | Cohort | URLs |
+|---|---|---:|
+| `sitemaps/core-pages.xml` | non-pair, non-hub indexable pages | 82 |
+| `sitemaps/currency-hubs.xml` | currency hubs | 170 |
+| `sitemaps/ordinary-fx.xml` | `ordinary_fx` | 20,592 |
+| `sitemaps/historical.xml` | `historical` | 2,296 |
+| `sitemaps/precious-metals.xml` | `precious_metal` | 1,268 |
+| `sitemaps/institutional-units.xml` | `institutional_unit` | 1,540 |
+| `sitemaps/live-fiat-coverage.xml` | `live_fiat_coverage` | 602 |
+| `sitemaps/rate-regime-governed.xml` | `rate_regime_governed` | 1,758 |
+| **Total** | | **28,308** |
 
-The GSC Page Indexing report can be filtered by submitted sitemap. This split would give
-**cohort-level indexation numbers** without needing the original 8,340-URL export.
+* The URL set is unchanged: the old monolithic set and the new union are equal, with 0 additions
+  and 0 removals.
+* The 674 `standards_special` pairs (`noindex,follow`) are in no sitemap.
+* Robots, canonicals and every page are byte-identical.
+* `data/generated/sitemap_measurement_manifest.json` records the denominators.
+* The GSC procedure and observation table are in `docs/indexation-measurement-methodology.md`.
+  Filtering the GSC Page Indexing report by child sitemap gives **cohort-level indexation numbers**
+  without needing the original 8,340-URL export.
 
-This is deliberately **not** done here. A change to the sitemap structure deserves its own sprint
-with scoped tests, semantic-freeze controls, and a resolution of the `lastmod` debt (§11 B) so
-that child sitemaps do not churn.
+**Not done in the repository:** submitting the sitemap to Search Console and recording
+observations. Both happen after deployment, and no Search Console results are claimed here.
 
 ---
 
 ## 11. Known technical debt
 
 Every item below was verified against `main` at `ed6a4f67b` and re-checked for A4.6A. None is fixed
-by this document; item G was closed by A4.6A.
+by this document. Item G was closed by A4.6A and item B by A5.1.
 
 | # | Debt | Evidence on `main` | Intended handling |
 |---|---|---|---|
 | **A** | **Full-build drift** | A full `python3 generate.py` rewrites one passage-intro sentence on **28,392** pair pages. "…the governed declaration threshold and exchange-control posture…" becomes "…the governed border-cash controls and exchange-control profile…". The same run also rewrites `sitemap.xml` (see B). Every sprint therefore uses targeted generation modes. | A dedicated sprint should decide on the wording and accept or neutralise the change once |
-| **B** | **Sitemap `lastmod`** | `lastmod` is derived from `git log --pretty=format:%cI --name-only --diff-filter=ACMR`, keeping the newest committer date per path. A plain `git log --name-only` lists no files for merge commits, so a page's date is its last non-merge commit, not the date it reached `main`. Because a full sitemap regeneration would churn about 28,096 lines, sprints A2–A4.5 merged the sitemap **additively**, keeping existing entries byte-identical. The result is that the `lastmod` of rewritten pages is stale: 25,802 entries still read `2026-09-07`. | Resolve in the measurement sprint (§10) |
+| **B** | **Sitemap `lastmod`** | **Resolved in A5.1.** The causes were: additive sitemap merges froze old entries (25,802 URLs read `2026-09-07`); merge-only content was never dated; committer dates were used; and dirty files got wall-clock dates. `lastmod` is now the UTC author date of the newest commit that changed the rendered file, taken from all parents, with merges counting only for merge-only content (`--diff-merges=dense-combined`). Uncommitted files get no date, and the sitemaps are fully regenerated and validated against history. See `docs/indexation-measurement-methodology.md` §2. | Done. Remaining limits: an author date can precede deployment, and every content change counts. |
 | **C** | **Related links to `noindex` standards pages** | **1,515** links on **1,167** non-standards pair pages point to XTS/XXX pair pages that are `noindex,follow`: 304 ordinary_fx, 628 institutional_unit, 182 precious_metal, 49 historical and 4 live_fiat_coverage (formerly unsupported_specialized) pages. This conflicts with the intended link-governance model. | A future related-link cleanup sprint |
 | **D** | **Breadcrumb semantics** | Standards pages keep converter-style breadcrumb labels. For example, the `BreadcrumbList` on `pages/usd-to-xts.html` names the leaf "USD to XTS". | Future cross-layer metadata sprint |
 | **E** | **Legacy display names** | `data/currencies.json` `display_name` reads "Gold (troy ounce)", "Silver (troy ounce)", "Platinum (troy ounce)" and "Palladium (troy ounce)". These labels still appear in the passage section of **1,340** pair pages that involve a metal (for example, "XAU — Gold (troy ounce)") and in the pair-link lists of all **170** currency hubs. | Not renamed broadly here. Handle together with E/F. |
@@ -461,15 +472,16 @@ jurisdiction rules, claims, bindings or evidence packs.
 
 ## 13. Working rules for pair-surface sprints
 
-These rules applied to every sprint from A2 to A4.6B and remain in force:
+These rules applied to every sprint from A2 to A5.1 and remain in force:
 
 1. Before starting, verify the baseline SHA against `origin/main`. Stop on any mismatch.
 2. Work on a dedicated branch and open a PR. Never merge automatically.
 3. Derive the cohort from policy. Generation is targeted and idempotent: a second run produces
    0 changes.
 4. Run a semantic-freeze proof: zero changed files outside the target cohort and its hubs.
-5. Do not change robots, canonicals or the sitemap unless the layer's policy requires it. Any
-   sitemap change is merged additively.
+5. Do not change robots or canonicals unless the layer's policy requires it. Since A5.1, sitemaps
+   are derived: after committing page changes, run `python3 generate.py --sitemaps-only` and commit
+   the result. The semantic sitemap gate rejects stale sitemaps.
 6. Do not touch jurisdiction rules, Switzerland files, claims, bindings or evidence packs.
 7. Never publish a value without a licence, provenance and a timestamp. Never fabricate a quote.
 8. Keep the repository public-safe: no credentials, tokens, private infrastructure or private
