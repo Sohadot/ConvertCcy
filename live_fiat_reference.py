@@ -371,3 +371,256 @@ def value_view(from_code: str, to_code: str, snap: Dict[str, Any], fx: Dict[str,
                 derivation_method="value_times_fx_cross" if fc else "inverse_of_value_times_fx_cross",
                 value_text=format_value(x, sig_for(published_uncertainty(v["value"]) + fx_u)),
                 fx_source=fx.get("source"), fx_timestamp=fx["captured_at"])
+
+
+# ===========================================================================
+# SEO-A4.6B — rate-regime governance for provider-valued live fiat
+# ===========================================================================
+#
+# rate_regime_governance in the same snapshot governs active fiat codes that DO have a
+# provider value but whose rate regime needs explicit governance (CUP, IRR, MMK, SYP,
+# TMT, VES). It never changes the provider value. It records the regimes that exist,
+# how the provider value compares with them, and a provider policy:
+#   governed_primary          a licensed, issuer-verified regime value powers the page (none yet)
+#   secondary_provider_value  provider value powers the converter, labelled with its regime match
+#   comparison_only           provider value shown labelled for comparison; no converter
+#   suppressed                no number shown (provider regime unresolved / conflicting)
+#   unresolved                no number shown pending evidence
+# A provider value is trusted only while the FX snapshot is within provider_revalidation_days
+# of the audited provider date and within provider_drift_tolerance_pct of the audited value;
+# otherwise the policy is downgraded (secondary -> comparison_only; comparison_only ->
+# suppressed on drift). Issuer and market figures are never stored while their licence is
+# not publishable.
+
+MULTI_REGIME_TYPES = ("multi_segment_official", "official_reference_plus_market_trading",
+                      "official_reference_plus_parallel_market")
+SECONDARY_TIERS = ("secondary_press", "secondary_analysis", "market_aggregator")
+OFFICIAL_ENTRY_TYPES = ("official_reference", "fixed_official_segment", "floating_official_segment",
+                        "official_market_trading")
+NUMBERLESS_POLICIES = ("suppressed", "unresolved")
+REGIME_CURRENCY_FIELDS = ("currency_code", "display_name", "issuer_or_authority", "issuer_source_state", "regime_type",
+                          "availability_status", "regimes", "provider", "provider_policy", "decision_reason",
+                          "classification_confidence", "review_flags", "identity_claims", "coverage_claims",
+                          "regime_claims", "explanations", "faq")
+REGIME_FIELDS = ("regime_id", "regime_type", "regime_label", "authority", "source_id", "evidence_state", "valuation_date",
+                 "captured_at", "value", "value_withheld_reason", "unit", "freshness_policy", "license_state",
+                 "activation_state", "confidence", "notes")
+REGIME_EXPLANATION_KEYS = ("what", "provider", "official", "claims_scope")
+EVIDENCE_TIERS = {"issuer_verified": ("issuer", "official_republisher"),
+                  "secondary_reported": SECONDARY_TIERS,
+                  "unverified_copy": ("unverified_official_copy",),
+                  "unresolved": ("issuer", "official_republisher", "unverified_official_copy")}
+
+
+def regime_section(snap: Dict[str, Any]) -> Dict[str, Any]:
+    return snap.get("rate_regime_governance") or {}
+
+
+def regime_codes(snap: Dict[str, Any]) -> List[str]:
+    return sorted(regime_section(snap).get("currencies", {}))
+
+
+def _pct(value: Any) -> Optional[float]:
+    try:
+        return float(str(value).replace("+", ""))
+    except (TypeError, ValueError):
+        return None
+
+
+def validate_rate_regime(snap: Dict[str, Any], classification: Optional[Dict[str, Any]] = None,
+                         fx: Optional[Dict[str, Any]] = None) -> List[str]:
+    errs: List[str] = []
+    sec = regime_section(snap)
+    if not sec:
+        return []
+    enums = snap.get("enums", {})
+    for k in ("regime_type", "regime_entry_type", "evidence_state", "provider_regime_match", "provider_policy"):
+        if not enums.get(k):
+            errs.append(f"enums.{k} missing")
+    pol = sec.get("comparison_policy", {})
+    for k in ("official_match_tolerance_pct", "material_divergence_pct", "provider_revalidation_days",
+              "provider_drift_tolerance_pct"):
+        if not isinstance(pol.get(k), (int, float)) or pol[k] <= 0:
+            errs.append(f"comparison_policy.{k} must be positive")
+    if not pol.get("rationale"):
+        errs.append("comparison_policy.rationale required (tolerances must be justified)")
+    if pol.get("official_match_tolerance_pct", 0) >= pol.get("material_divergence_pct", 0):
+        errs.append("official match tolerance must be below the material-divergence threshold")
+    tol = pol.get("official_match_tolerance_pct", 0)
+    srcs = {s["id"]: s for s in snap.get("sources", [])}
+    policies = snap.get("freshness_policies", {})
+    instruments = (classification or {}).get("instruments", {})
+    rates = (fx or {}).get("rates", {})
+    for code, c in sorted(sec.get("currencies", {}).items()):
+        p = f"{code}:"
+        miss = [f for f in REGIME_CURRENCY_FIELDS if f not in c]
+        if miss:
+            errs.append(f"{p} missing fields {miss}")
+            continue
+        if c["currency_code"] != code:
+            errs.append(f"{p} currency_code mismatch")
+        if code in snap.get("currencies", {}):
+            errs.append(f"{p} also governed by live-fiat coverage (A4.6A); a code belongs to one layer")
+        if classification is not None:
+            ins = instruments.get(code)
+            if not ins:
+                errs.append(f"{p} not in instrument_classification.json")
+            else:
+                if ins["instrument_type"] not in ELIGIBLE_INSTRUMENT_TYPES or ins["instrument_status"] != "active":
+                    errs.append(f"{p} out of scope: A4.1 type {ins['instrument_type']}/{ins['instrument_status']}")
+                if c["classification_confidence"] != ins["classification_confidence"]:
+                    errs.append(f"{p} classification_confidence disagrees with A4.1")
+                if list(c["review_flags"]) != list(ins["review_flags"]):
+                    errs.append(f"{p} review_flags disagree with A4.1")
+        if fx is not None and code not in rates:
+            errs.append(f"{p} out of scope: no provider value (missing coverage belongs to A4.6A)")
+        for k, enum in (("regime_type", "regime_type"), ("availability_status", "availability_status"),
+                        ("provider_policy", "provider_policy")):
+            if c[k] not in enums.get(enum, []):
+                errs.append(f"{p} unknown {k} {c[k]!r}")
+        regs = {r.get("regime_id"): r for r in c["regimes"]}
+        if c["regime_type"] in MULTI_REGIME_TYPES and len(regs) < 2:
+            errs.append(f"{p} {c['regime_type']} must expose every relevant regime (>= 2)")
+        if c["regime_type"] in ("single_official_reference", "fixed_official_reference") and \
+                sum(1 for r in regs.values() if r.get("regime_type") in OFFICIAL_ENTRY_TYPES) != 1:
+            errs.append(f"{p} {c['regime_type']} must have exactly one official regime")
+        for r in c["regimes"]:
+            rp = f"{p} regime {r.get('regime_id')}:"
+            rmiss = [f for f in REGIME_FIELDS if f not in r]
+            if rmiss:
+                errs.append(f"{rp} missing {rmiss}")
+                continue
+            if r["regime_type"] not in enums.get("regime_entry_type", []):
+                errs.append(f"{rp} unknown regime_type {r['regime_type']!r}")
+            if r["evidence_state"] not in enums.get("evidence_state", []):
+                errs.append(f"{rp} unknown evidence_state")
+            src = srcs.get(r["source_id"])
+            if not src:
+                errs.append(f"{rp} source does not resolve")
+            elif src["source_tier"] not in EVIDENCE_TIERS.get(r["evidence_state"], ()):
+                errs.append(f"{rp} evidence_state {r['evidence_state']} does not fit source tier {src['source_tier']}")
+            elif r["evidence_state"] == "issuer_verified" and src["access_state"] != "accessible":
+                errs.append(f"{rp} issuer_verified requires an accessible issuer source")
+            if r["freshness_policy"] not in policies:
+                errs.append(f"{rp} unknown freshness_policy")
+            if r["license_state"] not in enums.get("license_state", []):
+                errs.append(f"{rp} unknown license_state")
+            if r["valuation_date"] is not None and not DATE_RE.match(str(r["valuation_date"])):
+                errs.append(f"{rp} valuation_date must be YYYY-MM-DD or null")
+            publishable = (r["license_state"] in PUBLISHABLE_LICENSES and r["evidence_state"] == "issuer_verified"
+                           and r["activation_state"] == "source_activated" and snap.get("activation_state") == "source_activated")
+            if r["value"] is not None and not publishable:
+                errs.append(f"{rp} stores a value without a verified, licensed, activated source")
+            if r["value"] is None and not r["value_withheld_reason"]:
+                errs.append(f"{rp} null value needs value_withheld_reason")
+            if r["value"] is not None and (not r["valuation_date"] or not r["captured_at"]):
+                errs.append(f"{rp} numeric value without valuation date")
+        prov = c["provider"]
+        for k in ("provider_value", "provider_as_of", "provider_timestamp", "comparisons", "provider_regime_match",
+                  "match_basis", "confidence"):
+            if k not in prov:
+                errs.append(f"{p} provider.{k} missing")
+        match = prov.get("provider_regime_match")
+        if match not in enums.get("provider_regime_match", []):
+            errs.append(f"{p} unknown provider_regime_match {match!r}")
+        if fx is not None and code in rates and prov.get("provider_as_of") == fx.get("as_of"):
+            try:
+                if Decimal(str(prov["provider_value"])) != Decimal(repr(float(rates[code]))):
+                    errs.append(f"{p} recorded provider value differs from data/rate_snapshot.json for the same date")
+            except InvalidOperation:
+                errs.append(f"{p} provider_value must be a decimal string")
+        comps = {x.get("regime_id"): x for x in prov.get("comparisons", [])}
+        for rid in comps:
+            if rid not in regs:
+                errs.append(f"{p} comparison against unknown regime {rid!r}")
+
+        def matched(types, evidence):
+            return any(rid in regs and regs[rid]["regime_type"] in types and regs[rid]["evidence_state"] in evidence
+                       and _pct(x.get("pct_difference")) is not None and abs(_pct(x["pct_difference"])) <= tol
+                       for rid, x in comps.items())
+        if match == "provider_matches_official_within_tolerance" and \
+                not matched(("official_reference",), ("issuer_verified",)):
+            errs.append(f"{p} official match needs an issuer-verified official regime within tolerance")
+        if match == "provider_matches_reported_official" and \
+                not matched(("official_reference",), ("secondary_reported", "unverified_copy")):
+            errs.append(f"{p} reported-official match needs a reported official regime within tolerance")
+        if match == "provider_matches_reported_official_segment" and \
+                not matched(("fixed_official_segment", "floating_official_segment"), ("secondary_reported", "issuer_verified")):
+            errs.append(f"{p} segment match needs an official segment within tolerance")
+        policy = c["provider_policy"]
+        if policy == "secondary_provider_value":
+            if match not in ("provider_matches_official_within_tolerance", "provider_matches_reported_official"):
+                errs.append(f"{p} a provider value may power a converter only when it matches an official regime")
+            if c["regime_type"] in ("multi_segment_official", "official_reference_plus_market_trading"):
+                errs.append(f"{p} multiple official regimes: the provider value may not power a converter")
+        if match in ("provider_regime_unresolved", "provider_conflicts_with_authoritative_source") and \
+                policy not in NUMBERLESS_POLICIES:
+            errs.append(f"{p} an unresolved / conflicting provider regime may not show a number")
+        if policy == "governed_primary":
+            if not any(r.get("value") is not None for r in c["regimes"]):
+                errs.append(f"{p} governed_primary requires a published, licensed regime value")
+        ex = c["explanations"]
+        if not isinstance(ex, dict) or any(not ex.get(k) for k in REGIME_EXPLANATION_KEYS):
+            errs.append(f"{p} explanations need {REGIME_EXPLANATION_KEYS}")
+        for group in ("identity_claims", "coverage_claims", "regime_claims"):
+            for cl in c[group]:
+                src = srcs.get(cl.get("source"))
+                if not cl.get("text") or not src:
+                    errs.append(f"{p} {group} claim without text or resolvable source")
+                    continue
+                if src["access_state"] != "accessible":
+                    errs.append(f"{p} {group} claim cites a source that was not accessible")
+                if group != "regime_claims" and src["source_tier"] in SECONDARY_TIERS:
+                    errs.append(f"{p} {group}: secondary sources may support only regime claims")
+                if src["source_tier"] in SECONDARY_TIERS and not cl["text"].startswith(src["authority"].split(" (")[0]):
+                    errs.append(f"{p} secondary claim must name its source ({src['authority']}) as the reporter")
+        if not c["identity_claims"] or not c["coverage_claims"]:
+            errs.append(f"{p} identity and provider-coverage claims required")
+        if not c["faq"] or any(not f.get("q") or not f.get("a") for f in c["faq"]):
+            errs.append(f"{p} faq entries need q and a")
+        texts = " ".join([ex.get("provider", "")] + [f.get("a", "") for f in c["faq"]])
+        if policy != "governed_primary" and re.search(r"provider[^.]*\bis the official rate\b", texts, re.I):
+            errs.append(f"{p} provider value described as the official rate")
+    return errs
+
+
+def effective_provider_policy(code: str, snap: Dict[str, Any], fx: Dict[str, Any]) -> Dict[str, Any]:
+    """The provider policy that applies to the current FX snapshot (deterministic, fail-closed)."""
+    sec = regime_section(snap)
+    c = sec["currencies"][code]
+    policy = c["provider_policy"]
+    out = {"policy": policy, "declared": policy, "reverified": True, "reason": None}
+    if policy not in ("secondary_provider_value", "comparison_only"):
+        return out
+    cp = sec["comparison_policy"]
+    rate = (fx or {}).get("rates", {}).get(code)
+    if rate is None:
+        return dict(out, policy="suppressed", reverified=False, reason="provider_value_missing")
+    audited = float(c["provider"]["provider_value"])
+    drift = abs(float(rate) - audited) / audited * 100.0
+    try:
+        age = (datetime.strptime(fx["as_of"], "%Y-%m-%d") - datetime.strptime(c["provider"]["provider_as_of"], "%Y-%m-%d")).days
+    except (KeyError, ValueError):
+        age = None
+    if drift > cp["provider_drift_tolerance_pct"]:
+        return dict(out, policy="suppressed" if policy == "comparison_only" else "comparison_only", reverified=False,
+                    reason="provider_value_drifted_since_audit")
+    if age is None or age < 0 or age > cp["provider_revalidation_days"]:
+        return dict(out, policy="comparison_only", reverified=False, reason="regime_match_not_reverified")
+    return out
+
+
+def pair_regime_view(from_code: str, to_code: str, snap: Dict[str, Any], fx: Dict[str, Any]) -> Dict[str, Any]:
+    """Combine the governed sides of a pair: a converter only when every governed side permits one;
+    no number when any side forbids it; otherwise a labelled comparison value."""
+    sec = regime_section(snap).get("currencies", {})
+    sides = [c for c in (from_code, to_code) if c in sec]
+    eff = {c: effective_provider_policy(c, snap, fx) for c in sides}
+    pols = [e["policy"] for e in eff.values()]
+    if any(p in NUMBERLESS_POLICIES for p in pols):
+        mode = "none"
+    elif pols and all(p in ("secondary_provider_value", "governed_primary") for p in pols):
+        mode = "converter"
+    else:
+        mode = "comparison"
+    return {"sides": sides, "effective": eff, "mode": mode}
