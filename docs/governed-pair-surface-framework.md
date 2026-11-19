@@ -4,10 +4,13 @@ Public governance document. It describes what the repository implements today. W
 is planned or proposed, it is marked as such and is not described as current functionality.
 
 * **Reconciled against:** `main` at `ed6a4f67bd4ce1322e3fee24166c4411d82b1990`, the merge of PR #136 (SEO-A4.5).
+* **Updated for SEO-A4.6A** (residual KPW/VED live-fiat coverage), branched from `main` at
+  `5d533190a3137a5fa32ed8682ce36166909c4325` (merge of PR #137). Sections 3–9 and 11 reflect it.
 * **Supersedes:** the earlier working draft titled "8,340 Page Governing Framework". That draft
   was never committed. This file is the single authoritative version.
 * **Companion documents:** `docs/instrument-classification-policy.md` (A4.1),
-  `docs/precious-metals-methodology.md` (A4.4) and `docs/institutional-units-methodology.md` (A4.5).
+  `docs/precious-metals-methodology.md` (A4.4), `docs/institutional-units-methodology.md` (A4.5) and
+  `docs/live-fiat-coverage-methodology.md` (A4.6A).
 
 ---
 
@@ -77,7 +80,8 @@ pair-page cohort, and the repository cannot reproduce it.
 | 1 | **A2: crawlability** | Every pair page is reachable through ordinary links | Implemented |
 | 2 | **A3: static value** | Pair-specific state is visible in the generated HTML | Implemented |
 | 3 | **A4.1–A4.5: semantic correction** | Each instrument is rendered as what it is | Implemented (A4.5 merged in PR #136) |
-| 4 | **A4.6: source coverage** | Residual unsupported cohort | Planned. The scope decision is pending (§7). |
+| 4a | **A4.6A: residual live-fiat coverage** | The 602 KPW/VED pages that had no governed treatment | Implemented (§7) |
+| 4b | **A4.6B: rate-regime governance** | Review-flagged currencies that have provider values | Deferred; decision required (§7.3) |
 | 5 | **GSC measurement** | Cohort-level indexation measurement | Proposed as a future measurement sprint (§10) |
 
 A2 and A3 are the **primary** indexation-recovery interventions. The A4 work corrects meaning on
@@ -134,12 +138,15 @@ pairs, using the committed `data/rate_snapshot.json`.
 | `institutional_unit` | 1,540 | 602 | 938 |
 | `precious_metal` | 1,268 | 0 | 1,268 |
 | `standards_special` | 674 | 0 | 674 |
-| `unsupported_specialized` | 602 | 0 | 602 |
+| `live_fiat_coverage` (A4.6A) | 602 | 0 | 602 |
+| `unsupported_specialized` | 0 | 0 | 0 |
 | **Total** | **28,730** | **24,492** | **4,238** |
 
 * **Pages without an ordinary FX value:** 4,238.
-  * Already given semantic treatment by A4.2–A4.5: **3,636** (756 + 938 + 1,268 + 674).
-  * Remaining on the generic A3 unsupported treatment: **602** (§7).
+  * Given semantic treatment by A4.2–A4.5: **3,636** (756 + 938 + 1,268 + 674).
+  * Given live-fiat coverage treatment by A4.6A: **602** (§7).
+  * Remaining on the generic A3 unsupported treatment: **0**. The template remains as the router's
+    fallback for any future code that the provider stops publishing and no layer governs.
 * **Pages rewritten by A4.2–A4.5:** **5,778** (2,296 + 1,540 + 1,268 + 674).
 * **Rewritten pages that already had a provider FX value:** **2,142** (1,540 historical and 602
   institutional).
@@ -172,21 +179,26 @@ standards_special      instrument_policy.resolve_pair(...).converter_behavior ==
   → historical          converter_behavior == "archival_only"
   → precious_metal      either side is_precious_metal (XAU, XAG, XPT, XPD)
   → institutional_unit  either side is_institutional_unit (XDR, CLF, UYW, XUA, XSU)
+  → live_fiat_coverage  either side is governed by data/live_fiat_reference_snapshot.json (KPW, VED)
   → ordinary_fx         static_pair_rate(...) is not None
   → unsupported_specialized   otherwise
 ```
 
 * `pair_rate_treatment` derives its result from the router through `_RATE_TREATMENT`.
-* `SPECIAL_TREATMENTS = ("historical", "standards_special", "precious_metal", "institutional_unit")`.
+* `SPECIAL_TREATMENTS = ("historical", "standards_special", "precious_metal", "institutional_unit", "live_fiat_coverage")`.
 * Precedence examples:
   * XAU/XTS is a standards page.
   * XAU/BGN is a historical page.
   * XDR/XTS is a standards page.
   * XAU/XDR is a metal page with an institutional-side note.
+  * KPW/XTS is a standards page, KPW/BGN historical, KPW/XAU a metal page and KPW/XDR an
+    institutional page; KPW/USD and CUP/KPW are live-fiat coverage pages.
 
-> **A dedicated A4.6 live-fiat coverage treatment is planned but is not part of the implemented
-> semantic router.** No `restricted_fiat`, official-versus-market or regime-aware branch exists
-> today.
+> **The `live_fiat_coverage` branch (A4.6A) is limited by a scope rule**: a code may be governed
+> by it only if it is an active `fiat_currency` / `restricted_fiat_currency` **and has no value in
+> `data/rate_snapshot.json`**. Codes with a provider value (CUP, IRR, MMK, SYP, TMT, VES) therefore
+> cannot enter it. **No official-versus-market or regime-aware branch for provider-valued
+> currencies exists**; that is A4.6B, which is deferred (§7.3).
 
 ---
 
@@ -208,7 +220,8 @@ claim review tests (tests.test_human_claim_review)", whose command is
 | **A4.3** | Consolidation of ISO 4217 test and no-currency codes (XTS, XXX) | `standards_reference` in `data/instrument_classification.json` | `python3 generate.py --standards-special-only` | `scripts/validate_standards_special_codes.py` | `tests/test_standards_special.py` | "ISO 4217 standards-special gate (validate_standards_special_codes.py)" | Implemented |
 | **A4.4** | Precious-metals reference layer | `precious_metals_reference` in `data/instrument_classification.json`, `data/metal_reference_snapshot.json`, `metal_reference.py` | `python3 generate.py --precious-metals-only` | `scripts/validate_metal_snapshot.py`, `scripts/validate_precious_metals.py` | `tests/test_precious_metals.py` | "Metal reference snapshot gate (validate_metal_snapshot.py)"; "Precious-metals gate (validate_precious_metals.py)" | Implemented. Activation decision: reference layer only. |
 | **A4.5** | Institutional units | `institutional_units_reference` in `data/instrument_classification.json`, `data/institutional_reference_snapshot.json`, `institutional_reference.py` | `python3 generate.py --institutional-units-only` | `scripts/validate_institutional_snapshot.py`, `scripts/validate_institutional_units.py` | `tests/test_institutional_units.py` | "Institutional reference snapshot gate (validate_institutional_snapshot.py)"; "Institutional units gate (validate_institutional_units.py)" | **Implemented and merged (PR #136)** |
-| **A4.6** | Source coverage for the residual cohort | not yet defined | none | none | none | none | **Planned; scope decision pending** |
+| **A4.6A** | Residual live-fiat coverage (KPW, VED) | `data/live_fiat_reference_snapshot.json`, `live_fiat_reference.py` | `python3 generate.py --live-fiat-coverage-only` | `scripts/validate_live_fiat_snapshot.py`, `scripts/validate_live_fiat_coverage.py` | `tests/test_live_fiat_coverage.py` | "Live-fiat reference snapshot gate (validate_live_fiat_snapshot.py)"; "Live-fiat coverage gate (validate_live_fiat_coverage.py)" | **Implemented (this sprint's PR); no value activated** |
+| **A4.6B** | Rate-regime governance for review-flagged provider-valued currencies | not defined | none | none | none | none | **Deferred; decision required** |
 | **Semantic sitemap split** | Cohort-level GSC measurement | none | none | none | none | none | **Proposed as a future measurement sprint** |
 
 ### 6.1 Layer notes
@@ -236,14 +249,26 @@ claim review tests (tests.test_human_claim_review)", whose command is
   * Generation is targeted (`--institutional-units-only`) and the cohort comes from policy. The
     sprint verified a semantic freeze outside the cohort and an idempotent second run (0 files
     changed).
+* **A4.6A (live-fiat coverage, 602 pages, 2 hubs: KPW, VED).** Details in
+  `docs/live-fiat-coverage-methodology.md`.
+  * **KPW:** `official_source_unresolved`, rate regime `unresolved`. No issuer publication could be
+    located; the provider does not publish KPW; secondary press reports only an informal-market
+    rate, which is recorded as a reported indicator and never as a value source.
+  * **VED:** `no_governed_value_available`, role `transitional_iso_code`. ISO 4217 Amendment 170
+    documents VED/926 as introduced for internal redenomination needs, not replacing VES/928 as the
+    official code. Pages link the VES hub as the operative code and **copy no value from VES**.
+  * **No numeric value is activated** (`activation_state: reference_layer_only`).
+  * Robots, canonicals and sitemap membership are unchanged: all 602 pages and both hubs stay
+    `index,follow`, self-canonical and in `sitemap.xml`.
 
 ---
 
-## 7. A4.6: residual cohort and open scope decision
+## 7. A4.6: residual cohort (A4.6A) and the deferred regime decision (A4.6B)
 
-### 7.1 Deterministic residual cohort (recomputed)
+### 7.1 Residual cohort, now governed by A4.6A
 
-`unsupported_specialized` currently holds **602 pages**:
+Before A4.6A, `unsupported_specialized` held **602 pages**. They now route to
+`live_fiat_coverage`:
 
 | Codes involved | Pages |
 |---|---:|
@@ -252,19 +277,25 @@ claim review tests (tests.test_human_claim_review)", whose command is
 | KPW ↔ VED | 2 |
 | **Total** | **602** |
 
-These 602 pages are the **deterministic remaining residual of the original no-rate problem**.
-They still render the generic A3 "unsupported" template. Their classification in
-`data/instrument_classification.json` is:
+These pages were the deterministic remaining residual of the original no-rate problem. They no
+longer render the generic A3 "unsupported" template; they render governed coverage references
+(identity, availability, rate regime, provider coverage, provenance and the next activation
+condition). Their A4.1 classification is unchanged:
 
 * **KPW:** `restricted_fiat_currency`, `non_convertible`, `market_pricing_expected: false`,
   confidence `high`.
 * **VED:** `fiat_currency`, confidence `medium`, flags `code_mapping_review` and
   `official_vs_market_rate_review`.
 
-### 7.2 Decision required before A4.6 is implemented
+### 7.2 Scope decision taken for A4.6A
 
-The following currencies **currently render as `ordinary_fx`** because the provider supplies
-values. They are still review-flagged in the taxonomy:
+The open question recorded at reconciliation was resolved by **splitting** A4.6: A4.6A covers only
+the 602 deterministic KPW/VED pages, enforced mechanically by the scope rule in §5.
+
+### 7.3 A4.6B — rate-regime governance (deferred)
+
+The following currencies **still render as `ordinary_fx`** because the provider supplies values.
+They are review-flagged in the taxonomy and were **not modified by A4.6A**:
 
 | Code | `instrument_type` | `classification_confidence` | `review_flags` |
 |---|---|---|---|
@@ -275,15 +306,11 @@ values. They are still review-flagged in the taxonomy:
 | TMT | `fiat_currency` | medium | `official_vs_market_rate_review` |
 | VES | `fiat_currency` | medium | `code_mapping_review`, `official_vs_market_rate_review` |
 
-They are **not** part of the A4.6 cohort defined above, and this document does not add them.
-
-> **Open architectural question.** Should A4.6 stay limited to the 602 deterministic
-> `unsupported_specialized` KPW/VED pages? Or should it also introduce official-versus-market,
-> regime-aware treatment for review-flagged live currencies that currently have provider values?
-
-**Status: decision required before A4.6 implementation.** The question is not resolved here.
-Principle §1(b), "Available provider rate does not mean correct semantic meaning", is relevant to
-it but does not settle it.
+**Status: decision required before A4.6B implementation.** A4.6B needs its own source audit and an
+explicit decision on the official rate, the market rate, multiple regimes, the regime the provider
+value represents, divergence thresholds, fallback policy and public rendering. Principle §1(b),
+"Available provider rate does not mean correct semantic meaning", is relevant to it but does not
+settle it.
 
 ---
 
@@ -297,11 +324,12 @@ existing field:
 | Verified claim or figure | `verification_status: verified` | `documented_conversion` entries in `data/instrument_classification.json` (6 entries are `verified`) |
 | Source verification pending | `verification_status: requires_source_verification` | the same enum. The `fact_policy` in `meta` forbids publishing such facts. |
 | Classification certainty | `classification_confidence`: `high` / `medium` / `low` | per instrument. Current counts: 161 high, 8 medium, 1 low. |
-| Source reuse and licensing | `license_state`, which is publishable only as `redistribution_permitted` or `attribution_required` | metal and institutional snapshots |
-| Public numeric activation | `activation_state`: `reference_layer_only` / `source_activated` | `data/metal_reference_snapshot.json`, `data/institutional_reference_snapshot.json`, `precious_metals_reference.pricing` |
-| No usable value | `value_type: unavailable` | returned by `metal_reference.value_view` and `institutional_reference.value_view`; never stored |
+| Source reuse and licensing | `license_state`, which is publishable only as `redistribution_permitted` or `attribution_required` | metal, institutional and live-fiat snapshots |
+| Public numeric activation | `activation_state`: `reference_layer_only` / `source_activated` | `data/metal_reference_snapshot.json`, `data/institutional_reference_snapshot.json`, `data/live_fiat_reference_snapshot.json`, `precious_metals_reference.pricing` |
+| No usable value | `value_type: unavailable` | returned by `metal_reference.value_view`, `institutional_reference.value_view` and `live_fiat_reference.value_view`; never stored |
 | Unresolved classification or source issue | `review_flags`, plus layer-specific states | per instrument |
 | Example of a layer-specific state | `activity_status: status_unresolved` (XSU) | `institutional_units_reference.units.XSU` |
+| Live-fiat availability and regime (A4.6A) | `availability_status` (e.g. `official_source_unresolved`), `rate_regime` (e.g. `unresolved`) | `data/live_fiat_reference_snapshot.json`. `classification_confidence` and `review_flags` there must equal A4.1. |
 
 > **verification ≠ confidence ≠ licence ≠ activation ≠ availability.**
 > These are separate governance axes. A fact can be verified while its source licence is unclear.
@@ -323,7 +351,7 @@ Success is measured on three separate axes.
 
 **Semantic success.** This axis is proven by the repository.
 * The generic `unsupported_specialized` bucket shrinks. Over the programme it went from 4,238
-  pages to 602.
+  pages to 602 (after A4.5) and to **0** (after A4.6A).
 * Every instrument has the correct role, and no page implies a provider rate means something it
   does not.
 * Provenance is explicit, and unresolved states (licence, activity, verification) are declared
@@ -357,6 +385,7 @@ sitemap output into a **sitemap index** with semantically separated child sitema
 * historical;
 * precious metals;
 * institutional units;
+* live-fiat coverage references;
 * currency hubs;
 * any other meaningful indexable class, such as articles and rules.
 
@@ -371,17 +400,19 @@ that child sitemaps do not churn.
 
 ## 11. Known technical debt
 
-Every item below was verified against `main` at `ed6a4f67b`. None is fixed in this document.
+Every item below was verified against `main` at `ed6a4f67b` and re-checked for A4.6A. None is fixed
+by this document; item G was closed by A4.6A.
 
 | # | Debt | Evidence on `main` | Intended handling |
 |---|---|---|---|
 | **A** | **Full-build drift** | A full `python3 generate.py` rewrites one passage-intro sentence on **28,392** pair pages. "…the governed declaration threshold and exchange-control posture…" becomes "…the governed border-cash controls and exchange-control profile…". The same run also rewrites `sitemap.xml` (see B). Every sprint therefore uses targeted generation modes. | A dedicated sprint should decide on the wording and accept or neutralise the change once |
 | **B** | **Sitemap `lastmod`** | `lastmod` is derived from `git log --pretty=format:%cI --name-only --diff-filter=ACMR`, keeping the newest committer date per path. A plain `git log --name-only` lists no files for merge commits, so a page's date is its last non-merge commit, not the date it reached `main`. Because a full sitemap regeneration would churn about 28,096 lines, sprints A2–A4.5 merged the sitemap **additively**, keeping existing entries byte-identical. The result is that the `lastmod` of rewritten pages is stale: 25,802 entries still read `2026-09-07`. | Resolve in the measurement sprint (§10) |
-| **C** | **Related links to `noindex` standards pages** | **1,515** links on **1,167** non-standards pair pages point to XTS/XXX pair pages that are `noindex,follow`: 304 ordinary_fx, 628 institutional_unit, 182 precious_metal, 49 historical and 4 unsupported_specialized pages. This conflicts with the intended link-governance model. | A future related-link cleanup sprint |
+| **C** | **Related links to `noindex` standards pages** | **1,515** links on **1,167** non-standards pair pages point to XTS/XXX pair pages that are `noindex,follow`: 304 ordinary_fx, 628 institutional_unit, 182 precious_metal, 49 historical and 4 live_fiat_coverage (formerly unsupported_specialized) pages. This conflicts with the intended link-governance model. | A future related-link cleanup sprint |
 | **D** | **Breadcrumb semantics** | Standards pages keep converter-style breadcrumb labels. For example, the `BreadcrumbList` on `pages/usd-to-xts.html` names the leaf "USD to XTS". | Future cross-layer metadata sprint |
 | **E** | **Legacy display names** | `data/currencies.json` `display_name` reads "Gold (troy ounce)", "Silver (troy ounce)", "Platinum (troy ounce)" and "Palladium (troy ounce)". These labels still appear in the passage section of **1,340** pair pages that involve a metal (for example, "XAU — Gold (troy ounce)") and in the pair-link lists of all **170** currency hubs. | Not renamed broadly here. Handle together with E/F. |
-| **F** | **Generic passage section on specialized pages** | Metal and institutional pages still render the generic "Currency Passage & Jurisdiction Rules" section. This produces wording such as "Moving XDR and USD across borders" on `pages/xdr-to-usd.html`. | Cross-layer design debt |
-| **G** | **Residual unsupported cohort** | **602 KPW/VED pages remain on the generic A3 unsupported treatment.** | The deterministic immediate cohort for A4.6 (§7) |
+| **F** | **Generic passage section on specialized pages** | Metal and institutional pages still render the generic "Currency Passage & Jurisdiction Rules" section. This produces wording such as "Moving XDR and USD across borders" on `pages/xdr-to-usd.html`. (On KPW/VED live-fiat pages the section is appropriate, since they are real currencies.) | Cross-layer design debt |
+| **G** | **Residual unsupported cohort** | **Closed by A4.6A**: the 602 KPW/VED pages now render governed live-fiat coverage references; `unsupported_specialized` holds 0 pages. | Done |
+| **H** | **VED display name** | `data/currencies.json` names VED "Venezuelan Digital Bolívar"; ISO 4217 lists it as "Bolívar Soberano". A4.6A pages use the ISO name in their own blocks, but the legacy name still labels VED links on other hubs and in passage blocks. | Handle with debt E |
 
 ---
 
@@ -405,7 +436,7 @@ jurisdiction rules, claims, bindings or evidence packs.
 
 ## 13. Working rules for pair-surface sprints
 
-These rules applied to every sprint from A2 to A4.5 and remain in force:
+These rules applied to every sprint from A2 to A4.6A and remain in force:
 
 1. Before starting, verify the baseline SHA against `origin/main`. Stop on any mismatch.
 2. Work on a dedicated branch and open a PR. Never merge automatically.
