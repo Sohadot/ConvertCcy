@@ -514,7 +514,11 @@ def pair_webpage_jsonld(tokens: Dict[str, str], faq_items: List[Dict[str, str]],
             "url": f'{BASE_URL}/pages/{tokens["PAIR_SLUG"]}.html'
         }
     ]
-    if archival:
+    if archival == "rate_regime_governed":
+        # SEO-A4.6B: keep WebApplication only where the page still converts amounts.
+        if rate_regime_pair(tokens["FROM_CODE"], tokens["TO_CODE"])["mode"] != "converter":
+            graph = graph[:1]
+    elif archival:
         # SEO-A4.2: no operational converter exists for a historical/legacy pair,
         # so the WebApplication node would misdescribe the page.
         graph = graph[:1]
@@ -922,10 +926,13 @@ def unsupported_reason(from_code: str, to_code: str, snapshot: Dict[str, Any]) -
     return "; ".join(dict.fromkeys(bits))
 
 
-def static_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
+def static_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any],
+                            force_ordinary: bool = False) -> str:
     """Rate banner + freshness/source note + converter (between STATIC-RATE markers)."""
     F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
-    treatment = pair_rate_treatment(F, T, snapshot)
+    treatment = "snapshot" if force_ordinary else pair_rate_treatment(F, T, snapshot)
+    if treatment == "rate_regime_governed":
+        return regime_rate_region_html(profile, tokens, snapshot)
     if treatment == "standards_special":
         return standards_rate_region_html(tokens)
     if treatment == "precious_metal":
@@ -1000,10 +1007,13 @@ def static_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], sna
 {STATIC_RATE_END}"""
 
 
-def static_table_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
+def static_table_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any],
+                             force_ordinary: bool = False) -> str:
     """Static conversion table card (between STATIC-RATE-TABLE markers)."""
     F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
-    treatment = pair_rate_treatment(F, T, snapshot)
+    treatment = "snapshot" if force_ordinary else pair_rate_treatment(F, T, snapshot)
+    if treatment == "rate_regime_governed":
+        return regime_table_region_html(profile, tokens, snapshot)
     if treatment == "standards_special":
         return standards_table_region_html(tokens)
     if treatment == "precious_metal":
@@ -1053,6 +1063,9 @@ def rate_script_region_html(from_code: Optional[str] = None, to_code: Optional[s
     never enter the live/snapshot converter lifecycle (SEO-A4.2)."""
     if from_code and to_code and pair_rate_treatment(from_code, to_code, snapshot) in SPECIAL_TREATMENTS:
         return f"{RATE_SCRIPT_START}\n{RATE_SCRIPT_END}"
+    if from_code and to_code and pair_rate_treatment(from_code, to_code, snapshot) == "rate_regime_governed" \
+            and rate_regime_pair(from_code, to_code, snapshot)["mode"] != "converter":
+        return f"{RATE_SCRIPT_START}\n{RATE_SCRIPT_END}"   # SEO-A4.6B: no runtime without a converter
     return f'{RATE_SCRIPT_START}\n<script src="{RATE_SCRIPT_SRC}" defer></script>\n{RATE_SCRIPT_END}'
 
 
@@ -1128,6 +1141,10 @@ def pair_semantic_treatment(from_code: str, to_code: str, snapshot: Optional[Dic
     'live_fiat_coverage'     a side is an active fiat code the FX provider does not publish and that
                              data/live_fiat_reference_snapshot.json governs (SEO-A4.6A: KPW, VED), unless
                              the above govern; the scope rule bars any code that has a provider value
+    'rate_regime_governed'   a side is a provider-valued live fiat code whose rate regime is governed by
+                             rate_regime_governance in the same snapshot (SEO-A4.6B: CUP, IRR, MMK, SYP,
+                             TMT, VES), unless the above govern; the provider value is kept, its use is
+                             decided by the effective provider policy (converter / comparison / none)
     'ordinary_fx'            snapshot-covered pair rendered by the A3 rate logic
     'unsupported_specialized' no rate source yet (metals, units, restricted fiat, …)
     Policy (instrument_policy.resolve_pair) decides first; snapshot coverage only
@@ -1145,6 +1162,8 @@ def pair_semantic_treatment(from_code: str, to_code: str, snapshot: Optional[Dic
         return "institutional_unit"
     if is_live_fiat(from_code) or is_live_fiat(to_code):
         return "live_fiat_coverage"
+    if is_rate_regime_governed(from_code) or is_rate_regime_governed(to_code):
+        return "rate_regime_governed"
     snapshot = snapshot if snapshot is not None else load_rate_snapshot()
     return "ordinary_fx" if static_pair_rate(from_code, to_code, snapshot) is not None else "unsupported_specialized"
 
@@ -1152,7 +1171,7 @@ def pair_semantic_treatment(from_code: str, to_code: str, snapshot: Optional[Dic
 _RATE_TREATMENT = {"ordinary_fx": "snapshot", "unsupported_specialized": "unsupported",
                    "historical": "historical", "standards_special": "standards_special",
                    "precious_metal": "precious_metal", "institutional_unit": "institutional_unit",
-                   "live_fiat_coverage": "live_fiat_coverage"}
+                   "live_fiat_coverage": "live_fiat_coverage", "rate_regime_governed": "rate_regime_governed"}
 
 
 def pair_rate_treatment(from_code: str, to_code: str, snapshot: Optional[Dict[str, Any]] = None) -> str:
@@ -1411,6 +1430,8 @@ def pair_metadata(tokens: Dict[str, str], archival: Any = False, brand: str = SI
         return institutional_pair_metadata(tokens, brand)
     if archival == "live_fiat_coverage":
         return live_fiat_pair_metadata(tokens, brand)
+    if archival == "rate_regime_governed":
+        return rate_regime_pair_metadata(tokens, brand)
     if not archival:
         return {
             "title": f"{F} to {T} Converter | {brand}",
@@ -2545,6 +2566,271 @@ def apply_live_fiat_semantics(page: str, tokens: Dict[str, str], content: Dict[s
     return replace_webpage_jsonld(page, tokens, items, "live_fiat_coverage")
 
 
+# ---- SEO-A4.6B: rate-regime governance (CUP, IRR, MMK, SYP, TMT, VES) --------
+#
+# Active fiat codes that DO have a provider value, but whose rate regime needs
+# explicit governance, route to "rate_regime_governed" after every other policy
+# layer. Membership and decisions come ONLY from rate_regime_governance in
+# data/live_fiat_reference_snapshot.json (scope rule: provider value present, not
+# an A4.6A code). The provider value itself is unchanged; the effective provider
+# policy decides how it is used (live_fiat_reference.pair_regime_view):
+#   converter   every governed side permits it: the ordinary A3 converter is kept,
+#               plus a regime card stating what the provider value matches
+#   comparison  provider value shown, labelled "comparison only", no converter
+#   none        no number (provider regime unresolved / conflicting)
+# Issuer and market figures are never rendered while their licence is unclear.
+
+REGIME_TYPE_LABELS = {
+    "single_official_reference": "single official reference rate",
+    "fixed_official_reference": "fixed official reference rate",
+    "multi_segment_official": "several official rate segments, plus an informal market",
+    "official_reference_plus_market_trading": "official reference rate plus a materially different official market trading rate",
+    "official_reference_plus_parallel_market": "official rate plus a reported parallel market",
+    "market_reference_only": "market reference only",
+    "provider_regime_unresolved": "provider regime unresolved",
+    "official_source_unresolved": "official source unresolved"}
+EVIDENCE_LABELS = {"issuer_verified": "verified on the issuer's site", "secondary_reported": "reported by a secondary source",
+                   "unverified_copy": "seen only on an unverified copy of the issuer's site", "unresolved": "not verified"}
+POLICY_LABELS = {"secondary_provider_value": "provider snapshot used for conversion, labelled with its regime match",
+                 "governed_primary": "governed issuer value",
+                 "comparison_only": "provider snapshot shown for comparison only — no converter",
+                 "suppressed": "provider value not shown", "unresolved": "provider value not shown"}
+REGIME_VALUE_WITHHELD = {"license_unclear": "value not republished (reuse terms unclear)",
+                         "not_usable": "value not republished (not a usable value source)",
+                         "display_only": "value not republished (display-only terms)",
+                         "derived_use_only": "value not republished (derived use only)"}
+REVERIFY_NOTES = {"regime_match_not_reverified": "The regime match was audited for an earlier provider snapshot and has not been re-verified for this one.",
+                  "provider_value_drifted_since_audit": "The provider value has moved materially since the regime audit, so its regime match no longer holds.",
+                  "provider_value_missing": "The provider no longer publishes a value."}
+
+
+def is_rate_regime_governed(code: str) -> bool:
+    return code in live_fiat_snapshot().get("rate_regime_governance", {}).get("currencies", {})
+
+
+def rate_regime_view(code: str) -> Dict[str, Any]:
+    snap = live_fiat_snapshot()
+    srcs = {s["id"]: s for s in snap["sources"]}
+    c = dict(snap["rate_regime_governance"]["currencies"][code])
+
+    def cite(cl):
+        s = srcs[cl["source"]]
+        return {"text": cl["text"], "sources": [{"url": s["url"], "authority": s["authority"]}],
+                "secondary": s["source_tier"] in ("secondary_press", "secondary_analysis", "market_aggregator")}
+    for k in ("identity_claims", "coverage_claims", "regime_claims"):
+        c[k] = [cite(x) for x in c[k]]
+    c["code"] = code
+    c["regimes_resolved"] = [dict(r, source=srcs[r["source_id"]]) for r in c["regimes"]]
+    c["sources_resolved"] = [srcs[i] for i in dict.fromkeys(
+        [x["source"] for k in ("identity_claims", "coverage_claims", "regime_claims") for x in snap["rate_regime_governance"]["currencies"][code][k]]
+        + [r["source_id"] for r in c["regimes"]])]
+    return c
+
+
+def rate_regime_pair(F: str, T: str, fx: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    import live_fiat_reference
+    fx = fx if fx is not None else load_rate_snapshot()
+    return live_fiat_reference.pair_regime_view(F, T, live_fiat_snapshot(), fx)
+
+
+def _regime_sides(F: str, T: str) -> List[Dict[str, Any]]:
+    return [rate_regime_view(c) for c in (F, T) if is_rate_regime_governed(c)]
+
+
+def _regime_block(rv: Dict[str, Any], eff: Dict[str, Any], fx: Dict[str, Any]) -> str:
+    lines = [_cited_line(c, "ISO 4217: ") for c in rv["identity_claims"]]
+    state = {"accessible": "issuer site accessible", "unavailable": "issuer site not reachable during the audit",
+             "unverified": "no authoritative copy of the issuer's site verified"}.get(rv["issuer_source_state"], rv["issuer_source_state"])
+    lines.append(f'<div class="pj-line">Issuer or authority: {esc(rv["issuer_or_authority"])} ({esc(state)})</div>')
+    lines.append(f'<div class="pj-line" data-regime-type="{esc(rv["regime_type"])}">Rate regime: '
+                 f'{esc(REGIME_TYPE_LABELS[rv["regime_type"]])}</div>')
+    for r in rv["regimes_resolved"]:
+        when = f" · valuation date {r['valuation_date']}" if r["valuation_date"] else ""
+        val = (REGIME_VALUE_WITHHELD.get(r["license_state"], "value not republished") if r["value"] is None
+               else f"{r['value']} ({r['unit']})")
+        lines.append(f'<div class="pj-line" data-regime-id="{esc(r["regime_id"])}" data-evidence="{esc(r["evidence_state"])}">'
+                     f'{esc(r["regime_label"])} — {esc(EVIDENCE_LABELS[r["evidence_state"]])}{esc(when)} · {esc(val)} · '
+                     f'<a href="{esc(r["source"]["url"])}">{esc(r["source"]["authority"])}</a></div>')
+    lines += [_cited_line(c, "Reported (secondary source): " if c["secondary"] else "") for c in rv["regime_claims"]]
+    lines += [_cited_line(c, "Provider coverage: ") for c in rv["coverage_claims"]]
+    prov = rv["provider"]
+    lines.append(f'<div class="pj-line" data-provider-policy="{esc(eff["policy"])}">Provider snapshot '
+                 f'({esc(fx.get("source", ""))}, as of {esc(fx.get("as_of", ""))}): {esc(rv["explanations"]["provider"])} '
+                 f'Policy: {esc(POLICY_LABELS[eff["policy"]])}.'
+                 + (f' {esc(REVERIFY_NOTES[eff["reason"]])}' if eff.get("reason") else "")
+                 + f' Regime audit: {esc(prov["provider_as_of"])} ({esc(prov["match_basis"])}).</div>')
+    lines.append(f'<div class="pj-line">{esc(rv["explanations"]["official"])} {esc(rv["explanations"]["claims_scope"])}</div>')
+    lines.append(f'<div class="pj-line">Authoritative reference: <a href="{currency_hub_href(rv["code"])}">'
+                 f'{esc(rv["code"])} — {esc(rv["display_name"])} rate-regime reference →</a></div>')
+    body = "\n          ".join(lines)
+    return f"""
+        <div class="pj-block pj-plain" data-rate-regime-code="{esc(rv["code"])}" data-provider-policy="{esc(eff["policy"])}">
+          <div class="pj-head"><span class="pj-badge">RATE REGIME</span> {esc(rv["code"])} — {esc(rv["display_name"])}</div>
+          {body}
+        </div>"""
+
+
+def _regime_card(F: str, T: str, fx: Dict[str, Any]) -> str:
+    view = rate_regime_pair(F, T, fx)
+    blocks = "".join(_regime_block(rate_regime_view(c), view["effective"][c], fx) for c in view["sides"])
+    return f"""
+  <div class="card" data-rate-regime-card="{esc(view["mode"])}">
+    <div class="card-title">Rate-Regime Governance</div>
+    <div class="pj-grid">{blocks}
+    </div>
+  </div>
+"""
+
+
+def _regime_reason(F: str, T: str, fx: Dict[str, Any]) -> str:
+    view = rate_regime_pair(F, T, fx)
+    parts = []
+    for c in view["sides"]:
+        rv = rate_regime_view(c)
+        e = view["effective"][c]
+        if e["policy"] in ("comparison_only", "suppressed", "unresolved"):
+            parts.append(rv["decision_reason"] if not e.get("reason") else f"{rv['decision_reason']} {REVERIFY_NOTES[e['reason']]}")
+    return " ".join(dict.fromkeys(parts))
+
+
+def regime_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    view = rate_regime_pair(F, T, snapshot)
+    card = _regime_card(F, T, snapshot)
+    if view["mode"] == "converter":
+        base = static_rate_region_html(profile, tokens, snapshot, force_ordinary=True)
+        return base.replace(f"\n{STATIC_RATE_END}", card + STATIC_RATE_END)
+    sides = view["sides"]
+    if view["mode"] == "comparison":
+        sr = static_pair_rate(F, T, snapshot)
+        main = (f'<span data-value-type="provider_comparison">1 {esc(F)} = {format_rate_value(sr["rate"], sr["sig"])} {esc(T)}</span>')
+        badge = f"PROVIDER SNAPSHOT · COMPARISON ONLY · {esc(sr['as_of'])}"
+        sub = f"Not a conversion rate — {', '.join(sides)}: several materially different rates exist or the provider value's regime is not the one most users face"
+        note = (f"Provider snapshot as of {sr['as_of']} · source: {sr['source']}. Shown for comparison only and not attributed to any "
+                f"official rate. {_regime_reason(F, T, snapshot)}")
+        vt = "provider_comparison"
+    else:
+        main = "No rate shown"
+        badge = "PROVIDER REGIME UNRESOLVED"
+        sub = f"{F} → {T}: the provider value's rate regime is unresolved"
+        note = f"No number is shown rather than an unattributed value. {_regime_reason(F, T, snapshot)}"
+        vt = "unavailable"
+    return f"""{STATIC_RATE_START}
+  <div class="rate-banner" id="rate-root" data-from="{esc(F)}" data-to="{esc(T)}" data-mode="rate_regime" data-value-type="{vt}" data-regime-mode="{esc(view["mode"])}">
+    <div>
+      <div class="rate-main" id="live-rate">{main}</div>
+      <div class="rate-sub" id="rate-sub">{esc(sub)}</div>
+    </div>
+    <div class="rate-badge snap" id="rate-badge">{badge}</div>
+  </div>
+  <p class="rate-note" id="rate-source">{esc(note)}</p>
+{card}{STATIC_RATE_END}"""
+
+
+def regime_table_region_html(profile: Dict[str, Any], tokens: Dict[str, str], snapshot: Dict[str, Any]) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    view = rate_regime_pair(F, T, snapshot)
+    if view["mode"] == "converter":
+        return static_table_region_html(profile, tokens, snapshot, force_ordinary=True)
+    text = (f"No conversion table: the {F}/{T} provider value is shown above for comparison only." if view["mode"] == "comparison"
+            else f"No conversion table: no {F}/{T} rate is shown while the provider value's regime is unresolved.")
+    return f"""{STATIC_TABLE_START}
+    <div class="card">
+      <p class="result-info" id="table-source">{esc(text)}</p>
+    </div>
+{STATIC_TABLE_END}"""
+
+
+def rate_regime_faq_items(items: List[Dict[str, str]], tokens: Dict[str, str], snapshot: Dict[str, Any]) -> List[Dict[str, str]]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    view = rate_regime_pair(F, T, snapshot)
+    sides = _regime_sides(F, T)
+    sr = static_pair_rate(F, T, snapshot)
+    prov = " ".join(dict.fromkeys(s["explanations"]["provider"] for s in sides))
+    if view["mode"] == "converter":
+        a1 = (f"This page converts {tokens['FROM_NAME']} to {tokens['TO_NAME']} with a provider reference snapshot "
+              f"(as of {sr['as_of']}), labelled with its rate regime. {prov}")
+    elif view["mode"] == "comparison":
+        a1 = (f"ConvertCCY shows a provider snapshot of 1 {F} = {format_rate_value(sr['rate'], sr['sig'])} {T} (as of {sr['as_of']}) "
+              f"for comparison only, not as a conversion rate. {_regime_reason(F, T, snapshot)}")
+    else:
+        a1 = f"ConvertCCY does not show a {F}/{T} rate. {_regime_reason(F, T, snapshot)}"
+    out = [{"q": replace_tokens(FAQ_Q_RATE, tokens), "a": a1}]
+    for s in sides:
+        for f in s["faq"]:
+            if f["q"] not in {i["q"] for i in out}:
+                out.append(dict(f))
+    if view["mode"] == "converter":
+        out += [i for i in items[1:] if i["q"] not in {o["q"] for o in out}]
+    return out
+
+
+def rate_regime_pair_metadata(tokens: Dict[str, str], brand: str = SITE_NAME,
+                              fx: Optional[Dict[str, Any]] = None) -> Dict[str, str]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    view = rate_regime_pair(F, T, fx)
+    codes = " and ".join(view["sides"])
+    if view["mode"] == "converter":
+        title = f"{F} to {T} Converter | {brand}"
+        description = (f"Convert {tokens['FROM_NAME']} to {tokens['TO_NAME']} with a provider reference snapshot labelled with "
+                       f"its rate regime: which {codes} rates exist, who publishes them and what the provider value matches.")
+    else:
+        title = f"{F} to {T} — Exchange-Rate Regime Reference | {brand}"
+        description = (f"Rate-regime reference for {tokens['FROM_NAME']} and {tokens['TO_NAME']}: which {codes} exchange rates exist, "
+                       "who publishes them, how the provider value compares and why no converter is offered.")
+    return {"title": title, "description": description, "schema_name": title, "schema_description": description}
+
+
+def rate_regime_overview_html(tokens: Dict[str, str], fx: Dict[str, Any]) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    paras = [esc(f"{s['explanations']['what']} {s['explanations']['provider']} {s['explanations']['claims_scope']}")
+             for s in _regime_sides(F, T)]
+    for other in (F, T):
+        if not is_rate_regime_governed(other):
+            paras.append(f'{esc(other)} ({esc(_cur_name(other))}) is the counter-currency; see its '
+                         f'<a href="{currency_hub_href(other)}">{esc(other)} reference</a> for its own pairs.')
+    body = "\n".join(f"    <p>{p}</p>" for p in paras)
+    return f"""  <section class="section">
+    <div class="sec-title">Pair Overview</div>
+    <div class="sec-h2">{esc(F)} / {esc(T)} Rate Regimes</div>
+{body}
+  </section>"""
+
+
+def apply_rate_regime_semantics(page: str, profile: Dict[str, Any], tokens: Dict[str, str], content: Dict[str, Any],
+                                fx: Optional[Dict[str, Any]] = None) -> str:
+    """Rewrite metadata, overview, FAQ and JSON-LD of a rate-regime-governed pair. Idempotent; fails closed."""
+    fx = fx if fx is not None else load_rate_snapshot()
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    brand = content.get("site_copy", {}).get("brand_name", SITE_NAME)
+    view = rate_regime_pair(F, T, fx)
+    meta = rate_regime_pair_metadata(tokens, brand, fx)
+    for rx, tpl in _META_PATTERNS:
+        if len(rx.findall(page)) != 1:
+            raise ValueError(f"rate-regime metadata: {rx.pattern} not found exactly once")
+        page = rx.sub(lambda _m: tpl.format(title=esc(meta["title"]), description=esc(meta["description"])), page)
+    if page.count(_OVERVIEW_START) != 1 or page.count(STATIC_TABLE_START) != 1:
+        raise ValueError("rate-regime body anchors not found exactly once")
+    if view["mode"] != "converter":
+        for rx, new, label in ((_H1_RE, f"<h1>{esc(_cur_name(F))} ({esc(F)}) / {esc(_cur_name(T))} ({esc(T)}) "
+                                        f"<em>Exchange-Rate Regime Reference</em></h1>", "h1"),
+                               (_SUBTITLE_RE, '<p class="pair-subtitle">Rate-regime reference</p>', "subtitle")):
+            if len(rx.findall(page)) != 1:
+                raise ValueError(f"rate-regime {label} anchor not found exactly once")
+            page = rx.sub(lambda _m, v=new: v, page)
+    i = page.index(_OVERVIEW_START)
+    j = page.index("\n  </section>", i) + len("\n  </section>")
+    page = page[:i] + rate_regime_overview_html(tokens, fx) + page[j:]
+    if view["mode"] != "converter":
+        t0 = page.rindex('\n  <section class="section">\n', 0, page.index(STATIC_TABLE_START)) + 1
+        t1 = page.index(STATIC_TABLE_START)
+        page = page[:t0] + '  <section class="section">\n    <div class="sec-title">Value Coverage Status</div>\n' + page[t1:]
+    items = rate_regime_faq_items(build_faq_items(profile, content, tokens), tokens, fx)
+    page = replace_faq_regions(page, items)
+    return replace_webpage_jsonld(page, tokens, items, "rate_regime_governed")
+
+
+
 WEBPAGE_JSONLD_START = '<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@graph": ['
 
 
@@ -2767,6 +3053,45 @@ def refresh_live_fiat_coverage(
     return changed, unchanged, hubs
 
 
+def refresh_rate_regime_governance(
+    currencies: Dict[str, Dict[str, Any]],
+    content: Dict[str, Any],
+    pair_profiles: Dict[str, Dict[str, Any]],
+) -> Tuple[int, int, int]:
+    """SEO-A4.6B: rewrite ONLY pairs whose policy treatment is rate_regime_governed and the
+    hubs of governed codes. Cohort comes from the router (governed snapshot + precedence).
+    Robots, canonicals and the sitemap are unchanged (all classes stay indexable)."""
+    snapshot = load_rate_snapshot()
+    changed = unchanged = 0
+    for profile in pair_profiles.values():
+        a, b = profile["from_code"], profile["to_code"]
+        if a == b or a not in currencies or b not in currencies:
+            continue
+        if pair_rate_treatment(a, b, snapshot) != "rate_regime_governed":
+            continue
+        tokens = make_pair_tokens(profile, currencies)
+        path = PAGES_DIR / f'{profile["pair_slug"]}.html'
+        old = path.read_text(encoding="utf-8")
+        new = replace_static_rate_regions(old, profile, tokens, snapshot)
+        new = apply_rate_regime_semantics(new, profile, tokens, content, snapshot)
+        if new != old:
+            write_text(path, new)
+            changed += 1
+        else:
+            unchanged += 1
+    gov_map = load_governed_currency_map()
+    hubs = 0
+    for code in currencies:
+        if is_rate_regime_governed(code):
+            path = BASE_DIR / currency_hub_href(code).lstrip("/")
+            html_doc = build_currency_hub_page(code, currencies, gov_map)
+            if not path.exists() or path.read_text(encoding="utf-8") != html_doc:
+                write_text(path, html_doc)
+                hubs += 1
+    print(f"Rate-regime governance: {changed} pair pages changed, {unchanged} unchanged, {hubs} hubs changed")
+    return changed, unchanged, hubs
+
+
 # ---- SEO-A3.1: rate-aware FAQ truthfulness ----------------------------------
 #
 # Support status comes ONLY from static_pair_rate() (the validated snapshot).
@@ -2797,6 +3122,8 @@ def rate_aware_faq_items(items: List[Dict[str, str]], tokens: Dict[str, str],
         return institutional_faq_items(tokens, snapshot)
     if treatment == "live_fiat_coverage":
         return live_fiat_faq_items(tokens, snapshot)
+    if treatment == "rate_regime_governed":
+        return rate_regime_faq_items(items, tokens, snapshot)
     if treatment == "historical":
         return historical_faq_items(tokens, snapshot)
     if static_pair_rate(F, T, snapshot) is not None:
@@ -3321,6 +3648,8 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
         page = apply_institutional_semantics(page, tokens, content, snapshot)
     elif treatment == "live_fiat_coverage":
         page = apply_live_fiat_semantics(page, tokens, content, snapshot)
+    elif treatment == "rate_regime_governed":
+        page = apply_rate_regime_semantics(page, profile, tokens, content, snapshot)
     return page
 
 
@@ -3697,6 +4026,63 @@ def build_currency_hub_page(
                        f"{esc(lv['role_label'])} · {esc(LIVE_FIAT_AVAILABILITY_LABELS[lv['availability_status']])}.</p>")
         from_heading = f"Coverage references: {esc(code)} with other currencies"
         to_heading = f"Coverage references: other currencies with {esc(code)}"
+        webpage = json.dumps({"@context": "https://schema.org", "@type": "WebPage", "name": title,
+                              "url": canonical, "description": description}, ensure_ascii=False, indent=2)
+        faq_ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": i["q"], "acceptedAnswer": {"@type": "Answer", "text": i["a"]}} for i in faq]},
+            ensure_ascii=False, indent=2)
+        extra_jsonld = (f'\n\n<script type="application/ld+json">\n{webpage}\n</script>'
+                        f'\n\n<script type="application/ld+json">\n{faq_ld}\n</script>')
+
+    elif is_rate_regime_governed(code):
+        # SEO-A4.6B: rate-regime reference hub (identity, regimes, provider comparison, provenance).
+        rv = rate_regime_view(code)
+        ex = rv["explanations"]
+        import live_fiat_reference as _lfr
+        eff = _lfr.effective_provider_policy(code, live_fiat_snapshot(), load_rate_snapshot())
+        converter = eff["policy"] in ("secondary_provider_value", "governed_primary")
+        if not converter:
+            title = f"{code} — {rv['display_name']} Exchange-Rate Regime Reference | {SITE_NAME}"
+        description = (f"{rv['display_name']} ({code}): which exchange rates exist ({REGIME_TYPE_LABELS[rv['regime_type']]}), "
+                       f"who publishes them, how the provider value compares and how ConvertCCY uses it: {POLICY_LABELS[eff['policy']]}.")
+
+        def cl(c, prefix=""):
+            return (f'<li>{esc(prefix)}<span data-claim>{esc(c["text"])}</span> — '
+                    + ", ".join(f'<a href="{esc(x["url"])}">{esc(x["authority"])}</a>' for x in c["sources"]) + "</li>")
+
+        def ul(items):
+            return '<ul class="hub-sources">' + "".join(chr(10) + "      " + x for x in items) + "\n    </ul>"
+        reg_rows = "".join(
+            f'\n      <li data-regime-id="{esc(r["regime_id"])}" data-evidence="{esc(r["evidence_state"])}">{esc(r["regime_label"])} — '
+            f'{esc(EVIDENCE_LABELS[r["evidence_state"]])}'
+            + (f" · valuation date {esc(r['valuation_date'])}" if r["valuation_date"] else "")
+            + f" · {esc(REGIME_VALUE_WITHHELD.get(r['license_state'], 'value not republished'))}</li>" for r in rv["regimes_resolved"])
+        prov_rows = "".join(
+            f'\n      <li><a href="{esc(s["url"])}">{esc(s["title"])}</a> — {esc(s["authority"])} · tier: {esc(s["source_tier"].replace("_", " "))}'
+            f' · {"accessible" if s["access_state"] == "accessible" else "not reachable"} on {esc(s["accessed"])}</li>' for s in rv["sources_resolved"])
+        faq = list(rv["faq"])
+        faq_html = "".join(f'\n    <div class="hub-faq"><h3>{esc(i["q"])}</h3><p>{esc(i["a"])}</p></div>' for i in faq)
+        sections = [
+            ("Identity", ul([cl(c, "ISO 4217: ") for c in rv["identity_claims"]])
+             + f"\n    <p>Issuer or authority: {esc(rv['issuer_or_authority'])}</p>"),
+            ("Rate regimes",
+             f'<p data-regime-type="{esc(rv["regime_type"])}">{esc(ex["what"])}</p>\n    <ul class="hub-sources">{reg_rows}\n    </ul>'
+             + ("\n    " + ul([cl(c, "Reported (secondary source): " if c["secondary"] else "") for c in rv["regime_claims"]])
+                if rv["regime_claims"] else "")),
+            ("Provider value and how it is used",
+             f'<p><span class="hub-decision" data-provider-policy="{esc(eff["policy"])}">{esc(POLICY_LABELS[eff["policy"]].upper())}</span>'
+             f' · {esc(ex["provider"])}</p>\n    <p>{esc(rv["decision_reason"])}</p>\n    ' + ul([cl(c) for c in rv["coverage_claims"]])),
+            ("Provenance", f'<ul class="hub-sources">{prov_rows}\n    </ul>'),
+            ("Current limitations", f"<p>{esc(ex['official'])} {esc(ex['claims_scope'])}</p>"),
+            (f"{esc(code)} FAQ", faq_html.lstrip("\n")),
+        ]
+        standards_html = "".join(f"\n\n  <section class=\"hub-std\">\n    <h2>{h}</h2>\n    {b}\n  </section>" for h, b in sections)
+        rules_html += (f'\n  <p class="hub-rules" data-rate-regime="{esc(rv["regime_type"])}" '
+                       f'data-converter="{"provider_snapshot" if converter else "none"}" data-provider-policy="{esc(eff["policy"])}">'
+                       f"Rate regime: {esc(REGIME_TYPE_LABELS[rv['regime_type']])} · {esc(POLICY_LABELS[eff['policy']])}.</p>")
+        if not converter:
+            from_heading = f"Rate-regime references: {esc(code)} with other currencies"
+            to_heading = f"Rate-regime references: other currencies with {esc(code)}"
         webpage = json.dumps({"@context": "https://schema.org", "@type": "WebPage", "name": title,
                               "url": canonical, "description": description}, ensure_ascii=False, indent=2)
         faq_ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
@@ -4346,6 +4732,15 @@ def main():
         ),
     )
     parser.add_argument(
+        "--rate-regime-governance-only",
+        action="store_true",
+        help=(
+            "SEO-A4.6B: rewrite only pairs whose policy treatment is rate_regime_governed "
+            "(provider-valued live fiat codes governed by rate_regime_governance in "
+            "data/live_fiat_reference_snapshot.json) and their hubs. Sitemap and robots unchanged."
+        ),
+    )
+    parser.add_argument(
         "--standards-special-only",
         action="store_true",
         help=(
@@ -4367,7 +4762,7 @@ def main():
     only_currencies = parse_only_currencies(args.only_currency)
     modes = (args.navigation_only, args.static_rates_only, args.faq_only, args.historical_instruments_only,
              args.standards_special_only, args.precious_metals_only, args.institutional_units_only,
-             args.live_fiat_coverage_only, only_currencies)
+             args.live_fiat_coverage_only, args.rate_regime_governance_only, only_currencies)
     if sum(bool(x) for x in modes) > 1:
         parser.error("generation modes (--navigation-only, --static-rates-only, --faq-only, --*-only, --only-currency) are mutually exclusive")
 
@@ -4394,6 +4789,11 @@ def main():
             "Support pages and sitemap.xml intentionally left unchanged "
             "(pair-page URLs are stable, so the sitemap does not move)."
         )
+        return
+
+    if args.rate_regime_governance_only:
+        refresh_rate_regime_governance(currencies, content, pair_profiles)
+        print("\nRate-regime-governance-only build complete. Sitemap unchanged.")
         return
 
     if args.live_fiat_coverage_only:

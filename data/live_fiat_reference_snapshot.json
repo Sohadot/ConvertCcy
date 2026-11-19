@@ -290,7 +290,7 @@
       "id": "bti_tkm_2026",
       "title": "BTI 2026 Turkmenistan Country Report",
       "url": "https://bti-project.org/en/reports/country-report/TKM",
-      "authority": "Bertelsmann Stiftung (BTI)",
+      "authority": "BTI (Bertelsmann Stiftung)",
       "source_tier": "secondary_analysis",
       "accessed": "2026-11-19",
       "access_state": "accessible",
@@ -569,7 +569,7 @@
         ],
         "coverage_claims": [
           {
-            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a CUP value; checked 2026-11-19.",
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for CUP; checked 2026-11-19.",
             "source": "exchangerate_api_latest_usd"
           }
         ],
@@ -675,7 +675,7 @@
         ],
         "coverage_claims": [
           {
-            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a IRR value; checked 2026-11-19.",
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for IRR; checked 2026-11-19.",
             "source": "exchangerate_api_latest_usd"
           }
         ],
@@ -781,7 +781,7 @@
         ],
         "coverage_claims": [
           {
-            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a MMK value; checked 2026-11-19.",
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for MMK; checked 2026-11-19.",
             "source": "exchangerate_api_latest_usd"
           }
         ],
@@ -873,7 +873,7 @@
         ],
         "coverage_claims": [
           {
-            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a SYP value; checked 2026-11-19.",
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for SYP; checked 2026-11-19.",
             "source": "exchangerate_api_latest_usd"
           }
         ],
@@ -974,7 +974,7 @@
         ],
         "coverage_claims": [
           {
-            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a TMT value; checked 2026-11-19.",
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for TMT; checked 2026-11-19.",
             "source": "exchangerate_api_latest_usd"
           }
         ],
@@ -984,7 +984,7 @@
             "source": "cbt_rates"
           },
           {
-            "text": "The BTI 2026 Turkmenistan report describes the coexistence of an official exchange rate and a parallel rate for the manat.",
+            "text": "BTI's 2026 Turkmenistan report describes the coexistence of an official exchange rate and a parallel rate for the manat.",
             "source": "bti_tkm_2026"
           }
         ],
@@ -1063,7 +1063,7 @@
         ],
         "coverage_claims": [
           {
-            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a VES value; checked 2026-11-19.",
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for VES; checked 2026-11-19.",
             "source": "exchangerate_api_latest_usd"
           }
         ],
