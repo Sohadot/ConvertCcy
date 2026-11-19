@@ -253,7 +253,10 @@ class GitLastmodSemanticsTest(unittest.TestCase):
         self.assertEqual(self.show("HEAD", "pages/d.html"), resolved)
         self.assertNotEqual(self.show("HEAD^1", "pages/d.html"), resolved)
         self.assertNotEqual(self.show("HEAD^2", "pages/d.html"), resolved)
-        self.assertEqual(self.git("log", "-1", "--format=%aI", "HEAD").stdout.strip(), "2026-03-05T09:00:00+00:00")
+        # Compare instants, not strings: git 2.56 prints UTC as "...Z", older git as "...+00:00".
+        from datetime import datetime, timezone
+        authored = datetime.fromisoformat(self.git("log", "-1", "--format=%aI", "HEAD").stdout.strip().replace("Z", "+00:00"))
+        self.assertEqual(authored, datetime(2026, 3, 5, 9, 0, tzinfo=timezone.utc))
         idx = self.index()
         self.assertEqual(idx["pages/d.html"], "2026-03-05")   # merge-only content: the merge's author date
         self.assertEqual(idx["pages/a.html"], "2026-01-01")   # untouched by the merge: not re-dated
