@@ -439,7 +439,7 @@ def validate_rate_regime(snap: Dict[str, Any], classification: Optional[Dict[str
             errs.append(f"enums.{k} missing")
     pol = sec.get("comparison_policy", {})
     for k in ("official_match_tolerance_pct", "material_divergence_pct", "provider_revalidation_days",
-              "provider_drift_tolerance_pct"):
+              "provider_drift_tolerance_pct", "max_match_date_gap_days"):
         if not isinstance(pol.get(k), (int, float)) or pol[k] <= 0:
             errs.append(f"comparison_policy.{k} must be positive")
     if not pol.get("rationale"):
@@ -534,9 +534,16 @@ def validate_rate_regime(snap: Dict[str, Any], classification: Optional[Dict[str
             if rid not in regs:
                 errs.append(f"{p} comparison against unknown regime {rid!r}")
 
+        gap = pol.get("max_match_date_gap_days", 0)
+
         def matched(types, evidence):
+            # a match needs the same regime type and evidence, the tolerance, and a bounded
+            # provider/source valuation-date gap (null only for undated fixed segments)
             return any(rid in regs and regs[rid]["regime_type"] in types and regs[rid]["evidence_state"] in evidence
                        and _pct(x.get("pct_difference")) is not None and abs(_pct(x["pct_difference"])) <= tol
+                       and (x.get("valuation_date_difference_days") is None and regs[rid]["regime_type"] == "fixed_official_segment"
+                            or isinstance(x.get("valuation_date_difference_days"), int)
+                            and abs(x["valuation_date_difference_days"]) <= gap)
                        for rid, x in comps.items())
         if match == "provider_matches_official_within_tolerance" and \
                 not matched(("official_reference",), ("issuer_verified",)):

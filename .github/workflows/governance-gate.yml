@@ -99,6 +99,8 @@ jobs:
         # SEO-A4.6A: governed coverage model for active fiat codes the FX provider does not
         # publish (KPW, VED); scope rule bars any code with a provider value (A4.6B codes stay
         # out); A4.1 confidence/flags agree; reference_layer_only carries no values.
+        # SEO-A4.6B: also validates rate_regime_governance (regimes, evidence, licences,
+        # provider-regime matches, tolerances and provider policies).
         run: python3 scripts/validate_live_fiat_snapshot.py
 
       - name: Live-fiat coverage gate (validate_live_fiat_coverage.py)
@@ -106,6 +108,13 @@ jobs:
         # availability, rate regime and provenance, no converter/FX state or WebApplication, no
         # rate figure without a governed value; robots, canonical, sitemap and generator parity.
         run: python3 scripts/validate_live_fiat_coverage.py
+
+      - name: Rate-regime governance gate (validate_rate_regime_governance.py)
+        # SEO-A4.6B: CUP/IRR/MMK/SYP/TMT/VES pairs carry a rate-regime card per governed side
+        # (every regime, evidence state, provider policy); converter + WebApplication only where
+        # the provider value matches an official regime; comparison values labelled; no number
+        # for an unresolved provider regime; no issuer/market figure; hubs, robots, sitemap, parity.
+        run: python3 scripts/validate_rate_regime_governance.py
 
       - name: Pair internal-link graph gate (validate_pair_link_graph.py)
         # SEO-A2: every pair page reachable from index.html via <a href>

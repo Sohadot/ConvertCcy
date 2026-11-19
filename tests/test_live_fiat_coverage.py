@@ -67,6 +67,13 @@ class _SnapshotSwap:
 
 
 def layer_disabled():
+    # SEO-A4.6B: disable both live-fiat layers (A4.6A coverage and A4.6B rate-regime governance)
+    # to recover the pre-layer baseline; otherwise KPW/VED pairs with a governed code fall through to A4.6B.
+    return _SnapshotSwap(dict(SNAP, currencies={}, rate_regime_governance={"currencies": {}}))
+
+
+def a46a_disabled():
+    """Disable only the A4.6A coverage layer (A4.6B rate-regime governance stays active)."""
     return _SnapshotSwap(dict(SNAP, currencies={}))
 
 
@@ -99,7 +106,7 @@ class CohortTest(unittest.TestCase):
         self.assertEqual(lf.covered_codes(SNAP), ["KPW", "VED"])
         with layer_disabled():
             before = treatments()
-        moved = {k for k in ROUTED if ROUTED[k] != before[k]}
+        moved = {k for k in ROUTED if ROUTED[k] != before[k] and ROUTED[k] == "live_fiat_coverage"}
         self.assertEqual(moved, {k for k, t in ROUTED.items() if t == "live_fiat_coverage"})
         self.assertEqual({before[k] for k in moved}, {"unsupported_specialized"})
         self.assertNotIn("unsupported_specialized", {ROUTED[k] for k in before if before[k] != "unsupported_specialized"})
@@ -107,8 +114,8 @@ class CohortTest(unittest.TestCase):
     def test_totals_unchanged_elsewhere(self):
         from collections import Counter
         self.assertEqual(Counter(ROUTED.values()), Counter({
-            "ordinary_fx": 22350, "historical": 2296, "institutional_unit": 1540, "precious_metal": 1268,
-            "standards_special": 674, "live_fiat_coverage": 602}))
+            "ordinary_fx": 20592, "historical": 2296, "institutional_unit": 1540, "precious_metal": 1268,
+            "standards_special": 674, "live_fiat_coverage": 602, "rate_regime_governed": 1758}))   # A4.6B: 1,758 moved
 
 
 class PrecedenceTest(unittest.TestCase):
@@ -133,13 +140,15 @@ class ExclusionTest(unittest.TestCase):
         with layer_disabled():
             base = treatments()
         for (a, b), t in ROUTED.items():
-            if "KPW" in (a, b) or "VED" in (a, b):
+            if {"KPW", "VED"} & {a, b} or set(A46B) & {a, b}:
                 continue
             self.assertEqual(t, base[(a, b)], (a, b))
         for code in A46B:
+            # never A4.6A; since SEO-A4.6B these codes are rate-regime governed (their own layer)
             self.assertFalse(g.is_live_fiat(code))
-            self.assertEqual(g.pair_semantic_treatment(code, "USD", FX), "ordinary_fx")
-            self.assertEqual(g.pair_semantic_treatment("EUR", code, FX), "ordinary_fx")
+            self.assertEqual(g.pair_semantic_treatment(code, "USD", FX), "rate_regime_governed")
+            self.assertEqual(g.pair_semantic_treatment("EUR", code, FX), "rate_regime_governed")
+            self.assertEqual(base[(code, "USD")], "ordinary_fx")
 
     def test_scope_rule_rejects_provider_valued_codes(self):
         for code in A46B + ("USD",):
@@ -329,7 +338,7 @@ class IdempotenceAndFreezeTest(unittest.TestCase):
         keys = ("USD_EUR", "BGN_EUR", "USD_XTS", "XAU_USD", "XDR_USD", "CLF_USD",
                 "CUP_USD", "IRR_USD", "MMK_USD", "SYP_USD", "TMT_USD", "VES_USD", "USD_VES", "EUR_CUP")
         with_layer = {k: g.build_pair_page(PROFILES[k], CUR, CONTENT, codes, gov, imp, FX) for k in keys}
-        with layer_disabled():
+        with a46a_disabled():
             without = {k: g.build_pair_page(PROFILES[k], CUR, CONTENT, codes, gov, imp, FX) for k in keys}
             hubs_without = {c: g.build_currency_hub_page(c, CUR, gov) for c in ("USD", "VES", "CUP", "XDR")}
         for k in keys:
