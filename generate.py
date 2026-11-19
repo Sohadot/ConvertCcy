@@ -932,6 +932,8 @@ def static_rate_region_html(profile: Dict[str, Any], tokens: Dict[str, str], sna
         return metal_rate_region_html(tokens, snapshot)
     if treatment == "institutional_unit":
         return institutional_rate_region_html(tokens, snapshot)
+    if treatment == "live_fiat_coverage":
+        return live_fiat_rate_region_html(tokens, snapshot)
     if treatment == "historical":
         return historical_rate_region_html(tokens, snapshot)
     rev_href = f'/pages/{T.lower()}-to-{F.lower()}.html'
@@ -1008,6 +1010,8 @@ def static_table_region_html(profile: Dict[str, Any], tokens: Dict[str, str], sn
         return metal_table_region_html(tokens, snapshot)
     if treatment == "institutional_unit":
         return institutional_table_region_html(tokens, snapshot)
+    if treatment == "live_fiat_coverage":
+        return live_fiat_table_region_html(tokens, snapshot)
     if treatment == "historical":
         return historical_table_region_html(tokens, snapshot)
     amounts = profile.get("static_amounts") or DEFAULT_STATIC_AMOUNTS
@@ -1121,6 +1125,9 @@ def pair_semantic_treatment(from_code: str, to_code: str, snapshot: Optional[Dic
     'precious_metal'         a side is a precious metal (XAU/XAG/XPT/XPD), unless the above govern
     'institutional_unit'     a side is an institutional unit (XDR/CLF/UYW/XUA/XSU), unless the above govern
                              (SEO-A4.5; a provider FX value for the unit never makes the pair ordinary FX)
+    'live_fiat_coverage'     a side is an active fiat code the FX provider does not publish and that
+                             data/live_fiat_reference_snapshot.json governs (SEO-A4.6A: KPW, VED), unless
+                             the above govern; the scope rule bars any code that has a provider value
     'ordinary_fx'            snapshot-covered pair rendered by the A3 rate logic
     'unsupported_specialized' no rate source yet (metals, units, restricted fiat, …)
     Policy (instrument_policy.resolve_pair) decides first; snapshot coverage only
@@ -1136,13 +1143,16 @@ def pair_semantic_treatment(from_code: str, to_code: str, snapshot: Optional[Dic
         return "precious_metal"
     if pol.is_institutional_unit(from_code) or pol.is_institutional_unit(to_code):
         return "institutional_unit"
+    if is_live_fiat(from_code) or is_live_fiat(to_code):
+        return "live_fiat_coverage"
     snapshot = snapshot if snapshot is not None else load_rate_snapshot()
     return "ordinary_fx" if static_pair_rate(from_code, to_code, snapshot) is not None else "unsupported_specialized"
 
 
 _RATE_TREATMENT = {"ordinary_fx": "snapshot", "unsupported_specialized": "unsupported",
                    "historical": "historical", "standards_special": "standards_special",
-                   "precious_metal": "precious_metal", "institutional_unit": "institutional_unit"}
+                   "precious_metal": "precious_metal", "institutional_unit": "institutional_unit",
+                   "live_fiat_coverage": "live_fiat_coverage"}
 
 
 def pair_rate_treatment(from_code: str, to_code: str, snapshot: Optional[Dict[str, Any]] = None) -> str:
@@ -1150,7 +1160,7 @@ def pair_rate_treatment(from_code: str, to_code: str, snapshot: Optional[Dict[st
     return _RATE_TREATMENT[pair_semantic_treatment(from_code, to_code, snapshot)]
 
 
-SPECIAL_TREATMENTS = ("historical", "standards_special", "precious_metal", "institutional_unit")
+SPECIAL_TREATMENTS = ("historical", "standards_special", "precious_metal", "institutional_unit", "live_fiat_coverage")
 
 
 HISTORICAL_VALUE_LABELS = {
@@ -1399,6 +1409,8 @@ def pair_metadata(tokens: Dict[str, str], archival: Any = False, brand: str = SI
         return metal_pair_metadata(tokens, brand)
     if archival == "institutional_unit":
         return institutional_pair_metadata(tokens, brand)
+    if archival == "live_fiat_coverage":
+        return live_fiat_pair_metadata(tokens, brand)
     if not archival:
         return {
             "title": f"{F} to {T} Converter | {brand}",
@@ -2246,6 +2258,293 @@ def apply_institutional_semantics(page: str, tokens: Dict[str, str], content: Di
     return replace_webpage_jsonld(page, tokens, items, "institutional_unit")
 
 
+# ---- SEO-A4.6A: residual live-fiat coverage (KPW, VED) ----------------------
+#
+# Active fiat codes that the FX reference provider does not publish, and that no
+# higher-precedence policy layer governs, are rendered as live-fiat coverage
+# references instead of the generic A3 "unsupported" template. Membership comes
+# ONLY from data/live_fiat_reference_snapshot.json, whose validator enforces the
+# scope rule (active fiat, no provider value) — so a code with a provider value
+# (CUP, IRR, MMK, SYP, TMT, VES, …) can never be captured here. Facts are
+# registry-cited; any numeric value comes only from live_fiat_reference.value_view(),
+# which refuses unless regime, source tier, licence, dates, provenance and
+# freshness all pass. Current state: reference_layer_only -> "unavailable".
+
+_LIVE_FIAT_SNAPSHOT = None
+
+
+def live_fiat_snapshot() -> Dict[str, Any]:
+    global _LIVE_FIAT_SNAPSHOT
+    if _LIVE_FIAT_SNAPSHOT is None:
+        import live_fiat_reference
+        _LIVE_FIAT_SNAPSHOT = live_fiat_reference.load_live_fiat_snapshot()
+    return _LIVE_FIAT_SNAPSHOT
+
+
+def is_live_fiat(code: str) -> bool:
+    return code in live_fiat_snapshot().get("currencies", {})
+
+
+def live_fiat_view(code: str) -> Dict[str, Any]:
+    """Governed coverage view for one covered code, with claim sources resolved."""
+    snap = live_fiat_snapshot()
+    srcs = {s["id"]: s for s in snap["sources"]}
+    c = dict(snap["currencies"][code])
+
+    def cite(cl):
+        s = srcs[cl["source"]]
+        return {"text": cl["text"], "sources": [{"url": s["url"], "authority": s["authority"]}]}
+    for k in ("identity_claims", "coverage_claims", "reported_indicators"):
+        c[k] = [cite(x) for x in c[k]]
+    c["code"] = code
+    c["role_label"] = LIVE_FIAT_ROLE_LABELS[c["instrument_role"]]
+    c["sources_resolved"] = [srcs[i] for i in dict.fromkeys(
+        x["source"] for k in ("identity_claims", "coverage_claims", "reported_indicators")
+        for x in snap["currencies"][code][k])]
+    return c
+
+
+LIVE_FIAT_ROLE_LABELS = {"active_restricted_fiat": "Active restricted fiat currency",
+                         "active_fiat": "Active fiat currency",
+                         "transitional_iso_code": "Transitional ISO 4217 code"}
+LIVE_FIAT_AVAILABILITY_LABELS = {
+    "live_verified": "governed value available",
+    "live_caveated": "governed value available with caveats",
+    "official_source_unresolved": "no governed value — official source unresolved",
+    "provider_regime_unresolved": "no governed value — provider rate regime unresolved",
+    "license_unresolved": "no governed value — publication licence unresolved",
+    "no_governed_value_available": "no governed value available",
+    "code_role_under_review": "no governed value — code role under review"}
+LIVE_FIAT_REGIME_LABELS = {"official_reference": "official reference rate", "market_reference": "market reference rate",
+                           "multiple_regimes_verified": "multiple verified rate regimes", "unresolved": "unresolved",
+                           "not_applicable": "not applicable (no independent rate)"}
+LIVE_FIAT_VALUE_BADGE = {"official_reference": "OFFICIAL REFERENCE", "market_reference": "MARKET REFERENCE",
+                         "derived_reference_value": "DERIVED"}
+
+
+def _live_fiat_sides(F: str, T: str) -> List[Dict[str, Any]]:
+    return [live_fiat_view(c) for c in (F, T) if is_live_fiat(c)]
+
+
+def live_fiat_value(F: str, T: str, fx: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    import live_fiat_reference
+    fx = fx if fx is not None else load_rate_snapshot()
+    return live_fiat_reference.value_view(F, T, live_fiat_snapshot(), fx, format_rate_value)
+
+
+def _live_fiat_role_word(sides: List[Dict[str, Any]]) -> str:
+    if all(s["instrument_role"] == "transitional_iso_code" for s in sides):
+        return "Code-Status Reference"
+    return "Coverage Reference"
+
+
+def live_fiat_pair_metadata(tokens: Dict[str, str], brand: str = SITE_NAME,
+                            fx: Optional[Dict[str, Any]] = None) -> Dict[str, str]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _live_fiat_sides(F, T)
+    active = live_fiat_value(F, T, fx)["value_type"] != "unavailable"
+    if len(sides) == 2:
+        title = f"{F} / {T} — Live-Fiat Coverage Reference | {brand}"
+        description = (f"Coverage reference for {sides[0]['display_name']} ({F}) and {sides[1]['display_name']} ({T}): "
+                       f"ISO identity, code role, rate-regime state, source coverage and provenance. "
+                       f"Neither code is published by the FX reference provider, so no {F}/{T} value exists.")
+    else:
+        s = sides[0]
+        other = T if s["code"] == F else F
+        title = f"{F} to {T} — {s['display_name']} {_live_fiat_role_word(sides)} | {brand}"
+        description = (f"Reference for the {s['display_name']} ({s['code']}) against {_cur_name(other)} ({other}): "
+                       f"ISO identity, {'code role' if s['instrument_role'] == 'transitional_iso_code' else 'currency status'}, "
+                       "rate-regime state, source coverage and provenance. "
+                       + ("Values are labelled with source, regime and date." if active
+                          else f"No governed {s['code']} value is currently published on ConvertCCY."))
+    return {"title": title, "description": description, "schema_name": title, "schema_description": description}
+
+
+def _live_fiat_h1(F: str, T: str) -> Tuple[str, str]:
+    sides = _live_fiat_sides(F, T)
+    if len(sides) == 2:
+        return f"{sides[0]['display_name']} ({F}) / {sides[1]['display_name']} ({T})", "Live-Fiat Coverage Reference"
+    s = sides[0]
+    if s["code"] == F:
+        return f"{s['display_name']} ({F})", f"{_live_fiat_role_word(sides)} in {_cur_name(T)} ({T})"
+    return f"{_cur_name(F)} ({F})", f"Against {s['display_name']} ({T})"
+
+
+def _live_fiat_block(lv: Dict[str, Any]) -> str:
+    lines = [_cited_line(c, "ISO 4217: ") for c in lv["identity_claims"]]
+    issuer = lv["issuer_or_authority"] or "not stated — no issuer publication located"
+    lines.append(f'<div class="pj-line">Role: {esc(lv["role_label"])} · Issuer or authority: {esc(issuer)}</div>')
+    if lv.get("operative_code"):
+        op = lv["operative_code"]
+        lines.append(f'<div class="pj-line" data-operative-code="{esc(op)}">Operative code per ISO 4217: '
+                     f'<a href="{currency_hub_href(op)}">{esc(op)} — {esc(_cur_name(op))} reference →</a> '
+                     f'(no value is copied from {esc(op)} to {esc(lv["code"])})</div>')
+    lines.append(f'<div class="pj-line" data-availability="{esc(lv["availability_status"])}">Availability: '
+                 f'{esc(LIVE_FIAT_AVAILABILITY_LABELS[lv["availability_status"]])}</div>')
+    lines.append(f'<div class="pj-line" data-rate-regime="{esc(lv["rate_regime"])}">Rate regime: '
+                 f'{esc(LIVE_FIAT_REGIME_LABELS[lv["rate_regime"]])}</div>')
+    lines += [_cited_line(c, "Provider coverage: ") for c in lv["coverage_claims"]]
+    lines += [_cited_line(c, "Reported (secondary source): ") for c in lv["reported_indicators"]]
+    lines.append(f'<div class="pj-line">Next activation condition: {esc(lv["explanations"]["activation"])}</div>')
+    lines.append(f'<div class="pj-line">Authoritative reference: <a href="{currency_hub_href(lv["code"])}">'
+                 f'{esc(lv["code"])} — {esc(lv["display_name"])} reference →</a></div>')
+    body = "\n          ".join(lines)
+    return f"""
+        <div class="pj-block pj-plain" data-live-fiat-code="{esc(lv["code"])}" data-availability="{esc(lv["availability_status"])}">
+          <div class="pj-head"><span class="pj-badge">{esc(lv["role_label"].upper())}</span> {esc(lv["code"])} — {esc(lv["display_name"])}</div>
+          {body}
+        </div>"""
+
+
+def live_fiat_rate_region_html(tokens: Dict[str, str], fx: Optional[Dict[str, Any]] = None) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _live_fiat_sides(F, T)
+    v = live_fiat_value(F, T, fx)
+    vt = v["value_type"]
+    hubs = " and ".join(f'<a href="{currency_hub_href(s["code"])}">{esc(s["code"])} reference</a>' for s in sides)
+    sub = "; ".join(f'{s["code"]} is {"an" if s["role_label"][0].lower() in "aeiou" else "a"} {s["role_label"][0].lower() + s["role_label"][1:]} — '
+                    f'{LIVE_FIAT_AVAILABILITY_LABELS[s["availability_status"]]}' for s in sides)
+    avail = " ".join(dict.fromkeys(s["availability_status"] for s in sides))
+    regime = " ".join(dict.fromkeys(s["rate_regime"] for s in sides))
+    if vt == "unavailable":
+        main = "No governed value published"
+        badge = esc(" · ".join(dict.fromkeys(s["decision_label"] for s in sides)))
+        note = " ".join(dict.fromkeys(s["explanations"]["value_status"] for s in sides))
+        if len(sides) == 2:
+            note += f" Neither {F} nor {T} is published by the FX reference provider, so no {F}/{T} cross exists."
+        note_html = f"{esc(note)} Identity, rate regime and source provenance: {hubs}."
+    else:
+        main = f'<span data-value-type="{vt}">1 {esc(F)} = {esc(v["value_text"])} {esc(T)}</span>'
+        badge = LIVE_FIAT_VALUE_BADGE[vt] + " · " + esc(v["valuation_date"])
+        lead = (f"DERIVED FROM {LIVE_FIAT_REGIME_LABELS[v['rate_regime']].upper()} — not a direct source quote."
+                if v["derived"] else f"Direct {LIVE_FIAT_REGIME_LABELS[v['rate_regime']]} published by {v['source']}.")
+        parts = [lead, f"Source: {v['source']}", f"valuation date: {v['valuation_date']}",
+                 f"rate regime: {LIVE_FIAT_REGIME_LABELS[v['rate_regime']]}"]
+        if v.get("fx_source"):
+            parts += [f"FX source: {v['fx_source']}", f"FX timestamp: {v['fx_timestamp']}"]
+        if v["derivation_method"]:
+            parts.append(f"derivation: {v['derivation_method']}")
+        note_html = esc(" · ".join(parts) + ".")
+    return f"""{STATIC_RATE_START}
+  <div class="rate-banner" id="rate-root" data-from="{esc(F)}" data-to="{esc(T)}" data-mode="live_fiat" data-value-type="{vt}" data-availability="{esc(avail)}" data-rate-regime="{esc(regime)}">
+    <div>
+      <div class="rate-main" id="live-rate">{main}</div>
+      <div class="rate-sub" id="rate-sub">{esc(sub)}</div>
+    </div>
+    <div class="rate-badge snap" id="rate-badge">{badge}</div>
+  </div>
+  <p class="rate-note" id="rate-source">{note_html}</p>
+
+  <div class="card">
+    <div class="card-title">Live-Fiat Coverage Reference</div>
+    <div class="pj-grid">{"".join(_live_fiat_block(s) for s in sides)}
+    </div>
+  </div>
+{STATIC_RATE_END}"""
+
+
+def live_fiat_table_region_html(tokens: Dict[str, str], fx: Optional[Dict[str, Any]] = None) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    v = live_fiat_value(F, T, fx)
+    if v["value_type"] == "unavailable":
+        codes = " or ".join(s["code"] for s in _live_fiat_sides(F, T))
+        text = f"No conversion table: no governed {codes} value is published, so no amounts are converted."
+    else:
+        text = f"No conversion table: the value above applies to one {F} unit on its valuation date and rate regime only."
+    return f"""{STATIC_TABLE_START}
+    <div class="card">
+      <p class="result-info" id="table-source">{esc(text)}</p>
+    </div>
+{STATIC_TABLE_END}"""
+
+
+def live_fiat_faq_items(tokens: Dict[str, str], fx: Optional[Dict[str, Any]] = None) -> List[Dict[str, str]]:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _live_fiat_sides(F, T)
+    v = live_fiat_value(F, T, fx)
+    if v["value_type"] == "unavailable":
+        a_rate = (f"ConvertCCY publishes no governed {F}/{T} value. "
+                  + " ".join(dict.fromkeys(s["explanations"]["value_status"] for s in sides))
+                  + " No number is shown rather than an estimate.")
+    else:
+        a_rate = (f"1 {F} = {v['value_text']} {T} ({LIVE_FIAT_REGIME_LABELS[v['rate_regime']]}, "
+                  f"{'derived' if v['derived'] else 'direct'}, valuation date {v['valuation_date']}, source {v['source']}).")
+    items: List[Dict[str, str]] = [{"q": f"How much is 1 {F} in {T}?", "a": a_rate}]
+    for s in sides:
+        for f in s["faq"]:
+            if f["q"] not in {i["q"] for i in items}:
+                items.append(dict(f))
+    items.append({"q": "Does a missing value mean the currency is not real?",
+                  "a": "No. A missing value means no governed source with an identified rate regime, a valuation date "
+                       "and publication rights is available to ConvertCCY. It says nothing against the validity of the "
+                       "currency or code, and it does not mean that no market exists."})
+    return items
+
+
+def live_fiat_overview_html(tokens: Dict[str, str]) -> str:
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    sides = _live_fiat_sides(F, T)
+    paras = [esc(f"{s['explanations']['what']} {s['explanations']['regime']}") for s in sides]
+    if len(sides) == 1:
+        other = T if sides[0]["code"] == F else F
+        paras.append(f'{esc(other)} ({esc(_cur_name(other))}) is the counter-currency; see its '
+                     f'<a href="{currency_hub_href(other)}">{esc(other)} reference</a> for its own pairs.')
+    body = "\n".join(f"    <p>{p}</p>" for p in paras)
+    return f"""  <section class="section">
+    <div class="sec-title">Pair Overview</div>
+    <div class="sec-h2">{esc(F)} / {esc(T)} {esc(_live_fiat_role_word(sides))}</div>
+{body}
+  </section>"""
+
+
+LIVE_FIAT_EDUCATION_HTML = """  <section class="section">
+    <div class="sec-title">Reading a Live-Fiat Coverage Reference</div>
+    <div class="card">
+      <p>A coverage reference describes a real currency or currency code for which ConvertCCY has no governed value: what the code is, whether a governed value exists, why it does or does not, which rate regime applies and where the evidence comes from.</p>
+      <p>No governed value is not the same as no currency, and the absence of a value from ConvertCCY's FX provider is not the same as the absence of a market. A value is shown only when its source identifies the rate regime, carries a valuation date, is current and permits publication.</p>
+    </div>
+  </section>
+"""
+
+
+def apply_live_fiat_semantics(page: str, tokens: Dict[str, str], content: Dict[str, Any],
+                              fx: Optional[Dict[str, Any]] = None) -> str:
+    """Rewrite live-fiat pair metadata and page semantics. Idempotent; fails closed."""
+    F, T = tokens["FROM_CODE"], tokens["TO_CODE"]
+    brand = content.get("site_copy", {}).get("brand_name", SITE_NAME)
+    meta = live_fiat_pair_metadata(tokens, brand, fx)
+    left, right = _live_fiat_h1(F, T)
+    sides = _live_fiat_sides(F, T)
+    subtitle = ("ISO 4217 code-status reference" if all(s["instrument_role"] == "transitional_iso_code" for s in sides)
+                else "Live-fiat coverage reference")
+    for rx, tpl in _META_PATTERNS:
+        if len(rx.findall(page)) != 1:
+            raise ValueError(f"live-fiat metadata: {rx.pattern} not found exactly once")
+        page = rx.sub(lambda _m: tpl.format(title=esc(meta["title"]), description=esc(meta["description"])), page)
+    for rx, new, label in ((_ROBOTS_RE, f'<meta name="robots" content="{pair_robots(F, T)}">', "robots"),
+                           (_H1_RE, f"<h1>{esc(left)} <em>{esc(right)}</em></h1>", "h1"),
+                           (_SUBTITLE_RE, f'<p class="pair-subtitle">{subtitle}</p>', "subtitle")):
+        if len(rx.findall(page)) != 1:
+            raise ValueError(f"live-fiat {label} anchor not found exactly once")
+        page = rx.sub(lambda _m, v=new: v, page)
+    if page.count(_OVERVIEW_START) != 1 or page.count(_PASSAGE_START) != 1 or page.count(STATIC_TABLE_START) != 1:
+        raise ValueError("live-fiat body anchors not found exactly once")
+    i = page.index(_OVERVIEW_START)
+    j = page.index("\n  </section>", i) + len("\n  </section>")
+    page = page[:i] + live_fiat_overview_html(tokens) + page[j:]
+    page = _MACRO_RE.sub("", page)
+    p = page.index(_PASSAGE_START)
+    edu_start = page.index("\n  </section>", p) + len("\n  </section>")
+    table_start = page.rindex('\n  <section class="section">\n', 0, page.index(STATIC_TABLE_START))
+    page = page[:edu_start] + "\n" + LIVE_FIAT_EDUCATION_HTML + page[table_start:]
+    t0 = page.rindex('\n  <section class="section">\n', 0, page.index(STATIC_TABLE_START)) + 1
+    t1 = page.index(STATIC_TABLE_START)
+    page = page[:t0] + '  <section class="section">\n    <div class="sec-title">Value Coverage Status</div>\n' + page[t1:]
+    items = live_fiat_faq_items(tokens, fx)
+    page = replace_faq_regions(page, items)
+    return replace_webpage_jsonld(page, tokens, items, "live_fiat_coverage")
+
+
 WEBPAGE_JSONLD_START = '<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@graph": ['
 
 
@@ -2428,6 +2727,46 @@ def refresh_institutional_units(
     return changed, unchanged, hubs
 
 
+def refresh_live_fiat_coverage(
+    currencies: Dict[str, Dict[str, Any]],
+    content: Dict[str, Any],
+    pair_profiles: Dict[str, Dict[str, Any]],
+) -> Tuple[int, int, int]:
+    """SEO-A4.6A: rewrite ONLY pairs whose policy treatment is live_fiat_coverage and the
+    hubs of covered codes. Cohort comes from the router (governed snapshot + policy
+    precedence), never a slug list. Robots stay as resolved by policy (indexable), so
+    the sitemap is unchanged."""
+    snapshot = load_rate_snapshot()
+    changed = unchanged = 0
+    for profile in pair_profiles.values():
+        a, b = profile["from_code"], profile["to_code"]
+        if a == b or a not in currencies or b not in currencies:
+            continue
+        if pair_rate_treatment(a, b, snapshot) != "live_fiat_coverage":
+            continue
+        tokens = make_pair_tokens(profile, currencies)
+        path = PAGES_DIR / f'{profile["pair_slug"]}.html'
+        old = path.read_text(encoding="utf-8")
+        new = replace_static_rate_regions(old, profile, tokens, snapshot)
+        new = apply_live_fiat_semantics(new, tokens, content, snapshot)
+        if new != old:
+            write_text(path, new)
+            changed += 1
+        else:
+            unchanged += 1
+    gov_map = load_governed_currency_map()
+    hubs = 0
+    for code in currencies:
+        if is_live_fiat(code):
+            path = BASE_DIR / currency_hub_href(code).lstrip("/")
+            html_doc = build_currency_hub_page(code, currencies, gov_map)
+            if not path.exists() or path.read_text(encoding="utf-8") != html_doc:
+                write_text(path, html_doc)
+                hubs += 1
+    print(f"Live-fiat coverage: {changed} pair pages changed, {unchanged} unchanged, {hubs} hubs changed")
+    return changed, unchanged, hubs
+
+
 # ---- SEO-A3.1: rate-aware FAQ truthfulness ----------------------------------
 #
 # Support status comes ONLY from static_pair_rate() (the validated snapshot).
@@ -2456,6 +2795,8 @@ def rate_aware_faq_items(items: List[Dict[str, str]], tokens: Dict[str, str],
         return metal_faq_items(tokens, snapshot)
     if treatment == "institutional_unit":
         return institutional_faq_items(tokens, snapshot)
+    if treatment == "live_fiat_coverage":
+        return live_fiat_faq_items(tokens, snapshot)
     if treatment == "historical":
         return historical_faq_items(tokens, snapshot)
     if static_pair_rate(F, T, snapshot) is not None:
@@ -2978,6 +3319,8 @@ def build_pair_page(profile: Dict[str, Any], currencies: Dict[str, Dict[str, Any
         page = apply_metal_semantics(page, tokens, content, snapshot)
     elif treatment == "institutional_unit":
         page = apply_institutional_semantics(page, tokens, content, snapshot)
+    elif treatment == "live_fiat_coverage":
+        page = apply_live_fiat_semantics(page, tokens, content, snapshot)
     return page
 
 
@@ -3107,6 +3450,8 @@ def build_currency_hub_page(
         kind = "precious-metal code"   # SEO-A4.4: ISO 4217 states no unit; the unit is not asserted here
     if pol.is_institutional_unit(code):
         kind = pol.institutional_view(code)["classification_label"].lower()   # SEO-A4.5: A4.1 taxonomy, not the legacy label
+    if is_live_fiat(code):
+        kind = live_fiat_view(code)["role_label"][0].lower() + live_fiat_view(code)["role_label"][1:]   # SEO-A4.6A: governed coverage role, not the legacy label
     if pol.is_historical(code):
         hv = pol.historical_view(code)
         kind = ("historical currency" if hv["instrument_type"] == "historical_currency" else "legacy currency code") + \
@@ -3294,6 +3639,64 @@ def build_currency_hub_page(
                        f"Institutional unit · not a circulating currency · {esc(iv['decision_label'].lower())}.</p>")
         from_heading = f"Institutional valuation references: {esc(code)} with other codes"
         to_heading = f"Institutional valuation references: other codes with {esc(code)}"
+        webpage = json.dumps({"@context": "https://schema.org", "@type": "WebPage", "name": title,
+                              "url": canonical, "description": description}, ensure_ascii=False, indent=2)
+        faq_ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": i["q"], "acceptedAnswer": {"@type": "Answer", "text": i["a"]}} for i in faq]},
+            ensure_ascii=False, indent=2)
+        extra_jsonld = (f'\n\n<script type="application/ld+json">\n{webpage}\n</script>'
+                        f'\n\n<script type="application/ld+json">\n{faq_ld}\n</script>')
+
+    elif is_live_fiat(code):
+        # SEO-A4.6A: live-fiat coverage reference (no value until a governed source is activated).
+        lv = live_fiat_view(code)
+        ex = lv["explanations"]
+        word = "Code-Status Reference" if lv["instrument_role"] == "transitional_iso_code" else "Coverage Reference"
+        title = f"{code} — {lv['display_name']} {word} | {SITE_NAME}"
+        description = (f"Reference for {code}, the {lv['display_name']}: ISO identity, "
+                       + ("code role, " if lv["instrument_role"] == "transitional_iso_code" else "currency status, ")
+                       + f"rate-regime state, source coverage and provenance. "
+                       + (f"No governed {code} value is currently published on ConvertCCY."
+                          if lv["availability_status"] not in ("live_verified", "live_caveated") else ""))
+        description = description.strip()
+        h1_text = f"{esc(code)} — {esc(lv['display_name'])}"
+
+        def cl(c, prefix=""):
+            return (f'<li>{esc(prefix)}<span data-claim>{esc(c["text"])}</span> — '
+                    + ", ".join(f'<a href="{esc(x["url"])}">{esc(x["authority"])}</a>' for x in c["sources"]) + "</li>")
+
+        def ul(items):
+            return '<ul class="hub-sources">' + "".join(chr(10) + "      " + x for x in items) + "\n    </ul>"
+        issuer = lv["issuer_or_authority"] or "not stated — no issuer publication located"
+        operative = ""
+        if lv.get("operative_code"):
+            op = lv["operative_code"]
+            operative = (f'\n    <p data-operative-code="{esc(op)}">Operative code per ISO 4217: <a href="{currency_hub_href(op)}">'
+                         f'{esc(op)} — {esc(_cur_name(op))} reference</a>. No value is copied from {esc(op)} to {esc(code)}.</p>')
+        prov_rows = "".join(
+            f'\n      <li><a href="{esc(s["url"])}">{esc(s["title"])}</a> — {esc(s["authority"])} · tier: {esc(s["source_tier"].replace("_", " "))}'
+            f' · accessed {esc(s["accessed"])}</li>' for s in lv["sources_resolved"])
+        faq = list(lv["faq"])
+        faq_html = "".join(f'\n    <div class="hub-faq"><h3>{esc(i["q"])}</h3><p>{esc(i["a"])}</p></div>' for i in faq)
+        sections = [
+            ("Identity", ul([cl(c, "ISO 4217: ") for c in lv["identity_claims"]])
+             + f"\n    <p>Role: {esc(lv['role_label'])} · Issuer or authority: {esc(issuer)}</p>{operative}"),
+            ("Status and role", f"<p>{esc(ex['what'])}</p>"),
+            ("Source coverage", ul([cl(c) for c in lv["coverage_claims"]]
+                                   + [cl(c, "Reported (secondary source): ") for c in lv["reported_indicators"]])),
+            ("Availability and rate regime",
+             f'<p><span class="hub-decision" data-availability="{esc(lv["availability_status"])}">{esc(lv["decision_label"])}</span>'
+             f' · {esc(ex["value_status"])}</p>\n    <p data-rate-regime="{esc(lv["rate_regime"])}">{esc(ex["regime"])}</p>'),
+            ("Provenance", f'<ul class="hub-sources">{prov_rows}\n    </ul>'),
+            ("Current limitations", f"<p>{esc(ex['activation'])}</p>"),
+            (f"{esc(code)} FAQ", faq_html.lstrip("\n")),
+        ]
+        standards_html = "".join(f"\n\n  <section class=\"hub-std\">\n    <h2>{h}</h2>\n    {b}\n  </section>" for h, b in sections)
+        rules_html += (f'\n  <p class="hub-rules" data-live-fiat-role="{esc(lv["instrument_role"])}" data-converter="none" '
+                       f'data-availability="{esc(lv["availability_status"])}" data-rate-regime="{esc(lv["rate_regime"])}">'
+                       f"{esc(lv['role_label'])} · {esc(LIVE_FIAT_AVAILABILITY_LABELS[lv['availability_status']])}.</p>")
+        from_heading = f"Coverage references: {esc(code)} with other currencies"
+        to_heading = f"Coverage references: other currencies with {esc(code)}"
         webpage = json.dumps({"@context": "https://schema.org", "@type": "WebPage", "name": title,
                               "url": canonical, "description": description}, ensure_ascii=False, indent=2)
         faq_ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
@@ -3934,6 +4337,15 @@ def main():
         ),
     )
     parser.add_argument(
+        "--live-fiat-coverage-only",
+        action="store_true",
+        help=(
+            "SEO-A4.6A: rewrite only pairs whose policy treatment is live_fiat_coverage "
+            "(active fiat codes the FX provider does not publish, governed by "
+            "data/live_fiat_reference_snapshot.json) and their hubs. Sitemap and robots unchanged."
+        ),
+    )
+    parser.add_argument(
         "--standards-special-only",
         action="store_true",
         help=(
@@ -3954,9 +4366,10 @@ def main():
     args = parser.parse_args()
     only_currencies = parse_only_currencies(args.only_currency)
     modes = (args.navigation_only, args.static_rates_only, args.faq_only, args.historical_instruments_only,
-             args.standards_special_only, args.precious_metals_only, args.institutional_units_only, only_currencies)
+             args.standards_special_only, args.precious_metals_only, args.institutional_units_only,
+             args.live_fiat_coverage_only, only_currencies)
     if sum(bool(x) for x in modes) > 1:
-        parser.error("--navigation-only, --static-rates-only, --faq-only, --historical-instruments-only and --only-currency are mutually exclusive")
+        parser.error("generation modes (--navigation-only, --static-rates-only, --faq-only, --*-only, --only-currency) are mutually exclusive")
 
     if not CURRENCIES_FILE.exists():
         raise FileNotFoundError(f"Missing file: {CURRENCIES_FILE}")
@@ -3981,6 +4394,11 @@ def main():
             "Support pages and sitemap.xml intentionally left unchanged "
             "(pair-page URLs are stable, so the sitemap does not move)."
         )
+        return
+
+    if args.live_fiat_coverage_only:
+        refresh_live_fiat_coverage(currencies, content, pair_profiles)
+        print("\nLive-fiat-coverage-only build complete. Sitemap unchanged.")
         return
 
     if args.institutional_units_only:

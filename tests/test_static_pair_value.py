@@ -97,10 +97,24 @@ class SupportedPairStaticHtmlTest(unittest.TestCase):
         self.assertIn(f'1 EUR = <span id="inverse-rate">{g.format_rate_value(self.sr["inverse"], self.sr["sig"])}</span> USD', self.html)
 
 
+SYN_DROP = ("ISK", "PEN")   # SEO-A4.6A: no published pair is generic-unsupported; exercise the A3 fallback synthetically
+SYN_SNAP = dict(SNAP, rates={c: r for c, r in SNAP["rates"].items() if c not in SYN_DROP})
+
+
+def synthetic_page(key):
+    """Full pair page built against a snapshot that lacks ISK/PEN (real currencies, no special layer)."""
+    prof = PROFILES[key]
+    codes = list(g.site_currency_order(CUR.keys()))
+    return g.build_pair_page(prof, CUR, g.load_content_blocks(), codes, g.load_governed_currency_map(),
+                             g.build_pair_importance_index(PROFILES), SYN_SNAP)
+
+
 class UnsupportedPairStaticHtmlTest(unittest.TestCase):
     def test_E_no_fake_numeric_rate(self):
-        for slug in ("kpw-to-usd", "eur-to-ved", "ved-to-kpw"):   # XTS/XXX, metals, institutional units (A4.5): own tests
-            html = page(slug)
+        for key in ("ISK_USD", "EUR_PEN", "PEN_ISK"):
+            a, b = key.split("_")
+            self.assertEqual(g.pair_semantic_treatment(a, b, SYN_SNAP), "unsupported_specialized")
+            html = synthetic_page(key)
             rate = region(html, g.STATIC_RATE_START, g.STATIC_RATE_END)
             tbl = region(html, g.STATIC_TABLE_START, g.STATIC_TABLE_END)
             self.assertIn('data-mode="unsupported"', rate)
@@ -111,11 +125,18 @@ class UnsupportedPairStaticHtmlTest(unittest.TestCase):
             self.assertNotIn("Loading…", html)
 
     def test_F_truthful_unsupported_message(self):
-        html = page("kpw-to-ved")
+        html = synthetic_page("ISK_PEN")
         self.assertIn("No current reference rate is available for this pair in the ConvertCCY snapshot", html)
-        self.assertIn(g.UNSUPPORTED_CODE_REASONS["KPW"], html)
-        self.assertIn(g.UNSUPPORTED_CODE_REASONS["VED"], html)
+        self.assertIn("ISK is not published by the snapshot source", html)
+        self.assertIn("PEN is not published by the snapshot source", html)
         self.assertIn(">NO RATE<", html)
+
+    def test_no_published_page_is_generic_unsupported(self):
+        # SEO-A4.6A closed the residual cohort: every real pair page has a governed treatment
+        for slug in ("kpw-to-usd", "eur-to-ved", "ved-to-kpw", "kpw-to-ved"):
+            html = page(slug)
+            self.assertNotIn('data-mode="unsupported"', html)
+            self.assertIn('data-mode="live_fiat"', html)
 
     def test_every_missing_code_is_classified(self):
         missing = {c for c in CUR if c not in SNAP["rates"]}
@@ -289,10 +310,16 @@ class BrowserLifecycleTest(unittest.TestCase):
         threading.Thread(target=cls.httpd.serve_forever, daemon=True).start()
         cases = [[0.909, 3], [1816886.22, 6], [5.50392e-7, 6], [9.9996, 3], [0.5, 3], [12345.678, 4]]
         cls.cases = cases
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".html", delete=False, encoding="utf-8")
+        tmp.write(synthetic_page("ISK_USD"))
+        tmp.close()
+        synthetic = {"html_file": tmp.name, "snapshot": SYN_SNAP}
         out = subprocess.run(
-            ["node", str(REPO / "tests" / "js" / "pair_rate_lifecycle.js"), f"http://127.0.0.1:{port}", json.dumps(cases)],
+            ["node", str(REPO / "tests" / "js" / "pair_rate_lifecycle.js"), f"http://127.0.0.1:{port}", json.dumps(cases),
+             json.dumps(synthetic)],
             capture_output=True, text=True, timeout=180,
         )
+        Path(tmp.name).unlink()
         cls.res = json.loads(out.stdout.strip().splitlines()[-1])
 
     @classmethod
@@ -337,6 +364,16 @@ class BrowserLifecycleTest(unittest.TestCase):
             self.assertEqual(r["main"], "No reference rate available")
             self.assertEqual(r["badge"], "NO RATE")
             self.assertEqual(len(r["rows"]), 1)
+
+    def test_live_fiat_static_state_survives_js(self):
+        # SEO-A4.6A: a live-fiat page has no rate runtime, so JS on/off shows the same governed state
+        for key in ("liveFiat", "liveFiatNoJs"):
+            r = self.res[key]
+            self.assertEqual(r["main"], "No governed value published")
+            self.assertEqual(r["badge"], "OFFICIAL SOURCE UNRESOLVED")
+            self.assertEqual(r["rows"], [])
+            for seen in r["seen"]:
+                self.assertEqual(seen, "No governed value published")
 
     def test_K_js_formatter_parity(self):
         self.assertEqual(self.res["liveFail"]["fmt"], [g.format_rate_value(v, s) for v, s in self.cases])

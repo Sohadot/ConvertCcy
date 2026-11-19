@@ -185,7 +185,7 @@ class FreezeTest(unittest.TestCase):
         self.assertEqual(g.pair_semantic_treatment("USD", "XTS", SNAP), "standards_special")
         self.assertEqual(g.pair_semantic_treatment("USD", "EUR", SNAP), "ordinary_fx")
         self.assertEqual(g.pair_semantic_treatment("BGN", "USD", SNAP), "historical")
-        self.assertEqual(g.pair_semantic_treatment("KPW", "USD", SNAP), "unsupported_specialized")
+        self.assertEqual(g.pair_semantic_treatment("KPW", "USD", SNAP), "live_fiat_coverage")   # SEO-A4.6A
         self.assertEqual(g.pair_semantic_treatment("XAU", "USD", SNAP), "precious_metal")
 
     def test_registry_citations_enforced(self):

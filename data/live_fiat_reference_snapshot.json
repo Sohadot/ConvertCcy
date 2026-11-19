@@ -1,0 +1,164 @@
+{
+  "type": "live_fiat_reference_snapshot",
+  "schema_version": 1,
+  "layer": "SEO-A4.6A",
+  "purpose": "Governed coverage model for active fiat codes that the FX reference provider does not publish (the residual unsupported cohort after A4.2-A4.5). It records identity, rate regime, availability, provenance and licensing per code, and is the only place a numeric value for a covered code may come from. It never modifies data/rate_snapshot.json.",
+  "scope_rule": "A code may be covered only if it is an active fiat_currency or restricted_fiat_currency in data/instrument_classification.json and has NO value in data/rate_snapshot.json. Codes with a provider value (for example CUP, IRR, MMK, SYP, TMT, VES) are out of scope (A4.6B).",
+  "activation_state": "reference_layer_only",
+  "source_audit_date": "2026-11-19",
+  "captured_at": null,
+  "enums": {
+    "availability_status": ["live_verified", "live_caveated", "official_source_unresolved", "provider_regime_unresolved", "license_unresolved", "no_governed_value_available", "code_role_under_review"],
+    "rate_regime": ["official_reference", "market_reference", "multiple_regimes_verified", "unresolved", "not_applicable"],
+    "instrument_role": ["active_restricted_fiat", "active_fiat", "transitional_iso_code"],
+    "provider_regime_status": ["no_provider_value", "provider_regime_identified", "provider_regime_unresolved"],
+    "source_tier": ["standards_registry", "issuer", "official_republisher", "licensed_market_data", "fx_provider", "secondary_press"],
+    "access_state": ["accessible", "unavailable"],
+    "license_state": ["redistribution_permitted", "attribution_required", "derived_use_only", "display_only", "license_unclear", "not_usable"]
+  },
+  "freshness_policies": {
+    "official_daily": {"current_max_hours": 24, "recent_max_hours": 72, "max_fx_skew_hours": 24},
+    "market_weekly": {"current_max_hours": 168, "recent_max_hours": 336, "max_fx_skew_hours": 24}
+  },
+  "sources": [
+    {
+      "id": "six_iso4217_list_one",
+      "title": "ISO 4217 List One: Currency, fund and precious metal codes (published 2026-09-17)",
+      "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml",
+      "authority": "SIX Financial Information AG, ISO 4217 Maintenance Agency",
+      "source_tier": "standards_registry",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": null,
+      "role": "code identity only"
+    },
+    {
+      "id": "six_iso4217_amendment_170",
+      "title": "ISO 4217 Amendment Number 170 (1 October 2021)",
+      "url": "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/amendments/dl_currency_iso_amendment_170.pdf",
+      "authority": "SIX Financial Information AG, ISO 4217 Maintenance Agency",
+      "source_tier": "standards_registry",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": null,
+      "role": "code role of VED/926 and VES/928"
+    },
+    {
+      "id": "bcv_home",
+      "title": "Banco Central de Venezuela",
+      "url": "https://www.bcv.org.ve/",
+      "authority": "Banco Central de Venezuela",
+      "source_tier": "issuer",
+      "accessed": "2026-11-19",
+      "access_state": "unavailable",
+      "license_state": "license_unclear",
+      "role": "issuer of the bolívar; returned HTTP 503 on every audit attempt, so no rate, date or reuse terms could be read"
+    },
+    {
+      "id": "exchangerate_api_latest_usd",
+      "title": "exchangerate-api.com latest USD rates",
+      "url": "https://api.exchangerate-api.com/v4/latest/USD",
+      "authority": "exchangerate-api.com",
+      "source_tier": "fx_provider",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": null,
+      "role": "FX reference provider used by data/rate_snapshot.json; returns no KPW and no VED value (checked 2026-11-19, 166 codes)"
+    },
+    {
+      "id": "dailynk_market_rate_2026_04",
+      "title": "North Korea's black market dollar rate breaks all-time record as China trade expands (16 April 2026)",
+      "url": "https://www.dailynk.com/english/north-korea-exchange-rate-record-high/",
+      "authority": "Daily NK",
+      "source_tier": "secondary_press",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": "not_usable",
+      "role": "reported indicator only: an informal-market won-dollar rate from Daily NK's own market survey; never a value source"
+    }
+  ],
+  "currencies": {
+    "KPW": {
+      "currency_code": "KPW",
+      "display_name": "North Korean Won",
+      "issuer_or_authority": null,
+      "issuer_source_state": "not_located",
+      "instrument_role": "active_restricted_fiat",
+      "rate_regime": "unresolved",
+      "availability_status": "official_source_unresolved",
+      "decision_label": "OFFICIAL SOURCE UNRESOLVED",
+      "classification_confidence": "high",
+      "review_flags": [],
+      "provider_value": null,
+      "provider_regime_status": "no_provider_value",
+      "official_reference_value": null,
+      "market_reference_value": null,
+      "value_source": null,
+      "freshness_policy": null,
+      "license_state": null,
+      "identity_claims": [
+        {"text": "ISO 4217 lists KPW, numeric code 408 with 2 minor units, as the North Korean Won of the Democratic People’s Republic of Korea.", "source": "six_iso4217_list_one"}
+      ],
+      "coverage_claims": [
+        {"text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes no KPW value; checked 2026-11-19.", "source": "exchangerate_api_latest_usd"}
+      ],
+      "reported_indicators": [
+        {"text": "Daily NK reports a won–dollar rate in North Korea’s informal markets (jangmadang), from its own regular survey of North Korean market prices.", "source": "dailynk_market_rate_2026_04"}
+      ],
+      "explanations": {
+        "what": "The North Korean Won (KPW) is the active national currency of the Democratic People’s Republic of Korea. It is a real currency; the absence of a value on ConvertCCY reflects source coverage, not the validity of the currency.",
+        "value_status": "No governed KPW value is published: the FX reference provider does not cover KPW, no official rate publication by the DPRK monetary authority could be located or accessed, and the only rate found is an informal-market rate reported by secondary press.",
+        "regime": "Rate regime unresolved: secondary press reports an informal-market rate, no official reference rate could be verified from an issuer source, and third-party converter figures do not state which regime they represent. ConvertCCY therefore does not state a KPW rate or compare regimes.",
+        "activation": "A KPW value will be shown only when a source identifies its rate regime (official or market), carries a valuation date, passes the freshness policy and permits publication."
+      },
+      "decision_reason": "Issuer source not located; provider does not cover KPW; the only located rate is a secondary-press informal-market report, which can never be a value source.",
+      "faq": [
+        {"q": "Is the North Korean Won (KPW) a real currency?", "a": "Yes. ISO 4217 lists KPW (numeric 408) as the North Korean Won of the Democratic People’s Republic of Korea. ConvertCCY not showing a value reflects missing source coverage, not an invalid currency."},
+        {"q": "Why does ConvertCCY not show a KPW exchange rate?", "a": "The FX reference provider used by ConvertCCY publishes no KPW value, and no official rate publication by the DPRK monetary authority could be located or accessed. An informal-market rate reported by secondary press is a different rate regime and is not a verified or licensed value source, so no number is shown rather than an estimate."},
+        {"q": "Is there more than one KPW exchange rate?", "a": "Secondary press (Daily NK) reports a won–dollar rate in North Korea’s informal markets. No official reference rate could be verified from an issuer source, so ConvertCCY treats the rate regime as unresolved and does not state how any rates compare."}
+      ]
+    },
+    "VED": {
+      "currency_code": "VED",
+      "display_name": "Bolívar Soberano",
+      "issuer_or_authority": "Banco Central de Venezuela",
+      "issuer_source_state": "unavailable",
+      "instrument_role": "transitional_iso_code",
+      "rate_regime": "not_applicable",
+      "availability_status": "no_governed_value_available",
+      "decision_label": "TRANSITIONAL ISO CODE",
+      "classification_confidence": "medium",
+      "review_flags": ["code_mapping_review", "official_vs_market_rate_review"],
+      "provider_value": null,
+      "provider_regime_status": "no_provider_value",
+      "official_reference_value": null,
+      "market_reference_value": null,
+      "value_source": null,
+      "freshness_policy": null,
+      "license_state": null,
+      "operative_code": "VES",
+      "identity_claims": [
+        {"text": "ISO 4217 lists VED, numeric code 926 with 2 minor units, for Venezuela under the currency name “Bolívar Soberano”; VES, numeric code 928, carries the same name.", "source": "six_iso4217_list_one"},
+        {"text": "ISO 4217 Amendment 170, effective 1 October 2021, introduced VED/926 to represent the redenominated valuation “for any internal needs during the redenomination process, but is not replacing VES as the official currency code”.", "source": "six_iso4217_amendment_170"},
+        {"text": "The same amendment states that the Central Bank of Venezuela will not adopt the new codes in its local system and that VES/928 remains the valid code for any future transactions in the redenominated Bolívar Soberano.", "source": "six_iso4217_amendment_170"}
+      ],
+      "coverage_claims": [
+        {"text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes no VED value; checked 2026-11-19.", "source": "exchangerate_api_latest_usd"}
+      ],
+      "reported_indicators": [],
+      "explanations": {
+        "what": "VED is an ISO 4217 code for the Venezuelan Bolívar Soberano that the ISO maintenance agency describes as introduced for internal needs during the 2021 redenomination; VES remains the official code. VED is a valid ISO code, not an invalid or fictitious currency.",
+        "value_status": "No governed VED value is published: the FX reference provider does not quote VED, the issuer does not use the code in its local system according to ISO 4217 Amendment 170, and the issuer website could not be accessed during the audit.",
+        "regime": "No independent VED rate regime exists to state: according to ISO 4217 Amendment 170 the issuer uses VES/928, so any VED figure would be a relabelled VES figure, which ConvertCCY does not apply.",
+        "activation": "A VED value will be shown only if an authoritative source publishes a value under the VED code with an identified regime, a valuation date and terms that permit publication. ConvertCCY does not alias VED to VES."
+      },
+      "decision_reason": "ISO 4217 Amendment 170 documents VED as a transitional internal code not adopted by the issuer, with VES/928 the operative code; no source quotes VED and no numeric VED/VES mapping is applied.",
+      "faq": [
+        {"q": "What is the VED currency code?", "a": "ISO 4217 lists VED (numeric 926) for Venezuela under the name “Bolívar Soberano”. ISO 4217 Amendment 170 introduced it on 1 October 2021 for internal needs during the redenomination of the bolívar, without replacing VES as the official currency code."},
+        {"q": "Is VED the same as VES?", "a": "Both codes are listed under the name “Bolívar Soberano”. According to ISO 4217 Amendment 170, VES/928 remains the valid code for transactions in the redenominated currency, and the Central Bank of Venezuela will not adopt the new code in its local system. ConvertCCY does not treat VED as an alias of VES and applies no numeric mapping between them."},
+        {"q": "Why does ConvertCCY not show a VED exchange rate?", "a": "No source quotes VED: the FX reference provider used by ConvertCCY does not publish it, and the issuer uses VES/928. No number is shown rather than a relabelled VES value or an estimate."}
+      ]
+    }
+  },
+  "values": []
+}
