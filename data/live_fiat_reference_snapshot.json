@@ -444,7 +444,8 @@
       "material_divergence_pct": 5.0,
       "provider_revalidation_days": 7,
       "provider_drift_tolerance_pct": 2.0,
-      "rationale": "0.5% covers provider rounding and a one-day valuation lag for daily managed official rates without admitting a different regime (every observed regime gap is 5% or more). 5% marks a regime as materially different. A provider value is re-trusted only while the FX snapshot is within 7 days of the audited provider date and within 2% of the audited provider value; otherwise its regime match is treated as not re-verified and the policy is downgraded."
+    "max_match_date_gap_days": 1,
+      "rationale": "0.5% covers provider rounding and a one-day valuation lag for daily managed official rates without admitting a different regime (every observed regime gap is 5% or more). 5% marks a regime as materially different. A regime match also requires the provider and source valuation dates to be at most 1 day apart (undated fixed segments excepted). A provider value is re-trusted only while the FX snapshot is within 7 days of the audited provider date and within 2% of the audited provider value; otherwise its regime match is treated as not re-verified and the policy is downgraded."
     },
     "currencies": {
       "CUP": {
@@ -462,7 +463,7 @@
           {
             "regime_id": "bcc_segment_i",
             "regime_type": "fixed_official_segment",
-            "regime_label": "Legacy fixed official rate (24 CUP per USD) for core state transactions",
+            "regime_label": "Legacy fixed official rate for core state transactions (Segment I)",
             "authority": "Banco Central de Cuba",
             "source_id": "cubaninsights_rates",
             "evidence_state": "secondary_reported",
@@ -480,7 +481,7 @@
           {
             "regime_id": "bcc_segment_ii",
             "regime_type": "fixed_official_segment",
-            "regime_label": "Fixed official rate (120 CUP per USD) for designated state operations",
+            "regime_label": "Second fixed official rate for designated state operations (Segment II)",
             "authority": "Banco Central de Cuba",
             "source_id": "cubaninsights_rates",
             "evidence_state": "secondary_reported",
@@ -575,7 +576,7 @@
         ],
         "regime_claims": [
           {
-            "text": "Cuban Insights describes several simultaneous Cuban peso rates: a legacy official rate of 24 CUP and a fixed rate of 120 CUP per US dollar for state firms, a floating official rate for households and the private sector, and an informal street rate.",
+            "text": "Cuban Insights describes several simultaneous Cuban peso rates: two older fixed official rates for state firms, a floating official rate for households and the private sector, and an informal street rate.",
             "source": "cubaninsights_rates"
           },
           {
@@ -592,7 +593,7 @@
         "faq": [
           {
             "q": "Is 24 Cuban pesos per US dollar the official rate?",
-            "a": "It is one of several official rates. Secondary sources describe 24 CUP per US dollar as a legacy fixed rate for core state transactions; a fixed rate of 120 CUP and a floating official rate for households and the private sector also exist, and an informal market trades at weaker levels still. ConvertCCY shows its provider value only for comparison."
+            "a": "It is one of several official rates. Secondary sources describe 24 CUP per US dollar as a legacy fixed rate for core state transactions; a second fixed rate for other state operations and a floating official rate for households and the private sector also exist, and an informal market trades at weaker levels still. ConvertCCY shows its provider value only for comparison."
           },
           {
             "q": "Why is there no Cuban peso converter on this page?",
