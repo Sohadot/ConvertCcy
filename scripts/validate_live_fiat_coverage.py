@@ -250,7 +250,7 @@ def main() -> int:
     leaked = sorted(c for c in covered if c in fx["rates"])
     if leaked:
         failures.append(("scope", [f"codes with a provider value are covered: {leaked}"]))
-    sitemap_locs = set(LOC_RE.findall((REPO / "sitemap.xml").read_text(encoding="utf-8")))
+    sitemap_locs = set(u[len(g.BASE_URL) + 1:] for u in g.read_sitemap_locs(REPO))   # SEO-A5.1: index + child sitemaps
     counts = Counter()
     for profile in profiles.values():
         a, b = profile["from_code"], profile["to_code"]

@@ -116,6 +116,14 @@ jobs:
         # for an unresolved provider regime; no issuer/market figure; hubs, robots, sitemap, parity.
         run: python3 scripts/validate_rate_regime_governance.py
 
+      - name: Semantic sitemap gate (validate_semantic_sitemaps.py)
+        # SEO-A5.1: sitemap.xml is a sitemap index of one child sitemap per semantic cohort
+        # (router-derived); every indexable URL exactly once, union == the indexable URL set,
+        # no standards_special/noindex/redirected/non-canonical URL, lastmod = Git content
+        # dates (needs fetch-depth: 0), index lastmod = newest child lastmod, and the committed
+        # sitemaps + measurement manifest equal generate.py --sitemaps-only output.
+        run: python3 scripts/validate_semantic_sitemaps.py
+
       - name: Pair internal-link graph gate (validate_pair_link_graph.py)
         # SEO-A2: every pair page reachable from index.html via <a href>
         # within 3 clicks, no reverse-pair-only 2-cycles, every pair linked

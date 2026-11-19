@@ -199,8 +199,7 @@ def main() -> int:
     for c in special_codes:
         if pol.resolve(c)["hub_indexability"] == "noindex_follow_consolidated_reference":
             failures.append((c, ["hub must stay indexable"]))
-    sitemap_text = (REPO / "sitemap.xml").read_text(encoding="utf-8")
-    sitemap_locs = set(LOC_RE.findall(sitemap_text))
+    sitemap_locs = set(u[len(g.BASE_URL) + 1:] for u in g.read_sitemap_locs(REPO))   # SEO-A5.1: index + child sitemaps
     redirects = set()
     rp = REPO / "_redirects"
     if rp.exists():

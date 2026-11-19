@@ -63,6 +63,26 @@ RELATED_BLOCK_RE = re.compile(
 SITEMAP_LOC_RE = re.compile(r"<loc>([^<]+)</loc>")
 
 
+def sitemap_page_locs(root: Path) -> List[str]:
+    """Page URLs exposed by sitemap.xml: a plain urlset, or the union of the child sitemaps of a
+    sitemap index (SEO-A5.1). A child sitemap that the index names but the repo lacks is an error."""
+    index = root / "sitemap.xml"
+    if not index.exists():
+        return []
+    text = index.read_text(encoding="utf-8")
+    locs = SITEMAP_LOC_RE.findall(text)
+    if "<sitemapindex" not in text:
+        return locs
+    out: List[str] = []
+    for child in locs:
+        rel = re.sub(r"^https://convertccy\.com/", "", child)
+        path = root / rel
+        if not path.exists():
+            raise FileNotFoundError(f"sitemap index references a missing child sitemap: {child}")
+        out += SITEMAP_LOC_RE.findall(path.read_text(encoding="utf-8"))
+    return out
+
+
 def html_files(root: Path) -> List[str]:
     out = []
     for dp, dns, fns in os.walk(root):
@@ -157,13 +177,11 @@ def analyse(root: Path) -> dict:
         a, b = PAIR_RE.match(p).groups()
         return f"pages/{b}-to-{a}.html"
 
-    sitemap_path = root / "sitemap.xml"
     sitemap_locs = set()
-    if sitemap_path.exists():
-        for loc in SITEMAP_LOC_RE.findall(sitemap_path.read_text(encoding="utf-8")):
-            n = normalize("index.html", loc)
-            if n:
-                sitemap_locs.add(n)
+    for loc in sitemap_page_locs(root):   # SEO-A5.1: sitemap index -> child sitemaps
+        n = normalize("index.html", loc)
+        if n:
+            sitemap_locs.add(n)
 
     pair_set = set(pairs)
     indeg = {p: len(inbound.get(p, ())) for p in pairs}

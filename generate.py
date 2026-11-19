@@ -129,50 +129,52 @@ def build_git_content_lastmod_index(
     today: Optional[str] = None,
     git_runner=None,
 ) -> Tuple[Dict[str, str], Set[str], Optional[str], float]:
-    """Build path → content-change date maps from repository history.
+    """Build path -> content-change date maps from repository history (SEO-A5.1 semantics).
 
     Returns:
-      history_dates: tracked path (posix, repo-relative) → YYYY-MM-DD of the
-        newest commit that materially changed that path
-      dirty_paths: modified or untracked paths (posix) whose content is changing
-        in this working tree
-      today_iso: UTC date used for dirty/untracked paths (None if clock not set
-        and no dirty paths need it)
+      history_dates: tracked path (posix, repo-relative) -> YYYY-MM-DD (UTC) of the newest
+        commit AUTHOR date at which that path's content changed
+      dirty_paths: modified or untracked paths (posix); they have no committed date yet
+      today_iso: always None (kept for signature compatibility; no wall-clock date is used)
       elapsed_seconds: wall time spent building the maps
 
-    Does NOT use filesystem mtime. If Git history cannot be read, history_dates
-    is empty and callers must omit <lastmod> rather than fabricate dates.
+    History semantics (documented in docs/indexation-measurement-methodology.md):
+      * `git log --diff-merges=dense-combined`: every commit reachable from HEAD on all
+        parents. Non-merge commits list the files they changed. A merge commit lists only
+        files whose merged content differs from EVERY parent (conflict resolutions /
+        merge-only edits), so content that first appears in a merge is dated by it, while a
+        clean merge (including CI's synthetic pull-request merge) adds no date.
+      * Author date, converted to UTC: it is preserved when a branch is merged, so the dates
+        computed on a feature branch equal the dates computed after its merge.
+      * The newest date per path wins (max), independent of log traversal order.
+    The pre-A5.1 index used committer dates, ignored merge-introduced content, and dated
+    dirty paths with the current day. Filesystem mtime is never used. If Git history cannot
+    be read, history_dates is empty and callers must omit <lastmod>.
     """
     import time as _time
+    from datetime import datetime as _dt, timezone as _tz
 
     t0 = _time.perf_counter()
-    today_iso = today if today is not None else iso_today()
     runner = git_runner or (lambda args: _git_run(repo_root, args))
-
     history_dates: Dict[str, str] = {}
     dirty_paths: Set[str] = set()
 
-    log = runner(["log", "--pretty=format:%cI", "--name-only", "--diff-filter=ACMR"])
+    log = runner(["log", "--format=%x00%aI", "--name-only", "--diff-filter=ACMR", "--diff-merges=dense-combined"])
     if log.returncode != 0:
-        # No trustworthy Git history — omit lastmod rather than invent dates.
-        return {}, set(), today_iso, _time.perf_counter() - t0
-
-    current_date: Optional[str] = None
-    for raw_line in log.stdout.splitlines():
-        line = raw_line.strip()
-        if not line:
+        return {}, set(), None, _time.perf_counter() - t0
+    for record in log.stdout.split("\x00"):
+        lines = [ln.strip() for ln in record.splitlines() if ln.strip()]
+        if not lines:
             continue
-        if "T" in line and len(line) >= 10 and line[0:4].isdigit():
-            # Committer ISO timestamp → calendar date in that timestamp's zone
-            # prefix (YYYY-MM-DD). Prefer the date component only.
-            current_date = line[:10]
+        try:
+            stamp = _dt.fromisoformat(lines[0].replace("Z", "+00:00"))
+        except ValueError:
             continue
-        if current_date is None:
-            continue
-        path = line.replace("\\", "/")
-        # Newest commit first: keep the first date seen per path.
-        if path not in history_dates:
-            history_dates[path] = current_date
+        date = stamp.astimezone(_tz.utc).strftime("%Y-%m-%d")
+        for raw in lines[1:]:
+            path = raw.strip('"').replace("\\", "/")
+            if date > history_dates.get(path, ""):
+                history_dates[path] = date
 
     status = runner(["status", "--porcelain", "-uall"])
     if status.returncode == 0:
@@ -186,7 +188,7 @@ def build_git_content_lastmod_index(
             if entry:
                 dirty_paths.add(entry)
 
-    return history_dates, dirty_paths, today_iso, _time.perf_counter() - t0
+    return history_dates, dirty_paths, None, _time.perf_counter() - t0
 
 
 def resolve_content_lastmod(
@@ -195,10 +197,13 @@ def resolve_content_lastmod(
     dirty_paths: Set[str],
     today_iso: Optional[str],
 ) -> Optional[str]:
-    """Return YYYY-MM-DD for a repo-relative path, or None to omit <lastmod>."""
+    """Return YYYY-MM-DD for a repo-relative path, or None to omit <lastmod>.
+
+    SEO-A5.1: a modified or untracked path has no committed content date yet, so it gets
+    None (omitted), never the current day; `today_iso` is accepted for compatibility only."""
     path = rel_path.replace("\\", "/")
     if path in dirty_paths:
-        return today_iso
+        return None
     return history_dates.get(path)
 
 
@@ -2924,14 +2929,11 @@ def refresh_standards_special(
                 write_text(path, html_doc)
                 hubs += 1
                 hub_paths.add(rel)
-    sitemap_path = BASE_DIR / "sitemap.xml"
-    old_xml = sitemap_path.read_text(encoding="utf-8")
-    xml, removed, refreshed = apply_sitemap_policy(old_xml, pair_profiles, refresh_paths=hub_paths)
-    if xml != old_xml:
-        write_text(sitemap_path, xml)
+    # SEO-A5.1: sitemap membership is derived (noindex pairs are never in sitemap_entries); the
+    # semantic sitemaps are regenerated after the page commit with: python3 generate.py --sitemaps-only
     print(f"Standards special: {changed} pair pages changed, {unchanged} unchanged, {hubs} hubs changed; "
-          f"sitemap: {len(removed)} noindex URLs removed, {len(refreshed)} lastmods refreshed")
-    return changed, unchanged, hubs, len(removed)
+          "sitemaps: run python3 generate.py --sitemaps-only after committing")
+    return changed, unchanged, hubs, 0
 
 
 def refresh_precious_metals(
@@ -4330,96 +4332,239 @@ def pair_in_search_sitemap(from_code: str, to_code: str) -> bool:
     return pair_robots(from_code, to_code) == INDEXABLE_ROBOTS
 
 
-def apply_sitemap_policy(
-    existing_xml: str,
-    pair_profiles: Dict[str, Dict[str, Any]],
-    *,
-    refresh_paths: Optional[Set[str]] = None,
-    history_dates: Optional[Dict[str, str]] = None,
-    dirty_paths: Optional[Set[str]] = None,
-    today: Optional[str] = None,
-) -> Tuple[str, List[str], List[str]]:
-    """Remove pair URLs that policy excludes (noindex), refresh lastmod only for
-    `refresh_paths` (regenerated files), add missing URLs; every other entry is
-    kept byte-for-byte. Returns (xml, removed_urls, refreshed_urls)."""
-    if history_dates is None or dirty_paths is None:
-        history_dates, dirty_paths, today_iso, _ = build_git_content_lastmod_index(BASE_DIR, today=today)
-    else:
-        today_iso = today if today is not None else iso_today()
-    excluded = {f"{BASE_URL}/pages/{p['pair_slug']}.html" for p in pair_profiles.values()
-                if p["from_code"] != p["to_code"] and not pair_in_search_sitemap(p["from_code"], p["to_code"])}
-    removed: List[str] = []
-    refreshed: List[str] = []
-    refresh_urls = {f"{BASE_URL}/{r}": r for r in (refresh_paths or set())}
+# -----------------------------------------------------------------------------
+# SEO-A5.1: SEMANTIC SITEMAP INDEX + INDEXATION-MEASUREMENT MANIFEST
+# -----------------------------------------------------------------------------
+#
+# sitemap.xml is a sitemap index. Each child sitemap under sitemaps/ holds one
+# semantic cohort, so Search Console's Page Indexing report can be filtered per
+# cohort. Membership is never a URL list:
+#   * the URL set is exactly sitemap_entries() (indexable surfaces only — the
+#     SEO-A1/A4.3 policy, unchanged by this layer);
+#   * a pair URL's cohort is its generate.pair_semantic_treatment();
+#   * /currencies/<code>.html -> currency-hubs; every other entry -> core-pages.
+# standards_special pairs are noindex,follow and are never in any sitemap.
+# <lastmod> comes from build_git_content_lastmod_index() (content-change dates,
+# never wall-clock time); a child sitemap's <lastmod> in the index is the newest
+# <lastmod> among its URLs. Output is byte-deterministic for a repository state.
 
-    def edit(m):
-        loc = m.group(1)
-        if loc in excluded:
-            removed.append(loc)
-            return ""
-        if loc in refresh_urls:
-            lastmod = resolve_content_lastmod(refresh_urls[loc], history_dates or {}, dirty_paths or set(), today_iso)
-            block = f"  <url>\n    <loc>{loc}</loc>\n" + (f"    <lastmod>{lastmod}</lastmod>\n" if lastmod else "") + "  </url>\n"
-            if block != m.group(0):
-                refreshed.append(loc)
-            return block
-        return m.group(0)
+SITEMAP_INDEX_PATH = "sitemap.xml"
+SITEMAP_CHILD_DIR = "sitemaps"
+SITEMAP_XMLNS = "http://www.sitemaps.org/schemas/sitemap/0.9"
+SITEMAP_MAX_URLS = 50000                      # sitemaps.org protocol limit per file
+SITEMAP_MAX_BYTES = 50 * 1024 * 1024          # 50 MiB uncompressed per file
+PAIR_SITEMAP_COHORTS = {
+    "ordinary_fx": "ordinary-fx",
+    "historical": "historical",
+    "precious_metal": "precious-metals",
+    "institutional_unit": "institutional-units",
+    "live_fiat_coverage": "live-fiat-coverage",
+    "rate_regime_governed": "rate-regime-governed",
+}
+SITEMAP_EXCLUDED_TREATMENTS = {
+    "standards_special": "noindex,follow consolidated ISO 4217 test / no-currency references (SEO-A4.3)",
+}
+SITEMAP_COHORT_ORDER = ("core-pages", "currency-hubs") + tuple(PAIR_SITEMAP_COHORTS.values())
+MEASUREMENT_MANIFEST_PATH = "data/generated/sitemap_measurement_manifest.json"
+ROUTER_PRECEDENCE = ("standards_special", "historical", "precious_metal", "institutional_unit",
+                     "live_fiat_coverage", "rate_regime_governed", "ordinary_fx", "unsupported_specialized")
+LASTMOD_SEMANTICS = (
+    "UTC date of the newest commit author date at which the URL's rendered file changed: every commit on every "
+    "branch reachable from HEAD (git log, all parents), plus merge commits only for files whose merged content "
+    "differs from every parent (--diff-merges=dense-combined, i.e. conflict resolutions / merge-only edits). "
+    "Clean merges, rebases and CI's synthetic pull-request merges add no dates. A file that is modified or "
+    "untracked in the working tree has no committed date yet, so its <lastmod> is omitted (never wall-clock time).")
 
-    pruned = _SITEMAP_URL_BLOCK_RE.sub(edit, existing_xml)
-    xml, _added = merge_sitemap_additively(pruned, pair_profiles, history_dates=history_dates,
-                                           dirty_paths=dirty_paths, today=today_iso)
-    return xml, removed, refreshed
+
+def sitemap_child_url(name: str) -> str:
+    return f"{BASE_URL}/{SITEMAP_CHILD_DIR}/{name}.xml"
 
 
-def build_sitemap(
-    pair_profiles: Dict[str, Dict[str, Any]],
-    *,
-    history_dates: Optional[Dict[str, str]] = None,
-    dirty_paths: Optional[Set[str]] = None,
-    today: Optional[str] = None,
-    lastmod_index_builder=None,
-) -> str:
-    """Complete, generator-authoritative SEARCH sitemap.
-
-    Includes, in crawl-priority order: home; static/authority pages; the
-    intelligence layer; articles; published /rules/ (never /preview/); human
-    API HTML hubs; and all pair pages. Only files that exist on disk are
-    emitted.
-
-    SEO-A1:
-    - <lastmod> is a trustworthy content-change date (Git history), not the
-      sitemap build day. Untrusted dates are omitted, never fabricated.
-    - Raw machine-readable api/v1/*.json and llms.txt remain public files but
-      are NOT advertised in the search sitemap. Human /api.html and /api/ stay.
-    """
-    entries = sitemap_entries(pair_profiles)
-
-    if history_dates is None or dirty_paths is None:
-        builder = lastmod_index_builder or build_git_content_lastmod_index
-        history_dates, dirty_paths, today_iso, elapsed = builder(BASE_DIR, today=today)
-        print(f"Sitemap lastmod index: {len(history_dates)} paths from Git history in {elapsed:.2f}s")
-    else:
-        today_iso = today if today is not None else iso_today()
-
-    lines = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ]
-
-    seen_locs: Set[str] = set()
-    for url, rel_path in entries:
-        if url in seen_locs:
+def semantic_sitemap_cohorts(pair_profiles: Dict[str, Dict[str, Any]],
+                             snapshot: Optional[Dict[str, Any]] = None) -> Dict[str, List[Tuple[str, str]]]:
+    """cohort name -> sorted [(url, repo path)]; exactly one cohort per indexable URL. Fails closed."""
+    snapshot = snapshot if snapshot is not None else load_rate_snapshot()
+    pair_by_path = {f"pages/{p['pair_slug']}.html": (p["from_code"], p["to_code"]) for p in pair_profiles.values()}
+    cohorts: Dict[str, List[Tuple[str, str]]] = {name: [] for name in SITEMAP_COHORT_ORDER}
+    seen: Set[str] = set()
+    for url, rel in sitemap_entries(pair_profiles):
+        if url in seen:
             continue
-        seen_locs.add(url)
+        seen.add(url)
+        if rel in pair_by_path:
+            treatment = pair_semantic_treatment(*pair_by_path[rel], snapshot)
+            if treatment in SITEMAP_EXCLUDED_TREATMENTS:
+                raise ValueError(f"{rel}: {treatment} pages must never be in a sitemap")
+            if treatment not in PAIR_SITEMAP_COHORTS:
+                raise ValueError(f"{rel}: no sitemap cohort for treatment {treatment!r}")
+            name = PAIR_SITEMAP_COHORTS[treatment]
+        elif rel.startswith("currencies/"):
+            name = "currency-hubs"
+        else:
+            name = "core-pages"
+        cohorts[name].append((url, rel))
+    for name in cohorts:
+        cohorts[name].sort(key=lambda e: e[0])
+    return cohorts
+
+
+def _urlset_xml(rows: List[Tuple[str, Optional[str]]]) -> str:
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>', f'<urlset xmlns="{SITEMAP_XMLNS}">']
+    for url, lastmod in rows:
         lines.append("  <url>")
         lines.append(f"    <loc>{url}</loc>")
-        lastmod = resolve_content_lastmod(rel_path, history_dates or {}, dirty_paths or set(), today_iso)
         if lastmod:
             lines.append(f"    <lastmod>{lastmod}</lastmod>")
         lines.append("  </url>")
-
     lines.append("</urlset>")
-    return "\n".join(lines)
+    return "\n".join(lines) + "\n"
+
+
+def _sitemap_index_xml(rows: List[Tuple[str, Optional[str]]]) -> str:
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>', f'<sitemapindex xmlns="{SITEMAP_XMLNS}">']
+    for url, lastmod in rows:
+        lines.append("  <sitemap>")
+        lines.append(f"    <loc>{url}</loc>")
+        if lastmod:
+            lines.append(f"    <lastmod>{lastmod}</lastmod>")
+        lines.append("  </sitemap>")
+    lines.append("</sitemapindex>")
+    return "\n".join(lines) + "\n"
+
+
+def build_semantic_sitemaps(
+    pair_profiles: Dict[str, Dict[str, Any]],
+    *,
+    history_dates: Dict[str, str],
+    dirty_paths: Set[str],
+    snapshot: Optional[Dict[str, Any]] = None,
+) -> Tuple[Dict[str, str], Dict[str, Any]]:
+    """Return ({repo path: file text} for the index + every child sitemap + the measurement
+    manifest, manifest dict). Pure: no clock, no disk writes."""
+    snapshot = snapshot if snapshot is not None else load_rate_snapshot()
+    cohorts = semantic_sitemap_cohorts(pair_profiles, snapshot)
+    files: Dict[str, str] = {}
+    index_rows: List[Tuple[str, Optional[str]]] = []
+    sitemaps: Dict[str, Any] = {}
+    for name in SITEMAP_COHORT_ORDER:
+        rows = [(url, resolve_content_lastmod(rel, history_dates, dirty_paths, None)) for url, rel in cohorts[name]]
+        text = _urlset_xml(rows)
+        if len(rows) > SITEMAP_MAX_URLS or len(text.encode("utf-8")) > SITEMAP_MAX_BYTES:
+            raise ValueError(f"sitemap {name} exceeds the sitemaps.org limits; split it deterministically")
+        dates = sorted(d for _, d in rows if d)
+        latest = dates[-1] if dates else None
+        path = f"{SITEMAP_CHILD_DIR}/{name}.xml"
+        files[path] = text
+        index_rows.append((sitemap_child_url(name), latest))
+        treatment = next((t for t, n in PAIR_SITEMAP_COHORTS.items() if n == name), None)
+        urls = [u for u, _ in rows]
+        entry = {
+            "file": path,
+            "url": sitemap_child_url(name),
+            "cohort_kind": "pair_treatment" if treatment else ("currency_hubs" if name == "currency-hubs" else "core_pages"),
+            "treatment": treatment,
+            "url_count": len(rows),
+            "indexability_requirement": "robots index,follow (INDEXABLE_ROBOTS for pairs), self-canonical, not redirected",
+            "representative_urls": list(dict.fromkeys([urls[0], urls[len(urls) // 2], urls[-1]])) if urls else [],
+            "latest_content_lastmod": latest,
+            "earliest_content_lastmod": dates[0] if dates else None,
+            "urls_without_lastmod": sum(1 for _, d in rows if not d),
+            "bytes": len(text.encode("utf-8")),
+        }
+        if name == "core-pages":
+            sections: Dict[str, int] = {}
+            for _, rel in cohorts[name]:
+                sec = rel.split("/", 1)[0] if "/" in rel else "root"
+                sections[sec] = sections.get(sec, 0) + 1
+            entry["sections"] = dict(sorted(sections.items()))
+        sitemaps[name] = entry
+    files[SITEMAP_INDEX_PATH] = _sitemap_index_xml(index_rows)
+    repo_cohorts: Dict[str, int] = {}
+    for p in pair_profiles.values():
+        if p["from_code"] != p["to_code"]:
+            t = pair_semantic_treatment(p["from_code"], p["to_code"], snapshot)
+            repo_cohorts[t] = repo_cohorts.get(t, 0) + 1
+    manifest = {
+        "schema_version": 1,
+        "layer": "SEO-A5.1",
+        "purpose": ("Denominators for Search Console indexation measurement by semantic cohort. Not a public SEO "
+                    "claim and not a GSC result: GSC numbers are recorded separately per "
+                    "docs/indexation-measurement-methodology.md."),
+        "generated_by": "python3 generate.py --sitemaps-only",
+        "sitemap_index": {"file": SITEMAP_INDEX_PATH, "url": f"{BASE_URL}/{SITEMAP_INDEX_PATH}",
+                          "child_sitemaps": [sitemap_child_url(n) for n in SITEMAP_COHORT_ORDER]},
+        "router_precedence": list(ROUTER_PRECEDENCE),
+        "lastmod_semantics": LASTMOD_SEMANTICS,
+        "repository_pair_cohorts": dict(sorted(repo_cohorts.items())),
+        "repository_pair_pages": sum(repo_cohorts.values()),
+        "excluded_pair_treatments": {t: {"pages": repo_cohorts.get(t, 0), "reason": r}
+                                     for t, r in SITEMAP_EXCLUDED_TREATMENTS.items()},
+        "sitemaps": sitemaps,
+        "totals": {"sitemap_urls": sum(s["url_count"] for s in sitemaps.values()),
+                   "pair_urls": sum(s["url_count"] for s in sitemaps.values() if s["cohort_kind"] == "pair_treatment"),
+                   "hub_urls": sitemaps["currency-hubs"]["url_count"],
+                   "core_urls": sitemaps["core-pages"]["url_count"]},
+    }
+    files[MEASUREMENT_MANIFEST_PATH] = json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
+    return files, manifest
+
+
+def write_semantic_sitemaps(pair_profiles: Dict[str, Dict[str, Any]], *, strict: bool = True,
+                            lastmod_index_builder=None) -> Dict[str, Any]:
+    """Write sitemap.xml (index), sitemaps/*.xml and the measurement manifest; write only files whose
+    bytes change and remove stale child sitemaps. strict=True (--sitemaps-only) refuses to run while any
+    sitemap URL's source file is uncommitted, because its content date does not exist yet."""
+    builder = lastmod_index_builder or build_git_content_lastmod_index
+    history_dates, dirty_paths, _unused, elapsed = builder(BASE_DIR)
+    if not history_dates:
+        raise SystemExit("Git history unavailable: refusing to write sitemaps without content dates")
+    dirty_sources = sorted(rel for _, rel in sitemap_entries(pair_profiles) if rel in dirty_paths)
+    if dirty_sources:
+        msg = (f"{len(dirty_sources)} sitemap URL source files are uncommitted (e.g. {dirty_sources[:3]}); "
+               "commit them, then run: python3 generate.py --sitemaps-only")
+        if strict:
+            raise SystemExit(msg)
+        print(f"Warning: {msg}. Their <lastmod> is omitted in this run.")
+    files, manifest = build_semantic_sitemaps(pair_profiles, history_dates=history_dates, dirty_paths=dirty_paths)
+    changed = []
+    for rel, text in files.items():
+        path = BASE_DIR / rel
+        if not path.exists() or path.read_text(encoding="utf-8") != text:
+            write_text(path, text)
+            changed.append(rel)
+    wanted = {rel for rel in files if rel.startswith(f"{SITEMAP_CHILD_DIR}/")}
+    child_dir = BASE_DIR / SITEMAP_CHILD_DIR
+    for stale in sorted(child_dir.glob("*.xml")) if child_dir.is_dir() else []:
+        rel = f"{SITEMAP_CHILD_DIR}/{stale.name}"
+        if rel not in wanted:
+            stale.unlink()
+            changed.append(f"removed {rel}")
+    counts = " ".join(f"{n}={manifest['sitemaps'][n]['url_count']}" for n in SITEMAP_COHORT_ORDER)
+    print(f"Semantic sitemaps ({elapsed:.2f}s Git history): {counts}; total={manifest['totals']['sitemap_urls']}; "
+          f"{len(changed)} files changed")
+    return {"changed": changed, "manifest": manifest}
+
+
+def generate_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> None:
+    """Full-build entry point: same semantic sitemaps; dirty sources get no <lastmod> (warned)."""
+    write_semantic_sitemaps(pair_profiles, strict=False)
+
+
+def read_sitemap_locs(root: Path = BASE_DIR) -> List[str]:
+    """Every page URL exposed through sitemap.xml: the union of the child sitemaps of the index
+    (or the URLs of a plain urlset). Used by validators that assert sitemap membership."""
+    text = (root / SITEMAP_INDEX_PATH).read_text(encoding="utf-8")
+    locs = re.findall(r"<loc>([^<]+)</loc>", text)
+    if "<sitemapindex" not in text:
+        return locs
+    out: List[str] = []
+    for child in locs:
+        rel = child[len(BASE_URL) + 1:] if child.startswith(BASE_URL + "/") else None
+        if rel is None or not (root / rel).exists():
+            raise FileNotFoundError(f"sitemap index references a missing child sitemap: {child}")
+        out += re.findall(r"<loc>([^<]+)</loc>", (root / rel).read_text(encoding="utf-8"))
+    return out
+
 
 # -----------------------------------------------------------------------------
 # BUILD
@@ -4494,83 +4639,6 @@ def generate_support_pages(currencies: Dict[str, Dict[str, Any]], content: Dict[
         write_text(path, builder(content))
         print(f"Generated {name} (first time only — now manually managed)")
 
-def generate_sitemap(pair_profiles: Dict[str, Dict[str, Any]]) -> None:
-    write_text(BASE_DIR / "sitemap.xml", build_sitemap(pair_profiles))
-    print("Generated sitemap.xml")
-
-_SITEMAP_URL_BLOCK_RE = re.compile(
-    r"  <url>\n    <loc>([^<]+)</loc>\n(?:    <lastmod>[^<]*</lastmod>\n)?  </url>\n"
-)
-
-
-def merge_sitemap_additively(
-    existing_xml: str,
-    pair_profiles: Dict[str, Dict[str, Any]],
-    *,
-    history_dates: Optional[Dict[str, str]] = None,
-    dirty_paths: Optional[Set[str]] = None,
-    today: Optional[str] = None,
-) -> Tuple[str, List[str]]:
-    """Add newly required sitemap URLs without touching existing entries.
-
-    Every <url> block already in `existing_xml` is kept byte-for-byte (same
-    loc, same lastmod). URLs that sitemap_entries() now requires but the file
-    lacks are inserted at their generator-order position with a lastmod from
-    the normal resolve_content_lastmod() rules. Raises ValueError if the
-    existing file holds a URL the generator no longer emits, or if relative
-    order would change — membership and order of existing URLs are frozen.
-    """
-    head = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    tail = "</urlset>"
-    if not existing_xml.startswith(head) or not existing_xml.rstrip("\n").endswith(tail):
-        raise ValueError("unexpected sitemap envelope")
-    body = existing_xml[len(head):existing_xml.rstrip("\n").rindex(tail)]
-    blocks: Dict[str, str] = {}
-    order: List[str] = []
-    pos = 0
-    for m in _SITEMAP_URL_BLOCK_RE.finditer(body):
-        if m.start() != pos:
-            raise ValueError("unparseable content in existing sitemap")
-        blocks[m.group(1)] = m.group(0)
-        order.append(m.group(1))
-        pos = m.end()
-    if pos != len(body):
-        raise ValueError("unparseable trailing content in existing sitemap")
-
-    entries = sitemap_entries(pair_profiles)
-    wanted = [u for u, _ in entries]
-    missing_from_generator = set(order) - set(wanted)
-    if missing_from_generator:
-        raise ValueError(f"existing sitemap URLs no longer generated: {sorted(missing_from_generator)[:5]}")
-    kept_in_order = [u for u in wanted if u in blocks]
-    if kept_in_order != order:
-        raise ValueError("existing sitemap URL order differs from generator order")
-
-    if history_dates is None or dirty_paths is None:
-        history_dates, dirty_paths, today_iso, _ = build_git_content_lastmod_index(BASE_DIR, today=today)
-    else:
-        today_iso = today if today is not None else iso_today()
-
-    out = [head]
-    added: List[str] = []
-    seen: Set[str] = set()
-    for url, rel_path in entries:
-        if url in seen:
-            continue
-        seen.add(url)
-        if url in blocks:
-            out.append(blocks[url])
-            continue
-        lastmod = resolve_content_lastmod(rel_path, history_dates or {}, dirty_paths or set(), today_iso)
-        block = f"  <url>\n    <loc>{url}</loc>\n"
-        if lastmod:
-            block += f"    <lastmod>{lastmod}</lastmod>\n"
-        out.append(block + "  </url>\n")
-        added.append(url)
-    out.append(tail)
-    return "".join(out), added
-
-
 def refresh_pair_navigation(
     currencies: Dict[str, Dict[str, Any]],
     pair_profiles: Dict[str, Dict[str, Any]],
@@ -4635,15 +4703,13 @@ def run_navigation_only(
     content: Dict[str, Any],
     pair_profiles: Dict[str, Dict[str, Any]],
 ) -> None:
-    """SEO-A2 navigation-only build: hubs, currencies.html, pair nav regions,
-    and additive sitemap entries. Never re-renders pair-page prose."""
+    """SEO-A2 navigation-only build: hubs, currencies.html and pair nav regions. Never
+    re-renders pair-page prose. SEO-A5.1: sitemaps are regenerated separately, after the
+    page commit, with --sitemaps-only (content dates need committed files)."""
     write_text(BASE_DIR / "currencies.html", build_currencies_page(currencies, content))
     generate_currency_hubs(currencies)
     refresh_pair_navigation(currencies, pair_profiles)
-    sitemap_path = BASE_DIR / "sitemap.xml"
-    xml, added = merge_sitemap_additively(sitemap_path.read_text(encoding="utf-8"), pair_profiles)
-    write_text(sitemap_path, xml)
-    print(f"Sitemap: added {len(added)} URLs; existing entries unchanged")
+    print("Sitemaps: run python3 generate.py --sitemaps-only after committing")
 
 
 def parse_only_currencies(values: Optional[List[str]]) -> Optional[Set[str]]:
@@ -4732,6 +4798,15 @@ def main():
         ),
     )
     parser.add_argument(
+        "--sitemaps-only",
+        action="store_true",
+        help=(
+            "SEO-A5.1: write ONLY sitemap.xml (sitemap index), sitemaps/*.xml (one child sitemap per "
+            "semantic cohort) and data/generated/sitemap_measurement_manifest.json. No page is "
+            "rendered. Refuses to run while a sitemap URL's source file is uncommitted."
+        ),
+    )
+    parser.add_argument(
         "--rate-regime-governance-only",
         action="store_true",
         help=(
@@ -4762,7 +4837,7 @@ def main():
     only_currencies = parse_only_currencies(args.only_currency)
     modes = (args.navigation_only, args.static_rates_only, args.faq_only, args.historical_instruments_only,
              args.standards_special_only, args.precious_metals_only, args.institutional_units_only,
-             args.live_fiat_coverage_only, args.rate_regime_governance_only, only_currencies)
+             args.live_fiat_coverage_only, args.rate_regime_governance_only, args.sitemaps_only, only_currencies)
     if sum(bool(x) for x in modes) > 1:
         parser.error("generation modes (--navigation-only, --static-rates-only, --faq-only, --*-only, --only-currency) are mutually exclusive")
 
@@ -4789,6 +4864,11 @@ def main():
             "Support pages and sitemap.xml intentionally left unchanged "
             "(pair-page URLs are stable, so the sitemap does not move)."
         )
+        return
+
+    if args.sitemaps_only:
+        write_semantic_sitemaps(pair_profiles, strict=True)
+        print("\nSitemaps-only build complete. No page was rendered.")
         return
 
     if args.rate_regime_governance_only:

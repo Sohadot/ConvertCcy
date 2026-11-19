@@ -157,7 +157,10 @@ def main() -> None:
 
     # --- Candidates must not appear in the sitemap -----------------------
     if SITEMAP_FILE.exists():
+        # SEO-A5.1: sitemap.xml is an index; check the index and every child sitemap.
         sitemap_text = SITEMAP_FILE.read_text()
+        for child in sorted((REPO / "sitemaps").glob("*.xml")) if (REPO / "sitemaps").is_dir() else []:
+            sitemap_text += child.read_text()
         for slug in candidate_slugs:
             if f"/rules/{slug}-foreign-currency-rules.html" in sitemap_text:
                 errors.append(f"{slug}: appears in sitemap.xml as a published rules page")

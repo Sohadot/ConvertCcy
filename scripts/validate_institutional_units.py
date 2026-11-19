@@ -253,7 +253,7 @@ def main() -> int:
     snap_errs = ir.validate_institutional_snapshot(ir.load_institutional_snapshot(), ip.load_raw())
     if snap_errs:
         failures.append(("institutional snapshot", snap_errs[:5]))
-    sitemap_locs = set(LOC_RE.findall((REPO / "sitemap.xml").read_text(encoding="utf-8")))
+    sitemap_locs = set(u[len(g.BASE_URL) + 1:] for u in g.read_sitemap_locs(REPO))   # SEO-A5.1: index + child sitemaps
     counts = Counter()
     for profile in profiles.values():
         a, b = profile["from_code"], profile["to_code"]

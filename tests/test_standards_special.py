@@ -131,18 +131,22 @@ class PairPageTest(unittest.TestCase):
 
 class SitemapTest(unittest.TestCase):
     def test_J_sitemap_matches_policy(self):
-        sm = read("sitemap.xml")
-        locs = re.findall(r"<loc>([^<]+)</loc>", sm)
+        # SEO-A5.1: sitemap.xml is a sitemap index; membership is the union of its child sitemaps.
+        locs = g.read_sitemap_locs(REPO)
         self.assertEqual(len(locs), 28308)
+        self.assertEqual(len(set(locs)), len(locs))
         for p in COHORT:
-            self.assertNotIn(f'https://convertccy.com/pages/{p["pair_slug"]}.html</loc>', sm)
+            self.assertNotIn(f'https://convertccy.com/pages/{p["pair_slug"]}.html', locs)
         for code in ("xts", "xxx"):
-            self.assertIn(f"https://convertccy.com/currencies/{code}.html</loc>", sm)
+            self.assertIn(f"https://convertccy.com/currencies/{code}.html", locs)
         urls = {u for u, _ in g.sitemap_entries(PROFILES)}
         self.assertNotIn("https://convertccy.com/pages/usd-to-xts.html", urls)
         self.assertIn("https://convertccy.com/pages/usd-to-eur.html", urls)
-        xml, removed, refreshed = g.apply_sitemap_policy(sm, PROFILES, history_dates={}, dirty_paths=set(), today="2026-01-01")
-        self.assertEqual((xml, removed, refreshed), (sm, [], []))  # current sitemap already conforms
+        self.assertEqual(set(locs), urls)                       # committed sitemaps already conform
+        cohorts = g.semantic_sitemap_cohorts(PROFILES, SNAP)
+        self.assertNotIn("standards_special", g.PAIR_SITEMAP_COHORTS)
+        self.assertFalse(any("xts" in u or "xxx" in u for name, rows in cohorts.items() if name != "currency-hubs"
+                             for u, _ in rows if "/pages/" in u))
 
 
 class FreezeTest(unittest.TestCase):
