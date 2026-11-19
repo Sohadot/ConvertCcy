@@ -175,17 +175,25 @@ class DeterminismTest(unittest.TestCase):
 class GitLastmodSemanticsTest(unittest.TestCase):
     """Real repository: a merged PR must not keep a stale pre-change lastmod."""
 
-    def git(self, *args, date=None):
+    def git(self, *args, date=None, check=True):
+        # Identity comes from the repo-local config set in setUp (and is repeated here), so the
+        # fixture never depends on a runner's global git configuration.
         env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@example.invalid",
                    GIT_COMMITTER_NAME="t", GIT_COMMITTER_EMAIL="t@example.invalid")
         if date:
             env.update(GIT_AUTHOR_DATE=date, GIT_COMMITTER_DATE=date)
-        return subprocess.run(["git", *args], cwd=self.dir, env=env, capture_output=True, text=True, check=True).stdout
+        out = subprocess.run(["git", *args], cwd=self.dir, env=env, capture_output=True, text=True)
+        if check and out.returncode != 0:
+            raise AssertionError(f"git {' '.join(args)} failed ({out.returncode}): {out.stderr.strip()}")
+        return out
 
     def write(self, rel, text):
         p = Path(self.dir) / rel
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(text, encoding="utf-8")
+
+    def show(self, rev, rel):
+        return self.git("show", f"{rev}:{rel}").stdout
 
     def index(self):
         return g.build_git_content_lastmod_index(Path(self.dir))[0]
@@ -193,6 +201,9 @@ class GitLastmodSemanticsTest(unittest.TestCase):
     def setUp(self):
         self.dir = tempfile.mkdtemp()
         self.git("init", "-q", "-b", "main")
+        self.git("config", "user.name", "t")
+        self.git("config", "user.email", "t@example.invalid")
+        self.git("config", "commit.gpgsign", "false")
         for rel in ("pages/a.html", "pages/b.html", "pages/c.html", "pages/d.html"):
             self.write(rel, f"{rel} v1\n")
         self.git("add", "-A")
@@ -216,17 +227,36 @@ class GitLastmodSemanticsTest(unittest.TestCase):
         self.assertNotIn("2026-03-01", idx.values())             # a clean merge adds no content date
 
     def test_merge_only_content_dated_by_the_merge(self):
+        # 1. common base (setUp) -> 2./3. both branches change pages/d.html incompatibly
         self.git("checkout", "-q", "-b", "feature")
         self.write("pages/d.html", "d feature\n")
         self.git("commit", "-q", "-am", "feature d", date="2026-02-01T09:00:00+00:00")
         self.git("checkout", "-q", "main")
         self.write("pages/d.html", "d main\n")
         self.git("commit", "-q", "-am", "main d", date="2026-02-02T09:00:00+00:00")
-        subprocess.run(["git", "merge", "--no-ff", "feature", "-m", "merge"], cwd=self.dir, capture_output=True)
-        self.write("pages/d.html", "d resolved differently from both parents\n")
+        # 4. the merge must stop on a genuine textual conflict
+        merge = self.git("merge", "--no-ff", "feature", "-m", "merge", date="2026-03-05T09:00:00+00:00", check=False)
+        self.assertEqual(merge.returncode, 1, merge.stdout + merge.stderr)
+        self.assertIn("CONFLICT", merge.stdout)
+        self.assertTrue((Path(self.dir) / ".git" / "MERGE_HEAD").exists())
+        self.assertIn("pages/d.html", self.git("ls-files", "-u").stdout)
+        # 5./6. a third resolution, different from both parents, explicitly staged
+        resolved = "d resolved differently from both parents\n"
+        self.write("pages/d.html", resolved)
         self.git("add", "pages/d.html")
-        self.git("commit", "-q", "--no-edit", date="2026-03-05T09:00:00+00:00")
-        self.assertEqual(self.index()["pages/d.html"], "2026-03-05")   # pre-A5.1 index missed this content
+        self.assertEqual(self.git("ls-files", "-u").stdout, "")
+        # 7. explicit merge commit (message given; the generated merge message is irrelevant here)
+        self.git("commit", "-q", "-m", "resolve merge", date="2026-03-05T09:00:00+00:00")
+        # 8./9. two parents, and the merged content differs from each parent
+        parents = self.git("rev-list", "--parents", "-n", "1", "HEAD").stdout.split()[1:]
+        self.assertEqual(len(parents), 2)
+        self.assertEqual(self.show("HEAD", "pages/d.html"), resolved)
+        self.assertNotEqual(self.show("HEAD^1", "pages/d.html"), resolved)
+        self.assertNotEqual(self.show("HEAD^2", "pages/d.html"), resolved)
+        self.assertEqual(self.git("log", "-1", "--format=%aI", "HEAD").stdout.strip(), "2026-03-05T09:00:00+00:00")
+        idx = self.index()
+        self.assertEqual(idx["pages/d.html"], "2026-03-05")   # merge-only content: the merge's author date
+        self.assertEqual(idx["pages/a.html"], "2026-01-01")   # untouched by the merge: not re-dated
 
     def test_feature_branch_dates_survive_ci_synthetic_merge(self):
         self.git("checkout", "-q", "-b", "feature")
