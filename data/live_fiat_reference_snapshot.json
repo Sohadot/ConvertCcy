@@ -120,7 +120,7 @@
     },
     "VED": {
       "currency_code": "VED",
-      "display_name": "Bolívar Soberano (VED)",
+      "display_name": "Bolívar Soberano",
       "issuer_or_authority": "Banco Central de Venezuela",
       "issuer_source_state": "unavailable",
       "instrument_role": "transitional_iso_code",
