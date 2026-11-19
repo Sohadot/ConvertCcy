@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "layer": "SEO-A5.1",
+  "purpose": "Denominators for Search Console indexation measurement by semantic cohort. Not a public SEO claim and not a GSC result: GSC numbers are recorded separately per docs/indexation-measurement-methodology.md.",
+  "generated_by": "python3 generate.py --sitemaps-only",
+  "sitemap_index": {
+    "file": "sitemap.xml",
+    "url": "https://convertccy.com/sitemap.xml",
+    "child_sitemaps": [
+      "https://convertccy.com/sitemaps/core-pages.xml",
+      "https://convertccy.com/sitemaps/currency-hubs.xml",
+      "https://convertccy.com/sitemaps/ordinary-fx.xml",
+      "https://convertccy.com/sitemaps/historical.xml",
+      "https://convertccy.com/sitemaps/precious-metals.xml",
+      "https://convertccy.com/sitemaps/institutional-units.xml",
+      "https://convertccy.com/sitemaps/live-fiat-coverage.xml",
+      "https://convertccy.com/sitemaps/rate-regime-governed.xml"
+    ]
+  },
+  "router_precedence": [
+    "standards_special",
+    "historical",
+    "precious_metal",
+    "institutional_unit",
+    "live_fiat_coverage",
+    "rate_regime_governed",
+    "ordinary_fx",
+    "unsupported_specialized"
+  ],
+  "lastmod_semantics": "UTC date of the newest commit author date at which the URL's rendered file changed: every commit on every branch reachable from HEAD (git log, all parents), plus merge commits only for files whose merged content differs from every parent (--diff-merges=dense-combined, i.e. conflict resolutions / merge-only edits). Clean merges, rebases and CI's synthetic pull-request merges add no dates. A file that is modified or untracked in the working tree has no committed date yet, so its <lastmod> is omitted (never wall-clock time).",
+  "repository_pair_cohorts": {
+    "historical": 2296,
+    "institutional_unit": 1540,
+    "live_fiat_coverage": 602,
+    "ordinary_fx": 20592,
+    "precious_metal": 1268,
+    "rate_regime_governed": 1758,
+    "standards_special": 674
+  },
+  "repository_pair_pages": 28730,
+  "excluded_pair_treatments": {
+    "standards_special": {
+      "pages": 674,
+      "reason": "noindex,follow consolidated ISO 4217 test / no-currency references (SEO-A4.3)"
+    }
+  },
+  "sitemaps": {
+    "core-pages": {
+      "file": "sitemaps/core-pages.xml",
+      "url": "https://convertccy.com/sitemaps/core-pages.xml",
+      "cohort_kind": "core_pages",
+      "treatment": null,
+      "url_count": 82,
+      "indexability_requirement": "robots index,follow (INDEXABLE_ROBOTS for pairs), self-canonical, not redirected",
+      "representative_urls": [
+        "https://convertccy.com/",
+        "https://convertccy.com/licensing.html",
+        "https://convertccy.com/standard.html"
+      ],
+      "latest_content_lastmod": "2026-11-18",
+      "earliest_content_lastmod": "2026-03-12",
+      "urls_without_lastmod": 0,
+      "bytes": 10161,
+      "sections": {
+        "api": 1,
+        "articles": 7,
+        "briefs": 25,
+        "ontology": 9,
+        "root": 15,
+        "rules": 25
+      }
+    },
+    "currency-hubs": {
+      "file": "sitemaps/currency-hubs.xml",
+      "url": "https://convertccy.com/sitemaps/currency-hubs.xml",
+      "cohort_kind": "currency_hubs",
+      "treatment": null,
+      "url_count": 170,
+      "indexability_requirement": "robots index,follow (INDEXABLE_ROBOTS for pairs), self-canonical, not redirected",
+      "representative_urls": [
+        "https://convertccy.com/currencies/aed.html",
+        "https://convertccy.com/currencies/mdl.html",
+        "https://convertccy.com/currencies/zwl.html"
+      ],
+      "latest_content_lastmod": "2026-11-19",
+      "earliest_content_lastmod": "2026-11-18",
+      "urls_without_lastmod": 0,
+      "bytes": 18640
+    },
+    "ordinary-fx": {
+      "file": "sitemaps/ordinary-fx.xml",
+      "url": "https://convertccy.com/sitemaps/ordinary-fx.xml",
+      "cohort_kind": "pair_treatment",
+      "treatment": "ordinary_fx",
+      "url_count": 20592,
+      "indexability_requirement": "robots index,follow (INDEXABLE_ROBOTS for pairs), self-canonical, not redirected",
+      "representative_urls": [
+        "https://convertccy.com/pages/aed-to-afn.html",
+        "https://convertccy.com/pages/lkr-to-aed.html",
+        "https://convertccy.com/pages/zmw-to-zar.html"
+      ],
+      "latest_content_lastmod": "2026-11-18",
+      "earliest_content_lastmod": "2026-11-18",
+      "urls_without_lastmod": 0,
+      "bytes": 2285822
+    },
+    "historical": {
+      "file": "sitemaps/historical.xml",
+      "url": "https://convertccy.com/sitemaps/historical.xml",
+      "cohort_kind": "pair_treatment",
+      "treatment": "historical",
+      "url_count": 2296,
+      "indexability_requirement": "robots index,follow (INDEXABLE_ROBOTS for pairs), self-canonical, not redirected",
+      "representative_urls": [
+        "https://convertccy.com/pages/aed-to-ang.html",
+        "https://convertccy.com/pages/kmf-to-sll.html",
+        "https://convertccy.com/pages/zwl-to-zmw.html"
+      ],
+      "latest_content_lastmod": "2026-11-18",
+      "earliest_content_lastmod": "2026-11-18",
+      "urls_without_lastmod": 0,
+      "bytes": 254966
+    },
+    "precious-metals": {
+      "file": "sitemaps/precious-metals.xml",
+      "url": "https://convertccy.com/sitemaps/precious-metals.xml",
+      "cohort_kind": "pair_treatment",
+      "treatment": "precious_metal",
+      "url_count": 1268,
+      "indexability_requirement": "robots index,follow (INDEXABLE_ROBOTS for pairs), self-canonical, not redirected",
+      "representative_urls": [
+        "https://convertccy.com/pages/aed-to-xag.html",
+        "https://convertccy.com/pages/xag-to-fjd.html",
+        "https://convertccy.com/pages/zmw-to-xpt.html"
+      ],
+      "latest_content_lastmod": "2026-11-18",
+      "earliest_content_lastmod": "2026-11-18",
+      "urls_without_lastmod": 0,
+      "bytes": 140858
+    },
+    "institutional-units": {
+      "file": "sitemaps/institutional-units.xml",
+      "url": "https://convertccy.com/sitemaps/institutional-units.xml",
+      "cohort_kind": "pair_treatment",
+      "treatment": "institutional_unit",
+      "url_count": 1540,
+      "indexability_requirement": "robots index,follow (INDEXABLE_ROBOTS for pairs), self-canonical, not redirected",
+      "representative_urls": [
+        "https://convertccy.com/pages/aed-to-clf.html",
+        "https://convertccy.com/pages/ssp-to-xua.html",
+        "https://convertccy.com/pages/zmw-to-xua.html"
+      ],
+      "latest_content_lastmod": "2026-11-18",
+      "earliest_content_lastmod": "2026-11-18",
+      "urls_without_lastmod": 0,
+      "bytes": 171050
+    },
+    "live-fiat-coverage": {
+      "file": "sitemaps/live-fiat-coverage.xml",
+      "url": "https://convertccy.com/sitemaps/live-fiat-coverage.xml",
+      "cohort_kind": "pair_treatment",
+      "treatment": "live_fiat_coverage",
+      "url_count": 602,
+      "indexability_requirement": "robots index,follow (INDEXABLE_ROBOTS for pairs), self-canonical, not redirected",
+      "representative_urls": [
+        "https://convertccy.com/pages/aed-to-kpw.html",
+        "https://convertccy.com/pages/lrd-to-kpw.html",
+        "https://convertccy.com/pages/zmw-to-ved.html"
+      ],
+      "latest_content_lastmod": "2026-11-19",
+      "earliest_content_lastmod": "2026-11-19",
+      "urls_without_lastmod": 0,
+      "bytes": 66932
+    },
+    "rate-regime-governed": {
+      "file": "sitemaps/rate-regime-governed.xml",
+      "url": "https://convertccy.com/sitemaps/rate-regime-governed.xml",
+      "cohort_kind": "pair_treatment",
+      "treatment": "rate_regime_governed",
+      "url_count": 1758,
+      "indexability_requirement": "robots index,follow (INDEXABLE_ROBOTS for pairs), self-canonical, not redirected",
+      "representative_urls": [
+        "https://convertccy.com/pages/aed-to-cup.html",
+        "https://convertccy.com/pages/mmk-to-php.html",
+        "https://convertccy.com/pages/zmw-to-ves.html"
+      ],
+      "latest_content_lastmod": "2026-11-19",
+      "earliest_content_lastmod": "2026-11-19",
+      "urls_without_lastmod": 0,
+      "bytes": 195248
+    }
+  },
+  "totals": {
+    "sitemap_urls": 28308,
+    "pair_urls": 28056,
+    "hub_urls": 170,
+    "core_urls": 82
+  }
+}
