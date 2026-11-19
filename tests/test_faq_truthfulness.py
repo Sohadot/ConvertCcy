@@ -50,6 +50,15 @@ def expected_items(key):
     return g.rate_aware_faq_items(g.build_faq_items(prof, CONTENT, tok), tok, SNAP, CUR)
 
 
+def synthetic_unsupported_items():
+    """A3.1 fallback FAQ for a real currency that the snapshot does not publish (ISK removed)."""
+    snap = dict(SNAP, rates={c: r for c, r in SNAP["rates"].items() if c != "ISK"})
+    prof = PROFILES["ISK_USD"]
+    tok = g.make_pair_tokens(prof, CUR)
+    assert g.pair_semantic_treatment("ISK", "USD", snap) == "unsupported_specialized"
+    return g.rate_aware_faq_items(g.build_faq_items(prof, CONTENT, tok), tok, snap, CUR)
+
+
 class FaqTruthfulnessTest(unittest.TestCase):
     def test_A_supported_keeps_supported_statement(self):
         want = g.replace_tokens(SUPPORTED_A1, g.make_pair_tokens(PROFILES["USD_EUR"], CUR))
@@ -61,11 +70,12 @@ class FaqTruthfulnessTest(unittest.TestCase):
         self.assertNotIn(FALSE_CLAIM, page("xau-to-xts"))
 
     def test_C_unsupported_truthful_answer(self):
-        # SEO-A4.3/A4.4: XTS/XXX and metal pairs have their own semantics; KPW->USD stays the unsupported example
-        a1 = faq_ld(page("kpw-to-usd"))[0][1]
-        self.assertTrue(a1.startswith("ConvertCCY does not currently have a reference rate for KPW to USD"))
+        # SEO-A4.6A: no published pair is generic-unsupported any more (KPW/VED became live-fiat
+        # coverage references), so the A3.1 fallback is exercised on a synthetic snapshot gap.
+        a1 = synthetic_unsupported_items()[0]["a"]
+        self.assertTrue(a1.startswith("ConvertCCY does not currently have a reference rate for ISK to USD"))
         self.assertIn("No conversion value is shown rather than an estimate.", a1)
-        self.assertIn(g.UNSUPPORTED_CODE_REASONS["KPW"], a1)
+        self.assertIn("ISK is not published by the snapshot source", a1)
         for word in ("latest", "current rate", "live", "market rate is"):
             self.assertNotIn(word, a1)
 
@@ -76,9 +86,16 @@ class FaqTruthfulnessTest(unittest.TestCase):
         self.assertIn("Does XTS have an exchange rate?", items)
         self.assertNotIn("Is this the same as a bank rate?", items)
         self.assertNotIn("How much is 1 XAU in XTS?", items)
-        # unsupported but real instrument (KPW): Q2/Q4 keep the default generic wording
-        kpw = dict(faq_ld(page("kpw-to-usd")))
-        self.assertEqual(kpw["Why does the KPW/USD rate change?"], CONTENT["faq_defaults"][1]["a"])
+        # unsupported but real instrument (synthetic ISK gap): Q2/Q4 keep the default generic wording
+        syn = {i["q"]: i["a"] for i in synthetic_unsupported_items()}
+        self.assertEqual(syn["Why does the ISK/USD rate change?"], CONTENT["faq_defaults"][1]["a"])
+
+    def test_C_live_fiat_pages_are_not_generic_unsupported(self):
+        # SEO-A4.6A: KPW/VED pages carry their own governed FAQ, never the A3.1 fallback
+        for slug in ("kpw-to-usd", "eur-to-ved"):
+            a = dict(faq_ld(page(slug)))
+            self.assertIn("Does a missing value mean the currency is not real?", a)
+            self.assertFalse(any(x.startswith("ConvertCCY does not currently have a reference rate") for x in a.values()))
 
     def test_D_visible_equals_jsonld(self):
         for slug in ("xau-to-xts", "usd-to-xxx", "kpw-to-usd", "usd-to-eur", "eur-to-ved"):

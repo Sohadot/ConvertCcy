@@ -161,6 +161,10 @@ def check_pages(snap):
             # institutional-unit pages: never an FX rate state (detail in validate_institutional_units.py)
             if 'data-mode="institutional"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
                 errors.append(f"{path.name}: institutional page carries an FX rate state or the rate runtime")
+        elif treatment == "live_fiat_coverage":
+            # live-fiat coverage pages (SEO-A4.6A): never an FX rate state (detail in validate_live_fiat_coverage.py)
+            if 'data-mode="live_fiat"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
+                errors.append(f"{path.name}: live-fiat page carries an FX rate state or the rate runtime")
         elif treatment == "standards_special":
             # ISO 4217 test/no-currency pages: never a rate state (detail in validate_standards_special_codes.py)
             if 'data-mode="standards"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:

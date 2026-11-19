@@ -5,10 +5,18 @@ const { chromium } = require('playwright');
 
 const base = process.argv[2];
 const fmtCases = JSON.parse(process.argv[3] || '[]');
+// SEO-A4.6A: no published pair is generic-unsupported, so the Python test passes a synthetic
+// unsupported page (built against a snapshot that lacks the code) and that snapshot.
+const synthetic = JSON.parse(process.argv[4] || 'null');
+const fs = require('fs');
 
-async function open(browser, path, { js = true, live = 'fail', snapshot = null } = {}) {
+async function open(browser, path, { js = true, live = 'fail', snapshot = null, htmlFile = null } = {}) {
   const ctx = await browser.newContext({ javaScriptEnabled: js });
   const page = await ctx.newPage();
+  if (htmlFile) {
+    const body = fs.readFileSync(htmlFile, 'utf8');
+    await page.route(u => u.pathname === path, r => r.fulfill({ status: 200, contentType: 'text/html', body }));
+  }
   await page.route(/googletagmanager|google-analytics|fonts\.(googleapis|gstatic)/, r => r.abort());
   await page.route(/api\.exchangerate-api\.com/, r => {
     if (live === 'fail') return r.abort();
@@ -60,8 +68,13 @@ async function open(browser, path, { js = true, live = 'fail', snapshot = null }
     live: 'fail',
     snapshot: { base: 'USD', as_of: '2099-01-01', source: 'exchangerate-api.com', rates: { USD: 1, EUR: 0.5 } },
   });
-  res.unsupported = await open(browser, '/pages/kpw-to-usd.html', { live: 'fail' });
-  res.unsupportedNoJs = await open(browser, '/pages/kpw-to-usd.html', { js: false });
+  if (synthetic) {
+    const syn = { htmlFile: synthetic.html_file, snapshot: synthetic.snapshot };
+    res.unsupported = await open(browser, '/pages/isk-to-usd.html', { live: 'fail', ...syn });
+    res.unsupportedNoJs = await open(browser, '/pages/isk-to-usd.html', { js: false, ...syn });
+  }
+  res.liveFiat = await open(browser, '/pages/kpw-to-usd.html', { live: 'fail' });
+  res.liveFiatNoJs = await open(browser, '/pages/kpw-to-usd.html', { js: false });
   await browser.close();
   console.log(JSON.stringify(res));
 })().catch(e => { console.log(JSON.stringify({ error: String(e) })); });

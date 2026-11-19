@@ -95,6 +95,18 @@ jobs:
         # precedence holds; XSU never asserted active.
         run: python3 scripts/validate_institutional_units.py
 
+      - name: Live-fiat reference snapshot gate (validate_live_fiat_snapshot.py)
+        # SEO-A4.6A: governed coverage model for active fiat codes the FX provider does not
+        # publish (KPW, VED); scope rule bars any code with a provider value (A4.6B codes stay
+        # out); A4.1 confidence/flags agree; reference_layer_only carries no values.
+        run: python3 scripts/validate_live_fiat_snapshot.py
+
+      - name: Live-fiat coverage gate (validate_live_fiat_coverage.py)
+        # SEO-A4.6A: exact KPW/VED cohort and router precedence; coverage pages and hubs carry
+        # availability, rate regime and provenance, no converter/FX state or WebApplication, no
+        # rate figure without a governed value; robots, canonical, sitemap and generator parity.
+        run: python3 scripts/validate_live_fiat_coverage.py
+
       - name: Pair internal-link graph gate (validate_pair_link_graph.py)
         # SEO-A2: every pair page reachable from index.html via <a href>
         # within 3 clicks, no reverse-pair-only 2-cycles, every pair linked
