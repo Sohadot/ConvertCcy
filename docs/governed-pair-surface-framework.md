@@ -6,11 +6,13 @@ is planned or proposed, it is marked as such and is not described as current fun
 * **Reconciled against:** `main` at `ed6a4f67bd4ce1322e3fee24166c4411d82b1990`, the merge of PR #136 (SEO-A4.5).
 * **Updated for SEO-A4.6A** (residual KPW/VED live-fiat coverage), branched from `main` at
   `5d533190a3137a5fa32ed8682ce36166909c4325` (merge of PR #137). Sections 3–9 and 11 reflect it.
+* **Updated for SEO-A4.6B** (rate-regime governance for CUP, IRR, MMK, SYP, TMT, VES), branched from
+  `main` at `005b3971042a3f07458b5da9c0de288969fca3fb` (merge of PR #138).
 * **Supersedes:** the earlier working draft titled "8,340 Page Governing Framework". That draft
   was never committed. This file is the single authoritative version.
 * **Companion documents:** `docs/instrument-classification-policy.md` (A4.1),
   `docs/precious-metals-methodology.md` (A4.4), `docs/institutional-units-methodology.md` (A4.5) and
-  `docs/live-fiat-coverage-methodology.md` (A4.6A).
+  `docs/live-fiat-coverage-methodology.md` (A4.6A) and `docs/rate-regime-governance-methodology.md` (A4.6B).
 
 ---
 
@@ -81,7 +83,7 @@ pair-page cohort, and the repository cannot reproduce it.
 | 2 | **A3: static value** | Pair-specific state is visible in the generated HTML | Implemented |
 | 3 | **A4.1–A4.5: semantic correction** | Each instrument is rendered as what it is | Implemented (A4.5 merged in PR #136) |
 | 4a | **A4.6A: residual live-fiat coverage** | The 602 KPW/VED pages that had no governed treatment | Implemented (§7) |
-| 4b | **A4.6B: rate-regime governance** | Review-flagged currencies that have provider values | Deferred; decision required (§7.3) |
+| 4b | **A4.6B: rate-regime governance** | Review-flagged currencies that have provider values (CUP, IRR, MMK, SYP, TMT, VES) | Implemented (§7.3) |
 | 5 | **GSC measurement** | Cohort-level indexation measurement | Proposed as a future measurement sprint (§10) |
 
 A2 and A3 are the **primary** indexation-recovery interventions. The A4 work corrects meaning on
@@ -133,7 +135,8 @@ pairs, using the committed `data/rate_snapshot.json`.
 
 | Treatment | Pages | Pages with a provider FX value | Pages without one |
 |---|---:|---:|---:|
-| `ordinary_fx` | 22,350 | 22,350 | 0 |
+| `ordinary_fx` | 20,592 | 20,592 | 0 |
+| `rate_regime_governed` (A4.6B) | 1,758 | 1,758 | 0 |
 | `historical` | 2,296 | 1,540 | 756 |
 | `institutional_unit` | 1,540 | 602 | 938 |
 | `precious_metal` | 1,268 | 0 | 1,268 |
@@ -164,6 +167,12 @@ that those pages should remain ordinary converters:
   publishes, not a market quote. For CLF, the provider-implied value differs from the official UF
   by more than the provider's precision explains (`docs/institutional-units-methodology.md` §11).
 
+* **Provider-valued live fiat (A4.6B).** For six live currencies the provider value exists but
+  represents a contested regime. For MMK it tracks the central bank's reference rate while most
+  transactions use its market trading rate (about 43% apart). For CUP it equals a fixed state segment
+  far from the household rate. For IRR it matches no verified regime. A4.6B governs how such values are
+  labelled and whether they may power a converter.
+
 The router therefore asks **instrument policy first**. Snapshot coverage only distinguishes
 `ordinary_fx` from `unsupported_specialized` after every policy branch has declined the pair.
 
@@ -180,6 +189,7 @@ standards_special      instrument_policy.resolve_pair(...).converter_behavior ==
   → precious_metal      either side is_precious_metal (XAU, XAG, XPT, XPD)
   → institutional_unit  either side is_institutional_unit (XDR, CLF, UYW, XUA, XSU)
   → live_fiat_coverage  either side is governed by data/live_fiat_reference_snapshot.json (KPW, VED)
+  → rate_regime_governed either side is governed by its rate_regime_governance (CUP, IRR, MMK, SYP, TMT, VES)
   → ordinary_fx         static_pair_rate(...) is not None
   → unsupported_specialized   otherwise
 ```
@@ -197,8 +207,11 @@ standards_special      instrument_policy.resolve_pair(...).converter_behavior ==
 > **The `live_fiat_coverage` branch (A4.6A) is limited by a scope rule**: a code may be governed
 > by it only if it is an active `fiat_currency` / `restricted_fiat_currency` **and has no value in
 > `data/rate_snapshot.json`**. Codes with a provider value (CUP, IRR, MMK, SYP, TMT, VES) therefore
-> cannot enter it. **No official-versus-market or regime-aware branch for provider-valued
-> currencies exists**; that is A4.6B, which is deferred (§7.3).
+> cannot enter it. Provider-valued currencies whose regime needs governance are handled by the
+> separate `rate_regime_governed` branch (A4.6B, §7.3), whose scope rule is the mirror image: the
+> code **must have** a provider value and must not be an A4.6A code. `rate_regime_governed` is not in
+> `SPECIAL_TREATMENTS`: whether a page keeps its converter, rate runtime and WebApplication is decided
+> per pair by the effective provider policy.
 
 ---
 
@@ -221,7 +234,7 @@ claim review tests (tests.test_human_claim_review)", whose command is
 | **A4.4** | Precious-metals reference layer | `precious_metals_reference` in `data/instrument_classification.json`, `data/metal_reference_snapshot.json`, `metal_reference.py` | `python3 generate.py --precious-metals-only` | `scripts/validate_metal_snapshot.py`, `scripts/validate_precious_metals.py` | `tests/test_precious_metals.py` | "Metal reference snapshot gate (validate_metal_snapshot.py)"; "Precious-metals gate (validate_precious_metals.py)" | Implemented. Activation decision: reference layer only. |
 | **A4.5** | Institutional units | `institutional_units_reference` in `data/instrument_classification.json`, `data/institutional_reference_snapshot.json`, `institutional_reference.py` | `python3 generate.py --institutional-units-only` | `scripts/validate_institutional_snapshot.py`, `scripts/validate_institutional_units.py` | `tests/test_institutional_units.py` | "Institutional reference snapshot gate (validate_institutional_snapshot.py)"; "Institutional units gate (validate_institutional_units.py)" | **Implemented and merged (PR #136)** |
 | **A4.6A** | Residual live-fiat coverage (KPW, VED) | `data/live_fiat_reference_snapshot.json`, `live_fiat_reference.py` | `python3 generate.py --live-fiat-coverage-only` | `scripts/validate_live_fiat_snapshot.py`, `scripts/validate_live_fiat_coverage.py` | `tests/test_live_fiat_coverage.py` | "Live-fiat reference snapshot gate (validate_live_fiat_snapshot.py)"; "Live-fiat coverage gate (validate_live_fiat_coverage.py)" | **Implemented (this sprint's PR); no value activated** |
-| **A4.6B** | Rate-regime governance for review-flagged provider-valued currencies | not defined | none | none | none | none | **Deferred; decision required** |
+| **A4.6B** | Rate-regime governance (CUP, IRR, MMK, SYP, TMT, VES) | `rate_regime_governance` in `data/live_fiat_reference_snapshot.json`, `live_fiat_reference.py` | `python3 generate.py --rate-regime-governance-only` | `scripts/validate_live_fiat_snapshot.py` (runs `validate_rate_regime`), `scripts/validate_rate_regime_governance.py` | `tests/test_rate_regime_governance.py` | "Live-fiat reference snapshot gate (validate_live_fiat_snapshot.py)"; "Rate-regime governance gate (validate_rate_regime_governance.py)" | **Implemented (this sprint's PR); no issuer value activated** |
 | **Semantic sitemap split** | Cohort-level GSC measurement | none | none | none | none | none | **Proposed as a future measurement sprint** |
 
 ### 6.1 Layer notes
@@ -260,10 +273,22 @@ claim review tests (tests.test_human_claim_review)", whose command is
   * **No numeric value is activated** (`activation_state: reference_layer_only`).
   * Robots, canonicals and sitemap membership are unchanged: all 602 pages and both hubs stay
     `index,follow`, self-canonical and in `sitemap.xml`.
+* **A4.6B (rate-regime governance, 1,758 pages, 6 hubs).** Details in
+  `docs/rate-regime-governance-methodology.md`. Provider policies:
+  * **TMT, SYP, VES:** `secondary_provider_value`. The converter stays (870 pages), labelled with what
+    the provider value matches: the CBT official rate, the bulletin on an unverified cb.gov.sy copy
+    (in new pounds), and the press-reported BCV rate respectively.
+  * **CUP, MMK:** `comparison_only`. The provider value is labelled "comparison only", with no
+    converter (590 pages). MMK has two materially different CBM rates; for CUP the provider equals a
+    fixed state segment.
+  * **IRR:** `suppressed`. No number is shown on its 298 pages, because the provider regime is
+    unresolved.
+  * **No issuer or market figure is stored or published**: every licence is unclear. Robots,
+    canonicals and the sitemap are unchanged.
 
 ---
 
-## 7. A4.6: residual cohort (A4.6A) and the deferred regime decision (A4.6B)
+## 7. A4.6: residual cohort (A4.6A) and rate-regime governance (A4.6B)
 
 ### 7.1 Residual cohort, now governed by A4.6A
 
@@ -292,25 +317,22 @@ condition). Their A4.1 classification is unchanged:
 The open question recorded at reconciliation was resolved by **splitting** A4.6: A4.6A covers only
 the 602 deterministic KPW/VED pages, enforced mechanically by the scope rule in §5.
 
-### 7.3 A4.6B — rate-regime governance (deferred)
+### 7.3 A4.6B — rate-regime governance (implemented)
 
-The following currencies **still render as `ordinary_fx`** because the provider supplies values.
-They are review-flagged in the taxonomy and were **not modified by A4.6A**:
+The following currencies have provider values and were review-flagged. A4.6B audited them on
+2026-11-19 and moved their 1,758 otherwise-ordinary pairs to `rate_regime_governed`:
 
-| Code | `instrument_type` | `classification_confidence` | `review_flags` |
-|---|---|---|---|
-| CUP | `restricted_fiat_currency` | medium | `official_vs_market_rate_review` |
-| IRR | `fiat_currency` | medium | `official_vs_market_rate_review` |
-| MMK | `fiat_currency` | medium | `official_vs_market_rate_review` |
-| SYP | `fiat_currency` | medium | `official_vs_market_rate_review` |
-| TMT | `fiat_currency` | medium | `official_vs_market_rate_review` |
-| VES | `fiat_currency` | medium | `code_mapping_review`, `official_vs_market_rate_review` |
+| Code | Regime model | Provider value matches | Provider policy | Pages' mode |
+|---|---|---|---|---|
+| CUP | `multi_segment_official` | reported fixed Segment I (inference) | `comparison_only` | comparison |
+| IRR | `official_source_unresolved` | unresolved (about 33% below the reported free market) | `suppressed` | no number |
+| MMK | `official_reference_plus_market_trading` | CBM reference rate (+0.05%), −42.6% vs the CBM market trading rate | `comparison_only` | comparison |
+| SYP | `single_official_reference` | bulletin on an unverified copy (−0.16%), new-pound scale | `secondary_provider_value` | converter |
+| TMT | `official_reference_plus_parallel_market` | CBT official rate (0.000%) | `secondary_provider_value` | converter |
+| VES | `single_official_reference` | press-reported BCV official rate (0.000%) | `secondary_provider_value` | converter |
 
-**Status: decision required before A4.6B implementation.** A4.6B needs its own source audit and an
-explicit decision on the official rate, the market rate, multiple regimes, the regime the provider
-value represents, divergence thresholds, fallback policy and public rendering. Principle §1(b),
-"Available provider rate does not mean correct semantic meaning", is relevant to it but does not
-settle it.
+A pair with two governed codes takes the most restrictive mode. Open evidence gaps are listed in
+`docs/rate-regime-governance-methodology.md` §11.
 
 ---
 
@@ -329,6 +351,7 @@ existing field:
 | No usable value | `value_type: unavailable` | returned by `metal_reference.value_view`, `institutional_reference.value_view` and `live_fiat_reference.value_view`; never stored |
 | Unresolved classification or source issue | `review_flags`, plus layer-specific states | per instrument |
 | Example of a layer-specific state | `activity_status: status_unresolved` (XSU) | `institutional_units_reference.units.XSU` |
+| Rate-regime evidence and provider use (A4.6B) | `evidence_state` per regime, `provider_regime_match`, `provider_policy` (effective policy after the staleness/drift downgrade) | `rate_regime_governance` in `data/live_fiat_reference_snapshot.json` |
 | Live-fiat availability and regime (A4.6A) | `availability_status` (e.g. `official_source_unresolved`), `rate_regime` (e.g. `unresolved`) | `data/live_fiat_reference_snapshot.json`. `classification_confidence` and `review_flags` there must equal A4.1. |
 
 > **verification ≠ confidence ≠ licence ≠ activation ≠ availability.**
@@ -353,7 +376,8 @@ Success is measured on three separate axes.
 * The generic `unsupported_specialized` bucket shrinks. Over the programme it went from 4,238
   pages to 602 (after A4.5) and to **0** (after A4.6A).
 * Every instrument has the correct role, and no page implies a provider rate means something it
-  does not.
+  does not. Since A4.6B, a provider value for a contested-regime currency is labelled with what it
+  matches, shown only for comparison, or withheld.
 * Provenance is explicit, and unresolved states (licence, activity, verification) are declared
   rather than hidden.
 
@@ -386,6 +410,7 @@ sitemap output into a **sitemap index** with semantically separated child sitema
 * precious metals;
 * institutional units;
 * live-fiat coverage references;
+* rate-regime-governed pages;
 * currency hubs;
 * any other meaningful indexable class, such as articles and rules.
 
@@ -436,7 +461,7 @@ jurisdiction rules, claims, bindings or evidence packs.
 
 ## 13. Working rules for pair-surface sprints
 
-These rules applied to every sprint from A2 to A4.6A and remain in force:
+These rules applied to every sprint from A2 to A4.6B and remain in force:
 
 1. Before starting, verify the baseline SHA against `origin/main`. Stop on any mismatch.
 2. Work on a dedicated branch and open a PR. Never merge automatically.

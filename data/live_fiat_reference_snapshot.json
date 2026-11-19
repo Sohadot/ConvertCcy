@@ -8,17 +8,117 @@
   "source_audit_date": "2026-11-19",
   "captured_at": null,
   "enums": {
-    "availability_status": ["live_verified", "live_caveated", "official_source_unresolved", "provider_regime_unresolved", "license_unresolved", "no_governed_value_available", "code_role_under_review"],
-    "rate_regime": ["official_reference", "market_reference", "multiple_regimes_verified", "unresolved", "not_applicable"],
-    "instrument_role": ["active_restricted_fiat", "active_fiat", "transitional_iso_code"],
-    "provider_regime_status": ["no_provider_value", "provider_regime_identified", "provider_regime_unresolved"],
-    "source_tier": ["standards_registry", "issuer", "official_republisher", "licensed_market_data", "fx_provider", "secondary_press"],
-    "access_state": ["accessible", "unavailable"],
-    "license_state": ["redistribution_permitted", "attribution_required", "derived_use_only", "display_only", "license_unclear", "not_usable"]
+    "availability_status": [
+      "live_verified",
+      "live_caveated",
+      "official_source_unresolved",
+      "provider_regime_unresolved",
+      "license_unresolved",
+      "no_governed_value_available",
+      "code_role_under_review",
+      "provider_value_regime_labelled"
+    ],
+    "rate_regime": [
+      "official_reference",
+      "market_reference",
+      "multiple_regimes_verified",
+      "unresolved",
+      "not_applicable"
+    ],
+    "instrument_role": [
+      "active_restricted_fiat",
+      "active_fiat",
+      "transitional_iso_code"
+    ],
+    "provider_regime_status": [
+      "no_provider_value",
+      "provider_regime_identified",
+      "provider_regime_unresolved"
+    ],
+    "source_tier": [
+      "standards_registry",
+      "issuer",
+      "official_republisher",
+      "licensed_market_data",
+      "fx_provider",
+      "secondary_press",
+      "unverified_official_copy",
+      "market_aggregator",
+      "secondary_analysis"
+    ],
+    "access_state": [
+      "accessible",
+      "unavailable"
+    ],
+    "license_state": [
+      "redistribution_permitted",
+      "attribution_required",
+      "derived_use_only",
+      "display_only",
+      "license_unclear",
+      "not_usable"
+    ],
+    "regime_type": [
+      "single_official_reference",
+      "fixed_official_reference",
+      "multi_segment_official",
+      "official_reference_plus_market_trading",
+      "official_reference_plus_parallel_market",
+      "market_reference_only",
+      "provider_regime_unresolved",
+      "official_source_unresolved"
+    ],
+    "regime_entry_type": [
+      "official_reference",
+      "fixed_official_segment",
+      "floating_official_segment",
+      "official_market_trading",
+      "parallel_market"
+    ],
+    "evidence_state": [
+      "issuer_verified",
+      "secondary_reported",
+      "unverified_copy",
+      "unresolved"
+    ],
+    "provider_regime_match": [
+      "provider_matches_official_within_tolerance",
+      "provider_matches_reported_official",
+      "provider_matches_reported_official_segment",
+      "provider_closer_to_market",
+      "provider_regime_unresolved",
+      "provider_stale_against_official",
+      "provider_conflicts_with_authoritative_source"
+    ],
+    "provider_policy": [
+      "governed_primary",
+      "secondary_provider_value",
+      "comparison_only",
+      "suppressed",
+      "unresolved"
+    ]
   },
   "freshness_policies": {
-    "official_daily": {"current_max_hours": 24, "recent_max_hours": 72, "max_fx_skew_hours": 24},
-    "market_weekly": {"current_max_hours": 168, "recent_max_hours": 336, "max_fx_skew_hours": 24}
+    "official_daily": {
+      "current_max_hours": 24,
+      "recent_max_hours": 72,
+      "max_fx_skew_hours": 24
+    },
+    "market_weekly": {
+      "current_max_hours": 168,
+      "recent_max_hours": 336,
+      "max_fx_skew_hours": 24
+    },
+    "fixed_official": {
+      "current_max_hours": 720,
+      "recent_max_hours": 2160,
+      "max_fx_skew_hours": 24
+    },
+    "market_daily": {
+      "current_max_hours": 24,
+      "recent_max_hours": 72,
+      "max_fx_skew_hours": 24
+    }
   },
   "sources": [
     {
@@ -75,6 +175,138 @@
       "access_state": "accessible",
       "license_state": "not_usable",
       "role": "reported indicator only: an informal-market won-dollar rate from Daily NK's own market survey; never a value source"
+    },
+    {
+      "id": "cbm_fxrate",
+      "title": "Central Bank of Myanmar — Foreign Exchange Rates (as of 18 November 2026)",
+      "url": "https://forex.cbm.gov.mm/index.php/fxrate",
+      "authority": "Central Bank of Myanmar",
+      "source_tier": "issuer",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": "license_unclear",
+      "role": "issuer page publishing the USD Reference Rate and Market Trading Rate; footer copyright only, no reuse terms"
+    },
+    {
+      "id": "cbm_api",
+      "title": "Central Bank of Myanmar — exchange-rate API (latest)",
+      "url": "https://forex.cbm.gov.mm/api/latest",
+      "authority": "Central Bank of Myanmar",
+      "source_tier": "issuer",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": "license_unclear",
+      "role": "issuer API returning the reference rate only (timestamp 2026-11-18T08:00:00Z); no reuse terms"
+    },
+    {
+      "id": "cbt_rates",
+      "title": "Central Bank of Turkmenistan — list of exchange rates valid 19 November 2026",
+      "url": "https://www.cbt.tm/kurs/kurs_today_en.html",
+      "authority": "Central Bank of Turkmenistan",
+      "source_tier": "issuer",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": "license_unclear",
+      "role": "issuer rate list set according to the outcome of transactions on its interbank foreign exchange; copyright notice only"
+    },
+    {
+      "id": "bc_cuba",
+      "title": "Banco Central de Cuba — tasas de cambio",
+      "url": "https://www.bc.gob.cu/app/tasas-de-cambio",
+      "authority": "Banco Central de Cuba",
+      "source_tier": "issuer",
+      "accessed": "2026-11-19",
+      "access_state": "unavailable",
+      "license_state": "license_unclear",
+      "role": "issuer of the Cuban peso; connection reset / HTTP 503 on every audit attempt"
+    },
+    {
+      "id": "cbi_rates",
+      "title": "Central Bank of the Islamic Republic of Iran — exchange rates",
+      "url": "https://www.cbi.ir/ExRates/rates_en.aspx",
+      "authority": "Central Bank of the Islamic Republic of Iran",
+      "source_tier": "issuer",
+      "accessed": "2026-11-19",
+      "access_state": "unavailable",
+      "license_state": "license_unclear",
+      "role": "issuer of the rial; connection reset / HTTP 503 on every audit attempt (also ice.ir)"
+    },
+    {
+      "id": "cbs_site",
+      "title": "Central Bank of Syria website copy (cb.gov.sy)",
+      "url": "https://cb.gov.sy/en",
+      "authority": "site at cb.gov.sy labelled “Demonstration copy — this is not the official government website”",
+      "source_tier": "unverified_official_copy",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": "license_unclear",
+      "role": "shows a ‘banks and exchange bulletin’ USD figure in new pounds for 2026-11-19, but labels itself a demonstration copy, so its authority is unverified"
+    },
+    {
+      "id": "cubaninsights_rates",
+      "title": "Cuba official exchange rate guide 2026",
+      "url": "https://cubaninsights.com/guides/cuba-official-exchange-rate",
+      "authority": "Cuban Insights",
+      "source_tier": "secondary_analysis",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": "not_usable",
+      "role": "secondary description of Cuba's segmented official rates and the informal market"
+    },
+    {
+      "id": "cibercuba_segment3",
+      "title": "The “floating” rate of the Central Bank of Cuba has increased, but the informal market continues to take the lead (7 March 2026)",
+      "url": "https://en.cibercuba.com/noticias/2026-03-07-u1-e207888-s27061-nid322434-sube-tasa-flotante-banco-central-cuba-mercado",
+      "authority": "CiberCuba",
+      "source_tier": "secondary_press",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": "not_usable",
+      "role": "press report on the BCC Segment III floating official rate and the informal market"
+    },
+    {
+      "id": "alanchand_iran",
+      "title": "Currency rates in Iran (Tehran free market), 19 November 2026",
+      "url": "https://alanchand.com/en/currencies-price",
+      "authority": "Alanchand",
+      "source_tier": "market_aggregator",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": "not_usable",
+      "role": "free-market buy/sell prices collected from several market sources; never a value source"
+    },
+    {
+      "id": "xinhua_syp_redenomination",
+      "title": "Syria unveils currency reform plan, cutting 2 zeros from pound (28 December 2025)",
+      "url": "https://english.news.cn/20251229/e1409a9c8d8a4764b1f01949bfa551d5/c.html",
+      "authority": "Xinhua",
+      "source_tier": "secondary_press",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": "not_usable",
+      "role": "press report of the Central Bank of Syria redenomination guidelines"
+    },
+    {
+      "id": "bti_tkm_2026",
+      "title": "BTI 2026 Turkmenistan Country Report",
+      "url": "https://bti-project.org/en/reports/country-report/TKM",
+      "authority": "BTI (Bertelsmann Stiftung)",
+      "source_tier": "secondary_analysis",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": "not_usable",
+      "role": "describes the coexistence of an official and a parallel manat rate"
+    },
+    {
+      "id": "bancaynegocios_bcv",
+      "title": "Banca y Negocios — market indicators table (18/11/2026, source line “BCV - BVC”)",
+      "url": "https://bancaynegocios.com/",
+      "authority": "Banca y Negocios",
+      "source_tier": "secondary_press",
+      "accessed": "2026-11-19",
+      "access_state": "accessible",
+      "license_state": "not_usable",
+      "role": "press table of the official dollar rate attributed to the Banco Central de Venezuela; reproduction requires authorisation"
     }
   ],
   "currencies": {
@@ -97,13 +329,22 @@
       "freshness_policy": null,
       "license_state": null,
       "identity_claims": [
-        {"text": "ISO 4217 lists KPW, numeric code 408 with 2 minor units, as the North Korean Won of the Democratic People’s Republic of Korea.", "source": "six_iso4217_list_one"}
+        {
+          "text": "ISO 4217 lists KPW, numeric code 408 with 2 minor units, as the North Korean Won of the Democratic People’s Republic of Korea.",
+          "source": "six_iso4217_list_one"
+        }
       ],
       "coverage_claims": [
-        {"text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes no KPW value; checked 2026-11-19.", "source": "exchangerate_api_latest_usd"}
+        {
+          "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes no KPW value; checked 2026-11-19.",
+          "source": "exchangerate_api_latest_usd"
+        }
       ],
       "reported_indicators": [
-        {"text": "Daily NK reports a won–dollar rate in North Korea’s informal markets (jangmadang), from its own regular survey of North Korean market prices.", "source": "dailynk_market_rate_2026_04"}
+        {
+          "text": "Daily NK reports a won–dollar rate in North Korea’s informal markets (jangmadang), from its own regular survey of North Korean market prices.",
+          "source": "dailynk_market_rate_2026_04"
+        }
       ],
       "explanations": {
         "what": "The North Korean Won (KPW) is the active national currency of the Democratic People’s Republic of Korea. It is a real currency; the absence of a value on ConvertCCY reflects source coverage, not the validity of the currency.",
@@ -113,9 +354,18 @@
       },
       "decision_reason": "Issuer source not located; provider does not cover KPW; the only located rate is a secondary-press informal-market report, which can never be a value source.",
       "faq": [
-        {"q": "Is the North Korean Won (KPW) a real currency?", "a": "Yes. ISO 4217 lists KPW (numeric 408) as the North Korean Won of the Democratic People’s Republic of Korea. ConvertCCY not showing a value reflects missing source coverage, not an invalid currency."},
-        {"q": "Why does ConvertCCY not show a KPW exchange rate?", "a": "The FX reference provider used by ConvertCCY publishes no KPW value, and no official rate publication by the DPRK monetary authority could be located or accessed. An informal-market rate reported by secondary press is a different rate regime and is not a verified or licensed value source, so no number is shown rather than an estimate."},
-        {"q": "Is there more than one KPW exchange rate?", "a": "Secondary press (Daily NK) reports a won–dollar rate in North Korea’s informal markets. No official reference rate could be verified from an issuer source, so ConvertCCY treats the rate regime as unresolved and does not state how any rates compare."}
+        {
+          "q": "Is the North Korean Won (KPW) a real currency?",
+          "a": "Yes. ISO 4217 lists KPW (numeric 408) as the North Korean Won of the Democratic People’s Republic of Korea. ConvertCCY not showing a value reflects missing source coverage, not an invalid currency."
+        },
+        {
+          "q": "Why does ConvertCCY not show a KPW exchange rate?",
+          "a": "The FX reference provider used by ConvertCCY publishes no KPW value, and no official rate publication by the DPRK monetary authority could be located or accessed. An informal-market rate reported by secondary press is a different rate regime and is not a verified or licensed value source, so no number is shown rather than an estimate."
+        },
+        {
+          "q": "Is there more than one KPW exchange rate?",
+          "a": "Secondary press (Daily NK) reports a won–dollar rate in North Korea’s informal markets. No official reference rate could be verified from an issuer source, so ConvertCCY treats the rate regime as unresolved and does not state how any rates compare."
+        }
       ]
     },
     "VED": {
@@ -128,7 +378,10 @@
       "availability_status": "no_governed_value_available",
       "decision_label": "TRANSITIONAL ISO CODE",
       "classification_confidence": "medium",
-      "review_flags": ["code_mapping_review", "official_vs_market_rate_review"],
+      "review_flags": [
+        "code_mapping_review",
+        "official_vs_market_rate_review"
+      ],
       "provider_value": null,
       "provider_regime_status": "no_provider_value",
       "official_reference_value": null,
@@ -138,12 +391,24 @@
       "license_state": null,
       "operative_code": "VES",
       "identity_claims": [
-        {"text": "ISO 4217 lists VED, numeric code 926 with 2 minor units, for Venezuela under the currency name “Bolívar Soberano”; VES, numeric code 928, carries the same name.", "source": "six_iso4217_list_one"},
-        {"text": "ISO 4217 Amendment 170, effective 1 October 2021, introduced VED/926 to represent the redenominated valuation “for any internal needs during the redenomination process, but is not replacing VES as the official currency code”.", "source": "six_iso4217_amendment_170"},
-        {"text": "The same amendment states that the Central Bank of Venezuela will not adopt the new codes in its local system and that VES/928 remains the valid code for any future transactions in the redenominated Bolívar Soberano.", "source": "six_iso4217_amendment_170"}
+        {
+          "text": "ISO 4217 lists VED, numeric code 926 with 2 minor units, for Venezuela under the currency name “Bolívar Soberano”; VES, numeric code 928, carries the same name.",
+          "source": "six_iso4217_list_one"
+        },
+        {
+          "text": "ISO 4217 Amendment 170, effective 1 October 2021, introduced VED/926 to represent the redenominated valuation “for any internal needs during the redenomination process, but is not replacing VES as the official currency code”.",
+          "source": "six_iso4217_amendment_170"
+        },
+        {
+          "text": "The same amendment states that the Central Bank of Venezuela will not adopt the new codes in its local system and that VES/928 remains the valid code for any future transactions in the redenominated Bolívar Soberano.",
+          "source": "six_iso4217_amendment_170"
+        }
       ],
       "coverage_claims": [
-        {"text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes no VED value; checked 2026-11-19.", "source": "exchangerate_api_latest_usd"}
+        {
+          "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes no VED value; checked 2026-11-19.",
+          "source": "exchangerate_api_latest_usd"
+        }
       ],
       "reported_indicators": [],
       "explanations": {
@@ -154,11 +419,678 @@
       },
       "decision_reason": "ISO 4217 Amendment 170 documents VED as a transitional internal code not adopted by the issuer, with VES/928 the operative code; no source quotes VED and no numeric VED/VES mapping is applied.",
       "faq": [
-        {"q": "What is the VED currency code?", "a": "ISO 4217 lists VED (numeric 926) for Venezuela under the name “Bolívar Soberano”. ISO 4217 Amendment 170 introduced it on 1 October 2021 for internal needs during the redenomination of the bolívar, without replacing VES as the official currency code."},
-        {"q": "Is VED the same as VES?", "a": "Both codes are listed under the name “Bolívar Soberano”. According to ISO 4217 Amendment 170, VES/928 remains the valid code for transactions in the redenominated currency, and the Central Bank of Venezuela will not adopt the new code in its local system. ConvertCCY does not treat VED as an alias of VES and applies no numeric mapping between them."},
-        {"q": "Why does ConvertCCY not show a VED exchange rate?", "a": "No source quotes VED: the FX reference provider used by ConvertCCY does not publish it, and the issuer uses VES/928. No number is shown rather than a relabelled VES value or an estimate."}
+        {
+          "q": "What is the VED currency code?",
+          "a": "ISO 4217 lists VED (numeric 926) for Venezuela under the name “Bolívar Soberano”. ISO 4217 Amendment 170 introduced it on 1 October 2021 for internal needs during the redenomination of the bolívar, without replacing VES as the official currency code."
+        },
+        {
+          "q": "Is VED the same as VES?",
+          "a": "Both codes are listed under the name “Bolívar Soberano”. According to ISO 4217 Amendment 170, VES/928 remains the valid code for transactions in the redenominated currency, and the Central Bank of Venezuela will not adopt the new code in its local system. ConvertCCY does not treat VED as an alias of VES and applies no numeric mapping between them."
+        },
+        {
+          "q": "Why does ConvertCCY not show a VED exchange rate?",
+          "a": "No source quotes VED: the FX reference provider used by ConvertCCY does not publish it, and the issuer uses VES/928. No number is shown rather than a relabelled VES value or an estimate."
+        }
       ]
     }
   },
-  "values": []
+  "values": [],
+  "rate_regime_governance": {
+    "layer": "SEO-A4.6B",
+    "scope_rule": "A governed currency must be an active fiat_currency or restricted_fiat_currency in data/instrument_classification.json, must HAVE a value in data/rate_snapshot.json, and must not be covered by the live-fiat coverage layer (currencies). Membership never changes the provider value; it governs how the value is labelled and whether it powers a converter.",
+    "audit_date": "2026-11-19",
+    "comparison_policy": {
+      "official_match_tolerance_pct": 0.5,
+      "material_divergence_pct": 5.0,
+      "provider_revalidation_days": 7,
+      "provider_drift_tolerance_pct": 2.0,
+    "max_match_date_gap_days": 1,
+      "rationale": "0.5% covers provider rounding and a one-day valuation lag for daily managed official rates without admitting a different regime (every observed regime gap is 5% or more). 5% marks a regime as materially different. A regime match also requires the provider and source valuation dates to be at most 1 day apart (undated fixed segments excepted). A provider value is re-trusted only while the FX snapshot is within 7 days of the audited provider date and within 2% of the audited provider value; otherwise its regime match is treated as not re-verified and the policy is downgraded."
+    },
+    "currencies": {
+      "CUP": {
+        "currency_code": "CUP",
+        "classification_confidence": "medium",
+        "review_flags": [
+          "official_vs_market_rate_review"
+        ],
+        "display_name": "Cuban Peso",
+        "issuer_or_authority": "Banco Central de Cuba",
+        "issuer_source_state": "unavailable",
+        "regime_type": "multi_segment_official",
+        "availability_status": "official_source_unresolved",
+        "regimes": [
+          {
+            "regime_id": "bcc_segment_i",
+            "regime_type": "fixed_official_segment",
+            "regime_label": "Legacy fixed official rate for core state transactions (Segment I)",
+            "authority": "Banco Central de Cuba",
+            "source_id": "cubaninsights_rates",
+            "evidence_state": "secondary_reported",
+            "valuation_date": null,
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "CUP per USD",
+            "freshness_policy": "fixed_official",
+            "license_state": "not_usable",
+            "activation_state": "reference_layer_only",
+            "confidence": "medium",
+            "notes": "described by secondary sources; issuer site unreachable"
+          },
+          {
+            "regime_id": "bcc_segment_ii",
+            "regime_type": "fixed_official_segment",
+            "regime_label": "Second fixed official rate for designated state operations (Segment II)",
+            "authority": "Banco Central de Cuba",
+            "source_id": "cubaninsights_rates",
+            "evidence_state": "secondary_reported",
+            "valuation_date": null,
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "CUP per USD",
+            "freshness_policy": "fixed_official",
+            "license_state": "not_usable",
+            "activation_state": "reference_layer_only",
+            "confidence": "medium",
+            "notes": "described by secondary sources; issuer site unreachable"
+          },
+          {
+            "regime_id": "bcc_segment_iii",
+            "regime_type": "floating_official_segment",
+            "regime_label": "Floating official rate (Segment III) for households and the private sector",
+            "authority": "Banco Central de Cuba",
+            "source_id": "cibercuba_segment3",
+            "evidence_state": "secondary_reported",
+            "valuation_date": null,
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "CUP per USD",
+            "freshness_policy": "official_daily",
+            "license_state": "not_usable",
+            "activation_state": "reference_layer_only",
+            "confidence": "medium",
+            "notes": "reported by press from BCC data; current value not verified from the issuer"
+          },
+          {
+            "regime_id": "cup_informal",
+            "regime_type": "parallel_market",
+            "regime_label": "Informal market rate",
+            "authority": "elTOQUE (as reported)",
+            "source_id": "cubaninsights_rates",
+            "evidence_state": "secondary_reported",
+            "valuation_date": null,
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "CUP per USD",
+            "freshness_policy": "market_daily",
+            "license_state": "not_usable",
+            "activation_state": "reference_layer_only",
+            "confidence": "low",
+            "notes": "tracked by elTOQUE according to secondary sources; elTOQUE page refused automated access"
+          }
+        ],
+        "provider": {
+          "provider_value": "24.0",
+          "provider_as_of": "2026-11-18",
+          "provider_timestamp": "2026-11-18T12:19:45Z",
+          "comparisons": [
+            {
+              "regime_id": "bcc_segment_i",
+              "pct_difference": "0.000",
+              "valuation_date_difference_days": null,
+              "note": "fixed segment; no valuation date"
+            },
+            {
+              "regime_id": "bcc_segment_ii",
+              "pct_difference": "-80.000",
+              "valuation_date_difference_days": null
+            },
+            {
+              "regime_id": "bcc_segment_iii",
+              "pct_difference": "about -97",
+              "valuation_date_difference_days": null,
+              "note": "against secondary reports of the floating segment in October 2026; issuer value unverified"
+            }
+          ],
+          "provider_regime_match": "provider_matches_reported_official_segment",
+          "match_basis": "exact numeric equality with the reported fixed Segment I rate (inference; the provider does not state its source)",
+          "confidence": "medium"
+        },
+        "provider_policy": "comparison_only",
+        "decision_reason": "Cuba runs several official segments and an informal market that differ by more than an order of magnitude. The provider value equals the reported fixed Segment I rate used for core state transactions, not the floating rate for households and private business. The issuer site was unreachable, so no official value can be verified. The provider value is shown for comparison only, with no converter.",
+        "identity_claims": [
+          {
+            "text": "ISO 4217 lists CUP, numeric code 192 with 2 minor units, as the Cuban Peso.",
+            "source": "six_iso4217_list_one"
+          }
+        ],
+        "coverage_claims": [
+          {
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for CUP; checked 2026-11-19.",
+            "source": "exchangerate_api_latest_usd"
+          }
+        ],
+        "regime_claims": [
+          {
+            "text": "Cuban Insights describes several simultaneous Cuban peso rates: two older fixed official rates for state firms, a floating official rate for households and the private sector, and an informal street rate.",
+            "source": "cubaninsights_rates"
+          },
+          {
+            "text": "CiberCuba reports that the Central Bank of Cuba sets a “floating” official rate in a Segment III of the exchange market, while the informal market shows higher values.",
+            "source": "cibercuba_segment3"
+          }
+        ],
+        "explanations": {
+          "what": "The Cuban peso (CUP) is Cuba's currency. Cuba does not have one exchange rate: official segments and an informal market coexist and differ widely.",
+          "provider": "The provider value equals the reported legacy fixed official rate (Segment I, 24 CUP per US dollar), which applies to core state transactions. It is far stronger than the reported floating official rate for households and the informal market. It is shown for comparison only.",
+          "official": "The Banco Central de Cuba website could not be reached during the audit, so no official value is published here.",
+          "claims_scope": "This page does not state which rate applies to a given transaction and does not convert amounts."
+        },
+        "faq": [
+          {
+            "q": "Is 24 Cuban pesos per US dollar the official rate?",
+            "a": "It is one of several official rates. Secondary sources describe 24 CUP per US dollar as a legacy fixed rate for core state transactions; a second fixed rate for other state operations and a floating official rate for households and the private sector also exist, and an informal market trades at weaker levels still. ConvertCCY shows its provider value only for comparison."
+          },
+          {
+            "q": "Why is there no Cuban peso converter on this page?",
+            "a": "Because the rates in use differ by more than an order of magnitude and the issuer site could not be verified, a single converted amount would mislead. ConvertCCY shows the provider value labelled for comparison instead."
+          }
+        ]
+      },
+      "IRR": {
+        "currency_code": "IRR",
+        "classification_confidence": "medium",
+        "review_flags": [
+          "official_vs_market_rate_review"
+        ],
+        "display_name": "Iranian Rial",
+        "issuer_or_authority": "Central Bank of the Islamic Republic of Iran",
+        "issuer_source_state": "unavailable",
+        "regime_type": "official_source_unresolved",
+        "availability_status": "provider_regime_unresolved",
+        "regimes": [
+          {
+            "regime_id": "cbi_official",
+            "regime_type": "official_reference",
+            "regime_label": "Official rate(s) of the Central Bank of the Islamic Republic of Iran",
+            "authority": "Central Bank of the Islamic Republic of Iran",
+            "source_id": "cbi_rates",
+            "evidence_state": "unresolved",
+            "valuation_date": null,
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "IRR per USD",
+            "freshness_policy": "official_daily",
+            "license_state": "license_unclear",
+            "activation_state": "reference_layer_only",
+            "confidence": "low",
+            "notes": "issuer and Iran Center for Exchange sites unreachable; mechanisms and values not verified"
+          },
+          {
+            "regime_id": "tehran_free_market",
+            "regime_type": "parallel_market",
+            "regime_label": "Tehran free-market rate",
+            "authority": "Alanchand (aggregator)",
+            "source_id": "alanchand_iran",
+            "evidence_state": "secondary_reported",
+            "valuation_date": "2026-11-19",
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "IRR per USD",
+            "freshness_policy": "market_daily",
+            "license_state": "not_usable",
+            "activation_state": "reference_layer_only",
+            "confidence": "medium",
+            "notes": "aggregated from several market sources"
+          }
+        ],
+        "provider": {
+          "provider_value": "1816886.22",
+          "provider_as_of": "2026-11-18",
+          "provider_timestamp": "2026-11-18T12:19:45Z",
+          "comparisons": [
+            {
+              "regime_id": "tehran_free_market",
+              "pct_difference": "about -33",
+              "valuation_date_difference_days": 1,
+              "note": "against the aggregator's free-market sell price on 2026-11-19"
+            }
+          ],
+          "provider_regime_match": "provider_regime_unresolved",
+          "match_basis": "the provider value is far from the reported free-market rate and no official value could be verified",
+          "confidence": "low"
+        },
+        "provider_policy": "suppressed",
+        "decision_reason": "Official Iranian rate mechanisms could not be verified (issuer and exchange-centre sites unreachable). The provider value is about a third below the reported Tehran free-market rate and matches no verified regime, so it is not shown.",
+        "identity_claims": [
+          {
+            "text": "ISO 4217 lists IRR, numeric code 364 with 2 minor units, as the Iranian Rial.",
+            "source": "six_iso4217_list_one"
+          }
+        ],
+        "coverage_claims": [
+          {
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for IRR; checked 2026-11-19.",
+            "source": "exchangerate_api_latest_usd"
+          }
+        ],
+        "regime_claims": [
+          {
+            "text": "Alanchand publishes Tehran free-market US dollar buy and sell prices for the rial, collected from several market sources.",
+            "source": "alanchand_iran"
+          }
+        ],
+        "explanations": {
+          "what": "The Iranian rial (IRR) is Iran's currency. Official rate mechanisms and a free market coexist, and they differ materially.",
+          "provider": "The provider publishes an IRR value, but it matches no verified rate regime: it is roughly a third below the reported Tehran free-market rate, and no official value could be verified. ConvertCCY therefore does not show it.",
+          "official": "The Central Bank of the Islamic Republic of Iran and the Iran Center for Exchange could not be reached during the audit.",
+          "claims_scope": "This page does not state an IRR rate, does not identify which official mechanism applies and does not convert amounts."
+        },
+        "faq": [
+          {
+            "q": "Why does ConvertCCY not show an Iranian rial rate?",
+            "a": "The provider value matches no verified rate regime: it is far from the reported free-market rate, and the official rate mechanisms could not be verified from the issuer. A number is not shown until its regime, source and publication rights are understood."
+          },
+          {
+            "q": "Is there more than one Iranian rial exchange rate?",
+            "a": "Yes. Official rate mechanisms and a free market coexist in Iran, and market aggregators report free-market prices well above the provider value. ConvertCCY treats the provider regime as unresolved."
+          }
+        ]
+      },
+      "MMK": {
+        "currency_code": "MMK",
+        "classification_confidence": "medium",
+        "review_flags": [
+          "official_vs_market_rate_review"
+        ],
+        "display_name": "Myanmar Kyat",
+        "issuer_or_authority": "Central Bank of Myanmar",
+        "issuer_source_state": "accessible",
+        "regime_type": "official_reference_plus_market_trading",
+        "availability_status": "license_unresolved",
+        "regimes": [
+          {
+            "regime_id": "cbm_reference",
+            "regime_type": "official_reference",
+            "regime_label": "CBM reference exchange rate",
+            "authority": "Central Bank of Myanmar",
+            "source_id": "cbm_fxrate",
+            "evidence_state": "issuer_verified",
+            "valuation_date": "2026-11-18",
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "MMK per USD",
+            "freshness_policy": "official_daily",
+            "license_state": "license_unclear",
+            "activation_state": "reference_layer_only",
+            "confidence": "high",
+            "notes": "published for reference purpose only (CBM)"
+          },
+          {
+            "regime_id": "cbm_market_trading",
+            "regime_type": "official_market_trading",
+            "regime_label": "CBM market trading rate",
+            "authority": "Central Bank of Myanmar",
+            "source_id": "cbm_fxrate",
+            "evidence_state": "issuer_verified",
+            "valuation_date": "2026-11-18",
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "MMK per USD",
+            "freshness_policy": "official_daily",
+            "license_state": "license_unclear",
+            "activation_state": "reference_layer_only",
+            "confidence": "high",
+            "notes": "CBM states most transactions occur at this rate"
+          }
+        ],
+        "provider": {
+          "provider_value": "2101.07",
+          "provider_as_of": "2026-11-18",
+          "provider_timestamp": "2026-11-18T12:19:45Z",
+          "comparisons": [
+            {
+              "regime_id": "cbm_reference",
+              "pct_difference": "+0.051",
+              "valuation_date_difference_days": 0
+            },
+            {
+              "regime_id": "cbm_market_trading",
+              "pct_difference": "-42.594",
+              "valuation_date_difference_days": 0
+            }
+          ],
+          "provider_regime_match": "provider_matches_official_within_tolerance",
+          "match_basis": "within 0.06% of the CBM reference rate on the same valuation date (inference; the provider does not state its source)",
+          "confidence": "medium"
+        },
+        "provider_policy": "comparison_only",
+        "decision_reason": "The Central Bank of Myanmar publishes two materially different rates and says most transactions occur at the market trading rate. The provider value tracks the reference rate, which the CBM publishes for reference only. Converting at it would price a US dollar about 43% below the rate most transactions use, and the CBM figures cannot be republished (licence unclear). The provider value is shown for comparison only, with no converter.",
+        "identity_claims": [
+          {
+            "text": "ISO 4217 lists MMK, numeric code 104 with 2 minor units, as the Kyat.",
+            "source": "six_iso4217_list_one"
+          }
+        ],
+        "coverage_claims": [
+          {
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for MMK; checked 2026-11-19.",
+            "source": "exchangerate_api_latest_usd"
+          }
+        ],
+        "regime_claims": [
+          {
+            "text": "The Central Bank of Myanmar publishes a Reference Rate and a Market Trading Rate for the US dollar.",
+            "source": "cbm_fxrate"
+          },
+          {
+            "text": "The Central Bank of Myanmar states that the reference exchange rate is published for reference purpose only.",
+            "source": "cbm_fxrate"
+          },
+          {
+            "text": "The Central Bank of Myanmar states that most transactions occur at the market trading rate.",
+            "source": "cbm_fxrate"
+          }
+        ],
+        "explanations": {
+          "what": "The Myanmar kyat (MMK) is Myanmar's currency. The Central Bank of Myanmar publishes two official US-dollar rates that differ materially: a reference rate and a market trading rate.",
+          "provider": "The provider value is within 0.06% of the CBM reference rate on the same day, and about 43% below the CBM market trading rate, at which the CBM says most transactions occur. It is shown for comparison only.",
+          "official": "The CBM figures themselves are not republished here: the CBM site carries a copyright notice and no reuse terms.",
+          "claims_scope": "This page does not convert amounts and does not state which rate a bank or exchange will apply."
+        },
+        "faq": [
+          {
+            "q": "Which kyat exchange rate does this page show?",
+            "a": "A provider snapshot that closely tracks the Central Bank of Myanmar reference rate. The CBM also publishes a market trading rate, at which a US dollar costs about 74% more kyat, and states that most transactions occur at it. The provider value is shown for comparison only."
+          },
+          {
+            "q": "Why is there no kyat converter on this page?",
+            "a": "Because two materially different official rates exist and the one most transactions use differs from the provider value by about 43%, a single converted amount would mislead. The CBM figures are not republished because their reuse terms are unclear."
+          }
+        ]
+      },
+      "SYP": {
+        "currency_code": "SYP",
+        "classification_confidence": "medium",
+        "review_flags": [
+          "official_vs_market_rate_review"
+        ],
+        "display_name": "Syrian Pound",
+        "issuer_or_authority": "Central Bank of Syria",
+        "issuer_source_state": "unverified",
+        "regime_type": "single_official_reference",
+        "availability_status": "provider_value_regime_labelled",
+        "regimes": [
+          {
+            "regime_id": "cbs_bulletin",
+            "regime_type": "official_reference",
+            "regime_label": "Central Bank of Syria exchange bulletin (new pounds)",
+            "authority": "Central Bank of Syria",
+            "source_id": "cbs_site",
+            "evidence_state": "unverified_copy",
+            "valuation_date": "2026-11-19",
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "SYP (new) per USD",
+            "freshness_policy": "official_daily",
+            "license_state": "license_unclear",
+            "activation_state": "reference_layer_only",
+            "confidence": "low",
+            "notes": "figure seen only on a site labelled as a demonstration copy"
+          }
+        ],
+        "provider": {
+          "provider_value": "121.8",
+          "provider_as_of": "2026-11-18",
+          "provider_timestamp": "2026-11-18T12:19:45Z",
+          "comparisons": [
+            {
+              "regime_id": "cbs_bulletin",
+              "pct_difference": "-0.164",
+              "valuation_date_difference_days": 1,
+              "note": "against the figure on the unverified copy"
+            }
+          ],
+          "provider_regime_match": "provider_matches_reported_official",
+          "match_basis": "within 0.2% of a bulletin figure shown on a site whose authority is unverified; the provider value is on the post-redenomination (new pound) scale",
+          "confidence": "medium"
+        },
+        "provider_policy": "secondary_provider_value",
+        "decision_reason": "The provider value is on the new-pound scale introduced on 1 January 2026 (100 old pounds = 1 new pound, per press) and is close to the bulletin figure on a cb.gov.sy page that labels itself a demonstration copy. No materially different regime was verified. The converter stays, labelled as a provider snapshot in new pounds, not attributed to the central bank.",
+        "identity_claims": [
+          {
+            "text": "ISO 4217 lists SYP, numeric code 760 with 2 minor units, as the Syrian Pound.",
+            "source": "six_iso4217_list_one"
+          }
+        ],
+        "coverage_claims": [
+          {
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for SYP; checked 2026-11-19.",
+            "source": "exchangerate_api_latest_usd"
+          }
+        ],
+        "regime_claims": [
+          {
+            "text": "Xinhua reports that under Central Bank of Syria guidelines every 100 old Syrian pounds are exchanged for one new pound, with the exchange starting on 1 January 2026.",
+            "source": "xinhua_syp_redenomination"
+          }
+        ],
+        "explanations": {
+          "what": "The Syrian pound (SYP) is Syria's currency. A redenomination removed two zeros from 1 January 2026; ISO 4217 still uses the code SYP.",
+          "provider": "The provider value is expressed in new Syrian pounds and is within 0.2% of the exchange-bulletin figure shown on a cb.gov.sy page that labels itself a demonstration copy, so it is not attributed to the central bank.",
+          "official": "No authoritative copy of the Central Bank of Syria bulletin could be verified during the audit.",
+          "claims_scope": "Amounts are in new Syrian pounds. For old-pound amounts, divide by 100 before converting. This page does not claim the value is the official rate."
+        },
+        "faq": [
+          {
+            "q": "Is this Syrian pound rate in old or new pounds?",
+            "a": "New pounds. A redenomination exchanged every 100 old pounds for one new pound from 1 January 2026, according to press reports of Central Bank of Syria guidelines. The ISO 4217 code remains SYP."
+          },
+          {
+            "q": "Is this the Central Bank of Syria's official rate?",
+            "a": "It is a provider snapshot. It is close to the exchange-bulletin figure shown on a cb.gov.sy page that labels itself a demonstration copy, so ConvertCCY does not attribute it to the central bank."
+          }
+        ]
+      },
+      "TMT": {
+        "currency_code": "TMT",
+        "classification_confidence": "medium",
+        "review_flags": [
+          "official_vs_market_rate_review"
+        ],
+        "display_name": "Turkmenistan New Manat",
+        "issuer_or_authority": "Central Bank of Turkmenistan",
+        "issuer_source_state": "accessible",
+        "regime_type": "official_reference_plus_parallel_market",
+        "availability_status": "provider_value_regime_labelled",
+        "regimes": [
+          {
+            "regime_id": "cbt_official",
+            "regime_type": "official_reference",
+            "regime_label": "Central Bank of Turkmenistan exchange rate",
+            "authority": "Central Bank of Turkmenistan",
+            "source_id": "cbt_rates",
+            "evidence_state": "issuer_verified",
+            "valuation_date": "2026-11-19",
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "TMT per USD",
+            "freshness_policy": "official_daily",
+            "license_state": "license_unclear",
+            "activation_state": "reference_layer_only",
+            "confidence": "high",
+            "notes": "set according to the outcome of transactions on the CBT interbank foreign exchange"
+          },
+          {
+            "regime_id": "tmt_parallel",
+            "regime_type": "parallel_market",
+            "regime_label": "Parallel market rate",
+            "authority": "BTI (as reported)",
+            "source_id": "bti_tkm_2026",
+            "evidence_state": "secondary_reported",
+            "valuation_date": null,
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "TMT per USD",
+            "freshness_policy": "market_weekly",
+            "license_state": "not_usable",
+            "activation_state": "reference_layer_only",
+            "confidence": "low",
+            "notes": "existence reported by secondary analysis; no current value verified"
+          }
+        ],
+        "provider": {
+          "provider_value": "3.5",
+          "provider_as_of": "2026-11-18",
+          "provider_timestamp": "2026-11-18T12:19:45Z",
+          "comparisons": [
+            {
+              "regime_id": "cbt_official",
+              "pct_difference": "0.000",
+              "valuation_date_difference_days": 1
+            }
+          ],
+          "provider_regime_match": "provider_matches_official_within_tolerance",
+          "match_basis": "identical to the CBT rate in force from 19 November 2026 (inference; the provider does not state its source)",
+          "confidence": "high"
+        },
+        "provider_policy": "secondary_provider_value",
+        "decision_reason": "The provider value equals the Central Bank of Turkmenistan rate. A parallel market is reported by secondary analysis but no current value was verified. The converter stays, labelled as a provider snapshot that matches the CBT official rate, with a parallel-market caveat.",
+        "identity_claims": [
+          {
+            "text": "ISO 4217 lists TMT, numeric code 934 with 2 minor units, as the Turkmenistan New Manat.",
+            "source": "six_iso4217_list_one"
+          }
+        ],
+        "coverage_claims": [
+          {
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for TMT; checked 2026-11-19.",
+            "source": "exchangerate_api_latest_usd"
+          }
+        ],
+        "regime_claims": [
+          {
+            "text": "The Central Bank of Turkmenistan publishes exchange rates according to the outcome of transactions on its interbank foreign exchange.",
+            "source": "cbt_rates"
+          },
+          {
+            "text": "BTI's 2026 Turkmenistan report describes the coexistence of an official exchange rate and a parallel rate for the manat.",
+            "source": "bti_tkm_2026"
+          }
+        ],
+        "explanations": {
+          "what": "The Turkmenistan new manat (TMT) is Turkmenistan's currency. The Central Bank of Turkmenistan publishes an official rate; a parallel rate is reported to coexist.",
+          "provider": "The provider value equals the Central Bank of Turkmenistan rate in force on the audit date. It is a provider snapshot, not a CBT publication.",
+          "official": "The CBT figure itself is not republished: the CBT site carries a copyright notice and no reuse terms.",
+          "claims_scope": "Converted amounts use the official-rate-matched provider snapshot. They do not reflect parallel-market prices."
+        },
+        "faq": [
+          {
+            "q": "Is this the official manat exchange rate?",
+            "a": "The provider snapshot shown here equals the Central Bank of Turkmenistan rate in force on the audit date. It is labelled as a provider value, not a CBT publication."
+          },
+          {
+            "q": "Is there a different market rate for the manat?",
+            "a": "Secondary analysis (BTI 2026) describes a parallel rate coexisting with the official rate. ConvertCCY did not verify a current parallel value, and converted amounts here do not reflect it."
+          }
+        ]
+      },
+      "VES": {
+        "currency_code": "VES",
+        "classification_confidence": "medium",
+        "review_flags": [
+          "code_mapping_review",
+          "official_vs_market_rate_review"
+        ],
+        "display_name": "Bolívar Soberano",
+        "issuer_or_authority": "Banco Central de Venezuela",
+        "issuer_source_state": "unavailable",
+        "regime_type": "single_official_reference",
+        "availability_status": "provider_value_regime_labelled",
+        "regimes": [
+          {
+            "regime_id": "bcv_official",
+            "regime_type": "official_reference",
+            "regime_label": "Banco Central de Venezuela official rate",
+            "authority": "Banco Central de Venezuela",
+            "source_id": "bancaynegocios_bcv",
+            "evidence_state": "secondary_reported",
+            "valuation_date": "2026-11-18",
+            "captured_at": "2026-11-19",
+            "value": null,
+            "value_withheld_reason": "license_unclear",
+            "unit": "VES per USD",
+            "freshness_policy": "official_daily",
+            "license_state": "not_usable",
+            "activation_state": "reference_layer_only",
+            "confidence": "medium",
+            "notes": "issuer site unreachable (TLS failure / HTTP 503); value attributed to BCV by press"
+          }
+        ],
+        "provider": {
+          "provider_value": "916.65",
+          "provider_as_of": "2026-11-18",
+          "provider_timestamp": "2026-11-18T12:19:45Z",
+          "comparisons": [
+            {
+              "regime_id": "bcv_official",
+              "pct_difference": "0.000",
+              "valuation_date_difference_days": 0,
+              "note": "against the press-reported prior close; -0.123% against the press-reported 18/11 value"
+            }
+          ],
+          "provider_regime_match": "provider_matches_reported_official",
+          "match_basis": "equal, to provider precision, to the BCV official rate as reported by press (inference; the provider does not state its source)",
+          "confidence": "medium"
+        },
+        "provider_policy": "secondary_provider_value",
+        "decision_reason": "The provider value equals the press-reported Banco Central de Venezuela official rate. The BCV site was unreachable and no parallel-market value was verified. The converter stays, labelled as a provider snapshot that matches the press-reported official rate. VED semantics (A4.6A) are unchanged.",
+        "identity_claims": [
+          {
+            "text": "ISO 4217 lists VES, numeric code 928 with 2 minor units, as the Bolívar Soberano.",
+            "source": "six_iso4217_list_one"
+          }
+        ],
+        "coverage_claims": [
+          {
+            "text": "The FX reference provider used by ConvertCCY (exchangerate-api.com) publishes a value for VES; checked 2026-11-19.",
+            "source": "exchangerate_api_latest_usd"
+          }
+        ],
+        "regime_claims": [
+          {
+            "text": "Banca y Negocios publishes an official dollar rate attributed to the Banco Central de Venezuela (source line “BCV - BVC”).",
+            "source": "bancaynegocios_bcv"
+          }
+        ],
+        "explanations": {
+          "what": "The bolívar soberano (VES) is Venezuela's currency and the official ISO 4217 code for it. The Banco Central de Venezuela publishes the official rate.",
+          "provider": "The provider value equals the BCV official rate as reported by the press. The BCV site could not be reached during the audit, so the match is not issuer-verified.",
+          "official": "The BCV figure itself is not republished here; its reuse terms could not be read.",
+          "claims_scope": "Converted amounts use the official-rate-matched provider snapshot. A parallel-market rate was not assessed and is not reflected."
+        },
+        "faq": [
+          {
+            "q": "Is this the official Venezuelan bolívar rate?",
+            "a": "The provider snapshot equals the Banco Central de Venezuela official rate as reported by the press. The BCV site could not be reached during the audit, so ConvertCCY labels the value as a provider snapshot."
+          },
+          {
+            "q": "Does this rate reflect the parallel market?",
+            "a": "No. ConvertCCY did not assess a parallel-market rate for the bolívar; converted amounts use the official-rate-matched provider snapshot."
+          }
+        ]
+      }
+    }
+  }
 }

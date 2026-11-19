@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-validate_live_fiat_snapshot.py — SEO-A4.6A gate for data/live_fiat_reference_snapshot.json.
+validate_live_fiat_snapshot.py — SEO-A4.6A / A4.6B gate for data/live_fiat_reference_snapshot.json.
+
+Also runs live_fiat_reference.validate_rate_regime on the rate_regime_governance section
+(A4.6B): scope rule (provider value present, not an A4.6A code, A4.1 agreement), regime
+evidence vs source tier, no stored issuer/market value without a verified, licensed,
+activated source, provider-regime matches against recorded comparisons and tolerance,
+converter use only for a provider value matching an official regime with no competing
+official regime, and no number for an unresolved or conflicting provider regime.
 
 Fails closed (live_fiat_reference.validate_live_fiat_snapshot) on: wrong type or
 schema version; duplicate keys or source ids; unknown enum values; sources without
@@ -45,6 +52,7 @@ def main() -> int:
         return 1
     fx = json.loads((REPO / "data" / "rate_snapshot.json").read_text(encoding="utf-8"))
     errs = lf.validate_live_fiat_snapshot(snap, ip.load_raw(), fx)
+    errs += lf.validate_rate_regime(snap, ip.load_raw(), fx)   # SEO-A4.6B rate_regime_governance section
     cur = snap.get("currencies", {})
     avail = Counter(c.get("availability_status") for c in cur.values())
     tiers = Counter(s.get("source_tier") for s in snap.get("sources", []))
@@ -55,7 +63,9 @@ def main() -> int:
         for e in errs[:40]:
             print(f"  - {e}")
         return 1
-    print("PASS: live-fiat reference snapshot")
+    rr = lf.regime_section(snap).get("currencies", {})
+    print("rate-regime governed=" + ",".join(f"{c}:{v['provider_policy']}" for c, v in sorted(rr.items())))
+    print("PASS: live-fiat reference snapshot (A4.6A coverage + A4.6B rate-regime governance)")
     return 0
 
 

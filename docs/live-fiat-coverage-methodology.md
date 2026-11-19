@@ -19,9 +19,10 @@ Two hubs are in scope: `currencies/kpw.html` and `currencies/ved.html`.
 
 **Status:** implemented. **No numeric value is activated** (`activation_state: reference_layer_only`).
 
-**Out of scope (A4.6B, deferred):** CUP, IRR, MMK, SYP, TMT and VES. They have provider values
-and still render as `ordinary_fx`. The scope rule in §5 makes it impossible for them to enter
-this layer.
+**Out of scope:** CUP, IRR, MMK, SYP, TMT and VES. They have provider values, so the scope rule in
+§5 makes it impossible for them to enter this layer. They are governed by A4.6B
+(`rate_regime_governed`, see `docs/rate-regime-governance-methodology.md`), whose data lives in the
+same snapshot under `rate_regime_governance`.
 
 Governing principles:
 
@@ -207,6 +208,5 @@ unsupported template any more.
   (framework debt H).
 * **BCV terms.** The BCV site returned HTTP 503 throughout. Its reuse terms are unknown. That
   matters for A4.6B (VES), not for VED.
-* **A4.6B is deferred.** CUP, IRR, MMK, SYP, TMT and VES need their own audit: official rate,
-  market rate, multiple regimes, provider regime, divergence thresholds, fallback policy and
-  public rendering.
+* **A4.6B is implemented** in `docs/rate-regime-governance-methodology.md`. It did not change any
+  KPW or VED surface.

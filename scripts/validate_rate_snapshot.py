@@ -161,6 +161,11 @@ def check_pages(snap):
             # institutional-unit pages: never an FX rate state (detail in validate_institutional_units.py)
             if 'data-mode="institutional"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
                 errors.append(f"{path.name}: institutional page carries an FX rate state or the rate runtime")
+        elif treatment == "rate_regime_governed" and g.rate_regime_pair(a, b, snap)["mode"] != "converter":
+            # rate-regime pages without a converter (SEO-A4.6B): no FX rate state or runtime; any number is a
+            # labelled provider comparison (detail in validate_rate_regime_governance.py)
+            if 'data-mode="rate_regime"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
+                errors.append(f"{path.name}: rate-regime reference page carries an FX rate state or the rate runtime")
         elif treatment == "live_fiat_coverage":
             # live-fiat coverage pages (SEO-A4.6A): never an FX rate state (detail in validate_live_fiat_coverage.py)
             if 'data-mode="live_fiat"' not in page or "data-rate=" in page or g.RATE_SCRIPT_SRC in page:
